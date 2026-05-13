@@ -1,0 +1,1419 @@
+{
+  "items": {
+    "afc:wood/twig/fig": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material, not a tool or block"
+        },
+        "material_family": {
+          "value": "wood_fig",
+          "signal": "pattern",
+          "evidence": "id path /twig/fig",
+          "rationale": "Wood from fig tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks + tfc:can_be_lit_on_torch",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/gum_arabic": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_gum_arabic",
+          "signal": "pattern",
+          "evidence": "id path /twig/gum_arabic",
+          "rationale": "Wood from gum arabic tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/hevea": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_hevea",
+          "signal": "pattern",
+          "evidence": "id path /twig/hevea",
+          "rationale": "Wood from hevea tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/ipe": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_ipe",
+          "signal": "pattern",
+          "evidence": "id path /twig/ipe",
+          "rationale": "Wood from ipe tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/ironwood": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_ironwood",
+          "signal": "pattern",
+          "evidence": "id path /twig/ironwood",
+          "rationale": "Wood from ironwood tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/mahogany": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "evidence": "id path /twig/mahogany",
+          "rationale": "Wood from mahogany tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/poplar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_poplar",
+          "signal": "pattern",
+          "evidence": "id path /twig/poplar",
+          "rationale": "Wood from poplar tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/rainbow_eucalyptus": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_rainbow_eucalyptus",
+          "signal": "pattern",
+          "evidence": "id path /twig/rainbow_eucalyptus",
+          "rationale": "Wood from rainbow eucalyptus tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/redcedar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_redcedar",
+          "signal": "pattern",
+          "evidence": "id path /twig/redcedar",
+          "rationale": "Wood from redcedar tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/rubber_fig": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_rubber_fig",
+          "signal": "pattern",
+          "evidence": "id path /twig/rubber_fig",
+          "rationale": "Wood from rubber fig tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/teak": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "evidence": "id path /twig/teak",
+          "rationale": "Wood from teak tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/twig/tualang": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "material_family": {
+          "value": "wood_tualang",
+          "signal": "pattern",
+          "evidence": "id path /twig/tualang",
+          "rationale": "Wood from tualang tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden rod for tool handles and torches",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as rod and fuel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:light/sources"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Used to light torches"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:light/sources#input"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:firepit_sticks",
+          "rationale": "Input for light sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood rod, stored with wood items"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from block drop",
+          "rationale": "Drops from tree twig block"
+        }
+      }
+    },
+    "afc:wood/water_wheel/baobab": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block, not a workstation"
+        },
+        "material_family": {
+          "value": "wood_baobab",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/baobab",
+          "rationale": "Wood from baobab tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/cypress": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_cypress",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/cypress",
+          "rationale": "Wood from cypress tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/eucalyptus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_eucalyptus",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/eucalyptus",
+          "rationale": "Wood from eucalyptus tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/fig": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_fig",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/fig",
+          "rationale": "Wood from fig tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/hevea": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_hevea",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/hevea",
+          "rationale": "Wood from hevea tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/ipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_ipe",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/ipe",
+          "rationale": "Wood from ipe tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/ironwood": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_ironwood",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/ironwood",
+          "rationale": "Wood from ironwood tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/mahogany": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/mahogany",
+          "rationale": "Wood from mahogany tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/teak": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/teak",
+          "rationale": "Wood from teak tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/water_wheel/tualang": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-generating machine block"
+        },
+        "material_family": {
+          "value": "wood_tualang",
+          "signal": "pattern",
+          "evidence": "id path /water_wheel/tualang",
+          "rationale": "Wood from tualang tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Water wheel for Create/TFC power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "evidence": "Water wheel is TFC power component",
+          "rationale": "Part of TFC mechanical power system"
+        }
+      }
+    },
+    "afc:wood/wine_shelf/baobab": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Container for wine bottles, has inventory"
+        },
+        "material_family": {
+          "value": "wood_baobab",
+          "signal": "pattern",
+          "evidence": "id path /wine_shelf/baobab",
+          "rationale": "Wood from baobab tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and used for storage, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Stores wine bottles"
+          ],
+          "signal": "inferred",
+          "rationale": "Wine shelf for bottle storage"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for organizing wine storage"
+        },
+        "workflow": {
+          "values": [
+            "tfc:winemaking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of the winemaking process"
+        }
+      }
+    },
+    "afc:wood/wine_shelf/cypress": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Container for wine bottles"
+        },
+        "material_family": {
+          "value": "wood_cypress",
+          "signal": "pattern",
+          "evidence": "id path /wine_shelf/cypress",
+          "rationale": "Wood from cypress tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and used for storage, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Stores wine bottles"
+          ],
+          "signal": "inferred",
+          "rationale": "Wine shelf for bottle storage"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for organizing wine storage"
+        },
+        "workflow": {
+          "values": [
+            "tfc:winemaking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of the winemaking process"
+        }
+      }
+    },
+    "afc:wood/wine_shelf/eucalyptus": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Container for wine bottles"
+        },
+        "material_family": {
+          "value": "wood_eucalyptus",
+          "signal": "pattern",
+          "evidence": "id path /wine_shelf/eucalyptus",
+          "rationale": "Wood from eucalyptus tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and used for storage, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Stores wine bottles"
+          ],
+          "signal": "inferred",
+          "rationale": "Wine shelf for bottle storage"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for organizing wine storage"
+        },
+        "workflow": {
+          "values": [
+            "tfc:winemaking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of the winemaking process"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [],
+  "schema_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

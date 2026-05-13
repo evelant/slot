@@ -1,0 +1,1549 @@
+{
+  "items": {
+    "gtceu:small_titanium_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "titanium",
+          "signal": "pattern",
+          "evidence": "id suffix _titanium_gear",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting component often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated crafting processes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, commonly stored in bulk"
+        }
+      }
+    },
+    "gtceu:small_titanium_trifluoride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "titanium_trifluoride",
+          "signal": "pattern",
+          "evidence": "id suffix _titanium_trifluoride_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_titanium_tungsten_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "titanium_tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "id suffix _titanium_tungsten_carbide_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_topaz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "topaz",
+          "signal": "pattern",
+          "evidence": "id suffix _topaz_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_treated_wood_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "treated_wood",
+          "signal": "pattern",
+          "evidence": "id suffix _treated_wood_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood products"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tricalcium_phosphate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tricalcium_phosphate",
+          "signal": "pattern",
+          "evidence": "id suffix _tricalcium_phosphate_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting phosphorus compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_trinium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "trinium",
+          "signal": "pattern",
+          "evidence": "id suffix _trinium_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_trinium_sulfide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "trinium_sulfide",
+          "signal": "pattern",
+          "evidence": "id suffix _trinium_sulfide_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tritanium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "id suffix _tritanium_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tritanium_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "id suffix _tritanium_gear",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting component often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated crafting processes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, commonly stored in bulk"
+        }
+      }
+    },
+    "gtceu:small_trona_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "trona",
+          "signal": "pattern",
+          "evidence": "id suffix _trona_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting chemicals and compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tuff_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id suffix _tuff_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting stone products"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tungstate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tungstate",
+          "signal": "pattern",
+          "evidence": "id suffix _tungstate_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tungsten_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "id suffix _tungsten_carbide_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tungsten_carbide_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "id suffix _tungsten_carbide_gear",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting component often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated crafting processes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, commonly stored in bulk"
+        }
+      }
+    },
+    "gtceu:small_tungsten_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "id suffix _tungsten_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tungsten_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "id suffix _tungsten_spring",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common spring often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting springs and mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes (pressure plates, etc.)"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated crafting processes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tungsten_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tungsten_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _tungsten_steel_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_tungsten_steel_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tungsten_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _tungsten_steel_gear",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting component often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated crafting processes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, commonly stored in bulk"
+        }
+      }
+    },
+    "gtceu:small_tungstic_acid_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tungstic_acid",
+          "signal": "pattern",
+          "evidence": "id suffix _tungstic_acid_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tungsten compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_ultimet_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "evidence": "id suffix _ultimet_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_uraninite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "uraninite",
+          "signal": "pattern",
+          "evidence": "id suffix _uraninite_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting nuclear materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_uranium_235_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "pattern",
+          "evidence": "id suffix _uranium_235_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting nuclear materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_uranium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "id suffix _uranium_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting nuclear materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    },
+    "gtceu:small_uranium_rhodium_dinaquadide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "id suffix _uranium_rhodium_dinaquadide_dust",
+          "rationale": "derived from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "explicitly common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dust often in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting nuclear materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "identified as dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:small_titanium_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "id ends _gear, player thinks of it as a gear form"
+    },
+    {
+      "item": "gtceu:small_tritanium_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "id ends _gear, player thinks of it as a gear form"
+    },
+    {
+      "item": "gtceu:small_tungsten_carbide_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "id ends _gear, player thinks of it as a gear form"
+    },
+    {
+      "item": "gtceu:small_tungsten_steel_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "id ends _gear, player thinks of it as a gear form"
+    },
+    {
+      "item": "gtceu:small_tungsten_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "id ends _spring, player thinks of it as a spring form"
+    }
+  ]
+}

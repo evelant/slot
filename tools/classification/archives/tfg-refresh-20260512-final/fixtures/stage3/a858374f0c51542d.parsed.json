@@ -1,0 +1,848 @@
+{
+  "items": {
+    "minecraft:zombie_head": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed as decorative head mount"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative mob head display"
+          ],
+          "signal": "inferred",
+          "rationale": "player places for decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "from component"
+        }
+      }
+    },
+    "minecraft:zombie_horse_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn eggs are collectible set"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning zombie horses in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "creative-only use"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "never carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2: is_creative_only = true",
+          "rationale": "spawn egg is creative-only"
+        }
+      }
+    },
+    "minecraft:zombie_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn eggs are collectible set"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning zombies in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "creative-only use"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "never carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2: is_creative_only = true",
+          "rationale": "spawn egg is creative-only"
+        }
+      }
+    },
+    "minecraft:zombie_villager_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn eggs are collectible set"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning zombie villagers in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "creative-only use"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "never carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2: is_creative_only = true",
+          "rationale": "spawn egg is creative-only"
+        }
+      }
+    },
+    "minecraft:zombified_piglin_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn eggs are collectible set"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning zombified piglins in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "creative-only use"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "never carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2: is_creative_only = true",
+          "rationale": "spawn egg is creative-only"
+        }
+      }
+    },
+    "moonlight:placeable_item": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "guess",
+          "rationale": "generic placeable item, likely used by mods"
+        },
+        "primary_uses": {
+          "values": [
+            "placing custom blocks"
+          ],
+          "signal": "guess",
+          "rationale": "name suggests placeable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "guess",
+          "rationale": "uncommon use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        }
+      }
+    },
+    "morered:and_2_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic gate placed for signal processing"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic: two-input AND"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for compact logic circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:and_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic gate placed for signal processing"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic: AND gate"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for compact logic circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:bitwise_and_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic gate placed for signal processing"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic: bitwise AND"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for compact logic circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:bitwise_diode": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic component for signal direction"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic: bitwise diode"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for signal routing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:bitwise_not_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic gate placed for signal processing"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic: bitwise NOT"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for compact logic circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:bitwise_or_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic gate placed for signal processing"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic: bitwise OR"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for compact logic circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:bitwise_xnor_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic gate placed for signal processing"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic: bitwise XNOR"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for compact logic circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:bitwise_xor_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic gate placed for signal processing"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic: bitwise XOR"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for compact logic circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:black_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "network cable for redstone signal transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone network wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to connect redstone components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag morered:network_cables",
+          "rationale": "part of MoreRed network cable system"
+        }
+      }
+    },
+    "morered:blue_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "network cable for redstone signal transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone network wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to connect redstone components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag morered:network_cables",
+          "rationale": "part of MoreRed network cable system"
+        }
+      }
+    },
+    "morered:brown_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "network cable for redstone signal transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone network wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to connect redstone components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag morered:network_cables",
+          "rationale": "part of MoreRed network cable system"
+        }
+      }
+    },
+    "morered:bundled_cable_post": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "post for supporting and routing bundled cables"
+        },
+        "primary_uses": {
+          "values": [
+            "cable support and routing"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to organize cable runs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building cable infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed cable network"
+        }
+      }
+    },
+    "morered:bundled_cable_relay_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "relay plate for bundled signal"
+        },
+        "primary_uses": {
+          "values": [
+            "relaying bundled redstone signals"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to extend or split signals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building cable infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed cable network"
+        }
+      }
+    },
+    "morered:bundled_cable_spool": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for placing bundled network cables"
+        },
+        "primary_uses": {
+          "values": [
+            "placing bundled cables"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to deploy cable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building or expanding cable network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        }
+      }
+    },
+    "morered:bundled_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "bundled network cable for multi-bit signal"
+        },
+        "primary_uses": {
+          "values": [
+            "multi-bit redstone signal transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to send multiple signals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag morered:network_cables",
+          "rationale": "part of MoreRed network cable system"
+        }
+      }
+    },
+    "morered:cyan_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "network cable for redstone signal transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone network wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to connect redstone components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag morered:network_cables",
+          "rationale": "part of MoreRed network cable system"
+        }
+      }
+    },
+    "morered:diode": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "diode for one-way signal pass"
+        },
+        "primary_uses": {
+          "values": [
+            "signal direction control"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to allow signal one way"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed redstone network"
+        }
+      }
+    },
+    "morered:gray_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "network cable for redstone signal transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone network wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to connect redstone components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag morered:network_cables",
+          "rationale": "part of MoreRed network cable system"
+        }
+      }
+    },
+    "morered:green_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "network cable for redstone signal transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone network wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to connect redstone components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag morered:network_cables",
+          "rationale": "part of MoreRed network cable system"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

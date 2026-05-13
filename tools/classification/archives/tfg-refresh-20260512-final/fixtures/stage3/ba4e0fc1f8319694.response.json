@@ -1,0 +1,830 @@
+{
+  "items": {
+    "tfg:hammer_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable mold placed in extruder machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Extruding hammer heads in extruder"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Extruder Mold (Hammer Head)'",
+          "rationale": "mold for hammer head extrusion"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored with molds, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "inferred",
+          "rationale": "players store molds together"
+        }
+      }
+    },
+    "tfg:hardened_clay": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable clay block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with hardened clay"
+          ],
+          "signal": "inferred",
+          "rationale": "player places as building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        }
+      }
+    },
+    "tfg:hardwood_strip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for woodworking"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting with hardwood strips"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wood product"
+        },
+        "material_family": {
+          "value": "hardwood",
+          "signal": "inferred",
+          "rationale": "from item name and tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood strips are woodworking supplies"
+        }
+      }
+    },
+    "tfg:harvest_basket": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "guide page: 'Harvest Baskets' for plucking fruit",
+          "rationale": "tool for harvesting fruit trees"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvest fruit trees and bushes"
+          ],
+          "signal": "named",
+          "evidence": "guide: 'right click on a fruit tree ... all blocks within 7-block radius will be picked'",
+          "rationale": "tool for harvesting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during farming runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "named",
+          "evidence": "guide: used on fruit trees and bushes",
+          "rationale": "harvesting crops"
+        }
+      }
+    },
+    "tfg:haste_pill": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "eaten for effect"
+        },
+        "primary_uses": {
+          "values": [
+            "Gain Haste effect (8 min)"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: 'Haste (08:00)'",
+          "rationale": "consumable for haste"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common medicine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "haste boosts mining"
+        }
+      }
+    },
+    "tfg:haste_tablet": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "eaten for effect"
+        },
+        "primary_uses": {
+          "values": [
+            "Gain Haste effect (30 min)"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: 'Haste (30:00)'",
+          "rationale": "consumable for longer haste"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common medicine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "haste boosts mining"
+        }
+      }
+    },
+    "tfg:heat_battery_mk1": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block heat storage machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing heat from hot fluids"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: 'It stores heat'",
+          "rationale": "heat battery"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common machine"
+        }
+      }
+    },
+    "tfg:heat_exchanger": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block heat exchange machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Exchanging heat between fluids"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: 'Heating up Fluids with other hot Fluids'",
+          "rationale": "heat exchanger"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common machine"
+        }
+      }
+    },
+    "tfg:heavy_ammoniacal_water_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting heavy ammoniacal water"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        }
+      }
+    },
+    "tfg:heavy_oil_slick": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with heavy oil slick"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        }
+      }
+    },
+    "tfg:heavy_oil_tar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with heavy oil tar"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        }
+      }
+    },
+    "tfg:heavy_water_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting heavy water"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of heavy water"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        }
+      }
+    },
+    "tfg:high_grade_isotopic_solvent_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting high grade isotopic solvent"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of solvent"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        }
+      }
+    },
+    "tfg:high_temp_precision_fabricator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block precision fabricator machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Fabricating monocrystalline silicon"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: 'Grows Monocrystalline Silicon Boules'",
+          "rationale": "high temp fabricator"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common machine"
+        }
+      }
+    },
+    "tfg:highly_active_off_gas_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting highly active off-gas"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of off-gas"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        }
+      }
+    },
+    "tfg:hoe_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable mold placed in extruder machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Extruding hoe heads in extruder"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Extruder Mold (Hoe Head)'",
+          "rationale": "mold for hoe head extrusion"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored with molds, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "inferred",
+          "rationale": "players store molds together"
+        }
+      }
+    },
+    "tfg:homogenized_inconel_718_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting with homogenized Inconel-718"
+          ],
+          "signal": "inferred",
+          "rationale": "advanced alloy ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting runs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy"
+        },
+        "material_family": {
+          "value": "inconel_718",
+          "signal": "inferred",
+          "rationale": "from item name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingots storage"
+        }
+      }
+    },
+    "tfg:homogenized_mo_si_b_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting with homogenized Mo-Si-B"
+          ],
+          "signal": "inferred",
+          "rationale": "advanced alloy ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting runs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy"
+        },
+        "material_family": {
+          "value": "mo_si_b",
+          "signal": "inferred",
+          "rationale": "from item name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingots storage"
+        }
+      }
+    },
+    "tfg:hot_boron_carbide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hot_ingots + suffix _ingot",
+          "rationale": "hot ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting with hot boron carbide"
+          ],
+          "signal": "inferred",
+          "rationale": "hot alloy ingot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hot ingot, rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "material_family": {
+          "value": "boron_carbide",
+          "signal": "inferred",
+          "rationale": "from item name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingots storage"
+        }
+      }
+    },
+    "tfg:hot_boron_enriched_coolant_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting hot boron enriched coolant"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of hot coolant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        }
+      }
+    },
+    "tfg:hot_flibe_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting hot FLiBe"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of hot FLiBe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        }
+      }
+    },
+    "tfg:hot_homogenized_mo_si_b_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hot_ingots + suffix _ingot",
+          "rationale": "hot ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting with hot homogenized Mo-Si-B"
+          ],
+          "signal": "inferred",
+          "rationale": "hot alloy ingot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hot ingot, rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "material_family": {
+          "value": "mo_si_b",
+          "signal": "inferred",
+          "rationale": "from item name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingots storage"
+        }
+      }
+    },
+    "tfg:hot_inconel_718_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hot_ingots + suffix _ingot",
+          "rationale": "hot ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting with hot Inconel-718"
+          ],
+          "signal": "inferred",
+          "rationale": "hot alloy ingot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hot ingot, rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "material_family": {
+          "value": "inconel_718",
+          "signal": "inferred",
+          "rationale": "from item name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingots storage"
+        }
+      }
+    },
+    "tfg:hot_iodine_brine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting hot iodine brine"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of hot brine"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        }
+      }
+    },
+    "tfg:hot_mo_si_b_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hot_ingots + suffix _ingot",
+          "rationale": "hot ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting with hot Mo-Si-B"
+          ],
+          "signal": "inferred",
+          "rationale": "hot alloy ingot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hot ingot, rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "material_family": {
+          "value": "mo_si_b",
+          "signal": "inferred",
+          "rationale": "from item name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingots storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "tfg:hardened_clay",
+      "facet": "form",
+      "value": "block",
+      "rationale": "placeable block item, missing from stage2"
+    },
+    {
+      "item": "tfg:heavy_oil_slick",
+      "facet": "form",
+      "value": "block",
+      "rationale": "placeable block item, missing from stage2"
+    },
+    {
+      "item": "tfg:heavy_oil_tar",
+      "facet": "form",
+      "value": "block",
+      "rationale": "placeable block item, missing from stage2"
+    },
+    {
+      "item": "tfg:heat_battery_mk1",
+      "facet": "form",
+      "value": "block",
+      "rationale": "placeable block item, missing from stage2"
+    },
+    {
+      "item": "tfg:heat_exchanger",
+      "facet": "form",
+      "value": "block",
+      "rationale": "placeable block item, missing from stage2"
+    },
+    {
+      "item": "tfg:high_temp_precision_fabricator",
+      "facet": "form",
+      "value": "block",
+      "rationale": "placeable block item, missing from stage2"
+    }
+  ]
+}

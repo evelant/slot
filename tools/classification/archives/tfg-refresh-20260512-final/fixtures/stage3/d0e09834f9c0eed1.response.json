@@ -1,0 +1,1177 @@
+{
+  "items": {
+    "gtceu:dripstone_tarkianite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into tarkianite ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe smelting/blasting to ingot",
+          "rationale": "player mines ore to smelt"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "travertine is overworld stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block stored with unprocessed ores"
+        }
+      }
+    },
+    "gtceu:dripstone_tetrahedrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block for tetrahedrite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into tetrahedrite ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/blasting recipes",
+          "rationale": "mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "found in travertine"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_thorium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "thorium ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into thorium products"
+          ],
+          "signal": "pattern",
+          "evidence": "milling recipe",
+          "rationale": "mined and milled"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_tin_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "tin ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into tin ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/blasting recipes",
+          "rationale": "mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "topaz ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into topaz gems"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common gem ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "mineral ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into phosphate compounds"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common mineral ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "trona ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into soda ash and sodium"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common mineral ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "tungstate ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into tungsten compounds"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "uranium ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into uranium and radioactive materials"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common radioactive ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "vanadium magnetite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into vanadium and iron"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "wulfenite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into molybdenum and lead"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "garnet ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into garnet gems"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common gem ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "limonite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into iron and nickel"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:dripstone_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "zeolite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into zeolite compounds"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting/milling recipes",
+          "rationale": "mined and processed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common mineral ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "overworld cave"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:duct_tape": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component, not a tool or consumable"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting repair kits and maintenance items"
+          ],
+          "signal": "inferred",
+          "rationale": "typical gtceu usage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in base for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity component",
+          "rationale": "common crafting material"
+        }
+      }
+    },
+    "gtceu:duranium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage block, not a container"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of duranium metal"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "9 ingots compacted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building with duranium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common metal block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/duranium",
+          "rationale": "compact storage block"
+        }
+      }
+    },
+    "gtceu:duranium_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many gtceu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in storage for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common metal part"
+        }
+      }
+    },
+    "gtceu:duranium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool to transport liquid duranium"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid duranium"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when moving molten metal"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated fluid transfer"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "named",
+          "evidence": "semantic text 'State: Liquid'",
+          "rationale": "holds liquid duranium"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:duranium_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "semantic text 'Usable as: Butchery Knife'",
+          "rationale": "tool for butchering"
+        },
+        "primary_uses": {
+          "values": [
+            "butchering animals for more meat"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Butchers animals for more meat'",
+          "rationale": "primary use is butchering"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried when performing animal husbandry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "butchering is part of animal farming"
+        },
+        "tier": {
+          "value": "duranium",
+          "signal": "inferred",
+          "rationale": "made of duranium"
+        },
+        "material_family": {
+          "value": "duranium",
+          "signal": "named",
+          "evidence": "id contains duranium",
+          "rationale": "duranium tool"
+        }
+      }
+    },
+    "gtceu:duranium_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting knife"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting duranium butchery knives"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:butchery_knife_heads",
+          "rationale": "tool head component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common component"
+        }
+      }
+    },
+    "gtceu:duranium_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for buzzsaw"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting buzzsaws for cutting"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:buzz_saw_heads",
+          "rationale": "saw blade component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common component"
+        }
+      }
+    },
+    "gtceu:duranium_chainsaw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for chainsaw"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting chainsaws for woodcutting"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:chainsaw_heads",
+          "rationale": "chainsaw head component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common component"
+        }
+      }
+    },
+    "gtceu:duranium_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "semantic text 'Usable as: Crowbar'",
+          "rationale": "tool for dismounting covers"
+        },
+        "primary_uses": {
+          "values": [
+            "dismounting covers and rotating rails"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Dismounts Covers', 'Rotates Rails'",
+          "rationale": "maintenance tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried for machine maintenance"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine maintenance and rail work"
+        },
+        "tier": {
+          "value": "duranium",
+          "signal": "inferred",
+          "rationale": "made of duranium"
+        },
+        "material_family": {
+          "value": "duranium",
+          "signal": "named",
+          "evidence": "id contains duranium",
+          "rationale": "duranium tool"
+        }
+      }
+    },
+    "gtceu:duranium_drill_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for drill"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting duranium drills"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:drill_heads",
+          "rationale": "drill head component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common component"
+        }
+      }
+    },
+    "gtceu:duranium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form of duranium"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots, used in alloys"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe to ingot, mixing recipe",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "common dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "processed dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust ready for further processing"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:duranium_bolt",
+      "facet": "form",
+      "value": "bolt",
+      "rationale": "id ends _bolt, obvious form"
+    },
+    {
+      "item": "gtceu:duranium_bolt",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium, obvious material"
+    },
+    {
+      "item": "gtceu:duranium_bucket",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium, material from name"
+    },
+    {
+      "item": "gtceu:duranium_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "storage block form, id ends _block"
+    },
+    {
+      "item": "gtceu:duranium_block",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium"
+    },
+    {
+      "item": "gtceu:duranium_butchery_knife_head",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium"
+    },
+    {
+      "item": "gtceu:duranium_buzz_saw_blade",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium"
+    },
+    {
+      "item": "gtceu:duranium_chainsaw_head",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium"
+    },
+    {
+      "item": "gtceu:duranium_crowbar",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium"
+    },
+    {
+      "item": "gtceu:duranium_drill_head",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium"
+    },
+    {
+      "item": "gtceu:duranium_dust",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "id contains duranium"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

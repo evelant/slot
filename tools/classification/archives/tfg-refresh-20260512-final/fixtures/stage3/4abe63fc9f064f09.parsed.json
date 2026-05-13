@@ -1,0 +1,1208 @@
+{
+  "items": {
+    "gtceu:lv_gas_turbine": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block power generator with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Generate EU from combustible fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows voltage and energy capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier machine"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip Voltage OUT and energy",
+          "rationale": "Player uses it to generate power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCE power generation system"
+        }
+      }
+    },
+    "gtceu:lv_hermetic_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock casing component"
+        },
+        "primary_uses": {
+          "values": [
+            "Casing for LV multiblock machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration tab but used in multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier casing"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build automated multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV component for multiblocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock system"
+        }
+      }
+    },
+    "gtceu:lv_input_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch for item input"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide item input for multiblock machines"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Item Input for Multiblocks'",
+          "rationale": "Explicit purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for multiblock construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard hatch"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name LV prefix",
+          "rationale": "LV tier hatch"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item transport for automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:lv_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch for fluid input"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide fluid input for multiblock machines"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Fluid Input for Multiblocks'",
+          "rationale": "Explicit purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for multiblock construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard hatch"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name LV",
+          "rationale": "LV tier hatch"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport for automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:lv_item_collector": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Block that collects items, no UI workstation"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect items in an 8x8 area"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip description",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and used in automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item collection is logistics"
+        }
+      }
+    },
+    "gtceu:lv_item_magnet": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Worn item that attracts items"
+        },
+        "primary_uses": {
+          "values": [
+            "Attract nearby items to player"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Magnetic Field'",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Worn constantly for convenience"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common LV tool"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name LV",
+          "rationale": "LV tier tool"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Helps collect items"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:tool_mode"
+          ],
+          "signal": "inferred",
+          "rationale": "Has togglable magnetic field"
+        }
+      }
+    },
+    "gtceu:lv_item_passthrough_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch with sharing"
+        },
+        "primary_uses": {
+          "values": [
+            "Passthrough items between multiblock machines"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Multiblock Sharing Enabled'",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for multiblock construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard hatch"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name LV",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:lv_laser_engraver": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Engrave circuits and components"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Don't look directly at the Laser'",
+          "rationale": "Standard GTCE machine"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing step in automation"
+        }
+      }
+    },
+    "gtceu:lv_lathe": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Produce rods efficiently from ingots"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip description",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing step"
+        }
+      }
+    },
+    "gtceu:lv_lithium_battery": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Rechargeable energy container, not a tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and provide LV energy for electric tools"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Reusable Battery'",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried charged for tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common LV battery"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Tooltip 'Tier LV'",
+          "rationale": "LV tier battery"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores power for use"
+        },
+        "storage_categories": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores EU energy"
+        },
+        "container_state": {
+          "values": [
+            "slot:energy_container"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Reusable Battery'",
+          "rationale": "Player sees it as energy storage"
+        }
+      }
+    },
+    "gtceu:lv_macerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Crush ores into crushed ores and dusts"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip description",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing in automation"
+        }
+      }
+    },
+    "gtceu:lv_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock structural component"
+        },
+        "primary_uses": {
+          "values": [
+            "Build LV multiblock machine structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as casing in multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for multiblock construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Building multiblocks for automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock system"
+        }
+      }
+    },
+    "gtceu:lv_machine_hull": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Base component for crafting machines, not a workstation"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft all GTCEu LV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in 62+ shaped recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting machine upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name 'LV Machine Hull'",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for machine crafting"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV component"
+        }
+      }
+    },
+    "gtceu:lv_miner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine that automatically mines"
+        },
+        "primary_uses": {
+          "values": [
+            "Automatically mine ores in a 17x17 area"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip description",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Automates mining"
+        }
+      }
+    },
+    "gtceu:lv_mixer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Mix fluids and materials together"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Will it Blend?'",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Mixing step in automation"
+        }
+      }
+    },
+    "gtceu:lv_muffler_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch for waste recovery"
+        },
+        "primary_uses": {
+          "values": [
+            "Recover waste from multiblock machines"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Recovers waste'",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for multiblock construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard hatch"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name suffix LV",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Waste output from automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:lv_ore_washer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash crushed ores for byproducts"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip description",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing step"
+        }
+      }
+    },
+    "gtceu:lv_output_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch for item output"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide item output for multiblock machines"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Item Output for Multiblocks'",
+          "rationale": "Explicit purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for multiblock construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard hatch"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name LV",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item output is logistics"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:lv_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch for fluid output"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide fluid output for multiblock machines"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Fluid Output for Multiblocks'",
+          "rationale": "Explicit purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for multiblock construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard hatch"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name LV",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid output is logistics"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:lv_packer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Pack and unpack items"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip description",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics processing step"
+        }
+      }
+    },
+    "gtceu:lv_polarizer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Magnetize items"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Bipolarising your Magnets'",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing step"
+        }
+      }
+    },
+    "gtceu:lv_power_unit": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Rechargeable energy source for tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Power GregTech electric tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as battery in tool recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried charged for tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common LV component"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Tooltip 'Tier LV'",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores power for tools"
+        },
+        "storage_categories": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores EU energy"
+        },
+        "container_state": {
+          "values": [
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Acts as energy container"
+        }
+      }
+    },
+    "gtceu:lv_pump": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine that pumps fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "Pump fluids from large area (40x40)"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip description",
+          "rationale": "Explicit function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "LV machine"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "id prefix lv_",
+          "rationale": "LV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid pumping for automation"
+        }
+      }
+    },
+    "gtceu:lv_red_steel_chainsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Powered tool used as axe with tree felling"
+        },
+        "primary_uses": {
+          "values": [
+            "Chop wood with tree felling ability"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Lumberjack: Tree Felling'",
+          "rationale": "Explicit use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Tool carried for woodcutting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Red steel mid-game tool"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name (LV)",
+          "rationale": "Power tier"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "named",
+          "evidence": "Display name includes Red Steel",
+          "rationale": "Made of red steel"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Powered tool for automated woodcutting"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:tool_mode"
+          ],
+          "signal": "inferred",
+          "rationale": "Has multiple tool modes (lumberjack, brute, sculptor)"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "Material is red steel",
+          "rationale": "Red steel is a progression stage"
+        }
+      }
+    },
+    "gtceu:lv_red_steel_drill": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Powered mining tool with AoE"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine with 3x3 area effect"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'Area-of-Effect: 3x3x1'",
+          "rationale": "Explicit use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Tool carried for mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Red steel mid-game tool"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "evidence": "Display name (LV)",
+          "rationale": "Power tier"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "named",
+          "evidence": "Display name includes Red Steel",
+          "rationale": "Made of red steel"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for mining"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:tool_mode"
+          ],
+          "signal": "inferred",
+          "rationale": "Has spelunker mode for placing torches"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "Material is red steel",
+          "rationale": "Red steel is a progression stage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

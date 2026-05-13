@@ -1,0 +1,1176 @@
+{
+  "items": {
+    "gtceu:platinum_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "nugget used as GT component feedstock"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/platinum",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for intermediate GT crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GT components",
+            "material for wires and plates"
+          ],
+          "signal": "inferred",
+          "rationale": "standard GT material use"
+        }
+      }
+    },
+    "gtceu:platinum_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy transport component, not a UI block"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables/platinum",
+          "rationale": "cable material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables, tooltip shows voltage",
+          "rationale": "GT energy cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting IV energy",
+            "connecting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "energy cable for automation"
+        }
+      }
+    },
+    "gtceu:platinum_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy transport component, not a UI block"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/platinum",
+          "rationale": "wire material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires, tooltip shows voltage",
+          "rationale": "GT energy wire (part of cable subsystem)"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting IV energy",
+            "connecting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "energy wire for automation"
+        }
+      }
+    },
+    "gtceu:platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore to be smelted into metal, not placed as nature"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/platinum",
+          "rationale": "ore material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and brought back for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "tag forge:ores_in_ground/stone, typical underground ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored with other ores"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into platinum ingots",
+            "processing into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing routes"
+        }
+      }
+    },
+    "gtceu:platinum_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy transport component, not a UI block"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables/platinum",
+          "rationale": "cable material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables, tooltip shows voltage",
+          "rationale": "GT energy cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting IV energy",
+            "connecting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "energy cable for automation"
+        }
+      }
+    },
+    "gtceu:platinum_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy transport component, not a UI block"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/platinum",
+          "rationale": "wire material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires, tooltip shows voltage",
+          "rationale": "GT energy wire (part of cable subsystem)"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting IV energy",
+            "connecting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "energy wire for automation"
+        }
+      }
+    },
+    "gtceu:platinum_raw_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "powder form, intermediate processing material"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/platinum_raw",
+          "rationale": "dust material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for further processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/impure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "raw dust likely stored with other impure dusts"
+        },
+        "primary_uses": {
+          "values": [
+            "purification to pure platinum dust",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "typical dust processing"
+        }
+      }
+    },
+    "gtceu:platinum_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small component part, used in crafting"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/platinum",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for precise GT crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ring"
+          ],
+          "signal": "inferred",
+          "rationale": "common GT component form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tool handles",
+            "machinery component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GT recipes"
+        }
+      }
+    },
+    "gtceu:platinum_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "rod form, used as crafting material"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/platinum",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for tool/component crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and components",
+            "coiling into springs"
+          ],
+          "signal": "inferred",
+          "rationale": "common GT material form"
+        }
+      }
+    },
+    "gtceu:platinum_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small fastener, used in crafting"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/platinum",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for GT assembly"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:screw"
+          ],
+          "signal": "inferred",
+          "rationale": "common GT component form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machines and components",
+            "precision assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "standard GT fastener"
+        }
+      }
+    },
+    "gtceu:platinum_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy transport component, not a UI block"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables/platinum",
+          "rationale": "cable material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables, tooltip shows voltage",
+          "rationale": "GT energy cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting IV energy",
+            "connecting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "energy cable for automation"
+        }
+      }
+    },
+    "gtceu:platinum_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy transport component, not a UI block"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/platinum",
+          "rationale": "wire material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires, tooltip shows voltage",
+          "rationale": "GT energy wire (part of cable subsystem)"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting IV energy",
+            "connecting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "energy wire for automation"
+        }
+      }
+    },
+    "gtceu:platinum_sludge_residue_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "byproduct dust, used in processing"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/platinum_sludge_residue",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rare byproduct, usually stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "further processing to platinum",
+            "waste management"
+          ],
+          "signal": "inferred",
+          "rationale": "typical residue processing"
+        }
+      }
+    },
+    "gtceu:platinum_small_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed item transport component, not a UI block"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:small_item_pipes/platinum",
+          "rationale": "pipe material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once for logistics networks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_item_pipes, tooltip shows transfer rate",
+          "rationale": "GT item pipe subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated item transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting items between machines",
+            "building logistics networks"
+          ],
+          "signal": "inferred",
+          "rationale": "item pipe for automation"
+        }
+      }
+    },
+    "gtceu:platinum_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed item transport with priority control, not a UI block"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:small_restrictive_pipes/platinum",
+          "rationale": "pipe material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized pipe, placed once for filtering"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_restrictive_pipes, tooltip shows priority",
+          "rationale": "GT item pipe subsystem (restrictive variant)"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated item filtering"
+        },
+        "primary_uses": {
+          "values": [
+            "filtering item routes",
+            "priority-based item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "restrictive pipe for logistics"
+        }
+      }
+    },
+    "gtceu:platinum_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "spring component, used in crafting"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:springs/platinum",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for machine crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:spring"
+          ],
+          "signal": "inferred",
+          "rationale": "coiled form, common GT component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machines",
+            "energy storage component"
+          ],
+          "signal": "inferred",
+          "rationale": "springs used in various GT recipes"
+        }
+      }
+    },
+    "gtceu:plutonium_241_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage block, not a container"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/plutonium_241",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hefty block, placed in storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of a material"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of plutonium 241",
+            "as a material block for facades"
+          ],
+          "signal": "inferred",
+          "rationale": "block form for storage and decoration"
+        }
+      },
+      "fill_ins": [
+        {
+          "item": "gtceu:plutonium_241_block",
+          "facet": "form",
+          "value": "block",
+          "rationale": "storage block form from forge:storage_blocks tag"
+        }
+      ]
+    },
+    "gtceu:plutonium_241_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of hazardous fluid, used as tool to pour"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "inferred",
+          "rationale": "fluid type from display name and tooltip"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when transferring fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket containing liquid plutonium"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid plutonium",
+            "filling reactors"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport for nuclear processes"
+        }
+      }
+    },
+    "gtceu:plutonium_241_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form, used in nuclear processing"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/plutonium_241",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hazardous, usually stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "nuclear fuel processing"
+          ],
+          "signal": "inferred",
+          "rationale": "dust is intermediate for metal"
+        }
+      }
+    },
+    "gtceu:plutonium_241_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingot form, used in advanced crafting"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/plutonium_241",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hazardous, usually stored in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "stackable ingots storage"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting nuclear components",
+            "making plates and rods"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ingot use in GT"
+        }
+      }
+    },
+    "gtceu:plutonium_241_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "nugget form, used in precise crafting"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/plutonium_241",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for precise nuclear crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting small components",
+            "nuclear fuel assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "tiny material unit"
+        }
+      }
+    },
+    "gtceu:plutonium_241_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "plate form, used in crafting"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/plutonium_241",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hefty plate, usually stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "pileable plates storage"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine casings",
+            "nuclear reactor components"
+          ],
+          "signal": "inferred",
+          "rationale": "plate used in GT machines"
+        }
+      }
+    },
+    "gtceu:plutonium_241_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "rod form, used in crafting"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/plutonium_241",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for tool/component crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools",
+            "nuclear fuel rod base"
+          ],
+          "signal": "inferred",
+          "rationale": "rod form used in recipes"
+        }
+      }
+    },
+    "gtceu:plutonium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage block, not a container"
+        },
+        "material_family": {
+          "value": "plutonium",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/plutonium",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hefty block, placed in storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of a material"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of plutonium 239",
+            "as a material block for facades"
+          ],
+          "signal": "inferred",
+          "rationale": "block form for storage"
+        }
+      },
+      "fill_ins": [
+        {
+          "item": "gtceu:plutonium_block",
+          "facet": "form",
+          "value": "block",
+          "rationale": "storage block form from forge:storage_blocks tag"
+        }
+      ]
+    },
+    "gtceu:plutonium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of hazardous fluid, used as tool to pour"
+        },
+        "material_family": {
+          "value": "plutonium",
+          "signal": "inferred",
+          "rationale": "fluid type from display name and tooltip"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when transferring fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket containing liquid plutonium"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid plutonium",
+            "filling reactors"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport for nuclear processes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

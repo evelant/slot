@@ -1,0 +1,957 @@
+{
+  "items": {
+    "gtceu:ev_laser_engraver": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Engraving patterns with lasers",
+            "EV-tier item processing"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_lathe": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Producing rods efficiently",
+            "EV-tier machining"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_macerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Shredding ores with byproducts",
+            "EV-tier ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural casing for multiblock construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build multiblock structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building EV-tier multiblock structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing for machine hulls"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when constructing multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        }
+      }
+    },
+    "gtceu:ev_machine_hull": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for EV machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft automation machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting EV-tier GTCEu machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Base hull for all EV machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting component, often carried"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        }
+      }
+    },
+    "gtceu:ev_mixer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Blending materials",
+            "EV-tier mixing recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_muffler_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for exhaust"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Exhaust output for EV multiblocks",
+            "Recover waste from machines"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock interface hatch"
+        }
+      }
+    },
+    "gtceu:ev_ore_washer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing ores for byproducts",
+            "EV-tier ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_ostrum_iodide_buzzsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "Durable tool with crafting uses"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for woodworking and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Cutting lumber and slabs",
+            "Crafting recipes requiring saw"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and tag evidence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when doing woodworking"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:artisan_table_tools"
+        }
+      }
+    },
+    "gtceu:ev_ostrum_iodide_chainsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "Durable tool with tree felling"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for logging and woodworking"
+        },
+        "primary_uses": {
+          "values": [
+            "Tree felling",
+            "Crafting lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and tag evidence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when doing logging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:artisan_table_tools"
+        }
+      }
+    },
+    "gtceu:ev_ostrum_iodide_drill": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "Durable mining tool"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for mining with AoE"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining 7x7x7 area",
+            "Placing torches while mining"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Primary mining tool, carried always"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting recipes"
+        }
+      }
+    },
+    "gtceu:ev_ostrum_iodide_screwdriver": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "Durable screwdriver tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to configure machines and covers"
+        },
+        "primary_uses": {
+          "values": [
+            "Adjusting covers and machines",
+            "Crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried when building automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:artisan_table_tools"
+        }
+      }
+    },
+    "gtceu:ev_ostrum_iodide_wire_cutter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "Durable wire cutter tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for crafting wires and electronic components"
+        },
+        "primary_uses": {
+          "values": [
+            "Cutting wires",
+            "Crafting electronic components"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and tag evidence"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried when building circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:artisan_table_tools"
+        }
+      }
+    },
+    "gtceu:ev_ostrum_iodide_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "Durable wrench tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to dismantle machines and rotate blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Dismantling GTCEu machines",
+            "Rotating blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried when working on machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting recipes"
+        }
+      }
+    },
+    "gtceu:ev_output_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for item output"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Output items from multiblocks",
+            "Item bus interface"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock interface hatch"
+        }
+      }
+    },
+    "gtceu:ev_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for fluid output"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Output fluids from multiblocks",
+            "Fluid hatch interface"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock interface hatch"
+        }
+      }
+    },
+    "gtceu:ev_output_hatch_4x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for fluid output"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Quadruple fluid output from multiblocks",
+            "High-capacity fluid hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock interface hatch"
+        }
+      }
+    },
+    "gtceu:ev_output_hatch_9x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for fluid output"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Nonuple fluid output from multiblocks",
+            "Large fluid hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock interface hatch"
+        }
+      }
+    },
+    "gtceu:ev_packer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Packing and unpacking items",
+            "EV-tier packaging recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_polarizer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Bipolarizing magnets",
+            "EV-tier polarization recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_power_unit": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable energy source for tools"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Powers EV-tier tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Powering EV electric tools",
+            "Portable energy storage"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and battery purpose"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried to recharge tools"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_pump": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Pumping fluids from large areas",
+            "EV-tier fluid handling"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_robot_arm": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cover component for automating item transfer"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to regulate item transfer as cover"
+        },
+        "primary_uses": {
+          "values": [
+            "Limiting item quantities in automation",
+            "Cover component for GTCEu machines"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried when building automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        }
+      }
+    },
+    "gtceu:ev_rock_crusher": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        },
+        "primary_uses": {
+          "values": [
+            "Crushing rocks with water and lava",
+            "EV-tier stone processing"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and machine purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common rarity from component"
+        }
+      }
+    },
+    "gtceu:ev_rotor_holder": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for holding rotors"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Holding rotors in multiblock generators"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and component purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

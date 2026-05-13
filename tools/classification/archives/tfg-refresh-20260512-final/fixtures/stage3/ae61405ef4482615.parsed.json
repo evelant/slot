@@ -1,0 +1,2512 @@
+{
+  "items": {
+    "gtceu:pyroxenite_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for metal/gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lazurite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for lead processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lead via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into lead"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for lepidolite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lepidolite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into lepidolite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for lignite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lignite via mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and used as fuel or processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "no explicit recipes, but typically processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "likely input to these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "used at furnace type stations"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks of 32, bulk material"
+        }
+      }
+    },
+    "gtceu:pyroxenite_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for lithium processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lithium via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into lithium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for magnesite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of magnesite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into magnesite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for magnetite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of magnetite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into magnetite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for malachite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of malachite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into malachite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for mica processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of mica via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into mica"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for molybdenite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of molybdenite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into molybdenite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for molybdenum processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of molybdenum via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into molybdenum"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for monazite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of monazite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into monazite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for naquadah processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of naquadah via milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into naquadah"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: only milling",
+          "rationale": "only processed via milling"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient example",
+          "rationale": "consumed as input in milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for neodymium processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of neodymium via milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into neodymium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: only milling",
+          "rationale": "only processed via milling"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient example",
+          "rationale": "consumed as input in milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for quartz processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of nether quartz via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into quartz"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for nickel processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of nickel via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into nickel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for oil sands processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of oil products via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into oil-based items"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for olivine processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of olivine via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into olivine"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for opal processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of opal via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into opal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for palladium processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of palladium via milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into palladium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: only milling",
+          "rationale": "only processed via milling"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient example",
+          "rationale": "consumed as input in milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for pentlandite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pentlandite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into pentlandite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for pitchblende processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pitchblende via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into pitchblende"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for platinum processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of platinum via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into platinum"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for pollucite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pollucite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into pollucite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    },
+    "gtceu:pyroxenite_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for powellite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of powellite via smelting/milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed into powellite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component: minecraft:rarity = common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types: smelting, blasting, milling",
+          "rationale": "input to furnace/blast furnace/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe ingredient examples",
+          "rationale": "consumed as input in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "placed in furnace, blast furnace, or millstone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in overworld stone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in any inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stacks of 32"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

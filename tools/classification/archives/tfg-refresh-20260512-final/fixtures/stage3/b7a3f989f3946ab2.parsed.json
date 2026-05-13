@@ -1,0 +1,1137 @@
+{
+  "items": {
+    "gtceu:battery_alloy_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component rod, stored with refined metals"
+        },
+        "material_family": {
+          "value": "battery_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/battery_alloy",
+          "rationale": "Material family from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "Intermediate rod form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in many tool recipes, kept in stash"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting GTCE tools and components"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in axe, hammer, pickaxe recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal rod, stored with processed ores"
+        }
+      }
+    },
+    "gtceu:bauxite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Powdered ore material"
+        },
+        "material_family": {
+          "value": "bauxite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/bauxite",
+          "rationale": "Bauxite family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk processed material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into aluminum ingots",
+            "Chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelts to ingot, used in centrifuge recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust stored with refined ores"
+        }
+      }
+    },
+    "gtceu:bauxite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating ore location"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "Found on surface as indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common surface rock"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicating bauxite ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface rock marks ore below"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore indicator, stored with raw ores"
+        }
+      }
+    },
+    "gtceu:bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore block mined for processing"
+        },
+        "material_family": {
+          "value": "bauxite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/bauxite",
+          "rationale": "Bauxite ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground ore in stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in bulk, stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of bauxite for aluminum production"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted or milled into dust/ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, stored with unprocessed ores"
+        }
+      }
+    },
+    "gtceu:bauxite_slag_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Byproduct dust material"
+        },
+        "material_family": {
+          "value": "bauxite_slag",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/bauxite_slag",
+          "rationale": "Slag family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Byproduct, not often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common byproduct"
+        },
+        "primary_uses": {
+          "values": [
+            "Byproduct from bauxite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Created from slag, may be reused"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust stored with refined ores"
+        }
+      }
+    },
+    "gtceu:bauxite_sludge_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used as tool in processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid tooltip",
+          "rationale": "Bucket of fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in specific processing steps"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid handling in bauxite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of bauxite sludge workflow"
+        }
+      }
+    },
+    "gtceu:bauxite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used as tool in processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid tooltip",
+          "rationale": "Bucket of fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in specific processing steps"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid handling in bauxite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of bauxite slurry workflow"
+        }
+      }
+    },
+    "gtceu:bentonite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Powdered ore material"
+        },
+        "material_family": {
+          "value": "bentonite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/bentonite",
+          "rationale": "Bentonite family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk processed material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into ingots",
+            "Chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelts to ingot via many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust stored with refined ores"
+        }
+      }
+    },
+    "gtceu:bentonite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating ore location"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "Found on surface as indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common surface rock"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicating bentonite ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface rock marks ore below"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore indicator, stored with raw ores"
+        }
+      }
+    },
+    "gtceu:bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore block mined for processing"
+        },
+        "material_family": {
+          "value": "bentonite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/bentonite",
+          "rationale": "Bentonite ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground ore in stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in bulk, stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of bentonite for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted or milled into dust/ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, stored with unprocessed ores"
+        }
+      }
+    },
+    "gtceu:benzene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used as fuel or chemical"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid tooltip",
+          "rationale": "Bucket of fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in specific chemical processes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Fuel",
+            "Chemical processing input"
+          ],
+          "signal": "inferred",
+          "rationale": "Hazardous liquid used in recipes"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "Marked hazardous, chemical fluid"
+        }
+      }
+    },
+    "gtceu:beryllium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted metal block for storage"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/beryllium",
+          "rationale": "Beryllium family"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, moved for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of beryllium",
+            "Crafting plates and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input for cutting/compacting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal block stored with processed ores"
+        }
+      }
+    },
+    "gtceu:beryllium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Molten metal bucket for casting"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid tooltip",
+          "rationale": "Bucket of fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in high-temp processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Casting beryllium parts",
+            "High-temperature fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Molten beryllium used in casting"
+        }
+      }
+    },
+    "gtceu:beryllium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Powdered metal material"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/beryllium",
+          "rationale": "Beryllium family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in mixing and smelting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into beryllium ingots",
+            "Component in advanced recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelts to ingot, used in mixing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust stored with refined ores"
+        }
+      }
+    },
+    "gtceu:beryllium_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating ore location"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "Found on surface as indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common surface rock"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicating beryllium ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface rock marks ore below"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore indicator, stored with raw ores"
+        }
+      }
+    },
+    "gtceu:beryllium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Refined metal ingot"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/beryllium",
+          "rationale": "Beryllium family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Ingot form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Common crafting material, kept in stash"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting beryllium components",
+            "Advanced machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rolling, compacting, milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ingot stored with processed ores"
+        }
+      }
+    },
+    "gtceu:beryllium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Small metal piece"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/beryllium",
+          "rationale": "Beryllium family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget form"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Small denomination, rarely carried in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common nugget"
+        },
+        "primary_uses": {
+          "values": [
+            "Small amount of beryllium",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in smelting and as material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nuggets stored together"
+        }
+      }
+    },
+    "gtceu:beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore block mined for processing"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/beryllium",
+          "rationale": "Beryllium ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground ore in stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in bulk, stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of beryllium metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted or milled into ingot/dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, stored with unprocessed ores"
+        }
+      }
+    },
+    "gtceu:beryllium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Rolled metal plate"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/beryllium",
+          "rationale": "Beryllium family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Plate form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common plate"
+        },
+        "primary_uses": {
+          "values": [
+            "Component in machine casings",
+            "Crafting advanced parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in compacting and cutting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed plate stored with refined ores"
+        }
+      }
+    },
+    "gtceu:bio_chaff": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Biological byproduct used in composting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in farming/composting routines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common byproduct"
+        },
+        "primary_uses": {
+          "values": [
+            "Compost ingredient",
+            "Dirt production via milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in compost and dirt recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "Organic byproduct stored with farming supplies"
+        }
+      }
+    },
+    "gtceu:bio_diesel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used as fuel"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid tooltip",
+          "rationale": "Bucket of fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in specific generator setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common fuel bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Fuel for combustion generators"
+          ],
+          "signal": "inferred",
+          "rationale": "Bio diesel is a liquid fuel"
+        }
+      }
+    },
+    "gtceu:bio_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Warning sign block, placed for decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin crafted_only",
+          "rationale": "Crafted from steel casing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common decorative block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Warning signage in bases"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as visual block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block stored with decorations"
+        }
+      }
+    },
+    "gtceu:biomass_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used as fuel or chemical"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid tooltip",
+          "rationale": "Bucket of fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in specific processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Fuel source",
+            "Chemical processing input"
+          ],
+          "signal": "inferred",
+          "rationale": "Biomass used in biodiesel recipes"
+        }
+      }
+    },
+    "gtceu:biotite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Mineral dust material"
+        },
+        "material_family": {
+          "value": "biotite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/biotite",
+          "rationale": "Biotite family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Less common material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in various recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust stored with refined ores"
+        }
+      }
+    },
+    "gtceu:biphenyl_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Organic dust material"
+        },
+        "material_family": {
+          "value": "biphenyl",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/biphenyl",
+          "rationale": "Biphenyl family"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in organic chemistry recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust stored with refined ores"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

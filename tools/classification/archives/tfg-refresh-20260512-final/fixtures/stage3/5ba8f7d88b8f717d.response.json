@@ -1,0 +1,1946 @@
+{
+  "items": {
+    "gtceu:dripstone_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into fuel materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "lignite is a coal-type ore used as fuel"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes not present for lignite?",
+          "rationale": "lignite ore has no recipes but player may expect processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "no recipes, but expected",
+          "rationale": "lignite ore is likely processed similarly"
+        }
+      }
+    },
+    "gtceu:dripstone_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into refined materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into naquadah materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:milling recipe",
+          "rationale": "ore is milled"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type example",
+          "rationale": "ore is input to milling"
+        }
+      }
+    },
+    "gtceu:dripstone_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into neodymium materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:milling recipe",
+          "rationale": "ore is milled"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type example",
+          "rationale": "ore is input to milling"
+        }
+      }
+    },
+    "gtceu:dripstone_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into quartz materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into nickel materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into oil products",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into olivine materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into opal materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into palladium materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:milling recipe",
+          "rationale": "ore is milled"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type example",
+          "rationale": "ore is input to milling"
+        }
+      }
+    },
+    "gtceu:dripstone_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into nickel materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into uranium materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "pitchblende is uranium ore"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into platinum materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes ore into material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    },
+    "gtceu:dripstone_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined ore block processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or process into caesium materials",
+            "Source of crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "pollucite is a cesium ore"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried while mining in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "tag and id indicate ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ore mined in large quantities"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting, blasting, greate:milling recipes",
+          "rationale": "ore is smelted or milled"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type examples",
+          "rationale": "ore is input to smelting, blasting, milling"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

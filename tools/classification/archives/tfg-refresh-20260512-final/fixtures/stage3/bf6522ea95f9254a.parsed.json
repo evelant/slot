@@ -1,0 +1,1312 @@
+{
+  "items": {
+    "tfc:wood/hanging_sign/wrought_iron/willow": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable decorative hanging sign"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "From id path"
+        },
+        "material_secondary": {
+          "values": [
+            "wrought_iron"
+          ],
+          "signal": "pattern",
+          "rationale": "From display name 'Wrought Iron'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative hanging sign"
+          ],
+          "signal": "inferred",
+          "rationale": "Labeling and decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity: common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits decorative storage section"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/acacia": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Block that stores jars, opens UI"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "rationale": "From id path"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for long-term storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of TFC food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for preserving food in jars"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin from loot tables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity: common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture storage section"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/ash": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same as other jar shelves"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/aspen": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/birch": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/blackwood": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_blackwood",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/chestnut": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/hickory": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/kapok": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/mangrove": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/maple": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/oak": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/palm": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_palm",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/pine": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_pine",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/rosewood": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_rosewood",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/sequoia": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_sequoia",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/spruce": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/sycamore": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_sycamore",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/jar_shelf/willow": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and display food jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preservation"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Jar storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "Stage2 origin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits furniture"
+        }
+      }
+    },
+    "tfc:wood/leaves/acacia": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Living tree leaf block"
+        },
+        "material_family": {
+          "value": "leaf_acacia",
+          "signal": "pattern",
+          "rationale": "From id and leaf type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for decoration/compost"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative leaf blocks",
+            "Composting material"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and compost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as building/nature blocks"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on trees in the wild"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common in forests"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items storage group"
+        }
+      }
+    },
+    "tfc:wood/leaves/ash": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Leaf block"
+        },
+        "material_family": {
+          "value": "leaf_ash",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative leaf blocks",
+            "Composting material"
+          ],
+          "signal": "inferred",
+          "rationale": "Building and compost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as blocks"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "From trees"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plants group"
+        }
+      }
+    },
+    "tfc:wood/leaves/aspen": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Leaf block"
+        },
+        "material_family": {
+          "value": "leaf_aspen",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative leaf blocks",
+            "Composting material"
+          ],
+          "signal": "inferred",
+          "rationale": "Building and compost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as blocks"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "From trees"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plants group"
+        }
+      }
+    },
+    "tfc:wood/leaves/birch": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Leaf block"
+        },
+        "material_family": {
+          "value": "leaf_birch",
+          "signal": "pattern",
+          "rationale": "From id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative leaf blocks",
+            "Composting material"
+          ],
+          "signal": "inferred",
+          "rationale": "Building and compost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as blocks"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "From trees"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plants group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1216 @@
+{
+  "items": {
+    "tfc:stone/javelin_head/sedimentary": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player keeps tool heads in crafting stash for tool making"
+        },
+        "material_family": {
+          "value": "sedimentary",
+          "signal": "pattern",
+          "rationale": "Id suffix indicates rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier from id and tool family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component item used only when crafting tools"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone javelins"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use is as ingredient for javelin"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe tfc:rock_knapping/javelin_head_sedimentary",
+          "rationale": "Produced only by knapping recipe"
+        }
+      }
+    },
+    "tfc:stone/knife/igneous_extrusive": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Knife is a handheld tool for cutting/harvesting"
+        },
+        "material_family": {
+          "value": "igneous_extrusive",
+          "signal": "pattern",
+          "rationale": "Id suffix indicates rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Knife is an essential everyday tool for crafting and gathering"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting grass and crops",
+            "scraping hides",
+            "crafting food and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes; essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to harvest grass and crops"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by rock knapping",
+          "rationale": "Only crafted via knapping"
+        }
+      }
+    },
+    "tfc:stone/knife/igneous_intrusive": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Knife is a handheld tool for cutting/harvesting"
+        },
+        "material_family": {
+          "value": "igneous_intrusive",
+          "signal": "pattern",
+          "rationale": "Id suffix indicates rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Knife is an essential everyday tool for crafting and gathering"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting grass and crops",
+            "scraping hides",
+            "crafting food and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes; essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to harvest grass and crops"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by rock knapping",
+          "rationale": "Only crafted via knapping"
+        }
+      }
+    },
+    "tfc:stone/knife/metamorphic": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Knife is a handheld tool for cutting/harvesting"
+        },
+        "material_family": {
+          "value": "metamorphic",
+          "signal": "pattern",
+          "rationale": "Id suffix indicates rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Knife is an essential everyday tool for crafting and gathering"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting grass and crops",
+            "scraping hides",
+            "crafting food and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes; essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to harvest grass and crops"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by rock knapping",
+          "rationale": "Only crafted via knapping"
+        }
+      }
+    },
+    "tfc:stone/knife/sedimentary": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Knife is a handheld tool for cutting/harvesting"
+        },
+        "material_family": {
+          "value": "sedimentary",
+          "signal": "pattern",
+          "rationale": "Id suffix indicates rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Knife is an essential everyday tool for crafting and gathering"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting grass and crops",
+            "scraping hides",
+            "crafting food and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes; essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to harvest grass and crops"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by rock knapping",
+          "rationale": "Only crafted via knapping"
+        }
+      }
+    },
+    "tfc:stone/knife_head/igneous_extrusive": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head kept as crafting component"
+        },
+        "material_family": {
+          "value": "igneous_extrusive",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component only used when crafting knives"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use as knife head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/knife_head/igneous_intrusive": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head kept as crafting component"
+        },
+        "material_family": {
+          "value": "igneous_intrusive",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component only used when crafting knives"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use as knife head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/knife_head/metamorphic": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head kept as crafting component"
+        },
+        "material_family": {
+          "value": "metamorphic",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component only used when crafting knives"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use as knife head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/knife_head/sedimentary": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head kept as crafting component"
+        },
+        "material_family": {
+          "value": "sedimentary",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component only used when crafting knives"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use as knife head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/shovel/igneous_extrusive": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shovel is a digging tool"
+        },
+        "material_family": {
+          "value": "igneous_extrusive",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Shovel is an essential tool for digging and terrain shaping"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt/gravel/sand",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for digging during mining"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/shovel/igneous_intrusive": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shovel is a digging tool"
+        },
+        "material_family": {
+          "value": "igneous_intrusive",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Shovel is an essential tool for digging and terrain shaping"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt/gravel/sand",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for digging during mining"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/shovel/metamorphic": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shovel is a digging tool"
+        },
+        "material_family": {
+          "value": "metamorphic",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Shovel is an essential tool for digging and terrain shaping"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt/gravel/sand",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for digging during mining"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/shovel/sedimentary": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shovel is a digging tool"
+        },
+        "material_family": {
+          "value": "sedimentary",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Shovel is an essential tool for digging and terrain shaping"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt/gravel/sand",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for digging during mining"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/shovel_head/igneous_extrusive": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head kept as crafting component"
+        },
+        "material_family": {
+          "value": "igneous_extrusive",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component only used when crafting shovels"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use as shovel head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/shovel_head/igneous_intrusive": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head kept as crafting component"
+        },
+        "material_family": {
+          "value": "igneous_intrusive",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component only used when crafting shovels"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use as shovel head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/shovel_head/metamorphic": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head kept as crafting component"
+        },
+        "material_family": {
+          "value": "metamorphic",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component only used when crafting shovels"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use as shovel head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:stone/shovel_head/sedimentary": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head kept as crafting component"
+        },
+        "material_family": {
+          "value": "sedimentary",
+          "signal": "pattern",
+          "rationale": "Id suffix rock type"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "Stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component only used when crafting shovels"
+        },
+        "primary_uses": {
+          "values": [
+            "craft stone shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use as shovel head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from rock"
+        }
+      }
+    },
+    "tfc:straw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Straw is a crafting material for thatch, fuel, etc."
+        },
+        "material_family": {
+          "value": "straw",
+          "signal": "pattern",
+          "rationale": "Id indicates plant fiber material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed for crafting thatch or fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "craft thatch",
+            "fuel for firepit",
+            "knapping material",
+            "bedding"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiple crafting and fuel uses"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from grass blocks",
+          "rationale": "Drops from surface grass plants"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/firepit_fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Straw is commonly stored as fuel for firepit"
+        }
+      }
+    },
+    "tfc:thatch": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Thatch is used for roofing and building"
+        },
+        "material_family": {
+          "value": "thatch",
+          "signal": "pattern",
+          "rationale": "Id indicates thatch material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for building projects; not carried everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "building roofs",
+            "decoration",
+            "fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction and decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting recipe from straw",
+          "rationale": "Crafted from straw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "inferred",
+          "rationale": "Thatch is commonly grouped with roofing materials"
+        }
+      }
+    },
+    "tfc:thatch_bed": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Bed is placed for sleeping and decoration, not a workstation"
+        },
+        "material_family": {
+          "value": "thatch",
+          "signal": "pattern",
+          "rationale": "Thatch material"
+        },
+        "form": {
+          "value": "bed",
+          "signal": "named",
+          "evidence": "suffix _bed",
+          "rationale": "Stage2 already set form=bed (correct)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only one bed placed at base; not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "sleep",
+            "set respawn point"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard bed functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Beds are furniture items"
+        }
+      }
+    },
+    "tfc:torch": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Torch is carried for lighting; placed disposably"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Main component is stick (wood)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential for caving; players carry stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "light up caves",
+            "prevent mob spawns",
+            "mark paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard torch uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used during mining expeditions"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "heating recipes",
+          "rationale": "Made by heating stick with pitch"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component light_emission=14",
+          "rationale": "Stage2 already set correctly"
+        }
+      }
+    },
+    "tfc:treated_hide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Treated hide is a material for leather and armor"
+        },
+        "material_family": {
+          "value": "hide",
+          "signal": "pattern",
+          "rationale": "Hide material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Players keep some when processing leather"
+        },
+        "primary_uses": {
+          "values": [
+            "craft leather",
+            "craft books",
+            "craft armor"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate material for multiple items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "damage_inputs_shapeless recipes",
+          "rationale": "Made from soaked hide"
+        },
+        "workflow": {
+          "values": [
+            "tfc:leather/making"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of leather-making process"
+        }
+      }
+    },
+    "tfc:tree_roots": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Tree roots are a natural block found in world"
+        },
+        "material_family": {
+          "value": "wood_root",
+          "signal": "inferred",
+          "rationale": "Root-like wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed for crafting muddy roots"
+        },
+        "primary_uses": {
+          "values": [
+            "craft muddy roots",
+            "decoration",
+            "natural block"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting and building use"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from tree_roots block",
+          "rationale": "Drops from natural tree roots blocks"
+        }
+      }
+    },
+    "tfc:trip_hammer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Trip hammer is a processing machine component, not a workstation"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "Likely made of wrought iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base; not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "automated metalworking",
+            "processing blooms"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated smithing machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated processing"
+        }
+      }
+    },
+    "tfc:unrefined_paper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate paper material for crafting paper"
+        },
+        "material_family": {
+          "value": "plant_fiber",
+          "signal": "inferred",
+          "rationale": "Made from papyrus or wood fibers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept when making books or paper"
+        },
+        "primary_uses": {
+          "values": [
+            "craft paper via scraping"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use is to be scraped into paper"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loom recipe",
+          "rationale": "Woven on loom"
+        },
+        "workflow": {
+          "values": [
+            "tfc:papermaking"
+          ],
+          "signal": "pattern",
+          "evidence": "guide page mentions papermaking",
+          "rationale": "Part of papermaking process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "pattern",
+          "evidence": "produced at loom",
+          "rationale": "Woven on loom"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

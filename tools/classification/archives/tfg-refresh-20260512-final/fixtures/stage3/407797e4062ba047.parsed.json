@@ -1,0 +1,1216 @@
+{
+  "items": {
+    "ad_astra:glacian_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "player stores pressure plates with redstone components"
+        },
+        "material_family": {
+          "value": "ad_astra:glacian",
+          "signal": "inferred",
+          "rationale": "gracan wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried often"
+        },
+        "primary_uses": {
+          "value": "detect entities for redstone signals",
+          "signal": "inferred",
+          "rationale": "used as a trigger"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin from loot",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:redstone",
+          "signal": "inferred",
+          "rationale": "used in redstone contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "ad_astra:glacian_ram_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "evidence": "spawn egg pattern",
+          "rationale": "collectible spawn eggs"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative only, rarely used"
+        },
+        "primary_uses": {
+          "value": "spawn glacion ram in creative",
+          "signal": "inferred",
+          "rationale": "spawn mob"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common item"
+        },
+        "origin": {
+          "value": "creative_only",
+          "signal": "named",
+          "evidence": "stage2 is_creative_only true",
+          "rationale": "only in creative"
+        }
+      }
+    },
+    "ad_astra:glacian_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab is a building block"
+        },
+        "material_family": {
+          "value": "ad_astra:glacian",
+          "signal": "inferred",
+          "rationale": "gracan wood"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with glacion wood slabs",
+          "signal": "inferred",
+          "rationale": "decorative building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building block"
+        }
+      }
+    },
+    "ad_astra:glacian_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are building blocks"
+        },
+        "material_family": {
+          "value": "ad_astra:glacian",
+          "signal": "inferred",
+          "rationale": "gracan wood"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with glacion wood stairs",
+          "signal": "inferred",
+          "rationale": "decorative building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building block"
+        }
+      }
+    },
+    "ad_astra:glacian_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor is a building block"
+        },
+        "material_family": {
+          "value": "ad_astra:glacian",
+          "signal": "inferred",
+          "rationale": "gracan wood"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with glacion wood trapdoors",
+          "signal": "inferred",
+          "rationale": "decorative building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building block"
+        }
+      }
+    },
+    "ad_astra:glacio_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore is mined for processing"
+        },
+        "material_family": {
+          "value": "coal",
+          "signal": "named",
+          "evidence": "stage2 material_family from ore id",
+          "rationale": "coal ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried while mining"
+        },
+        "primary_uses": {
+          "value": "smelt into coal for fuel",
+          "signal": "inferred",
+          "rationale": "primary use is smelting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common item"
+        }
+      }
+    },
+    "ad_astra:glacio_cobblestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cobblestone is a building material"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "named",
+          "evidence": "stage2 from tag",
+          "rationale": "stone based"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for building, carried in bulk"
+        },
+        "primary_uses": {
+          "value": "build with phonolite cobblestone",
+          "signal": "inferred",
+          "rationale": "main use"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cobblestone"
+          ],
+          "signal": "inferred",
+          "rationale": "cobblestone storage"
+        }
+      }
+    },
+    "ad_astra:glacio_cobblestone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from cobblestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with phonolite cobble slab",
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "rock slab storage"
+        }
+      }
+    },
+    "ad_astra:glacio_cobblestone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from cobblestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with phonolite cobble stairs",
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "rock stairs storage"
+        }
+      }
+    },
+    "ad_astra:glacio_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore mined for processing"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "evidence": "stage2 from ore id",
+          "rationale": "copper ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried while mining"
+        },
+        "primary_uses": {
+          "value": "smelt into copper ingots",
+          "signal": "inferred",
+          "rationale": "primary use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common item"
+        }
+      }
+    },
+    "ad_astra:glacio_globe": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative globe"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "value": "decorate base with europa globe",
+          "signal": "inferred",
+          "rationale": "decorative use"
+        },
+        "activity": {
+          "value": "slot:decorating",
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component rarity rare",
+          "rationale": "rare item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block storage"
+        }
+      }
+    },
+    "ad_astra:glacio_ice_shard_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore mined for processing"
+        },
+        "material_family": {
+          "value": "ice_shard",
+          "signal": "named",
+          "evidence": "stage2 from ore id",
+          "rationale": "ice shard ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried while mining"
+        },
+        "primary_uses": {
+          "value": "mine for ice shards",
+          "signal": "inferred",
+          "rationale": "primary use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common item"
+        }
+      }
+    },
+    "ad_astra:glacio_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore mined for processing"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "evidence": "stage2 from ore id",
+          "rationale": "iron ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried while mining"
+        },
+        "primary_uses": {
+          "value": "smelt into iron ingots",
+          "signal": "inferred",
+          "rationale": "primary use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common item"
+        }
+      }
+    },
+    "ad_astra:glacio_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore mined for processing"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "named",
+          "evidence": "stage2 from ore id",
+          "rationale": "lapis ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried while mining"
+        },
+        "primary_uses": {
+          "value": "mine for lapis lazuli",
+          "signal": "inferred",
+          "rationale": "primary use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common item"
+        }
+      }
+    },
+    "ad_astra:glacio_pillar": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative pillar"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from glacio stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in building decoration"
+        },
+        "primary_uses": {
+          "value": "decorative pillar block",
+          "signal": "inferred",
+          "rationale": "decorative use"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:decorating",
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block storage"
+        }
+      }
+    },
+    "ad_astra:glacio_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "raw stone building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone based"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "value": "build with phonolite stone",
+          "signal": "inferred",
+          "rationale": "main use"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        }
+      }
+    },
+    "ad_astra:glacio_stone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from stone bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with phonolite brick slab",
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "brick slab storage"
+        }
+      }
+    },
+    "ad_astra:glacio_stone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from stone bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with phonolite brick stairs",
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick family storage"
+        }
+      }
+    },
+    "ad_astra:glacio_stone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from stone bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with phonolite brick wall",
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "inferred",
+          "rationale": "brick wall storage"
+        }
+      }
+    },
+    "ad_astra:glacio_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with phonolite bricks",
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick storage"
+        }
+      }
+    },
+    "ad_astra:glacio_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from glacio stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with raw phonolite slab",
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "rock slab storage"
+        }
+      }
+    },
+    "ad_astra:glacio_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "from glacio stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "primary_uses": {
+          "value": "build with raw phonolite stairs",
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "only crafted"
+        },
+        "activity": {
+          "value": "slot:building",
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "rock stairs storage"
+        }
+      }
+    },
+    "ad_astra:glowing_calorite_pillar": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glowing decorative pillar"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "from calorite material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once for lighting"
+        },
+        "primary_uses": {
+          "value": "decorative glowing pillar",
+          "signal": "inferred",
+          "rationale": "decoration and light"
+        },
+        "activity": {
+          "value": "slot:decorating",
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component light_emission 15",
+          "rationale": "emits light 15"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block storage"
+        },
+        "palette": {
+          "value": "glowing",
+          "signal": "inferred",
+          "rationale": "emits light, appears glowing"
+        }
+      }
+    },
+    "ad_astra:glowing_desh_pillar": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glowing decorative pillar"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "inferred",
+          "rationale": "from desh material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once for lighting"
+        },
+        "primary_uses": {
+          "value": "decorative glowing pillar",
+          "signal": "inferred",
+          "rationale": "decoration and light"
+        },
+        "activity": {
+          "value": "slot:decorating",
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component light_emission 15",
+          "rationale": "emits light 15"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block storage"
+        },
+        "palette": {
+          "value": "glowing",
+          "signal": "inferred",
+          "rationale": "emits light, appears glowing"
+        }
+      }
+    },
+    "ad_astra:glowing_iron_pillar": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glowing decorative pillar"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "from iron material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once for lighting"
+        },
+        "primary_uses": {
+          "value": "decorative glowing pillar",
+          "signal": "inferred",
+          "rationale": "decoration and light"
+        },
+        "activity": {
+          "value": "slot:decorating",
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component light_emission 15",
+          "rationale": "emits light 15"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block storage"
+        },
+        "palette": {
+          "value": "glowing",
+          "signal": "inferred",
+          "rationale": "emits light, appears glowing"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "ad_astra:glacio_coal_ore",
+      "facet": "origin",
+      "current": [
+        "overworld_cave"
+      ],
+      "suggested": [],
+      "rationale": "ore is on glacio, not overworld cave",
+      "confidence": 0.9
+    },
+    {
+      "item": "ad_astra:glacio_copper_ore",
+      "facet": "origin",
+      "current": [
+        "overworld_cave"
+      ],
+      "suggested": [],
+      "rationale": "ore is on glacio, not overworld cave",
+      "confidence": 0.9
+    },
+    {
+      "item": "ad_astra:glacio_ice_shard_ore",
+      "facet": "origin",
+      "current": [
+        "overworld_cave"
+      ],
+      "suggested": [],
+      "rationale": "ore is on glacio, not overworld cave",
+      "confidence": 0.9
+    },
+    {
+      "item": "ad_astra:glacio_iron_ore",
+      "facet": "origin",
+      "current": [
+        "overworld_cave"
+      ],
+      "suggested": [],
+      "rationale": "ore is on glacio, not overworld cave",
+      "confidence": 0.9
+    },
+    {
+      "item": "ad_astra:glacio_lapis_ore",
+      "facet": "origin",
+      "current": [
+        "overworld_cave"
+      ],
+      "suggested": [],
+      "rationale": "ore is on glacio, not overworld cave",
+      "confidence": 0.9
+    }
+  ],
+  "vocabulary_proposals": [
+    {
+      "item": "ad_astra:glacio_coal_ore",
+      "facet": "origin",
+      "label": "Glacio",
+      "proposed_id": "ad_astra:glacio",
+      "rationale": "ore spawns on glacio planet/moon",
+      "evidence": "id prefix glacio"
+    },
+    {
+      "item": "ad_astra:glacio_copper_ore",
+      "facet": "origin",
+      "label": "Glacio",
+      "proposed_id": "ad_astra:glacio",
+      "rationale": "ore spawns on glacio",
+      "evidence": "id prefix glacio"
+    },
+    {
+      "item": "ad_astra:glacio_ice_shard_ore",
+      "facet": "origin",
+      "label": "Glacio",
+      "proposed_id": "ad_astra:glacio",
+      "rationale": "ore spawns on glacio",
+      "evidence": "id prefix glacio"
+    },
+    {
+      "item": "ad_astra:glacio_iron_ore",
+      "facet": "origin",
+      "label": "Glacio",
+      "proposed_id": "ad_astra:glacio",
+      "rationale": "ore spawns on glacio",
+      "evidence": "id prefix glacio"
+    },
+    {
+      "item": "ad_astra:glacio_lapis_ore",
+      "facet": "origin",
+      "label": "Glacio",
+      "proposed_id": "ad_astra:glacio",
+      "rationale": "ore spawns on glacio",
+      "evidence": "id prefix glacio"
+    }
+  ],
+  "fill_ins": [],
+  "schema_proposals": []
+}

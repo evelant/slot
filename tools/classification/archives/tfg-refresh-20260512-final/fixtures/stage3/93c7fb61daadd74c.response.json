@@ -1,0 +1,1696 @@
+{
+  "items": {
+    "railways:purple_copper_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative palette block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial look with a dye color"
+        }
+      }
+    },
+    "railways:purple_copper_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train engines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a boiler in locomotive builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial boiler shape with dye"
+        }
+      }
+    },
+    "railways:purple_copper_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train engines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a smokebox in locomotive builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial smokebox shape with dye"
+        }
+      }
+    },
+    "railways:purple_flat_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative flat riveted block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial riveted texture with dye"
+        }
+      }
+    },
+    "railways:purple_flat_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative flat slashed block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial slashed texture with dye"
+        }
+      }
+    },
+    "railways:purple_folding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Folding door, part of building envelope"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal door family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative doors for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial door design with dye"
+        }
+      }
+    },
+    "railways:purple_four_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window block used in train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal window family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial window with dye"
+        }
+      }
+    },
+    "railways:purple_hazard_stripes_chevron_on_black": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative hazard stripe block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple on Black'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal variant family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Hazard stripe texture with purple dye"
+        }
+      }
+    },
+    "railways:purple_hazard_stripes_chevron_on_white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative hazard stripe block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple on White'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal variant family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Hazard stripe texture with purple dye"
+        }
+      }
+    },
+    "railways:purple_hazard_stripes_diagonal_on_black": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative hazard stripe block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple on Black Hazard Stripes'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal variant family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Hazard stripe texture with purple dye"
+        }
+      }
+    },
+    "railways:purple_hazard_stripes_diagonal_on_white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative hazard stripe block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple on White Hazard Stripes'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal variant family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Hazard stripe texture with purple dye"
+        }
+      }
+    },
+    "railways:purple_hinged_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Hinged door, part of building envelope"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal door family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative doors for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial door design with dye"
+        }
+      }
+    },
+    "railways:purple_incomplete_conductor_cap": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while assembling conductor cap"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting conductor cap"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly for cap"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of train staff equipment line"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in train-related crafting"
+        }
+      }
+    },
+    "railways:purple_iron_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative iron wrapped block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial wrapped texture with dye"
+        }
+      }
+    },
+    "railways:purple_iron_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train engines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a boiler in locomotive builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial boiler shape with dye"
+        }
+      }
+    },
+    "railways:purple_iron_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train engines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a smokebox in locomotive builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial smokebox shape with dye"
+        }
+      }
+    },
+    "railways:purple_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative base boiler block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train engines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a boiler in locomotive builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial boiler shape with dye"
+        }
+      }
+    },
+    "railways:purple_locometal_end_ladder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative ladder for train builds, not traversal"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal ladder family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative ladders for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train aesthetics"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial ladder design with dye"
+        }
+      }
+    },
+    "railways:purple_locometal_flywheel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative flywheel block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial flywheel shape with dye"
+        }
+      }
+    },
+    "railways:purple_locometal_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial pillar shape with dye"
+        }
+      }
+    },
+    "railways:purple_locometal_rung_ladder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative rung ladder for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal ladder family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative ladders for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train aesthetics"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial ladder design with dye"
+        }
+      }
+    },
+    "railways:purple_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative base smokebox block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train engines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a smokebox in locomotive builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial smokebox shape with dye"
+        }
+      }
+    },
+    "railways:purple_locometal_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Trapdoor, part of building envelope"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal trapdoor family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative trapdoors for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of train builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial trapdoor design with dye"
+        }
+      }
+    },
+    "railways:purple_locometal_vent": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative vent block for train builds"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "Part of the locometal block family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "building train decorations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "Stored with other locometal blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Steam 'n' Rails train palette"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial vent texture with dye"
+        }
+      }
+    },
+    "railways:purple_paint_pitcher": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool for painting trains, not a block"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple'",
+          "rationale": "Naming indicates dye color"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when painting train parts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "Component data says common"
+        },
+        "primary_uses": {
+          "values": [
+            "painting train blocks purple"
+          ],
+          "signal": "inferred",
+          "rationale": "Applies purple color to locometal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train painting tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in decoration workflow"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Right-click to apply paint to blocks"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

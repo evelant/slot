@@ -1,0 +1,1549 @@
+{
+  "items": {
+    "gtceu:dacite_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into gold ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground dacite deposits"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for metal processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, or mill"
+        }
+      }
+    },
+    "gtceu:dacite_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw ore for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into metal",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for mineral extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw ore for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into graphite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for graphite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw ore for gems"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into green sapphire",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gemstone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw ore for grossular"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into grossular",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for grossular"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw ore for gypsum"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into gypsum",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gypsum"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw iron ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into iron",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths for iron"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw titanium ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ilmenite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ilmenite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw iron ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into iron",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw kyanite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into kyanite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for kyanite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw lapis lazuli ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into lapis",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lapis"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw lazurite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into lazurite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lazurite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw lead ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into lead",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lead"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw lepidolite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into lepidolite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lepidolite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw lignite coal ore"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel source",
+            "processing into coke"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fuel or processed further"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lignite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [],
+          "signal": "inferred",
+          "rationale": "no recipes found, may be used directly as fuel"
+        }
+      }
+    },
+    "gtceu:dacite_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw lithium ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into lithium",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lithium"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw magnesite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into magnesite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for magnesite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw magnetite ore (iron)"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into iron",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for magnetite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw malachite ore (copper)"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into copper",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for malachite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw mica ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into mica",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for mica"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw molybdenite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into molybdenite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for molybdenite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw molybdenum ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into molybdenum",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for molybdenum"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw monazite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into monazite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for monazite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "processed in furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:dacite_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw naquadah ore"
+        },
+        "primary_uses": {
+          "values": [
+            "milling into crushed ore",
+            "processing for naquadah"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for naquadah"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "only milling recipe available"
+        }
+      }
+    },
+    "gtceu:dacite_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form=ore",
+          "rationale": "raw neodymium ore"
+        },
+        "primary_uses": {
+          "values": [
+            "milling into crushed ore",
+            "processing for neodymium"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "y_level_range=underground",
+          "rationale": "mined from underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for neodymium"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "ore block as raw material",
+          "rationale": "raw ore waiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "only milling recipe available"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

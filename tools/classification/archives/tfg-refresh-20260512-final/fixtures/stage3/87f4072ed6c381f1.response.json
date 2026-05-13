@@ -1,0 +1,2576 @@
+{
+  "items": {
+    "gtceu:chert_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed into material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of olivine",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of opal",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "only milling recipe",
+          "rationale": "processed only via mill"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumes this item",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "processed at mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of palladium",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pentlandite (nickel)",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pitchblende (uranium)",
+            "smelted for radioactive materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of platinum",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pollucite (caesium)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of powellite (molybdenum)",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_pyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pyrite (iron)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_pyrochlore_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pyrochlore (niobium)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_pyrolusite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pyrolusite (manganese)",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_pyrope_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pyrope (garnet)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_quartzite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of quartzite (silicon)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_realgar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of realgar (arsenic)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_red_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of red garnet",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of redstone",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_rock_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of rock salt (potassium)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_ruby_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of ruby",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of salt (halite)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_saltpeter_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of saltpeter (potassium nitrate)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of sapphire",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_scheelite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of scheelite (tungsten)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_silver_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_soapstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of soapstone (magnesium silicate)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    },
+    "gtceu:chert_sodalite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity",
+          "rationale": "component specifies common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chert tag",
+          "rationale": "ore spawns underground in chert"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "target of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processed via furnace, blast furnace, mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this item",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "processed at furnace, blast furnace, mill"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form ore + id pattern",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored in stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore grouping"
+        },
+        "primary_uses": {
+          "values": [
+            "source of sodalite (sodium aluminum silicate)",
+            "smelted for materials",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "common ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

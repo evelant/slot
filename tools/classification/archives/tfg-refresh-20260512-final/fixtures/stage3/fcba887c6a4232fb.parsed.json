@@ -1,0 +1,1398 @@
+{
+  "items": {
+    "gtceu:chalk_tin_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tin",
+            "smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed for tin"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag + raw ore bucket",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of topaz gems",
+            "gem processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for topaz"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of phosphate",
+            "chemical processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for phosphate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of sodium carbonate",
+            "chemical processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for trona"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tungsten",
+            "ore processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for tungsten"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of uranium",
+            "radioactive material processing"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for uranium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of vanadium and iron",
+            "ore processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for vanadium and iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lead and molybdenum",
+            "ore processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lead and molybdenum"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of yellow garnet gems",
+            "gem processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for yellow garnet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of iron",
+            "ore processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:chalk_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of zeolite",
+            "chemical processing material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for zeolite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "unprocessed ore storage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting workflows"
+        }
+      }
+    },
+    "gtceu:charcoal_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block, not a container"
+        },
+        "primary_uses": {
+          "values": [
+            "compact charcoal storage",
+            "fuel for forges",
+            "crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used for fuel and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in chests, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "made from common charcoal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:compacting/charcoal_block recipe",
+          "rationale": "crafted from charcoal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/firepit_fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fuel, stored with fuels"
+        }
+      }
+    },
+    "gtceu:charcoal_byproducts_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of fluid, used as tool"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting charcoal byproducts",
+            "fluid storage"
+          ],
+          "signal": "inferred",
+          "rationale": "holds and moves byproduct fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when handling byproducts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "byproduct of charcoal production"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "bucket containing fluid"
+        }
+      }
+    },
+    "gtceu:charcoal_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form of charcoal"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting gunpowder and torches",
+            "fuel component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and as fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common processed material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "milling recipes produce it",
+          "rationale": "milled from charcoal"
+        }
+      }
+    },
+    "gtceu:charcoal_pile_igniter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block you interact with to start charcoal pit"
+        },
+        "primary_uses": {
+          "values": [
+            "starting charcoal pit kiln",
+            "producing charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "ignites logs to make charcoal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common machine block"
+        },
+        "used_at": {
+          "values": [
+            "tfc:charcoal/pit"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: 'Turns Logs into Charcoal when ignited'",
+          "rationale": "used at charcoal pit location"
+        }
+      }
+    },
+    "gtceu:chemical_black_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_blue_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_brown_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_cyan_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_gray_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_green_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_light_blue_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_light_gray_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_lime_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    },
+    "gtceu:chemical_magenta_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dyes",
+          "rationale": "dye item used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses dye for coloring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly kept in inventory for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing is decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "dye tag",
+          "rationale": "player stores dyes together"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:charcoal_block",
+      "facet": "material_family",
+      "value": "charcoal",
+      "rationale": "block of charcoal"
+    },
+    {
+      "item": "gtceu:charcoal_block",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "tag tfc:forge_fuel, used as fuel"
+    },
+    {
+      "item": "gtceu:charcoal_dust",
+      "facet": "material_family",
+      "value": "charcoal",
+      "rationale": "dust of charcoal"
+    },
+    {
+      "item": "gtceu:charcoal_dust",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "burnable, forge_fuel tag"
+    },
+    {
+      "item": "gtceu:chemical_black_dye",
+      "facet": "dye_color",
+      "value": "black",
+      "rationale": "name indicates black dye"
+    },
+    {
+      "item": "gtceu:chemical_blue_dye",
+      "facet": "dye_color",
+      "value": "blue",
+      "rationale": "name indicates blue dye"
+    },
+    {
+      "item": "gtceu:chemical_brown_dye",
+      "facet": "dye_color",
+      "value": "brown",
+      "rationale": "name indicates brown dye"
+    },
+    {
+      "item": "gtceu:chemical_cyan_dye",
+      "facet": "dye_color",
+      "value": "cyan",
+      "rationale": "name indicates cyan dye"
+    },
+    {
+      "item": "gtceu:chemical_gray_dye",
+      "facet": "dye_color",
+      "value": "gray",
+      "rationale": "name indicates gray dye"
+    },
+    {
+      "item": "gtceu:chemical_green_dye",
+      "facet": "dye_color",
+      "value": "green",
+      "rationale": "name indicates green dye"
+    },
+    {
+      "item": "gtceu:chemical_light_blue_dye",
+      "facet": "dye_color",
+      "value": "light_blue",
+      "rationale": "name indicates light blue dye"
+    },
+    {
+      "item": "gtceu:chemical_light_gray_dye",
+      "facet": "dye_color",
+      "value": "light_gray",
+      "rationale": "name indicates light gray dye"
+    },
+    {
+      "item": "gtceu:chemical_lime_dye",
+      "facet": "dye_color",
+      "value": "lime",
+      "rationale": "name indicates lime dye"
+    },
+    {
+      "item": "gtceu:chemical_magenta_dye",
+      "facet": "dye_color",
+      "value": "magenta",
+      "rationale": "name indicates magenta dye"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

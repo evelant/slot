@@ -1,0 +1,959 @@
+{
+  "items": {
+    "diggerhelmet:wool_lining": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Installed into Digger Helmet for thermal effects."
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade digger helmet with thermal insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Semantic tooltip states thermal properties."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Niche upgrade item, rarely carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "Item is named 'Wool Lining'."
+        }
+      }
+    },
+    "diggerhelmet:wrought_iron_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Head-slot equippable with armor, durability."
+        },
+        "primary_uses": {
+          "values": [
+            "Wear for head protection while mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining helmet with armor."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Armor piece players keep equipped or in inventory."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "Item name contains 'Wrought Iron'."
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "Wrought iron is a material tier."
+        }
+      }
+    },
+    "domum_ornamentum:architectscutter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Player uses this block as a workstation to craft decorative blocks."
+        },
+        "primary_uses": {
+          "values": [
+            "Craft decorative blocks from materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at Architects Cutter station."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Workstation placed at base, moved rarely."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/domum_ornamentum_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits mod-specific storage for Domum Ornamentum."
+        },
+        "used_at": {
+          "values": [
+            "domum_ornamentum:architects_cutter"
+          ],
+          "signal": "named",
+          "evidence": "semantic_text: 'Crafted in the Architect\\'s Cutter'",
+          "rationale": "Item itself is the station."
+        },
+        "workflow": {
+          "values": [
+            "domum_ornamentum:architects_cutter"
+          ],
+          "signal": "named",
+          "evidence": "semantic_text",
+          "rationale": "Workflow for cutting decorative blocks."
+        }
+      }
+    },
+    "domum_ornamentum:beige_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick block used for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Build decorative walls and structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick building material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Blocks carried during building projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "evidence": "tag domum_ornamentum:brick_items",
+          "rationale": "Tagged as brick item."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block group."
+        }
+      }
+    },
+    "domum_ornamentum:beige_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone brick block for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Build decorative stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Stone brick variant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Blocks carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "id contains stone",
+          "rationale": "Id suggests stone material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block group."
+        }
+      }
+    },
+    "domum_ornamentum:black_brick_extra": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative brick block for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with black brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Extra brick block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "evidence": "tag domum_ornamentum:brick_items",
+          "rationale": "Tagged as brick item."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage section."
+        }
+      }
+    },
+    "domum_ornamentum:black_floating_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Floating carpet is decorative furnishing."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate floors and walls with floating carpet"
+          ],
+          "signal": "inferred",
+          "rationale": "Floating carpet for decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "inferred",
+          "rationale": "Color prefix in id and name."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits decorative blocks group."
+        }
+      }
+    },
+    "domum_ornamentum:blockbarreldeco_onside": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative barrel block placed for aesthetics."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with layered barrel"
+          ],
+          "signal": "inferred",
+          "rationale": "Barrel decoration block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block group."
+        }
+      }
+    },
+    "domum_ornamentum:blockbarreldeco_standing": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Standing barrel decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with standing barrel"
+          ],
+          "signal": "inferred",
+          "rationale": "Barrel decoration variant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block group."
+        }
+      }
+    },
+    "domum_ornamentum:blockpaperwall": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative glass framed pane."
+        },
+        "primary_uses": {
+          "values": [
+            "Create decorative windows"
+          ],
+          "signal": "inferred",
+          "rationale": "Framed pane window."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building/decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/domum_ornamentum_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Domum Ornamentum mod items group."
+        }
+      }
+    },
+    "domum_ornamentum:blockpillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Pillar block used as structural column."
+        },
+        "primary_uses": {
+          "values": [
+            "Build column and pillar structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Pillar building block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/domum_ornamentum_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Domum Ornamentum items group."
+        }
+      }
+    },
+    "domum_ornamentum:blocktiledpaperwall": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Tiled glass framed pane for decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "Create tiled decorative windows"
+          ],
+          "signal": "inferred",
+          "rationale": "Tiled pane variant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building/decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/domum_ornamentum_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Domum Ornamentum items group."
+        }
+      }
+    },
+    "domum_ornamentum:blockypillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Voxel pillar block for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Build voxel-style pillars"
+          ],
+          "signal": "inferred",
+          "rationale": "Pillar variant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/domum_ornamentum_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Domum Ornamentum items group."
+        }
+      }
+    },
+    "domum_ornamentum:blue_brick_extra": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Blue brick block for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with blue brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Extra brick block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "evidence": "tag domum_ornamentum:brick_items",
+          "rationale": "Tagged as brick item."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage section."
+        }
+      }
+    },
+    "domum_ornamentum:blue_cobblestone_extra": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Blue cobblestone block for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with blue cobblestone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Cobblestone variant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "pattern",
+          "evidence": "id contains cobblestone",
+          "rationale": "Id indicates cobblestone material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cobblestone"
+          ],
+          "signal": "inferred",
+          "rationale": "Cobblestone storage section."
+        }
+      }
+    },
+    "domum_ornamentum:blue_floating_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Blue floating carpet for decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with blue floating carpet"
+          ],
+          "signal": "inferred",
+          "rationale": "Floating carpet."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "inferred",
+          "rationale": "Color prefix in id and name."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block group."
+        }
+      }
+    },
+    "domum_ornamentum:brick_extra": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Generic extra brick block for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with extra brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Extra brick block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "evidence": "tag domum_ornamentum:brick_items",
+          "rationale": "Tagged as brick item."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage section."
+        }
+      }
+    },
+    "domum_ornamentum:brown_brick_extra": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brown brick block for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with brown brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Extra brick block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "evidence": "tag domum_ornamentum:brick_items",
+          "rationale": "Tagged as brick item."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage section."
+        }
+      }
+    },
+    "domum_ornamentum:brown_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brown bricks building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with brown brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brown bricks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "evidence": "tag domum_ornamentum:brick_items",
+          "rationale": "Tagged as brick item."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage section."
+        }
+      }
+    },
+    "domum_ornamentum:brown_floating_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Brown floating carpet decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with brown floating carpet"
+          ],
+          "signal": "inferred",
+          "rationale": "Floating carpet."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "inferred",
+          "rationale": "Color prefix in id and name."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block group."
+        }
+      }
+    },
+    "domum_ornamentum:brown_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brown stone bricks building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with brown stone bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stone brick variant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "id contains stone",
+          "rationale": "Id suggests stone material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage section."
+        }
+      }
+    },
+    "domum_ornamentum:cactus_extra": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Cactus themed block used as decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with cactus theme blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Cactus extra block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/domum_ornamentum_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Domum Ornamentum items group."
+        }
+      }
+    },
+    "domum_ornamentum:center_light": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Framed glowstone, decorative light source."
+        },
+        "primary_uses": {
+          "values": [
+            "Light up builds with framed glowstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Light emitting decorative block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits lighting block storage section."
+        }
+      }
+    },
+    "domum_ornamentum:cobblestone_extra": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Reconstituted cobblestone block for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with reconstituted cobblestone"
+          ],
+          "signal": "inferred",
+          "rationale": "Cobblestone extra block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "pattern",
+          "evidence": "id contains cobblestone",
+          "rationale": "Id indicates cobblestone material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cobblestone"
+          ],
+          "signal": "inferred",
+          "rationale": "Cobblestone storage section."
+        }
+      }
+    },
+    "domum_ornamentum:cream_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cream brick block for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Build with cream brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Cream bricks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component is common."
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "evidence": "tag domum_ornamentum:brick_items",
+          "rationale": "Tagged as brick item."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage section."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

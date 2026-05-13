@@ -1,0 +1,885 @@
+{
+  "items": {
+    "merequester:requester_terminal": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UI-enabled block for item requests"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, used at base"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "requests items from ME network"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-related terminal block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:network"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network component"
+        },
+        "primary_uses": {
+          "values": [
+            "request items from ME system",
+            "automate item ordering"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it to manage item requests"
+        }
+      }
+    },
+    "minecraft:acacia_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "player uses it to travel on water"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for water traversal occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel"
+        },
+        "primary_uses": {
+          "values": [
+            "travel across water"
+          ],
+          "signal": "inferred",
+          "rationale": "boat's purpose"
+        }
+      }
+    },
+    "minecraft:acacia_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden button used for redstone inputs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds as needed"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone trigger"
+        },
+        "primary_uses": {
+          "values": [
+            "act as redstone switch",
+            "build circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "button function"
+        }
+      }
+    },
+    "minecraft:acacia_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "boat with chest for water travel and storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in base until needed for item haul"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "water transport"
+        },
+        "primary_uses": {
+          "values": [
+            "carry items across water",
+            "travel"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat"
+        }
+      }
+    },
+    "minecraft:acacia_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden door used as building entrance"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "build entrances",
+            "close off rooms"
+          ],
+          "signal": "inferred",
+          "rationale": "door function"
+        }
+      }
+    },
+    "minecraft:acacia_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden fence used as building barrier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "build fences",
+            "enclose areas"
+          ],
+          "signal": "inferred",
+          "rationale": "fence function"
+        }
+      }
+    },
+    "minecraft:acacia_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden fence gate used as building opening"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "build gates",
+            "control access"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gate function"
+        }
+      }
+    },
+    "minecraft:acacia_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hanging sign for decoration and text display"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decorating builds"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "display text",
+            "decorate buildings"
+          ],
+          "signal": "inferred",
+          "rationale": "hanging sign function"
+        }
+      }
+    },
+    "minecraft:acacia_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "tree leaves, a natural block from trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected when needed for decoration or fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building decoration or composting"
+        },
+        "primary_uses": {
+          "values": [
+            "add foliage to builds",
+            "compost"
+          ],
+          "signal": "inferred",
+          "rationale": "leaf uses"
+        }
+      }
+    },
+    "minecraft:acacia_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log used as building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during wood gathering and building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "build log structures",
+            "fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "log uses"
+        }
+      }
+    },
+    "minecraft:acacia_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks used as building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "build structures",
+            "craft various items"
+          ],
+          "signal": "inferred",
+          "rationale": "plank uses"
+        }
+      }
+    },
+    "minecraft:acacia_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden pressure plate for redstone activation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds as needed"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone activation"
+        },
+        "primary_uses": {
+          "values": [
+            "detect player/entity presence",
+            "trigger redstone circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "pressure plate function"
+        }
+      }
+    },
+    "minecraft:acacia_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "sapling for growing acacia trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for tree farming"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planting and growing trees"
+        },
+        "primary_uses": {
+          "values": [
+            "grow acacia trees",
+            "reforest areas"
+          ],
+          "signal": "inferred",
+          "rationale": "sapling purpose"
+        }
+      }
+    },
+    "minecraft:acacia_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "sign for decoration and text display"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decorating builds"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "display text",
+            "label containers or areas"
+          ],
+          "signal": "inferred",
+          "rationale": "sign function"
+        }
+      }
+    },
+    "minecraft:acacia_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden slab used as building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "create half-block details",
+            "build roofs or paths"
+          ],
+          "signal": "inferred",
+          "rationale": "slab function"
+        }
+      }
+    },
+    "minecraft:acacia_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden stairs used as building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "create vertical transitions",
+            "build staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs function"
+        }
+      }
+    },
+    "minecraft:acacia_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden trapdoor used as building opening"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "create floor openings",
+            "access hatches"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor function"
+        }
+      }
+    },
+    "minecraft:acacia_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "bark block used as building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "primary_uses": {
+          "values": [
+            "build log-style structures",
+            "craft into planks"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block uses"
+        }
+      }
+    },
+    "minecraft:activator_rail": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "rail for minecart transport and interaction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building rail networks"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "minecart transport"
+        },
+        "primary_uses": {
+          "values": [
+            "activate minecarts",
+            "build rail systems"
+          ],
+          "signal": "inferred",
+          "rationale": "activator rail function"
+        }
+      }
+    },
+    "minecraft:allay_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg for collecting mobs"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 rule for spawn eggs",
+          "rationale": "spawn eggs are creative-only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not used in survival, kept for display"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn allay",
+            "collect mob eggs"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg purpose"
+        }
+      }
+    },
+    "minecraft:allium": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower found in nature"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for decoration or dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "flowers used as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate gardens",
+            "craft dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "flower uses"
+        }
+      }
+    },
+    "minecraft:amethyst_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage block of amethyst shards"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for compact storage or building with amethyst"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as a building block or vibration resonator"
+        },
+        "primary_uses": {
+          "values": [
+            "store amethyst shards compactly",
+            "craft into other amethyst items"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block uses"
+        }
+      }
+    },
+    "minecraft:amethyst_cluster": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "crystal growth found in geodes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected from geodes for decoration or shards"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative light source"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative light source",
+            "harvest amethyst shards"
+          ],
+          "signal": "inferred",
+          "rationale": "cluster uses"
+        }
+      }
+    },
+    "minecraft:amethyst_shard": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gem material used in crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting or gem storage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining geodes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "player stores amethyst with gems"
+        },
+        "primary_uses": {
+          "values": [
+            "craft spyglasses",
+            "craft tinted glass",
+            "craft amethyst block"
+          ],
+          "signal": "inferred",
+          "rationale": "common crafting uses"
+        }
+      }
+    },
+    "minecraft:ancient_debris": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "rare ore that smelts to netherite scrap"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected rarely for netherite processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in the nether"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into netherite scrap",
+            "craft netherite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use for netherite"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

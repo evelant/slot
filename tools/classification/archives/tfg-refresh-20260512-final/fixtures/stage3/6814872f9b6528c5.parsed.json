@@ -1,0 +1,934 @@
+{
+  "items": {
+    "create_connected:kinetic_bridge": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "kinetic power-transmission component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated contraptions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create's kinetic/transport network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for contraption building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "crafted from common materials"
+        },
+        "primary_uses": {
+          "values": [
+            "bridging kinetic connections between shafts"
+          ],
+          "signal": "pattern",
+          "rationale": "name implies bridging kinematic connections"
+        }
+      }
+    },
+    "create_connected:large_crank_wheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "manual input component for kinetic network"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "provides rotation to contraptions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic power component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "manually turning machines with crank"
+          ],
+          "signal": "pattern",
+          "rationale": "name implies hand-crank functionality"
+        }
+      }
+    },
+    "create_connected:linked_transmitter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "wireless redstone signal device for contraptions"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "transmits redstone signals wirelessly"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:network"
+          ],
+          "signal": "inferred",
+          "rationale": "wireless signaling subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up redstone links"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "wireless redstone linking between channels"
+          ],
+          "signal": "inferred",
+          "rationale": "name and context suggest frequency binding"
+        }
+      }
+    },
+    "create_connected:music_disc_elevator": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "evidence": "tag minecraft:music_discs",
+          "rationale": "music disc – collectible set"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "played for ambiance in builds"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "stack1, kept for collection"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "component rarity is rare"
+        },
+        "primary_uses": {
+          "values": [
+            "playing Kevin MacLeod tracks on jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "semantic_text reveals song title"
+        }
+      }
+    },
+    "create_connected:music_disc_interlude": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "evidence": "tag minecraft:music_discs",
+          "rationale": "music disc – collectible set"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "played for ambiance in builds"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "stack1, kept for collection"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "component rarity is rare"
+        },
+        "primary_uses": {
+          "values": [
+            "playing Kevin MacLeod tracks on jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "semantic_text reveals song title"
+        }
+      }
+    },
+    "create_connected:overstress_clutch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "kinetic clutch component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "protects networks from overstress"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic network protection device"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for contraption safety"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "automatic disconnection on overstress"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip describes overstress behavior"
+        }
+      }
+    },
+    "create_connected:parallel_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "gearbox for kinetic power splitting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "distributes rotational power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic power transmission"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "parallel power distribution with two outputs"
+          ],
+          "signal": "pattern",
+          "rationale": "name implies parallel shaft mechanics"
+        }
+      }
+    },
+    "create_connected:redstone_link_wildcard": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to redstone link to wildcard frequency"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for occasional redstone link upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common upgrade item"
+        },
+        "primary_uses": {
+          "values": [
+            "making redstone links match any frequency"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip explains usage in slot"
+        }
+      }
+    },
+    "create_connected:sequenced_pulse_generator": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "redstone pulse sequencing block"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "generates timed redstone pulses"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone control component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "programmable sequential pulse output"
+          ],
+          "signal": "inferred",
+          "rationale": "name implies sequenced interaction"
+        }
+      }
+    },
+    "create_connected:shear_pin": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "single-use mechanical fuse"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "protects network from overstress"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic safety component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for replacement after blowing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "breaking on overstress to protect machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip describes single-use stress relief"
+        }
+      }
+    },
+    "create_connected:six_way_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "gearbox with six face outputs"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "distributes power in all directions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic power distribution"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for complex contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "power distribution to all six sides"
+          ],
+          "signal": "inferred",
+          "rationale": "name and tooltip indicate six-way"
+        }
+      }
+    },
+    "create_connected:vertical_brass_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "vertical gearbox variant"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "configurable power routing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for space-efficient builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "independently configurable gearbox direction"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip describes independent side config"
+        }
+      }
+    },
+    "create_connected:vertical_parallel_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "vertical parallel gearbox"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "parallel power splitting"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for compact designs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "parallel power distribution in vertical orientation"
+          ],
+          "signal": "inferred",
+          "rationale": "variant of parallel gearbox"
+        }
+      }
+    },
+    "create_connected:vertical_six_way_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "vertical six-way gearbox"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "all-direction power distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for complex builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "six-way power distribution in vertical arrangement"
+          ],
+          "signal": "inferred",
+          "rationale": "variant of six-way gearbox"
+        }
+      }
+    },
+    "create_factory_logistics:composite_package": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "cardboard box holding items for transport"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of package logistics system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_factory_logistics:package"
+          ],
+          "signal": "pattern",
+          "evidence": "name contains package",
+          "rationale": "package subsystem item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving items via packages"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common logistics item"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting items in cardboard packages"
+          ],
+          "signal": "inferred",
+          "rationale": "name implies packaging function"
+        }
+      }
+    },
+    "create_factory_logistics:copper_jar_package_8x8": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "jar holding items/fluids for transport"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of logistics network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_factory_logistics:package"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:create_logistics_jar",
+          "rationale": "jar package subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when transporting fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common logistics item"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids or items in copper jars"
+          ],
+          "signal": "inferred",
+          "rationale": "name and tag indicate jar logistics"
+        }
+      }
+    },
+    "create_factory_logistics:factory_fluid_gauge": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "block that measures fluid levels"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid network monitoring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_factory_logistics:fluid"
+          ],
+          "signal": "pattern",
+          "evidence": "name contains fluid gauge",
+          "rationale": "fluid subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once; carried during setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "measuring fluid level in pipes and tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "name explicitly indicates gauge functionality"
+        }
+      }
+    },
+    "create_factory_logistics:fluid_mechanism": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fluid machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in crafting stash"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fluid logistics machines and gauges"
+          ],
+          "signal": "inferred",
+          "rationale": "part name implies fluid mechanism assembly"
+        }
+      }
+    },
+    "create_factory_logistics:incomplete_fluid_mechanism": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate assembly step"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during sequential assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common intermediate component"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate step in crafting fluid mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "incomplete prefix indicates progress"
+        }
+      }
+    },
+    "create_factory_logistics:jar_packager": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine that packages items into jars"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "automated packaging process"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_factory_logistics:package"
+          ],
+          "signal": "pattern",
+          "evidence": "name jar_packager",
+          "rationale": "part of package subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in factory layout"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common machine"
+        },
+        "primary_uses": {
+          "values": [
+            "automatically packing items into jars"
+          ],
+          "signal": "inferred",
+          "rationale": "name explicitly indicates packaging role"
+        }
+      }
+    },
+    "create_factory_logistics:network_link": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "block connecting logistics networks"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "network linking and expansion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_factory_logistics:network"
+          ],
+          "signal": "pattern",
+          "evidence": "name contains network link",
+          "rationale": "network subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when expanding network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "extending logistics network to new areas"
+          ],
+          "signal": "inferred",
+          "rationale": "name and context suggest connection role"
+        }
+      }
+    },
+    "create_hypertube:hypertube": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "tube block for item transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "moves items through tubes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as part of tube network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common tube component"
+        },
+        "primary_uses": {
+          "values": [
+            "building hypertube item transport lines"
+          ],
+          "signal": "inferred",
+          "rationale": "name implies tube infrastructure"
+        }
+      }
+    },
+    "create_hypertube:hypertube_accelerator": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "tube accelerator block"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "speeds up items in tubes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed on tube lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "boosting item speed in hypertubes"
+          ],
+          "signal": "inferred",
+          "rationale": "name indicates acceleration function"
+        }
+      }
+    },
+    "create_hypertube:hypertube_entrance": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "tube entrance block"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "loads items into tube network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed at tube start points"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "inserting items into hypertube system"
+          ],
+          "signal": "inferred",
+          "rationale": "name indicates entrance functionality"
+        }
+      }
+    },
+    "create_hypertube:redstone_detector_tube_attachment": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "redstone sensor for tube items"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "emits redstone signals when items pass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "attached to tube when needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common attachment"
+        },
+        "primary_uses": {
+          "values": [
+            "detecting items in tube via redstone output"
+          ],
+          "signal": "inferred",
+          "rationale": "name explicitly indicates redstone detection"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

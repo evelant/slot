@@ -1,0 +1,907 @@
+{
+  "items": {
+    "gtceu:poor_raw_yellow_garnet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "unprocessed ore, stored with raw materials"
+        },
+        "material_family": {
+          "value": "yellow_garnet",
+          "signal": "inferred",
+          "rationale": "item name contains material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined occasionally during caving"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into yellow garnet gems"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled into gem"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/poor_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "low-grade raw ore storage"
+        }
+      }
+    },
+    "gtceu:poor_raw_zeolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "unprocessed ore, stored with raw materials"
+        },
+        "material_family": {
+          "value": "zeolite",
+          "signal": "inferred",
+          "rationale": "item name contains material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into dust or components"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/poor_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "low-grade raw ore storage"
+        }
+      }
+    },
+    "gtceu:portable_debug_scanner": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld scanning tool, not a weapon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used for debugging, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common creative-debug item"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging GT machines",
+            "scanning block info"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: scan and debug"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:scan"
+          ],
+          "signal": "inferred",
+          "rationale": "player scans blocks with it"
+        }
+      }
+    },
+    "gtceu:portable_scanner": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld scanning tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used when scanning machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted tool"
+        },
+        "primary_uses": {
+          "values": [
+            "scanning GT machines",
+            "analyzing recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: scan mode"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:scan"
+          ],
+          "signal": "inferred",
+          "rationale": "player scans blocks with it"
+        }
+      }
+    },
+    "gtceu:potash_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potash",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting ingredient, carried when processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for compounds"
+        }
+      }
+    },
+    "gtceu:potassium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of fluid, wielding tool for pouri"
+        },
+        "material_family": {
+          "value": "potassium",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when transporting molten metal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten potassium",
+            "pouring into machines"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket utility"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds molten potassium"
+        }
+      }
+    },
+    "gtceu:potassium_carbonate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium_carbonate",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for compounds"
+        }
+      }
+    },
+    "gtceu:potassium_cyanide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium_cyanide",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "hazardous but used in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for compounds"
+        }
+      }
+    },
+    "gtceu:potassium_dichromate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium_dichromate",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient"
+        }
+      }
+    },
+    "gtceu:potassium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in mixing recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for compounds"
+        }
+      }
+    },
+    "gtceu:potassium_feldspar_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium_feldspar",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in glass or ceramic recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "mineral dust"
+        }
+      }
+    },
+    "gtceu:potassium_ferrocyanide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium_ferrocyanide",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient"
+        }
+      }
+    },
+    "gtceu:potassium_hydroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium_hydroxide",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "hazardous but used in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient"
+        }
+      }
+    },
+    "gtceu:potassium_iodide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium_iodide",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in mixing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes",
+            "radiation anti-dote"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for rad away"
+        }
+      }
+    },
+    "gtceu:potassium_sulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potassium_sulfate",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient"
+        }
+      }
+    },
+    "gtceu:potin_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block, not a container"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base, moved in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "compact potin storage",
+            "decorative building block"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block, also builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block section"
+        }
+      }
+    },
+    "gtceu:potin_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component, not tool"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in crafting machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "basic fastener component",
+            "crafting tongs and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        }
+      }
+    },
+    "gtceu:potin_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "molten metal bucket, wielded for pouri"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when casting or alloying"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten potin",
+            "pouring into casts"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket utility"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds molten potin"
+        }
+      }
+    },
+    "gtceu:potin_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate metal form"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in welding recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "welded into plates or gears"
+          ],
+          "signal": "inferred",
+          "rationale": "hammering recipe output"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "explicit form"
+        }
+      }
+    },
+    "gtceu:potin_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in alloying"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "mixing alloy"
+          ],
+          "signal": "inferred",
+          "rationale": "dust processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:potin_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "machine component, not tool"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "power transmission component"
+          ],
+          "signal": "inferred",
+          "rationale": "gear in machines"
+        }
+      }
+    },
+    "gtceu:potin_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport part of logistics"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "high-volume fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe tooltip: 1920 mB/t"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GT fluid pipe subsystem"
+        }
+      }
+    },
+    "gtceu:potin_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:ingots"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for casting or welding"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cast or welded into components"
+          ],
+          "signal": "inferred",
+          "rationale": "basic metal form"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ingots"
+        }
+      }
+    },
+    "gtceu:potin_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport part"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "medium-volume fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe tooltip: 960 mB/t"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GT fluid pipe subsystem"
+        }
+      }
+    },
+    "gtceu:potin_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multi-channel fluid transport part"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "multi-channel fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe tooltip: 9 channels"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GT fluid pipe subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

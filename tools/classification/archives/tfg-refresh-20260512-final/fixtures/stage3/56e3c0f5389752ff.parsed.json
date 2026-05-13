@@ -1,0 +1,992 @@
+{
+  "items": {
+    "ftbquests:stage_barrier": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "quest progression barrier, only in creative tab"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "rationale": "light_emission component 3"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "placed as barrier, not carried"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "unobtainable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "block player progression to stages"
+          ],
+          "signal": "inferred",
+          "rationale": "quest gating block"
+        }
+      }
+    },
+    "ftbquests:task_screen_configurator": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "no survival recipe or loot, quest admin tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only when configuring task screens"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only item"
+        },
+        "primary_uses": {
+          "values": [
+            "bind task screen blocks"
+          ],
+          "signal": "named",
+          "rationale": "tooltip explains usage"
+        }
+      }
+    },
+    "grapplemod:baseupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for crafting upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grappling hook mod item family"
+        },
+        "primary_uses": {
+          "values": [
+            "craft grappling hook upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "base crafting component"
+        }
+      }
+    },
+    "grapplemod:block_grapple_modifier": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "station to modify items, placed and interacted with"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed at base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod station block"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade grappling hooks",
+            "craft special items"
+          ],
+          "signal": "inferred",
+          "rationale": "right-click interaction for upgrades"
+        }
+      }
+    },
+    "grapplemod:doubleupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once, stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grappling hook mod item family"
+        },
+        "primary_uses": {
+          "values": [
+            "enable dual grappling hook mode"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name suggests double hook"
+        }
+      }
+    },
+    "grapplemod:forcefieldupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade family"
+        },
+        "primary_uses": {
+          "values": [
+            "add forcefield to grapple hook"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name"
+        }
+      }
+    },
+    "grapplemod:grapplinghook": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "movement tool held in hand, not a weapon"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for traversal and exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for swinging and moving"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "main grapplemod item"
+        },
+        "primary_uses": {
+          "values": [
+            "swing and climb terrain",
+            "pull yourself across gaps"
+          ],
+          "signal": "named",
+          "rationale": "tooltip and mod description"
+        },
+        "tier": {
+          "value": "base",
+          "signal": "inferred",
+          "rationale": "basic grappling hook, tiered via upgrades"
+        }
+      }
+    },
+    "grapplemod:launcheritem": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "launches player, mobility tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for vertical movement"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "launches player upward"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod tool"
+        },
+        "primary_uses": {
+          "values": [
+            "launch player into the air"
+          ],
+          "signal": "named",
+          "rationale": "tooltip explicit"
+        }
+      }
+    },
+    "grapplemod:limitsupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "set limits on grapple hook"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name indicates limiting"
+        }
+      }
+    },
+    "grapplemod:longfallboots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "boots worn on feet, provides armor and fall negating"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtainable via modifier block"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:fall"
+          ],
+          "signal": "named",
+          "rationale": "cancels fall damage when worn"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod equipment"
+        },
+        "primary_uses": {
+          "values": [
+            "prevent fall damage"
+          ],
+          "signal": "named",
+          "rationale": "tooltip explicit"
+        }
+      }
+    },
+    "grapplemod:magnetupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "add magnet attraction to hook"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name"
+        }
+      }
+    },
+    "grapplemod:motorupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "add motor to grapple hook"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name"
+        }
+      }
+    },
+    "grapplemod:repeller": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "held tool for magnetic repulsion"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific mobility situations"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for movement and hovering"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod tool"
+        },
+        "primary_uses": {
+          "values": [
+            "repel from blocks for flight"
+          ],
+          "signal": "named",
+          "rationale": "tooltip explanation"
+        }
+      }
+    },
+    "grapplemod:rocketupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "add rocket propulsion to hook"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name"
+        }
+      }
+    },
+    "grapplemod:ropeupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "add rope to grapple hook"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name"
+        }
+      }
+    },
+    "grapplemod:staffupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "enable ender staff on grapple"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name"
+        }
+      }
+    },
+    "grapplemod:swingupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "enable swing physics on hook"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name"
+        }
+      }
+    },
+    "grapplemod:throwupgradeitem": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "upgrade item for grappling hook"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/grapplemod_items"
+          ],
+          "signal": "inferred",
+          "rationale": "grapplemod upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "improve hook throwing speed"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade name"
+        }
+      }
+    },
+    "greate:aluminium_cogwheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic power transmission component"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "named",
+          "rationale": "display name and id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated contraptions"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "greate mod item family"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component in logistics network"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit rotational power"
+          ],
+          "signal": "inferred",
+          "rationale": "cogwheel function"
+        }
+      }
+    },
+    "greate:aluminium_crushing_wheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing machine part of contraptions"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "named",
+          "rationale": "display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building crushers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "greate mod item family"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing component in contraptions"
+        },
+        "primary_uses": {
+          "values": [
+            "crush ores and materials"
+          ],
+          "signal": "inferred",
+          "rationale": "standard crushing wheel use"
+        }
+      }
+    },
+    "greate:aluminium_encased_fan": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic fan for processing"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "named",
+          "rationale": "display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building fan setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated processing lines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "greate mod item family"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic processing component"
+        },
+        "primary_uses": {
+          "values": [
+            "create air flow for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "fan function"
+        }
+      }
+    },
+    "greate:aluminium_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "changes rotation axis"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "named",
+          "rationale": "display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated machinery"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "greate mod item family"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        },
+        "primary_uses": {
+          "values": [
+            "redirect rotational power"
+          ],
+          "signal": "inferred",
+          "rationale": "gearbox function"
+        }
+      }
+    },
+    "greate:aluminium_mechanical_mixer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic mixing component"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "named",
+          "rationale": "display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building mixers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated mixing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "greate mod item family"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing component"
+        },
+        "primary_uses": {
+          "values": [
+            "mix items and fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical mixer function"
+        }
+      }
+    },
+    "greate:aluminium_mechanical_press": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic pressing component"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "named",
+          "rationale": "display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building presses"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated pressing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "greate mod item family"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing component"
+        },
+        "primary_uses": {
+          "values": [
+            "press items into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical press function"
+        }
+      }
+    },
+    "greate:aluminium_mechanical_pump": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic fluid pump"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "named",
+          "rationale": "display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building fluid systems"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated fluid transport"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "greate mod item family"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics component"
+        },
+        "primary_uses": {
+          "values": [
+            "transport fluids in contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical pump function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

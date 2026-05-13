@@ -1,0 +1,1837 @@
+{
+  "items": {
+    "gtceu:pump_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine component for fluid output, not a workstation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "Component with common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and rarely carried in hotbar"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Block item crafted at workstation, no loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block, fits standard chests"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid output for water pump",
+            "Machine component in GTCEu multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Semantic tooltip says 'Fluid Output for Water Pump', also a hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'hatch'",
+          "rationale": "GregTech hatch subsystem for multiblocks"
+        }
+      }
+    },
+    "gtceu:pure_almandine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of a refined material"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "rationale": "Id suffix _almandine_dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "Common material item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk material processed in stacks, not everyday carry"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated ore processing chains"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced from crushed ore by pressing/milling, no loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable material in chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id: _dust and name 'Purified Pile of ... Dust'",
+          "rationale": "Intermediate dust stage before washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 64, used in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Intermediate for ore refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says 'Drop in Water to get Clean Dust'"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral dust fits refined ores storage"
+        }
+      }
+    },
+    "gtceu:pure_aluminium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of a refined material"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "Id suffix _aluminium_dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "Common material item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk material processed in stacks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated ore processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced from crushed ore, no loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable material in chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, bulk use"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Intermediate for ore refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Drop in Water"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral dust"
+        }
+      }
+    },
+    "gtceu:pure_alunite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of a refined material"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "rationale": "Id suffix _alunite_dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, crafted"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Intermediate for ore refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_amethyst_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "Id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Intermediate for gem processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Drop in Water"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_apatite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Phosphorus source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_armalcolite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Titanium intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_asbestos_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "asbestos",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Hazardous material component"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip indicates hazard"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_barite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "barite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Barium source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_basaltic_mineral_sand_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "basaltic_mineral_sand",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Smelt into cast iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: melts into cast iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_bastnasite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "bastnasite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Rare earth source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_bauxite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "bauxite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Aluminium source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Al2O3"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_bentonite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "bentonite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Clay additive"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_beryllium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into ingot",
+            "Wash into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipes: blasting/smelting to ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_bismuth_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into bismuth ingot",
+            "Wash into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: melts into bismuth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_blue_topaz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "blue_topaz",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Gem dust intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_borax_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "borax",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Boron source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_bornite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "bornite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into copper",
+            "Wash into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: melts into copper"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_calcite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "calcite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Calcium source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_cassiterite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into tin",
+            "Wash into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: melts into tin"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_cassiterite_sand_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "cassiterite_sand",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into tin",
+            "Wash into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: melts into tin (96 mB)"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_certus_quartz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "AE2 material intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: SiO2"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_chalcocite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "chalcocite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into copper",
+            "Wash into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: melts into copper"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_chalcopyrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "chalcopyrite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into copper",
+            "Wash into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: melts into copper"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:pure_chromite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "material_family": {
+          "value": "chromite",
+          "signal": "pattern",
+          "rationale": "Id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack 64"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash into clean dust",
+            "Chromium source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

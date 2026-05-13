@@ -1,0 +1,1744 @@
+{
+  "items": {
+    "gtceu:black_sand_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player mines and processes it, stores as raw ore"
+        },
+        "material_family": {
+          "value": "vanadium_magnetite",
+          "signal": "named",
+          "evidence": "stage2 material_family",
+          "rationale": "Given by ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Picked up often during mining runs"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into vanadium",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 32, accumulated in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore form"
+        }
+      }
+    },
+    "gtceu:black_sand_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player mines and processes it"
+        },
+        "material_family": {
+          "value": "wulfenite",
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Given by ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Picked up often during mining"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into wulfenite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 32, bulk storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore form"
+        }
+      }
+    },
+    "gtceu:black_sand_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player mines and processes it"
+        },
+        "material_family": {
+          "value": "yellow_garnet",
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Given by ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Picked up often during mining"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into yellow garnet",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 32, bulk storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore form"
+        }
+      }
+    },
+    "gtceu:black_sand_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player mines and processes it"
+        },
+        "material_family": {
+          "value": "yellow_limonite",
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Given by ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Picked up often during mining"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into yellow limonite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 32, bulk storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore form"
+        }
+      }
+    },
+    "gtceu:black_sand_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player mines and processes it"
+        },
+        "material_family": {
+          "value": "zeolite",
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Given by ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Picked up often during mining"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into zeolite",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 32, bulk storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore form"
+        }
+      }
+    },
+    "gtceu:black_steel_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id ends _axe + tag minecraft:axes",
+          "rationale": "Axe tool for chopping"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from tool name"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "Tool tier matches material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential tool always carried"
+        },
+        "primary_uses": {
+          "values": [
+            "chopping wood",
+            "stripping logs",
+            "tree felling"
+          ],
+          "signal": "named",
+          "evidence": "tooltip shows Lumberjack and Artisan",
+          "rationale": "Multiple woodworking uses"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipe",
+          "rationale": "Crafted at anvil"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking tool group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Durable tool, one per player"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "material is black_steel",
+          "rationale": "Black steel tier"
+        }
+      }
+    },
+    "gtceu:black_steel_axe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for axe"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in crafting stash"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black steel axe"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool head for assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipes (anvil, curving)",
+          "rationale": "Forged on anvil"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, used one at a time"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "material is black_steel",
+          "rationale": "Black steel tier"
+        }
+      }
+    },
+    "gtceu:black_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed metal block, not a container"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or moving storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compressed storage of black steel",
+            "decoration",
+            "building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Common uses for metal block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has compacting recipe",
+          "rationale": "Crafted from ingots"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "Storage block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 16, used in bulk"
+        }
+      }
+    },
+    "gtceu:black_steel_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small metal component for crafting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in component storage"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting screws and tools",
+            "machine assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Common component usage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "multiple production recipes",
+          "rationale": "Crafted from rods/screws"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier component group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, moderate usage"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier based on cable voltage"
+        }
+      }
+    },
+    "gtceu:black_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool for fluid transport"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when processing fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten black steel",
+            "fluid handling in GT machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid logistics"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _bucket + semantic_text State: Liquid",
+          "rationale": "Holds molten metal"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores fluids"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Can fill and empty fluid"
+        }
+      }
+    },
+    "gtceu:black_steel_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id ends _knife + tag forge:tools/butchery_knives",
+          "rationale": "Butchery tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "Tool tier matches material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specialized tool, not always carried"
+        },
+        "primary_uses": {
+          "values": [
+            "butchering animals for more meat"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Butcher",
+          "rationale": "Unique butcher ability"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipe",
+          "rationale": "Crafted at anvil"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Animal husbandry activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Durable tool, one per player"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "material is black_steel",
+          "rationale": "Black steel tier"
+        }
+      }
+    },
+    "gtceu:black_steel_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for knife"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in crafting stash"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black steel butchery knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool head for assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipes (anvil, curving)",
+          "rationale": "Forged on anvil"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, used one at a time"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "material is black_steel",
+          "rationale": "Black steel tier"
+        }
+      }
+    },
+    "gtceu:black_steel_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/crowbars",
+          "rationale": "Crowbar tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "Tool tier matches material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specialized maintenance tool"
+        },
+        "primary_uses": {
+          "values": [
+            "dismounting covers",
+            "rotating rails",
+            "maintenance"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Dismounts Covers, Railroad Engineer",
+          "rationale": "Multiple maintenance uses"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipe",
+          "rationale": "Crafted at anvil"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine maintenance"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Durable tool, one per player"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in EV maintenance"
+        }
+      }
+    },
+    "gtceu:black_steel_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power cable block for energy networks"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "primary_uses": {
+          "values": [
+            "transferring EV power",
+            "building power lines"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage 2048 EV",
+          "rationale": "EV energy transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy and logistics network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "EV voltage tier",
+          "rationale": "EV component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains cable",
+          "rationale": "Cable subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, used in moderate lengths"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage 2048 (EV)",
+          "rationale": "EV tier cable"
+        }
+      }
+    },
+    "gtceu:black_steel_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power wire block for energy networks"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "primary_uses": {
+          "values": [
+            "transferring EV power",
+            "wiring machines"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage 2048 EV",
+          "rationale": "EV energy transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy and logistics network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "EV voltage tier",
+          "rationale": "EV component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "wire part of cable family",
+          "rationale": "Cable subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, used in moderate lengths"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage 2048 (EV)",
+          "rationale": "EV tier wire"
+        }
+      }
+    },
+    "gtceu:black_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form of material"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in crafting stash"
+        },
+        "primary_uses": {
+          "values": [
+            "alloying in mixer",
+            "smelting into ingots",
+            "crafting repair kits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in multiple processes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "many production recipes (milling)",
+          "rationale": "Milled from blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Pure dust storage group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, used in bulk"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier material"
+        }
+      }
+    },
+    "gtceu:black_steel_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/files",
+          "rationale": "File tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "Tool tier matches material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting tool, kept in tool stash"
+        },
+        "primary_uses": {
+          "values": [
+            "shaping metal parts in crafting",
+            "crafting many GT components"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Crafting Uses",
+          "rationale": "Used in 595+ recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipe",
+          "rationale": "Crafted at anvil"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "Artisan tool group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Durable tool, one per player"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "material is black_steel",
+          "rationale": "Black steel tier"
+        }
+      }
+    },
+    "gtceu:black_steel_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for file"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in crafting stash"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black steel file"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool head for assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipes (anvil, curving)",
+          "rationale": "Forged on anvil"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, used one at a time"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "material is black_steel",
+          "rationale": "Black steel tier"
+        }
+      }
+    },
+    "gtceu:black_steel_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:foils",
+          "rationale": "Thin metal sheet"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in component storage"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fine wires",
+            "insulation in components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in wire making"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipes (rolling, crafting)",
+          "rationale": "Rolled from plate"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, used in moderate amounts"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier material"
+        }
+      }
+    },
+    "gtceu:black_steel_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine structure block"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "building machine casings",
+            "structural support for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Frame is a structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipe",
+          "rationale": "Crafted from plates"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine building activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:frames",
+          "rationale": "Frame storage group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in multiblock machines"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 32, used in moderate quantities"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier frame"
+        }
+      }
+    },
+    "gtceu:black_steel_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Machine component, not a placed block"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in component storage"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting rotational power",
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Gear is a power transmission part"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "multiple production recipes",
+          "rationale": "Crafted from plates or welded"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mechanical power"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV component group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 4, used as component"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier gear"
+        }
+      }
+    },
+    "gtceu:black_steel_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/hammers",
+          "rationale": "Hammer tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "Tool tier matches material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting tool, kept in tool stash"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing blocks when mining",
+            "crafting metal parts"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Crushes Blocks, Crafting Uses",
+          "rationale": "Dual use as pick and craft tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipe",
+          "rationale": "Crafted at anvil"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "Artisan tool group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Durable tool, one per player"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "material is black_steel",
+          "rationale": "Black steel tier"
+        }
+      }
+    },
+    "gtceu:black_steel_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for hammer"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in crafting stash"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black steel hammer"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool head for assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipes (anvil, curving)",
+          "rationale": "Forged on anvil"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 64, used one at a time"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "material is black_steel",
+          "rationale": "Black steel tier"
+        }
+      }
+    },
+    "gtceu:black_steel_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "High-capacity power cable block"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building large power lines"
+        },
+        "primary_uses": {
+          "values": [
+            "high-amperage EV power transfer",
+            "building dense power networks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Amperage 48, EV",
+          "rationale": "High current EV transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy and logistics network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "EV voltage tier",
+          "rationale": "EV component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains cable",
+          "rationale": "Cable subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 16, used in moderate lengths"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage 2048 (EV)",
+          "rationale": "EV tier cable"
+        }
+      }
+    },
+    "gtceu:black_steel_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "High-capacity power wire block"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building large power lines"
+        },
+        "primary_uses": {
+          "values": [
+            "high-amperage EV power transfer",
+            "wiring dense machine setups"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Amperage 48, EV",
+          "rationale": "High current EV transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy and logistics network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "EV voltage tier",
+          "rationale": "EV component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "wire part of cable family",
+          "rationale": "Cable subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable 16, used in moderate lengths"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage 2048 (EV)",
+          "rationale": "EV tier wire"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:black_steel_block",
+      "facet": "form",
+      "value": "storage_block",
+      "rationale": "Compressed block form of metal, not a container"
+    },
+    {
+      "item": "gtceu:black_steel_frame",
+      "facet": "form",
+      "value": "frame",
+      "rationale": "Machine frame block, clear structural form"
+    },
+    {
+      "item": "gtceu:black_steel_double_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Power cable block for energy transfer"
+    },
+    {
+      "item": "gtceu:black_steel_double_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Power wire block for energy transfer"
+    },
+    {
+      "item": "gtceu:black_steel_hex_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "High-capacity cable block"
+    },
+    {
+      "item": "gtceu:black_steel_hex_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "High-capacity wire block"
+    },
+    {
+      "item": "gtceu:black_steel_axe",
+      "facet": "form",
+      "value": "tool",
+      "rationale": "Axe tool form"
+    },
+    {
+      "item": "gtceu:black_steel_butchery_knife",
+      "facet": "form",
+      "value": "tool",
+      "rationale": "Butchery knife tool"
+    },
+    {
+      "item": "gtceu:black_steel_crowbar",
+      "facet": "form",
+      "value": "tool",
+      "rationale": "Crowbar tool"
+    },
+    {
+      "item": "gtceu:black_steel_file",
+      "facet": "form",
+      "value": "tool",
+      "rationale": "File tool"
+    },
+    {
+      "item": "gtceu:black_steel_hammer",
+      "facet": "form",
+      "value": "tool",
+      "rationale": "Hammer tool"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,1228 @@
+{
+  "items": {
+    "rnr:flagstone/yellow_sandstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road paving block; structural infrastructure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building roads, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "road and path construction",
+            "improves walk speed"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for faster travel on paths"
+        },
+        "material_family": {
+          "value": "yellow_sandstone",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "sandstone material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building roads and paths"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 64, used in large quantities"
+        }
+      }
+    },
+    "rnr:gravel_fill/andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/basalt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/chalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/chert": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/claystone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/dacite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/diorite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/dolomite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/gabbro": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/gneiss": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/limestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/marble": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/phyllite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/quartzite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/schist": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/shale": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:gravel_fill/slate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road base material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "base layer for roads",
+            "compacted path material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fill for road construction"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "stone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:gravel_road_items",
+          "rationale": "gravel-based road fill"
+        }
+      }
+    },
+    "rnr:green_sandstone_flagstones": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road paving block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building roads"
+        },
+        "primary_uses": {
+          "values": [
+            "pave paths and roads",
+            "increase walk speed"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for faster travel"
+        },
+        "material_family": {
+          "value": "green_sandstone",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "sandstone type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road construction"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32, used in quantities"
+        }
+      }
+    },
+    "rnr:green_sandstone_flagstones_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building roads"
+        },
+        "primary_uses": {
+          "values": [
+            "pave paths with slabs",
+            "increase walk speed"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant for roads"
+        },
+        "material_family": {
+          "value": "green_sandstone",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "same material as flagstone"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road construction"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32, used in quantities"
+        }
+      }
+    },
+    "rnr:green_sandstone_flagstones_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road stair variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building roads"
+        },
+        "primary_uses": {
+          "values": [
+            "pave slopes and steps",
+            "increase walk speed"
+          ],
+          "signal": "inferred",
+          "rationale": "stair variant for roads"
+        },
+        "material_family": {
+          "value": "green_sandstone",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "same material as flagstone"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road construction"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32, used in quantities"
+        }
+      }
+    },
+    "rnr:hoggin": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "named",
+          "evidence": "guide page 'Hoggin Paths'",
+          "rationale": "placed as compactible groundcover path"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for path projects"
+        },
+        "primary_uses": {
+          "values": [
+            "create simple paths",
+            "moderate walk speed boost"
+          ],
+          "signal": "named",
+          "evidence": "guide page text",
+          "rationale": "groundcover with 10% speed boost"
+        },
+        "material_family": {
+          "value": "hoggin",
+          "signal": "named",
+          "evidence": "guide page + id",
+          "rationale": "mixture of clay, gravel, sand"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "path building"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32, used in bulk"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "rnr:flagstone/yellow_sandstone",
+      "facet": "organization_group",
+      "label": "Road Materials",
+      "proposed_id": "pack:tfg/road_materials",
+      "rationale": "Flagstones, hoggin, and other road construction blocks form a coherent storage group not covered by existing accepted ids.",
+      "evidence": "tag rnr:road_materials used by multiple items"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

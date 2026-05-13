@@ -1,0 +1,1358 @@
+{
+  "items": {
+    "railways:track_tfc_palm": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Train tracks are rails; player stores with transport gear"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Made from steel/wrought iron in sequencing recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is rail-based transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's train system from Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building train tracks for rail networks",
+            "Transporting players and items via trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use is laying track for trains"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building rail, but not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component rarity is common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as track blocks"
+        }
+      }
+    },
+    "railways:track_tfc_palm_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow variant of train track; transport item"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Made from steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail-based transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails train track"
+        },
+        "primary_uses": {
+          "values": [
+            "Building narrow train tracks",
+            "Transporting players and items via trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Narrow gauge track for rail networks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as track"
+        }
+      }
+    },
+    "railways:track_tfc_palm_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide variant of train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron construction"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create train system"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wide train tracks",
+            "Transporting players and items via trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Wide gauge track"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as track"
+        }
+      }
+    },
+    "railways:track_tfc_pine": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Pine train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails track"
+        },
+        "primary_uses": {
+          "values": [
+            "Building pine train tracks",
+            "Rail network expansion"
+          ],
+          "signal": "inferred",
+          "rationale": "Laying track for trains"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable track block"
+        }
+      }
+    },
+    "railways:track_tfc_pine_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow pine track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building narrow pine tracks",
+            "Rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Narrow gauge track"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_pine_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide pine track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wide pine tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Wide gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_rosewood": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Rosewood train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building rosewood tracks",
+            "Rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Laying track"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_rosewood_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow rosewood track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building narrow rosewood tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Narrow gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_rosewood_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide rosewood track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wide rosewood tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Wide gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_sequoia": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Sequoia train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building sequoia tracks",
+            "Rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Laying track"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_sequoia_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow sequoia track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building narrow sequoia tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Narrow gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_sequoia_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide sequoia track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wide sequoia tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Wide gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_spruce": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Spruce train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building spruce tracks",
+            "Rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Laying track"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_spruce_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow spruce track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building narrow spruce tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Narrow gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_spruce_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide spruce track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wide spruce tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Wide gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_sycamore": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Sycamore train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building sycamore tracks",
+            "Rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Laying track"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_sycamore_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow sycamore track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building narrow sycamore tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Narrow gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_sycamore_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide sycamore track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wide sycamore tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Wide gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_white_cedar": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "White cedar train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building white cedar tracks",
+            "Rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Laying track"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_white_cedar_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow white cedar track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building narrow white cedar tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Narrow gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_white_cedar_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide white cedar track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wide white cedar tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Wide gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_willow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Willow train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building willow tracks",
+            "Rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Laying track"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_willow_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow willow track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building narrow willow tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Narrow gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tfc_willow_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide willow track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wide willow tracks",
+            "Rail network"
+          ],
+          "signal": "inferred",
+          "rationale": "Wide gauge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable"
+        }
+      }
+    },
+    "railways:track_tieless": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Tieless train track"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Steel/wrought iron construction"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam 'n' Rails track"
+        },
+        "primary_uses": {
+          "values": [
+            "Building tieless tracks",
+            "Rail network infrastructure"
+          ],
+          "signal": "inferred",
+          "rationale": "Modern track style"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable track block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

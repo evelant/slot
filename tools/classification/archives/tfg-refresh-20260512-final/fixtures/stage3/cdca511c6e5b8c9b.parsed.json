@@ -1,0 +1,1824 @@
+{
+  "items": {
+    "gtceu:sandy_jadestone_chromite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_cinnabar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into coal coke",
+            "used as fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "coal ore smelted to coal/charcoal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting and blasting only",
+          "rationale": "coal ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process coal ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_cobalt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into desh metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "source of desh"
+          ],
+          "signal": "inferred",
+          "rationale": "desh ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "only milling recipe present",
+          "rationale": "desh ore is milled to crushed ore"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipe",
+          "rationale": "ore acts as input in milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples only milling",
+          "rationale": "only mill processes this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into diamond"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into gems",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into material",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "diatomite ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into material",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "electrotine ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into gem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into emerald",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "emerald ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into material",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "fullers earth ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lead/silver",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "galena ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into material",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "garnet sand ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into nickel",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "garnierite ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into material",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "glauconite sand ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into iron",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "goethite ore is an iron source"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into gold ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "gold ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into material",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "granitic mineral sand ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into graphite",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "graphite ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into gem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into green sapphire",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "green sapphire ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into material",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "grossular ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into gypsum",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "gypsum ore processing uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:sandy_jadestone_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "raw ore block mined and processed into iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs then stored or processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into iron ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "hematite ore is a primary iron source"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground veins"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore is input to these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "ore acts as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "stations that process ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

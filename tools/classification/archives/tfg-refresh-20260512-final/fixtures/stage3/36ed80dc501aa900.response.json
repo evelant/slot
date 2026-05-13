@@ -1,0 +1,960 @@
+{
+  "items": {
+    "tfc:bucket/rainbow_trout": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to transport fish; inventory tool for fishing."
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fish",
+            "fishing activity"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses it to catch and move fish."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when fishing or relocating fish."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket containing water and fish."
+        }
+      }
+    },
+    "tfc:bucket/red_dye": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used for dyeing in barrels."
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing items",
+            "crafting dye fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in barrel dye recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when dyeing or processing colors."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with red dye fluid."
+        }
+      }
+    },
+    "tfc:bucket/rum": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bulk fluid bucket for drink processing."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting drinks",
+            "aging in barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Rum fluid used in barrel recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when producing alcohol."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with rum."
+        }
+      }
+    },
+    "tfc:bucket/rye_whiskey": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bulk fluid bucket for drink processing."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting drinks",
+            "aging in barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Rye whiskey fluid used in barrel recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when producing alcohol."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with rye whiskey."
+        }
+      }
+    },
+    "tfc:bucket/sake": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bulk fluid bucket for drink processing."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting drinks",
+            "aging in barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Sake fluid used in barrel recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when producing alcohol."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with sake."
+        }
+      }
+    },
+    "tfc:bucket/salmon": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to transport fish."
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fish",
+            "fishing activity"
+          ],
+          "signal": "inferred",
+          "rationale": "Player carries fish from fishing."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when fishing or relocating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket containing water and salmon."
+        }
+      }
+    },
+    "tfc:bucket/salt_water": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket for water transport."
+        },
+        "primary_uses": {
+          "values": [
+            "obtaining salt",
+            "drinking in emergency"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be drunk (thirst effect) or evaporated for salt."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when near ocean or for salt production."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with seawater."
+        }
+      }
+    },
+    "tfc:bucket/smallmouth_bass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to transport fish."
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fish",
+            "fishing activity"
+          ],
+          "signal": "inferred",
+          "rationale": "Player carries fish from fishing."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when fishing or relocating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket containing water and smallmouth bass."
+        }
+      }
+    },
+    "tfc:bucket/spring_water": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Drinkable water bucket with warming effect."
+        },
+        "primary_uses": {
+          "values": [
+            "drinking",
+            "warming up",
+            "fluid crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides thirst and warmth; used in pot recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when exploring for hydration and warmth."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with spring water."
+        }
+      }
+    },
+    "tfc:bucket/tallow": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket of animal fat used in crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting candles",
+            "making soap"
+          ],
+          "signal": "inferred",
+          "rationale": "Tallow is a key ingredient for candles and soap."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing animal fat."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with tallow."
+        }
+      }
+    },
+    "tfc:bucket/tannin": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used in leatherworking."
+        },
+        "primary_uses": {
+          "values": [
+            "leatherworking",
+            "dyeing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tannin is required for processing hides."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when making leather."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with tannin."
+        }
+      }
+    },
+    "tfc:bucket/tropical_fish": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to transport tropical fish."
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fish",
+            "decorative aquarium"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to catch and move tropical fish."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when fishing or building aquariums."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket containing water and tropical fish."
+        }
+      }
+    },
+    "tfc:bucket/vinegar": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket for food preservation."
+        },
+        "primary_uses": {
+          "values": [
+            "preserving food",
+            "pickling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in pickling and preserving recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing food for long-term storage."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with vinegar."
+        }
+      }
+    },
+    "tfc:bucket/vodka": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bulk fluid bucket for drink processing."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting drinks",
+            "aging in barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Vodka fluid used in barrel recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when producing alcohol."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with vodka."
+        }
+      }
+    },
+    "tfc:bucket/whiskey": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bulk fluid bucket for drink processing."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting drinks",
+            "aging in barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Whiskey fluid used in barrel recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when producing alcohol."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with whiskey."
+        }
+      }
+    },
+    "tfc:bucket/white_dye": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used for dyeing."
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing items",
+            "crafting dye fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in barrel dye recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when dyeing or processing colors."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with white dye fluid."
+        }
+      }
+    },
+    "tfc:bucket/yellow_dye": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used for dyeing."
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing items",
+            "crafting dye fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in barrel dye recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when dyeing or processing colors."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with yellow dye fluid."
+        }
+      }
+    },
+    "tfc:burlap_cloth": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Textile material used in many crafting recipes."
+        },
+        "material_family": {
+          "value": "burlap",
+          "signal": "named",
+          "evidence": "display_name 'Burlap Cloth'",
+          "rationale": "Item name explicitly identifies material."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting bags",
+            "crafting sails",
+            "tailoring"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many shaped recipes for backpacks, sails, clothing."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting textile items."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "Cloth items are naturally stored with weaving supplies."
+        }
+      }
+    },
+    "tfc:cake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible food item, placed or eaten."
+        },
+        "primary_uses": {
+          "values": [
+            "eating",
+            "celebrating",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Cake can be eaten or placed as decor."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Special treat, not carried often."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires ingredients and baking, not abundant."
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Cake is a prepared meal, not raw."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly for nutrition."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cake is baked/cooked."
+        }
+      }
+    },
+    "tfc:calcite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined mineral used in lime production and crafting."
+        },
+        "material_family": {
+          "value": "calcite",
+          "signal": "named",
+          "evidence": "display_name 'Calcite'",
+          "rationale": "Item name identifies material."
+        },
+        "primary_uses": {
+          "values": [
+            "producing lime",
+            "crafting",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes for lime; also a decorative block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining calcite or building with it."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        }
+      }
+    },
+    "tfc:candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for lighting and decoration; no UI."
+        },
+        "primary_uses": {
+          "values": [
+            "providing light",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is lighting up areas."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up base lighting or decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Candles are light sources grouped with lamps."
+        }
+      }
+    },
+    "tfc:candle/black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored candle for lighting and decoration."
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display_name 'Black Candle'",
+          "rationale": "Explicitly named black."
+        },
+        "primary_uses": {
+          "values": [
+            "providing light",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ambient lighting and color coordination."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating base."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Candles are light sources grouped with lamps."
+        }
+      }
+    },
+    "tfc:candle/blue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored candle for lighting and decoration."
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "display_name 'Blue Candle'",
+          "rationale": "Explicitly named blue."
+        },
+        "primary_uses": {
+          "values": [
+            "providing light",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ambient lighting and color coordination."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating base."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Candles are light sources grouped with lamps."
+        }
+      }
+    },
+    "tfc:candle/brown": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored candle for lighting and decoration."
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "display_name 'Brown Candle'",
+          "rationale": "Explicitly named brown."
+        },
+        "primary_uses": {
+          "values": [
+            "providing light",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ambient lighting and color coordination."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating base."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Candles are light sources grouped with lamps."
+        }
+      }
+    },
+    "tfc:candle/cyan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored candle for lighting and decoration."
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "named",
+          "evidence": "display_name 'Cyan Candle'",
+          "rationale": "Explicitly named cyan."
+        },
+        "primary_uses": {
+          "values": [
+            "providing light",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ambient lighting and color coordination."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating base."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity: common",
+          "rationale": "Component rarity is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Candles are light sources grouped with lamps."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "tfc:candle",
+      "facet": "emits_light",
+      "value": true,
+      "rationale": "Candle block emits light when placed."
+    },
+    {
+      "item": "tfc:candle/black",
+      "facet": "emits_light",
+      "value": true,
+      "rationale": "Colored candle also emits light."
+    },
+    {
+      "item": "tfc:candle/blue",
+      "facet": "emits_light",
+      "value": true,
+      "rationale": "Colored candle also emits light."
+    },
+    {
+      "item": "tfc:candle/brown",
+      "facet": "emits_light",
+      "value": true,
+      "rationale": "Colored candle also emits light."
+    },
+    {
+      "item": "tfc:candle/cyan",
+      "facet": "emits_light",
+      "value": true,
+      "rationale": "Colored candle also emits light."
+    }
+  ]
+}

@@ -1,0 +1,961 @@
+{
+  "items": {
+    "gtceu:naquadah_alloy_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for machines"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "evidence": "id suffix _spring + forge:springs/naquadah_alloy tag",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stack 16, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag forge:swords, minecraft:swords",
+          "rationale": "sword classification"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "evidence": "id suffix _sword + naquadah_alloy in name",
+          "rationale": "sword made of naquadah alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "dealing high melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "combat tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary weapon, carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_sword_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for sword"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "evidence": "id suffix _head + forge:sword_heads/naquadah_alloy tag",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting naquadah alloy sword"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in sword recipe"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate component, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_turbine_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "machine component"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:turbine_blades/naquadah_alloy",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting turbine generators"
+          ],
+          "signal": "inferred",
+          "rationale": "used in power gen recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stack 4, not common carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_whisk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "machine component for food processing"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:whisks/naquadah_alloy",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting food processing machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_wire_cutter_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tool component"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:wire_cutter_heads/naquadah_alloy",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wire cutters"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in tool recipe"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_wrench_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tool component"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:wrench_tips/naquadah_alloy",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wrenches"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in tool recipe"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage form of naquadah"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "id suffix _block + tag forge:storage_blocks/naquadah",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of naquadah",
+            "crafting plates and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as material source"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack 16, used in crafting, not hotbar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal component"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/naquadah",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting screws and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component stackable 64, but not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_boule": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw circuit material"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "inferred",
+          "rationale": "naquadah-doped silicon, but naquadah association"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says Raw Circuit"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit ingredient, stored with circuits"
+        }
+      }
+    },
+    "gtceu:naquadah_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting and pouring liquid naquadah"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of molten metal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried, used in processes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting table"
+        }
+      }
+    },
+    "gtceu:naquadah_coil_block": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock component for heating"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "id contains naquadah",
+          "rationale": "made of naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "building advanced machine coils"
+          ],
+          "signal": "inferred",
+          "rationale": "coil block for multiblock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stack 32, placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "coil block is part of multiblock construction"
+        }
+      }
+    },
+    "gtceu:naquadah_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:double_cables/naquadah",
+          "rationale": "cable material"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting ZPM voltage energy"
+          ],
+          "signal": "inferred",
+          "rationale": "voltage rating on tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "players keep a stack for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:naquadah_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:double_wires/naquadah",
+          "rationale": "wire material"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting ZPM voltage energy"
+          ],
+          "signal": "inferred",
+          "rationale": "voltage rating on tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "players keep a stack for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire is part of cable subsystem"
+        }
+      }
+    },
+    "gtceu:naquadah_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "powdered material"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/naquadah",
+          "rationale": "dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "form is dust"
+        },
+        "primary_uses": {
+          "values": [
+            "alloying",
+            "crafting components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing and crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust stored with pure dusts"
+        }
+      }
+    },
+    "gtceu:naquadah_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal sheet"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/naquadah",
+          "rationale": "foil material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fine wires and capacitors"
+          ],
+          "signal": "inferred",
+          "rationale": "used in small component recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stackable 64, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables/naquadah",
+          "rationale": "cable material"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting ZPM voltage at high amperage"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip voltage and amperage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack 16, used in large builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:naquadah_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires/naquadah",
+          "rationale": "wire material"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting ZPM voltage at high amperage"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip voltage and amperage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack 16, used in large builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire is part of cable subsystem"
+        }
+      }
+    },
+    "gtceu:naquadah_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport pipe"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes/naquadah",
+          "rationale": "pipe material"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids at high rates"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip transfer rate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stack 16, used in specialized builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid pipe subsystem"
+        }
+      }
+    },
+    "gtceu:naquadah_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore indicator block, processed into dust"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/naquadah",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "locating naquadah ore",
+            "processing into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rock for prospecting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        }
+      }
+    },
+    "gtceu:naquadah_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined metal bar"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/naquadah",
+          "rationale": "ingot material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "form is ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced tools and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "basic material for many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "players keep stacks in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:pileable_ingots tag",
+          "rationale": "tag indicates pileable storage"
+        }
+      }
+    },
+    "gtceu:naquadah_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport pipe"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:large_fluid_pipes/naquadah",
+          "rationale": "pipe material"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids at high rates"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip transfer rate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stack 32, used in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid pipe subsystem"
+        }
+      }
+    },
+    "gtceu:naquadah_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multi-channel fluid pipe"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:nonuple_fluid_pipes/naquadah",
+          "rationale": "pipe material"
+        },
+        "primary_uses": {
+          "values": [
+            "multi-channel fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "channels on tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stack 16, specialized"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid pipe subsystem"
+        }
+      }
+    },
+    "gtceu:naquadah_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "standard fluid pipe"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes/naquadah",
+          "rationale": "pipe material"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "basic fluid pipe"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stack 32, used in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid pipe subsystem"
+        }
+      }
+    },
+    "gtceu:naquadah_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/naquadah",
+          "rationale": "nugget material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "form is nugget"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingots and small components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stackable 64, but not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "rarity component common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets, existing group",
+          "rationale": "nuggets stored together"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

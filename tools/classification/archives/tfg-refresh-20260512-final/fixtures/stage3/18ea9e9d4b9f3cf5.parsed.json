@@ -1,0 +1,1722 @@
+{
+  "items": {
+    "gtceu:tuff_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for metal processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into goethite",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of goethite metal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for gold processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into gold",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of gold"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into mineral sand",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of granitic mineral sand"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for carbon source"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into graphite",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of graphite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for gem source"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into green sapphire",
+            "gem source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of green sapphire gem"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for mineral"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into grossular",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of grossular"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for gypsum"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into gypsum",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of gypsum"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for iron source"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into hematite",
+            "iron processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of iron via hematite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for titanium source"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ilmenite",
+            "titanium processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of titanium"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for iron"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron ingots",
+            "iron processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of iron"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for kyanite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into kyanite",
+            "aluminosilicate source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of kyanite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for lapis"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lapis",
+            "dye source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of lapis lazuli"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for lazurite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lazurite",
+            "gem source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of lazurite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for lead"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lead",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "source of lead"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for lepidolite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lepidolite",
+            "lithium source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of lithium"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for lignite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lignite",
+            "coal-like processing"
+          ],
+          "signal": "inferred",
+          "rationale": "carbon source ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:tuff_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for lithium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lithium",
+            "battery material"
+          ],
+          "signal": "inferred",
+          "rationale": "source of lithium"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for magnesite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into magnesite",
+            "magnesium source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of magnesium"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for magnetite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into magnetite",
+            "iron source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of iron"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for malachite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into malachite",
+            "copper source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for mica"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into mica",
+            "insulator material"
+          ],
+          "signal": "inferred",
+          "rationale": "source of mica"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for molybdenite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into molybdenite",
+            "molybdenum source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of molybdenum"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for molybdenum"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into molybdenum",
+            "alloy component"
+          ],
+          "signal": "inferred",
+          "rationale": "source of molybdenum metal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for monazite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into monazite",
+            "rare earth source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of rare earth elements"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption by type",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:tuff_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + id ends _ore",
+          "rationale": "ore block mined for naquadah"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "source of naquadah",
+            "high-tier fuel material"
+          ],
+          "signal": "inferred",
+          "rationale": "rare high-tier ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/tuff",
+          "rationale": "found in tuff underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + creative tab material_block",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

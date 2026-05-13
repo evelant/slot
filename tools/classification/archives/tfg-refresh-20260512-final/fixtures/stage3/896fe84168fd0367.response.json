@@ -1,0 +1,1588 @@
+{
+  "items": {
+    "tfc:food/cooked_camelidae": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "creative_tab: tfc:food",
+          "rationale": "edible food item; player eats it"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity: common",
+          "rationale": "common food ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried for eating and cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in meal prep and eaten"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked land animal meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly and used in sandwiches"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Cooked'",
+          "rationale": "cooked version of raw meat"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/cooked_meats",
+          "rationale": "grouped with other cooked meats"
+        }
+      }
+    },
+    "tfc:food/cooked_chevon": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "creative_tab: tfc:food",
+          "rationale": "edible food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried regularly"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in meal prep"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked goat meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked meat"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_chicken": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked poultry"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_cod": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked fish ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats_and_substitutes"
+          ],
+          "signal": "pattern",
+          "rationale": "tag firmalife:foods/cooked_meats_and_substitutes"
+        }
+      }
+    },
+    "tfc:food/cooked_crappie": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked fish ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats_and_substitutes"
+          ],
+          "signal": "pattern",
+          "rationale": "tag firmalife:foods/cooked_meats_and_substitutes"
+        }
+      }
+    },
+    "tfc:food/cooked_duck": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked poultry"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_egg": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:egg"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked egg"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked egg ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/eggs"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/usable_in_sandwich etc."
+        }
+      }
+    },
+    "tfc:food/cooked_fox": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked game meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_frog_legs": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked amphibian"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_gran_feline": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked big cat"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_grouse": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked game bird"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_horse_meat": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked horse"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_hyena": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked hyena"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_lake_trout": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked fish ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats_and_substitutes"
+          ],
+          "signal": "pattern",
+          "rationale": "tag firmalife:foods/cooked_meats_and_substitutes"
+        }
+      }
+    },
+    "tfc:food/cooked_largemouth_bass": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked fish ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats_and_substitutes"
+          ],
+          "signal": "pattern",
+          "rationale": "tag firmalife:foods/cooked_meats_and_substitutes"
+        }
+      }
+    },
+    "tfc:food/cooked_mutton": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked sheep"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_peafowl": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked peafowl"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_pheasant": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked pheasant"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_pork": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked pork"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_quail": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked quail"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_rabbit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked rabbit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked meat ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:foods/cooked_meats"
+        }
+      }
+    },
+    "tfc:food/cooked_rainbow_trout": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked fish ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats_and_substitutes"
+          ],
+          "signal": "pattern",
+          "rationale": "tag firmalife:foods/cooked_meats_and_substitutes"
+        }
+      }
+    },
+    "tfc:food/cooked_rice": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked grain"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked grain ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "generic food group"
+        }
+      }
+    },
+    "tfc:food/cooked_salmon": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked fish ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats_and_substitutes"
+          ],
+          "signal": "pattern",
+          "rationale": "tag firmalife:foods/cooked_meats_and_substitutes"
+        }
+      }
+    },
+    "tfc:food/cooked_shellfish": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked shellfish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "rationale": "cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food",
+            "Cooked fish ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "direct eating and crafting meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats_and_substitutes"
+          ],
+          "signal": "pattern",
+          "rationale": "tag firmalife:foods/cooked_meats_and_substitutes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

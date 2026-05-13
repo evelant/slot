@@ -1,0 +1,1852 @@
+{
+  "items": {
+    "gtceu:rhyolite_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for monazite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of monazite after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for naquadah processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of naquadah after milling"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in mill only"
+        }
+      }
+    },
+    "gtceu:rhyolite_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for neodymium processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of neodymium after milling"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in mill only"
+        }
+      }
+    },
+    "gtceu:rhyolite_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for nether quartz processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of nether quartz after processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for nickel processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of nickel after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for oilsands processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of oilsands after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for olivine processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of olivine after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for opal processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of opal after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for palladium processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of palladium after milling"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in mill only"
+        }
+      }
+    },
+    "gtceu:rhyolite_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for pentlandite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of pentlandite after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for pitchblende processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of pitchblende after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for platinum processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of platinum after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for pollucite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of pollucite after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for powellite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of powellite after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_pyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for pyrite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of pyrite after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_pyrochlore_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for pyrochlore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of pyrochlore after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_pyrolusite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for pyrolusite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of pyrolusite after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_pyrope_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for pyrope processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of pyrope after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_quartzite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for quartz processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of quartz after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_realgar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for realgar processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of realgar after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_red_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for red garnet processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of red garnet after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for redstone processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of redstone after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_rock_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for rock salt processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of rock salt after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_ruby_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for ruby processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of ruby after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    },
+    "gtceu:rhyolite_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore mined for processing into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for salt processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of salt after milling and smelting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs, stackable to 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component minecraft:rarity common",
+          "rationale": "Rarity common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block, belongs with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected in large volumes during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and form=ore",
+          "rationale": "Raw ore stage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/rhyolite tag",
+          "rationale": "Generated in rhyolite underground"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in smelter, mill, and blast furnace"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

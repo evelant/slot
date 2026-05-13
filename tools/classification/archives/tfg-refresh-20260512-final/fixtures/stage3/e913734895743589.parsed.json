@@ -1,0 +1,793 @@
+{
+  "items": {
+    "sophisticatedbackpacks:stack_upgrade_tier_1": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack to enhance capacity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting or upgrading backpacks"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase backpack slot capacity by 2x"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states multistack capacity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_tier_2": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack to enhance capacity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting or upgrading backpacks"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase backpack slot capacity by 4x"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states multistack capacity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_tier_3": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack to enhance capacity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting or upgrading backpacks"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase backpack slot capacity by 8x"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states multistack capacity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_tier_4": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack to enhance capacity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting or upgrading backpacks"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase backpack slot capacity by 16x"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states multistack capacity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stonecutter_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "adds stonecutter functionality to backpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needing mobile stonecutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Add stonecutter crafting to backpack"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says 'Stonecutter in an upgrade tab'"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:survival_infinity_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "makes backpack items infinite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when wanting infinite items"
+        },
+        "primary_uses": {
+          "values": [
+            "Make backpack items infinite"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states effect"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:tank_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "adds fluid storage to backpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needing mobile fluid storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Add fluid storage to backpack"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states replacing inventory with fluid storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:tool_swapper_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "auto-swaps tools from backpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for convenience when mining"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-swap tools when mining"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip describes automatic tool swapping"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:upgrade_base": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for upgrades, stored in stash"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting upgrades"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft Sophisticated Backpacks upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in 15 upgrade recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:void_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "voids selected items in backpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needing to void items automatically"
+        },
+        "primary_uses": {
+          "values": [
+            "Void filtered items in backpack"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states voids items selected in filter"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:xp_pump_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "pumps XP between tank and player"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when managing XP"
+        },
+        "primary_uses": {
+          "values": [
+            "Pump XP between backpack tank and player"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip describes XP pumping"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "pattern",
+          "rationale": "part of Sophisticated Backpacks mod item group"
+        }
+      }
+    },
+    "sophisticatedcore:xp_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool used to store/transport liquid XP"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when dealing with XP"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and transport liquid XP",
+            "Fill XP tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "holds XP fluid, used in sophisticated core machines"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket filled with liquid XP"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in fluid slots"
+        }
+      }
+    },
+    "soulbinding:binding_chains": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to soulbind items or immobilize mobs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for anvil soulbinding or mob control"
+        },
+        "primary_uses": {
+          "values": [
+            "Soulbind items on anvil",
+            "Immobilize mobs by tossing"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip describes both uses"
+        }
+      }
+    },
+    "species:alphacene_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "decorative grass from Martian world"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried when building Martian landscapes"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate Martian landscapes"
+          ],
+          "signal": "inferred",
+          "rationale": "natural plant block used for decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wild plant from alien dimension"
+        },
+        "palette": {
+          "values": [
+            "green"
+          ],
+          "signal": "inferred",
+          "rationale": "looks green from name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "plant item fits plant group"
+        }
+      }
+    },
+    "species:alphacene_grass_block": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "terrain block like grass block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when terraforming or building"
+        },
+        "primary_uses": {
+          "values": [
+            "Build landscapes",
+            "Terraform"
+          ],
+          "signal": "inferred",
+          "rationale": "natural block used for terrain construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "pattern",
+          "rationale": "grass block is a dirt variant"
+        }
+      }
+    },
+    "species:alphacene_moss_block": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "moss-like block from Martian world"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried for decoration or composting"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with moss",
+            "Compost ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in decoration and compost recipes"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural moss block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "plant-like block fits plants group"
+        }
+      }
+    },
+    "species:alphacene_moss_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "carpet for decoration, placed as floor covering"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried for building decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate floors and ceilings with moss carpet"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet block used for decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "rationale": "carpet is a decorative block"
+        }
+      }
+    },
+    "species:alphacene_mushroom": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "natural mushroom from Mars"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with Martian mushrooms"
+          ],
+          "signal": "inferred",
+          "rationale": "small mushroom block used for decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "fungal plant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "plant item fits plants group"
+        }
+      }
+    },
+    "species:alphacene_mushroom_block": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "block from huge Martian mushroom"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried for building with mushroom theme"
+        },
+        "primary_uses": {
+          "values": [
+            "Build with Martian mushroom blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom block used as building material"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "part of natural fungus"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "plant-like block fits plants group"
+        }
+      }
+    },
+    "species:alphacene_mushroom_growth": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "growth that spreads moss on blocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried when making mossy variants"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply moss to blocks",
+            "Create mossy cobble/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many deploying recipes to make mossy variants"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant growth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "plant-like growth fits plants group"
+        }
+      }
+    },
+    "species:alphacene_tall_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "tall decorative grass from Mars"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried for landscaping"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with tall grass"
+          ],
+          "signal": "inferred",
+          "rationale": "tall plant block for decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wild plant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "plant item fits plants group"
+        }
+      }
+    },
+    "species:ancient_pinecone": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plantable item that grows a Trooper mob"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried to spawn companion mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a Trooper mob",
+            "Decorate with pinecone"
+          ],
+          "signal": "inferred",
+          "rationale": "used to plant and tame Trooper"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "pinecone from alien tree"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "plant-like item fits plants group"
+        }
+      }
+    },
+    "species:bewereager_head": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "mob head displayed as trophy"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "displayed on walls, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative mob head display"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a head block for decoration"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "looted from blocks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "animal head"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "rationale": "component rarity uncommon"
+        }
+      }
+    },
+    "species:bewereager_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "collectible spawn egg"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in creative inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn Bewereager in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "stage2 rule"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "species:birt_dwelling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "bird nest block found in world"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with bird dwellings"
+          ],
+          "signal": "inferred",
+          "rationale": "natural building block for nests"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural structure"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "natural block fits plants group (alternative: decorative)"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

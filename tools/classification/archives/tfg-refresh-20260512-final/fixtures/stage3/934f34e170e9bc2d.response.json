@@ -1,0 +1,1051 @@
+{
+  "items": {
+    "create:red_table_cloth": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "advancement: table_cloth_shop 'Put items up for sale'",
+          "rationale": "Single-block shop UI for trading items"
+        },
+        "primary_uses": {
+          "values": [
+            "Setting up item shop, trading with players"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places and configures a shop"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for a shop, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:red_toolbox": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Placeable block that opens to store items"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing tools and items, portable workshop storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Toolbox for inventory management"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in base but can be picked up"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:storage"
+          ],
+          "signal": "pattern",
+          "evidence": "tag create:toolboxes",
+          "rationale": "Part of Create's storage system"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Player organizes tools in toolbox"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:red_valve_handle": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Kinetic component for manual speed control"
+        },
+        "primary_uses": {
+          "values": [
+            "Manual speed control, contraption interaction"
+          ],
+          "signal": "inferred",
+          "rationale": "Attach to shafts to adjust speed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in builds, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Controls kinetic contraptions"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:redstone_contact": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Emits redstone signal on contraption contact"
+        },
+        "primary_uses": {
+          "values": [
+            "Detecting contraption movement, redstone signaling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in elevator contacts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Redstone detection"
+        }
+      }
+    },
+    "create:redstone_link": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wireless redstone transmitter/receiver"
+        },
+        "primary_uses": {
+          "values": [
+            "Wireless redstone transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "Links redstone signals wirelessly"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Redstone linking"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:redstone_requester": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block with UI for requesting items, outputs redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Requesting items for automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in automation setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item request logistics"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:refined_radiance": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for high-tier Create items"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced Create components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting but no explicit recipes in export"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept in storage for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = uncommon"
+        }
+      }
+    },
+    "create:refined_radiance_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Casing for contraptions, part of kinetic network"
+        },
+        "primary_uses": {
+          "values": [
+            "Encasing contraptions, light source"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed on contraptions for protection and glow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in builds, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create automation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "stage2 emits_light=true"
+        }
+      }
+    },
+    "create:repackager": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block with UI for packaging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Packaging items for transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in logistics setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item packaging logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "pattern",
+          "evidence": "tag create:non_movable? No, but it's a logistics block",
+          "rationale": "Part of Create's logistics system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:rope_pulley": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Kinetic component for vertical transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Vertical item transport, rope elevator"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move items up/down"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated transport"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:rose_quartz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "Gem used as crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting refined components, polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material kept in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "Stored with other gems"
+        }
+      }
+    },
+    "create:rose_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted form of rose quartz for storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of rose quartz, decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "9 gems in one block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Block form of a material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:rose_quartz_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light-emitting decorative block"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetic light"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Lamp block group"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "stage2 emits_light=true"
+        }
+      }
+    },
+    "create:rose_quartz_tiles": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative variant of rose quartz block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic wall/detail block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Variant used for specific projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block variant"
+        }
+      }
+    },
+    "create:rotation_speed_controller": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Kinetic component for speed regulation"
+        },
+        "primary_uses": {
+          "values": [
+            "Controlling rotational speed in contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: fine-tune contraption"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation control"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:sail_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Component of windmill contraption"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windmill sails"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to assemble windmills"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in windmill builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Windmill power generation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:sand_paper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Used hand-held for polishing items"
+        },
+        "primary_uses": {
+          "values": [
+            "Polishing items, refining materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: apply polish to items"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used often in processing chain"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "workflow": {
+          "values": [
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "tag create:sandpaper",
+          "rationale": "Tool for sandpaper polishing workflow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables (no loot)"
+        }
+      }
+    },
+    "create:schedule": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Item used to program train schedules"
+        },
+        "primary_uses": {
+          "values": [
+            "Programming train schedules"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: instruct a train driver"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory when building train routes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train management"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "advancement: conductor",
+          "rationale": "Part of Create train system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables (no loot)"
+        }
+      }
+    },
+    "create:schematic": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Item that holds structure data for placement"
+        },
+        "primary_uses": {
+          "values": [
+            "Saving and placing structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used with schematicannon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Held when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structure building"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:schematic"
+          ],
+          "signal": "pattern",
+          "evidence": "name and tooltip",
+          "rationale": "Part of Create schematic system"
+        }
+      }
+    },
+    "create:schematic_and_quill": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Empty schematic crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating empty schematics"
+          ],
+          "signal": "inferred",
+          "rationale": "Craft into schematic at table"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Held when creating schematics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structure building"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:schematic"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create schematic system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    },
+    "create:schematic_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation with UI for writing schematics"
+        },
+        "primary_uses": {
+          "values": [
+            "Writing schematics from files"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: writes saved schematics onto empty schematic"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in workshop"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structure preparation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:schematic"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create schematic system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:schematicannon": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine with UI for building schematics"
+        },
+        "primary_uses": {
+          "values": [
+            "Automatically building structures from schematics"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: shoots blocks to recreate schematic"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated structure building"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:schematic"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create schematic system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:scorchia": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Natural stone block used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with scorchia stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Stone for building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        }
+      }
+    },
+    "create:scorchia_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar variant of scorchia"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "Architectural pillar"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used for specific projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "stage2 from loot tables"
+        }
+      }
+    },
+    "create:scoria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Natural stone block used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with scoria stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Stone for building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "create:scorchia",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Scorchia generates naturally as stone in the overworld/nether; not crafted-only",
+      "confidence": 0.8
+    },
+    {
+      "item": "create:scoria",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Scoria generates naturally as stone; not crafted-only",
+      "confidence": 0.8
+    }
+  ],
+  "fill_ins": []
+}

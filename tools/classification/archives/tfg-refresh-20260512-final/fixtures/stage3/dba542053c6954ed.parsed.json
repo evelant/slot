@@ -1,0 +1,980 @@
+{
+  "items": {
+    "tfg:brick/deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick placed in structures; building block"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "evidence": "id brick/deepslate",
+          "rationale": "id contains deepslate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "building with migmatite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "tag groups metamorphic rocks"
+        }
+      }
+    },
+    "tfg:brick/dripstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "travertine brick for building"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "pattern",
+          "evidence": "id brick/dripstone",
+          "rationale": "id contains dripstone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with travertine bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "tag groups sedimentary rocks"
+        }
+      }
+    },
+    "tfg:brick/flavolite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "ignimbrite brick for building"
+        },
+        "material_family": {
+          "value": "flavolite",
+          "signal": "pattern",
+          "evidence": "id brick/flavolite",
+          "rationale": "id contains flavolite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with ignimbrite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "tag groups extrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/glacio_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "phonolite brick for building"
+        },
+        "material_family": {
+          "value": "glacio_stone",
+          "signal": "pattern",
+          "evidence": "id brick/glacio_stone",
+          "rationale": "id contains glacio_stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with phonolite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "tag groups extrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/mars_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "argillite brick for building"
+        },
+        "material_family": {
+          "value": "mars_stone",
+          "signal": "pattern",
+          "evidence": "id brick/mars_stone",
+          "rationale": "id contains mars_stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with argillite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "tag groups sedimentary rocks"
+        }
+      }
+    },
+    "tfg:brick/mercury_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "komatiite brick for building"
+        },
+        "material_family": {
+          "value": "mercury_stone",
+          "signal": "pattern",
+          "evidence": "id brick/mercury_stone",
+          "rationale": "id contains mercury_stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with komatiite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "tag groups intrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/moon_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "norite brick for building"
+        },
+        "material_family": {
+          "value": "moon_deepslate",
+          "signal": "pattern",
+          "evidence": "id brick/moon_deepslate",
+          "rationale": "id contains moon_deepslate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with norite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "tag groups intrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/moon_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "anorthosite brick for building"
+        },
+        "material_family": {
+          "value": "moon_stone",
+          "signal": "pattern",
+          "evidence": "id brick/moon_stone",
+          "rationale": "id contains moon_stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with anorthosite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "tag groups intrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/permafrost": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "permafrost brick for building"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "pattern",
+          "evidence": "id brick/permafrost",
+          "rationale": "id contains permafrost"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with permafrost bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "tfg:brick/red_granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "red granite brick for building"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "evidence": "id brick/red_granite",
+          "rationale": "id contains red_granite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with red granite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "tag groups intrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/sandy_jadestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "lamproite brick for building"
+        },
+        "material_family": {
+          "value": "sandy_jadestone",
+          "signal": "pattern",
+          "evidence": "id brick/sandy_jadestone",
+          "rationale": "id contains sandy_jadestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with lamproite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "tag groups extrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/scorchia": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "scorchia brick for building"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id brick/scorchia",
+          "rationale": "id contains scorchia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scorchia bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "tag groups extrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/scoria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "scoria brick for building"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id brick/scoria",
+          "rationale": "id contains scoria"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "tag groups extrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/tuff": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "tuff brick for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id brick/tuff",
+          "rationale": "id contains tuff"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "tag groups extrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:brick/venus_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trachyte brick for building"
+        },
+        "material_family": {
+          "value": "venus_stone",
+          "signal": "pattern",
+          "evidence": "id brick/venus_stone",
+          "rationale": "id contains venus_stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "building with trachyte bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "tag groups extrusive igneous rocks"
+        }
+      }
+    },
+    "tfg:bright_regolith_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form, likely a crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "no known recipes, seldom carried"
+        },
+        "primary_uses": {
+          "values": [
+            "unknown use, possible crafting component"
+          ],
+          "signal": "guess",
+          "rationale": "no recipe evidence"
+        }
+      }
+    },
+    "tfg:brominated_iodine_vapor_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of gas, used for transport"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting brominated iodine vapor"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of chemical"
+        },
+        "storage_categories": {
+          "values": [
+            "gas"
+          ],
+          "signal": "inferred",
+          "rationale": "gaseous fluid in a bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        }
+      }
+    },
+    "tfg:brown_gravy_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "drinkable item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "food stuff"
+        },
+        "primary_uses": {
+          "values": [
+            "drinking to satisfy thirst"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows thirst"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "food preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "gravy is a sauce/meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip indicates thirst"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of liquid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        }
+      }
+    },
+    "tfg:brown_sand_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore, smelted into metal"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "id contains lorandite",
+          "rationale": "ore material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted to produce lorandite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting recipes present"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in brown sand"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "tfg:btx_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of fuel"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for power generation"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fuel"
+        },
+        "storage_categories": {
+          "values": [
+            "gas"
+          ],
+          "signal": "inferred",
+          "rationale": "gaseous fuel"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        }
+      }
+    },
+    "tfg:bundled_scraped_flax": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate textile material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processed in batches"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into flax line or tow"
+          ],
+          "signal": "inferred",
+          "rationale": "cutting recipe produces tow"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "textile intermediate"
+        }
+      }
+    },
+    "tfg:butchery_knife_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "reusable crafting mold"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "one per tool type"
+        },
+        "primary_uses": {
+          "values": [
+            "shapes butchery knife heads in extruder"
+          ],
+          "signal": "inferred",
+          "rationale": "mold for extruder"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "inferred",
+          "rationale": "stored with other molds"
+        }
+      }
+    },
+    "tfg:butyric_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "chemical bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "primary_uses": {
+          "values": [
+            "industrial chemical for crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of chemical"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid chemical"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        }
+      }
+    },
+    "tfg:bw_photographic_developer_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "chemical bucket for photography"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemistry"
+        },
+        "primary_uses": {
+          "values": [
+            "developing photographic film"
+          ],
+          "signal": "inferred",
+          "rationale": "used in film developing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        }
+      }
+    },
+    "tfg:californium_252_rod": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component of fission reactor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized reactor fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel in nuclear fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "fission rod"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:fission_rods",
+          "rationale": "part of fission subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

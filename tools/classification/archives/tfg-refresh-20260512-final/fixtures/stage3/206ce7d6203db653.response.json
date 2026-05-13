@@ -1,0 +1,1087 @@
+{
+  "items": {
+    "createdeco:zinc_ladder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as climbable structural block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building/scaffolding"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with zinc ladders"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure building"
+        }
+      }
+    },
+    "createdeco:zinc_mesh_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence block used in structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building fences"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "building zinc mesh fences"
+          ],
+          "signal": "inferred",
+          "rationale": "player places as fence"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "createdeco:zinc_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "sheet used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for later crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "inferred",
+          "rationale": "item name and context"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting zinc blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material for building"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:sheet"
+          ],
+          "signal": "named",
+          "rationale": "item name 'zinc_sheet'"
+        }
+      }
+    },
+    "createdeco:zinc_sheet_metal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable sheet metal block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with sheet metal"
+          ],
+          "signal": "inferred",
+          "rationale": "used as construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as building block"
+        }
+      }
+    },
+    "createdeco:zinc_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "support beam block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building support"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "structural support for buildings"
+          ],
+          "signal": "inferred",
+          "rationale": "player places as structural element"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "createdeco:zinc_support_wedge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wedge variant of support block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative structural wedges"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable decorative support"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "createdeco:zinc_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor opening in structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with zinc trapdoors"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as building element"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "createdeco:zinc_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with zinc windows"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "createdeco:zinc_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "pane block for windows"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "glazing and window panes"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as glass-like pane"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "createhorsepower:horse_crank": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic power generator component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in contraption"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "generating rotational power with animals"
+          ],
+          "signal": "inferred",
+          "rationale": "core function of the block"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "creates mechanical power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createhorsepower:contraption"
+          ],
+          "signal": "pattern",
+          "rationale": "part of CHP contraption system"
+        }
+      }
+    },
+    "deafission:aux_exchanger": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fission reactor component block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "exchanging heat in fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "part of reactor heat management"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "involved in nuclear power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission reactor system component"
+        }
+      }
+    },
+    "deafission:battery_heat_port_ev": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "heat transfer port for reactor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "transferring heat in fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "port for heat input/output"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of nuclear power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission reactor component"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "named",
+          "rationale": "id suffix _ev indicates EV tier"
+        },
+        "organization_group": {
+          "values": [
+            "deafission:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier fission component storage"
+        }
+      }
+    },
+    "deafission:fission_reactor_mk1": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "reactor controller with UI"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once as main block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "controlling fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "player operates reactor through this block"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "core of power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission reactor system core"
+        },
+        "multiblock_component_of": {
+          "value": "deafission:fission_reactor_mk1",
+          "signal": "inferred",
+          "rationale": "this is the reactor controller"
+        },
+        "multiblock_role": {
+          "value": "controller",
+          "signal": "inferred",
+          "rationale": "main block of multiblock"
+        }
+      }
+    },
+    "deafission:fission_reactor_mk2": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "upgraded reactor controller"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "controlling fission reactor mk2"
+          ],
+          "signal": "inferred",
+          "rationale": "operates upgraded reactor"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission system"
+        },
+        "multiblock_component_of": {
+          "value": "deafission:fission_reactor_mk2",
+          "signal": "inferred",
+          "rationale": "reactor controller"
+        },
+        "multiblock_role": {
+          "value": "controller",
+          "signal": "inferred",
+          "rationale": "main block"
+        }
+      }
+    },
+    "deafission:fission_reactor_smr1": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "small reactor controller"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "operating small fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "controls SMR reactor"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission system"
+        },
+        "multiblock_component_of": {
+          "value": "deafission:fission_reactor_smr1",
+          "signal": "inferred",
+          "rationale": "controller of small reactor"
+        },
+        "multiblock_role": {
+          "value": "controller",
+          "signal": "inferred",
+          "rationale": "main block"
+        }
+      }
+    },
+    "deafission:flibe_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "carried bucket for coolant fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up reactor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "cooling fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as coolant in reactor"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "supporting nuclear power"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket containing fluid"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "coolant for fission reactor"
+        }
+      }
+    },
+    "deafission:flibe_hot_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "hot coolant bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for reactor maintenance"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "cooling reactor with hot FLiBe"
+          ],
+          "signal": "inferred",
+          "rationale": "used as heated coolant"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "power generation"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket containing hot fluid"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "coolant for fission"
+        }
+      }
+    },
+    "deafission:fuel_holder": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "holds fuel cells in reactor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "holding fuel cells in reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fuel storage"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission reactor component"
+        },
+        "multiblock_role": {
+          "value": "core",
+          "signal": "inferred",
+          "rationale": "internal component of reactor"
+        }
+      }
+    },
+    "deafission:fuelcell_plutonium_x1": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "fuel cell consumed in reactor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when refueling"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "rationale": "component uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "fueling fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as reactor fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel for power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission fuel cell"
+        }
+      }
+    },
+    "deafission:fuelcell_thorium_x1": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thorium fuel cell"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "refueling only"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "rationale": "component uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "fueling fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel for power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission fuel"
+        }
+      }
+    },
+    "deafission:fuelcell_uranium_x1": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "uranium fuel cell"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "refueling only"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "rationale": "component uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "fueling fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel for power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission fuel"
+        }
+      }
+    },
+    "deafission:fuelcell_uranium_x4": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "quad uranium fuel cell"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "refueling only"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "rationale": "component uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "fueling fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel for power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission fuel"
+        }
+      }
+    },
+    "deafission:heat_battery_mk1": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "stores heat for reactor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "storing heat in fission system"
+          ],
+          "signal": "inferred",
+          "rationale": "heat buffer for reactor"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission heat management"
+        }
+      }
+    },
+    "deafission:heat_input_hatch_ev": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "heat input port for reactor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "inputting heat into reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "heat ingress port"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of nuclear power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission reactor component"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "named",
+          "rationale": "id suffix _ev"
+        },
+        "organization_group": {
+          "values": [
+            "deafission:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier fission component"
+        }
+      }
+    },
+    "deafission:material_holder": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "holds materials for reactor recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "primary_uses": {
+          "values": [
+            "holding reactor input materials"
+          ],
+          "signal": "inferred",
+          "rationale": "component for material insertion"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "supports fission process"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "named",
+          "rationale": "fission reactor component"
+        },
+        "multiblock_role": {
+          "value": "port",
+          "signal": "inferred",
+          "rationale": "input port for materials"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "createdeco:zinc_ladder",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    },
+    {
+      "item": "createdeco:zinc_mesh_fence",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    },
+    {
+      "item": "createdeco:zinc_sheet",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    },
+    {
+      "item": "createdeco:zinc_sheet_metal",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    },
+    {
+      "item": "createdeco:zinc_support",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    },
+    {
+      "item": "createdeco:zinc_support_wedge",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    },
+    {
+      "item": "createdeco:zinc_trapdoor",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    },
+    {
+      "item": "createdeco:zinc_window",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    },
+    {
+      "item": "createdeco:zinc_window_pane",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "item name and mod context"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

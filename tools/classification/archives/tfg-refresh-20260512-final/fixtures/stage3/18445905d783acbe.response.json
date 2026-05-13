@@ -1,0 +1,877 @@
+{
+  "items": {
+    "mcw_tfc_aio:bridges/spruce_bridges/spruce_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden bridge block placed for crossing gaps"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "rationale": "Name contains spruce, wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "rail crossing over gaps"
+          ],
+          "signal": "inferred",
+          "rationale": "Allows minecart rail to cross"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/spruce_bridges/spruce_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden rope bridge stair for crossing"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "rationale": "Name contains spruce"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction component"
+        },
+        "primary_uses": {
+          "values": [
+            "stepped bridge crossing"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of rope bridge structure"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/sycamore_bridges/rope_sycamore_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge block for traversal"
+        },
+        "material_family": {
+          "value": "wood_sycamore",
+          "signal": "pattern",
+          "rationale": "Name contains sycamore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge crossing"
+          ],
+          "signal": "inferred",
+          "rationale": "Allows foot travel over gaps"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/sycamore_bridges/sycamore_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Support pier for bridge structure"
+        },
+        "material_family": {
+          "value": "wood_sycamore",
+          "signal": "pattern",
+          "rationale": "Name contains sycamore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for bridge projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural support"
+        },
+        "primary_uses": {
+          "values": [
+            "bridge support pillar"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds up bridge spans"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/sycamore_bridges/sycamore_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge middle span"
+        },
+        "material_family": {
+          "value": "wood_sycamore",
+          "signal": "pattern",
+          "rationale": "Name contains sycamore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used during bridge building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "log bridge crossing"
+          ],
+          "signal": "inferred",
+          "rationale": "Main span of log bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/sycamore_bridges/sycamore_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge stair"
+        },
+        "material_family": {
+          "value": "wood_sycamore",
+          "signal": "pattern",
+          "rationale": "Name contains sycamore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as part of bridge kit"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stepped log bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "Allows elevation change on bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/sycamore_bridges/sycamore_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rail bridge block"
+        },
+        "material_family": {
+          "value": "wood_sycamore",
+          "signal": "pattern",
+          "rationale": "Name contains sycamore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in rail construction projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction and rail support"
+        },
+        "primary_uses": {
+          "values": [
+            "rail crossing over gaps"
+          ],
+          "signal": "inferred",
+          "rationale": "Supports minecart rails"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/sycamore_bridges/sycamore_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge stair"
+        },
+        "material_family": {
+          "value": "wood_sycamore",
+          "signal": "pattern",
+          "rationale": "Name contains sycamore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Part of bridge build"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stepped rope bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "Elevation change on rope bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/white_cedar_bridges/rope_white_cedar_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge block"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "Name contains white_cedar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for bridge building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge crossing"
+          ],
+          "signal": "inferred",
+          "rationale": "Foot travel over gaps"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/white_cedar_bridges/white_cedar_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Bridge support pier"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "Name contains white_cedar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in bridge projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural support"
+        },
+        "primary_uses": {
+          "values": [
+            "bridge support pillar"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds bridge spans"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/white_cedar_bridges/white_cedar_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge middle"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "Name contains white_cedar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for bridge building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "log bridge crossing"
+          ],
+          "signal": "inferred",
+          "rationale": "Main span for log bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/white_cedar_bridges/white_cedar_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge stair"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "Name contains white_cedar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Part of bridge kit"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stepped log bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "Elevation change on log bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/white_cedar_bridges/white_cedar_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rail bridge"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "Name contains white_cedar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in rail construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction and rail support"
+        },
+        "primary_uses": {
+          "values": [
+            "rail crossing over gaps"
+          ],
+          "signal": "inferred",
+          "rationale": "Supports minecart rails"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/white_cedar_bridges/white_cedar_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge stair"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "Name contains white_cedar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Part of bridge build"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stepped rope bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "Elevation change on rope bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/willow_bridges/rope_willow_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge block"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "Name contains willow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for bridge building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge crossing"
+          ],
+          "signal": "inferred",
+          "rationale": "Foot travel over gaps"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/willow_bridges/willow_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Bridge support pier"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "Name contains willow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in bridge projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural support"
+        },
+        "primary_uses": {
+          "values": [
+            "bridge support pillar"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds bridge spans"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/willow_bridges/willow_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge middle"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "Name contains willow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for bridge building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "log bridge crossing"
+          ],
+          "signal": "inferred",
+          "rationale": "Main span for log bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/willow_bridges/willow_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge stair"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "Name contains willow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Part of bridge kit"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stepped log bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "Elevation change on log bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/willow_bridges/willow_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rail bridge"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "Name contains willow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in rail construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction and rail support"
+        },
+        "primary_uses": {
+          "values": [
+            "rail crossing over gaps"
+          ],
+          "signal": "inferred",
+          "rationale": "Supports minecart rails"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/willow_bridges/willow_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge stair"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "Name contains willow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Part of bridge build"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stepped rope bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "Elevation change on rope bridge"
+        }
+      }
+    },
+    "mcw_tfc_aio:fences/acacia_fences/acacia_highley_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence gate for enclosures"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "rationale": "Name contains acacia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building fences"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wooden fence family"
+        },
+        "primary_uses": {
+          "values": [
+            "fence gate for access"
+          ],
+          "signal": "inferred",
+          "rationale": "Opening in wooden fence"
+        }
+      }
+    },
+    "mcw_tfc_aio:fences/acacia_fences/acacia_horse_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Horse fence for enclosures"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "rationale": "Name contains acacia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building fences"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wooden fence family"
+        },
+        "primary_uses": {
+          "values": [
+            "horse-proof fence"
+          ],
+          "signal": "inferred",
+          "rationale": "Animal enclosure"
+        }
+      }
+    },
+    "mcw_tfc_aio:fences/acacia_fences/acacia_picket_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Picket fence for boundaries"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "rationale": "Name contains acacia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building fences"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wooden fence family"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative fence"
+          ],
+          "signal": "inferred",
+          "rationale": "Picket-style fence"
+        }
+      }
+    },
+    "mcw_tfc_aio:fences/acacia_fences/acacia_pyramid_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Pyramid gate for entrances"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "rationale": "Name contains acacia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in fencing projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wooden fence family"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative gate"
+          ],
+          "signal": "inferred",
+          "rationale": "Pyramid-shaped fence gate"
+        }
+      }
+    },
+    "mcw_tfc_aio:fences/acacia_fences/acacia_stockade_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stockade fence for enclosures"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "rationale": "Name contains acacia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building fences"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wooden fence family"
+        },
+        "primary_uses": {
+          "values": [
+            "sturdy fence"
+          ],
+          "signal": "inferred",
+          "rationale": "Stockade-style fence"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "mcw_tfc_aio:bridges/spruce_bridges/spruce_rail_bridge",
+      "facet": "organization_group",
+      "label": "Bridges",
+      "proposed_id": "pack:tfg/bridges",
+      "rationale": "Player would store bridge parts together; no existing bucket",
+      "evidence": "bridge items from Macaw's mod"
+    }
+  ],
+  "fill_ins": [],
+  "corrections": []
+}

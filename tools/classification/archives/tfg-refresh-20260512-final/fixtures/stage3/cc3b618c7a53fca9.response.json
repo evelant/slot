@@ -1,0 +1,1366 @@
+{
+  "items": {
+    "firmalife:food/chocolate_ice_cream": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooling dessert food eaten for buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Cooling dessert",
+            "Quick snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats for cooling effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable treat not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable food item"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preparation activity"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Prepared dessert"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption"
+        }
+      }
+    },
+    "firmalife:food/cocoa_beans": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible crop ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Chocolate making",
+            "Snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary ingredient for chocolate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored as ingredient, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Grown from trees"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw cocoa beans treated as fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed harvest"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Crop harvested from leaves"
+        }
+      }
+    },
+    "firmalife:food/cocoa_butter": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible fat ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Cooking fat",
+            "Chocolate making"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as fat in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from cocoa beans"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking ingredient"
+        },
+        "food_category": {
+          "values": [
+            "slot:fat_oil"
+          ],
+          "signal": "inferred",
+          "rationale": "Vegetable fat"
+        },
+        "food_use": {
+          "values": [
+            "slot:cooking_fat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as cooking fat"
+        }
+      }
+    },
+    "firmalife:food/cocoa_powder": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible powder ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Baking ingredient",
+            "Flavoring"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in desserts and drinks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Ground from cocoa"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking ingredient"
+        },
+        "food_category": {
+          "values": [
+            "slot:flour"
+          ],
+          "signal": "inferred",
+          "rationale": "Powdered ingredient like flour"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "Flavoring and baking"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Dried powder"
+        }
+      }
+    },
+    "firmalife:food/cooked_bacon": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked meat food"
+        },
+        "primary_uses": {
+          "values": [
+            "Sandwich filling",
+            "Portable protein"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sandwiches and meals"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common portable food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cooked from raw bacon"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Heated to cook"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked meat item"
+        }
+      }
+    },
+    "firmalife:food/cooked_lasagna": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Prepared baked meal"
+        },
+        "primary_uses": {
+          "values": [
+            "Prepared meal",
+            "Baked pasta dish"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as a main dish"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from ingredients"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Baking process"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Complete dish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Oven baked"
+        }
+      }
+    },
+    "firmalife:food/cooked_pasta": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked grain food"
+        },
+        "primary_uses": {
+          "values": [
+            "Meal base",
+            "Ingredient for dishes"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten alone or used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable, used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cooked from pasta"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Boiling process"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked grain product"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating and further cooking"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Boiled"
+        }
+      }
+    },
+    "firmalife:food/cooked_pie": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Baked dessert"
+        },
+        "primary_uses": {
+          "values": [
+            "Baked dessert",
+            "Portable meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as a sweet treat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Baked from filled pie"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Baking process"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Complete dessert"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Oven baked"
+        }
+      }
+    },
+    "firmalife:food/cooked_pizza": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Baked flatbread meal"
+        },
+        "primary_uses": {
+          "values": [
+            "Prepared meal",
+            "Baked flatbread"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as main dish"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Baked in oven"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Baking process"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Complete meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Oven baked"
+        }
+      }
+    },
+    "firmalife:food/cooked_rice_noodles": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked grain food"
+        },
+        "primary_uses": {
+          "values": [
+            "Noodle base",
+            "Ingredient for dishes"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten alone or used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable, used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cooked from noodles"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Boiling process"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "Rice noodle grain product"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating and further cooking"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Boiled"
+        }
+      }
+    },
+    "firmalife:food/cookie_dough": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Unbaked dough food"
+        },
+        "primary_uses": {
+          "values": [
+            "Baking component",
+            "Unbaked cookie"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked into cookies"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Mixed from ingredients"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Baking preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "Unbaked dough"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Needs baking"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "Unbaked dough"
+        }
+      }
+    },
+    "firmalife:food/cookie_dough_ice_cream": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooling dessert food"
+        },
+        "primary_uses": {
+          "values": [
+            "Cooling dessert",
+            "Ice cream treat"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten for cooling buff"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable treat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Prepared dessert"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption"
+        }
+      }
+    },
+    "firmalife:food/corn_tortilla": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Prepared flatbread"
+        },
+        "primary_uses": {
+          "values": [
+            "Wrap base",
+            "Sandwich alternative"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for burritos and tacos"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used as ingredient on demand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Heated from masa"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Food preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "Flatbread"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Heated on griddle"
+        }
+      }
+    },
+    "firmalife:food/cured_maize": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Fermented corn ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Tortilla ingredient",
+            "Fermented corn"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for masa and tortillas"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate processed ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Produced in vat"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Food processing"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed corn"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Further processed into tortillas"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "rationale": "Fermented in vat"
+        }
+      }
+    },
+    "firmalife:food/dark_chocolate": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Chocolate confection"
+        },
+        "primary_uses": {
+          "values": [
+            "Chocolate confection",
+            "Baking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten alone or used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Portable snack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from cocoa"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Chocolate making"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed confection"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten or used in cooking"
+        }
+      }
+    },
+    "firmalife:food/dark_chocolate_blend": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Chocolate spread ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Chocolate spread",
+            "Sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as filling for sandwiches"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Mixed in bowl"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Mixing process"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed blend"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sandwich and desserts"
+        }
+      }
+    },
+    "firmalife:food/dehydrated_soybeans": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Dried soybean ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Soy ingredient",
+            "Long-lasting protein"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to make soy products"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored for later use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Dried from fresh soybeans"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Drying process"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Legume vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Further processed"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Dehydrated"
+        }
+      }
+    },
+    "firmalife:food/feta": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Aged cheese"
+        },
+        "primary_uses": {
+          "values": [
+            "Salty cheese",
+            "Sandwich filling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in salads and sandwiches"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common sandwich ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Made from milk"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cheese making"
+        },
+        "food_category": {
+          "values": [
+            "slot:cheese"
+          ],
+          "signal": "inferred",
+          "rationale": "Aged cheese"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "rationale": "Fermented cheese"
+        }
+      }
+    },
+    "firmalife:food/fig": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Fresh fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "Sweet fruit",
+            "Snack",
+            "Jam ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten fresh or used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Perishable fruit, stored in fridge"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Harvested from trees"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Fruit harvesting and cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Fresh fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating or preserve making"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed harvest"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "Fruit item"
+        }
+      }
+    },
+    "firmalife:food/filled_pie": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Unbaked pie preparation"
+        },
+        "primary_uses": {
+          "values": [
+            "Unbaked pie",
+            "Oven-ready dish"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked into cooked pie"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate before baking"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Assembled from ingredients"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Pie preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "unbaked pie dough"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Needs baking"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "Unbaked"
+        }
+      }
+    },
+    "firmalife:food/frothy_coconut": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Coconut drink"
+        },
+        "primary_uses": {
+          "values": [
+            "Coconut drink",
+            "Refreshing beverage"
+          ],
+          "signal": "inferred",
+          "rationale": "Drunk for hydration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Portable drink"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from coconut"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Beverage preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "Beverage"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed as drink"
+        }
+      }
+    },
+    "firmalife:food/futo_maki_roll": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Prepared sushi roll"
+        },
+        "primary_uses": {
+          "values": [
+            "Sushi roll",
+            "Prepared seafood dish"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as a meal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from ingredients"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Sushi preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Complete dish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption"
+        }
+      }
+    },
+    "firmalife:food/garlic_bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Flavored bread"
+        },
+        "primary_uses": {
+          "values": [
+            "Flavored bread",
+            "Side dish"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as side or snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Perishable, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from bread"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Bread preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "Bread product"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked"
+        }
+      }
+    },
+    "firmalife:food/goat_curd": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Fresh cheese curd"
+        },
+        "primary_uses": {
+          "values": [
+            "Fresh cheese curd",
+            "Cheese ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to make cheese or eaten fresh"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate product"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Curdled from milk"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cheese making"
+        },
+        "food_category": {
+          "values": [
+            "slot:cheese"
+          ],
+          "signal": "inferred",
+          "rationale": "Curd is fresh cheese"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten or further processed"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:curdled"
+          ],
+          "signal": "inferred",
+          "rationale": "Curdled milk"
+        }
+      }
+    },
+    "firmalife:food/gouda": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Aged cheese"
+        },
+        "primary_uses": {
+          "values": [
+            "Aged cheese",
+            "Sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sandwiches and cooking"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common sandwich ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Aged from milk"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cheese making"
+        },
+        "food_category": {
+          "values": [
+            "slot:cheese"
+          ],
+          "signal": "inferred",
+          "rationale": "Aged cheese"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating and ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "rationale": "Fermented aged cheese"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

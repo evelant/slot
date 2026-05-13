@@ -1,0 +1,1003 @@
+{
+  "items": {
+    "gtceu:lightly_hydro_cracked_gas_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport and processing"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when specific fluid needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used in cracking and refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player carries to move fluid between machines"
+        }
+      }
+    },
+    "gtceu:lightly_hydro_cracked_heavy_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional fluid hauling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used as fuel/residue"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves heavy oil residue between machines"
+        }
+      }
+    },
+    "gtceu:lightly_hydro_cracked_light_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional fluid hauling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used as fuel/residue"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves light oil residue between machines"
+        }
+      }
+    },
+    "gtceu:lightly_hydro_cracked_naphtha_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional fluid hauling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used in cracking chain"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves naphtha between cracking stages"
+        }
+      }
+    },
+    "gtceu:lightly_steam_cracked_gas_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional fluid hauling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used in steam cracking"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves steam-cracked gas"
+        }
+      }
+    },
+    "gtceu:lightly_steam_cracked_heavy_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional fluid hauling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used as fuel/residue"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves steam-cracked heavy oil residue"
+        }
+      }
+    },
+    "gtceu:lightly_steam_cracked_light_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional fluid hauling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used as fuel/residue"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves steam-cracked light oil residue"
+        }
+      }
+    },
+    "gtceu:lightly_steam_cracked_naphtha_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional fluid hauling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used in cracking chain"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves steam-cracked naphtha"
+        }
+      }
+    },
+    "gtceu:lightweight_ostrum_vapor_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated GT processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional fluid hauling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GT processing",
+            "Used in advanced alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves vapor for space material production"
+        }
+      }
+    },
+    "gtceu:lignite_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Surface rock collected for small ore yield"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Found while exploring, indicates ore below"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Picked up constantly while exploring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates lignite ore below",
+            "Can be processed for small ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Marker and source of lignite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ore indicators"
+        }
+      }
+    },
+    "gtceu:lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for lignite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for lignite coal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried back from mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of lignite coal",
+            "Smelted or crushed for fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined to obtain lignite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ores"
+        }
+      }
+    },
+    "gtceu:lime_borderless_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored lamp placed for lighting and decor"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as light source in builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building lighting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base lighting",
+            "Decorative block"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for light and appearance"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with other lamp blocks"
+        }
+      }
+    },
+    "gtceu:lime_dye_spray_can": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Reusable tool for painting blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to recolor blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Brought when doing color work"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint blocks lime color",
+            "Decoration tool"
+          ],
+          "signal": "inferred",
+          "rationale": "Applies lime dye to blocks"
+        }
+      }
+    },
+    "gtceu:lime_glass_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for GT machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component",
+            "Used in optical machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient for advanced GT recipes"
+        }
+      }
+    },
+    "gtceu:lime_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored lamp for lighting and decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as light source in builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building lighting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base lighting",
+            "Decorative block"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for light and appearance"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with other lamp blocks"
+        }
+      }
+    },
+    "gtceu:lime_large_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored building block for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decorative wall block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building block",
+            "Large colored metal panel"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetic walls"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with decorative blocks"
+        }
+      }
+    },
+    "gtceu:lime_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored building block for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decorative wall block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building block",
+            "Colored metal panel"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetic walls"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with decorative blocks"
+        }
+      }
+    },
+    "gtceu:lime_studs": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as floor/wall decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building block",
+            "Studded pattern block"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for detailed decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with decorative blocks"
+        }
+      }
+    },
+    "gtceu:limestone_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for almandine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for almandine gem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried back from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of almandine",
+            "Smelted or crushed for gem"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined to obtain almandine"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ores"
+        }
+      }
+    },
+    "gtceu:limestone_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for aluminium"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for aluminium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried back from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of aluminium",
+            "Smelted or crushed for metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined to obtain aluminium"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ores"
+        }
+      }
+    },
+    "gtceu:limestone_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for alunite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for alunite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried back from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of alunite",
+            "Smelted or crushed for minerals"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined to obtain alunite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ores"
+        }
+      }
+    },
+    "gtceu:limestone_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for amethyst"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for amethyst"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried back from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of amethyst",
+            "Smelted or crushed for gem"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined to obtain amethyst"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ores"
+        }
+      }
+    },
+    "gtceu:limestone_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for apatite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for apatite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried back from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of apatite",
+            "Smelted or crushed for fertilizer"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined to obtain apatite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ores"
+        }
+      }
+    },
+    "gtceu:limestone_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for armalcolite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for armalcolite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried back from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of armalcolite",
+            "Smelted or crushed for titanium"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined to obtain armalcolite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ores"
+        }
+      }
+    },
+    "gtceu:limestone_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for asbestos"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for asbestos"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried back from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component highlights rarity common"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of asbestos",
+            "Smelted or crushed for mineral"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined to obtain asbestos"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with raw ores"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:lime_borderless_lamp",
+      "facet": "dye_color",
+      "value": "lime",
+      "rationale": "Lam named Lime, colored block"
+    },
+    {
+      "item": "gtceu:lime_lamp",
+      "facet": "dye_color",
+      "value": "lime",
+      "rationale": "Named Lime, colored block"
+    },
+    {
+      "item": "gtceu:lime_large_metal_sheet",
+      "facet": "dye_color",
+      "value": "lime",
+      "rationale": "Display name includes Lime, colored block"
+    },
+    {
+      "item": "gtceu:lime_metal_sheet",
+      "facet": "dye_color",
+      "value": "lime",
+      "rationale": "Display name includes Lime, colored block"
+    },
+    {
+      "item": "gtceu:lime_studs",
+      "facet": "dye_color",
+      "value": "lime",
+      "rationale": "Display name includes Lime, colored block"
+    }
+  ]
+}

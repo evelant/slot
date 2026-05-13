@@ -1,0 +1,1209 @@
+{
+  "items": {
+    "ae2:fluid_cell_housing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fluid storage cells"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 standard material family"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fluid storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in cell assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when crafting cells"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted via kubejs shaped recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component storage group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "part of storage cell subsystem"
+        }
+      }
+    },
+    "ae2:fluid_p2p_tunnel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed network component for tunneling channels"
+        },
+        "primary_uses": {
+          "values": [
+            "tunneling ME channels across distance"
+          ],
+          "signal": "inferred",
+          "rationale": "primary function of P2P tunnels"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when expanding network connections"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted via shapeless recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network components group"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_16k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable storage device for ME fluid network"
+        },
+        "primary_uses": {
+          "values": [
+            "storing fluids in ME system",
+            "transferring fluid storage"
+          ],
+          "signal": "inferred",
+          "rationale": "primary fluid storage cell"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up or moving storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from housing and component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cell group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "part of storage cell subsystem"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_1k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable fluid storage cell"
+        },
+        "primary_uses": {
+          "values": [
+            "storing fluids in ME system"
+          ],
+          "signal": "inferred",
+          "rationale": "small fluid cell"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when expanding storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cells"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "storage cell subsystem"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_256k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "large fluid storage cell"
+        },
+        "primary_uses": {
+          "values": [
+            "storing large amounts of fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity fluid cell"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for storage expansion"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cells"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "storage cell subsystem"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_4k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "mid-size fluid storage cell"
+        },
+        "primary_uses": {
+          "values": [
+            "storing fluids in ME system"
+          ],
+          "signal": "inferred",
+          "rationale": "common fluid cell"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for storage tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cells"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "storage cell subsystem"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_64k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "large fluid storage cell"
+        },
+        "primary_uses": {
+          "values": [
+            "storing fluids in ME system"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity fluid cell"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for storage expansion"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cells"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "storage cell subsystem"
+        }
+      }
+    },
+    "ae2:fluix_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "chopping tool with durability"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 tool material"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "made of fluix"
+        },
+        "primary_uses": {
+          "values": [
+            "chopping wood",
+            "combat if needed"
+          ],
+          "signal": "inferred",
+          "rationale": "primary axe function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential tool for wood gathering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted via smithing upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tools group"
+        }
+      }
+    },
+    "ae2:fluix_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block used for construction"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "made of fluix"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from fluix crystals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 building blocks"
+        }
+      }
+    },
+    "ae2:fluix_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed ME network cable"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix-based cable"
+        },
+        "primary_uses": {
+          "values": [
+            "building ME network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME channels"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried when expanding networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from fluix and other materials"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables and network components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of cable subsystem"
+        }
+      }
+    },
+    "ae2:fluix_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "dense version of ME cable"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix-based dense cable"
+        },
+        "primary_uses": {
+          "values": [
+            "high-capacity network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "carries more channels"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for dense network setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "ae2:fluix_crystal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw AE2 crafting material"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix gem"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 components"
+          ],
+          "signal": "inferred",
+          "rationale": "base material for many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting AE2 items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common resource"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from mixing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 raw materials"
+        }
+      }
+    },
+    "ae2:fluix_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "powder form of fluix"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "processed from fluix crystals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dusts"
+        }
+      }
+    },
+    "ae2:fluix_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "glass cable variant"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix glass cable"
+        },
+        "primary_uses": {
+          "values": [
+            "low-cost ME network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "basic cable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "ae2:fluix_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "farming tool"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 tool material"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "made of fluix"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil"
+          ],
+          "signal": "inferred",
+          "rationale": "primary hoe function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted via smithing upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tools"
+        }
+      }
+    },
+    "ae2:fluix_pearl": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "AE2 pearl material"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix pearl"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wireless components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in wireless receivers"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from fluix crystal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 raw materials"
+        }
+      }
+    },
+    "ae2:fluix_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "mining tool"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 tool material"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "made of fluix"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores"
+          ],
+          "signal": "inferred",
+          "rationale": "primary pickaxe function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential mining tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted via smithing upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tools"
+        }
+      }
+    },
+    "ae2:fluix_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "digging tool"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 tool material"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "made of fluix"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt and sand"
+          ],
+          "signal": "inferred",
+          "rationale": "primary shovel function"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for digging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted via smithing upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tools"
+        }
+      }
+    },
+    "ae2:fluix_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of fluix block"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix material"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from fluix block via stonecutter"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 building blocks"
+        }
+      }
+    },
+    "ae2:fluix_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "smart cable showing channel info"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix smart cable"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying channel usage",
+            "network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable functionality"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from covered cable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "ae2:fluix_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "dense smart cable"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix dense smart cable"
+        },
+        "primary_uses": {
+          "values": [
+            "high-capacity network with diagnostics"
+          ],
+          "signal": "inferred",
+          "rationale": "dense smart cable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for dense networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "ae2:fluix_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of fluix block"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix material"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from fluix block via stonecutter"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 building blocks"
+        }
+      }
+    },
+    "ae2:fluix_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "combat tool with Looting"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 weapon material"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "made of fluix"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "farming mob drops"
+          ],
+          "signal": "inferred",
+          "rationale": "sword function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried for combat readiness"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 weapon"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted via smithing upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 weapons"
+        }
+      }
+    },
+    "ae2:fluix_upgrade_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "smithing template to upgrade quartz tools to fluix"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix upgrade template"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading quartz tools to fluix at smithing table"
+          ],
+          "signal": "inferred",
+          "rationale": "template consumption"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hoarded until needed for upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrades"
+        }
+      }
+    },
+    "ae2:fluix_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant of fluix block"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "fluix material"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from fluix block via stonecutter"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 building blocks"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

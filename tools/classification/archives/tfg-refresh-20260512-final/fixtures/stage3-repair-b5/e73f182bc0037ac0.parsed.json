@@ -1,0 +1,335 @@
+{
+  "items": {
+    "railways:black_brass_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "train boiler component placed as part of a locomotive"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "name prefix indicates black color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "primary material from id and tags"
+        },
+        "material_secondary": {
+          "values": [
+            "brass"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains brass_wrapped",
+          "rationale": "wrapping material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building projects"
+        },
+        "primary_uses": {
+          "values": [
+            "build train boilers",
+            "part of locomotive construction"
+          ],
+          "signal": "inferred",
+          "rationale": "functional component for trains"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train building and operation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "part of the train system in Create/Steam 'n' Rails"
+        }
+      }
+    },
+    "railways:black_conductor_cap": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "wearable functional item for train operation"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "name prefix indicates black color"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "worn when conducting trains"
+        },
+        "primary_uses": {
+          "values": [
+            "conduct trains",
+            "wear as conductor"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip indicates role in train operation"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train operation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "train-related wearable item"
+        }
+      }
+    },
+    "railways:black_copper_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "train casing block used in locomotive construction"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "name prefix indicates black color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "primary material from id and tags"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper_wrapped",
+          "rationale": "wrapping material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building projects"
+        },
+        "primary_uses": {
+          "values": [
+            "build train bodies and structures",
+            "decorative train block"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building material for trains"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train construction"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "part of the train system in Create/Steam 'n' Rails"
+        }
+      }
+    },
+    "railways:black_copper_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "train boiler component placed as part of a locomotive"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "name prefix indicates black color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "primary material from id and tags"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper_wrapped",
+          "rationale": "wrapping material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building projects"
+        },
+        "primary_uses": {
+          "values": [
+            "build train boilers",
+            "part of locomotive construction"
+          ],
+          "signal": "inferred",
+          "rationale": "functional component for trains"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train building and operation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "part of the train system in Create/Steam 'n' Rails"
+        }
+      }
+    },
+    "railways:black_copper_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "train smokebox component placed as part of a locomotive"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "name prefix indicates black color"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "id contains locometal",
+          "rationale": "primary material from id and tags"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper_wrapped",
+          "rationale": "wrapping material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building projects"
+        },
+        "primary_uses": {
+          "values": [
+            "build train smokeboxes",
+            "part of locomotive construction"
+          ],
+          "signal": "inferred",
+          "rationale": "functional component for trains"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train building and operation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "part of the train system in Create/Steam 'n' Rails"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "railways:black_brass_wrapped_locometal_boiler",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Block tag tfg:locometal_blocks suggests a player storage group for locometal train blocks, but no accepted org group id exists.",
+      "evidence": "tfg:locometal_blocks tag"
+    },
+    {
+      "item": "railways:black_conductor_cap",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Conductor cap is train-related; a common train parts group would be natural.",
+      "evidence": "train context"
+    },
+    {
+      "item": "railways:black_copper_wrapped_locometal",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Block tag tfg:locometal_blocks suggests a player storage group for locometal train blocks.",
+      "evidence": "tfg:locometal_blocks tag"
+    },
+    {
+      "item": "railways:black_copper_wrapped_locometal_boiler",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Block tag tfg:locometal_blocks suggests a player storage group for locometal train blocks.",
+      "evidence": "tfg:locometal_blocks tag"
+    },
+    {
+      "item": "railways:black_copper_wrapped_locometal_smokebox",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Block tag tfg:locometal_blocks suggests a player storage group for locometal train blocks.",
+      "evidence": "tfg:locometal_blocks tag"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

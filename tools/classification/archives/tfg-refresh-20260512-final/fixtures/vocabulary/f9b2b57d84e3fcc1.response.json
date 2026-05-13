@@ -1,0 +1,893 @@
+{
+  "values": [
+    {
+      "id": "greate:milling",
+      "label": "Milling",
+      "state": "accepted",
+      "description": "Player-facing milling station or process for grinding items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/smelting",
+      "label": "Smelting",
+      "state": "accepted",
+      "description": "Furnace smelting process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smelting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/blasting",
+      "label": "Blasting",
+      "state": "accepted",
+      "description": "Blast furnace blasting process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "blasting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/stonecutting",
+      "label": "Stonecutting",
+      "state": "accepted",
+      "description": "Stonecutter station for cutting blocks.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "stonecutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:cutting",
+      "label": "Cutting",
+      "state": "accepted",
+      "description": "Cutting machine or process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:cutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:heating",
+      "label": "Heating",
+      "state": "accepted",
+      "description": "Heating items in firepit, pit kiln, or charcoal forge.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/heating",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:heating",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:chisel",
+      "label": "Chisel",
+      "state": "accepted",
+      "description": "Tool used for chiseling blocks into decorative shapes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/chisel",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:chisel",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:collapse",
+      "label": "Collapse",
+      "state": "rejected",
+      "description": "Environmental block collapse event, not a player station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:collapse",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:pressing",
+      "label": "Pressing",
+      "state": "accepted",
+      "description": "Mechanical pressing station or process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:splashing",
+      "label": "Splashing",
+      "state": "accepted",
+      "description": "Washing or splashing process for items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:splashing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:landslide",
+      "label": "Landslide",
+      "state": "rejected",
+      "description": "Environmental landslide event, not a player station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:landslide",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:anvil",
+      "label": "Anvil",
+      "state": "accepted",
+      "description": "Anvil station for smithing and working metals.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:anvil",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:barrel_sealed",
+      "label": "Barrel Sealed",
+      "state": "accepted",
+      "description": "Sealed barrel for aging and processing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_sealed",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:damage_inputs_shapeless_crafting",
+      "label": "Damage Inputs Shapeless Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe type, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfg:item_repair",
+      "label": "Equipment Repair",
+      "state": "review",
+      "description": "Repair process; may use anvil or grindstone. Needs human confirmation as a station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:quern",
+      "label": "Quern",
+      "state": "accepted",
+      "description": "Quern station for grinding and crushing items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/quern",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/quern",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:quern",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:compacting",
+      "label": "Compacting",
+      "state": "accepted",
+      "description": "Compacting station or process using a press.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:compacting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:mixing",
+      "label": "Mixing",
+      "state": "accepted",
+      "description": "Mixing station or process using a mixer.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:barrel_instant",
+      "label": "Barrel Instant",
+      "state": "accepted",
+      "description": "Instant barrel recipes (still uses barrel station).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:filling",
+      "label": "Filling",
+      "state": "accepted",
+      "description": "Filling process using a spout or deployer.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:filling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "ae2:transform",
+      "label": "Transform",
+      "state": "rejected",
+      "description": "AE2 transformation recipe, not a specific player station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2:transform",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "rnr:mattock",
+      "label": "Mattock",
+      "state": "accepted",
+      "description": "Tool used for terrain shaping (mattock).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:mattock",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:curving",
+      "label": "Curving",
+      "state": "accepted",
+      "description": "Curving station for shaping metal.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:curving",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:item_application",
+      "label": "Item Application",
+      "state": "accepted",
+      "description": "Applying items to blocks using deployer or right-click.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:item_application",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:advanced_shapeless_crafting",
+      "label": "Advanced Shapeless Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe type, not a player station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "rnr:block_mod",
+      "label": "Block Mod",
+      "state": "rejected",
+      "description": "Recipe type for modifying blocks; not a specific station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:block_mod",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:sandpaper_polishing",
+      "label": "Sandpaper Polishing",
+      "state": "accepted",
+      "description": "Polishing items using sandpaper or polishing machine.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sandpaper_polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:polishing",
+      "label": "Polishing",
+      "state": "accepted",
+      "description": "Polishing station or process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:earth/vein/index",
+      "label": "Earth Vein Index",
+      "state": "rejected",
+      "description": "Guide entry index, not a player station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/earth_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:deploying",
+      "label": "Deploying",
+      "state": "accepted",
+      "description": "Deployer process for placing or using items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:deploying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:sequenced_assembly",
+      "label": "Sequenced Assembly",
+      "state": "accepted",
+      "description": "Assembly line process for sequential crafting.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sequenced_assembly",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "kubejs:shaped",
+      "label": "Shaped",
+      "state": "rejected",
+      "description": "Generic shaped crafting recipe type, not a station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shaped",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:centrifugation",
+      "label": "Centrifugation",
+      "state": "accepted",
+      "description": "Centrifuge station for separating materials.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:centrifugation",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:hammering",
+      "label": "Hammering",
+      "state": "accepted",
+      "description": "Hammering station for shaping metals.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:hammering",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "createaddition:rolling",
+      "label": "Rolling",
+      "state": "accepted",
+      "description": "Rolling machine for producing wires and rods.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "createaddition:rolling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:casting",
+      "label": "Casting",
+      "state": "accepted",
+      "description": "Casting table for pouring metals into molds.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:casting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:the/beneath/vein/index",
+      "label": "The Beneath Vein Index",
+      "state": "rejected",
+      "description": "Guide entry index, not a player station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/nether_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "framedblocks:frame",
+      "label": "Frame",
+      "state": "rejected",
+      "description": "Framed blocks recipe type, not a station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "framedblocks:frame",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:mars/vein/index",
+      "label": "Mars Vein Index",
+      "state": "rejected",
+      "description": "Guide entry index, not a player station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/mars_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:moon/vein/index",
+      "label": "Moon Vein Index",
+      "state": "rejected",
+      "description": "Guide entry index, not a player station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/moon_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:brewing",
+      "label": "Brewing",
+      "state": "accepted",
+      "description": "Brewing stand or process for potions.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:brewing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:pot",
+      "label": "Pot",
+      "state": "accepted",
+      "description": "Cooking pot for stews and soups.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:advanced_shaped_crafting",
+      "label": "Advanced Shaped Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe type, not a player station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:welding",
+      "label": "Welding",
+      "state": "accepted",
+      "description": "Welding process on an anvil.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:welding",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:damage_inputs_shaped_crafting",
+      "label": "Damage Inputs Shaped Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe type, not a player station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:coiling",
+      "label": "Coiling",
+      "state": "accepted",
+      "description": "Coiling machine for producing springs or coils.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:coiling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:crops",
+      "label": "Crops",
+      "state": "rejected",
+      "description": "Guide entry about farming, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/crops",
+          "confidence": 0.7
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/crops",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:knapping",
+      "label": "Knapping",
+      "state": "accepted",
+      "description": "Knapping tool for shaping stone and clay.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:knapping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

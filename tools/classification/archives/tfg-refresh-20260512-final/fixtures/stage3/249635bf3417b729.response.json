@@ -1,0 +1,1370 @@
+{
+  "items": {
+    "tfc:plant/eel_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "evidence": "id prefix plant/",
+          "rationale": "underwater plant placed in oceans"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "aquatic plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally for planting"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "collected and planted as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative aquatic planting",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in water or composted"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "pattern",
+          "evidence": "aquatic plant block",
+          "rationale": "found underwater"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant storage"
+        }
+      }
+    },
+    "tfc:plant/elderberry_bush": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "bush that produces fruit"
+        },
+        "material_family": {
+          "value": "bush",
+          "signal": "inferred",
+          "rationale": "fruit bush plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for planting in farms"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planted and harvested for berries"
+        },
+        "primary_uses": {
+          "values": [
+            "berry fruit source",
+            "landscaping bush"
+          ],
+          "signal": "inferred",
+          "rationale": "produces elderberries when grown"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "found wild in temperate biomes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_fruits"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:wild_fruits",
+          "rationale": "wild fruit bush"
+        }
+      }
+    },
+    "tfc:plant/field_horsetail": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "wild plant"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "small flowering plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for potions/dye"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:brewing",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for regeneration potions and brown dye"
+        },
+        "primary_uses": {
+          "values": [
+            "potion ingredient",
+            "brown dye source",
+            "decorative plant"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to brown dye, used in regen potions"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "found in temperate regions"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "non-food plant"
+        }
+      }
+    },
+    "tfc:plant/fountain_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "grass"
+        },
+        "material_family": {
+          "value": "grass",
+          "signal": "inferred",
+          "rationale": "ornamental grass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "planted as decoration, used for compost"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative planting",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "landscaping grass"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild grass"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant"
+        }
+      }
+    },
+    "tfc:plant/foxglove": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "tall flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flowering plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for potions/dye"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:brewing",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for instant health and pink dye"
+        },
+        "primary_uses": {
+          "values": [
+            "potion ingredient",
+            "pink dye source",
+            "decorative flower"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to pink dye, used in health potions"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild tall flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/flowers"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative flower"
+        }
+      }
+    },
+    "tfc:plant/giant_kelp_flower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "aquatic kelp"
+        },
+        "material_family": {
+          "value": "kelp",
+          "signal": "inferred",
+          "rationale": "giant kelp plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "harvested for soda/compost"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed underwater for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative underwater plant",
+            "smelts to soda ash"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted into soda"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "pattern",
+          "rationale": "grows in oceans"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic plant"
+        }
+      }
+    },
+    "tfc:plant/goldenrod": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "small flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for luck potions and rubber"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:brewing",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for luck potions, yellow dye, rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "potion ingredient (luck)",
+            "yellow dye source",
+            "latex production"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to yellow dye, vacuum for latex"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "non-edible flower"
+        }
+      }
+    },
+    "tfc:plant/gooseberry_bush": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "fruit bush"
+        },
+        "material_family": {
+          "value": "bush",
+          "signal": "inferred",
+          "rationale": "berry bush"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for planting in farms"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planted and harvested for berries"
+        },
+        "primary_uses": {
+          "values": [
+            "berry fruit source",
+            "landscaping bush"
+          ],
+          "signal": "inferred",
+          "rationale": "produces gooseberries"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild berry bush"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_fruits"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:wild_fruits",
+          "rationale": "wild fruit bush"
+        }
+      }
+    },
+    "tfc:plant/grape_hyacinth": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "small flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for poison potions and blue dye"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:brewing",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for poison potions and blue dye"
+        },
+        "primary_uses": {
+          "values": [
+            "potion ingredient (poison)",
+            "blue dye source",
+            "decorative flower"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to blue dye, used in poison pills"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "non-edible flower"
+        }
+      }
+    },
+    "tfc:plant/green_algae": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "aquatic algae"
+        },
+        "material_family": {
+          "value": "algae",
+          "signal": "inferred",
+          "rationale": "green algae"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for compost"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed underwater as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative aquatic plant",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "spreads on water"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "pattern",
+          "rationale": "grows in water"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic plant"
+        }
+      }
+    },
+    "tfc:plant/green_apple_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "leaves from fruit tree"
+        },
+        "material_family": {
+          "value": "leaves",
+          "signal": "inferred",
+          "rationale": "deciduous tree leaves"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for compost or hedge fence"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in hedge fence recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "compost material",
+            "hedge fence crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted into hedges, compost"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "part of apple tree"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant material"
+        }
+      }
+    },
+    "tfc:plant/green_apple_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "tree sapling"
+        },
+        "material_family": {
+          "value": "sapling",
+          "signal": "inferred",
+          "rationale": "fruit tree sapling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for orchard planting"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planted to grow apple trees"
+        },
+        "primary_uses": {
+          "values": [
+            "tree planting",
+            "apple fruit source"
+          ],
+          "signal": "inferred",
+          "rationale": "grows into green apple tree"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild sapling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:saplings",
+          "rationale": "sapling storage"
+        }
+      }
+    },
+    "tfc:plant/gutweed": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "aquatic plant"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "seaweed-like"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for compost"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed underwater as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative aquatic plant",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "water plant"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "pattern",
+          "rationale": "grows in water"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic plant"
+        }
+      }
+    },
+    "tfc:plant/guzmania": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "tropical flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flowering plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for red dye"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative flower, red dye source"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative tropical plant",
+            "red dye source"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to red dye"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "tropical flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant"
+        }
+      }
+    },
+    "tfc:plant/hanging_vines": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "climbing vines"
+        },
+        "material_family": {
+          "value": "vine",
+          "signal": "inferred",
+          "rationale": "hanging vine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for climbing or decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative hanging plant",
+            "climbable block"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on ceilings or walls"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "found in caves and trees"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant"
+        }
+      }
+    },
+    "tfc:plant/heather": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "small flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "heather flower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for luck potions"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:brewing",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for luck potions and purple dye"
+        },
+        "primary_uses": {
+          "values": [
+            "potion ingredient (luck)",
+            "purple dye source",
+            "decorative flower"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to purple dye, used in luck pills"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "non-edible flower"
+        }
+      }
+    },
+    "tfc:plant/heliconia": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "tropical flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "heliconia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for red dye"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative flower, red dye"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flower",
+            "red dye source"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to red dye"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "tropical regions"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant"
+        }
+      }
+    },
+    "tfc:plant/hibiscus": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "tall flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "hibiscus"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for resistance potions"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:brewing",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for resistance potions and pink dye"
+        },
+        "primary_uses": {
+          "values": [
+            "potion ingredient (resistance)",
+            "pink dye source",
+            "decorative flower"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to pink dye, used in combat powder"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "tall flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "non-edible flower"
+        }
+      }
+    },
+    "tfc:plant/houstonia": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "small flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for white dye"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative, white dye"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flower",
+            "white dye source"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to white dye"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "non-edible flower"
+        }
+      }
+    },
+    "tfc:plant/ivy": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "climbing plant"
+        },
+        "material_family": {
+          "value": "vine",
+          "signal": "inferred",
+          "rationale": "ivy vine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative climbing plant"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall covering",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "covers walls, used in compost"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "found on trees and cliffs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant"
+        }
+      }
+    },
+    "tfc:plant/jungle_vines": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "climbing vine"
+        },
+        "material_family": {
+          "value": "vine",
+          "signal": "inferred",
+          "rationale": "jungle vine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative climbing plant"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative vine",
+            "climbable block"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on trees or ceilings"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "found in jungles"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant"
+        }
+      }
+    },
+    "tfc:plant/kangaroo_paw": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "small flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for red dye"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative, red dye"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flower",
+            "red dye source"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to red dye"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "non-edible flower"
+        }
+      }
+    },
+    "tfc:plant/king_fern": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "fern"
+        },
+        "material_family": {
+          "value": "fern",
+          "signal": "inferred",
+          "rationale": "large fern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative fern"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative tropical plant",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "landscaping fern"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "found in humid biomes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant"
+        }
+      }
+    },
+    "tfc:plant/labrador_tea": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "small flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for speed potions"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:brewing",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for speed potions and light blue dye"
+        },
+        "primary_uses": {
+          "values": [
+            "potion ingredient (speed)",
+            "light blue dye source",
+            "decorative flower"
+          ],
+          "signal": "inferred",
+          "rationale": "mills to light blue dye, used in speed pills"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "wild flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "non-edible flower"
+        }
+      }
+    },
+    "tfc:plant/lady_fern": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "fern"
+        },
+        "material_family": {
+          "value": "fern",
+          "signal": "inferred",
+          "rationale": "small fern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative fern"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative plant",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "landscaping fern"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "found in temperate regions"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "general plant"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

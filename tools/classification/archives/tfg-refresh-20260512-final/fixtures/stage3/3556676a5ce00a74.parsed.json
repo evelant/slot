@@ -1,0 +1,1288 @@
+{
+  "items": {
+    "gtceu:mv_battery_buffer_16x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine with UI for power distribution"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and distribute MV power",
+            "Charge batteries"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip indicates battery buffer purpose"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy management in automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Battery storage and distribution subsystem"
+        }
+      }
+    },
+    "gtceu:mv_battery_buffer_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine with UI for power distribution"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and distribute MV power",
+            "Charge batteries"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip indicates battery buffer purpose"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy management in automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Battery storage and distribution subsystem"
+        }
+      }
+    },
+    "gtceu:mv_battery_buffer_8x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine with UI for power distribution"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and distribute MV power",
+            "Charge batteries"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip indicates battery buffer purpose"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy management in automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Battery storage and distribution subsystem"
+        }
+      }
+    },
+    "gtceu:mv_battery_hull": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component used to craft batteries"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft MV batteries"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly used in battery crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafted in batches for battery production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in battery crafting chain"
+        }
+      }
+    },
+    "gtceu:mv_bedrock_ore_miner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine that automatically mines ores"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated bedrock ore mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes drilling ores from bedrock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for long-term mining"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Advanced machine, not trivial to craft"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, craftable via shaped recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated mining machine"
+        }
+      }
+    },
+    "gtceu:mv_bender": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for bending metal plates"
+        },
+        "primary_uses": {
+          "values": [
+            "Bend metal plates into shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip humorous description indicates bending"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in workshop"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing machine in automation line"
+        }
+      }
+    },
+    "gtceu:mv_block_breaker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine that breaks blocks automatically"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated block breaking"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states it mines block on front face"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in mining setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated mining tool"
+        }
+      }
+    },
+    "gtceu:mv_brewery": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for potion brewing"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated potion brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says compact efficient brewing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in alchemy area"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated brewing station"
+        }
+      }
+    },
+    "gtceu:mv_buffer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine with UI for storing items and fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "Buffer items and fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes storage capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in logistics setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item and fluid buffering"
+        }
+      }
+    },
+    "gtceu:mv_cadmium_battery": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable battery carried to power tools"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "rationale": "Tooltip says Tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Power MV tools and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Reusable energy storage item"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Player keeps charged batteries in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted battery"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaping recipes, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Powers automated machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "named",
+          "rationale": "Tag gtceu:batteries and tooltip 'Reusable Battery'"
+        }
+      }
+    },
+    "gtceu:mv_canner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for filling/emptying containers"
+        },
+        "primary_uses": {
+          "values": [
+            "Fill and empty containers"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says puts things into and out of containers"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in processing line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Container processing automation"
+        }
+      }
+    },
+    "gtceu:mv_centrifuge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for separating molecules"
+        },
+        "primary_uses": {
+          "values": [
+            "Centrifuge materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip 'Separating Molecules'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in processing line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Centrifugation automation"
+        }
+      }
+    },
+    "gtceu:mv_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charge batteries and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows voltage and slots for charging"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power management automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "inferred",
+          "rationale": "Block for charging items"
+        }
+      }
+    },
+    "gtceu:mv_chemical_bath": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for chemical washing"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical washing of ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip 'Bathing Ores in Chemicals'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in ore processing line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing automation"
+        }
+      }
+    },
+    "gtceu:mv_chemical_reactor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for chemical reactions"
+        },
+        "primary_uses": {
+          "values": [
+            "Perform chemical reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip 'Letting Chemicals react with each other'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in chemical setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Chemical processing automation"
+        }
+      }
+    },
+    "gtceu:mv_circuit_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for circuit assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated circuit assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip 'Pick-n-Place all over the place'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in production line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit production automation"
+        }
+      }
+    },
+    "gtceu:mv_combustion": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable generator producing MV power"
+        },
+        "primary_uses": {
+          "values": [
+            "Generate power from liquid fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows voltage out and fluid capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for power generation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV generator"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation machine"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Combustion generator subsystem"
+        }
+      }
+    },
+    "gtceu:mv_compressor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for compressing items"
+        },
+        "primary_uses": {
+          "values": [
+            "Compress materials into new forms"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip 'Compress-O-Matic C77'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in processing line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Compression automation"
+        }
+      }
+    },
+    "gtceu:mv_conveyor_module": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component installed as cover for item transport"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "rationale": "Display name starts 'MV'"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer items between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states transfer rate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used during machine setup, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaping recipes, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item transport between machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:conveyor"
+          ],
+          "signal": "named",
+          "rationale": "Tag gtceu:conveyor_modules"
+        }
+      }
+    },
+    "gtceu:mv_cutter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for cutting materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Cut materials into shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip 'Slice'N Dice'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in processing line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Cutting automation"
+        }
+      }
+    },
+    "gtceu:mv_diode": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for directional energy flow"
+        },
+        "primary_uses": {
+          "values": [
+            "Regulate energy flow direction and amperage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip explains one-way flow and amperage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in power network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Power distribution and regulation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy flow management"
+        }
+      }
+    },
+    "gtceu:mv_distillery": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable machine for distilling fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "Distill fluids into components"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip 'Extracting most relevant Parts of Fluids'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in fluid processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid distillation automation"
+        }
+      }
+    },
+    "gtceu:mv_electric_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable electric furnace for smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt items electrically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip 'Not like using a Commodore 64' implies smelting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in processing line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common MV machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped recipe, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelting automation"
+        }
+      }
+    },
+    "gtceu:mv_electric_motor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component used in crafting machines and covers"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "rationale": "Display name starts 'MV'"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft machines and mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafted in batches for machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaping recipes, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for automation machines"
+        }
+      }
+    },
+    "gtceu:mv_electric_piston": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component used in crafting machines requiring linear motion"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "rationale": "Display name starts 'MV'"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft machines requiring linear motion"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafted in batches for machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaping recipes, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for automation machines"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:mv_battery_buffer_16x",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_battery_buffer_4x",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_battery_buffer_8x",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_battery_hull",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_bedrock_ore_miner",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_bender",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_block_breaker",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_brewery",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_buffer",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_cadmium_battery",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_canner",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_centrifuge",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_charger_4x",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_chemical_bath",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_chemical_reactor",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_circuit_assembler",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_combustion",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_compressor",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_conveyor_module",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_cutter",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_diode",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_distillery",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_electric_furnace",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_electric_motor",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    },
+    {
+      "item": "gtceu:mv_electric_piston",
+      "facet": "organization_group",
+      "label": "MV Components",
+      "proposed_id": "gtceu:mv_components",
+      "rationale": "Players store MV-tier machines and components in a voltage-specific bucket",
+      "evidence": "Common GTCEu player storage organization by tier"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1088 @@
+{
+  "items": {
+    "tfc:wood/planks/chestnut_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden fence placed as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "Enclosing areas with chestnut fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative and functional enclosure"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity is common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Made from chestnut wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Chestnut is hardwood, stored with hardwood items"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building structures"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence gate is a building component"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating passable openings in fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Allows entry through fence lines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Chestnut wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Hardwood group"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log fence is a building block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building rustic chestnut fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative log fence variant"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Chestnut wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Hardwood storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Loom is a workstation for weaving"
+        },
+        "primary_uses": {
+          "values": [
+            "Weaving cloth from yarn"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary function of loom"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Made from chestnut planks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden workstation, grouped with hardwood"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Pressure plate triggers redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Detecting entity presence for redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Entity detection"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for specific builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Chestnut wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden item, grouped with hardwood"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab is a structural building block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-height chestnut floors and steps"
+          ],
+          "signal": "inferred",
+          "rationale": "Common building use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stacks of 64, carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Chestnut wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Hardwood storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs are building blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building chestnut staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Chestnut wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Hardwood storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Tool rack stores tools, has UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing and displaying tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Chestnut planks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden block, stored with hardwood"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Trapdoor is a building/access block"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating passable floor/ceiling openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Access and building"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Chestnut wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Hardwood storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        }
+      }
+    },
+    "tfc:wood/planks/chestnut_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workbench opens crafting UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting items with 3x3 grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary crafting station"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "rationale": "Chestnut planks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden workbench, grouped with hardwood"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Planks are basic building blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building fir structures",
+            "Crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Versatile building material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried in stacks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Douglas fir is softwood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf used for enchanting/storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing books",
+            "Boosting enchanting table"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual role"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir planks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood group"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Button triggers redstone pulse"
+        },
+        "primary_uses": {
+          "values": [
+            "Sending short redstone signals"
+          ],
+          "signal": "inferred",
+          "rationale": "Button function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in specific redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood item"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Redstone component"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door is a building/access block"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating entrances in fir buildings"
+          ],
+          "signal": "inferred",
+          "rationale": "Access"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood group"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden fence"
+        },
+        "primary_uses": {
+          "values": [
+            "Enclosing areas with fir fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Enclosure"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stacks of 32, carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence gate is a building block"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating passable openings in fir fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Access"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log fence is a building block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building rustic fir fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative fence"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Loom is a weaving workstation"
+        },
+        "primary_uses": {
+          "values": [
+            "Weaving cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "Loom function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir planks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Pressure plate triggers redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Detecting entity for redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Entity detection"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Redstone component"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab is a building block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-height fir floors and steps"
+          ],
+          "signal": "inferred",
+          "rationale": "Common building use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stacks of 64, carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs are building blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building fir staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Tool rack stores tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing and displaying tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir planks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Trapdoor is a building/access block"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating passable floor/ceiling openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Access"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        }
+      }
+    },
+    "tfc:wood/planks/douglas_fir_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workbench opens crafting UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting items with 3x3 grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Fir planks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Softwood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Planks are basic building blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building hickory structures",
+            "Crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Versatile building material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried in stacks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Hickory wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "inferred",
+          "rationale": "Hickory is hardwood (tag: hard_wood)"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

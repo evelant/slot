@@ -1,0 +1,1992 @@
+{
+  "items": {
+    "railways:chartreuse_brass_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable palette block for train structures; player places and forgets."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Part of railways:locometal tag family."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating train builds and stations"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic block for railway-themed construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building projects, not everyday."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Tagged as locometal_blocks, player storage group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Chartreuse color and wrapped texture variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32, used in moderate quantities."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of a construction loadout."
+        }
+      }
+    },
+    "railways:chartreuse_brass_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block for locomotive aesthetics."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Member of locometal block family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train boiler components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative boiler block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction projects."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Chartreuse color, boiler variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material."
+        }
+      }
+    },
+    "railways:chartreuse_copper_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative palette block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Member of locometal block family."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic building block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block storage group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Chartreuse color, wrapped copper variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material."
+        }
+      }
+    },
+    "railways:chartreuse_copper_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal block family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train boiler sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic boiler block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Colored and variant block."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_copper_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train smokeboxes"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic smokebox block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Colored smokebox variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_flat_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative palette block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal block family."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic building block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Flat riveted texture variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_flat_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative palette block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal block family."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic building block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Flat slashed texture variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_folding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural door, player places it as part of building."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal block family."
+        },
+        "dye_color": {
+          "value": "chartreuse",
+          "signal": "inferred",
+          "rationale": "Color in name.",
+          "confidence": 0.9
+        },
+        "primary_uses": {
+          "values": [
+            "Building train door openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional door for train structures."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction, not everyday."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Folding door variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 4, low quantity use."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_hinged_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural door."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train door openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional hinge door for train builds."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Hinge door variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 4."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_four_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative window block, player places and forgets."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train window sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic window block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Window variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_hazard_stripes_chevron_on_black": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative hazard stripe block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Adding hazard markings to train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic hazard stripe block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Chartreuse color with hazard chevron pattern."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_hazard_stripes_chevron_on_white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative hazard stripe block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Adding hazard markings to train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic hazard stripe block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Chartreuse on white hazard chevron."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_hazard_stripes_diagonal_on_black": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative hazard stripe block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Adding hazard markings to train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic hazard stripe block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Chartreuse diagonal hazard on black."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_hazard_stripes_diagonal_on_white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative hazard stripe block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Adding hazard markings to train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic hazard stripe block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Chartreuse diagonal hazard on white."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_iron_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative palette block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic wrapped iron block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Iron wrapped texture variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_iron_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train boiler sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic boiler block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Iron wrapped boiler variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_iron_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train smokeboxes"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic smokebox block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Iron wrapped smokebox variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train boiler sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic boiler block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Chartreuse boiler variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_locometal_end_ladder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable ladder for train aesthetics, not carried as tool."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Adding ladders to train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic ladder block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry during building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "End ladder variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_locometal_flywheel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative flywheel block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating train builds with flywheel details"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic flywheel block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Flywheel variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_locometal_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building pillars for train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic pillar block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Pillar variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_locometal_rung_ladder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable ladder for train aesthetics."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Adding rung ladders to train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic ladder block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Rung ladder variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train smokeboxes"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic smokebox block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Smokebox variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_locometal_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural trapdoor, part of building envelope."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building trapdoor openings for train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional trapdoor block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Trapdoor variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_locometal_vent": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative vent block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Adding vent details to train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic vent block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Vent variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    },
+    "railways:chartreuse_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "Locometal family."
+        },
+        "primary_uses": {
+          "values": [
+            "Building train smokeboxes"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic smokebox block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Locometal block group."
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Wrapped smokebox variant."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 32."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block."
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "railways:chartreuse_folding_locometal_door",
+      "facet": "required_tool",
+      "current": "axe",
+      "suggested": "pickaxe",
+      "rationale": "Metal door should require pickaxe, not axe; both tags present but metal dominates.",
+      "confidence": 0.8
+    },
+    {
+      "item": "railways:chartreuse_hinged_locometal_door",
+      "facet": "required_tool",
+      "current": "axe",
+      "suggested": "pickaxe",
+      "rationale": "Metal door should require pickaxe.",
+      "confidence": 0.8
+    },
+    {
+      "item": "railways:chartreuse_locometal_flywheel",
+      "facet": "required_tool",
+      "current": "axe",
+      "suggested": "pickaxe",
+      "rationale": "Metal flywheel block should be mined with pickaxe.",
+      "confidence": 0.8
+    },
+    {
+      "item": "railways:chartreuse_four_pane_locometal_window",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "block",
+      "rationale": "Block is a full cube (cube_column model, impermeable tag), not a thin pane.",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": [
+    {
+      "item": "railways:chartreuse_brass_wrapped_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_brass_wrapped_locometal_boiler",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_copper_wrapped_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_copper_wrapped_locometal_boiler",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_copper_wrapped_locometal_smokebox",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_flat_riveted_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_flat_slashed_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_folding_locometal_door",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_hinged_locometal_door",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_four_pane_locometal_window",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_hazard_stripes_chevron_on_black",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_hazard_stripes_chevron_on_white",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_hazard_stripes_diagonal_on_black",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_hazard_stripes_diagonal_on_white",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_iron_wrapped_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_iron_wrapped_locometal_boiler",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_iron_wrapped_locometal_smokebox",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_locometal_boiler",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_locometal_end_ladder",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_locometal_flywheel",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_locometal_pillar",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_locometal_rung_ladder",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_locometal_smokebox",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_locometal_trapdoor",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    },
+    {
+      "item": "railways:chartreuse_locometal_vent",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Part of locometal block family."
+    }
+  ]
+}

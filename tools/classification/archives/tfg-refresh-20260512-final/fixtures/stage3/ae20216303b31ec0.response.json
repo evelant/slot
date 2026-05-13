@@ -1,0 +1,2083 @@
+{
+  "items": {
+    "gtceu:double_palladium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate used in crafting machines and components"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag double_plates/palladium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting advanced parts, stored otherwise"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting for automation machines"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "No decorative aspects, just a metal plate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Production recipes exist, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid item stored in chests or ME systems"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits 'processed mineral outputs' group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag forge:double_sheets",
+          "rationale": "Double plate is equivalent to double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 16, stored in bulk for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced machine components",
+            "Compressed metal storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input in many GT recipes"
+        }
+      }
+    },
+    "gtceu:double_platinum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional crafting use"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain metal plate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal output"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double plate is double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced components",
+            "Compressed metal storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for GT recipes"
+        }
+      }
+    },
+    "gtceu:double_plutonium_241_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional use"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain plate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced components",
+            "Nuclear-related recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Hazardous material for late-game"
+        }
+      }
+    },
+    "gtceu:double_potin_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "potin",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional use"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting intermediate components",
+            "Compressed metal storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in various GT recipes"
+        }
+      }
+    },
+    "gtceu:double_red_alloy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "red_alloy",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting electronic components",
+            "Redstone alloy crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone-related recipes"
+        }
+      }
+    },
+    "gtceu:double_red_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting machines"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-tier tools and armor",
+            "Advanced machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Top-tier material"
+        }
+      }
+    },
+    "gtceu:double_rhodium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "rhodium",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting catalyst components",
+            "Precious metal crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced GT recipes"
+        }
+      }
+    },
+    "gtceu:double_rhodium_plated_palladium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-end machine components",
+            "Special alloy use"
+          ],
+          "signal": "inferred",
+          "rationale": "Advanced material"
+        }
+      }
+    },
+    "gtceu:double_rocket_alloy_t1_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "rocket_alloy_t1",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rocket crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tier 1 rocket parts",
+            "Space exploration components"
+          ],
+          "signal": "inferred",
+          "rationale": "Rocket alloy"
+        }
+      }
+    },
+    "gtceu:double_rocket_alloy_t2_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "rocket_alloy_t2",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rocket crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tier 2 rocket parts",
+            "Advanced aerospace components"
+          ],
+          "signal": "inferred",
+          "rationale": "Rocket alloy"
+        }
+      }
+    },
+    "gtceu:double_rose_gold_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "rose_gold",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting decorative circuits",
+            "Alloy for redstone components"
+          ],
+          "signal": "inferred",
+          "rationale": "Rose gold alloy"
+        }
+      }
+    },
+    "gtceu:double_rtm_alloy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "rtm_alloy",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-temperature components",
+            "Special alloy use"
+          ],
+          "signal": "inferred",
+          "rationale": "RTM alloy"
+        }
+      }
+    },
+    "gtceu:double_ruridit_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "ruridit",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ultra-hard components",
+            "Advanced alloy crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Ruridit alloy"
+        }
+      }
+    },
+    "gtceu:double_ruthenium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "ruthenium",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting catalyst components",
+            "Precious metal use"
+          ],
+          "signal": "inferred",
+          "rationale": "Ruthenium plate"
+        }
+      }
+    },
+    "gtceu:double_ruthenium_trinium_americium_neutronate_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "ruthenium_trinium_americium_neutronate",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in nuclear crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting fusion reactor components",
+            "Exotic material use"
+          ],
+          "signal": "inferred",
+          "rationale": "RTAN alloy"
+        }
+      }
+    },
+    "gtceu:double_samarium_iron_arsenic_oxide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "samarium_iron_arsenic_oxide",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in superconductor crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting superconductors",
+            "Advanced alloy use"
+          ],
+          "signal": "inferred",
+          "rationale": "Samarium iron arsenic oxide plate"
+        }
+      }
+    },
+    "gtceu:double_silicon_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined semiconductor plate"
+        },
+        "material_family": {
+          "value": "silicon",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in circuit crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting wafers and circuits",
+            "Semiconductor manufacturing"
+          ],
+          "signal": "inferred",
+          "rationale": "Silicon plate"
+        }
+      }
+    },
+    "gtceu:double_silver_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "silver",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting conductive components",
+            "Precious metal use"
+          ],
+          "signal": "inferred",
+          "rationale": "Silver plate"
+        }
+      }
+    },
+    "gtceu:double_stainless_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting corrosion-resistant machines",
+            "Mid-tier machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Stainless steel plate"
+        }
+      }
+    },
+    "gtceu:double_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material used in many recipes, often carried"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting machines"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting a vast array of components",
+            "Structural material for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Ubiquitous steel plate"
+        }
+      }
+    },
+    "gtceu:double_stellite_100_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "stellite_100",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting heat-resistant components",
+            "High-speed tool alloy"
+          ],
+          "signal": "inferred",
+          "rationale": "Stellite alloy"
+        }
+      }
+    },
+    "gtceu:double_sterling_silver_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting decorative or conductive components",
+            "Alloy use"
+          ],
+          "signal": "inferred",
+          "rationale": "Sterling silver plate"
+        }
+      }
+    },
+    "gtceu:double_tantalum_carbide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "tantalum_carbide",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ultra-hard machine parts",
+            "High-temperature tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Tantalum carbide plate"
+        }
+      }
+    },
+    "gtceu:double_tantalum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting corrosion-resistant equipment",
+            "Electronic components"
+          ],
+          "signal": "inferred",
+          "rationale": "Tantalum plate"
+        }
+      }
+    },
+    "gtceu:double_tin_alloy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "tin_alloy",
+          "signal": "pattern",
+          "rationale": "Id suffix and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Plain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot, production recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Solid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets",
+          "rationale": "Double sheet"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting early-game pipes and mechanisms",
+            "Alloy use"
+          ],
+          "signal": "inferred",
+          "rationale": "Tin alloy plate"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

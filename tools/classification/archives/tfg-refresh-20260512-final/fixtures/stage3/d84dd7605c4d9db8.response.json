@@ -1,0 +1,882 @@
+{
+  "items": {
+    "railways:vermilion_brass_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette block placed for train aesthetics"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of train structure"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with other locometal palette blocks"
+        }
+      }
+    },
+    "railways:vermilion_copper_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "solid palette block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_copper_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette boiler block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of train palette"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_copper_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette smokebox block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of train palette"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_flat_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "solid palette block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_flat_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "solid palette block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_folding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:doors",
+          "rationale": "door is structural opening"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds, carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "train building as door"
+          ],
+          "signal": "inferred",
+          "rationale": "functional building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "stored with other locometal palette blocks"
+        }
+      }
+    },
+    "railways:vermilion_four_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window pane is building structure"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train windows"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_hazard_stripes_chevron_on_black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hazard stripe block for decoration"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative markings on trains"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_hazard_stripes_chevron_on_white": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hazard stripe block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative markings on trains"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_hazard_stripes_diagonal_on_black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hazard stripe block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative markings on trains"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_hazard_stripes_diagonal_on_white": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hazard stripe block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative markings on trains"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_hinged_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:doors",
+          "rationale": "door is structural opening"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "train building as door"
+          ],
+          "signal": "inferred",
+          "rationale": "structural building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_iron_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "solid palette block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_iron_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette boiler block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of train palette"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_iron_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette smokebox block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of train palette"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette boiler block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of train palette"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_locometal_end_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "form=ladder",
+          "rationale": "climbing tool carried in inventory"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building, placed temporarily"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical traversal in trains"
+          ],
+          "signal": "inferred",
+          "rationale": "climbing tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal palette items"
+        }
+      }
+    },
+    "railways:vermilion_locometal_rung_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "form=ladder",
+          "rationale": "climbing tool carried in inventory"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical traversal in trains"
+          ],
+          "signal": "inferred",
+          "rationale": "climbing tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal palette items"
+        }
+      }
+    },
+    "railways:vermilion_locometal_flywheel": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette flywheel block for aesthetics"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of palette set"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_locometal_pillar": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette pillar block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette smokebox block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of train palette"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_locometal_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:trapdoors",
+          "rationale": "trapdoor is structural opening"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "train building as trapdoor"
+          ],
+          "signal": "inferred",
+          "rationale": "structural building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_locometal_vent": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette vent block for aesthetics"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative train building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of palette set"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    },
+    "railways:vermilion_paint_pitcher": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool used to paint palette blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when decorating trains"
+        },
+        "primary_uses": {
+          "values": [
+            "painting locometal blocks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Paint level: 32 / 32'",
+          "rationale": "used to recolor blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it to change block colors"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

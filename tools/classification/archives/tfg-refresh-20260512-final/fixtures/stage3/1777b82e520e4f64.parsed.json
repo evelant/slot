@@ -1,0 +1,1432 @@
+{
+  "items": {
+    "tfc:food/barley_flour": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible food item, used as baking ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "baking ingredient",
+            "making dough"
+          ],
+          "signal": "inferred",
+          "rationale": "flour used in dough recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ingredient stored in food storage, not hotbar"
+        },
+        "food_category": {
+          "value": "slot:flour",
+          "signal": "named",
+          "evidence": "tag tfc:foods/flour",
+          "rationale": "flour category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in dough as ingredient"
+        },
+        "preparation_state": {
+          "value": "slot:flour",
+          "signal": "named",
+          "evidence": "tag tfc:foods/flour",
+          "rationale": "flour state"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking process"
+        }
+      }
+    },
+    "tfc:food/barley_grain": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible grain, also animal feed"
+        },
+        "primary_uses": {
+          "values": [
+            "animal feed",
+            "milling into flour",
+            "eating raw"
+          ],
+          "signal": "inferred",
+          "rationale": "used as feed, milled, or eaten"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in crop storage, not carried often"
+        },
+        "food_category": {
+          "value": "slot:grain",
+          "signal": "named",
+          "evidence": "tag tfc:foods/grains",
+          "rationale": "grain category"
+        },
+        "food_use": {
+          "values": [
+            "slot:animal_feed",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as feed and milled"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "unprocessed grain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested from farming"
+        }
+      }
+    },
+    "tfc:food/bear": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "raw meat, requires cooking"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eating after cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked into meals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "raw meat stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "meat category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking component"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "used_at": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on fire or furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        }
+      }
+    },
+    "tfc:food/beef": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eating after cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked into meals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "meat category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking component"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "used_at": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked to make edible"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        }
+      }
+    },
+    "tfc:food/beet": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "vegetable, edible raw or cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "eating raw or cooked",
+            "salad ingredient",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile vegetable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:vegetable",
+          "signal": "named",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "vegetable category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten raw or cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw vegetable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        }
+      }
+    },
+    "tfc:food/blackberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "fruit, edible raw"
+        },
+        "primary_uses": {
+          "values": [
+            "eating fresh",
+            "jam making",
+            "compote ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in preserves and desserts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fresh fruit often eaten quickly"
+        },
+        "food_category": {
+          "value": "slot:fruit",
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "fruit category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking or preserves"
+        }
+      }
+    },
+    "tfc:food/blueberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating fresh",
+            "jam making",
+            "compote ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "similar to blackberry"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fresh fruit"
+        },
+        "food_category": {
+          "value": "slot:fruit",
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "fruit category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking or preserves"
+        }
+      }
+    },
+    "tfc:food/bluegill": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "fishing bait"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten or used as bait"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "raw fish stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:fish",
+          "signal": "named",
+          "evidence": "tag minecraft:fishes",
+          "rationale": "fish category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking component or bait"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "used_at": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked for eating"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage (fish included)"
+        },
+        "activity": {
+          "values": [
+            "slot:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "caught from fishing"
+        }
+      }
+    },
+    "tfc:food/boiled_egg": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked egg, ready to eat"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as snack",
+            "sandwich ingredient",
+            "salad ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile cooked food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ready-to-eat, often carried"
+        },
+        "food_category": {
+          "value": "slot:egg",
+          "signal": "named",
+          "evidence": "category from tag? No direct tag but it's an egg item",
+          "rationale": "egg food category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in sandwiches"
+        },
+        "preparation_state": {
+          "value": "slot:cooked",
+          "signal": "inferred",
+          "rationale": "boiled egg"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/eggs"
+          ],
+          "signal": "inferred",
+          "rationale": "egg storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking"
+        }
+      }
+    },
+    "tfc:food/bunchberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating fresh",
+            "jam making",
+            "compote ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "similar to other berries"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fresh fruit"
+        },
+        "food_category": {
+          "value": "slot:fruit",
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "fruit category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking or preserves"
+        }
+      }
+    },
+    "tfc:food/cabbage": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "vegetable"
+        },
+        "primary_uses": {
+          "values": [
+            "eating raw or cooked",
+            "salad ingredient",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile vegetable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:vegetable",
+          "signal": "named",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "vegetable category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten raw or cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw vegetable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        }
+      }
+    },
+    "tfc:food/calamari": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "raw squid"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "fried calamari"
+          ],
+          "signal": "inferred",
+          "rationale": "often cooked as dish"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "raw fish stored"
+        },
+        "food_category": {
+          "value": "slot:fish",
+          "signal": "named",
+          "evidence": "tag minecraft:fishes",
+          "rationale": "fish category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking component"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "used_at": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked for eating"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "caught from fishing"
+        }
+      }
+    },
+    "tfc:food/camelidae": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "raw camelid meat"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eating after cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked into meals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "meat category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking component"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "used_at": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked to make edible"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        }
+      }
+    },
+    "tfc:food/carrot": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "vegetable"
+        },
+        "primary_uses": {
+          "values": [
+            "eating raw or cooked",
+            "salad ingredient",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:vegetable",
+          "signal": "named",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "vegetable category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten raw or cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw vegetable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        }
+      }
+    },
+    "tfc:food/cattail_root": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible root"
+        },
+        "primary_uses": {
+          "values": [
+            "eating raw or cooked",
+            "animal feed",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in food storage"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable",
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged as both vegetable and grain"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:animal_feed",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten or fed"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw root"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable-like storage"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        }
+      }
+    },
+    "tfc:food/cheese": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "prepared dairy food"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as snack",
+            "sandwich ingredient",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ready-to-eat, often carried"
+        },
+        "food_category": {
+          "value": "slot:cheese",
+          "signal": "named",
+          "evidence": "tag tfc:foods/dairy and name",
+          "rationale": "cheese category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in dishes"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking/aging"
+        }
+      }
+    },
+    "tfc:food/cherry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating fresh",
+            "jam making",
+            "compote ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "similar to other fruits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fresh fruit"
+        },
+        "food_category": {
+          "value": "slot:fruit",
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "fruit category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking or preserves"
+        }
+      }
+    },
+    "tfc:food/chevon": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "raw goat meat"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eating after cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked into meals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "meat category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking component"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "used_at": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked to make edible"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        }
+      }
+    },
+    "tfc:food/chicken": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "raw poultry"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eating after cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked into meals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in food storage"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "meat category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking component"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "used_at": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked to make edible"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        }
+      }
+    },
+    "tfc:food/cloudberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating fresh",
+            "jam making",
+            "compote ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "similar to other berries"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fresh fruit"
+        },
+        "food_category": {
+          "value": "slot:fruit",
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "fruit category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking or preserves"
+        }
+      }
+    },
+    "tfc:food/cod": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "fishing bait"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten or used as bait"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "raw fish stored"
+        },
+        "food_category": {
+          "value": "slot:fish",
+          "signal": "named",
+          "evidence": "tag minecraft:fishes",
+          "rationale": "fish category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking component or bait"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "used_at": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked for eating"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage (fish included)"
+        },
+        "activity": {
+          "values": [
+            "slot:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "caught from fishing"
+        }
+      }
+    },
+    "tfc:food/cooked_bear": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked meat, ready to eat"
+        },
+        "primary_uses": {
+          "values": [
+            "ready-to-eat meat",
+            "sandwich filling",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile cooked meat"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ready-to-eat, often carried"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "named",
+          "evidence": "tag tfc:foods/cooked_meats",
+          "rationale": "cooked meat category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in dishes"
+        },
+        "preparation_state": {
+          "value": "slot:cooked",
+          "signal": "inferred",
+          "rationale": "cooked meat"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking"
+        }
+      }
+    },
+    "tfc:food/cooked_beef": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked beef"
+        },
+        "primary_uses": {
+          "values": [
+            "ready-to-eat meat",
+            "sandwich filling",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ready-to-eat"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "named",
+          "evidence": "tag tfc:foods/cooked_meats",
+          "rationale": "cooked meat category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used"
+        },
+        "preparation_state": {
+          "value": "slot:cooked",
+          "signal": "inferred",
+          "rationale": "cooked meat"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking"
+        }
+      }
+    },
+    "tfc:food/cooked_bluegill": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked fish"
+        },
+        "primary_uses": {
+          "values": [
+            "ready-to-eat fish",
+            "sandwich filling",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ready-to-eat"
+        },
+        "food_category": {
+          "value": "slot:fish",
+          "signal": "named",
+          "evidence": "tag firmalife:foods/cooked_fish",
+          "rationale": "cooked fish category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used"
+        },
+        "preparation_state": {
+          "value": "slot:cooked",
+          "signal": "inferred",
+          "rationale": "cooked fish"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meat storage (fish included)"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking"
+        }
+      }
+    },
+    "tfc:food/cooked_calamari": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked squid"
+        },
+        "primary_uses": {
+          "values": [
+            "ready-to-eat seafood",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ready-to-eat"
+        },
+        "food_category": {
+          "value": "slot:fish",
+          "signal": "inferred",
+          "rationale": "seafood category, fish-like"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used"
+        },
+        "preparation_state": {
+          "value": "slot:cooked",
+          "signal": "inferred",
+          "rationale": "cooked"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meat storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

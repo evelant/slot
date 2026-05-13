@@ -1,0 +1,1024 @@
+{
+  "items": {
+    "firmalife:sealed_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as structural wall for cellars/greenhouses"
+        },
+        "primary_uses": {
+          "values": [
+            "building cellars and greenhouses"
+          ],
+          "signal": "inferred",
+          "rationale": "key component of multiblock structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common bricks and beeswax"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick variant stored with other brick blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "player deploys these when constructing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "stage2 origin from loot absence"
+        }
+      }
+    },
+    "firmalife:sealed_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural door for cellars"
+        },
+        "primary_uses": {
+          "values": [
+            "building cellar entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as portal in cellar walls"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from sealed bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during construction"
+        }
+      }
+    },
+    "firmalife:sealed_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural trapdoor for cellars"
+        },
+        "primary_uses": {
+          "values": [
+            "building cellar access points"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as ceiling/floor hatch"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from sealed bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during construction"
+        }
+      }
+    },
+    "firmalife:sealed_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant used in cellar construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building cellar walls"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as perimeter blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from sealed bricks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall block stored with other wall variants"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during construction"
+        }
+      }
+    },
+    "firmalife:seed_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "throwable helper for spreading seeds"
+        },
+        "primary_uses": {
+          "values": [
+            "spreading seeds over an area"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted and thrown to plant seeds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when planting, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from seeds"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in planting operations"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "player crafts a handful when needed"
+        }
+      }
+    },
+    "firmalife:seeds/red_grape": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "planted to grow red grapes"
+        },
+        "primary_uses": {
+          "values": [
+            "planting red grape vines"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in trellis planter to grow grapes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept when starting vineyard"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "dropped from wild red grape plants"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for planting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed item stored with other seeds"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "loot from wild_red_grapes",
+          "rationale": "harvested from wild surface plants"
+        }
+      }
+    },
+    "firmalife:seeds/white_grape": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "planted to grow white grapes"
+        },
+        "primary_uses": {
+          "values": [
+            "planting white grape vines"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in trellis planter to grow grapes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept when starting vineyard"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "dropped from wild white grape plants"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for planting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed item stored with other seeds"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "evidence": "loot from wild_white_grapes",
+          "rationale": "harvested from wild surface plants"
+        }
+      }
+    },
+    "firmalife:shosha_wheel": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cheese wheel cut and eaten, food source"
+        },
+        "primary_uses": {
+          "values": [
+            "aging into cheese slices"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in cellar to age, then cut with knife"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when processing cheese, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from milk in barrel"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cheese making is a cooking process"
+        }
+      }
+    },
+    "firmalife:solar_drier": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed workstation for drying items"
+        },
+        "primary_uses": {
+          "values": [
+            "drying food and items"
+          ],
+          "signal": "inferred",
+          "rationale": "uses sunlight to dry placed items"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed near farm, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from wood and glass"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "preserving food through drying"
+        },
+        "workflow": {
+          "values": [
+            "firmalife:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "the primary drying station"
+        },
+        "used_at": {
+          "values": [
+            "firmalife:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "items are processed at this block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "stage2 origin from loot tables"
+        }
+      }
+    },
+    "firmalife:spice/basil_leaves": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient used as seasoning"
+        },
+        "primary_uses": {
+          "values": [
+            "seasoning cooked meals"
+          ],
+          "signal": "inferred",
+          "rationale": "added to recipes for flavor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept when cooking, not always"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "harvested from wild basil plant"
+        },
+        "food_category": {
+          "values": [
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "spice ingredient"
+        },
+        "food_use": {
+          "values": [
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "used as spice in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in meal preparation"
+        }
+      }
+    },
+    "firmalife:spice/cinnamon": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient, spice"
+        },
+        "primary_uses": {
+          "values": [
+            "seasoning sweet dishes"
+          ],
+          "signal": "inferred",
+          "rationale": "spice used in cooking"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used sparingly as spice"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained from tree tapping"
+        },
+        "food_category": {
+          "values": [
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "spice ingredient"
+        },
+        "food_use": {
+          "values": [
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "used as spice in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in meal preparation"
+        }
+      }
+    },
+    "firmalife:spice/ground_cinnamon": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient, ground spice"
+        },
+        "primary_uses": {
+          "values": [
+            "seasoning sweet dishes"
+          ],
+          "signal": "inferred",
+          "rationale": "ground version used in cooking"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used sparingly as spice"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "milled from cinnamon sticks"
+        },
+        "food_category": {
+          "values": [
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "spice ingredient"
+        },
+        "food_use": {
+          "values": [
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "used as spice in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in meal preparation"
+        }
+      }
+    },
+    "firmalife:spice/vanilla": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient, spice"
+        },
+        "primary_uses": {
+          "values": [
+            "flavoring sweet dishes"
+          ],
+          "signal": "inferred",
+          "rationale": "spice used in desserts"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used sparingly as spice"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "dried from vanilla pods"
+        },
+        "food_category": {
+          "values": [
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "spice ingredient"
+        },
+        "food_use": {
+          "values": [
+            "slot:spice"
+          ],
+          "signal": "inferred",
+          "rationale": "used as spice in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in meal preparation"
+        }
+      }
+    },
+    "firmalife:spoon": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting tool used in dough making"
+        },
+        "primary_uses": {
+          "values": [
+            "mixing dough and cooking recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as tool in 90+ shapeless recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used in cooking, kept in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from wood or metal"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "core tool in food prep"
+        },
+        "used_at": {
+          "values": [
+            "firmalife:mixing_bowl"
+          ],
+          "signal": "inferred",
+          "rationale": "used with mixing bowl for dough"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooking_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "stored with kitchen utensils"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "tool kept on-hand"
+        }
+      }
+    },
+    "firmalife:sprinkler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block that waters crops"
+        },
+        "primary_uses": {
+          "values": [
+            "watering greenhouse and farm crops"
+          ],
+          "signal": "inferred",
+          "rationale": "needs connected water pipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from copper plate"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "irrigation task"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of irrigation system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "stage2 origin"
+        }
+      }
+    },
+    "firmalife:stainless_steel_greenhouse_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural door for greenhouse"
+        },
+        "primary_uses": {
+          "values": [
+            "building stainless steel greenhouse"
+          ],
+          "signal": "inferred",
+          "rationale": "component of greenhouse structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during greenhouse construction"
+        }
+      }
+    },
+    "firmalife:stainless_steel_greenhouse_panel_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof panel for greenhouse"
+        },
+        "primary_uses": {
+          "values": [
+            "building greenhouse roof"
+          ],
+          "signal": "inferred",
+          "rationale": "part of greenhouse multiblock roof"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during greenhouse construction"
+        }
+      }
+    },
+    "firmalife:stainless_steel_greenhouse_panel_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall panel for greenhouse"
+        },
+        "primary_uses": {
+          "values": [
+            "building greenhouse walls"
+          ],
+          "signal": "inferred",
+          "rationale": "part of greenhouse multiblock wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during greenhouse construction"
+        }
+      }
+    },
+    "firmalife:stainless_steel_greenhouse_port": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "port for pipe passage in greenhouse"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting pipes to greenhouse"
+          ],
+          "signal": "inferred",
+          "rationale": "allows fluid pipes through greenhouse wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to enable irrigation"
+        }
+      }
+    },
+    "firmalife:stainless_steel_greenhouse_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block for greenhouse"
+        },
+        "primary_uses": {
+          "values": [
+            "building greenhouse roof"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as sloped roof piece"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during greenhouse construction"
+        }
+      }
+    },
+    "firmalife:stainless_steel_greenhouse_roof_top": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof top slab for greenhouse"
+        },
+        "primary_uses": {
+          "values": [
+            "building greenhouse roof top"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof ridge piece"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during greenhouse construction"
+        }
+      }
+    },
+    "firmalife:stainless_steel_greenhouse_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor for greenhouse access"
+        },
+        "primary_uses": {
+          "values": [
+            "building greenhouse access points"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as ceiling/floor hatch"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during greenhouse construction"
+        }
+      }
+    },
+    "firmalife:stainless_steel_greenhouse_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall block for greenhouse"
+        },
+        "primary_uses": {
+          "values": [
+            "building greenhouse walls"
+          ],
+          "signal": "inferred",
+          "rationale": "main solid wall for greenhouse multiblock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "deployed during greenhouse construction"
+        }
+      }
+    },
+    "firmalife:stainless_steel_jar_lid": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "sealing jars for preserves"
+          ],
+          "signal": "inferred",
+          "rationale": "used with jar and fruit to make jam"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept when making preserves"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stainless steel sheet"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in preserving food"
+        },
+        "workflow": {
+          "values": [
+            "tfc:jarring"
+          ],
+          "signal": "inferred",
+          "rationale": "part of jarring process"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "inferred",
+          "rationale": "stored with jar items"
+        }
+      }
+    },
+    "firmalife:stone_countertop": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative/functional kitchen block"
+        },
+        "primary_uses": {
+          "values": [
+            "building kitchen counters"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a work surface block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from sealed bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in kitchen construction"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

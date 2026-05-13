@@ -1,0 +1,1208 @@
+{
+  "items": {
+    "mcw_tfc_aio:furniture/palm_furniture/palm_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative furniture block, no explicit storage UI"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as furniture, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places it for aesthetics"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_double_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer block that stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in multiple drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Double drawer provides storage space"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_double_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Counter with drawers, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a counter with drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Double drawer counter provides storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_double_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Wardrobe block that stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a double wardrobe"
+          ],
+          "signal": "inferred",
+          "rationale": "Double wardrobe provides storage space"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Single drawer, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a single drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer provides storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Counter with drawer, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a drawer counter"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer counter provides storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_end_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Small table, primarily decorative"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative end table"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_glass_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Glass table, decorative furniture"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative glass table"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_large_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Large drawer, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a large drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Large drawer provides storage space"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_lower_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf with drawer, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a bookshelf drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Lower bookshelf drawer provides storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_lower_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Triple drawer, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a lower triple drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Lower triple drawer provides storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_modern_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chair, decorative furniture"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative chair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_modern_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Modern desk, primarily decorative"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative modern desk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_modern_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Wardrobe, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a modern wardrobe"
+          ],
+          "signal": "inferred",
+          "rationale": "Modern wardrobe provides storage space"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_stool_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Stool, decorative furniture"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative stool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_striped_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Striped chair, decorative furniture"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative striped chair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Table, decorative furniture"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative table"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Triple drawer, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a triple drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Triple drawer provides storage space"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/palm_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Wardrobe, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a wardrobe"
+          ],
+          "signal": "inferred",
+          "rationale": "Wardrobe provides storage space"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/stripped_palm_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf, likely decorative without storage"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative bookshelf"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/stripped_palm_bookshelf_cupboard": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf with cupboard, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a bookshelf cupboard"
+          ],
+          "signal": "inferred",
+          "rationale": "Bookshelf cupboard provides storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/stripped_palm_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf with drawer, stores items"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a bookshelf drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Bookshelf drawer provides storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/stripped_palm_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chair, decorative furniture"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative striped chair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/stripped_palm_coffee_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coffee table, decorative furniture"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnish and decorate a room"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative coffee table"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/palm_furniture/stripped_palm_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Counter likely with storage"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "Rarity component says common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, seldom carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of base furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items in a counter"
+          ],
+          "signal": "inferred",
+          "rationale": "Counter provides storage space"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

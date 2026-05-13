@@ -1,0 +1,724 @@
+{
+  "values": [
+    {
+      "id": "vintageimprovements:secondary/fluids/output/input",
+      "label": "Secondary Fluids Output/Input",
+      "state": "rejected",
+      "description": "Internal machine component, not a player-facing station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/vacuum_chamber_secondary",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "diggerhelmet:helmet_upgrade",
+      "label": "Digger Helmet Upgrade",
+      "state": "rejected",
+      "description": "Crafting category for item upgrades, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_upgrade",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "firmalife:stomping",
+      "label": "Stomping",
+      "state": "review",
+      "description": "Recipe type for a process; may be a player activity but no station or surface identified.",
+      "aliases": [],
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stomping",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:dugout/canoes",
+      "label": "Dugout Canoes",
+      "state": "rejected",
+      "description": "Guide topic about building canoes, not a reusable station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmaciv/canoe",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:lamps",
+      "label": "Lamps",
+      "state": "rejected",
+      "description": "Guide about lamp items, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/lamps",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:navigation",
+      "label": "Navigation",
+      "state": "rejected",
+      "description": "Guide about navigation tools, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmaciv/navigation",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:sewing/table",
+      "label": "Sewing Table",
+      "state": "accepted",
+      "description": "Station for sewing banner patterns and smithing templates.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/sewing_table",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:temperature/management",
+      "label": "Temperature Management",
+      "state": "rejected",
+      "description": "Guide about cooling methods, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/cooling",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create_connected:connecting/to/inventories/with/inventory/access/port",
+      "label": "Connecting to inventories with Inventory Access Port",
+      "state": "accepted",
+      "description": "Block from Create Connected for remote inventory access.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/inventory_access_port",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create_connected:controlling/signals/using/sequenced/pulse/generators",
+      "label": "Controlling signals using Sequenced Pulse Generators",
+      "state": "accepted",
+      "description": "Redstone component for generating timed pulse sequences.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/sequenced_pulse_generator",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "buildinggadgets2:template/manager",
+      "label": "Template Manager",
+      "state": "accepted",
+      "description": "Block for saving and managing building structure templates.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "buildinggadgets2:buildinggadgets2book/en_us/entries/template_manager",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:beneath/wild/fruits",
+      "label": "Beneath Wild Fruits",
+      "state": "rejected",
+      "description": "Guide about fruit types, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/beneath_wild_fruits",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:biomes",
+      "label": "Biomes",
+      "state": "rejected",
+      "description": "Guide about biome types, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/biomes",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:cheese",
+      "label": "Cheese",
+      "state": "rejected",
+      "description": "Guide about cheese production, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/cheese",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:crucible",
+      "label": "Crucible",
+      "state": "accepted",
+      "description": "Advanced device for precise alloying, placed on a heat source.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/crucible",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:drying",
+      "label": "Drying",
+      "state": "accepted",
+      "description": "Drying mat or solar drier for drying items.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/drying",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:earth/ore/index",
+      "label": "Earth Ore Index",
+      "state": "rejected",
+      "description": "Reference list, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/earth_ore_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:firepit/and/pot",
+      "label": "Firepit And Pot",
+      "state": "accepted",
+      "description": "Firepit with a ceramic pot for cooking and processing.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/pot",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:inventory/management",
+      "label": "Inventory Management",
+      "state": "rejected",
+      "description": "Guide about storage options, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/inventory_management",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:leather/making",
+      "label": "Leather Making",
+      "state": "rejected",
+      "description": "Guide about leather processing, not a single station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/leather_making",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:light/sources",
+      "label": "Light Sources",
+      "state": "rejected",
+      "description": "Guide about light items, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/lighting",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:more/fertilizer/options",
+      "label": "More Fertilizer Options",
+      "state": "rejected",
+      "description": "Guide about fertilizer sources, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/more_fertilizer",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:tapping/trees",
+      "label": "Tapping Trees",
+      "state": "rejected",
+      "description": "Guide about tree tapping process, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/arborfirmacraft/tree_tapping",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:the/beneath/ore/index",
+      "label": "The Beneath Ore Index",
+      "state": "rejected",
+      "description": "Reference list, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/nether_ore_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:the/hellforge",
+      "label": "The Hellforge",
+      "state": "accepted",
+      "description": "Large forge multiblock located in the Beneath.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/hellforge",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create_factory_logistics:mixer/upkeep/with/network/links",
+      "label": "Mixer Upkeep with Network links",
+      "state": "rejected",
+      "description": "Tutorial about automation logic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_factory_logistics:ponder/mixer_upkeep",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create_hypertube:hypertube/attachments",
+      "label": "Hypertube Attachments",
+      "state": "rejected",
+      "description": "Tutorial about hypertube addons, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_hypertube:ponder/attachments",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "createaddition:contraption/energy/exchange",
+      "label": "Contraption Energy Exchange",
+      "state": "rejected",
+      "description": "Tutorial about energy transfer on moving contraptions, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "createaddition:ponder/pei_transfer",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "railways:remote/redstone/with/conductors",
+      "label": "Remote Redstone with Conductors",
+      "state": "rejected",
+      "description": "Tutorial about conductor redstone interaction, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "railways:ponder/conductor_redstoning",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:centrifuge/comparator/interaction",
+      "label": "Centrifuge Comparator interaction",
+      "state": "accepted",
+      "description": "Centrifuge block from Vintage Improvements, can output comparator signal.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/centrifuge_redstone",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:pressing",
+      "label": "Pressing",
+      "state": "accepted",
+      "description": "Recipe type for the Mechanical Press, commonly used for plate production.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:pressing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:oxygen/distributor",
+      "label": "Oxygen Distributor",
+      "state": "accepted",
+      "description": "Machine that distributes oxygen in sealed rooms on moons/planets.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_moon/oxygen_distributor",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:arborfirmacraft",
+      "label": "ArborFirmaCraft",
+      "state": "rejected",
+      "description": "Mod category guide, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/categories/arborfirmacraft",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:beneath",
+      "label": "Beneath",
+      "state": "rejected",
+      "description": "Dimension guide, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/categories/beneath",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:blast/furnace/tips",
+      "label": "Blast Furnace Tips",
+      "state": "rejected",
+      "description": "Tips page about blast furnace usage, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/blast_furnace_tips",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:casting/chocolate",
+      "label": "Casting Chocolate",
+      "state": "rejected",
+      "description": "Guide about chocolate casting process, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfcchannelcasting/casting_chocolate",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:dye",
+      "label": "Dye",
+      "state": "rejected",
+      "description": "Guide about dye production, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/dye",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:fertilizers",
+      "label": "Fertilizers",
+      "state": "rejected",
+      "description": "Guide about fertilizer items, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/fertilizers",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:frequently/asked/questions",
+      "label": "Frequently Asked Questions",
+      "state": "rejected",
+      "description": "FAQ guide, not a station or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/faqs",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:mars/mushroom/index",
+      "label": "Mars Mushroom Index",
+      "state": "rejected",
+      "description": "Reference list, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/mars_tree_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:mars/ore/index",
+      "label": "Mars Ore Index",
+      "state": "rejected",
+      "description": "Reference list, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/mars_ore_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:minecarts",
+      "label": "Minecarts",
+      "state": "rejected",
+      "description": "Guide about minecarts, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/minecarts",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:moon/ore/index",
+      "label": "Moon Ore Index",
+      "state": "rejected",
+      "description": "Reference list, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/moon_ore_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:panning",
+      "label": "Panning",
+      "state": "rejected",
+      "description": "Guide about panning tool, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/panning",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:processing/latex",
+      "label": "Processing Latex",
+      "state": "rejected",
+      "description": "Guide about latex processing, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/arborfirmacraft/making_rubber",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:sluices",
+      "label": "Sluices",
+      "state": "accepted",
+      "description": "Water-powered device for processing ore deposits.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/sluices",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create_connected:connecting/two/inventories/with/inventory/bridge",
+      "label": "Connecting two inventories with Inventory Bridge",
+      "state": "accepted",
+      "description": "Block from Create Connected that links two inventories for shared access.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/inventory_bridge",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:space/station",
+      "label": "Space Station",
+      "state": "accepted",
+      "description": "Pre-built structure in orbit around moons/planets for player bases.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_moon/space_station",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

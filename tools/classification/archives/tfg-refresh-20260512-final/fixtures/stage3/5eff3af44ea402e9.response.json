@@ -1,0 +1,984 @@
+{
+  "items": {
+    "rnr:rock/gravel_road/gabbro": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "rationale": "Rock type in id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Rarity component is common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places for faster travel and decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/gabbro_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of road block"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height road slabs and stairs",
+            "Building paths with speed bonus"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/gabbro_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of road block"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Staircase roads with speed boost",
+            "Decorative path transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/gneiss": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/gneiss_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of road block"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height road slabs and stairs",
+            "Building paths with speed bonus"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/gneiss_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of road block"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Staircase roads with speed boost",
+            "Decorative path transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/granite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of road block"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height road slabs and stairs",
+            "Building paths with speed bonus"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/granite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of road block"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Staircase roads with speed boost",
+            "Decorative path transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/limestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/limestone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of road block"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height road slabs and stairs",
+            "Building paths with speed bonus"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/limestone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of road block"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Staircase roads with speed boost",
+            "Decorative path transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/marble": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/marble_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of road block"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height road slabs and stairs",
+            "Building paths with speed bonus"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/marble_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of road block"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Staircase roads with speed boost",
+            "Decorative path transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/phyllite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/phyllite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of road block"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height road slabs and stairs",
+            "Building paths with speed bonus"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/phyllite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of road block"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Staircase roads with speed boost",
+            "Decorative path transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/quartzite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/quartzite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of road block"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height road slabs and stairs",
+            "Building paths with speed bonus"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/quartzite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of road block"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Staircase roads with speed boost",
+            "Decorative path transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/rhyolite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of road block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height road slabs and stairs",
+            "Building paths with speed bonus"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/rhyolite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of road block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Staircase roads with speed boost",
+            "Decorative path transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form for road building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road material variant"
+        }
+      }
+    },
+    "rnr:rock/gravel_road/schist": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as road blocks for building paths"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "rationale": "Rock type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Building roads with speed boost",
+            "Decorative pathways"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits road materials storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

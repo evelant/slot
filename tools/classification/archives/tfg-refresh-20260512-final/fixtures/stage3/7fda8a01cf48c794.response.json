@@ -1,0 +1,2385 @@
+{
+  "items": {
+    "tfc:icicle": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "found in cold caves, used decoratively"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only found in cold biomes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in cold caves"
+        },
+        "primary_uses": {
+          "values": [
+            "cave decoration",
+            "water source from drips"
+          ],
+          "signal": "inferred",
+          "rationale": "player collects for looks and drip collection"
+        },
+        "material_family": {
+          "value": "ice",
+          "signal": "pattern",
+          "rationale": "id 'icicle' implies ice"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable block item"
+        }
+      }
+    },
+    "tfc:jack_o_lantern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "player carries as portable light source"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for lighting builds and caves"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from pumpkin"
+        },
+        "primary_uses": {
+          "values": [
+            "providing light",
+            "decorative lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when placed"
+        },
+        "material_family": {
+          "value": "pumpkin",
+          "signal": "inferred",
+          "rationale": "made from carved pumpkin"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as permanent light source"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "light source block"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable block item"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "light_emission=15",
+          "rationale": "component indicates light emission"
+        }
+      }
+    },
+    "tfc:jacks": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "glassworking tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized tool not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from brass"
+        },
+        "primary_uses": {
+          "values": [
+            "glassblowing tool"
+          ],
+          "signal": "inferred",
+          "rationale": "performs Pinch action in glassworking"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "inferred",
+          "evidence": "melts into brass",
+          "rationale": "made of brass"
+        },
+        "tier": {
+          "value": "brass",
+          "signal": "inferred",
+          "rationale": "brass is a common alloy tier"
+        },
+        "activity": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:glassworking_tools",
+          "rationale": "identified as glassworking tool"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "named",
+          "evidence": "tag",
+          "rationale": "used at glassworking process"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "named",
+          "evidence": "tag",
+          "rationale": "part of glassworking workflow"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable tool item"
+        }
+      }
+    },
+    "tfc:jar/banana": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/banana_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/blackberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/blackberry_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/blueberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/blueberry_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/bunchberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/bunchberry_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/cherry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/cherry_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/cloudberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/cloudberry_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/cranberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/cranberry_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/elderberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/elderberry_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/gooseberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/gooseberry_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/green_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/green_apple_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/lemon": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for long trips as preserved food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "sealed jar of jam"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/sealed_preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:sealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed'",
+          "rationale": "sealed container of preserves"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Sealed' and tag jars",
+          "rationale": "filled jar container"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made by cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "recipe type pot_jam",
+          "rationale": "produced by pot jam recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot_jam#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples include pot jam",
+          "rationale": "output of jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam recipe uses pot",
+          "rationale": "made in a cooking pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    },
+    "tfc:jar/lemon_unsealed": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "jam is eaten as food"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for short trips or used as ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtained by unsealing sealed jars"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as jam",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches or eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:preserve"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/preserves",
+          "rationale": "categorized as preserve"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used in meal crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:preserved",
+            "slot:unsealed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Unsealed'",
+          "rationale": "unsealed preserve"
+        },
+        "container_state": {
+          "values": [
+            "slot:has_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "opened jar with contents"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "made from cooking fruit into jam"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "named",
+          "evidence": "original production via pot jam",
+          "rationale": "derived from sealed jar"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "pot jam",
+          "rationale": "originally made in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "stored with jars"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable food item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

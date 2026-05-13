@@ -1,0 +1,194 @@
+{
+  "items": {
+    "tfg:aluminium_hull_reinforcement": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "evidence": "tag immersive_aircraft:upgrades",
+          "rationale": "aircraft durability upgrade applied to vehicle"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "display name prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade aircraft durability by 150%"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: +150% durability"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "upgrade kept in base until applied"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "tfg:aluminium_hydroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "crafting dust"
+        },
+        "material_family": {
+          "value": "aluminium_hydroxide",
+          "signal": "pattern",
+          "rationale": "id suffix and display"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for aluminium processing"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust is a processed mineral output"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "tfg:aluminium_landing_gear": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "evidence": "tag immersive_aircraft:upgrades",
+          "rationale": "aircraft takeoff upgrade applied to vehicle"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "display name prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "increase aircraft takeoff speed by 80%"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: +80% takeoff speed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "upgrade kept in base until applied"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "tfg:aluminium_sulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "crafting dust"
+        },
+        "material_family": {
+          "value": "aluminium_sulfate",
+          "signal": "pattern",
+          "rationale": "id suffix and display"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust is a processed mineral output"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "tfg:americium_241_rod": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fuel rod used for fission power generation"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "pattern",
+          "rationale": "display name prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for fission reactor",
+            "generate heat for power"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: heat, durability; fission_rods tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "heavy, single-use fuel rod stored at reactor"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "fission reactor fuel rod"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "component rarity uncommon"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,985 @@
+{
+  "items": {
+    "create:scoria_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone pillar used for building"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/scoria",
+          "rationale": "Identified as scoria stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during builds, not carried daily"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with scoria decorative blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Pillar block fits decorative storage group"
+        }
+      }
+    },
+    "create:secondary_linear_chassis": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Create contraption chassis component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building contraptions"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in Create automation systems"
+        },
+        "primary_uses": {
+          "values": [
+            "Building mechanical contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component for moving structures"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's moving structure system"
+        }
+      }
+    },
+    "create:sequenced_gearshift": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Create rotational speed control component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building contraptions"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in Create automation for speed regulation"
+        },
+        "primary_uses": {
+          "values": [
+            "Controlling rotational speed in contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary function is speed selection"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's kinetic mechanism family"
+        }
+      }
+    },
+    "create:shadow_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Rare metal ingot used in crafting"
+        },
+        "material_family": {
+          "value": "shadow_steel",
+          "signal": "inferred",
+          "rationale": "Identified by name as shadow steel alloy"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "Component rarity is uncommon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rare material not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Rare crafting material for advanced items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in Create high-tier recipes"
+        }
+      }
+    },
+    "create:shadow_steel_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Advanced casing for Create contraptions"
+        },
+        "material_family": {
+          "value": "shadow_steel",
+          "signal": "inferred",
+          "rationale": "Casing made from shadow steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building advanced machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in Create automation systems"
+        },
+        "primary_uses": {
+          "values": [
+            "Building advanced mechanical contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing for high-end Create machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's contraption building blocks"
+        }
+      }
+    },
+    "create:shaft": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Create power transmission component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for contraption assembly"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to transmit rotation in machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmitting rotational power in contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Core part of Create's kinetic network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Foundational component of Create's mechanical power system"
+        }
+      }
+    },
+    "create:shopping_list": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used for interacting with modded shopkeeper"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when trading with shop"
+        },
+        "primary_uses": {
+          "values": [
+            "Listing items for shopkeeper trade"
+          ],
+          "signal": "inferred",
+          "rationale": "Unique function for purchasing items"
+        }
+      }
+    },
+    "create:small_andesite_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone slab for building"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/andesite",
+          "rationale": "Tagged as andesite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with andesite brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant of brick blocks"
+        }
+      }
+    },
+    "create:small_andesite_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone stairs for building"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/andesite",
+          "rationale": "Tagged as andesite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with andesite brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant of brick blocks"
+        }
+      }
+    },
+    "create:small_andesite_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone wall for building"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/andesite",
+          "rationale": "Tagged as andesite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with andesite brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant of brick blocks"
+        }
+      }
+    },
+    "create:small_andesite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone brick for building"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/andesite",
+          "rationale": "Tagged as andesite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with andesite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Full block form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block variant"
+        }
+      }
+    },
+    "create:small_asurine_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone slab for building"
+        },
+        "material_family": {
+          "value": "asurine",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/asurine",
+          "rationale": "Tagged as asurine stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with asurine brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant of brick blocks"
+        }
+      }
+    },
+    "create:small_asurine_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone stairs for building"
+        },
+        "material_family": {
+          "value": "asurine",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/asurine",
+          "rationale": "Tagged as asurine stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with asurine brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant of brick blocks"
+        }
+      }
+    },
+    "create:small_asurine_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone wall for building"
+        },
+        "material_family": {
+          "value": "asurine",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/asurine",
+          "rationale": "Tagged as asurine stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with asurine brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant of brick blocks"
+        }
+      }
+    },
+    "create:small_asurine_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone brick for building"
+        },
+        "material_family": {
+          "value": "asurine",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/asurine",
+          "rationale": "Tagged as asurine stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with asurine bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Full block form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block variant"
+        }
+      }
+    },
+    "create:small_calcite_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone slab for building"
+        },
+        "material_family": {
+          "value": "calcite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/calcite",
+          "rationale": "Tagged as calcite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with calcite brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant of brick blocks"
+        }
+      }
+    },
+    "create:small_calcite_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone stairs for building"
+        },
+        "material_family": {
+          "value": "calcite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/calcite",
+          "rationale": "Tagged as calcite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with calcite brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant of brick blocks"
+        }
+      }
+    },
+    "create:small_calcite_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone wall for building"
+        },
+        "material_family": {
+          "value": "calcite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/calcite",
+          "rationale": "Tagged as calcite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with calcite brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant of brick blocks"
+        }
+      }
+    },
+    "create:small_calcite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone brick for building"
+        },
+        "material_family": {
+          "value": "calcite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/calcite",
+          "rationale": "Tagged as calcite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with calcite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Full block form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block variant"
+        }
+      }
+    },
+    "create:small_crimsite_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone slab for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/crimsite",
+          "rationale": "Tagged as crimsite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with crimsite brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant of brick blocks"
+        }
+      }
+    },
+    "create:small_crimsite_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone stairs for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/crimsite",
+          "rationale": "Tagged as crimsite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with crimsite brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant of brick blocks"
+        }
+      }
+    },
+    "create:small_crimsite_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone wall for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/crimsite",
+          "rationale": "Tagged as crimsite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with crimsite brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant of brick blocks"
+        }
+      }
+    },
+    "create:small_crimsite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone brick for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "pattern",
+          "evidence": "tag create:stone_types/crimsite",
+          "rationale": "Tagged as crimsite stone type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with crimsite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Full block form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block variant"
+        }
+      }
+    },
+    "create:small_deepslate_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone slab for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "named",
+          "evidence": "display_name 'Small Migmatite Brick Slab'",
+          "rationale": "Pack renames deepslate to migmatite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with migmatite brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant of brick blocks"
+        }
+      }
+    },
+    "create:small_deepslate_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone stairs for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "named",
+          "evidence": "display_name 'Small Migmatite Brick Stairs'",
+          "rationale": "Pack renames deepslate to migmatite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with migmatite brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs form for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant of brick blocks"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

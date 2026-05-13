@@ -1,0 +1,1122 @@
+{
+  "items": {
+    "gtceu:iv_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Casing block used as multiblock wall"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name and tier tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of machine construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Build multiblock structures",
+            "Craft machine walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose for player"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing is a multiblock component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Block item"
+        }
+      }
+    },
+    "gtceu:iv_machine_hull": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for machines"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name prefix IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used frequently in crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted into machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft IV machines",
+            "Used as machine chassis"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary crafting input"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier machine component"
+        }
+      }
+    },
+    "gtceu:iv_mixer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block processing machine with GUI"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tooltip voltage tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated mixing of materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Mix ores and materials",
+            "Processing line component"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        }
+      }
+    },
+    "gtceu:iv_muffler_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for waste venting"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name suffix IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common hatch"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Recover waste from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock hatch component"
+        }
+      }
+    },
+    "gtceu:iv_naquadah_alloy_buzzsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric saw for crafting operations"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named",
+          "rationale": "Material in display name"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tier in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when needed for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Cuts blocks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Cut planks and blocks",
+            "Crafting saw operation"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary usage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfg:artisan_table_tools",
+          "rationale": "Stored with artisan tools"
+        }
+      }
+    },
+    "gtceu:iv_naquadah_alloy_chainsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric chainsaw for tree felling"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named",
+          "rationale": "Material in display name"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tier in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Brought when logging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Tree felling activity"
+        },
+        "primary_uses": {
+          "values": [
+            "Fell trees with area effect",
+            "Silk harvest ice"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip abilities"
+        },
+        "combat_bonus": {
+          "values": [
+            "disables_blocking"
+          ],
+          "signal": "pattern",
+          "evidence": "Tooltip Brute: Disables Shields",
+          "rationale": "Weapon ability"
+        }
+      }
+    },
+    "gtceu:iv_naquadah_alloy_drill": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric mining drill"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named",
+          "rationale": "Material in display name"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tier in display name"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Primary mining tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for mining blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine ores in large area",
+            "Place torches automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip features"
+        }
+      }
+    },
+    "gtceu:iv_naquadah_alloy_screwdriver": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Configuration tool for machines"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named",
+          "rationale": "Material in display name"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tier in display name"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often used when working on machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Configures machine covers"
+        },
+        "primary_uses": {
+          "values": [
+            "Adjust machine covers",
+            "Used in many crafting recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip usage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfg:artisan_table_tools",
+          "rationale": "Stored with artisan tools"
+        }
+      }
+    },
+    "gtceu:iv_naquadah_alloy_wire_cutter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Wire cutting tool for crafting"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named",
+          "rationale": "Material in display name"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tier in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when wiring or crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Wires and circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Cut wires and cables",
+            "Craft electronic components"
+          ],
+          "signal": "inferred",
+          "rationale": "Tag and usage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfg:artisan_table_tools",
+          "rationale": "Stored with artisan tools"
+        }
+      }
+    },
+    "gtceu:iv_naquadah_alloy_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Wrench for rotating/dismantling machines"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named",
+          "rationale": "Material in display name"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tier in display name"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often used when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Configures machines and pipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Dismantle machines",
+            "Rotate blocks",
+            "Configure pipe connections"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip features"
+        }
+      }
+    },
+    "gtceu:iv_ore_washer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine with GUI"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tooltip voltage tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Washes crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "Wash crushed ores",
+            "Ore processing step"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine function"
+        }
+      }
+    },
+    "gtceu:iv_output_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Item output component for multiblocks"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name prefix IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock item output"
+        },
+        "primary_uses": {
+          "values": [
+            "Output items from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock bus component"
+        }
+      }
+    },
+    "gtceu:iv_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fluid output component for multiblocks"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name prefix IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock fluid output"
+        },
+        "primary_uses": {
+          "values": [
+            "Output fluids from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock hatch component"
+        }
+      }
+    },
+    "gtceu:iv_output_hatch_4x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Quadruple fluid output hatch"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name prefix IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock fluid output"
+        },
+        "primary_uses": {
+          "values": [
+            "Output fluids from multiblocks with 4x capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock hatch component"
+        }
+      }
+    },
+    "gtceu:iv_output_hatch_9x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Nonuple fluid output hatch"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name prefix IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock fluid output"
+        },
+        "primary_uses": {
+          "values": [
+            "Output fluids from multiblocks with 9x capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock hatch component"
+        }
+      }
+    },
+    "gtceu:iv_packer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine with GUI"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tooltip voltage tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated packing"
+        },
+        "primary_uses": {
+          "values": [
+            "Pack items into blocks",
+            "Boxinator function"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        }
+      }
+    },
+    "gtceu:iv_parallel_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component to increase parallelism"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name Elite Parallel Control Hatch (IV by tier in creative tab)"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock parallel processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Run multiple recipes in parallel in multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock hatch component"
+        }
+      }
+    },
+    "gtceu:iv_polarizer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine with GUI"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tooltip voltage tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Magnetic polarization"
+        },
+        "primary_uses": {
+          "values": [
+            "Polarize materials for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine function"
+        }
+      }
+    },
+    "gtceu:iv_power_unit": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Rechargeable battery for powering tools"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when operating electric tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Powers GTCEu tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Power electric tools",
+            "Rechargeable energy storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip and usage"
+        }
+      }
+    },
+    "gtceu:iv_quantum_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Held block that stores huge item counts"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name Quantum Chest V (tier IV from creative tab)"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores single item type in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Store millions of a single item",
+            "Compact bulk storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        }
+      }
+    },
+    "gtceu:iv_quantum_tank": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Held block that stores huge fluid amounts"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name Quantum Tank V (tier IV)"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores fluids in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Store millions of millibuckets of fluid",
+            "Compact fluid storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores fluids"
+        }
+      }
+    },
+    "gtceu:iv_robot_arm": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Component used as cover to limit item transfer"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when configuring machine covers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Controls item transfer"
+        },
+        "primary_uses": {
+          "values": [
+            "Limit item transfer as a cover",
+            "Used in crafting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip and recipes"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier machine component"
+        }
+      }
+    },
+    "gtceu:iv_rock_crusher": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine with GUI"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tooltip voltage tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushes rocks and magma"
+        },
+        "primary_uses": {
+          "values": [
+            "Crush rocks and solidify magma",
+            "Ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip description"
+        }
+      }
+    },
+    "gtceu:iv_rotor_holder": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for rotor placement"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name IV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock rotor holder"
+        },
+        "primary_uses": {
+          "values": [
+            "Hold rotors in multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Function from name"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock holder component"
+        }
+      }
+    },
+    "gtceu:iv_scanner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine with GUI"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Tooltip voltage tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Scans items and blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Scan blocks for data",
+            "Ore processing detection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

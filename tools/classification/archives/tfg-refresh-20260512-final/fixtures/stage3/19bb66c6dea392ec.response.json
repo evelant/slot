@@ -1,0 +1,1071 @@
+{
+  "items": {
+    "create:packager": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "logistics block in Create's package system, no standalone UI"
+        },
+        "primary_uses": {
+          "values": [
+            "packaging items into packages",
+            "automating item logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "core logistics block for packaging"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once then left in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity is common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used for transport and packaging logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "pattern",
+          "evidence": "tag create_factory_logistics:packager_item",
+          "rationale": "part of Create logistics subsystem"
+        }
+      }
+    },
+    "create:peculiar_bell": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative brass bell variant"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "ambient sound"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block with haunting interaction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common component"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to decorate builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block fits decorative storage group"
+        }
+      }
+    },
+    "create:pink_postbox": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placeable block with GUI for sending packages"
+        },
+        "primary_uses": {
+          "values": [
+            "sending packages to other players",
+            "logistics in base"
+          ],
+          "signal": "inferred",
+          "rationale": "postbox for package delivery"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base for occasional use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of package logistics network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "pattern",
+          "evidence": "tag create:postboxes",
+          "rationale": "belongs to Create package subsystem"
+        }
+      }
+    },
+    "create:pink_seat": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "furniture block for sitting and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "sitting",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "furniture with sitting functionality"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once as furniture"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "furniture block"
+        }
+      }
+    },
+    "create:pink_table_cloth": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative cloth block"
+        },
+        "primary_uses": {
+          "values": [
+            "table decoration",
+            "adding color to builds"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block group"
+        }
+      }
+    },
+    "create:pink_toolbox": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "container that opens GUI for storing tools"
+        },
+        "primary_uses": {
+          "values": [
+            "storing tools and items",
+            "portable tool storage"
+          ],
+          "signal": "inferred",
+          "rationale": "toolbox storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for storage management"
+        }
+      }
+    },
+    "create:pink_valve_handle": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid control block, part of Create fluid network"
+        },
+        "primary_uses": {
+          "values": [
+            "regulating fluid flow",
+            "manual or automated pipe control"
+          ],
+          "signal": "inferred",
+          "rationale": "valve handle controls fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed on pipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:fluid"
+          ],
+          "signal": "pattern",
+          "evidence": "tag create:valve_handles",
+          "rationale": "member of Create fluid subsystem"
+        }
+      }
+    },
+    "create:piston_extension_pole": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "name contains piston_extension_pole",
+          "rationale": "component of mechanical piston contraption"
+        },
+        "primary_uses": {
+          "values": [
+            "extending mechanical piston range",
+            "building moving contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "piston pole extends reach"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as part of contraption"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated piston mechanisms"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "component of Create's contraption system"
+        }
+      }
+    },
+    "create:placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "item display block with secondary redstone function"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying items",
+            "creating redstone item-matching triggers"
+          ],
+          "signal": "inferred",
+          "rationale": "frame and redstone signal block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative and redstone functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "fits decorative storage group"
+        }
+      }
+    },
+    "create:polished_cut_andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "name ends with andesite, tags indicate building",
+          "rationale": "stone variant used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "creating polished stone surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfg:stone_composition/igneous_intermediate",
+          "rationale": "andesite is igneous extrusive rock"
+        }
+      }
+    },
+    "create:polished_cut_andesite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form of building stone"
+        },
+        "primary_uses": {
+          "values": [
+            "building with slabs",
+            "creating half-block steps"
+          ],
+          "signal": "inferred",
+          "rationale": "stone slab for construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "rationale": "same stone family"
+        }
+      }
+    },
+    "create:polished_cut_andesite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs form of building stone"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "creating vertical transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "stone stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "rationale": "same stone family"
+        }
+      }
+    },
+    "create:polished_cut_andesite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall form of building stone"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "creating boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "stone wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "rationale": "same stone family"
+        }
+      }
+    },
+    "create:polished_cut_asurine": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stone variant for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "creating polished stone surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "create:polished_cut_asurine_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with slabs",
+            "creating half-block steps"
+          ],
+          "signal": "inferred",
+          "rationale": "stone slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "create:polished_cut_asurine_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "creating vertical transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "stone stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "create:polished_cut_asurine_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "creating boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "stone wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "create:polished_cut_calcite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stone variant for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "creating polished stone surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "create:polished_cut_calcite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with slabs",
+            "creating half-block steps"
+          ],
+          "signal": "inferred",
+          "rationale": "stone slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "create:polished_cut_calcite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "creating vertical transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "stone stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "create:polished_cut_calcite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "creating boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "stone wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "create:polished_cut_crimsite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stone variant for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "creating polished stone surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "create:polished_cut_crimsite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with slabs",
+            "creating half-block steps"
+          ],
+          "signal": "inferred",
+          "rationale": "stone slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "create:polished_cut_crimsite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "creating vertical transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "stone stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "create:polished_cut_crimsite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "creating boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "stone wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "create:polished_cut_andesite",
+      "facet": "material_family",
+      "value": "andesite",
+      "rationale": "id contains andesite"
+    },
+    {
+      "item": "create:polished_cut_andesite_slab",
+      "facet": "material_family",
+      "value": "andesite",
+      "rationale": "id contains andesite"
+    },
+    {
+      "item": "create:polished_cut_andesite_stairs",
+      "facet": "material_family",
+      "value": "andesite",
+      "rationale": "id contains andesite"
+    },
+    {
+      "item": "create:polished_cut_andesite_wall",
+      "facet": "material_family",
+      "value": "andesite",
+      "rationale": "id contains andesite"
+    },
+    {
+      "item": "create:polished_cut_asurine",
+      "facet": "material_family",
+      "value": "asurine",
+      "rationale": "id contains asurine"
+    },
+    {
+      "item": "create:polished_cut_asurine_slab",
+      "facet": "material_family",
+      "value": "asurine",
+      "rationale": "id contains asurine"
+    },
+    {
+      "item": "create:polished_cut_asurine_stairs",
+      "facet": "material_family",
+      "value": "asurine",
+      "rationale": "id contains asurine"
+    },
+    {
+      "item": "create:polished_cut_asurine_wall",
+      "facet": "material_family",
+      "value": "asurine",
+      "rationale": "id contains asurine"
+    },
+    {
+      "item": "create:polished_cut_calcite",
+      "facet": "material_family",
+      "value": "calcite",
+      "rationale": "id contains calcite"
+    },
+    {
+      "item": "create:polished_cut_calcite_slab",
+      "facet": "material_family",
+      "value": "calcite",
+      "rationale": "id contains calcite"
+    },
+    {
+      "item": "create:polished_cut_calcite_stairs",
+      "facet": "material_family",
+      "value": "calcite",
+      "rationale": "id contains calcite"
+    },
+    {
+      "item": "create:polished_cut_calcite_wall",
+      "facet": "material_family",
+      "value": "calcite",
+      "rationale": "id contains calcite"
+    },
+    {
+      "item": "create:polished_cut_crimsite",
+      "facet": "material_family",
+      "value": "crimsite",
+      "rationale": "id contains crimsite"
+    },
+    {
+      "item": "create:polished_cut_crimsite_slab",
+      "facet": "material_family",
+      "value": "crimsite",
+      "rationale": "id contains crimsite"
+    },
+    {
+      "item": "create:polished_cut_crimsite_stairs",
+      "facet": "material_family",
+      "value": "crimsite",
+      "rationale": "id contains crimsite"
+    },
+    {
+      "item": "create:polished_cut_crimsite_wall",
+      "facet": "material_family",
+      "value": "crimsite",
+      "rationale": "id contains crimsite"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

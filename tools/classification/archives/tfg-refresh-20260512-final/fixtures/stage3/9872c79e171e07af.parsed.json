@@ -1,0 +1,817 @@
+{
+  "items": {
+    "ad_astra:water_pump": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine that pumps water for oxygen generation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left running"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common Ad Astra machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of oxygen/fluid automation"
+        },
+        "primary_uses": {
+          "values": [
+            "pumping water for oxygen distributor"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide: essential for oxygen distributor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid pumping subsystem"
+        }
+      }
+    },
+    "ad_astra:wheel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for Ad Astra vehicles"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only kept when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in shaped recipe"
+        }
+      }
+    },
+    "ad_astra:white_flag": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Flag block used for decoration or marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration or territorial marker"
+        },
+        "primary_uses": {
+          "values": [
+            "marking territory or decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable flag"
+        }
+      }
+    },
+    "ad_astra:white_industrial_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light-emitting decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for lighting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common industrial light"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for illumination in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as light source"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Player stores lamps together"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "minecraft:light_emission=15",
+          "rationale": "Light emission component"
+        }
+      }
+    },
+    "ad_astra:wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Tool for configuring pipes and cables"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when working on pipe networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to configure fluid/energy pipes"
+        },
+        "primary_uses": {
+          "values": [
+            "configuring pipe modes",
+            "rotating connections"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide: wrench cycles pipe modes"
+        }
+      }
+    },
+    "ad_astra:yellow_flag": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Flag block for decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating and marking"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable flag"
+        }
+      }
+    },
+    "ad_astra:yellow_industrial_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light-emitting decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for lighting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common industrial light"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for illumination"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as light source"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Player stores lamps together"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "minecraft:light_emission=15",
+          "rationale": "Light emission component"
+        }
+      }
+    },
+    "ad_astra:zip_gun": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Handheld propulsion device for space movement"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for mobility in space"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common Ad Astra tool"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for movement in low gravity"
+        },
+        "primary_uses": {
+          "values": [
+            "propelling forward in space"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: allows propulsion in space"
+        }
+      }
+    },
+    "ad_astra:zombified_mogler_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg, collected as a set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not kept in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common creative tab item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "evidence": "stage2 rule",
+          "rationale": "Spawn egg pattern"
+        }
+      }
+    },
+    "ad_astra:zombified_pygro_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg, collected as a set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common creative tab item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "evidence": "stage2 rule",
+          "rationale": "Spawn egg pattern"
+        }
+      }
+    },
+    "advancedperipherals:block_reader": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral block for reading block NBT"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed near computer setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used with ComputerCraft for automation"
+        },
+        "primary_uses": {
+          "values": [
+            "reading block data via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: reveals world secrets"
+        }
+      }
+    },
+    "advancedperipherals:chat_box": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral for chat interaction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once per base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for programmable chat"
+        },
+        "primary_uses": {
+          "values": [
+            "interacting with game chat via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Computer peripheral"
+        }
+      }
+    },
+    "advancedperipherals:chunk_controller": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Handheld item to control chunk loading"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when managing loaded areas"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for chunk management"
+        },
+        "primary_uses": {
+          "values": [
+            "controlling chunk loading"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool for chunk management"
+        }
+      }
+    },
+    "advancedperipherals:colony_integrator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral for MineColonies integration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in colony area"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for colony automation"
+        },
+        "primary_uses": {
+          "values": [
+            "interfacing with MineColonies via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Computer peripheral"
+        }
+      }
+    },
+    "advancedperipherals:computer_tool": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Tool for configuring ComputerCraft peripherals"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building computer systems"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to configure peripherals"
+        },
+        "primary_uses": {
+          "values": [
+            "configuring ComputerCraft peripherals"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool for peripheral setup"
+        }
+      }
+    },
+    "advancedperipherals:end_automata_core": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Upgrade component for turtle automata cores"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept for crafting turtle upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading turtle automata core"
+          ],
+          "signal": "inferred",
+          "rationale": "Transformed from weak core"
+        }
+      }
+    },
+    "advancedperipherals:energy_detector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral for energy detection"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in energy monitoring setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for energy monitoring"
+        },
+        "primary_uses": {
+          "values": [
+            "monitoring energy levels via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Computer peripheral for energy"
+        }
+      }
+    },
+    "advancedperipherals:environment_detector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral for environment sensing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in monitoring setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for environment monitoring"
+        },
+        "primary_uses": {
+          "values": [
+            "sensing weather and time via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: observability"
+        }
+      }
+    },
+    "advancedperipherals:geo_scanner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral for scanning terrain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in scanning setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for scanning blocks and ores"
+        },
+        "primary_uses": {
+          "values": [
+            "scanning blocks and ores via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: observability"
+        }
+      }
+    },
+    "advancedperipherals:husbandry_automata_core": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Upgrade component for turtle automata cores"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept for crafting turtle upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading turtle for animal interaction"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide: allows animal interaction"
+        }
+      }
+    },
+    "advancedperipherals:inventory_manager": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral for inventory management"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in storage area"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for inventory control via computer"
+        },
+        "primary_uses": {
+          "values": [
+            "managing inventories via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: base toolkit"
+        }
+      }
+    },
+    "advancedperipherals:me_bridge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral for AE2 integration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed next to AE2 network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to interface with AE2 via computer"
+        },
+        "primary_uses": {
+          "values": [
+            "interacting with AE2 network via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Computer peripheral for AE2"
+        }
+      }
+    },
+    "advancedperipherals:memory_card": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Item for storing data and programs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when programming turtles"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        },
+        "primary_uses": {
+          "values": [
+            "storing programs and data for turtles"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide: used with peripherals and turtles"
+        }
+      }
+    },
+    "advancedperipherals:nbt_storage": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Peripheral for storing NBT data"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in computer area"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common peripheral"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for data storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing block data via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: no secrets"
+        }
+      }
+    },
+    "advancedperipherals:overpowered_end_automata_core": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Upgrade component for turtle automata cores"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept for crafting overpowered upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading turtle to overpowered core"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide: transformed with nether star"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

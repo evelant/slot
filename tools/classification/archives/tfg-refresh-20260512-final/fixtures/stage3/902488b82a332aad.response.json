@@ -1,0 +1,1041 @@
+{
+  "items": {
+    "gtceu:raw_monazite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "compact raw ore block for crafting storage"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "evidence": "id suffix _monazite",
+          "rationale": "ore material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed for storage, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw monazite",
+            "uncrafting into raw monazite"
+          ],
+          "signal": "inferred",
+          "rationale": "block is compact storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "raw_ore_block tag",
+          "rationale": "unprocessed ore stage"
+        }
+      }
+    },
+    "gtceu:raw_naquadah": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "raw ore for processing"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "id suffix _naquadah",
+          "rationale": "ore material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried after mining runs"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into naquadah ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "raw_materials tag",
+          "rationale": "unprocessed ore stage"
+        }
+      }
+    },
+    "gtceu:raw_naquadah_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "id suffix _naquadah",
+          "rationale": "ore material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed for storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw naquadah",
+            "uncrafting into raw naquadah"
+          ],
+          "signal": "inferred",
+          "rationale": "block is compact storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "raw_ore_block tag",
+          "rationale": "unprocessed ore stage"
+        }
+      }
+    },
+    "gtceu:raw_neodymium": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "neodymium",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "ore material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried after mining"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred",
+          "rationale": "typical ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material"
+        }
+      }
+    },
+    "gtceu:raw_neodymium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "neodymium",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed for storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw neodymium"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_nether_quartz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "polishing into gems",
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "gem ore with multiple processing paths"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_nether_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw nether quartz"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_nickel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_nickel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw nickel"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_oilsands": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "oilsands",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_oilsands_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "oilsands",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw oilsands"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_olivine": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "olivine",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "polishing into gems",
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_olivine_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "olivine",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw olivine"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_opal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "opal",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "polishing into gems",
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_opal_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "opal",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw opal"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_palladium": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_palladium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw palladium"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_pentlandite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "pentlandite",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into nickel ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred",
+          "rationale": "pentlandite yields nickel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_pentlandite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "pentlandite",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw pentlandite"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_pitchblende": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "pitchblende",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_pitchblende_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "pitchblende",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw pitchblende"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_platinum": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_platinum_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw platinum"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_pollucite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "pollucite",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts",
+            "crafting into block form"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:raw_pollucite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "pollucite",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "uncrafting into raw pollucite"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

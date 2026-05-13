@@ -1,0 +1,1128 @@
+{
+  "items": {
+    "greate:neutronium_cogwheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Create cogwheel part, no UI, built into contraptions"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern",
+          "rationale": "id prefix indicates neutronium tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building, not everyday hotbar"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in Create contraptions for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting rotational power in contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Default cogwheel purpose"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Kinetic component in Greate logistics subsystem"
+        }
+      }
+    },
+    "greate:neutronium_crushing_wheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Crushing wheel part, processes items in contraption"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern",
+          "rationale": "id prefix indicates neutronium tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in contraptions, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushing is an automated process"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing items in automated processing lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Main function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Kinetic component in Greate"
+        }
+      }
+    },
+    "greate:neutronium_encased_fan": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Encased fan part, used for airflow processing"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Built into setups, not frequent carry"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation processing"
+        },
+        "primary_uses": {
+          "values": [
+            "blowing air for bulk processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fan function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing component"
+        }
+      }
+    },
+    "greate:neutronium_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Gearbox transmits power between shafts"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Contraption component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power transmission in automation"
+        },
+        "primary_uses": {
+          "values": [
+            "changing rotational speed and direction"
+          ],
+          "signal": "inferred",
+          "rationale": "Main purpose"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Power train component"
+        }
+      }
+    },
+    "greate:neutronium_mechanical_mixer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Mechanical mixer, processes items in basin"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Mixing is an automated recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "mixing ingredients in automated crafting"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "greate:neutronium_mechanical_press": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Mechanical press, compresses items"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "pressing items into plates and shapes"
+          ]
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ]
+        }
+      }
+    },
+    "greate:neutronium_mechanical_pump": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Mechanical pump moves fluids"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "pumping fluids in automated systems"
+          ]
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ]
+        }
+      }
+    },
+    "greate:neutronium_mechanical_saw": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Mechanical saw cuts blocks"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "cutting blocks automatically"
+          ]
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ]
+        }
+      }
+    },
+    "greate:neutronium_millstone": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Millstone grinds items, processing part"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "grinding items into dust"
+          ]
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ]
+        }
+      }
+    },
+    "greate:neutronium_shaft": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Shaft transmits rotation between components"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used extensively in contraptions, often carried in bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "connecting rotational power through contraptions"
+          ]
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ]
+        }
+      }
+    },
+    "greate:neutronium_vertical_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Vertical gearbox variant, same function"
+        },
+        "tier": {
+          "value": "neutronium",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "redirecting rotational power vertically"
+          ]
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ]
+        }
+      }
+    },
+    "greate:phyllite_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for rose quartz processing"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred",
+          "rationale": "Player groups all rose quartz ores by mineral"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and stored, not carried"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and then processed"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground ore generation"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into rose quartz",
+            "milling for crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block; stored with other ores"
+        }
+      }
+    },
+    "greate:pink_sand_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ]
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into rose quartz",
+            "milling for crushed ore"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ]
+        }
+      }
+    },
+    "greate:poor_raw_rose_quartz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Low-grade raw ore, processed further"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "pattern",
+          "rationale": "Name includes rose_quartz"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate material, not carried regularly"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and then processed via milling or polishing"
+        },
+        "primary_uses": {
+          "values": [
+            "polishing into gem",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Poor raw material, grouped with raw ores"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore stage"
+        }
+      }
+    },
+    "greate:pure_rose_quartz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processed dust, intermediate crafting ingredient"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Store in AE system, rarely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting purified material",
+            "further processing into gems"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "rationale": "Tagged forge:pure_dusts"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Form dust"
+        }
+      }
+    },
+    "greate:purified_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate purified ore, ready for final processing"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "milling into dust",
+            "pressing into dust"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/purified_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Tagged forge:purified_ores"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Form ore, intermediate stage"
+        }
+      }
+    },
+    "greate:pyroxenite_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ]
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "smelting",
+            "milling"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ]
+        }
+      }
+    },
+    "greate:quartzite_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ]
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "smelting",
+            "milling"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ]
+        }
+      }
+    },
+    "greate:raw_rose_quartz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw mineral, direct from ore"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "polishing into gem",
+            "smelting",
+            "milling"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw material, stored with unprocessed ores"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tagged raw_materials"
+        }
+      }
+    },
+    "greate:raw_rose_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compact storage of raw rose quartz, not a container"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw rose quartz",
+            "unpacking into raw pieces"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Tagged forge:raw_ore_blocks"
+        }
+      }
+    },
+    "greate:red_granite_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ]
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "smelting",
+            "milling"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ]
+        }
+      }
+    },
+    "greate:red_sand_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ]
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "smelting",
+            "milling"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ]
+        }
+      }
+    },
+    "greate:refined_radiance_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Block of refined radiance, compact storage material"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "rationale": "Name indicates material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried, placed in builds"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced contraptions and builds"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting refined radiance components",
+            "decorative building block"
+          ]
+        }
+      }
+    },
+    "greate:refined_radiance_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component crafted from refined radiance"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ]
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced Greate mechanisms"
+          ]
+        }
+      }
+    },
+    "greate:refined_radiance_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket, used to transport liquid refined radiance"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "inferred",
+          "rationale": "Contains refined radiance fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialist fluid, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fluid logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid refined radiance"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holds a fluid"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "greate:phyllite_rose_quartz_ore",
+      "facet": "material_family",
+      "current": "phyllite_rose_quartz",
+      "suggested": "rose_quartz",
+      "rationale": "Players group all rose quartz ores by mineral, not host rock",
+      "confidence": 0.8
+    },
+    {
+      "item": "greate:pink_sand_rose_quartz_ore",
+      "facet": "material_family",
+      "current": "pink_sand_rose_quartz",
+      "suggested": "rose_quartz",
+      "rationale": "Mineral grouping preferred",
+      "confidence": 0.8
+    },
+    {
+      "item": "greate:pyroxenite_rose_quartz_ore",
+      "facet": "material_family",
+      "current": "pyroxenite_rose_quartz",
+      "suggested": "rose_quartz",
+      "rationale": "Mineral grouping",
+      "confidence": 0.8
+    },
+    {
+      "item": "greate:quartzite_rose_quartz_ore",
+      "facet": "material_family",
+      "current": "quartzite_rose_quartz",
+      "suggested": "rose_quartz",
+      "rationale": "Mineral grouping",
+      "confidence": 0.8
+    },
+    {
+      "item": "greate:red_granite_rose_quartz_ore",
+      "facet": "material_family",
+      "current": "red_granite_rose_quartz",
+      "suggested": "rose_quartz",
+      "rationale": "Mineral grouping",
+      "confidence": 0.8
+    },
+    {
+      "item": "greate:red_sand_rose_quartz_ore",
+      "facet": "material_family",
+      "current": "rose_quartz",
+      "suggested": "rose_quartz",
+      "rationale": "Already correct",
+      "confidence": 0.8
+    }
+  ],
+  "fill_ins": [
+    {
+      "item": "greate:neutronium_cogwheel",
+      "facet": "material_family",
+      "value": "neutronium",
+      "rationale": "Name-based deterministic"
+    },
+    {
+      "item": "greate:neutronium_cogwheel",
+      "facet": "form",
+      "value": "cogwheel",
+      "rationale": "Id suffix"
+    },
+    {
+      "item": "greate:neutronium_crushing_wheel",
+      "facet": "material_family",
+      "value": "neutronium",
+      "rationale": "Name-based"
+    },
+    {
+      "item": "greate:neutronium_crushing_wheel",
+      "facet": "form",
+      "value": "crushing_wheel",
+      "rationale": "Id suffix"
+    },
+    {
+      "item": "greate:neutronium_encased_fan",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_encased_fan",
+      "facet": "form",
+      "value": "encased_fan"
+    },
+    {
+      "item": "greate:neutronium_gearbox",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_gearbox",
+      "facet": "form",
+      "value": "gearbox"
+    },
+    {
+      "item": "greate:neutronium_mechanical_mixer",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_mechanical_mixer",
+      "facet": "form",
+      "value": "mechanical_mixer"
+    },
+    {
+      "item": "greate:neutronium_mechanical_press",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_mechanical_press",
+      "facet": "form",
+      "value": "mechanical_press"
+    },
+    {
+      "item": "greate:neutronium_mechanical_pump",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_mechanical_pump",
+      "facet": "form",
+      "value": "mechanical_pump"
+    },
+    {
+      "item": "greate:neutronium_mechanical_saw",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_mechanical_saw",
+      "facet": "form",
+      "value": "mechanical_saw"
+    },
+    {
+      "item": "greate:neutronium_millstone",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_millstone",
+      "facet": "form",
+      "value": "millstone"
+    },
+    {
+      "item": "greate:neutronium_shaft",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_shaft",
+      "facet": "form",
+      "value": "shaft"
+    },
+    {
+      "item": "greate:neutronium_vertical_gearbox",
+      "facet": "material_family",
+      "value": "neutronium"
+    },
+    {
+      "item": "greate:neutronium_vertical_gearbox",
+      "facet": "form",
+      "value": "vertical_gearbox"
+    },
+    {
+      "item": "greate:poor_raw_rose_quartz",
+      "facet": "form",
+      "value": "raw",
+      "rationale": "Ore stage"
+    },
+    {
+      "item": "greate:raw_rose_quartz_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Storage block form"
+    },
+    {
+      "item": "greate:refined_radiance_block",
+      "facet": "material_family",
+      "value": "refined_radiance",
+      "rationale": "Name-based"
+    },
+    {
+      "item": "greate:refined_radiance_block",
+      "facet": "form",
+      "value": "block"
+    },
+    {
+      "item": "greate:refined_radiance_bolt",
+      "facet": "material_family",
+      "value": "refined_radiance"
+    },
+    {
+      "item": "greate:refined_radiance_bolt",
+      "facet": "form",
+      "value": "bolt"
+    },
+    {
+      "item": "greate:refined_radiance_bucket",
+      "facet": "material_family",
+      "value": "refined_radiance",
+      "rationale": "Fluid based on name"
+    }
+  ]
+}

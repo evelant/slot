@@ -1,0 +1,991 @@
+{
+  "items": {
+    "gtceu:mv_laser_engraver": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV processing machine with GUI used for engraving recipes"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV per tooltip"
+        },
+        "primary_uses": {
+          "values": [
+            "Processes materials with laser engraving at MV",
+            "Automated crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Core usage of the machine"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and left in base, not carried"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated material processing line"
+        }
+      }
+    },
+    "gtceu:mv_lathe": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV processing machine for rod production"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Produces rods from ingots at MV",
+            "Automated crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated material processing"
+        }
+      }
+    },
+    "gtceu:mv_lithium_battery": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Rechargeable battery for powering MV tools"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Tier indicated by name and tooltip"
+        },
+        "primary_uses": {
+          "values": [
+            "Rechargeable power source for MV electric tools",
+            "Crafting component for power units"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says reusable battery"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players carry spare batteries for tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component stored with other MV parts"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries/mv",
+          "rationale": "Part of GT battery subsystem"
+        }
+      }
+    },
+    "gtceu:mv_macerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV processing machine for crushing ores"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Crushes ores and materials at MV",
+            "Automated ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Shredding Ores"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore crushing is part of mining workflow"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in: greate:milling",
+          "rationale": "Used as milling machine"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "The machine itself is the station"
+        }
+      }
+    },
+    "gtceu:mv_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative block used in construction and crafting"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV tier as per name"
+        },
+        "primary_uses": {
+          "values": [
+            "Building industrial structures",
+            "Crafting component for MV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes and as decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in bulk for builds and crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other MV tier components"
+        }
+      }
+    },
+    "gtceu:mv_machine_hull": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Base component for crafting MV machines"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV tier as per name"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting base for all MV machines",
+            "Building block for machine structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in 70+ recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential component frequently crafted and used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common material"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other MV tier components"
+        }
+      }
+    },
+    "gtceu:mv_miner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV machine that mines ores in area"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated mining of ores in 33x33 area",
+            "Ore processing at MV"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Mines ores below"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated mining machine"
+        }
+      }
+    },
+    "gtceu:mv_mixer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV processing machine for mixing"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Mixes fluids and items at MV",
+            "Automated crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Will it Blend?"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated mixing process"
+        }
+      }
+    },
+    "gtceu:mv_muffler_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for exhaust recovery"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV tier as per name"
+        },
+        "primary_uses": {
+          "values": [
+            "Recovers waste from multiblock machines",
+            "Multiblock component"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Recovers waste"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT multiblock hatch system"
+        }
+      }
+    },
+    "gtceu:mv_ore_washer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV processing machine for washing ores"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Washes crushed ores for byproducts",
+            "Ore processing at MV"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Getting more Byproducts"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing chain"
+        }
+      }
+    },
+    "gtceu:mv_output_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for item output"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV tier as per name"
+        },
+        "primary_uses": {
+          "values": [
+            "Item output for multiblock machines",
+            "9-slot item storage for MB"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Item Output for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed on multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT multiblock hatch/bus system"
+        }
+      }
+    },
+    "gtceu:mv_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for fluid output"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV tier as per name"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid output for multiblock machines",
+            "32,000 mB fluid storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Fluid Output for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed on multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV multiblock component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT multiblock hatch system"
+        }
+      }
+    },
+    "gtceu:mv_packer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV processing machine for packing/unpacking"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Packs and unpacks items into boxes",
+            "Automated crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: puts into and grabs out of boxes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated item packing"
+        }
+      }
+    },
+    "gtceu:mv_polarizer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV processing machine for magnet polarization"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Polarizes materials for magnets",
+            "Automated crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Bipolarising your Magnets"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated material processing"
+        }
+      }
+    },
+    "gtceu:mv_power_unit": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Rechargeable battery pack for MV electric tools"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Tier indicated in name and tooltip"
+        },
+        "primary_uses": {
+          "values": [
+            "Powers MV electric tools like drills, chainsaws",
+            "Crafting component for tool heads"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many tool crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential tool power supply, carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier power component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT battery/power subsystem"
+        }
+      }
+    },
+    "gtceu:mv_pump": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV machine that pumps fluids from the world"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Pumps large volumes of fluids (48x48 area)",
+            "Automated fluid management"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Best way to empty Oceans"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated fluid pumping"
+        }
+      }
+    },
+    "gtceu:mv_robot_arm": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component item used in crafting MV machines"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV tier as per name"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for MV machines",
+            "Used as a cover to limit item transfer"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Limits items as cover"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component carried for crafting and machine building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        }
+      }
+    },
+    "gtceu:mv_rock_crusher": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV machine that crushes rocks using water/lava"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Crushes rocks into materials using water and lava",
+            "Automated stone processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Place water and lava"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Rock crushing for mining products"
+        }
+      }
+    },
+    "gtceu:mv_scanner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV machine for scanning materials"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Scans materials for properties",
+            "Requires fluid for operation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Scans Materials"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Scanning for automation"
+        }
+      }
+    },
+    "gtceu:mv_sensor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component item used in crafting advanced machines"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV tier as per name"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for MV machines and scanners",
+            "Used in computer and sensor arrays"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Component carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        }
+      }
+    },
+    "gtceu:mv_sifter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV processing machine for sorting materials"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Machine voltage tier MV"
+        },
+        "primary_uses": {
+          "values": [
+            "Sifts materials to separate components",
+            "Automated material sorting"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Stay calm and keep sifting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Sifting is part of ore processing"
+        }
+      }
+    },
+    "gtceu:mv_sodium_battery": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Rechargeable battery for MV tools"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "Tier indicated in name and tooltip"
+        },
+        "primary_uses": {
+          "values": [
+            "Rechargeable power source for MV electric tools",
+            "Crafting component for power units"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Reusable Battery"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Spare battery carried for tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries/mv",
+          "rationale": "Part of GT battery subsystem"
+        }
+      }
+    },
+    "gtceu:mv_solar_panel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine cover that generates passive power from sunlight"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV voltage output per tooltip"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates MV power passively from sunlight",
+            "Used as a cover on machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Produces Energy from Sun as Cover"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for installation on machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier power component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT energy generation subsystem"
+        }
+      }
+    },
+    "gtceu:mv_steam_turbine": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "MV generator that produces power from steam"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV voltage output per tooltip"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates MV power from steam",
+            "Power generation at MV tier"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Voltage OUT 128 EU/t"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary power generation machine"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam turbine for power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT generator subsystem"
+        }
+      }
+    },
+    "gtceu:mv_super_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Massive chest for item storage"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "MV tier as per name"
+        },
+        "primary_uses": {
+          "values": [
+            "Stores up to 8 million items at MV tier"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 8,000,000 items"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "Large storage chest, stored with other chests"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

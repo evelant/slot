@@ -1,0 +1,1759 @@
+{
+  "items": {
+    "gtceu:andesite_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore block, but no direct recipes shown"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:andesite_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show only milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at mill"
+        }
+      }
+    },
+    "gtceu:andesite_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show only milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at mill"
+        }
+      }
+    },
+    "gtceu:andesite_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    },
+    "gtceu:andesite_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block processed for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/andesite",
+          "rationale": "found in andesite underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted for ingots",
+            "milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes",
+          "rationale": "processed by these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe stations",
+          "rationale": "used at furnace or mill"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:andesite_iron_ore",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "ore block obviously requires pickaxe to mine, but stage2 rule missed due to missing block tags in input"
+    }
+  ]
+}

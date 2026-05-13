@@ -1,0 +1,1132 @@
+{
+  "items": {
+    "gtceu:sodium_hydroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "chemical dust used as crafting input"
+        },
+        "material_family": {
+          "value": "sodium_hydroxide",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/sodium_hydroxide",
+          "rationale": "material from dust tag"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient",
+            "making lye"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing and crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "no loot, only crafted"
+        }
+      }
+    },
+    "gtceu:sodium_nitrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "chemical dust used as crafting input"
+        },
+        "material_family": {
+          "value": "sodium_nitrite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/sodium_nitrite",
+          "rationale": "material from dust tag"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "no loot, only crafted"
+        }
+      }
+    },
+    "gtceu:sodium_persulfate_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier tool"
+        },
+        "material_family": {
+          "value": "sodium_persulfate",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "bucket of sodium persulfate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when transporting fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "industrial processing"
+          ],
+          "signal": "inferred",
+          "rationale": "carries sodium persulfate"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid, belongs in fluid storage"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "transports fluid when used"
+        }
+      }
+    },
+    "gtceu:sodium_potassium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier tool"
+        },
+        "material_family": {
+          "value": "sodium_potassium",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "bucket of NaK"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when transporting fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "industrial processing"
+          ],
+          "signal": "inferred",
+          "rationale": "carries sodium potassium"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid, belongs in fluid storage"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "transports fluid when used"
+        }
+      }
+    },
+    "gtceu:sodium_sulfide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "chemical dust used as crafting input"
+        },
+        "material_family": {
+          "value": "sodium_sulfide",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/sodium_sulfide",
+          "rationale": "material from dust tag"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "no loot, only crafted"
+        }
+      }
+    },
+    "gtceu:solar_panel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed cover generating energy"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only placed in energy setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "passive solar energy generation",
+            "machine cover"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says produces energy as cover"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Produces Energy from the Sun'",
+          "rationale": "used for power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GregTech energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "single production recipe",
+          "rationale": "only crafted"
+        }
+      }
+    },
+    "gtceu:soldering_alloy_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compacted material block"
+        },
+        "material_family": {
+          "value": "soldering_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/soldering_alloy",
+          "rationale": "material from block tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only for compact storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact soldering alloy storage"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "material block for compact storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe via compacting",
+          "rationale": "only crafted"
+        }
+      }
+    },
+    "gtceu:soldering_alloy_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier tool"
+        },
+        "material_family": {
+          "value": "soldering_alloy",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "bucket of liquid soldering alloy"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when transporting fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "industrial processing"
+          ],
+          "signal": "inferred",
+          "rationale": "carries soldering alloy"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid, belongs in fluid storage"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "transports fluid when used"
+        }
+      }
+    },
+    "gtceu:soldering_alloy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "alloy dust used as ingredient"
+        },
+        "material_family": {
+          "value": "soldering_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/soldering_alloy",
+          "rationale": "material from dust tag"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in smelting and mixing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "soldering component",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make ingots and blocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "no loot, only crafted"
+        }
+      }
+    },
+    "gtceu:soldering_alloy_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "metal ingot used in crafting"
+        },
+        "material_family": {
+          "value": "soldering_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/soldering_alloy",
+          "rationale": "material from ingot tag"
+        },
+        "material_process_stage": {
+          "value": "slot:ingot",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for alloy recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "soldering component",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft blocks and plates"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "single smelting recipe",
+          "rationale": "only crafted from dust"
+        }
+      }
+    },
+    "gtceu:soldering_alloy_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece used in crafting"
+        },
+        "material_family": {
+          "value": "soldering_alloy",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/soldering_alloy",
+          "rationale": "material from nugget tag"
+        },
+        "material_process_stage": {
+          "value": "slot:nugget",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "small quantities used less often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "soldering component",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in precise recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, only crafted from ingot",
+          "rationale": "only crafted"
+        }
+      }
+    },
+    "gtceu:solid_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine part for multiblock assembly"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "evidence": "common steel casing",
+          "rationale": "default material for solid machine casing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "machine casing",
+            "multiblock component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GT multiblocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "primary multiblock structural component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "only crafted"
+        }
+      }
+    },
+    "gtceu:solvent_spray_can": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "special-purpose tool for removing color"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when needed for decolorizing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "remove block color",
+            "paint remover"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Can remove color from things",
+          "rationale": "player-facing function"
+        }
+      }
+    },
+    "gtceu:spatial_storage_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hazard sign used for decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once for decor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "hazard signage",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as warning sign"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative hazard sign"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "only crafted"
+        }
+      }
+    },
+    "gtceu:spessartine_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed gem material block"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/spessartine",
+          "rationale": "material from block tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only for compact storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact gem storage"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block for spessartine"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gem storage block belongs with gems"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "compacting recipe present",
+          "rationale": "only crafted from gems"
+        }
+      }
+    },
+    "gtceu:spessartine_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface indicator for spessartine ore"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:bud_indicators/spessartine",
+          "rationale": "indicator for spessartine"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only collected during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "ore prospecting",
+            "surface indicator"
+          ],
+          "signal": "inferred",
+          "rationale": "found naturally indicating ore"
+        }
+      }
+    },
+    "gtceu:spessartine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gem dust used in processing"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/spessartine",
+          "rationale": "material from dust tag"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in various processing steps"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "gem processing",
+            "milling input"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from milling gems, used in further processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from milling",
+          "rationale": "only obtained through processing"
+        }
+      }
+    },
+    "gtceu:spessartine_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gem used in crafting"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:gems/spessartine",
+          "rationale": "material from gem tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting and compacting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "gem crafting component",
+            "gem material"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make blocks, dust, lenses"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced from ore processing",
+          "rationale": "only obtained through processing"
+        }
+      }
+    },
+    "gtceu:spessartine_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating spessartine ore"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/spessartine",
+          "rationale": "indicator for spessartine"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only collected during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "ore prospecting",
+            "surface indicator"
+          ],
+          "signal": "inferred",
+          "rationale": "found naturally indicating ore"
+        }
+      }
+    },
+    "gtceu:spessartine_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafted component for machines"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:lenses/spessartine",
+          "rationale": "material from lens tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized component, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "laser/focusing component",
+            "lens"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, only crafted",
+          "rationale": "only crafted"
+        }
+      }
+    },
+    "gtceu:spessartine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined for spessartine"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/spessartine",
+          "rationale": "ore material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly mined in caves"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "source of spessartine"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled to get spessartine"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/stone",
+          "rationale": "found underground in stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:spessartine_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "plate form of spessartine"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/spessartine",
+          "rationale": "material from plate tag"
+        },
+        "material_process_stage": {
+          "value": "slot:plate",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in mechanical crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "plate material",
+            "mechanical component"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from cutting block, used in recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from cutting",
+          "rationale": "only obtained through processing"
+        }
+      }
+    },
+    "gtceu:sphalerite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore dust used in zinc production"
+        },
+        "material_family": {
+          "value": "sphalerite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/sphalerite",
+          "rationale": "material from dust tag"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in smelting and processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "zinc source",
+            "ore processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted to zinc ingot"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "only obtained through processing"
+        }
+      }
+    },
+    "gtceu:sphalerite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating sphalerite ore"
+        },
+        "material_family": {
+          "value": "sphalerite",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/sphalerite",
+          "rationale": "indicator for sphalerite"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only collected during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "ore prospecting",
+            "surface indicator"
+          ],
+          "signal": "inferred",
+          "rationale": "found naturally indicating ore"
+        }
+      }
+    },
+    "gtceu:sphalerite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined for zinc"
+        },
+        "material_family": {
+          "value": "sphalerite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/sphalerite",
+          "rationale": "ore material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly mined in caves"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "source of zinc"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled to get zinc"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/stone",
+          "rationale": "found underground in stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

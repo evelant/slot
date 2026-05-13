@@ -1,0 +1,1970 @@
+{
+  "items": {
+    "gtceu:limestone_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone tag",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "source of carbon for processing",
+            "milled into crushed ore",
+            "fuel or material"
+          ],
+          "signal": "inferred",
+          "rationale": "raw lignite ore, used for fuel and carbon"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    },
+    "gtceu:limestone_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block, raw material for processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/limestone",
+          "rationale": "underground ore in limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not hotbar item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the ground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of processed materials"
+          ],
+          "signal": "inferred",
+          "rationale": "raw material for metal/gem production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and creative tab gtceu:material_block",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed in furnace, blast furnace, and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/blasting#input",
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to processing workflows"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities in storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:limestone_iron_ore",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "requires_correct_tool true but no block_tags; all other limestone ores are pickaxe"
+    }
+  ]
+}

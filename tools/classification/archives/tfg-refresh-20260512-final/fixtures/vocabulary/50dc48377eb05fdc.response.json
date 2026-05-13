@@ -1,0 +1,868 @@
+{
+  "values": [
+    {
+      "id": "pack:tfg/goat_food",
+      "label": "Goat Food",
+      "state": "accepted",
+      "description": "Items used as goat food; plausible storage section for animal feed.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:goat_food",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/gold",
+      "label": "Gold",
+      "state": "accepted",
+      "description": "Raw and processed gold materials; common metal storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/gold",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/incomplete_tracks",
+      "label": "Incomplete Tracks",
+      "state": "rejected",
+      "description": "Crafting intermediate; not a player storage bucket.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:incomplete_tracks",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/copycats_items",
+      "label": "Create: Copycats+ Items",
+      "state": "review",
+      "description": "Mod-based group for decorative/functional copycats blocks; plausible storage section.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "copycats",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/lead",
+      "label": "Lead",
+      "state": "accepted",
+      "description": "Common metal material storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/lead",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/compost_greens_high",
+      "label": "Compost Greens High",
+      "state": "rejected",
+      "description": "Recipe tag for composting; too specific for storage.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:compost_greens_high",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/contraption_controlled",
+      "label": "Contraption Controlled",
+      "state": "review",
+      "description": "Create contraption components; could be grouped by contraption use.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create:contraption_controlled",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/tfc_textile_items",
+      "label": "TFC textile Items",
+      "state": "accepted",
+      "description": "Clothing and textile items from TFC textile mod; plausible storage group.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "tfc_textile",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/sharp_tools",
+      "label": "Sharp Tools",
+      "state": "review",
+      "description": "Cutting tools like knives, scythes; somewhat specific but possible storage bucket.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:sharp_tools",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/trapdoors",
+      "label": "Trapdoors",
+      "state": "accepted",
+      "description": "Block type commonly stored together.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:trapdoors",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/sedimentary_carbonate",
+      "label": "Sedimentary Carbonate",
+      "state": "rejected",
+      "description": "Technical material type; not a mental bucket for storage.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts/sedimentary_carbonate",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/platinum",
+      "label": "Platinum",
+      "state": "accepted",
+      "description": "Common metal storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/platinum",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/nickel",
+      "label": "Nickel",
+      "state": "accepted",
+      "description": "Common metal storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/nickel",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/igneous_intermediate_half",
+      "label": "Igneous Intermediate Half",
+      "state": "rejected",
+      "description": "Geological classification; not a player storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:stone_composition/igneous_intermediate_half",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/silver",
+      "label": "Silver",
+      "state": "accepted",
+      "description": "Common metal storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/silver",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/pulpifiable",
+      "label": "Pulpifiable",
+      "state": "rejected",
+      "description": "Process tag for pulping; not a storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create:pulpifiable",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/springling_breed_items",
+      "label": "Springling Breed Items",
+      "state": "rejected",
+      "description": "Mob breeding items; too specific for storage.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "species:springling_breed_items",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/back",
+      "label": "Back",
+      "state": "accepted",
+      "description": "Back-slot items like backpacks, quivers, vessels; plausible storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "accessories:back",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/snatcher_steals",
+      "label": "Snatcher Steals",
+      "state": "rejected",
+      "description": "Mob mechanic tag; not a storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "wan_ancient_beasts:snatcher_steals",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/trimmable_armor",
+      "label": "Trimmable Armor",
+      "state": "rejected",
+      "description": "Armor property tag; not a storage category.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:trimmable_armor",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/saplings",
+      "label": "Saplings",
+      "state": "accepted",
+      "description": "Tree saplings; common storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:saplings",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/springling_taming_items",
+      "label": "Springling Taming Items",
+      "state": "rejected",
+      "description": "Mob taming items; too specific.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "species:springling_taming_items",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/dirt",
+      "label": "Dirt",
+      "state": "accepted",
+      "description": "Dirt and related soil blocks; common storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:dirt",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/cobalt",
+      "label": "Cobalt",
+      "state": "accepted",
+      "description": "Common metal storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/cobalt",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/naquadah",
+      "label": "Naquadah",
+      "state": "accepted",
+      "description": "Common metal storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/naquadah",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/igneous_mafic_half",
+      "label": "Igneous Mafic Half",
+      "state": "rejected",
+      "description": "Geological classification; not a player storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:stone_composition/igneous_mafic_half",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/sophisticatedbackpacks_items",
+      "label": "Sophisticated Backpacks Items",
+      "state": "accepted",
+      "description": "Mod-based group for backpacks and upgrades; plausible storage section.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "sophisticatedbackpacks",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/greenhouse",
+      "label": "Greenhouse",
+      "state": "review",
+      "description": "Block group for greenhouse construction; plausible storage bucket.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:greenhouse",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/iron",
+      "label": "Iron",
+      "state": "accepted",
+      "description": "Common metal storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/iron",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/glass",
+      "label": "Glass",
+      "state": "accepted",
+      "description": "Glass and glass products; common storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:glass",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/wild_fruits",
+      "label": "Wild Fruits",
+      "state": "accepted",
+      "description": "Edible wild fruits; plausible food storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:wild_fruits",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/firepit_kindling",
+      "label": "Firepit Kindling",
+      "state": "rejected",
+      "description": "Kindling materials; not a storage bucket.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:firepit_kindling",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/expatternprovider_items",
+      "label": "ExtendedAE Items",
+      "state": "review",
+      "description": "Mod-based group for AE2 addon items; plausible storage section.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "expatternprovider",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/simplylight_items",
+      "label": "Simply Light Items",
+      "state": "review",
+      "description": "Mod-based group for lighting items; plausible storage section.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "simplylight",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/fence_gates",
+      "label": "Fence Gates",
+      "state": "review",
+      "description": "Block type; could be stored together.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:fence_gates",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/support_beams",
+      "label": "Support Beams",
+      "state": "accepted",
+      "description": "Support beam blocks; common storage for mining supplies.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:support_beams",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/calcite",
+      "label": "Calcite",
+      "state": "review",
+      "description": "Calcite ore and dust; plausible mineral storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ores/calcite",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/flagstone_roads",
+      "label": "Flagstone Roads",
+      "state": "review",
+      "description": "Road building blocks; plausible storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "rnr:flagstone_roads",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "gtceu:ev_components",
+      "label": "EV Components",
+      "state": "accepted",
+      "description": "EV-tier machine components; common tier-based storage bucket.",
+      "aliases": [],
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "gtceu:circuits/ev",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/bismuth",
+      "label": "Bismuth",
+      "state": "accepted",
+      "description": "Common metal storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/bismuth",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/gravel_roads",
+      "label": "Gravel Roads",
+      "state": "review",
+      "description": "Road building blocks; plausible storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "rnr:gravel_roads",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/item",
+      "label": "Item",
+      "state": "rejected",
+      "description": "Generic category; too broad for storage.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create_factory_logistics:network_link_qualifier/create_factory_abstractions/item",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/ore_deposits",
+      "label": "Ore Deposits",
+      "state": "review",
+      "description": "Surface ore deposit blocks; plausible storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:ore_deposits",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/foils",
+      "label": "Foils",
+      "state": "review",
+      "description": "Material component foils; could be a storage group.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:foils",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "gtceu:iv_components",
+      "label": "IV Components",
+      "state": "accepted",
+      "description": "IV-tier machine components; common tier-based storage bucket.",
+      "aliases": [],
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "gtceu:circuits/iv",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "gtceu:luv_components",
+      "label": "LUV Components",
+      "state": "accepted",
+      "description": "LUV-tier machine components; common tier-based storage bucket.",
+      "aliases": [],
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "gtceu:circuits/luv",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/glass_panes",
+      "label": "Glass Panes",
+      "state": "review",
+      "description": "Glass pane blocks; plausible storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:glass_panes",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/sedimentary_clastic",
+      "label": "Sedimentary Clastic",
+      "state": "rejected",
+      "description": "Technical material type; not a mental bucket for storage.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts/sedimentary_clastic",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

@@ -1,0 +1,1061 @@
+{
+  "items": {
+    "gtceu:naquadah_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed energy transport block in GTCEu network"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier material, mid-late game"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport for automated power networks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Energy transport cable part of GTCEu"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM-tier energy transport part of voltage components"
+        },
+        "primary_uses": {
+          "values": [
+            "High-current ZPM power distribution",
+            "Building energy networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows ZPM voltage, amperage, loss"
+        }
+      }
+    },
+    "gtceu:naquadah_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed energy transport block, part of GTCEu network"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport for automated networks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Energy wire part of GTCEu cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM-tier component for energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "ZPM-tier energy transport",
+            "Base for thicker cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows ZPM voltage and amperage"
+        }
+      }
+    },
+    "gtceu:naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for processing"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id pattern and forge:ores/naquadah tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-late game ore"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and brought back, not in hotbar"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Ore block belongs with raw ores"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into naquadah ingots",
+            "Processing into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is first step in material chain"
+        }
+      }
+    },
+    "gtceu:naquadah_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Refined metal plate, crafting component"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and forge:plates/naquadah tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in moderate quantities for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_sheets and forge:sheets"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machine components",
+            "Pressing into foils and casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:naquadah_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed energy transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM voltage component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting ZPM energy at 8 amps",
+            "Building medium power lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows amperage and voltage"
+        }
+      }
+    },
+    "gtceu:naquadah_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed fluid transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport for automated systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM-tier pipe component"
+        },
+        "primary_uses": {
+          "values": [
+            "High-volume fluid transfer",
+            "Building ZPM fluid networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows transfer rate and temperature limit"
+        }
+      }
+    },
+    "gtceu:naquadah_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed energy transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Energy wire subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM voltage component"
+        },
+        "primary_uses": {
+          "values": [
+            "ZPM energy transport at 8 amps",
+            "Intermediate for larger cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows amperage and voltage"
+        }
+      }
+    },
+    "gtceu:naquadah_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Refined metal rod, crafting component"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and forge:rods/naquadah tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tool and machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tools and machine parts",
+            "Base for long rods and bolts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:naquadah_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Small metal component, crafting ingredient"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and forge:screws/naquadah tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Assembling advanced machines",
+            "Fastening components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many machine recipes"
+        }
+      }
+    },
+    "gtceu:naquadah_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed energy transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM voltage component"
+        },
+        "primary_uses": {
+          "values": [
+            "Low-current ZPM power transport",
+            " Basic energy wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows amperage and voltage"
+        }
+      }
+    },
+    "gtceu:naquadah_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed energy transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Energy wire subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM voltage component"
+        },
+        "primary_uses": {
+          "values": [
+            "Minimal current ZPM energy transport",
+            "Base for coil crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows amperage and voltage"
+        }
+      }
+    },
+    "gtceu:naquadah_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed fluid transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM-tier pipe component"
+        },
+        "primary_uses": {
+          "values": [
+            "Moderate volume fluid transfer",
+            "Plumbing in ZPM machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows transfer rate"
+        }
+      }
+    },
+    "gtceu:naquadah_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Refined metal component, crafting ingredient"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and forge:springs/naquadah tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machine components",
+            "Energy storage mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:naquadah_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed fluid transport block"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id and tag pattern"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ZPM-tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM-tier pipe component"
+        },
+        "primary_uses": {
+          "values": [
+            "Low-volume fluid transfer",
+            "Precision fluid routing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows transfer rate"
+        }
+      }
+    },
+    "gtceu:naquadah_wafer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw circuit component, crafting ingredient"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id indicates naquadah doping"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Advanced circuit material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized crafting, not carried often"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw circuit material belongs with circuit components"
+        },
+        "primary_uses": {
+          "values": [
+            "Raw circuit for solar panels",
+            "Base for advanced circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says 'Raw Circuit'"
+        }
+      }
+    },
+    "gtceu:naquadria_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block of naquadria ingots"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:storage_blocks/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage or machine casings"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Storage block type"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of naquadria",
+            "Building machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Also used as facade material"
+        }
+      }
+    },
+    "gtceu:naquadria_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Small metal fastener, crafting ingredient"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:bolts/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Fastening machine components",
+            "Crafting tongs and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        }
+      }
+    },
+    "gtceu:naquadria_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid carrier tool for hazardous liquid"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "Bucket of naquadria fluid"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used when transporting liquid naquadria"
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying and pouring liquid naquadria",
+            "Hazardous fluid handling"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows temperature and hazard"
+        }
+      }
+    },
+    "gtceu:naquadria_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Processed dust, crafting ingredient"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:dusts/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "rationale": "Refined dust, not impure"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into naquadria ingots",
+            "Macerating machine outputs"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate processing form"
+        }
+      }
+    },
+    "gtceu:naquadria_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Thin metal sheet, crafting ingredient"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:foils/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fine wiring and wrapping"
+        },
+        "primary_uses": {
+          "values": [
+            "Wrapping cables",
+            "Creating fine wire",
+            "Insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rolling and fine wire recipes"
+        }
+      }
+    },
+    "gtceu:naquadria_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Metal gear, crafting component"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:gears/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced machinery",
+            "Transmitting torque in contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:naquadria_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Refined metal ingot, primary crafting material"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:ingots/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting into plates, rods, etc."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ZPM-tier components",
+            "Pressing into plates and rods"
+          ],
+          "signal": "inferred",
+          "rationale": "Base form for many recipes"
+        }
+      }
+    },
+    "gtceu:naquadria_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Small piece of metal, crafting ingredient"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:nuggets/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for precision crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "rationale": "Nugget form"
+        },
+        "primary_uses": {
+          "values": [
+            "Precision crafting",
+            "Small alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Smallest unit of metal"
+        }
+      }
+    },
+    "gtceu:naquadria_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Refined metal plate, crafting component"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:plates/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_sheets"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machine components",
+            "Building advanced casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:naquadria_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Refined metal rod, crafting ingredient"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id and forge:rods/naquadria tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tool and machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tools and machine parts",
+            "Turning into bolts and screws"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

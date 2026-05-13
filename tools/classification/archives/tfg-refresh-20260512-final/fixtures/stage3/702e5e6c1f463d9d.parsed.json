@@ -1,0 +1,1061 @@
+{
+  "items": {
+    "create:pulse_extender": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Player uses it to extend redstone pulses, stores with redstone parts"
+        },
+        "primary_uses": {
+          "values": [
+            "extend redstone pulse duration"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function of the block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Only carried when building redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted item"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone timing circuits"
+        }
+      }
+    },
+    "create:pulse_repeater": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Player uses it to repeat pulses, stores with redstone parts"
+        },
+        "primary_uses": {
+          "values": [
+            "repeat redstone pulse"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Only carried when building redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone pulse timing"
+        }
+      }
+    },
+    "create:pulse_timer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Player uses it as a timer, stores with redstone parts"
+        },
+        "primary_uses": {
+          "values": [
+            "time redstone pulses"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Only carried when building redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone timing"
+        }
+      }
+    },
+    "create:purple_postbox": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed block that opens a UI to send packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send and receive packages"
+          ],
+          "signal": "inferred",
+          "rationale": "Core package logistics function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once at base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable, common"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "inferred",
+          "rationale": "Colored variant"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's package logistics system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Postbox is a key package subsystem component"
+        }
+      }
+    },
+    "create:purple_seat": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed as furniture on contraptions, primary use is decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "provide seating on contraptions",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places for aesthetics and train/contraption riding"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building trains or decorations, then placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "inferred",
+          "rationale": "Colored variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Seats are furniture-like decorative blocks"
+        }
+      }
+    },
+    "create:purple_table_cloth": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed as decoration on tables"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic only"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common craftable"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "inferred",
+          "rationale": "Colored variant"
+        }
+      }
+    },
+    "create:purple_toolbox": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Placeable container that opens a UI to store tools"
+        },
+        "primary_uses": {
+          "values": [
+            "store tools and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable tool storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed at worksite, not carried typically"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common craftable"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "inferred",
+          "rationale": "Colored variant"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for storing items"
+        }
+      }
+    },
+    "create:purple_valve_handle": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Block placed on fluid pipes to control flow, part of piping mechanism"
+        },
+        "primary_uses": {
+          "values": [
+            "control fluid flow",
+            "interact with pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Valve handle regulates fluid transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building pipe networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable, common"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "inferred",
+          "rationale": "Colored variant"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Valve handles are part of Create's fluid/logistics system"
+        }
+      }
+    },
+    "create:radial_chassis": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Contraption building component, attaches blocks radially"
+        },
+        "primary_uses": {
+          "values": [
+            "build radial contraptions",
+            "attach blocks in a circle"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use in contraption creation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building complex contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automating contraption structures"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Chassis is a core contraption component"
+        }
+      }
+    },
+    "create:railway_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Casing block used to build train structures"
+        },
+        "primary_uses": {
+          "values": [
+            "build train casings",
+            "decorate train assemblies"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: 'create a casing for railway components'"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building trains, then placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of train building subsystem"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Specifically for railway/train components"
+        }
+      }
+    },
+    "create:rare_creeper_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Item used in package logistics, carried for sending/receiving"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox",
+            "logistics transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's package system"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried, used sporadically"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Component says common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package item in the package subsystem"
+        }
+      }
+    },
+    "create:rare_darcy_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Inventory item for logistics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common base rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of package system"
+        }
+      }
+    },
+    "create:rare_evan_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Sporadic use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package system"
+        }
+      }
+    },
+    "create:rare_jinx_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package system"
+        }
+      }
+    },
+    "create:rare_kryppers_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package system"
+        }
+      }
+    },
+    "create:rare_simi_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package system"
+        }
+      }
+    },
+    "create:rare_starlotte_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package system"
+        }
+      }
+    },
+    "create:rare_thunder_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package system"
+        }
+      }
+    },
+    "create:rare_up_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package system"
+        }
+      }
+    },
+    "create:rare_vector_package": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Same as other rare packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send packages via postbox"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package system"
+        }
+      }
+    },
+    "create:raw_zinc": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "named",
+          "evidence": "display_name 'Raw Zinc'",
+          "rationale": "Raw ore material for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into zinc ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Mined in bulk and carried home"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "named",
+          "evidence": "display_name contains 'Zinc'",
+          "rationale": "Identified by name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "raw ore type",
+          "rationale": "Raw ores stored together"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source ore blocks",
+          "rationale": "Mined from zinc ore"
+        }
+      }
+    },
+    "create:raw_zinc_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed raw ore block, still a crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw zinc",
+            "crafting into zinc"
+          ],
+          "signal": "inferred",
+          "rationale": "9 raw zinc crafted into block for storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for compact storage, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "named",
+          "evidence": "display_name contains 'Zinc'",
+          "rationale": "Same material as raw zinc"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "raw ore block",
+          "rationale": "Raw ore blocks stored with unprocessed ores"
+        }
+      }
+    },
+    "create:red_postbox": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed block that opens a UI to send packages"
+        },
+        "primary_uses": {
+          "values": [
+            "send and receive packages"
+          ],
+          "signal": "inferred",
+          "rationale": "Core package logistics function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once at base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable, common"
+        },
+        "dye_color": {
+          "value": "red",
+          "signal": "inferred",
+          "rationale": "Colored variant"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's package logistics system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Postbox is a key package subsystem component"
+        }
+      }
+    },
+    "create:red_sand_paper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Handheld tool with durability used for polishing"
+        },
+        "primary_uses": {
+          "values": [
+            "polish metal items",
+            "change belt grinder skin"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at polishing station or on belt grinder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when polishing tasks arise"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common craftable"
+        },
+        "used_at": {
+          "values": [
+            "vintageimprovements:polishing"
+          ],
+          "signal": "named",
+          "evidence": "document_context advancement references belt grinder skin change with sand paper",
+          "rationale": "Used in polishing process"
+        },
+        "workflow": {
+          "values": [
+            "vintageimprovements:polishing"
+          ],
+          "signal": "named",
+          "evidence": "same advancement",
+          "rationale": "Player-facing polishing workflow"
+        }
+      }
+    },
+    "create:red_seat": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed as furniture on contraptions, decorative"
+        },
+        "primary_uses": {
+          "values": [
+            "provide seating on contraptions",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic and functional seating"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building trains or decorations"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted"
+        },
+        "dye_color": {
+          "value": "red",
+          "signal": "inferred",
+          "rationale": "Colored variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Seats are furniture-like decorative blocks"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "create:raw_zinc",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "Obvious from display name"
+    },
+    {
+      "item": "create:raw_zinc_block",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "Obvious from display name"
+    },
+    {
+      "item": "create:purple_postbox",
+      "facet": "dye_color",
+      "value": "purple",
+      "rationale": "Color from name"
+    },
+    {
+      "item": "create:purple_seat",
+      "facet": "dye_color",
+      "value": "purple",
+      "rationale": "Color from name"
+    },
+    {
+      "item": "create:purple_table_cloth",
+      "facet": "dye_color",
+      "value": "purple",
+      "rationale": "Color from name"
+    },
+    {
+      "item": "create:purple_toolbox",
+      "facet": "dye_color",
+      "value": "purple",
+      "rationale": "Color from name"
+    },
+    {
+      "item": "create:purple_valve_handle",
+      "facet": "dye_color",
+      "value": "purple",
+      "rationale": "Color from name"
+    },
+    {
+      "item": "create:red_postbox",
+      "facet": "dye_color",
+      "value": "red",
+      "rationale": "Color from name"
+    },
+    {
+      "item": "create:red_seat",
+      "facet": "dye_color",
+      "value": "red",
+      "rationale": "Color from name"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

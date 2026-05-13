@@ -1,0 +1,2008 @@
+{
+  "items": {
+    "rnr:rock/cobbled_road/quartzite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road block used to build paths; player stores with other road blocks"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "Stone type extracted from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building roads, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable path block with speed boost"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of road construction material family"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building infrastructure"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road block"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in moderate stacks for road building"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a road block"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction projects"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road block used to build paths"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building roads"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable path block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road block"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/rhyolite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road slab, building block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road slab"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road slab"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/rhyolite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road stairs, building block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road stairs"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road stairs"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/schist": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road block"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable path block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road block"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/schist_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road slab"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road slab"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road slab"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/schist_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road stairs"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road stairs"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road stairs"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/shale": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road block"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable path block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road block"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/shale_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road slab"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road slab"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road slab"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/shale_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road stairs"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road stairs"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road stairs"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/slate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road block"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable path block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road block"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/slate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road slab"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road slab"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road slab"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/cobbled_road/slate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Road stairs"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone road stairs"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road stairs"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone road block"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable flagstone path"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/andesite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone slab"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for flagstone road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone slab"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road slab"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/andesite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone stairs"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for flagstone road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone stairs"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road stairs"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/basalt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone road block"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable flagstone path"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/basalt_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone slab"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for flagstone road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone slab"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road slab"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/basalt_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone stairs"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for flagstone road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone stairs"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road stairs"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/chalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone road block"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable flagstone path"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/chalk_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone slab"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for flagstone road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone slab"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road slab"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/chalk_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone stairs"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for flagstone road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone stairs"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road stairs"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/chert": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone road block"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable flagstone path"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/chert_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone slab"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for flagstone road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone slab"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road slab"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    },
+    "rnr:rock/flagstones/chert_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flagstone stairs"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "rationale": "Stone type from block id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for flagstone road"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road construction material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple stone flagstone stairs"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any chest"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as road stairs"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "Brought for construction"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

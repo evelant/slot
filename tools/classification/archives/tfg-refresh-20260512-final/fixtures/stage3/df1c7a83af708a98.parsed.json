@@ -1,0 +1,1112 @@
+{
+  "items": {
+    "ae2:terminal": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block placed to access ME network UI; single-block workstation."
+        },
+        "primary_uses": [
+          "Access and manage ME storage system",
+          "Craft items via network"
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up or expanding ME network, then placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted AE2 component."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is managing storage via UI."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 mod; players store AE2 components together."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Core storage system component."
+        }
+      }
+    },
+    "ae2:tiny_tnt": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Explosive block used for demolition; player carries and places."
+        },
+        "primary_uses": [
+          "Clearing large areas",
+          "Causing controlled explosions"
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for mining or clearing tasks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 block in creative tab."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to clear blocks and terrain."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item, stored with mod group."
+        }
+      }
+    },
+    "ae2:toggle_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Network component that toggles connections; part of ME wiring."
+        },
+        "primary_uses": [
+          "Enable/disable ME network connections",
+          "Route channels"
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during network construction, then installed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted component."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Controls network connectivity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network component."
+        }
+      }
+    },
+    "ae2:vibration_chamber": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Power generator block with fuel input; single-block UI."
+        },
+        "primary_uses": [
+          "Generate AE energy from burnable fuel"
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and rarely moved."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 machine."
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates power for AE network."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 mod item."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 energy subsystem."
+        }
+      }
+    },
+    "ae2:view_cell": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Carried to configure storage bus filters; not a block."
+        },
+        "primary_uses": [
+          "Configure storage bus view filters",
+          "Set display modes"
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up storage systems."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 item."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to manage storage views."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of storage system."
+        }
+      }
+    },
+    "ae2:void_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Applied to storage buses to void overflow; consumed on upgrade."
+        },
+        "primary_uses": [
+          "Prevent overflow in storage buses",
+          "Auto-delete excess items"
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Crafted then installed; not carried regularly."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 upgrade card."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Enhances storage bus functionality."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade item."
+        }
+      }
+    },
+    "ae2:white_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME network cable; wiring component."
+        },
+        "primary_uses": [
+          "Connect ME network devices",
+          "Transmit channels"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stacks carried by players building large networks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted cable."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of network cabling."
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white",
+          "rationale": "Cable color white."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable stored with mod."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:white_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Dense variant of ME cable; more channels."
+        },
+        "primary_uses": [
+          "Connect high-channel-density networks"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for network expansion."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common cable variant."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network cabling."
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white",
+          "rationale": "Cable color white."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dense cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_dense_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:white_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transparent ME cable; used for aesthetics or connectivity."
+        },
+        "primary_uses": [
+          "Connect ME devices with transparent cable"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common cable variant."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network cabling."
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white",
+          "rationale": "Cable color white."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 glass cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:glass_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:white_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Ammunition for matter cannon to paint cables with glow effect."
+        },
+        "primary_uses": [
+          "Color cables with glowing effect",
+          "Used in Matter Cannon"
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried; used for specific decoration."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 item."
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white",
+          "rationale": "Paint ball color white."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item."
+        }
+      }
+    },
+    "ae2:white_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Ammunition for matter cannon to recolor cables."
+        },
+        "primary_uses": [
+          "Color cables",
+          "Used in Matter Cannon to paint"
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used occasionally for decoration."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 item."
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white",
+          "rationale": "Paint ball color white."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item."
+        }
+      }
+    },
+    "ae2:white_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME smart cable displaying channel info; part of network."
+        },
+        "primary_uses": [
+          "Connect ME devices with channel visualization"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried for network building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common cable variant."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network cabling."
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white",
+          "rationale": "Cable color white."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 smart cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:white_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Dense smart cable; high capacity with channel display."
+        },
+        "primary_uses": [
+          "High-density ME network connections with channel view"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for network builds."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common cable variant."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network cabling."
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white",
+          "rationale": "Cable color white."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dense smart cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_dense_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:wireless_access_point": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed block providing wireless connectivity; has UI for config."
+        },
+        "primary_uses": [
+          "Provide wireless access to ME network",
+          "Connect wireless terminals"
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to install and link, then placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 device."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Wireless network component."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network device."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of storage/wireless subsystem."
+        }
+      }
+    },
+    "ae2:wireless_booster": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Inserted into wireless access point to boost range; enhances device."
+        },
+        "primary_uses": [
+          "Increase wireless range of access points"
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Crafted and installed; not carried regularly."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 upgrade."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Enhances network range."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade item."
+        }
+      }
+    },
+    "ae2:wireless_crafting_terminal": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Handheld device for wireless ME access with crafting; carried in curio."
+        },
+        "primary_uses": [
+          "Wireless ME storage access",
+          "Craft on the go"
+        ],
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Worn in curio slot; constant access."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 item."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides mobile storage/crafting."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 handheld terminal."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2wtlib:terminal"
+          ],
+          "signal": "inferred",
+          "rationale": "Wireless terminal subsystem (ae2wtlib)."
+        }
+      }
+    },
+    "ae2:wireless_receiver": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed block that receives wireless signal from transmitter; part of network."
+        },
+        "primary_uses": [
+          "Receive wireless ME network signal"
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for wireless setup."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 component."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Wireless network component."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of storage/wireless subsystem."
+        }
+      }
+    },
+    "ae2:wireless_terminal": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Handheld device for wireless ME access; worn in curio."
+        },
+        "primary_uses": [
+          "Wireless ME storage access anywhere"
+        ],
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Worn in curio; constant use."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common AE2 item."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Mobile storage access."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 handheld terminal."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2wtlib:terminal"
+          ],
+          "signal": "inferred",
+          "rationale": "Wireless terminal subsystem."
+        }
+      }
+    },
+    "ae2:wrapped_generic_stack": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Internal display item; no creative tab, not obtainable in survival."
+        }
+      }
+    },
+    "ae2:yellow_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME cable, yellow variant."
+        },
+        "primary_uses": [
+          "Connect ME network devices"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stacks carried for network building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common cable."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network cabling."
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow",
+          "rationale": "Cable color yellow."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:yellow_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Dense cable, yellow."
+        },
+        "primary_uses": [
+          "High-channel-density connections"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network."
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow",
+          "rationale": "Color yellow."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dense cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_dense_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:yellow_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Glass cable, yellow."
+        },
+        "primary_uses": [
+          "Transparent ME connections"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stacks carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network."
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow",
+          "rationale": "Color yellow."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 glass cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:glass_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:yellow_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Paint ball for glowing cable coloring."
+        },
+        "primary_uses": [
+          "Color cables with glow effect"
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used for decoration occasionally."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow",
+          "rationale": "Color yellow."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item."
+        }
+      }
+    },
+    "ae2:yellow_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Paint ball for recoloring cables."
+        },
+        "primary_uses": [
+          "Recolor cables"
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used for decoration occasionally."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow",
+          "rationale": "Color yellow."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item."
+        }
+      }
+    },
+    "ae2:yellow_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Smart cable, yellow."
+        },
+        "primary_uses": [
+          "Channel visualization connections"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stacks carried for networks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network."
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow",
+          "rationale": "Color yellow."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 smart cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:yellow_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Dense smart cable, yellow."
+        },
+        "primary_uses": [
+          "High-density channel visualization connections"
+        ],
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stacks for large networks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Network."
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow",
+          "rationale": "Color yellow."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dense smart cable."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_dense_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

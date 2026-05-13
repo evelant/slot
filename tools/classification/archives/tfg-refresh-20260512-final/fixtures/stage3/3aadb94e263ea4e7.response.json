@@ -1,0 +1,902 @@
+{
+  "items": {
+    "rnr:rock/over_height_gravel/diorite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road block, part of building infrastructure"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "rationale": "id contains diorite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during road building projects, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred",
+          "rationale": "used for paving and road construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building roads"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "matches road materials storage group"
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/dolomite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as road block"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "rationale": "id contains dolomite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred",
+          "rationale": "used for paving"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building roads"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "road materials"
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/gabbro": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "rationale": "id contains gabbro"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "occasional carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/gneiss": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/limestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/marble": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/phyllite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/quartzite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/schist": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/shale": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/over_height_gravel/slate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone sett road block"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/andesite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "sett road slab"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/andesite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "sett road stairs"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/basalt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "basalt sett road"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/basalt_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "basalt sett slab"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/basalt_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "basalt sett stairs"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/chalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chalk sett road"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/chalk_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chalk sett slab"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/chalk_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chalk sett stairs"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/chert": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chert sett road"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/chert_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chert sett slab"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    },
+    "rnr:rock/sett_road/chert_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chert sett stairs"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "building roads and paths",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ]
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

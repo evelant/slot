@@ -1,0 +1,1411 @@
+{
+  "items": {
+    "gtceu:gneiss_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "mined ore block processed into materials"
+        },
+        "material_family": {
+          "value": "trona",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "ore type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore, no rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and then smelted, not everyday carry"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into trona",
+            "milling for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "direct processing recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined as part of mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types blasting and smelting",
+          "rationale": "input to smelting and blasting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large stacks, stored in bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "forge:ores_in_ground/gneiss",
+          "rationale": "found underground in gneiss"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:gneiss_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "mined ore block"
+        },
+        "material_family": {
+          "value": "tungstate",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into tungstate",
+            "milling for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining activity"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "input to smelting and blasting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed in these processes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:ores tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground in gneiss"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:gneiss_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "mined ore"
+        },
+        "material_family": {
+          "value": "uraninite",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into uraninite",
+            "milling for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "input to smelting and blasting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk storage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:gneiss_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "vanadium_magnetite",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into vanadium magnetite",
+            "milling"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:gneiss_wulfenite_ore": {
+      "facets": {
+        "role": "material",
+        "material_family": "wulfenite",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "smelting into wulfenite",
+          "milling"
+        ],
+        "activity": [
+          "slot:mining"
+        ],
+        "workflow": [
+          "pack:tfg/smelting",
+          "pack:tfg/blasting"
+        ],
+        "workflow_role": [
+          "pack:tfg/smelting#input",
+          "pack:tfg/blasting#input"
+        ],
+        "material_process_stage": [
+          "slot:ore"
+        ],
+        "stock_profile": [
+          "slot:bulk"
+        ],
+        "origin": [
+          "overworld_cave"
+        ],
+        "organization_group": [
+          "pack:tfg/unprocessed_ores"
+        ]
+      }
+    },
+    "gtceu:gneiss_yellow_garnet_ore": {
+      "facets": {
+        "role": "material",
+        "material_family": "yellow_garnet",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "smelting into yellow garnet",
+          "milling"
+        ],
+        "activity": [
+          "slot:mining"
+        ],
+        "workflow": [
+          "pack:tfg/smelting",
+          "pack:tfg/blasting"
+        ],
+        "workflow_role": [
+          "pack:tfg/smelting#input",
+          "pack:tfg/blasting#input"
+        ],
+        "material_process_stage": [
+          "slot:ore"
+        ],
+        "stock_profile": [
+          "slot:bulk"
+        ],
+        "origin": [
+          "overworld_cave"
+        ],
+        "organization_group": [
+          "pack:tfg/unprocessed_ores"
+        ]
+      }
+    },
+    "gtceu:gneiss_yellow_limonite_ore": {
+      "facets": {
+        "role": "material",
+        "material_family": "yellow_limonite",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "smelting into limonite",
+          "milling"
+        ],
+        "activity": [
+          "slot:mining"
+        ],
+        "workflow": [
+          "pack:tfg/smelting",
+          "pack:tfg/blasting"
+        ],
+        "workflow_role": [
+          "pack:tfg/smelting#input",
+          "pack:tfg/blasting#input"
+        ],
+        "material_process_stage": [
+          "slot:ore"
+        ],
+        "stock_profile": [
+          "slot:bulk"
+        ],
+        "origin": [
+          "overworld_cave"
+        ],
+        "organization_group": [
+          "pack:tfg/unprocessed_ores"
+        ]
+      }
+    },
+    "gtceu:gneiss_zeolite_ore": {
+      "facets": {
+        "role": "material",
+        "material_family": "zeolite",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "smelting into zeolite",
+          "milling"
+        ],
+        "activity": [
+          "slot:mining"
+        ],
+        "workflow": [
+          "pack:tfg/smelting",
+          "pack:tfg/blasting"
+        ],
+        "workflow_role": [
+          "pack:tfg/smelting#input",
+          "pack:tfg/blasting#input"
+        ],
+        "material_process_stage": [
+          "slot:ore"
+        ],
+        "stock_profile": [
+          "slot:bulk"
+        ],
+        "origin": [
+          "overworld_cave"
+        ],
+        "organization_group": [
+          "pack:tfg/unprocessed_ores"
+        ]
+      }
+    },
+    "gtceu:goethite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "processed dust material"
+        },
+        "material_family": {
+          "value": "goethite",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "crafting components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:dusts"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "rationale": "smelted to ingot"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed in smelting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "many production recipes",
+          "rationale": "produced from ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:goethite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating ore, no crafting use"
+        },
+        "material_family": {
+          "value": "goethite",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "occasional pickup while exploring"
+        },
+        "primary_uses": {
+          "values": [
+            "indicating goethite deposits",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipes, just surface find"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "found during exploration"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns on surface"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32"
+        }
+      }
+    },
+    "gtceu:goethite_ore": {
+      "facets": {
+        "role": "material",
+        "material_family": "goethite",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "smelting into goethite",
+          "milling"
+        ],
+        "activity": [
+          "slot:mining"
+        ],
+        "workflow": [
+          "pack:tfg/smelting",
+          "pack:tfg/blasting"
+        ],
+        "workflow_role": [
+          "pack:tfg/smelting#input",
+          "pack:tfg/blasting#input"
+        ],
+        "material_process_stage": [
+          "slot:ore"
+        ],
+        "stock_profile": [
+          "slot:bulk"
+        ],
+        "origin": [
+          "overworld_cave"
+        ],
+        "organization_group": [
+          "pack:tfg/unprocessed_ores"
+        ]
+      }
+    },
+    "gtceu:gold_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small component used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "gold material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting screws and tongs",
+            "machinery component"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in many shapes"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from rod or anvil"
+        }
+      }
+    },
+    "gtceu:gold_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "carries molten gold, tool-like"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when moving fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten gold"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid gold"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 1"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "filled from molten gold"
+        }
+      }
+    },
+    "gtceu:gold_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport component, placed in world"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting HV power"
+          ],
+          "signal": "inferred",
+          "rationale": "cable with voltage and amperage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        }
+      }
+    },
+    "gtceu:gold_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate metal form"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in anvil and smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "welding into double sheets",
+            "hammering into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_ingots",
+          "rationale": "double ingot form"
+        },
+        "workflow": {
+          "values": [
+            "tfc:welding",
+            "vintageimprovements:hammering"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed in welding and hammering"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:welding#input",
+            "vintageimprovements:hammering#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to these processes"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil",
+            "vintageimprovements:hammering"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where used"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 4"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced by welding or compacting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "piles with other ingots"
+        }
+      }
+    },
+    "gtceu:gold_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "raw energy conductor, placeable"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when crafting cables"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into cables",
+            "energy transfer component"
+          ],
+          "signal": "inferred",
+          "rationale": "wire form"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of cable subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        }
+      }
+    },
+    "gtceu:gold_drum": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "fluid storage container"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once for fluid storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing fluids",
+            "fluid buffer"
+          ],
+          "signal": "inferred",
+          "rationale": "holds 32000 mB"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid tank"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:tank"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE tank system"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32, but placed as block"
+        }
+      }
+    },
+    "gtceu:gold_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into gold ingot",
+            "alloying electrum and rose gold"
+          ],
+          "signal": "inferred",
+          "rationale": "major ingredient"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:dusts"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "tfc:alloy"
+          ],
+          "signal": "pattern",
+          "rationale": "smelted and alloyed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "tfc:alloy#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "tfc:alloy"
+          ],
+          "signal": "pattern",
+          "rationale": "furnace and crucible"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:gold_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal form used in crafting"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting film",
+            "making fine wire"
+          ],
+          "signal": "inferred",
+          "rationale": "seen in exposure and wire recipes"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced by rolling"
+        }
+      }
+    },
+    "gtceu:gold_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-amperage energy cable"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized cable"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting 48A HV power"
+          ],
+          "signal": "inferred",
+          "rationale": "16x cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of cable family"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 16"
+        }
+      }
+    },
+    "gtceu:gold_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-density raw wire"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "making 16x cables",
+            "energy transport"
+          ],
+          "signal": "inferred",
+          "rationale": "wire form"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of cable system"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 16"
+        }
+      }
+    },
+    "gtceu:gold_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "large fluid transport pipe"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in fluid systems"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids at 1200 mB/t"
+          ],
+          "signal": "inferred",
+          "rationale": "high throughput pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE pipe subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 16"
+        }
+      }
+    },
+    "gtceu:gold_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicator"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up during exploration"
+        },
+        "primary_uses": {
+          "values": [
+            "indicating gold deposits",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "no craft use"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "found on surface"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "surface spawn"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32"
+        }
+      }
+    },
+    "gtceu:gold_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid pipe"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport at 600 mB/t"
+          ],
+          "signal": "inferred",
+          "rationale": "medium pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32"
+        }
+      }
+    },
+    "gtceu:gold_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multi-channel fluid pipe"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "multi-channel fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "9 channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 16"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:gold_double_cable",
+      "facet": "required_tool",
+      "value": "wire_cutter",
+      "rationale": "block tag forge:mineable/wire_cutter"
+    },
+    {
+      "item": "gtceu:gold_double_wire",
+      "facet": "required_tool",
+      "value": "wire_cutter",
+      "rationale": "block tag forge:mineable/wire_cutter"
+    },
+    {
+      "item": "gtceu:gold_drum",
+      "facet": "required_tool",
+      "value": "wrench",
+      "rationale": "block tag forge:mineable/wrench"
+    },
+    {
+      "item": "gtceu:gold_hex_cable",
+      "facet": "required_tool",
+      "value": "wire_cutter",
+      "rationale": "block tag forge:mineable/wire_cutter"
+    },
+    {
+      "item": "gtceu:gold_hex_wire",
+      "facet": "required_tool",
+      "value": "wire_cutter",
+      "rationale": "block tag forge:mineable/wire_cutter"
+    },
+    {
+      "item": "gtceu:gold_huge_fluid_pipe",
+      "facet": "required_tool",
+      "value": "wrench",
+      "rationale": "block tag forge:mineable/wrench"
+    },
+    {
+      "item": "gtceu:gold_large_fluid_pipe",
+      "facet": "required_tool",
+      "value": "wrench",
+      "rationale": "block tag forge:mineable/wrench"
+    },
+    {
+      "item": "gtceu:gold_nonuple_fluid_pipe",
+      "facet": "required_tool",
+      "value": "wrench",
+      "rationale": "block tag forge:mineable/wrench"
+    }
+  ]
+}

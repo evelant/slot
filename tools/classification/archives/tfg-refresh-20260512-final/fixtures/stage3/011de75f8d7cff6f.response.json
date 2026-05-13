@@ -1,0 +1,2407 @@
+{
+  "items": {
+    "gtceu:rhyolite_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "yellow_limonite",
+          "signal": "pattern",
+          "rationale": "from ore id and tag"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of yellow limonite"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant underground ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine these"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "forge:ores_in_ground/rhyolite",
+          "rationale": "mined in overworld underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "accumulated during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "form is ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "input to furnace and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rhyolite_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "zeolite",
+          "signal": "pattern",
+          "rationale": "from ore id and tag"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore",
+            "source of zeolite"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant underground ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine these"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "forge:ores_in_ground/rhyolite",
+          "rationale": "mined in overworld underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "accumulated during mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "form is ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "input to furnace and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_almandine": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into gem",
+            "milled into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "create:sandpaper_polishing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_aluminium": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_alunite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_amethyst": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into gem",
+            "milled into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "create:sandpaper_polishing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_apatite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into gem",
+            "milled into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "create:sandpaper_polishing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_armalcolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into gem",
+            "milled into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "create:sandpaper_polishing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_asbestos": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "asbestos",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_barite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "barite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_basaltic_mineral_sand": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "basaltic_mineral_sand",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into cast iron"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_bastnasite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "bastnasite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_bauxite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "bauxite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_bentonite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "bentonite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_beryllium": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_blue_topaz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "blue_topaz",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into gem",
+            "milled into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "create:sandpaper_polishing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_borax": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "borax",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_bornite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "bornite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into copper"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_calcite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "calcite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into ingot",
+            "crafted into calcite"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_cassiterite_sand": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "cassiterite_sand",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into tin"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_certus_quartz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into gem",
+            "milled into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "create:sandpaper_polishing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_chalcocite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "chalcocite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into copper"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_chalcopyrite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "chalcopyrite",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into copper"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_cinnabar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into gem",
+            "milled into crushed ore",
+            "smelted into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "create:sandpaper_polishing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:rich_raw_cobalt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore material for processing"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "pattern",
+          "rationale": "from item id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore",
+            "pressed into crushed ore",
+            "smelted into cobalt"
+          ],
+          "signal": "inferred",
+          "rationale": "processing routes from recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mining byproduct"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from mining ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground as rich raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore storage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes use these stations"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "input to processing stations"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

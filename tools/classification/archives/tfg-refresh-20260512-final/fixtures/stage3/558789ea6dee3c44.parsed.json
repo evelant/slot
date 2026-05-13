@@ -1,0 +1,1117 @@
+{
+  "items": {
+    "gtceu:blue_alloy_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable placed for power networks"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit HV power",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of cables"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip HV voltage",
+          "rationale": "HV-tier components group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id hex_cable tag",
+          "rationale": "Part of GT cable subsystem"
+        }
+      }
+    },
+    "gtceu:blue_alloy_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Uninsulated energy wire placed for connections"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when wiring machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit HV power",
+            "Wire connections"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of wires"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip HV voltage",
+          "rationale": "HV-tier components group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id hex_wire tag",
+          "rationale": "Part of GT cable/wire subsystem"
+        }
+      }
+    },
+    "gtceu:blue_alloy_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Standard metal ingot"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft blue alloy components"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal storage group"
+        }
+      }
+    },
+    "gtceu:blue_alloy_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Standard metal nugget"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft small blue alloy parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Small metal unit for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal storage group"
+        }
+      }
+    },
+    "gtceu:blue_alloy_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable placed for power networks"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit HV power",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of cables"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip HV voltage",
+          "rationale": "HV-tier components group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id octal_cable tag",
+          "rationale": "Part of GT cable subsystem"
+        }
+      }
+    },
+    "gtceu:blue_alloy_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Uninsulated energy wire placed for connections"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when wiring machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit HV power",
+            "Wire connections"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of wires"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip HV voltage",
+          "rationale": "HV-tier components group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id octal_wire tag",
+          "rationale": "Part of GT cable/wire subsystem"
+        }
+      }
+    },
+    "gtceu:blue_alloy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Standard metal plate"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft blue alloy components",
+            "Create machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Metal plate for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal storage group"
+        }
+      }
+    },
+    "gtceu:blue_alloy_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable placed for power networks"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit HV power",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of cables"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip HV voltage",
+          "rationale": "HV-tier components group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id quadruple_cable tag",
+          "rationale": "Part of GT cable subsystem"
+        }
+      }
+    },
+    "gtceu:blue_alloy_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Uninsulated energy wire placed for connections"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when wiring machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit HV power",
+            "Wire connections"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of wires"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip HV voltage",
+          "rationale": "HV-tier components group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id quadruple_wire tag",
+          "rationale": "Part of GT cable/wire subsystem"
+        }
+      }
+    },
+    "gtceu:blue_alloy_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "Standard metal rod"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft blue alloy tools",
+            "Create machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Metal rod for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal storage group"
+        }
+      }
+    },
+    "gtceu:blue_alloy_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "Standard metal screw"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft blue alloy machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "Small fastener for machine assembly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal storage group"
+        }
+      }
+    },
+    "gtceu:blue_alloy_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable placed for power networks"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit HV power",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of cables"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip HV voltage",
+          "rationale": "HV-tier components group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id single_cable tag",
+          "rationale": "Part of GT cable subsystem"
+        }
+      }
+    },
+    "gtceu:blue_alloy_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Uninsulated energy wire placed for connections"
+        },
+        "material_family": {
+          "value": "blue_alloy",
+          "signal": "pattern",
+          "evidence": "id contains blue_alloy",
+          "rationale": "Material name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when wiring machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit HV power",
+            "Wire connections"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of wires"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip HV voltage",
+          "rationale": "HV-tier components group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id single_wire tag",
+          "rationale": "Part of GT cable/wire subsystem"
+        }
+      }
+    },
+    "gtceu:blue_borderless_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed lighting block, not a workstation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative lighting",
+            "Illuminate base"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source for aesthetics"
+        }
+      }
+    },
+    "gtceu:blue_dye_spray_can": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Used to paint blocks, has durability"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "display name 'Spray Can (Blue)'",
+          "rationale": "Explicit color in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when painting projects"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint blocks blue"
+          ],
+          "signal": "inferred",
+          "rationale": "Single purpose: painting"
+        }
+      }
+    },
+    "gtceu:blue_glass_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, hidden from recipe viewers"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "named",
+          "evidence": "id contains glass",
+          "rationale": "Material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft optical components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes involving lenses"
+        }
+      }
+    },
+    "gtceu:blue_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed lighting block, not a workstation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative lighting",
+            "Illuminate base"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source for aesthetics"
+        }
+      }
+    },
+    "gtceu:blue_large_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative building block with no UI"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as decoration, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative wall panels",
+            "Building facade"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction for aesthetics"
+        }
+      }
+    },
+    "gtceu:blue_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative building block with no UI"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as decoration, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative wall panels",
+            "Building facade"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction for aesthetics"
+        }
+      }
+    },
+    "gtceu:blue_steel_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:axes",
+          "rationale": "Axe tool"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id contains blue_steel",
+          "rationale": "Material from id"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "named",
+          "evidence": "display name 'Blue Steel Axe'",
+          "rationale": "Tier from material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential tool carried for wood chopping"
+        },
+        "primary_uses": {
+          "values": [
+            "Chopping wood",
+            "Tree felling",
+            "Stripping logs",
+            "Mining soft materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Multi-use axe from tooltips"
+        }
+      }
+    },
+    "gtceu:blue_steel_axe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:axe_heads",
+          "rationale": "Unfinished tool component"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id contains blue_steel",
+          "rationale": "Material from id"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "Tier from parent material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting component, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft blue steel axe"
+          ],
+          "signal": "inferred",
+          "rationale": "Used only to assemble axe"
+        }
+      }
+    },
+    "gtceu:blue_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "Compressed material block for storage"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id contains blue_steel",
+          "rationale": "Material from id"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "Tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of blue steel",
+            "Building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Both storage and building use"
+        }
+      }
+    },
+    "gtceu:blue_steel_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts",
+          "rationale": "Standard metal bolt"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id contains blue_steel",
+          "rationale": "Material from id"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "Tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft blue steel machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Fastener for machine assembly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal storage group"
+        }
+      }
+    },
+    "gtceu:blue_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid carrier tool for molten metal"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "named",
+          "evidence": "tooltip contains 'Blue Steel'",
+          "rationale": "Fluid content material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when handling molten metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport molten blue steel",
+            "Pour into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for casting and fluid movement"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains liquid blue steel"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Poured at casting table"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of casting workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to casting"
+        }
+      }
+    },
+    "gtceu:blue_steel_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Specialized tool for butchering animals"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id contains blue_steel",
+          "rationale": "Material from id"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "Tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when butchering animals"
+        },
+        "primary_uses": {
+          "values": [
+            "Butcher animals for more meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Specialized butchery tool"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

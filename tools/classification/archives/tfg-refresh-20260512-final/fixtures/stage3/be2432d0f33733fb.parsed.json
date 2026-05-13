@@ -1,0 +1,1041 @@
+{
+  "items": {
+    "tfg:casings/greenhouse/treated_wood_greenhouse_casing_4": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of greenhouse multiblock, placed as wall"
+        },
+        "primary_uses": {
+          "values": [
+            "Building greenhouse walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to construct greenhouse structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building greenhouse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "treated_wood",
+          "signal": "inferred",
+          "rationale": "Display name includes Treated Wood"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in greenhouse farming"
+        },
+        "workflow": {
+          "values": [
+            "tfc:greenhouse"
+          ],
+          "signal": "pattern",
+          "evidence": "tag firmalife:greenhouse",
+          "rationale": "Part of greenhouse workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:greenhouse"
+          ],
+          "signal": "pattern",
+          "rationale": "Placed in greenhouse multiblock"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin crafted_only",
+          "rationale": "Crafted from recipe"
+        }
+      }
+    },
+    "tfg:casings/heat_pipe_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine casing as part of heat pipe system"
+        },
+        "primary_uses": {
+          "values": [
+            "Building heat pipe systems"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as casing for heat transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_bioculture": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine casing for bioculture machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing bioculture machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as casing in multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "bioculture",
+          "signal": "inferred",
+          "rationale": "Display name indicates bioculture"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_bioculture_glass": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Glass variant of bioculture casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing windows for bioculture machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent casing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Glass from id and display"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of bioculture machines"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_blue_solar_panel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Casing for basic solar panel"
+        },
+        "primary_uses": {
+          "values": [
+            "Building basic solar panels"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as solar panel casing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building solar arrays"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of solar power generation"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_clean_stainless_steel_desh": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine casing from id"
+        },
+        "primary_uses": {
+          "values": [
+            "Building clean stainless steel desh machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing for industrial machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_desh_ptfe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Radiation-safe desh casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building radiation-safe desh machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in radiation-resistant structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "inferred",
+          "rationale": "Display name includes Desh"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_egh": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Horticulture casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building horticulture machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in farming automation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Related to horticulture/farming"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_green_solar_panel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Advanced solar panel casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building advanced solar panels"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for solar power"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building solar arrays"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of power gen"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_iron_desh": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Desh machine casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building desh machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "inferred",
+          "rationale": "Display name includes Desh"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_mars": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Dust-proof machine casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building robust machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for harsh environments"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_ostrum_carbon": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Ostrum machine casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building ostrum machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Display name indicates ostrum"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_ptfe_desh": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "PTFE desh casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building ptfe-lined desh machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_red_solar_panel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Elite solar panel casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building elite solar panels"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-end solar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building solar arrays"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of power gen"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_stainless_evaporation": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Stainless evaporation casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building evaporation machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in evaporation systems"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "inferred",
+          "rationale": "Display name includes Stainless"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_stainless_steel_desh": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Stainless steel desh casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stainless steel desh machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in high-temp machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "inferred",
+          "rationale": "Display name includes Stainless Steel"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_sterilizing_pipes": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Casing for sterilizing pipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Building sterilizing pipe systems"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sterilization machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_ultraviolet": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Ultraviolet machine casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building ultraviolet machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in UV processing machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        }
+      }
+    },
+    "tfg:casings/machine_casing_vacuum_engine_intake": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Vacuum engine intake casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building vacuum engine intake casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rocket/space machinery"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation systems"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin crafted_only",
+          "rationale": "Has production recipe"
+        }
+      }
+    },
+    "tfg:casings/sterling_silver_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Precision sterling silver casing"
+        },
+        "primary_uses": {
+          "values": [
+            "Building precision sterling silver casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in high-end machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "inferred",
+          "rationale": "Display name indicates sterling silver"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of precision machinery"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin crafted_only",
+          "rationale": "Has production recipe"
+        }
+      }
+    },
+    "tfg:casings/test_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Test casing block"
+        },
+        "primary_uses": {
+          "values": [
+            "Testing machine casing models"
+          ],
+          "signal": "inferred",
+          "rationale": "Developer test item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not normally used in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common rarity in creative tab"
+        }
+      }
+    },
+    "tfg:cassava_product": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:food present",
+          "rationale": "Edible food item"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating as vegetable",
+            "Cooking ingredient",
+            "Animal feed"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in meals and as feed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Food often carried for hunger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "cassava",
+          "signal": "inferred",
+          "rationale": "Display name Cassava"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking and grown via farming"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "Tagged as vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "pattern",
+          "evidence": "used in sandwich, burger recipes",
+          "rationale": "Eaten raw and used as ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Not cooked; expiry timer present"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "Root vegetable in veg group"
+        }
+      }
+    },
+    "tfg:cassava_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Seed to plant cassava crop"
+        },
+        "primary_uses": {
+          "values": [
+            "Planting to grow cassava"
+          ],
+          "signal": "inferred",
+          "rationale": "Seed for farming"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during farming runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "cassava",
+          "signal": "inferred",
+          "rationale": "Part of cassava plant family"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for planting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:seeds",
+          "rationale": "Seed category"
+        },
+        "used_at": {
+          "values": [
+            "tfc:planters"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip says Plantable in Quad Planter",
+          "rationale": "Used with planters"
+        }
+      }
+    },
+    "tfg:cassava_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild crop plant"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting for seeds and roots"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of cassava products"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked when exploring, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "cassava",
+          "signal": "inferred",
+          "rationale": "Wild version of cassava"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvested for farming propagation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_crops"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:wild_crops",
+          "rationale": "Wild crop group"
+        }
+      }
+    },
+    "tfg:cassiterite_regolith_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Processed dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "Processing into tin",
+            "Smelting source"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for tin production"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecraft:rarity=common",
+          "rationale": "Common item"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "inferred",
+          "rationale": "From ore name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Derived from mining and processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/impure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Regolith dust is impure ore dust"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "tfg:casings/machine_casing_bioculture_glass",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "block",
+      "rationale": "Model is cube_all, not pane; block form expected",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": []
+}

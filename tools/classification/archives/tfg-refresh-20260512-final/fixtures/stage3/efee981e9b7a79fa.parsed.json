@@ -1,0 +1,1132 @@
+{
+  "items": {
+    "gtceu:lepidolite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined material used in smelting and crafting"
+        },
+        "material_family": {
+          "value": "lepidolite",
+          "signal": "pattern",
+          "evidence": "id suffix and forge:dusts/lepidolite tag",
+          "rationale": "mined from lepidolite ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate material for smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lepidolite ingot",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in furnaces and recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "produced by smelting and milling ores",
+          "rationale": "not found naturally"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form of material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is smelting into ingot"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting furnace"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in furnace"
+        }
+      }
+    },
+    "gtceu:lepidolite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock found in world"
+        },
+        "material_family": {
+          "value": "lepidolite",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/lepidolite",
+          "rationale": "indicates lepidolite ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common surface deposit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "picked up when exploring"
+        },
+        "primary_uses": {
+          "values": [
+            "ore indicator",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "marks ore location"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "found during surface exploration"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:surface_rocks tag",
+          "rationale": "generates on surface"
+        }
+      }
+    },
+    "gtceu:lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "raw ore that is processed"
+        },
+        "material_family": {
+          "value": "lepidolite",
+          "signal": "pattern",
+          "evidence": "ores/lepidolite tag",
+          "rationale": "ore of lepidolite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and stored in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingot",
+            "crushed into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing paths"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "generates in stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "in ore form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        }
+      }
+    },
+    "gtceu:light_blue_borderless_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for lighting and decor"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "evidence": "display name 'Light Blue'",
+          "rationale": "colored lamp"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "provides light",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "light source for builds"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:lamps tag",
+          "rationale": "lamp storage group"
+        }
+      }
+    },
+    "gtceu:light_blue_dye_spray_can": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for recoloring blocks"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "evidence": "tooltip 'Can paint things in Light Blue'",
+          "rationale": "paints light blue"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used occasionally for recoloring"
+        },
+        "primary_uses": {
+          "values": [
+            "paints blocks light blue"
+          ],
+          "signal": "inferred",
+          "rationale": "single function tool"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for aesthetics"
+        }
+      }
+    },
+    "gtceu:light_blue_glass_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component used in machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component",
+            "laser engraving"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "glass item subgroup"
+        }
+      }
+    },
+    "gtceu:light_blue_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for lighting and decor"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "evidence": "display name 'Light Blue'",
+          "rationale": "colored lamp"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "provides light",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "light source for builds"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:lamps tag",
+          "rationale": "lamp storage group"
+        }
+      }
+    },
+    "gtceu:light_blue_large_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative building block"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "evidence": "display name 'Light Blue'",
+          "rationale": "colored metal sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in construction, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall",
+            "facade"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily aesthetic"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building details"
+        }
+      }
+    },
+    "gtceu:light_blue_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative building block"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "evidence": "display name 'Light Blue'",
+          "rationale": "colored metal sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in construction, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall",
+            "facade"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily aesthetic"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building details"
+        }
+      }
+    },
+    "gtceu:light_blue_studs": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative flooring"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "evidence": "display name 'Light Blue'",
+          "rationale": "colored studs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in construction, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flooring",
+            "fast walkway"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic and functional"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building details"
+        }
+      }
+    },
+    "gtceu:light_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "common construction material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "construction",
+            "crafted into variants"
+          ],
+          "signal": "inferred",
+          "rationale": "base block for many concrete items"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for structural building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "produced via smelting and barrel",
+          "rationale": "not found naturally"
+        }
+      }
+    },
+    "gtceu:light_concrete_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative building brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "wall material"
+          ],
+          "signal": "inferred",
+          "rationale": "variant of concrete"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "produced via stonecutting",
+          "rationale": "not found naturally"
+        }
+      }
+    },
+    "gtceu:light_concrete_cobblestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cobblestone variant used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "construction material",
+            "crafted into other variants"
+          ],
+          "signal": "inferred",
+          "rationale": "base for many concrete items"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for structural building"
+        }
+      }
+    },
+    "gtceu:light_concrete_small_tile": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative tile block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flooring",
+            "wall detail"
+          ],
+          "signal": "inferred",
+          "rationale": "variant of concrete"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "produced via stonecutting",
+          "rationale": "not found naturally"
+        }
+      }
+    },
+    "gtceu:light_concrete_tile": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative tile block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flooring",
+            "wall detail"
+          ],
+          "signal": "inferred",
+          "rationale": "variant of concrete"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "produced via stonecutting",
+          "rationale": "not found naturally"
+        }
+      }
+    },
+    "gtceu:light_concrete_windmill_a": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative pattern block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative pattern block",
+            "wall detail"
+          ],
+          "signal": "inferred",
+          "rationale": "variant of concrete"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "produced via stonecutting",
+          "rationale": "not found naturally"
+        }
+      }
+    },
+    "gtceu:light_concrete_windmill_b": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative pattern block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative pattern block",
+            "wall detail"
+          ],
+          "signal": "inferred",
+          "rationale": "variant of concrete"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "produced via stonecutting",
+          "rationale": "not found naturally"
+        }
+      }
+    },
+    "gtceu:light_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for fuel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for fueling machines"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel source",
+            "industrial fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "burned in generators"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fuel for power"
+        }
+      }
+    },
+    "gtceu:light_gray_borderless_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for lighting and decor"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "evidence": "display name 'Light Gray'",
+          "rationale": "colored lamp"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "provides light",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "light source for builds"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:lamps tag",
+          "rationale": "lamp storage group"
+        }
+      }
+    },
+    "gtceu:light_gray_dye_spray_can": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for recoloring blocks"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "evidence": "tooltip 'Can paint things in Light Gray'",
+          "rationale": "paints light gray"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used occasionally for recoloring"
+        },
+        "primary_uses": {
+          "values": [
+            "paints blocks light gray"
+          ],
+          "signal": "inferred",
+          "rationale": "single function tool"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for aesthetics"
+        }
+      }
+    },
+    "gtceu:light_gray_glass_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component used in machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component",
+            "laser engraving"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "glass item subgroup"
+        }
+      }
+    },
+    "gtceu:light_gray_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for lighting and decor"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "evidence": "display name 'Light Gray'",
+          "rationale": "colored lamp"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "provides light",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "light source for builds"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:lamps tag",
+          "rationale": "lamp storage group"
+        }
+      }
+    },
+    "gtceu:light_gray_large_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative building block"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "evidence": "display name 'Light Gray'",
+          "rationale": "colored metal sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in construction, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall",
+            "facade"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily aesthetic"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building details"
+        }
+      }
+    },
+    "gtceu:light_gray_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative building block"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "evidence": "display name 'Light Gray'",
+          "rationale": "colored metal sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in construction, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall",
+            "facade"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily aesthetic"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building details"
+        }
+      }
+    },
+    "gtceu:light_gray_studs": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative flooring"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "evidence": "display name 'Light Gray'",
+          "rationale": "colored studs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "common decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in construction, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flooring",
+            "fast walkway"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic and functional"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building details"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

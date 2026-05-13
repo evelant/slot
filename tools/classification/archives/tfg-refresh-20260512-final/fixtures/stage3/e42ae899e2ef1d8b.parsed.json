@@ -1,0 +1,1161 @@
+{
+  "items": {
+    "gtceu:wire_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Mold used in extruder machine for wire shaping"
+        },
+        "primary_uses": {
+          "values": [
+            "Making wires in extruder"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states extruder shape for wires"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored at base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:artisan recipe output",
+          "rationale": "Only produced via artisan table recipe"
+        }
+      }
+    },
+    "gtceu:wireless_transmitter_cover": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "guess",
+          "rationale": "Cover item for machine wireless connection"
+        },
+        "primary_uses": {
+          "values": [
+            "Wireless transmission for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Name indicates wireless transmitter"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Creative tab item, likely obtainable"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no production recipe, creative tab",
+          "rationale": "Only in creative tab"
+        }
+      }
+    },
+    "gtceu:wood_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small wood component used in crafting"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/wood",
+          "rationale": "Wood bolt tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting bolts for assemblies"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes as fastener"
+        },
+        "carry_frequency": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable and used in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:cutting and shaping recipes",
+          "rationale": "Only produced via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood parts grouping"
+        }
+      }
+    },
+    "gtceu:wood_crate": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Block with 27 slots, functions as a chest"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Wooden crate"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in 27 slots"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for base storage setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable storage block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/wooden_crate recipe",
+          "rationale": "Produced via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest-like storage"
+        }
+      }
+    },
+    "gtceu:wood_drum": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Placeable block for fluid storage"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Wooden barrel"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing fluids in compact barrel"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes fluid storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for base fluid storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common machine block"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores fluids"
+        }
+      }
+    },
+    "gtceu:wood_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form of wood"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/wood",
+          "rationale": "Wood dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting composite materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing and shaping recipes"
+        },
+        "carry_frequency": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant from milling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:milling recipes",
+          "rationale": "Produced by milling wood items"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Form is dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood material grouping"
+        }
+      }
+    },
+    "gtceu:wood_frame": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Block placed as structural frame for machines"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:frames/wood",
+          "rationale": "Wood frame"
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing multiblock machine frames"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in GT multiblock builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for construction projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/frame_wood recipe",
+          "rationale": "Only crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:frames",
+          "rationale": "Frame storage bucket"
+        }
+      }
+    },
+    "gtceu:wood_gas_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of wood gas for fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting wood gas"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fluid logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains wood gas"
+        }
+      }
+    },
+    "gtceu:wood_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/wood",
+          "rationale": "Wood gear component"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/wood",
+          "rationale": "Wood gear"
+        },
+        "primary_uses": {
+          "values": [
+            "Mechanical power transmission component"
+          ],
+          "signal": "inferred",
+          "rationale": "Gear used in machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/gear_wood recipe",
+          "rationale": "Produced via crafting"
+        }
+      }
+    },
+    "gtceu:wood_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Pipe block for fluid transport in networks"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:large_fluid_pipes/wood",
+          "rationale": "Wood pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting fluids in large quantities"
+          ],
+          "signal": "inferred",
+          "rationale": "High transfer rate tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during pipe layout"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable pipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/large_wooden_pipe recipe",
+          "rationale": "Only crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:large_fluid_pipes",
+          "rationale": "Part of GT fluid pipe system"
+        }
+      }
+    },
+    "gtceu:wood_mallet": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Handheld tool with durability for machine control"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Made of wood"
+        },
+        "primary_uses": {
+          "values": [
+            "Stopping and starting GT machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip explains machine pause"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often kept in hotbar for machine ops"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable with wood"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/soft_mallet_wood recipe",
+          "rationale": "Only crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "Part of artisan tool set"
+        }
+      }
+    },
+    "gtceu:wood_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Standard fluid pipe mechanism"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes/wood",
+          "rationale": "Wood pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Standard fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Transfer rate tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during pipe layout"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable pipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/normal_wooden_pipe recipe",
+          "rationale": "Only crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes",
+          "rationale": "Part of GT fluid pipe system"
+        }
+      }
+    },
+    "gtceu:wood_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/wood",
+          "rationale": "Wood plate material"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/wood",
+          "rationale": "Wood plate"
+        },
+        "primary_uses": {
+          "values": [
+            "Component for composites"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting boards"
+        },
+        "carry_frequency": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Form is plate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood material grouping"
+        }
+      }
+    },
+    "gtceu:wood_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/wood",
+          "rationale": "Wood screw component"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/wood",
+          "rationale": "Wood screw"
+        },
+        "primary_uses": {
+          "values": [
+            "Wooden screw fasteners"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable and used in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/screw_wood recipe",
+          "rationale": "Only crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood parts grouping"
+        }
+      }
+    },
+    "gtceu:wood_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Small fluid pipe mechanism"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "tag forge:small_fluid_pipes/wood",
+          "rationale": "Wood pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Small-scale fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Transfer rate tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during pipe layout"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable pipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/small_wooden_pipe recipe",
+          "rationale": "Only crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_fluid_pipes",
+          "rationale": "Part of GT fluid pipe system"
+        }
+      }
+    },
+    "gtceu:wood_tar_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of wood tar for fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying wood tar"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fluid logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains wood tar"
+        }
+      }
+    },
+    "gtceu:wood_vinegar_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of wood vinegar for fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying wood vinegar"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fluid logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains wood vinegar"
+        }
+      }
+    },
+    "gtceu:wood_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building structures"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Wooden wall"
+        },
+        "primary_uses": {
+          "values": [
+            "Building wooden wall structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/wood_wall recipe",
+          "rationale": "Only crafted"
+        }
+      }
+    },
+    "gtceu:wooden_multiblock_tank": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Controller block for multiblock fluid tank"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Wooden tank"
+        },
+        "primary_uses": {
+          "values": [
+            "Building multiblock fluid tank"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes tank capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when building the tank"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/wood_multiblock_tank recipe",
+          "rationale": "Only crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "pattern",
+          "evidence": "part of multiblock tank system",
+          "rationale": "Multiblock component"
+        }
+      }
+    },
+    "gtceu:wooden_tank_valve": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Valve component for multiblock tank fluid IO"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Wooden tank valve"
+        },
+        "primary_uses": {
+          "values": [
+            "Filling and draining multiblock tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip explains function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building tank"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/wood_tank_valve recipe",
+          "rationale": "Only crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "pattern",
+          "evidence": "valve for multiblock tank",
+          "rationale": "Multiblock component"
+        }
+      }
+    },
+    "gtceu:wrought_iron_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Handaxe for chopping and combat"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "id wrought_iron_axe",
+          "rationale": "Made of wrought iron"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "Iron-level metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "Chopping wood and stripping logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip lists lumberjack, artisan abilities"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential tool carried always"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:shaped/axe_wrought_iron recipe",
+          "rationale": "Only crafted"
+        }
+      }
+    },
+    "gtceu:wrought_iron_axe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:axe_heads/wrought_iron",
+          "rationale": "Axe head component"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "tag forge:axe_heads/wrought_iron",
+          "rationale": "Wrought iron axe head"
+        },
+        "primary_uses": {
+          "values": [
+            "Tool head for axes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in axe crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in many tool recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to smith"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:anvil recipe",
+          "rationale": "Produced by anvil or curving"
+        }
+      }
+    },
+    "gtceu:wrought_iron_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block, not a container"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/wrought_iron",
+          "rationale": "Wrought iron block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of wrought iron"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingots compacted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored at base, sometimes carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:compacting recipe",
+          "rationale": "Produced by compacting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "Storage block group"
+        }
+      }
+    },
+    "gtceu:wrought_iron_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/wrought_iron",
+          "rationale": "Wrought iron bolt component"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/wrought_iron",
+          "rationale": "Wrought iron bolt"
+        },
+        "primary_uses": {
+          "values": [
+            "Bolt fasteners for assemblies"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many machine crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common ingredient in many recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to mass produce"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:cutting and tfc:anvil recipes",
+          "rationale": "Produced by cutting or anvil"
+        }
+      }
+    },
+    "gtceu:wrought_iron_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten wrought iron for casting"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "Contains molten wrought iron"
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying molten wrought iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for casting operations"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains molten metal"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:wood_bolt",
+      "facet": "form",
+      "value": "bolt",
+      "rationale": "id ends _bolt and tag forge:bolts"
+    },
+    {
+      "item": "gtceu:wood_crate",
+      "facet": "form",
+      "value": "crate",
+      "rationale": "id ends _crate"
+    },
+    {
+      "item": "gtceu:wood_frame",
+      "facet": "form",
+      "value": "frame",
+      "rationale": "id ends _frame and tag forge:frames"
+    },
+    {
+      "item": "gtceu:wood_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "id ends _gear and tag forge:gears"
+    },
+    {
+      "item": "gtceu:schrow",
+      "facet": "form",
+      "value": "screw",
+      "rationale": "id ends _screw and tag forge:screws"
+    },
+    {
+      "item": "gtceu:wrought_iron_axe_head",
+      "facet": "form",
+      "value": "axe_head",
+      "rationale": "id ends _axe_head and tag forge:axe_heads"
+    },
+    {
+      "item": "gtceu:wrought_iron_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "id ends _block and tag forge:storage_blocks"
+    },
+    {
+      "item": "gtceu:wrought_iron_bolt",
+      "facet": "form",
+      "value": "bolt",
+      "rationale": "id ends _bolt and tag forge:bolts"
+    }
+  ]
+}

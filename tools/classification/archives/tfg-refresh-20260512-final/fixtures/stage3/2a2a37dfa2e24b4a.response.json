@@ -1,0 +1,1212 @@
+{
+  "items": {
+    "gtceu:raw_tarkianite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "tarkianite",
+          "signal": "pattern",
+          "rationale": "id suffix _tarkianite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_tarkianite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "tarkianite",
+          "signal": "pattern",
+          "rationale": "id suffix _tarkianite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_tetrahedrite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "tetrahedrite",
+          "signal": "pattern",
+          "rationale": "id suffix _tetrahedrite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_thorium": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "thorium",
+          "signal": "pattern",
+          "rationale": "id suffix _thorium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_thorium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "thorium",
+          "signal": "pattern",
+          "rationale": "id suffix _thorium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_tin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "rationale": "id suffix _tin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_tin_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "rationale": "id suffix _tin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_topaz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "topaz",
+          "signal": "pattern",
+          "rationale": "id suffix _topaz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "polishing into gems",
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_topaz_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "topaz",
+          "signal": "pattern",
+          "rationale": "id suffix _topaz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_tricalcium_phosphate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "tricalcium_phosphate",
+          "signal": "pattern",
+          "rationale": "id suffix _tricalcium_phosphate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_tricalcium_phosphate_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "tricalcium_phosphate",
+          "signal": "pattern",
+          "rationale": "id suffix _tricalcium_phosphate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_trona": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "trona",
+          "signal": "pattern",
+          "rationale": "id suffix _trona"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_trona_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "trona",
+          "signal": "pattern",
+          "rationale": "id suffix _trona"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_tungstate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "tungstate",
+          "signal": "pattern",
+          "rationale": "id suffix _tungstate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_tungstate_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "tungstate",
+          "signal": "pattern",
+          "rationale": "id suffix _tungstate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_uraninite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "uraninite",
+          "signal": "pattern",
+          "rationale": "id suffix _uraninite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_uraninite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "uraninite",
+          "signal": "pattern",
+          "rationale": "id suffix _uraninite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_vanadium_magnetite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "vanadium_magnetite",
+          "signal": "pattern",
+          "rationale": "id suffix _vanadium_magnetite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_vanadium_magnetite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "vanadium_magnetite",
+          "signal": "pattern",
+          "rationale": "id suffix _vanadium_magnetite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_wulfenite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "wulfenite",
+          "signal": "pattern",
+          "rationale": "id suffix _wulfenite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_wulfenite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "wulfenite",
+          "signal": "pattern",
+          "rationale": "id suffix _wulfenite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_yellow_garnet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "yellow_garnet",
+          "signal": "pattern",
+          "rationale": "id suffix _yellow_garnet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "polishing into gems",
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    },
+    "gtceu:raw_yellow_garnet_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "yellow_garnet",
+          "signal": "pattern",
+          "rationale": "id suffix _yellow_garnet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_yellow_limonite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_ore_blocks"
+        },
+        "material_family": {
+          "value": "yellow_limonite",
+          "signal": "pattern",
+          "rationale": "id suffix _yellow_limonite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "gtceu:raw_zeolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:raw_materials"
+        },
+        "material_family": {
+          "value": "zeolite",
+          "signal": "pattern",
+          "rationale": "id suffix _zeolite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "processing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw material storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in recipes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "processing stations"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

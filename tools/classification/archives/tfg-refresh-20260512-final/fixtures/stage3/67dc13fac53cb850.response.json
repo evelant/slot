@@ -1,0 +1,1449 @@
+{
+  "items": {
+    "gtceu:nichrome_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable placed as network block"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "Material from name and tooltip Ni₄Cr"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting EV-tier energy",
+            "building logistics networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses to transmit power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated energy transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable subsystem for energy network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier cable stored with EV parts"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk for building"
+        }
+      }
+    },
+    "gtceu:nichrome_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Wire placed as network block"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "Material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting EV energy",
+            "crafting cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire used in cable crafting and energy"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport wire"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier wire"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk"
+        }
+      }
+    },
+    "gtceu:nichrome_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined material for crafting"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "From name and tag forge:plates/nichrome"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "inferred",
+          "rationale": "Used in EV components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting advanced parts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machinery",
+            "anvil forging",
+            "cutting into wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Plate is intermediate crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_sheets"
+        }
+      }
+    },
+    "gtceu:nichrome_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "4x network cable"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "nichrome"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting EV energy",
+            "building medium-density networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable for EV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automation energy transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV cable"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in bulk"
+        }
+      }
+    },
+    "gtceu:nichrome_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "4x wire network block"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "nichrome"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting EV energy",
+            "crafting cables"
+          ],
+          "signal": "inferred",
+          "rationale": "wire used in cable and network"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automation energy"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in bulk"
+        }
+      }
+    },
+    "gtceu:nichrome_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:rods tag"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "nichrome"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "inferred",
+          "rationale": "used in EV components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting tools"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machines",
+            "anvil forging for handles"
+          ],
+          "signal": "inferred",
+          "rationale": "Rod is a basic crafting component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined material form"
+        }
+      }
+    },
+    "gtceu:nichrome_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "1x cable network block"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "nichrome"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building fine networks"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting EV energy",
+            "fine routing logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "single cable for tight spaces"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV cable"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64"
+        }
+      }
+    },
+    "gtceu:nichrome_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "1x wire network block"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "nichrome"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting EV energy",
+            "crafting fine cables"
+          ],
+          "signal": "inferred",
+          "rationale": "single wire"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV wire"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64"
+        }
+      }
+    },
+    "gtceu:nichrome_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:springs tag"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "inferred",
+          "rationale": "nichrome"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "inferred",
+          "rationale": "used in EV machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting mechanisms"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mechanical components",
+            "energy storage crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Spring is a mechanical part"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined material"
+        }
+      }
+    },
+    "gtceu:nickel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block, not a container"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "Nickel is LV-tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when moving storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of nickel",
+            "decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "Block for saving space"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal block"
+        }
+      }
+    },
+    "gtceu:nickel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid carrier tool"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "Content is nickel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when transporting molten metal"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten nickel",
+            "pouring into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket for fluid handling"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation fluid transport"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in casting table"
+        }
+      }
+    },
+    "gtceu:nickel_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "2x cable LV"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV voltage 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building LV network"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting LV energy",
+            "building basic logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "LV cable"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV cable"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64"
+        }
+      }
+    },
+    "gtceu:nickel_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material form"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "Nickel is LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when forging"
+        },
+        "primary_uses": {
+          "values": [
+            "welding into plates",
+            "anvil working for tool parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Double ingot for smithing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_double_ingots"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Welded and worked on anvil"
+        }
+      }
+    },
+    "gtceu:nickel_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "2x wire LV block"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building LV network"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting LV energy",
+            "crafting cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire for energy and cable making"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV wire"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64"
+        }
+      }
+    },
+    "gtceu:nickel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:dusts tag"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "Nickel tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when bulk processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mixing alloys",
+            "smelting into ingots",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust is intermediate for smelting and alloys"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        },
+        "used_at": {
+          "values": [
+            "greate:mixing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixer for alloys"
+        }
+      }
+    },
+    "gtceu:nickel_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "16x cable LV"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building main bus"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting high-amperage LV energy",
+            "main bus trunk"
+          ],
+          "signal": "inferred",
+          "rationale": "High capacity LV cable"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV cable"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16"
+        }
+      }
+    },
+    "gtceu:nickel_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "16x wire LV"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting high-amperage LV energy",
+            "crafting heavy cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Hex wire for high current"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV wire"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16"
+        }
+      }
+    },
+    "gtceu:nickel_huge_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Item pipe for logistics"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "Nickel tier pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting items in bulk",
+            "building automation pipelines"
+          ],
+          "signal": "inferred",
+          "rationale": "Item pipe for moving items"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "item pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV pipe component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16"
+        }
+      }
+    },
+    "gtceu:nickel_huge_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Restrictive pipe for sorting"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for fine logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "item routing with priority",
+            "building sorted automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Restrictive pipe for sorting"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV pipe component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16"
+        }
+      }
+    },
+    "gtceu:nickel_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating nickel ore"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel content"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up during prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "prospecting for nickel ore",
+            "processing into small nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "Indicates underground deposit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore indicator, like low-grade ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found as surface rock"
+        }
+      }
+    },
+    "gtceu:nickel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ingots tag"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "Nickel is LV material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for smithing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into tools",
+            "anvil forging",
+            "crafting components"
+          ],
+          "signal": "inferred",
+          "rationale": "Base metal ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_ingots"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Worked on anvil"
+        }
+      }
+    },
+    "gtceu:nickel_large_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Large item pipe"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting items moderately",
+            "building automation lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Item pipe for medium throughput"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV pipe component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 32"
+        }
+      }
+    },
+    "gtceu:nickel_large_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Restrictive pipe"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for sorting"
+        },
+        "primary_uses": {
+          "values": [
+            "item routing with high priority",
+            "building filtered logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Restrictive pipe for prioritization"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV pipe component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 32"
+        }
+      }
+    },
+    "gtceu:nickel_normal_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Normal item pipe"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building basic logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting items",
+            "simple automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic item pipe"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV pipe component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 32"
+        }
+      }
+    },
+    "gtceu:nickel_normal_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Restrictive pipe"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "nickel"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "inferred",
+          "rationale": "LV"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for sorting"
+        },
+        "primary_uses": {
+          "values": [
+            "item routing with priority",
+            "sorted logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Restrictive pipe for item filtering"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:lv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LV pipe component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 32"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

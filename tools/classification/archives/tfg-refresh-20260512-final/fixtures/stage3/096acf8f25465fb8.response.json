@@ -1,0 +1,808 @@
+{
+  "items": {
+    "tfg:wood/crafting_station/cypress_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab variant still opens crafting UI"
+        },
+        "material_family": {
+          "value": "cypress",
+          "signal": "pattern",
+          "rationale": "Wood type from id path"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once at base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide 3x3 crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard workstation function"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station opens UI"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Wood type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once at base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items in 3x3 grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/douglas_fir_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab variant, same UI"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "rationale": "Wood type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Access crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation function"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/eucalyptus": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "eucalyptus",
+          "signal": "pattern",
+          "rationale": "Wood type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/eucalyptus_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "eucalyptus",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide 3x3 grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/fig": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "fig",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/fig_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "fig",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid access"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/ginkgo": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "ginkgo",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/ginkgo_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "ginkgo",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/glacian": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/glacian_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/hevea": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "hevea",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/hevea_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "hevea",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/hickory": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/hickory_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/ipe": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "ipe",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/ipe_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "ipe",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/ironwood": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "ironwood",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/ironwood_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "ironwood",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/kapok": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/kapok_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/mahoe": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "mahoe",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/mahoe_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "mahoe",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/mahogany": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station"
+        },
+        "material_family": {
+          "value": "mahogany",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/mahogany_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab crafting station"
+        },
+        "material_family": {
+          "value": "mahogany",
+          "signal": "pattern",
+          "rationale": "Wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting grid"
+          ],
+          "signal": "inferred",
+          "rationale": "Workstation"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

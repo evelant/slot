@@ -1,0 +1,1172 @@
+{
+  "items": {
+    "tfg:rock/red_granite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block placed as structural building element"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "evidence": "id contains red_granite",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed while building, not always carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building red granite walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other rock walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common component rarity"
+        }
+      }
+    },
+    "tfg:rock/sandy_jadestone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab block used in building"
+        },
+        "material_family": {
+          "value": "sandy_jadestone",
+          "signal": "pattern",
+          "evidence": "id contains sandy_jadestone",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stocked for building projects"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for flooring and stairs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other rock slabs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/sandy_jadestone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "material_family": {
+          "value": "sandy_jadestone",
+          "signal": "pattern",
+          "evidence": "id contains sandy_jadestone",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building staircases"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other rock stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/sandy_jadestone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "sandy_jadestone",
+          "signal": "pattern",
+          "evidence": "id contains sandy_jadestone",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed when building walls"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative and structural boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other rock walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/scorchia_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab block for building"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id contains scorchia",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stocked for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for floors and roofs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other rock slabs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/scorchia_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id contains scorchia",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other rock stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/scorchia_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id contains scorchia",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed when building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other rock walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/scoria_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab block for building"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id contains scoria",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stocked for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for floors"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other rock slabs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/scoria_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id contains scoria",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other rock stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/scoria_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id contains scoria",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed when building walls"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other rock walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/smooth_quartz_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "quartz",
+          "signal": "pattern",
+          "evidence": "id contains smooth_quartz",
+          "rationale": "Material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building quartz walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other rock walls per common player practice"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/smooth_red_sandstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "sandstone",
+          "signal": "pattern",
+          "evidence": "id contains smooth_red_sandstone",
+          "rationale": "Material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stocked for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building sandstone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other rock walls per common practice"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/smooth_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs for building"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "id contains smooth_stone",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other rock stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/smooth_stone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "id contains smooth_stone",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed when building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls present in block_tags",
+          "rationale": "Stored with other rock walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/spike/geyserite": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Natural spike placed for decoration"
+        },
+        "material_family": {
+          "value": "geyserite",
+          "signal": "pattern",
+          "evidence": "id contains geyserite",
+          "rationale": "Material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for building/decor"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating caves",
+            "Building spikes"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as cave decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/spike/stromatolite": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Natural spike placed for decoration"
+        },
+        "material_family": {
+          "value": "stromatolite",
+          "signal": "pattern",
+          "evidence": "id contains stromatolite",
+          "rationale": "Material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for building/decor"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating caves",
+            "Building spikes"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as cave decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/stone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "id contains stone",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed when building walls"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other rock walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/tuff_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab block for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id contains tuff",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stocked for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for floors"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other rock slabs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/tuff_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id contains tuff",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other rock stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/tuff_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id contains tuff",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed when building walls"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other rock walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rock/venus_stone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "material_family": {
+          "value": "venus_stone",
+          "signal": "pattern",
+          "evidence": "id contains venus_stone",
+          "rationale": "Stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed when building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other rock walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rocket_cone_t2": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for rocket assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when building rockets"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tier 2 rockets"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in NASA workbench for rocket"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of rocket system"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:tier_2_rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for tier 2 rocket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rocket_cone_t3": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for rocket assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when building advanced rockets"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tier 3 rockets"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in NASA workbench for rocket"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of rocket system"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:tier_3_rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for tier 3 rocket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rocket_fin_t2": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for rocket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when building rockets"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tier 2 rockets"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in NASA workbench"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of rocket system"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:tier_2_rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for tier 2 rocket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    },
+    "tfg:rocket_fin_t3": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for rocket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when building advanced rockets"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tier 3 rockets"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in NASA workbench"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of rocket system"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:tier_3_rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for tier 3 rocket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common rarity"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

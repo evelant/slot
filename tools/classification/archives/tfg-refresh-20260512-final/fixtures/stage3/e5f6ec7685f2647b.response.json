@@ -1,0 +1,1954 @@
+{
+  "items": {
+    "gtceu:black_sand_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of fullers_earth",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of galena",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of garnet sand",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of garnierite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of glauconite sand",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of goethite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of granitic mineral sand",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of graphite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of green sapphire",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into gem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of grossular",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into gem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gypsum",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of hematite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of ilmenite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into titanium"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of iron",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of kyanite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lapis",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into dye"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lazurite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lead",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lepidolite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into lithium"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lignite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores/lignite",
+          "rationale": "raw ore for lignite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        }
+      }
+    },
+    "gtceu:black_sand_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lithium",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of magnesite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of magnetite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    },
+    "gtceu:black_sand_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried back from mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity from component data"
+        },
+        "primary_uses": {
+          "values": [
+            "source of malachite",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw ore processed into copper"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored in unprocessed ores section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested by mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "input to smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "consumed as input in smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, greate:milling",
+          "rationale": "processed in furnace and mill"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

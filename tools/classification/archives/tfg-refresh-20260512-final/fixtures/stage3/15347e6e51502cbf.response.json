@@ -1,0 +1,1419 @@
+{
+  "items": {
+    "gtceu:trinium_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport cable placed for power network"
+        },
+        "material_family": {
+          "value": "trinium",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/trinium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage: 131,072 (ZPM)",
+          "rationale": "voltage tier from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game ZPM tier material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transport"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only produced via crafting/coiling"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE energy cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit ZPM energy between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "core function of cable"
+        }
+      }
+    },
+    "gtceu:trinium_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:springs/trinium",
+          "rationale": "crafting component, not placed"
+        },
+        "material_family": {
+          "value": "trinium",
+          "signal": "pattern",
+          "evidence": "tag forge:springs/trinium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "same material tier as trinium cable"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game ZPM component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only produced via coiling"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM-tier machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ZPM machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced crafting"
+        }
+      }
+    },
+    "gtceu:trinium_sulfide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/trinium_sulfide",
+          "rationale": "dust form, crafting input"
+        },
+        "material_family": {
+          "value": "trinium",
+          "signal": "inferred",
+          "evidence": "id contains trinium",
+          "rationale": "trinium compound"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "same material family as trinium"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game dust"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via dust assembly recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into trinium ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe destination"
+        }
+      }
+    },
+    "gtceu:tritanium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage block of tritanium"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via compacting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of tritanium"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingots compressed"
+        }
+      }
+    },
+    "gtceu:tritanium_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/tritanium",
+          "rationale": "component used in crafting"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier component"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game bolt"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via cutting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting UV machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many UV recipes"
+        }
+      }
+    },
+    "gtceu:tritanium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket for transporting fluids"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "id contains tritanium",
+          "rationale": "fluid bucket of tritanium"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier fluid"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried; used in machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot; likely crafted"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Liquid Tritanium Bucket' + bucket form",
+          "rationale": "fluid in a bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transport liquid tritanium"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling"
+        }
+      }
+    },
+    "gtceu:tritanium_coil_block": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed as multiblock coil component"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "inferred",
+          "evidence": "id contains tritanium",
+          "rationale": "tritanium coil"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier coil"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game machine part"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building multiblocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "used in multiblock machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "provide coil bonus in UV multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "functional role in machines"
+        }
+      }
+    },
+    "gtceu:tritanium_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport cable"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:double_cables/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV voltage from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transfer"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV energy (2x amperage)"
+          ],
+          "signal": "inferred",
+          "rationale": "core function from tooltip"
+        }
+      }
+    },
+    "gtceu:tritanium_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport wire"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:double_wires/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV voltage from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game wire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transfer"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV energy (2x amperage)"
+          ],
+          "signal": "inferred",
+          "rationale": "core function from tooltip"
+        }
+      }
+    },
+    "gtceu:tritanium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tritanium",
+          "rationale": "dust form, crafting input"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier dust"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game dust"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via milling recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into tritanium ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "primary recipe destination"
+        }
+      }
+    },
+    "gtceu:tritanium_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/tritanium",
+          "rationale": "foil form, crafting input"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier foil"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game foil"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via rolling/crafting"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier component"
+        },
+        "primary_uses": {
+          "values": [
+            "craft fine wire, capacitors"
+          ],
+          "signal": "inferred",
+          "rationale": "used in precision crafting"
+        }
+      }
+    },
+    "gtceu:tritanium_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed as structural multiblock component"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:frames/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier frame"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game frame"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "used in multiblock structures"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "construct UV machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "structural component"
+        }
+      }
+    },
+    "gtceu:tritanium_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/tritanium",
+          "rationale": "gear component, crafting input"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier gear"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game gear"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "craft UV machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced crafting"
+        }
+      }
+    },
+    "gtceu:tritanium_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport cable (16x)"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV voltage from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transfer"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV energy (16x amperage)"
+          ],
+          "signal": "inferred",
+          "rationale": "core function from tooltip"
+        }
+      }
+    },
+    "gtceu:tritanium_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport wire (16x)"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV voltage from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game wire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transfer"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV energy (16x amperage)"
+          ],
+          "signal": "inferred",
+          "rationale": "core function from tooltip"
+        }
+      }
+    },
+    "gtceu:tritanium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/tritanium",
+          "rationale": "ingot form, fundamental crafting material"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier ingot"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game ingot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted from dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "pileable ingot in TFC system"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting UV-tier items"
+          ],
+          "signal": "inferred",
+          "rationale": "primary material for UV components"
+        }
+      }
+    },
+    "gtceu:tritanium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/tritanium",
+          "rationale": "nugget form, small metal piece"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier nugget"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game nugget"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form group"
+        },
+        "primary_uses": {
+          "values": [
+            "craft tritanium items in small amounts"
+          ],
+          "signal": "inferred",
+          "rationale": "small unit for precise crafting"
+        }
+      }
+    },
+    "gtceu:tritanium_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport cable (8x)"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV voltage from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transfer"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV energy (8x amperage)"
+          ],
+          "signal": "inferred",
+          "rationale": "core function from tooltip"
+        }
+      }
+    },
+    "gtceu:tritanium_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport wire (8x)"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV voltage from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game wire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transfer"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV energy (8x amperage)"
+          ],
+          "signal": "inferred",
+          "rationale": "core function from tooltip"
+        }
+      }
+    },
+    "gtceu:tritanium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/tritanium",
+          "rationale": "plate form, crafting input"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier plate"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game plate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "rolled from ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "pileable sheet in TFC system"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting UV machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate for advanced parts"
+        }
+      }
+    },
+    "gtceu:tritanium_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport cable (4x)"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV voltage from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transfer"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV energy (4x amperage)"
+          ],
+          "signal": "inferred",
+          "rationale": "core function from tooltip"
+        }
+      }
+    },
+    "gtceu:tritanium_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport wire (4x)"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV voltage from tooltip"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game wire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated energy transfer"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting, no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCE cable system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier energy network component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV energy (4x amperage)"
+          ],
+          "signal": "inferred",
+          "rationale": "core function from tooltip"
+        }
+      }
+    },
+    "gtceu:tritanium_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/tritanium",
+          "rationale": "ring component, crafting input"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier ring"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game ring"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting UV machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced crafting"
+        }
+      }
+    },
+    "gtceu:tritanium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/tritanium",
+          "rationale": "rod form, crafting input"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier rod"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game rod"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting/lathing"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting UV tools and components"
+          ],
+          "signal": "inferred",
+          "rationale": "widely used as stick"
+        }
+      }
+    },
+    "gtceu:tritanium_round": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rounds/tritanium",
+          "rationale": "round component, crafting input"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "tag forge:rounds/tritanium",
+          "rationale": "material from tag family"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "UV-tier round"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game round"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting UV machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in precision crafting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

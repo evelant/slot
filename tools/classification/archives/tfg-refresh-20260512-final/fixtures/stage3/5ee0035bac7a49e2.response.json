@@ -1,0 +1,1189 @@
+{
+  "items": {
+    "gtceu:tantalum_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket for transporting molten metal"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting and pouring molten tantalum"
+          ],
+          "signal": "inferred",
+          "rationale": "Carry and use in casting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized fluid, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "inferred",
+          "rationale": "Bucket of tantalum fluid"
+        },
+        "container_state": {
+          "value": "slot:fluid_container",
+          "signal": "inferred",
+          "rationale": "Bucket holding molten metal"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in industrial processing"
+        }
+      }
+    },
+    "gtceu:tantalum_capacitor": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Rechargeable battery for powering tools"
+        },
+        "primary_uses": {
+          "values": [
+            "storing and providing EU for handheld tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable energy source"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried for tool power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "inferred",
+          "rationale": "Name indicates tantalum"
+        },
+        "tier": {
+          "value": "ulv",
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries/ulv",
+          "rationale": "ULV tier from tag"
+        },
+        "container_state": {
+          "value": "slot:energy_container",
+          "signal": "inferred",
+          "rationale": "Stores EU energy"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ulv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries/ulv",
+          "rationale": "ULV battery, group by voltage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries",
+          "rationale": "Part of GT battery subsystem"
+        }
+      }
+    },
+    "gtceu:tantalum_carbide_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed material block, not a container"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of tantalum carbide",
+            "cutting into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in storage and machining"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting or building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/tantalum_carbide",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:block"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block form"
+        }
+      }
+    },
+    "gtceu:tantalum_carbide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket for molten tantalum carbide"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting and pouring molten tantalum carbide"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in casting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized fluid bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum_carbide",
+          "signal": "inferred",
+          "rationale": "Bucket of tantalum carbide fluid"
+        },
+        "container_state": {
+          "value": "slot:fluid_container",
+          "signal": "inferred",
+          "rationale": "Bucket holding fluid"
+        }
+      }
+    },
+    "gtceu:tantalum_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "sintering into ingots",
+            "alloying component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tantalum_carbide",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust, fits refined ores"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        }
+      }
+    },
+    "gtceu:tantalum_carbide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting plates and rods",
+            "compact storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Base material for forming"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/tantalum_carbide",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Pileable ingot group"
+        }
+      }
+    },
+    "gtceu:tantalum_carbide_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingots",
+            "small metal bits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/tantalum_carbide",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget storage group"
+        }
+      }
+    },
+    "gtceu:tantalum_carbide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "machining into components",
+            "structural layer"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/tantalum_carbide",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Plate form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Pileable sheet group"
+        }
+      }
+    },
+    "gtceu:tantalum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tantalum",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust"
+        }
+      }
+    },
+    "gtceu:tantalum_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:foils",
+          "rationale": "Foil form"
+        },
+        "primary_uses": {
+          "values": [
+            "capacitor manufacturing",
+            "wrapping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in electronics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/tantalum",
+          "rationale": "Material from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal form"
+        }
+      }
+    },
+    "gtceu:tantalum_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting plates and rods",
+            "base material"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in forming"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/tantalum",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Pileable ingot group"
+        }
+      }
+    },
+    "gtceu:tantalum_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingots",
+            "small metal bits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/tantalum",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget storage group"
+        }
+      }
+    },
+    "gtceu:tantalum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "machining components",
+            "structural material"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/tantalum",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Plate form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Pileable sheet group"
+        }
+      }
+    },
+    "gtceu:tarkianite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "ore processing step"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in metal production"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tarkianite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tarkianite",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Pure dust from ore processing"
+        }
+      }
+    },
+    "gtceu:tarkianite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating ore deposit"
+        },
+        "primary_uses": {
+          "values": [
+            "marking ore veins",
+            "prospecting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for locating ores"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked up occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tarkianite",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/tarkianite",
+          "rationale": "Material from tag"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "Surface rock origin"
+        }
+      }
+    },
+    "gtceu:tarkianite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal",
+            "source of tarkianite"
+          ],
+          "signal": "inferred",
+          "rationale": "Source material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tarkianite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/tarkianite",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:tempered_glass": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Creative tab decoration, used in building and machines"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows",
+            "crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic and craft component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for construction or crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Glass block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass items group"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        }
+      }
+    },
+    "gtceu:terminal": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Used to auto-build multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "automatically constructing multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock building tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used during multiblock setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceuterminal:terminal"
+          ],
+          "signal": "named",
+          "evidence": "Display name Terminal, mod gtceuterminal",
+          "rationale": "Part of GTCEu Terminal mod"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Shift-right-click to configure building"
+        }
+      }
+    },
+    "gtceu:tetrafluoroberyllate_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed dust/gem block"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of tetrafluoroberyllate"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for storage or crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tetrafluoroberyllate",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/tetrafluoroberyllate",
+          "rationale": "Material from tag"
+        }
+      }
+    },
+    "gtceu:tetrafluoroberyllate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into gem",
+            "chemical intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tetrafluoroberyllate",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tetrafluoroberyllate",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed material"
+        }
+      }
+    },
+    "gtceu:tetrafluoroberyllate_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "Gem form"
+        },
+        "primary_uses": {
+          "values": [
+            "gemstone material",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tetrafluoroberyllate",
+          "signal": "pattern",
+          "evidence": "tag forge:gems/tetrafluoroberyllate",
+          "rationale": "Material from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "Gem storage group"
+        }
+      }
+    },
+    "gtceu:tetrafluoroethylene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for gaseous chemical"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting tetrafluoroethylene gas"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "container_state": {
+          "value": "slot:fluid_container",
+          "signal": "inferred",
+          "rationale": "Holds gas in bucket form"
+        }
+      }
+    },
+    "gtceu:tetrahedrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into copper",
+            "ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in metal production"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tetrahedrite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tetrahedrite",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Pure dust from ore"
+        }
+      }
+    },
+    "gtceu:tetrahedrite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicator for tetrahedrite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "marking ore veins",
+            "prospecting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ore location"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked up occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tetrahedrite",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/tetrahedrite",
+          "rationale": "Material from tag"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "Surface rock origin"
+        }
+      }
+    },
+    "gtceu:tetrahedrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into copper",
+            "source of metals"
+          ],
+          "signal": "inferred",
+          "rationale": "Source material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "tetrahedrite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/tetrahedrite",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

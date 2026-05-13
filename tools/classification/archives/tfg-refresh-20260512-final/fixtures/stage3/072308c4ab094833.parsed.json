@@ -1,0 +1,1271 @@
+{
+  "items": {
+    "megacells:item_storage_cell_256m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Digital storage cell used in ME network drives"
+        },
+        "primary_uses": {
+          "values": [
+            "Store large amounts of items in ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function of the item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in drives, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-late game AE2 component"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows 0 bytes used; empty initially"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for storing items in ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon storage cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "named",
+          "rationale": "Part of MEGA Cells cell subsystem"
+        }
+      }
+    },
+    "megacells:item_storage_cell_4m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Digital storage cell"
+        },
+        "primary_uses": {
+          "values": [
+            "Store medium amounts of items in ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in drives"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game AE2 component"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Empty initially"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for storing items"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon storage cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "named",
+          "rationale": "MEGA Cells cell subsystem"
+        }
+      }
+    },
+    "megacells:item_storage_cell_64m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Digital storage cell"
+        },
+        "primary_uses": {
+          "values": [
+            "Store 64M items in ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in drives"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game AE2 component"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Empty initially"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for storing items"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon storage cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "named",
+          "rationale": "MEGA Cells cell subsystem"
+        }
+      }
+    },
+    "megacells:mega_crafting_accelerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable block with UI, part of crafting CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "Provides co-processing threads for autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says provides 4 threads per block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in multiblock, not carried often"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game component"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 autocrafting system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon crafting block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:network"
+          ],
+          "signal": "inferred",
+          "rationale": "Network component of MEGA Cells"
+        }
+      }
+    },
+    "megacells:mega_crafting_monitor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable block with crafting status UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Monitor and display crafting status"
+          ],
+          "signal": "inferred",
+          "rationale": "Name implies monitoring"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of autocrafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon crafting block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:network"
+          ],
+          "signal": "inferred",
+          "rationale": "Network component"
+        }
+      }
+    },
+    "megacells:mega_crafting_unit": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable block, part of crafting CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "Provides storage for crafting patterns and intermediates"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard AE2 crafting unit function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of autocrafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon crafting block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:network"
+          ],
+          "signal": "inferred",
+          "rationale": "Network component"
+        }
+      }
+    },
+    "megacells:mega_energy_cell": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable block with energy storage UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Store AE energy for ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows stored energy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores AE energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy storage for AE system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon energy cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:energy"
+          ],
+          "signal": "named",
+          "rationale": "MEGA Cells energy subsystem"
+        }
+      }
+    },
+    "megacells:mega_fluid_cell_housing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for fluid cells"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft MEGA fluid storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "Name implies housing component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Crafting material, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Basic component"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 storage chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon component"
+        }
+      }
+    },
+    "megacells:mega_interface": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Network component with UI for configuring I/O"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME network to external inventories"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard AE2 interface function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Network I/O"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon network block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:network"
+          ],
+          "signal": "inferred",
+          "rationale": "Network component"
+        }
+      }
+    },
+    "megacells:mega_item_cell_housing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for item cells"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft MEGA item storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "Name implies housing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Basic component"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 storage chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon component"
+        }
+      }
+    },
+    "megacells:mega_pattern_provider": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Network block that provides patterns to machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide crafting patterns to connected machines for autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: supports processing patterns only"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Key for autocrafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon network block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:network"
+          ],
+          "signal": "inferred",
+          "rationale": "Network component"
+        }
+      }
+    },
+    "megacells:portable_fluid_cell_16m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable wireless access to fluid storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME fluid storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell functionality"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Portable tool carried in inventory"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game portable"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Has fluid capacity and energy storage"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon portable cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_fluid_cell_1m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable fluid access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME fluid storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in inventory"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_fluid_cell_256m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable fluid access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME fluid storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_fluid_cell_4m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable fluid access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME fluid storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_fluid_cell_64m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable fluid access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME fluid storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_item_cell_16m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable item access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME item storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Item + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_item_cell_1m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable item access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME item storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Item + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_item_cell_256m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable item access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME item storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Item + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_item_cell_4m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable item access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME item storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Item + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:portable_item_cell_64m": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable item access"
+        },
+        "primary_uses": {
+          "values": [
+            "Access ME item storage on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable cell"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Item + energy"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Access ME system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell subsystem"
+        }
+      }
+    },
+    "megacells:printed_accumulation_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for MEGA circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft MEGA accumulation circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Name indicates printed circuit"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Basic component"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 crafting chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon component"
+        }
+      }
+    },
+    "megacells:sky_steel_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative placeable block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building and decoration with sky steel aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "Block form of material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in builds, not carried often"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "MEGA Cells material block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a building block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon decorative block"
+        }
+      }
+    },
+    "megacells:sky_steel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw material for crafting MEGA components"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft sky steel blocks and MEGA cell components"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingot form used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires AE2 progression"
+        },
+        "material_family": {
+          "value": "sky_steel",
+          "signal": "pattern",
+          "rationale": "Id suffix _ingot and name 'Sky Steel'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft building blocks and components"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon material"
+        }
+      }
+    },
+    "merequester:requester": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block with UI for automatic item requesting"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-request items from ME network when low"
+          ],
+          "signal": "inferred",
+          "rationale": "Name and purpose"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 addon block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automates item requests"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Works with AE2 network"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "megacells:mega_interface",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": null,
+      "rationale": "Has loot table; also obtainable by mining placed blocks",
+      "confidence": 0.8
+    },
+    {
+      "item": "megacells:mega_pattern_provider",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": null,
+      "rationale": "Has loot table; also obtainable by mining",
+      "confidence": 0.8
+    }
+  ],
+  "fill_ins": [],
+  "schema_proposals": [],
+  "vocabulary_proposals": []
+}

@@ -1,0 +1,1306 @@
+{
+  "items": {
+    "gtceu:annealed_copper_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for molten metal, wielded not placed"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "inferred",
+          "rationale": "content is annealed copper, player sees Cu tooltip"
+        },
+        "primary_uses": {
+          "values": [
+            "transport molten annealed copper"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of liquid metal for fluid logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only carried when moving bulk liquid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard bucket item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot source, produced by filling"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used for fluid transport"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid annealed copper"
+        }
+      }
+    },
+    "gtceu:annealed_copper_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy cable placed as block in grid"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "id contains annealed_copper + tag forge:double_cables",
+          "rationale": "material from id and tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV energy cable, 2 amp"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 128V MV and 2 amp"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "player carries stacks for wiring base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, produced via filling"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of energy transport network"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip shows MV voltage",
+          "rationale": "MV-tier component grouped with tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_cables",
+          "rationale": "part of GTCEu cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "bare wire placed for energy"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:double_wires/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV wire, 2 amp, before insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 128V MV and 2 amp"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in cabling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic wire"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot source"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_wires",
+          "rationale": "part of cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "crafting material dust"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingot",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting and mixing recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard dust"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, milled from ingots/blocks"
+        }
+      }
+    },
+    "gtceu:annealed_copper_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:foils",
+          "rationale": "thin metal foil"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "fine wire production",
+            "wrapping"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting fine wires"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "less common than basic forms"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard foil"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, rolled from plate"
+        }
+      }
+    },
+    "gtceu:annealed_copper_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "16x energy cable, placed in grid"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV energy cable, 16 amp"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 16 amp MV"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for high-amperage wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard cable size"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, filled"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "bare 16x wire placed"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV wire, 16 amp, before insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 16 amp MV"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in cabling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard wire size"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "standard metal ingot"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wires, plates, rods"
+          ],
+          "signal": "inferred",
+          "rationale": "base form for most components"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "fundamental crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ingot"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted from dust/ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "storable in piles per TFC"
+        }
+      }
+    },
+    "gtceu:annealed_copper_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "small metal piece"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "small amounts of annealed copper"
+          ],
+          "signal": "inferred",
+          "rationale": "9 nuggets = ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "less common than ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common nugget"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, crafted from ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "grouped with other nuggets"
+        }
+      }
+    },
+    "gtceu:annealed_copper_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "8x energy cable placed"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV energy cable, 8 amp"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 8 amp MV"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common cable size"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, filled"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "bare 8x wire placed"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV wire, 8 amp, before insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 8 amp MV"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in cabling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard wire"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "metal plate"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting casings",
+            "machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "shaped into many parts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common plate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "rolled from ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "storable in piles per TFC"
+        }
+      }
+    },
+    "gtceu:annealed_copper_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "4x energy cable placed"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV energy cable, 4 amp"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 4 amp MV"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common cable size"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, filled"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "bare 4x wire placed"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV wire, 4 amp, before insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 4 amp MV"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in cabling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard wire"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "metal rod"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools",
+            "bolts",
+            "screws"
+          ],
+          "signal": "inferred",
+          "rationale": "shaped into many tool parts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rod"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "lathe from ingot"
+        }
+      }
+    },
+    "gtceu:annealed_copper_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "tiny fastener"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "assembling machines"
+          ],
+          "signal": "inferred",
+          "rationale": "part of machine crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many recipes but small quantity"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common screw"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "lathe from bolt"
+        }
+      }
+    },
+    "gtceu:annealed_copper_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "1x energy cable placed"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV energy cable, 1 amp"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 1 amp MV"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "most common cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, filled"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:annealed_copper_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "bare 1x wire placed"
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/annealed_copper",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "MV wire, 1 amp, before insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 1 amp MV"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in cabling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard wire"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip MV voltage",
+          "rationale": "MV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires",
+          "rationale": "cable subsystem"
+        }
+      }
+    },
+    "gtceu:antimatter_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decoration block for factory aesthetics"
+        },
+        "primary_uses": {
+          "values": [
+            "factory decoration",
+            "hazard signage"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tab decoration, name says sign"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "shaped recipe only"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block group"
+        }
+      }
+    },
+    "gtceu:antimony_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks and not container",
+          "rationale": "compressed material block, not a container"
+        },
+        "material_family": {
+          "value": "antimony",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/antimony",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of antimony"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingots compacted into block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for base storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common storage block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "compacted from ingots"
+        }
+      }
+    },
+    "gtceu:antimony_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for molten antimony"
+        },
+        "material_family": {
+          "value": "antimony",
+          "signal": "inferred",
+          "rationale": "content is antimony, tooltip Sb"
+        },
+        "primary_uses": {
+          "values": [
+            "transport molten antimony"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of liquid metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when moving bulk liquid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard bucket item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, filled"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid antimony"
+        }
+      }
+    },
+    "gtceu:antimony_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "metal dust"
+        },
+        "material_family": {
+          "value": "antimony",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/antimony",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingot",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting and mixing recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "milled from ingots"
+        }
+      }
+    },
+    "gtceu:antimony_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "metal ingot"
+        },
+        "material_family": {
+          "value": "antimony",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/antimony",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting antimony components"
+          ],
+          "signal": "inferred",
+          "rationale": "base form for antimony items"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "fundamental material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ingot"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted from ore/dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "storable in piles per TFC"
+        }
+      }
+    },
+    "gtceu:antimony_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "small metal piece"
+        },
+        "material_family": {
+          "value": "antimony",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/antimony",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "small amounts of antimony"
+          ],
+          "signal": "inferred",
+          "rationale": "9 nuggets = ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "less common than ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common nugget"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, crafted from ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "grouped with other nuggets"
+        }
+      }
+    },
+    "gtceu:antimony_trifluoride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "chemical dust"
+        },
+        "material_family": {
+          "value": "antimony_trifluoride",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/antimony_trifluoride",
+          "rationale": "material from tag"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical reagent"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "less common basic dust"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, crafted"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

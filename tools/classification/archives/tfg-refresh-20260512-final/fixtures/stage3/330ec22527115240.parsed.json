@@ -1,0 +1,1097 @@
+{
+  "items": {
+    "ae2:mysterious_cube": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Block with lore text, placed as decor, not structural."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative block with flavor text"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip hints at decorative purpose."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "fits decorative block storage section"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        }
+      }
+    },
+    "ae2:name_press": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for inscriber, not placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept for crafting AE2 inscribers."
+        },
+        "primary_uses": {
+          "values": [
+            "inscribing name plates in AE2 inscriber"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in inscriber to rename items."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component, stored with mod items."
+        }
+      }
+    },
+    "ae2:nether_quartz_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id ends _axe + creative tab tools_and_utilities",
+          "rationale": "Axe tool for wood chopping."
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "evidence": "id prefix nether_quartz_",
+          "rationale": "Made from nether quartz."
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "Durability 250, similar to iron tier."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Primary tool carried for wood gathering."
+        },
+        "primary_uses": {
+          "values": [
+            "chopping wood and breaking wooden blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard axe use."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to gather wood for building."
+        }
+      }
+    },
+    "ae2:nether_quartz_cutting_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Durable tool used for crafting AE2 components."
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "evidence": "id prefix nether_quartz_",
+          "rationale": "Made from nether quartz."
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "Durability 50, nether quartz tool tier."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for specific AE2 crafting recipes."
+        },
+        "primary_uses": {
+          "values": [
+            "cutting components for AE2 recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting AE2 items."
+        }
+      }
+    },
+    "ae2:nether_quartz_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id ends _hoe + creative tab tools_and_utilities",
+          "rationale": "Hoe tool for tilling."
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "evidence": "id prefix nether_quartz_",
+          "rationale": "Made from nether quartz."
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "Durability 250, nether quartz tool tier."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not used as often as pickaxe, but still kept."
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil for farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard hoe use."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in farming."
+        }
+      }
+    },
+    "ae2:nether_quartz_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id ends _pickaxe + creative tab tools_and_utilities",
+          "rationale": "Pickaxe tool for mining."
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "evidence": "id prefix nether_quartz_",
+          "rationale": "Made from nether quartz."
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "Durability 250, nether quartz tool tier."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Primary mining tool carried always."
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard pickaxe use."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for mining."
+        }
+      }
+    },
+    "ae2:nether_quartz_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id ends _shovel + creative tab tools_and_utilities",
+          "rationale": "Shovel tool for digging."
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "evidence": "id prefix nether_quartz_",
+          "rationale": "Made from nether quartz."
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "Durability 250, nether quartz tool tier."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Useful for digging, carried often."
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt, sand, gravel"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard shovel use."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for excavation work."
+        }
+      }
+    },
+    "ae2:nether_quartz_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id ends _sword + combat tab",
+          "rationale": "Sword for melee combat."
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "evidence": "id prefix nether_quartz_",
+          "rationale": "Made from nether quartz."
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "Durability 250, nether quartz tool tier."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Primary melee weapon carried."
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat against mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard sword use."
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in combat."
+        }
+      }
+    },
+    "ae2:nether_quartz_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Wrench used to configure AE2 network components."
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "evidence": "id prefix nether_quartz_",
+          "rationale": "Made from nether quartz."
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "Nether quartz tool."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or configuring AE2 network."
+        },
+        "primary_uses": {
+          "values": [
+            "rotating and configuring AE2 network devices"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard wrench function in AE2."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to configure logistics network."
+        }
+      }
+    },
+    "ae2:network_tool": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Tool for diagnosing AE2 network."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when troubleshooting or configuring AE2."
+        },
+        "primary_uses": {
+          "values": [
+            "viewing and debugging AE2 network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "Displays network details."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to manage AE2 logistics."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tool, stored with mod items."
+        }
+      }
+    },
+    "ae2:not_so_mysterious_cube": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Block with lore text, placed as decor."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative block with flavor text"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip hints at decorative purpose."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "fits decorative block storage section"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        }
+      }
+    },
+    "ae2:orange_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of AE2 network infrastructure, placed as cable."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building AE2 network."
+        },
+        "primary_uses": {
+          "values": [
+            "connecting AE2 network devices"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable transfers data and energy."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation/logistics system."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "ae2:covered_cable tag",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:orange_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Dense variant of AE2 cable, network infrastructure."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building dense network segments."
+        },
+        "primary_uses": {
+          "values": [
+            "connecting many AE2 devices with higher capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "Dense cable supports more channels."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation/logistics system."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "ae2:covered_dense_cable tag",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:orange_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Glass variant of AE2 cable, network infrastructure."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building AE2 network."
+        },
+        "primary_uses": {
+          "values": [
+            "simple cable for connecting a few AE2 devices"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass cable has limited channels."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation/logistics system."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "ae2:glass_cable tag",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:orange_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "rationale": "Projectile used with color applicator to paint blocks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried for specific decorating tasks."
+        },
+        "primary_uses": {
+          "values": [
+            "coloring blocks with light effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Lumen paint ball illuminates as well as colors."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to decorate and light up blocks."
+        }
+      }
+    },
+    "ae2:orange_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "rationale": "Projectile used with color applicator to paint blocks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried for specific decorating tasks."
+        },
+        "primary_uses": {
+          "values": [
+            "coloring blocks without light"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard paint ball for coloring."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to decorate blocks."
+        }
+      }
+    },
+    "ae2:orange_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Smart variant of AE2 cable, shows channel info."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building AE2 network."
+        },
+        "primary_uses": {
+          "values": [
+            "connecting AE2 devices with channel display"
+          ],
+          "signal": "inferred",
+          "rationale": "Smart cable shows channel usage."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation/logistics system."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "ae2:smart_cable tag",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:orange_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Smart dense variant of AE2 cable, high capacity with display."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in large network builds."
+        },
+        "primary_uses": {
+          "values": [
+            "high-capacity cable with channel display"
+          ],
+          "signal": "inferred",
+          "rationale": "Smart dense cable for large networks."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation/logistics system."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "ae2:smart_dense_cable tag",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:paint": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Paint block used for coloring cables and decoration."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as decoration, not carried."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative paint block for AE2 cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be used to color cables."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item, fits mod storage."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration."
+        }
+      }
+    },
+    "ae2:pattern_access_terminal": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed terminal with UI for viewing patterns."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed on network, not carried often."
+        },
+        "primary_uses": {
+          "values": [
+            "accessing stored patterns on AE2 network"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides pattern viewing interface."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to manage stored patterns."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 functional block, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 storage system."
+        }
+      }
+    },
+    "ae2:pattern_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "Portable container for holding AE2 patterns."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to transport patterns between bases."
+        },
+        "primary_uses": {
+          "values": [
+            "carrying and organizing AE2 patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable pattern storage."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to manage pattern inventory."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item, fits mod storage."
+        }
+      }
+    },
+    "ae2:pattern_encoding_terminal": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed terminal with UI for encoding patterns."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed on network, not carried often."
+        },
+        "primary_uses": {
+          "values": [
+            "encoding AE2 crafting patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides pattern encoding interface."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to manage crafted patterns."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 functional block, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 storage system."
+        }
+      }
+    },
+    "ae2:pattern_provider": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed block that provides patterns to adjacent machines, has UI."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed on network, not carried often."
+        },
+        "primary_uses": {
+          "values": [
+            "supplying crafting patterns to automated machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Pushes patterns to machines for auto-crafting."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Integral to autocrafting system."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 functional block, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 storage and autocrafting system."
+        }
+      }
+    },
+    "ae2:pink_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Pink variant of AE2 covered cable."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building AE2 network."
+        },
+        "primary_uses": {
+          "values": [
+            "connecting AE2 network devices"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable transfers data and energy."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation/logistics system."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "ae2:covered_cable tag",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:pink_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Pink dense covered cable variant."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in dense network segments."
+        },
+        "primary_uses": {
+          "values": [
+            "high-capacity cable for large AE2 networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Dense cable supports more connections."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation/logistics system."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component, stored with mod items."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "ae2:covered_dense_cable tag",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "ae2:nether_quartz_cutting_knife",
+      "facet": "form",
+      "value": "tool",
+      "rationale": "Missing from stage2, clearly a tool based on id and usage."
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,952 @@
+{
+  "items": {
+    "tacz:target_minecart": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "minecart that carries player or item for target practice"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during shooting range sessions, not daily carry"
+        },
+        "primary_uses": {
+          "values": [
+            "target practice in firing ranges"
+          ],
+          "signal": "inferred",
+          "rationale": "named 'Minecart with Target', used with guns mod"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "minecart variant fits minecart storage group"
+        }
+      }
+    },
+    "tacz:workbench_a": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "gun crafting station with UI; placed once and interacted with"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried around"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting guns and attachments"
+          ],
+          "signal": "inferred",
+          "rationale": "part of TACZ gun crafting system"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        }
+      }
+    },
+    "tacz:workbench_b": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "second tier gun crafting workstation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced guns and attachments"
+          ],
+          "signal": "inferred",
+          "rationale": "workbench B for TACZ"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        }
+      }
+    },
+    "tacz:workbench_c": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "third tier gun crafting workstation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-tier guns and attachments"
+          ],
+          "signal": "inferred",
+          "rationale": "workbench C for TACZ"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        }
+      }
+    },
+    "tfc:aggregate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block placed for paths and floors, not a natural resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building paths and floors",
+            "ingredient for concrete powder"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block; also used in barrel recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "loose material block; fits rubble storage section"
+        }
+      }
+    },
+    "tfc:alabaster/bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick block used for building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material, carried during projects"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "alabaster brick block, used in construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "alabaster brick block fits brick storage group"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/black": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dyed variant of alabaster bricks, building block"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display name 'Black Alabaster Bricks'",
+          "rationale": "color is explicit in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative building material, not daily carry"
+        },
+        "primary_uses": {
+          "values": [
+            "building with black decorative bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "colored brick variant for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "alabaster brick variant, stored with bricks"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/black_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of black alabaster bricks"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display name 'Black Alabaster Brick Slab'",
+          "rationale": "color explicit in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material, carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with black alabaster brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant for detailed building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family, stored with bricks"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/black_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form of black alabaster bricks"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display name 'Black Alabaster Brick Stairs'",
+          "rationale": "color explicit in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material, carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with black alabaster brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family, stored with bricks"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/black_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form of black alabaster bricks"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display name 'Black Alabaster Brick Wall'",
+          "rationale": "color explicit in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material, carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with black alabaster brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family, stored with bricks"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/blue": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dyed variant of alabaster bricks, building block"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "display name 'Blue Alabaster Bricks'",
+          "rationale": "color is explicit in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with blue decorative bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "colored brick variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "alabaster brick variant"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/blue_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of blue alabaster bricks"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "display name 'Blue Alabaster Brick Slab'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with blue alabaster brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/blue_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form of blue alabaster bricks"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "display name 'Blue Alabaster Brick Stairs'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with blue alabaster brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/blue_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form of blue alabaster bricks"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "display name 'Blue Alabaster Brick Wall'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with blue alabaster brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/brown": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dyed variant of alabaster bricks, building block"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "display name 'Brown Alabaster Bricks'",
+          "rationale": "color is explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with brown decorative bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "colored brick variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "alabaster brick variant"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/brown_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of brown alabaster bricks"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "display name 'Brown Alabaster Brick Slab'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with brown alabaster brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/brown_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form of brown alabaster bricks"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "display name 'Brown Alabaster Brick Stairs'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with brown alabaster brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/brown_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form of brown alabaster bricks"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "display name 'Brown Alabaster Brick Wall'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with brown alabaster brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/cyan": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dyed variant of alabaster bricks, building block"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "named",
+          "evidence": "display name 'Cyan Alabaster Bricks'",
+          "rationale": "color is explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cyan decorative bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "colored brick variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "alabaster brick variant"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/cyan_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of cyan alabaster bricks"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "named",
+          "evidence": "display name 'Cyan Alabaster Brick Slab'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cyan alabaster brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/cyan_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form of cyan alabaster bricks"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "named",
+          "evidence": "display name 'Cyan Alabaster Brick Stairs'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cyan alabaster brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/cyan_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form of cyan alabaster bricks"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "named",
+          "evidence": "display name 'Cyan Alabaster Brick Wall'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cyan alabaster brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/gray": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dyed variant of alabaster bricks, building block"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "named",
+          "evidence": "display name 'Gray Alabaster Bricks'",
+          "rationale": "color is explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with gray decorative bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "colored brick variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "alabaster brick variant"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/gray_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of gray alabaster bricks"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "named",
+          "evidence": "display name 'Gray Alabaster Brick Slab'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with gray alabaster brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    },
+    "tfc:alabaster/bricks/gray_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form of gray alabaster bricks"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "named",
+          "evidence": "display name 'Gray Alabaster Brick Stairs'",
+          "rationale": "color explicit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with gray alabaster brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component_highlights rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "part of alabaster brick family"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

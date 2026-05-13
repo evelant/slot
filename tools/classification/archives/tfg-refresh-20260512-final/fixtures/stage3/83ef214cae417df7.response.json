@@ -1,0 +1,2055 @@
+{
+  "items": {
+    "gtceu:schist_certus_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of certus quartz",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into certus quartz material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist tag",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests and inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:schist_chalcocite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of copper (chalcocite)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into copper material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_chalcopyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of copper (chalcopyrite)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into copper material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_chromite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of chromium (chromite)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into chromium material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_cinnabar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of mercury (cinnabar)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into mercury material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of coal",
+            "smelting into coke or fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into coal/coke"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace and blast furnace only"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_cobalt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cobalt",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into cobalt material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cobalt (cobaltite)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into cobalt material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of platinum group (cooperite)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into platinum group metals"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of copper",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into copper material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of desh",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into desh material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to mill only"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of diamonds",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into diamond material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of diatomite",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into diatomite material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of electrotine",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into electrotine material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of emeralds",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into emerald material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of fuller's earth",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into fuller's earth material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lead (galena)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into lead material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of garnet sand",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into garnet sand material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of nickel (garnierite)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into nickel material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of glauconite sand",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into glauconite sand material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of iron (goethite)",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into iron material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into gold material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of mineral sand",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into mineral sand material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of graphite",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into graphite material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:schist_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common underground ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of green sapphire",
+            "smelting into ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processes into green sapphire material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "input to furnace, blast furnace, mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ores_in_ground/schist",
+          "rationale": "spawns in schist underground"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests/inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "gtceu:schist_certus_quartz_ore",
+      "facet": "material_family",
+      "current": "schist_certus_quartz",
+      "suggested": "certus_quartz",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_chalcocite_ore",
+      "facet": "material_family",
+      "current": "schist_chalcocite",
+      "suggested": "chalcocite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_chalcopyrite_ore",
+      "facet": "material_family",
+      "current": "schist_chalcopyrite",
+      "suggested": "chalcopyrite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_chromite_ore",
+      "facet": "material_family",
+      "current": "schist_chromite",
+      "suggested": "chromite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_cinnabar_ore",
+      "facet": "material_family",
+      "current": "schist_cinnabar",
+      "suggested": "cinnabar",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_coal_ore",
+      "facet": "material_family",
+      "current": "schist_coal",
+      "suggested": "coal",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_cobalt_ore",
+      "facet": "material_family",
+      "current": "schist_cobalt",
+      "suggested": "cobalt",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_cobaltite_ore",
+      "facet": "material_family",
+      "current": "schist_cobaltite",
+      "suggested": "cobaltite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_cooperite_ore",
+      "facet": "material_family",
+      "current": "schist_cooperite",
+      "suggested": "cooperite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_copper_ore",
+      "facet": "material_family",
+      "current": "schist_copper",
+      "suggested": "copper",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_desh_ore",
+      "facet": "material_family",
+      "current": "schist_desh",
+      "suggested": "desh",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_diamond_ore",
+      "facet": "material_family",
+      "current": "schist_diamond",
+      "suggested": "diamond",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_diatomite_ore",
+      "facet": "material_family",
+      "current": "schist_diatomite",
+      "suggested": "diatomite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_electrotine_ore",
+      "facet": "material_family",
+      "current": "schist_electrotine",
+      "suggested": "electrotine",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_emerald_ore",
+      "facet": "material_family",
+      "current": "schist_emerald",
+      "suggested": "emerald",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_fullers_earth_ore",
+      "facet": "material_family",
+      "current": "schist_fullers_earth",
+      "suggested": "fullers_earth",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_galena_ore",
+      "facet": "material_family",
+      "current": "schist_galena",
+      "suggested": "galena",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_garnet_sand_ore",
+      "facet": "material_family",
+      "current": "schist_garnet_sand",
+      "suggested": "garnet_sand",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_garnierite_ore",
+      "facet": "material_family",
+      "current": "schist_garnierite",
+      "suggested": "garnierite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_glauconite_sand_ore",
+      "facet": "material_family",
+      "current": "schist_glauconite_sand",
+      "suggested": "glauconite_sand",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_goethite_ore",
+      "facet": "material_family",
+      "current": "schist_goethite",
+      "suggested": "goethite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_gold_ore",
+      "facet": "material_family",
+      "current": "schist_gold",
+      "suggested": "gold",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_granitic_mineral_sand_ore",
+      "facet": "material_family",
+      "current": "schist_granitic_mineral_sand",
+      "suggested": "granitic_mineral_sand",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_graphite_ore",
+      "facet": "material_family",
+      "current": "schist_graphite",
+      "suggested": "graphite",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:schist_green_sapphire_ore",
+      "facet": "material_family",
+      "current": "schist_green_sapphire",
+      "suggested": "green_sapphire",
+      "rationale": "Player thinks of mineral, not stone variant",
+      "confidence": 0.8
+    }
+  ],
+  "fill_ins": []
+}

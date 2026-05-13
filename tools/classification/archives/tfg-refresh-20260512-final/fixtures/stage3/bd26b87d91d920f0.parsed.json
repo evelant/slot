@@ -1,0 +1,914 @@
+{
+  "items": {
+    "firmacivplus:wood/warped_roofing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roofing block placed as part of a structure"
+        },
+        "material_family": {
+          "value": "wood_warped",
+          "signal": "pattern",
+          "rationale": "id contains warped, a wood variant"
+        },
+        "primary_uses": {
+          "value": "Building roofs and structures",
+          "signal": "inferred",
+          "rationale": "Roofing block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried frequently"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity is common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing blocks naturally group with roofs"
+        }
+      }
+    },
+    "firmalife:ashtray": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block used to collect ash for fertilizer"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "Ashtray likely ceramic"
+        },
+        "primary_uses": {
+          "value": "Collecting ash and making fertilizer",
+          "signal": "inferred",
+          "rationale": "Advancement description"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "firmalife:barrel_stave": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for barrels"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "Barrel staves are wooden"
+        },
+        "primary_uses": {
+          "value": "Crafting barrels and kegs",
+          "signal": "inferred",
+          "rationale": "Used in many barrel recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting stash item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Barrel staves are woodworking supplies"
+        }
+      }
+    },
+    "firmalife:beehive": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block for housing bees and producing honey"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Crafted from wood"
+        },
+        "primary_uses": {
+          "value": "Beekeeping and honey production",
+          "signal": "inferred",
+          "rationale": "Guide page and tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once per apiary"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Beekeeping is a farming activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "Beehives are livestock supplies"
+        }
+      }
+    },
+    "firmalife:beehive_frame": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Kept for beekeeping, inserted into hive"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Wooden frame"
+        },
+        "primary_uses": {
+          "value": "Beekeeping, housing bees in hives",
+          "signal": "inferred",
+          "rationale": "Tooltip and guide"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in beekeeping kit"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "Beekeeping supply"
+        }
+      }
+    },
+    "firmalife:beekeeper_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "Equippable in feet slot with durability"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "Beekeeper suit is typically leather"
+        },
+        "tier": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "Comparable to leather armor tier"
+        },
+        "primary_uses": {
+          "value": "Protecting from bee stings when handling hives",
+          "signal": "inferred",
+          "rationale": "Tooltip: full suit protects from bees"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Only worn during beekeeping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "firmalife:beekeeper_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "Equippable in chest slot with durability"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "Beekeeper suit is typically leather"
+        },
+        "tier": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "Comparable to leather armor tier"
+        },
+        "primary_uses": {
+          "value": "Protecting from bee stings when handling hives",
+          "signal": "inferred",
+          "rationale": "Tooltip: full suit protects from bees"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Only worn during beekeeping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "firmalife:beekeeper_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "Equippable in head slot with durability"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "Beekeeper suit is typically leather"
+        },
+        "tier": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "Comparable to leather armor tier"
+        },
+        "primary_uses": {
+          "value": "Protecting from bee stings when handling hives",
+          "signal": "inferred",
+          "rationale": "Tooltip: full suit protects from bees"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Only worn during beekeeping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "firmalife:beekeeper_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "Equippable in legs slot with durability"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "Beekeeper suit is typically leather"
+        },
+        "tier": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "Comparable to leather armor tier"
+        },
+        "primary_uses": {
+          "value": "Protecting from bee stings when handling hives",
+          "signal": "inferred",
+          "rationale": "Tooltip: full suit protects from bees"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Only worn during beekeeping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "firmalife:beeswax": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient from beekeeping"
+        },
+        "material_family": {
+          "value": "beeswax",
+          "signal": "inferred",
+          "rationale": "Display name"
+        },
+        "primary_uses": {
+          "value": "Crafting candles, wax coating, and pills",
+          "signal": "inferred",
+          "rationale": "Many recipe consumption examples"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "Beekeeping product"
+        }
+      }
+    },
+    "firmalife:bonsai_planter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Planter block for growing plants"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "Planter is likely ceramic"
+        },
+        "primary_uses": {
+          "value": "Growing bonsai and greenhouse plants",
+          "signal": "inferred",
+          "rationale": "Tooltip about greenhouse and planter tags"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in greenhouse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant growing is farming"
+        }
+      }
+    },
+    "firmalife:bottle_label": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for labeling bottles"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "Label is paper"
+        },
+        "primary_uses": {
+          "value": "Labeling bottles for preservation",
+          "signal": "inferred",
+          "rationale": "Used with jars and bottles"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Occasional crafting use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "inferred",
+          "rationale": "Used with jars"
+        }
+      }
+    },
+    "firmalife:brick_countertop": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative brick block for countertops"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Display name"
+        },
+        "primary_uses": {
+          "value": "Building kitchen countertops and surfaces",
+          "signal": "inferred",
+          "rationale": "Used in builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick variant block"
+        }
+      }
+    },
+    "firmalife:bucket/chocolate": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing liquid chocolate",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when processing chocolate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/coconut_milk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing coconut milk",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when cooking"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/cream": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing cream",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when dairy processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/curdled_goat_milk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing curdled goat milk",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only during cheese making"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/curdled_yak_milk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing curdled yak milk",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only during cheese making"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/dessert_wine": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing dessert wine",
+          "signal": "inferred",
+          "rationale": "Fluid bucket with effects"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when winemaking"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/fruity_fluid": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing fruity fluid",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/goat_milk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing goat milk",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when milking or cooking"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/mead": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing mead",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when brewing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "firmalife:bucket/metal/chromium": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for molten metal transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "material_secondary": {
+          "values": [
+            "chromium"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains molten chromium"
+        },
+        "primary_uses": {
+          "value": "Transporting and casting molten chromium",
+          "signal": "inferred",
+          "rationale": "Molten metal bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only during alloying"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds molten metal"
+        }
+      }
+    },
+    "firmalife:bucket/metal/stainless_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for molten metal transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "material_secondary": {
+          "values": [
+            "stainless_steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains molten stainless steel"
+        },
+        "primary_uses": {
+          "value": "Transporting and casting molten stainless steel",
+          "signal": "inferred",
+          "rationale": "Molten metal bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only during alloying"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds molten metal"
+        }
+      }
+    },
+    "firmalife:bucket/pina_colada": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "primary_uses": {
+          "value": "Transporting and storing pina colada",
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when making drinks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

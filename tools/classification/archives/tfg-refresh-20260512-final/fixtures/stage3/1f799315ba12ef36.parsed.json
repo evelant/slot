@@ -1,0 +1,1115 @@
+{
+  "items": {
+    "gtceu:lead_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cable block placed for energy transport, not a workstation"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used to transport energy between machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables",
+          "rationale": "part of GTCEu cable system"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport cable for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "connects power sources to consumers"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once then forgotten, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ULV material, easily crafted"
+        }
+      }
+    },
+    "gtceu:lead_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "wire block placed for energy transport"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "transports energy in GTCEu network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires",
+          "rationale": "wire is part of cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport wire for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "similar to cable, carries power"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed and integrated, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tier"
+        }
+      }
+    },
+    "gtceu:lead_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid pipe block, part of a transport network"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "transports fluids between machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes",
+          "rationale": "part of GTCEu pipe system"
+        },
+        "primary_uses": {
+          "values": [
+            "High-volume fluid transport pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers fluids at 768 mB/t"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        }
+      }
+    },
+    "gtceu:lead_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "surface rock indicating lead ore, treated as raw material by players"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "picked up while mining to mark ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "found on surface as indicator"
+        },
+        "primary_uses": {
+          "values": [
+            "Lead ore surface indicator, collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "marks lead vein location"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only picked up when encountering, not stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface rock"
+        }
+      }
+    },
+    "gtceu:lead_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "refined metal in ingot form, used for crafting"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/lead",
+          "rationale": "lead metal"
+        },
+        "form": {
+          "value": "ingot",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form from tag"
+        },
+        "tier": {
+          "value": "ulv",
+          "signal": "inferred",
+          "evidence": "semantic text: ULV",
+          "rationale": "tooltip shows ULV voltage tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated machine crafting"
+        },
+        "workflow": {
+          "values": [
+            "createaddition:rolling",
+            "tfc:anvil"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "used in rolling and anvil work"
+        },
+        "used_at": {
+          "values": [
+            "createaddition:rolling",
+            "tfc:anvil"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes rolling and anvil recipes",
+          "rationale": "consumed at these stations"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "stored with other pileable ingots"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "refined ingot stage"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for machines and tools",
+            "Made into rods, plates, wires"
+          ],
+          "signal": "inferred",
+          "rationale": "basic building block for lead items"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material, often carried in inventory for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common metal from smelting ore"
+        }
+      }
+    },
+    "gtceu:lead_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "part of GTCEu pipe network"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:large_fluid_pipes",
+          "rationale": "pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport pipe for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "moves fluids at 384 mB/t"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        }
+      }
+    },
+    "gtceu:lead_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pipe for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "multi-channel fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nonuple_fluid_pipes",
+          "rationale": "pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "9-channel fluid pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "transports up to 9 separate fluids"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        }
+      }
+    },
+    "gtceu:lead_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "standard fluid pipe"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes",
+          "rationale": "pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Standard fluid pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers fluids at 192 mB/t"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        }
+      }
+    },
+    "gtceu:lead_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "small metal piece, crafting component"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/lead",
+          "rationale": "lead"
+        },
+        "form": {
+          "value": "nugget",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "small metal nuggets storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting small components",
+            "Used in ammunition"
+          ],
+          "signal": "inferred",
+          "rationale": "seen in bullet recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in moderate quantities"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        }
+      }
+    },
+    "gtceu:lead_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cable for energy transport"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables",
+          "rationale": "cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "8x energy cable for ULV"
+          ],
+          "signal": "inferred",
+          "rationale": "transports 16 amps at ULV"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        }
+      }
+    },
+    "gtceu:lead_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "wire for energy transport"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire is equivalent to cable for subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "8x energy wire"
+          ],
+          "signal": "inferred",
+          "rationale": "transports 16 amps at ULV"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore waiting to be smelted"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/lead",
+          "rationale": "lead ore"
+        },
+        "form": {
+          "value": "ore",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then smelted"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption includes blasting and smelting",
+          "rationale": "smelted into ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into lead ingots",
+            "Source of lead metal"
+          ],
+          "signal": "inferred",
+          "rationale": "basic ore processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried while mining, then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:lead_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cable for energy"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables",
+          "rationale": "cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "4x energy cable"
+          ],
+          "signal": "inferred",
+          "rationale": "transports 8 amps at ULV"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multi-channel fluid pipe"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_fluid_pipes",
+          "rationale": "pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "4-channel fluid pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "transports up to 4 separate fluids"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "wire for energy"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire as cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "4x energy wire"
+          ],
+          "signal": "inferred",
+          "rationale": "transports 8 amps at ULV"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rings",
+          "rationale": "small component, crafting material"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/lead",
+          "rationale": "lead"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ulv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ULV-tier component used in rotors and tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Component in rotors, tools, and helmets"
+          ],
+          "signal": "inferred",
+          "rationale": "appears in many crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in material storage for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form, used in tool and component crafting"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/lead",
+          "rationale": "lead rod"
+        },
+        "form": {
+          "value": "rod",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mechanical crafting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil",
+            "vintageimprovements:coiling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes anvil and coiling",
+          "rationale": "further worked into springs, bolts, etc."
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipes exist",
+          "rationale": "shaped on anvil"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ulv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ULV tier component, used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Made into screws, springs, bolts",
+            "Handle for tools and weapons"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate for many parts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rotors",
+          "rationale": "rotor component, used in machines"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:rotors/lead",
+          "rationale": "lead rotor"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ulv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ULV component for machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Component in pumps, fans, and aircraft propellers"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machine and vehicle recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in storage for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "screw component, used in assembly"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/lead",
+          "rationale": "lead screw"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ulv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ULV component"
+        },
+        "primary_uses": {
+          "values": [
+            "Fastener for machine cases and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "common ingredient in shaped recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in moderate quantities"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "single cable for energy"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables",
+          "rationale": "cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "1x energy cable for ULV"
+          ],
+          "signal": "inferred",
+          "rationale": "basic energy transport"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "single wire for energy"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire as cable"
+        },
+        "primary_uses": {
+          "values": [
+            "1x energy wire"
+          ],
+          "signal": "inferred",
+          "rationale": "basic energy wire"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "small fluid pipe"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_fluid_pipes",
+          "rationale": "pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Small fluid pipe for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers 64 mB/t"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:springs",
+          "rationale": "spring component"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:springs/lead",
+          "rationale": "lead spring"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ulv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ULV component"
+        },
+        "primary_uses": {
+          "values": [
+            "Mechanical component for machines and hatches"
+          ],
+          "signal": "inferred",
+          "rationale": "used in dynamo hatches and flintlocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "tiny fluid pipe"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_fluid_pipes",
+          "rationale": "pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Tiny fluid pipe for low-volume transport"
+          ],
+          "signal": "inferred",
+          "rationale": "transports 32 mB/t"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:lead_zinc_solution_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket used for transport and processing"
+        },
+        "material_family": {
+          "value": "lead_zinc_solution",
+          "signal": "inferred",
+          "rationale": "specific fluid mixture"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "holds fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "Used in chemical processing",
+            "Fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "carries solution for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for specific automation tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

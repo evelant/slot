@@ -1,0 +1,801 @@
+{
+  "items": {
+    "create:creative_blaze_cake": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only item not survival-obtainable"
+        },
+        "primary_uses": {
+          "values": [
+            "infinite fuel for blaze burners"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: never run out of fuel",
+          "rationale": "tooltip states purpose"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only item not in normal survival"
+        }
+      }
+    },
+    "create:creative_crate": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only infinite supply block"
+        },
+        "primary_uses": {
+          "values": [
+            "infinite item supply",
+            "void items on insert"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: endless supply and void",
+          "rationale": "tooltip describes function"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival play"
+        }
+      }
+    },
+    "create:creative_fluid_tank": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only infinite fluid block"
+        },
+        "primary_uses": {
+          "values": [
+            "infinite fluid storage"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip implies infinite capacity"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not available in survival"
+        }
+      }
+    },
+    "create:creative_motor": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only infinite power source"
+        },
+        "primary_uses": {
+          "values": [
+            "infinite rotational power"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip description"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        }
+      }
+    },
+    "create:crimsite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "natural stone used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building and crafting decorative stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "used in stonecutting recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building or processing"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "pattern",
+          "evidence": "id suffix _crimsite",
+          "rationale": "item name indicates material type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is building"
+        }
+      }
+    },
+    "create:crimsite_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative pillar for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative pillar in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecutting product"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "pattern",
+          "evidence": "id stem crimsite",
+          "rationale": "same base material as crimsite"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction block"
+        }
+      }
+    },
+    "create:crimson_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window block for structures"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative window for builds"
+          ],
+          "signal": "inferred",
+          "rationale": "part of building palette"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "pattern",
+          "evidence": "id prefix crimson_ and nether wood",
+          "rationale": "stage-2 material_family"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building decoration"
+        }
+      }
+    },
+    "create:crimson_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window pane for structure openings"
+        },
+        "primary_uses": {
+          "values": [
+            "thin window pane for builds"
+          ],
+          "signal": "inferred",
+          "rationale": "pane variant of window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "pattern",
+          "evidence": "id prefix crimson_",
+          "rationale": "same as crimson window"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building decoration"
+        }
+      }
+    },
+    "create:crushed_raw_aluminum": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate processed ore dust"
+        },
+        "primary_uses": {
+          "values": [
+            "further processing into aluminum"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ore is a processing step"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored during processing runs"
+        },
+        "material_family": {
+          "value": "aluminum",
+          "signal": "pattern",
+          "evidence": "id suffix _aluminum",
+          "rationale": "named after the metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ore intermediate storage"
+        }
+      }
+    },
+    "create:crushed_raw_copper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "purified ore dust for smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into copper ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe consumption includes smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in processing stock"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "tag forge:purified_ores/copper",
+          "rationale": "tag explicitly copper"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "purified ore belongs in refined ores"
+        }
+      }
+    },
+    "create:crushed_raw_gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "purified gold ore dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into gold ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting recipe present"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing inventory item"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "tag forge:purified_ores/gold",
+          "rationale": "tag indicates gold"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "purified ore stage"
+        }
+      }
+    },
+    "create:crushed_raw_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crushed iron ore for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "further processing into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in ore processing chain"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "evidence": "id suffix _iron",
+          "rationale": "named after iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ore storage"
+        }
+      }
+    },
+    "create:crushed_raw_lead": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "purified lead ore dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into lead ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing inventory"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "tag forge:purified_ores/lead",
+          "rationale": "tag indicates lead"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "purified ore"
+        }
+      }
+    },
+    "create:crushed_raw_nickel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crushed nickel ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored during processing"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "id suffix _nickel",
+          "rationale": "name indicates metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ore intermediate"
+        }
+      }
+    },
+    "create:crushed_raw_osmium": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crushed osmium ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into osmium"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing stock"
+        },
+        "material_family": {
+          "value": "osmium",
+          "signal": "pattern",
+          "evidence": "id suffix _osmium",
+          "rationale": "named after metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ore group"
+        }
+      }
+    },
+    "create:crushed_raw_platinum": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crushed platinum ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into platinum"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate step"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing inventory"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "id suffix _platinum",
+          "rationale": "name indicates metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ore storage"
+        }
+      }
+    },
+    "create:crushed_raw_quicksilver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crushed quicksilver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into quicksilver"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing stock"
+        },
+        "material_family": {
+          "value": "quicksilver",
+          "signal": "pattern",
+          "evidence": "id suffix _quicksilver",
+          "rationale": "named after metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ore bucket"
+        }
+      }
+    },
+    "create:crushed_raw_silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "purified silver ore dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into silver ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing inventory"
+        },
+        "material_family": {
+          "value": "silver",
+          "signal": "pattern",
+          "evidence": "tag forge:purified_ores/silver",
+          "rationale": "tag indicates silver"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "purified ore stage"
+        }
+      }
+    },
+    "create:crushed_raw_tin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "purified tin ore dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into tin ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting recipe present"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing inventory"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "tag forge:purified_ores/tin",
+          "rationale": "tag indicates tin"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "purified ore"
+        }
+      }
+    },
+    "create:crushed_raw_uranium": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crushed uranium ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into uranium"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing stock"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "id suffix _uranium",
+          "rationale": "name indicates metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ore bucket"
+        }
+      }
+    },
+    "create:crushed_raw_zinc": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "purified zinc ore dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into zinc ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing inventory"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "tag forge:purified_ores/zinc",
+          "rationale": "tag indicates zinc"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "purified ore"
+        }
+      }
+    },
+    "create:crushing_wheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic processing block in contraptions"
+        },
+        "primary_uses": {
+          "values": [
+            "crush ores and materials"
+          ],
+          "signal": "named",
+          "evidence": "advancement: Wheels of Destruction",
+          "rationale": "tooltip and advancements describe crushing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in a factory setup"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create automated processing"
+        }
+      }
+    },
+    "create:cuckoo_clock": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "named",
+          "evidence": "tooltip: Fine craftsmanship for decorating",
+          "rationale": "tooltip says decorating"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative time display",
+            "announces bedtime"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: shows time and activates at dusk",
+          "rationale": "tooltip description"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once as decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative furniture block"
+        }
+      }
+    },
+    "create:cut_andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut stone for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building and crafting stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many stonecutting recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id suffix _andesite",
+          "rationale": "andesite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is building"
+        }
+      }
+    },
+    "create:cut_andesite_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab for building and detailing"
+        },
+        "primary_uses": {
+          "values": [
+            "building floors and steps"
+          ],
+          "signal": "inferred",
+          "rationale": "slab as building component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id contains andesite",
+          "rationale": "base material same as cut andesite"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

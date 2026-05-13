@@ -1,0 +1,1199 @@
+{
+  "items": {
+    "tfg:rock/cobble_scorchia_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used for building structures"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id contains scorchia",
+          "rationale": "stone type in id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "component rarity is common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scorchia stone"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is as a building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "tagged as rock slab storage group"
+        }
+      }
+    },
+    "tfg:rock/cobble_scorchia_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used for building"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id contains scorchia",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scorchia stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "tagged as rock stairs group"
+        }
+      }
+    },
+    "tfg:rock/cobble_scorchia_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used for building"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scorchia stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used as wall in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "tagged as rock walls group"
+        }
+      }
+    },
+    "tfg:rock/cobble_scoria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cobble block used as building material"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria cobble"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cobblestone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:cobblestone",
+          "rationale": "cobblestone group"
+        }
+      }
+    },
+    "tfg:rock/cobble_scoria_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab for building"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "rock slabs group"
+        }
+      }
+    },
+    "tfg:rock/cobble_scoria_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs for building"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "rock stairs group"
+        }
+      }
+    },
+    "tfg:rock/cobble_scoria_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall for building"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "rock walls group"
+        }
+      }
+    },
+    "tfg:rock/cobble_tuff": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cobble block for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff cobble"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cobblestone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:cobblestone",
+          "rationale": "cobblestone group"
+        }
+      }
+    },
+    "tfg:rock/cobble_tuff_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "rock slabs group"
+        }
+      }
+    },
+    "tfg:rock/cobble_tuff_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "rock stairs group"
+        }
+      }
+    },
+    "tfg:rock/cobble_tuff_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "rationale": "stone type in id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "rock walls group"
+        }
+      }
+    },
+    "tfg:rock/cobble_venus_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall for building"
+        },
+        "material_family": {
+          "value": "trachyte",
+          "signal": "pattern",
+          "evidence": "display name 'Trachyte Cobble Wall'",
+          "rationale": "venus stone is trachyte"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with trachyte stone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "rock walls group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_blackstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab for building"
+        },
+        "material_family": {
+          "value": "pyroxenite",
+          "signal": "pattern",
+          "evidence": "display name 'Cracked Pyroxenite Brick Slab'",
+          "rationale": "blackstone is pyroxenite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with pyroxenite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "brick slabs group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_blackstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs for building"
+        },
+        "material_family": {
+          "value": "pyroxenite",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "pyroxenite bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with pyroxenite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "brick stairs group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_blackstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall for building"
+        },
+        "material_family": {
+          "value": "pyroxenite",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "pyroxenite bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with pyroxenite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "brick walls group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_deepslate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "pattern",
+          "evidence": "display name 'Cracked Migmatite Brick Slab'",
+          "rationale": "deepslate is migmatite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with migmatite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "brick slabs group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_deepslate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "migmatite bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with migmatite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "brick stairs group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_deepslate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "migmatite bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with migmatite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "brick walls group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_dripstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick block for building"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "pattern",
+          "evidence": "display name 'Cracked Travertine Brick'",
+          "rationale": "dripstone is travertine"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with travertine bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "brick type block",
+          "rationale": "bricks storage group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_dripstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab for building"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "travertine bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with travertine bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "brick slabs group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_dripstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs for building"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "travertine bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with travertine bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "brick stairs group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_dripstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall for building"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "travertine bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with travertine bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "brick walls group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_glacio_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab for building"
+        },
+        "material_family": {
+          "value": "phonolite",
+          "signal": "pattern",
+          "evidence": "display name 'Cracked Phonolite Brick Slab'",
+          "rationale": "glacio stone is phonolite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with phonolite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "brick slabs group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_glacio_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs for building"
+        },
+        "material_family": {
+          "value": "phonolite",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "phonolite bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with phonolite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "brick stairs group"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_glacio_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall for building"
+        },
+        "material_family": {
+          "value": "phonolite",
+          "signal": "pattern",
+          "evidence": "display name",
+          "rationale": "phonolite bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "building with phonolite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "brick walls group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

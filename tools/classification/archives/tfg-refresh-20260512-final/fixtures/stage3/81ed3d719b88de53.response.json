@@ -1,0 +1,1239 @@
+{
+  "items": {
+    "tfg:furnace_exhaust_gas_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and dispense a gas"
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying furnace exhaust gas",
+            "Supplying gas to machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Player-facing use as a fluid container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Situational, carried on supply runs"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds a gas, belongs in fluid storage"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains a gas, is a filled fluid container"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to transport gas between stations"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be filled and emptied at machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item component"
+        }
+      }
+    },
+    "tfg:gabbro_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore processed into metal"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/lorandite",
+          "rationale": "Ore of lorandite mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lorandite ingot",
+            "Milling for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining, then stored"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground ore generation"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace smelting is primary use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in its vein"
+        }
+      }
+    },
+    "tfg:gabbro_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural support block placed in constructions"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "evidence": "id prefix gabbro",
+          "rationale": "Stone from gabbro"
+        },
+        "primary_uses": {
+          "values": [
+            "Supporting tunnels and caves",
+            "Decorative structural beam"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in mining and building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or mining supports"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        }
+      }
+    },
+    "tfg:galactose_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "galactose",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/galactose",
+          "rationale": "Dust of galactose"
+        },
+        "primary_uses": {
+          "values": [
+            "Sugar substitute in food recipes",
+            "Brewing and chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as an ingredient in various crafts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for use in specific recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced from other materials via crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Fine powder form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate material"
+        }
+      }
+    },
+    "tfg:gas_fraction_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket carrying solvent gas fraction"
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying solvent gas fraction",
+            "Supplying gas to machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Player-facing use as a fluid container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Situational, carried on supply runs"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds a gas, belongs in fluid storage"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains a gas, is a filled fluid container"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to transport gas between stations"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be filled and emptied at machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item component"
+        }
+      }
+    },
+    "tfg:gas_well": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single block with UI for gas extraction"
+        },
+        "primary_uses": {
+          "values": [
+            "Extracting natural gas from the ground",
+            "Fracking operation with steam/water"
+          ],
+          "signal": "inferred",
+          "rationale": "Lore describes its function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and used as a station"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of an automated gas extraction setup"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted machine, not world-gen"
+        }
+      }
+    },
+    "tfg:geyser_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket carrying superheated slurry"
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying superheated slurry",
+            "Supplying slurry to machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Player-facing use as a fluid container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Situational, carried on supply runs"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds a fluid, belongs in fluid storage"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains a slurry, is a filled fluid container"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to transport slurry between stations"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be filled and emptied at machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item component"
+        }
+      }
+    },
+    "tfg:geyser_source": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed as a natural decoration or steam source"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating a steaming geyser decoration",
+            "Supplying steam for ambiance"
+          ],
+          "signal": "inferred",
+          "rationale": "No processing use; purely decorative"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when decorating"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in decorative builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits decorative block group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common creative/decorative block"
+        }
+      }
+    },
+    "tfg:geyser_source_small": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Smaller variant of the steaming geyser"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating a small steaming geyser decoration",
+            "Supplying steam for ambiance"
+          ],
+          "signal": "inferred",
+          "rationale": "Purely decorative"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when decorating"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in decorative builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits decorative block group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common creative/decorative block"
+        }
+      }
+    },
+    "tfg:ghost_pepper_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Seeds planted to grow crops"
+        },
+        "form": {
+          "value": "seed",
+          "signal": "pattern",
+          "evidence": "suffix _seeds",
+          "rationale": "Seed form"
+        },
+        "primary_uses": {
+          "values": [
+            "Planting ghost pepper crops",
+            "Animal feed (chickens, ducks, quail)",
+            "Small fishing bait"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming and feed uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when farming"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crop farming"
+        },
+        "food_use": {
+          "values": [
+            "slot:animal_feed"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged as chicken/duck/quail food"
+        },
+        "used_at": {
+          "values": [
+            "tfc:planters"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted in planters for greenhouse"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "Seed storage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crop seed"
+        }
+      }
+    },
+    "tfg:ghost_pepper_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild plant found in the world"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting wild ghost peppers",
+            "Collecting seeds for farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvest and propagation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only collected when exploring"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Found during exploration"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Wild crop on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Wild crop group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wild plant"
+        }
+      }
+    },
+    "tfg:gilsonite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mined block used as a structural material"
+        },
+        "material_family": {
+          "value": "gilsonite",
+          "signal": "inferred",
+          "rationale": "Unique mineral block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative and structural building block",
+            "Possible road material"
+          ],
+          "signal": "inferred",
+          "rationale": "No recipes, only placement"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining or building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common world-gen block"
+        }
+      }
+    },
+    "tfg:glacian_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Leaves block used for decoration and crafting"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "inferred",
+          "rationale": "From glacian tree"
+        },
+        "primary_uses": {
+          "values": [
+            "Mossy brick crafting (deploying/mixing)",
+            "Composting (greens low)",
+            "Decorative foliage"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiple uses in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected when needed for recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in decorative building and moss recipes"
+        },
+        "used_at": {
+          "values": [
+            "create:deploying"
+          ],
+          "signal": "inferred",
+          "rationale": "Applied in deployer for mossy bricks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant/foliage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tree leaves"
+        }
+      }
+    },
+    "tfg:glacian_leaves_fallen": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Fallen leaves used as fuel and compost"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "inferred",
+          "rationale": "From glacian tree"
+        },
+        "primary_uses": {
+          "values": [
+            "Fuel for firepit (kindling)",
+            "Composting (greens low)",
+            "Mossy brick crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiple uses as fuel and ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected when needed"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting and fuel"
+        },
+        "used_at": {
+          "values": [
+            "create:deploying"
+          ],
+          "signal": "inferred",
+          "rationale": "Applied in deployer for mossy bricks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant/foliage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fallen leaves"
+        }
+      }
+    },
+    "tfg:glacian_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log used as building material"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "inferred",
+          "rationale": "From glacian tree"
+        },
+        "primary_uses": {
+          "values": [
+            "Building and crafting",
+            "Fuel source (firepit, oven)"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses for wood"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in large quantities when gathering wood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Log storage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tree log"
+        }
+      }
+    },
+    "tfg:glacian_log_stripped": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stripped log used as building material"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "inferred",
+          "rationale": "From glacian tree"
+        },
+        "primary_uses": {
+          "values": [
+            "Building and crafting",
+            "Fuel source (firepit, oven)"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses for wood"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in large quantities when gathering wood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Log storage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stripped log"
+        }
+      }
+    },
+    "tfg:glacian_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural support beam"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "inferred",
+          "rationale": "Wooden support from glacian tree"
+        },
+        "primary_uses": {
+          "values": [
+            "Supporting tunnels and structures",
+            "Decorative beam"
+          ],
+          "signal": "inferred",
+          "rationale": "Support beam in mining and building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when constructing supports"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted support"
+        }
+      }
+    },
+    "tfg:glacian_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wood block used as building material"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "inferred",
+          "rationale": "From glacian tree"
+        },
+        "primary_uses": {
+          "values": [
+            "Building and crafting",
+            "Fuel source (firepit, oven)"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses for wood"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in large quantities when gathering wood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Log/wood storage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tree wood"
+        }
+      }
+    },
+    "tfg:glacian_wood_stripped": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stripped wood block used as building material"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "inferred",
+          "rationale": "From glacian tree"
+        },
+        "primary_uses": {
+          "values": [
+            "Building and crafting",
+            "Fuel source (firepit, oven)"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses for wood"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in large quantities when gathering wood"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Log/wood storage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stripped wood"
+        }
+      }
+    },
+    "tfg:glacian_wool": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw material for yarn and textiles"
+        },
+        "material_family": {
+          "value": "glacian_wool",
+          "signal": "inferred",
+          "rationale": "Wool from glacian source"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting yarn (knife damage)",
+            "Textile production"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into yarn"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for textile crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "Textile materials group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:glacian_wool_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Component placed inside a fission reactor"
+        },
+        "material_family": {
+          "value": "glacian_wool",
+          "signal": "inferred",
+          "rationale": "Made from glacian wool"
+        },
+        "primary_uses": {
+          "values": [
+            "Increasing fission reactor heat capacity",
+            "Reactor multiblock component"
+          ],
+          "signal": "inferred",
+          "rationale": "Lore: placed inside reactor to increase max heat"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used when building reactor"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of nuclear power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "Fission reactor component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted component for advanced machine"
+        }
+      }
+    },
+    "tfg:glacio_stone_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore processed into metal"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/lorandite",
+          "rationale": "Ore of lorandite mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lorandite ingot",
+            "Milling for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing paths"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining, then stored"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground ore generation"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace smelting is primary use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in its vein"
+        }
+      }
+    },
+    "tfg:glass/smooth_black_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stained glass block used as building material"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Glass material"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "evidence": "id contains black_stained",
+          "rationale": "Black dye color"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative transparent building block",
+            "Crafting material for windows and machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with glass"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass storage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted glass"
+        }
+      }
+    },
+    "tfg:glass/smooth_blue_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stained glass block used as building material"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Glass material"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id contains blue_stained",
+          "rationale": "Blue dye color"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative transparent building block",
+            "Crafting material for windows and machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with glass"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass storage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted glass"
+        }
+      }
+    },
+    "tfg:glass/smooth_brown_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stained glass block used as building material"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Glass material"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id contains brown_stained",
+          "rationale": "Brown dye color"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative transparent building block",
+            "Crafting material for windows and machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with glass"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass storage group"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted glass"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

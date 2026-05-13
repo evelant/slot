@@ -1,0 +1,1087 @@
+{
+  "items": {
+    "gtceu:magnetic_iron_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient, not a tool or block"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu components",
+            "ingredient in advanced recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in inventory for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights common",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "form from tag"
+        }
+      }
+    },
+    "gtceu:magnetic_iron_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined material for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components",
+            "intermediate in processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "form from tag"
+        }
+      }
+    },
+    "gtceu:magnetic_iron_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "form from tag"
+        }
+      }
+    },
+    "gtceu:magnetic_iron_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many shaped recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern",
+          "rationale": "material from id"
+        }
+      }
+    },
+    "gtceu:magnetic_neodymium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage of magnetic neodymium"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "storage and occasional building"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_neodymium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral storage block"
+        }
+      }
+    },
+    "gtceu:magnetic_neodymium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into magnets",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_neodymium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed dust"
+        }
+      }
+    },
+    "gtceu:magnetic_neodymium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "base metal form for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting magnets",
+            "GTCEu component material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_neodymium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ingot"
+        }
+      }
+    },
+    "gtceu:magnetic_neodymium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tiny components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_neodymium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed nugget"
+        }
+      }
+    },
+    "gtceu:magnetic_neodymium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined rod for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools",
+            "machine component material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_neodymium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed rod"
+        }
+      }
+    },
+    "gtceu:magnetic_samarium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage block"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "storage and building"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_samarium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral block"
+        }
+      }
+    },
+    "gtceu:magnetic_samarium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined dust for alloys"
+        },
+        "primary_uses": {
+          "values": [
+            "alloy ingredient",
+            "smelting into magnets"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_samarium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed dust"
+        }
+      }
+    },
+    "gtceu:magnetic_samarium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "base metal form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting magnets",
+            "component material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_samarium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ingot"
+        }
+      }
+    },
+    "gtceu:magnetic_samarium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tiny parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_samarium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed nugget"
+        }
+      }
+    },
+    "gtceu:magnetic_samarium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined rod"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools",
+            "machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_samarium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed rod"
+        }
+      }
+    },
+    "gtceu:magnetic_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage of magnetic steel"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "storage and building"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_steel",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed steel block"
+        }
+      }
+    },
+    "gtceu:magnetic_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined dust"
+        },
+        "primary_uses": {
+          "values": [
+            "alloy ingredient",
+            "smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_steel",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed steel dust"
+        }
+      }
+    },
+    "gtceu:magnetic_steel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "base metal form for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine parts",
+            "component material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_steel",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed steel ingot"
+        }
+      }
+    },
+    "gtceu:magnetic_steel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tiny parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_steel",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed steel nugget"
+        }
+      }
+    },
+    "gtceu:magnetic_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined plate for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components",
+            "intermediate in processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_steel",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed steel plate"
+        }
+      }
+    },
+    "gtceu:magnetic_steel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined rod for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools",
+            "machine part material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetic_steel",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed steel rod"
+        }
+      }
+    },
+    "gtceu:magnetite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined dust for smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into cast iron",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu and TFC recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_family": {
+          "value": "magnetite",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed magnetite dust"
+        }
+      }
+    },
+    "gtceu:magnetite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating ore deposit"
+        },
+        "primary_uses": {
+          "values": [
+            "prospecting for magnetite"
+          ],
+          "signal": "inferred",
+          "rationale": "indicator block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "occasionally collected when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        }
+      }
+    },
+    "gtceu:magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore to be mined and processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for magnetite",
+            "smelting into cast iron"
+          ],
+          "signal": "inferred",
+          "rationale": "source of iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "form from tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:maintenance_detector_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GTCEu cover item for multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "monitoring multiblock maintenance status"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: For maintaining Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used when setting up multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "pattern",
+          "evidence": "id + maintain multiblocks tooltip",
+          "rationale": "cover system part"
+        }
+      }
+    },
+    "gtceu:maintenance_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GTCEu multiblock component"
+        },
+        "primary_uses": {
+          "values": [
+            "providing maintenance access to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: For maintaining Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed on multiblocks, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "evidence": "id + multiblock component",
+          "rationale": "hatch subsystem part"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:magnetic_neodymium_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "forge:storage_blocks tag indicates block form"
+    },
+    {
+      "item": "gtceu:magnetic_samarium_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "forge:storage_blocks tag indicates block form"
+    },
+    {
+      "item": "gtceu:magnetic_steel_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "forge:storage_blocks tag indicates block form"
+    }
+  ],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "schema_proposals": []
+}

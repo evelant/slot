@@ -1,0 +1,1485 @@
+{
+  "items": {
+    "tfc:powder/graphite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in 34 recipes, often carried for dye/glass"
+        },
+        "primary_uses": {
+          "values": [
+            "Glass coloring and blue dye ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged glassworking_powders and forge:dyes/blue"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/hematite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "6 recipes, less frequent than high-volume powders"
+        },
+        "primary_uses": {
+          "values": [
+            "Red dye ingredient",
+            "Cast iron source when heated"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe for red dye, melts to cast iron"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        }
+      }
+    },
+    "tfc:powder/kaolinite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "30 recipes, key for fire clay and dye"
+        },
+        "primary_uses": {
+          "values": [
+            "Fire clay ingredient",
+            "Pink dye ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe for fire clay and pink dye"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/lapis_lazuli": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "32 recipes, common dye and glass ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Blue dye ingredient",
+            "Glass coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged glassworking_powders and forge:dyes/blue"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/lime": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "6 recipes, used in glass batch and parchment"
+        },
+        "primary_uses": {
+          "values": [
+            "Glass batch ingredient",
+            "Limewater production",
+            "Parchment making"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes for glass batches, limewater, parchment"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "evidence": "used in silica glass batch recipes",
+          "rationale": "used in glass batch recipes"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/limonite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "58 recipes, widely used as dye and glass additive"
+        },
+        "primary_uses": {
+          "values": [
+            "Yellow dye ingredient",
+            "Glass coloring",
+            "Warning sign coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged forge:dyes/yellow and glassworking_powders"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/magnetite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "28 recipes, dye and glass ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Gray dye ingredient",
+            "Glass coloring",
+            "Iron source when heated"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged as dye, glassworking_powders, melts to cast iron"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/malachite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "29 recipes, dye and glass ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Green dye ingredient",
+            "Glass coloring",
+            "Copper source when heated"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged as dye, glassworking_powders, melts to copper"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/native_copper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "2 recipes, niche use"
+        },
+        "primary_uses": {
+          "values": [
+            "Glass coloring",
+            "Copper metal source"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged glassworking_powders, melts to copper"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/native_gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "1 recipe, very niche"
+        },
+        "primary_uses": {
+          "values": [
+            "Glass coloring",
+            "Gold metal source"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged glassworking_powders, melts to gold"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/native_silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "2 recipes, niche use"
+        },
+        "primary_uses": {
+          "values": [
+            "Light gray dye ingredient",
+            "Glass coloring",
+            "Silver metal source"
+          ],
+          "signal": "inferred",
+          "rationale": "used as dye, glassworking_powders, melts to silver"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/opal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "1 recipe, gem powder used in gem saw"
+        },
+        "primary_uses": {
+          "values": [
+            "Gem saw ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "only recipe is gem saw, not a dye"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        }
+      }
+    },
+    "tfc:powder/pyrite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "2 recipes, niche use"
+        },
+        "primary_uses": {
+          "values": [
+            "Glass coloring",
+            "Iron source when heated"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged glassworking_powders, melts to cast iron"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/ruby": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "2 recipes, gem powder used in gem saw and glass"
+        },
+        "primary_uses": {
+          "values": [
+            "Gem saw ingredient",
+            "Glass coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged glassworking_powders, gem saw recipe"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/salt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "29 recipes, widely used in food and preservation"
+        },
+        "primary_uses": {
+          "values": [
+            "Food seasoning and preservation",
+            "Glass coloring",
+            "Meat salting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many food recipes and glass batch"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:preservation"
+          ],
+          "signal": "inferred",
+          "evidence": "used in salting recipes",
+          "rationale": "salt is used for preservation salting"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:preservation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to preservation salting"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking",
+            "tfc:barrel_sealed"
+          ],
+          "signal": "inferred",
+          "rationale": "used in glass and barrel salting"
+        }
+      }
+    },
+    "tfc:powder/saltpeter": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "10 recipes, used in gunpowder, glass, and fertilizer"
+        },
+        "primary_uses": {
+          "values": [
+            "Gunpowder ingredient",
+            "Glass potash",
+            "Fertilizer"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes for gunpowder, glass batch, fertilizer"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_potash tag",
+          "rationale": "used glassworking potash"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking",
+            "tfc:composter"
+          ],
+          "signal": "inferred",
+          "rationale": "used in glass and as fertilizer"
+        }
+      }
+    },
+    "tfc:powder/sapphire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "2 recipes, gem powder"
+        },
+        "primary_uses": {
+          "values": [
+            "Gem saw ingredient",
+            "Glass coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged glassworking_powders, gem saw recipe"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/soda_ash": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "8 recipes, used in glass and developer"
+        },
+        "primary_uses": {
+          "values": [
+            "Glass batch ingredient",
+            "Film developer ingredient",
+            "Latex processing"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes for glass, developer, latex vacuumizing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_potash tag",
+          "rationale": "used glassworking potash"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/sphalerite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "26 recipes, dye and glass ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Gray dye ingredient",
+            "Zinc source when heated"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged as dye, melts to zinc, no glass tag but used in dye"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/sulfur": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "7 recipes, used in gunpowder and developer"
+        },
+        "primary_uses": {
+          "values": [
+            "Gunpowder ingredient",
+            "Film developer ingredient",
+            "Glass coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes for gunpowder, developer, glass blowpipe"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:powder/sylvite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "27 recipes, dye and fertilizer"
+        },
+        "primary_uses": {
+          "values": [
+            "Orange dye ingredient",
+            "Fertilizer"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged as dye, fertilizer nutrient"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/tetrahedrite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "27 recipes, dye and glass ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Gray dye ingredient",
+            "Glass coloring",
+            "Copper source"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged glassworking_powders, dye, melts to copper"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:glassworking_powders tag",
+          "rationale": "used glassworking workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:glassworking#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "pattern",
+          "rationale": "used at glassworking station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dyes tag",
+          "rationale": "stored with other dyes"
+        }
+      }
+    },
+    "tfc:powder/topaz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "1 recipe, gem powder"
+        },
+        "primary_uses": {
+          "values": [
+            "Gem saw ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "only recipe is gem saw"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        }
+      }
+    },
+    "tfc:powder/wood_ash": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "powder is a crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "16 recipes, used in composting, lye, and soot"
+        },
+        "primary_uses": {
+          "values": [
+            "Compost ingredient",
+            "Lye production",
+            "Soot and dye component"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes for compost, lye, soot, and dye"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "item is a powder"
+        }
+      }
+    },
+    "tfc:powderkeg": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block with UI for filling gunpowder, ignited for explosions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when planning demolition, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining and demolition with explosions",
+            "Crafting bomb bay and rotary cannon"
+          ],
+          "signal": "inferred",
+          "rationale": "used as explosive device and aircraft component"
+        },
+        "workflow": {
+          "values": [
+            "tfc:powderkegs"
+          ],
+          "signal": "pattern",
+          "evidence": "guide page on powderkegs",
+          "rationale": "central to powderkeg workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:powderkegs"
+          ],
+          "signal": "pattern",
+          "rationale": "the block itself is the station"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for clearing blocks and caves"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_low",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "explodes when lit, not highly blast resistant"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities",
+            "mob_launcher"
+          ],
+          "signal": "inferred",
+          "rationale": "explosion damages and launches mobs"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "tfc:powder/graphite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/hematite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/lapis_lazuli",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/lime",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/limonite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/magnetite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/malachite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/native_copper",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/native_gold",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/native_silver",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/opal",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/pyrite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/ruby",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/salt",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/saltpeter",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/sapphire",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/soda_ash",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/sphalerite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/sulfur",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/sylvite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/tetrahedrite",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/topaz",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    },
+    {
+      "item": "tfc:powder/wood_ash",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "powder item is a dust form"
+    }
+  ]
+}

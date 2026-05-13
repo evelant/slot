@@ -1,0 +1,1436 @@
+{
+  "items": {
+    "gtceu:mica_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "refined dust used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "mica",
+          "signal": "pattern",
+          "evidence": "forge:dusts/mica tag",
+          "rationale": "mica material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in mixing and anti-poison crafting, not daily carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting anti-poison pills",
+            "component in mixing recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses from recipe_ingredient_examples"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust storage group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material stored in bulk"
+        }
+      }
+    },
+    "gtceu:mica_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating underground ore"
+        },
+        "material_family": {
+          "value": "mica",
+          "signal": "pattern",
+          "evidence": "forge:surface_rocks/mica",
+          "rationale": "mica indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "broken on sight, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common surface block"
+        },
+        "primary_uses": {
+          "values": [
+            "indicates mica ore location"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rock marker"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "found while mining exploration"
+        }
+      }
+    },
+    "gtceu:mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore for smelting"
+        },
+        "material_family": {
+          "value": "mica",
+          "signal": "pattern",
+          "evidence": "forge:ores/mica",
+          "rationale": "mica ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining, then processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into mica dust",
+            "source of mica"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores",
+          "rationale": "ore form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "standard underground ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable bulk resource"
+        }
+      }
+    },
+    "gtceu:micro_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "circuit component used in crafting machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many machine recipes, often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting MV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many MV machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component of automation machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit storage group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable component, stored in bulk"
+        }
+      }
+    },
+    "gtceu:micro_processor_assembly": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "HV circuit component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many HV recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many HV machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component of automation machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit storage group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable component"
+        }
+      }
+    },
+    "gtceu:micro_processor_computer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "EV circuit component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many EV recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting EV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many EV machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component of automation machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit storage group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable component"
+        }
+      }
+    },
+    "gtceu:micro_processor_mainframe": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "IV circuit component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many IV recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting IV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many IV machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component of automation machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit storage group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable component"
+        }
+      }
+    },
+    "gtceu:microchip_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "LV circuit component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many LV recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting LV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many LV machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component of automation machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit storage group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable component"
+        }
+      }
+    },
+    "gtceu:mirabilite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "refined dust"
+        },
+        "material_family": {
+          "value": "mirabilite",
+          "signal": "pattern",
+          "evidence": "forge:dusts/mirabilite",
+          "rationale": "mirabilite material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche material, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mirabilite items"
+          ],
+          "signal": "inferred",
+          "rationale": "used in dust disassembly recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable bulk"
+        }
+      }
+    },
+    "gtceu:mob_infestation_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative warning sign block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from steel solid casing"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative warning sign"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative blocks group"
+        }
+      }
+    },
+    "gtceu:mob_spawner_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative warning sign block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from steel solid casing"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative warning sign"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative blocks group"
+        }
+      }
+    },
+    "gtceu:molten_bismuth_bronze_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id contains bismuth_bronze",
+          "rationale": "bismuth bronze alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting sessions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten bismuth bronze",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting workflow"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "molten metal used in TFC casting"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "poured into casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input for casting"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket containing fluid"
+        }
+      }
+    },
+    "gtceu:molten_black_bronze_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "black bronze alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten black bronze",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_black_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "black steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten black steel",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_blue_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "blue steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten blue steel",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_desh_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "desh alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten desh",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_enriched_naquadah_trinium_europium_duranide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "complex alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten enriched naquadah alloy",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_gallium_arsenide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "gallium_arsenide",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "gallium arsenide"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten gallium arsenide",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_hastelloy_c_276_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "hastelloy alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten hastelloy c-276",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_hastelloy_x_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "hastelloy alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten hastelloy x",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_hsla_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "hsla_steel",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "HSLA steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten HSLA steel",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_hsse_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "HSS-E alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten HSS-E",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_hssg_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "hssg",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "HSS-G alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten HSS-G",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_hsss_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "HSS-S alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten HSS-S",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    },
+    "gtceu:molten_incoloy_ma_956_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for casting"
+        },
+        "material_family": {
+          "value": "incoloy_ma_956",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "incoloy alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten incoloy MA-956",
+            "casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

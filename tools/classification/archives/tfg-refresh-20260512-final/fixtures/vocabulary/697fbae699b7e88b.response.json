@@ -1,0 +1,646 @@
+{
+  "values": [
+    {
+      "id": "pack:tfg/europium",
+      "label": "Europium",
+      "state": "rejected",
+      "description": "Specific material/component family, not a broad player storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/fruits",
+      "label": "Fruits",
+      "state": "accepted",
+      "description": "Player storage section for fruit items, backed by food tags and fruit items.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/fruits",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/pickaxes",
+      "label": "Pickaxes",
+      "state": "accepted",
+      "description": "Player storage section for pickaxe tools, supported by tool tags and many pickaxe items.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:pickaxes",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/space_food",
+      "label": "Space Food",
+      "state": "accepted",
+      "description": "Pack-defined storage section for space-themed food items like freeze-dried fruits and calorie paste.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:space_food",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/double_cables",
+      "label": "Double Cables",
+      "state": "rejected",
+      "description": "Overly specific wire size; players group cables by material or voltage, not thickness.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/hex_cables",
+      "label": "Hex Cables",
+      "state": "rejected",
+      "description": "Overly specific wire size; not a plausible storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/octal_cables",
+      "label": "Octal Cables",
+      "state": "rejected",
+      "description": "Overly specific wire size; not a viable storage category.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/quadruple_cables",
+      "label": "Quadruple Cables",
+      "state": "rejected",
+      "description": "Overly specific wire size; not suitable for player storage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/single_cables",
+      "label": "Single Cables",
+      "state": "rejected",
+      "description": "Overly specific wire size; not a useful storage group.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/buildinggadgets2_items",
+      "label": "Building Gadgets 2 Items",
+      "state": "accepted",
+      "description": "Mod-specific storage group for Building Gadgets items; players plausibly keep them together.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "buildinggadgets2",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/hsse",
+      "label": "Hsse",
+      "state": "rejected",
+      "description": "Specific material/component family (HSS-E), not a broad storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/titanium",
+      "label": "Titanium",
+      "state": "rejected",
+      "description": "Material/component family, not a plausible player storage bucket.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/unsealed_jars",
+      "label": "Unsealed Jars",
+      "state": "review",
+      "description": "Transient state of jars; borderline storage section for preserving/processing jars.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:unsealed_jars",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/grapplemod_items",
+      "label": "Grappling Hook Mod Items",
+      "state": "accepted",
+      "description": "Mod-specific storage group; players may store Grappling Hook Mod items together.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "grapplemod",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/armors",
+      "label": "Armors",
+      "state": "accepted",
+      "description": "Broad category for armor items; plausible storage section for various armor pieces.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:armors",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/eggs",
+      "label": "Eggs",
+      "state": "accepted",
+      "description": "Food category for eggs; players commonly store eggs together.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:eggs",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/large_fluid_pipes",
+      "label": "Large Fluid Pipes",
+      "state": "rejected",
+      "description": "Specific pipe size; not a human-oriented storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/normal_fluid_pipes",
+      "label": "Normal Fluid Pipes",
+      "state": "rejected",
+      "description": "Overly specific pipe category; not a wall-home group.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/small_fluid_pipes",
+      "label": "Small Fluid Pipes",
+      "state": "rejected",
+      "description": "Specific pipe size; not a plausible storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/tritanium",
+      "label": "Tritanium",
+      "state": "rejected",
+      "description": "Specific material/component family; not a broad storage bucket.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/extraterrestrial_fauna",
+      "label": "Extraterrestrial Fauna",
+      "state": "rejected",
+      "description": "Guide page title, not a player storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/glass_products",
+      "label": "Glass Products",
+      "state": "accepted",
+      "description": "Player storage section for glass items, supported by guide and item evidence.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/glassworking_applications",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/applied_energistics_2",
+      "label": "Applied Energistics 2",
+      "state": "accepted",
+      "description": "Mod-specific storage group for AE2 items; players commonly store AE2 components together.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/applied_energistics_2",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/before_landing_on_mars_there_are_a_few_important_things_to_keep_in_mind",
+      "label": "Before landing on Mars, there are a few important things to keep in mind.",
+      "state": "rejected",
+      "description": "Quest title; not a player storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/chemical_elements",
+      "label": "Chemical Elements",
+      "state": "rejected",
+      "description": "Quest chapter name; not a storage group for items.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/ev_extreme_voltage",
+      "label": "EV Extreme Voltage",
+      "state": "rejected",
+      "description": "Quest chapter; not a wall-home section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/ftbquests_chapters_moon",
+      "label": "Eager to launch into the final frontier? ...",
+      "state": "rejected",
+      "description": "Quest chapter; not a player storage group.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/ftbquests_chapters_questsmetallurgy",
+      "label": "Congratulations on crafting the Bucket. The Metallurgy Age is officially over.",
+      "state": "rejected",
+      "description": "Quest chapter; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/gregtech_energy",
+      "label": "GregTech Energy",
+      "state": "rejected",
+      "description": "Quest chapter; not a storage grouping.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/hv_high_voltage",
+      "label": "HV High Voltage",
+      "state": "rejected",
+      "description": "Quest chapter; not a player storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/iv_insane_voltage",
+      "label": "IV Insane Voltage",
+      "state": "rejected",
+      "description": "Quest chapter; not a wall-home group.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/luv_ludicrous_voltage",
+      "label": "LuV Ludicrous Voltage",
+      "state": "rejected",
+      "description": "Quest chapter; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/lv_low_voltage",
+      "label": "LV Low Voltage",
+      "state": "rejected",
+      "description": "Quest chapter; not a player storage grouping.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/mv_medium_voltage",
+      "label": "MV Medium Voltage",
+      "state": "rejected",
+      "description": "Quest chapter; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/ore_processing",
+      "label": "Ore Processing",
+      "state": "rejected",
+      "description": "Quest chapter; not a wall-home bucket.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/questssteam_age",
+      "label": "Steam Age Quests",
+      "state": "rejected",
+      "description": "Quest chapter; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/queststfc_tips",
+      "label": "TFC Tips Quests",
+      "state": "rejected",
+      "description": "Quest chapter; not a player storage group.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/tips_tools",
+      "label": "Tips Tools",
+      "state": "rejected",
+      "description": "Quest chapter; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/tips_transportation",
+      "label": "Tips Transportation",
+      "state": "rejected",
+      "description": "Quest chapter; not a wall-home grouping.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/zpm_zero_point_module",
+      "label": "ZPM Zero Point Module",
+      "state": "rejected",
+      "description": "Quest chapter; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/assembling_trains",
+      "label": "Assembling Trains",
+      "state": "rejected",
+      "description": "Guide/Ponder topic; not a player storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/using_the_deployer",
+      "label": "Using the Deployer",
+      "state": "rejected",
+      "description": "Guide/Ponder topic; not a storage grouping.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/anvil_working_guide",
+      "label": "Anvil Working Guide",
+      "state": "rejected",
+      "description": "Guide page; not a wall-home storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/transporting_packages_between_frogports",
+      "label": "Transporting packages between Frogports",
+      "state": "rejected",
+      "description": "Guide/Ponder topic; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/hazardous_materials",
+      "label": "Hazardous Materials",
+      "state": "rejected",
+      "description": "Guide page; not a player storage grouping.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/uv_ultimate_voltage",
+      "label": "UV Ultimate Voltage",
+      "state": "rejected",
+      "description": "Quest chapter; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/diggerhelmet_items",
+      "label": "Digger Helmet Items",
+      "state": "accepted",
+      "description": "Mod-specific storage group for Digger Helmet items; plausible keeper.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "diggerhelmet",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/fluid_transportation_using_mechanical_pumps",
+      "label": "Fluid Transportation using Mechanical Pumps",
+      "state": "rejected",
+      "description": "Guide/Ponder topic; not a storage section.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

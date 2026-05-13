@@ -1,0 +1,1017 @@
+{
+  "items": {
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_counter": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Counter block placed as furniture surface, no storage UI"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name 'Stripped Willow Counter'",
+          "rationale": "Wood species in item name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for decorating; carried infrequently"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of building furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating rooms with counter blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as kitchen/bureau surface"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_covered_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Desk block, decorative furniture"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and left"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture placement"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with desks"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface furniture"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_cupboard_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Cupboard counter with storage UI"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building furniture section"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in cupboard counters"
+          ],
+          "signal": "inferred",
+          "rationale": "Has inventory slots for items"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Desk, decorative surface"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with desks"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture for looks"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_double_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer block with storage inventory"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for base storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in double drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Has double drawer inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_double_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer counter with storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in double drawer counter"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer counter has inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_double_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Wardrobe with storage slots"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in double wardrobe"
+          ],
+          "signal": "inferred",
+          "rationale": "Has double wardrobe inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer with storage UI"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer counter with storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in drawer counter"
+          ],
+          "signal": "inferred",
+          "rationale": "Has drawer counter inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_end_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "End table, decorative furniture"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with end tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface furniture"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_glass_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Glass table, decorative"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with glass tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative table"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_large_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Large drawer with storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in large drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Large drawer inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_lower_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf drawer with storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in bookshelf drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Has drawer inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_lower_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Triple drawer, storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in triple drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Triple drawer inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_modern_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chair, decorative furniture"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with modern chairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Seat furniture for looks"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_modern_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Modern desk, decorative"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with modern desks"
+          ],
+          "signal": "inferred",
+          "rationale": "Desk surface"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_modern_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Modern wardrobe with storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in modern wardrobe"
+          ],
+          "signal": "inferred",
+          "rationale": "Wardrobe inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_stool_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Stool chair, decorative"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with stools"
+          ],
+          "signal": "inferred",
+          "rationale": "Seat furniture"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_striped_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Striped chair, decorative"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with striped chairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Seat furniture"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Table, decorative furniture"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Table surface"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Triple drawer, storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in triple drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Triple drawer inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Wardrobe with storage inventory"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in wardrobe"
+          ],
+          "signal": "inferred",
+          "rationale": "Wardrobe inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/willow_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf likely has storage (wardrobe model)"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage/decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage furniture"
+        },
+        "primary_uses": {
+          "values": [
+            "storing books or items in bookshelf"
+          ],
+          "signal": "inferred",
+          "rationale": "Bookshelf with inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/willow_bookshelf_cupboard": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf cupboard with storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in bookshelf cupboard"
+          ],
+          "signal": "inferred",
+          "rationale": "Cupboard inventory"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/willow_furniture/willow_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf drawer with storage"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Wood from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in bookshelf drawer"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer inventory"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "mcw_tfc_aio:furniture/willow_furniture/stripped_willow_counter",
+      "facet": "organization_group",
+      "label": "Macaw's Furniture",
+      "proposed_id": "pack:mcw_tfc_aio/furniture",
+      "rationale": "No existing group for Macaw furniture blocks; players likely store them together",
+      "evidence": "All stripped willow furniture items share 'stripped_furniture' tag"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

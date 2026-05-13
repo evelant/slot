@@ -1,0 +1,840 @@
+{
+  "items": {
+    "vintageimprovements:ironwood_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, refined metal form used in machines"
+        },
+        "material_family": {
+          "value": "ironwood",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material, not everyday carry"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting Vintage Improvements machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Springs used in contraptions"
+        }
+      }
+    },
+    "vintageimprovements:ironwood_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, refined metal form"
+        },
+        "material_family": {
+          "value": "ironwood",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting wires and cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:knightmetal_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, refined metal form"
+        },
+        "material_family": {
+          "value": "knightmetal",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting rods for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Rod used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:knightmetal_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, refined metal sheet"
+        },
+        "material_family": {
+          "value": "knightmetal",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting sheets for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Sheet used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:knightmetal_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "knightmetal",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting springs for contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Spring used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:knightmetal_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "knightmetal",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:laser": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Create-style processing machine, part of contraption"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed block, not carried"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "pattern",
+          "evidence": "advancement describes processing materials",
+          "rationale": "Used for automated processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Processing materials with laser"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: use laser to process"
+        }
+      }
+    },
+    "vintageimprovements:laser_item": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component likely used to craft laser block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting laser machine"
+          ],
+          "signal": "inferred",
+          "rationale": "Likely crafting ingredient"
+        }
+      }
+    },
+    "vintageimprovements:lathe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Deprecated Create-style processing machine"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed block, deprecated"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "pattern",
+          "evidence": "advancement: use lathe to process",
+          "rationale": "Used for automated processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Processing materials with lathe"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: use lathe to process"
+        }
+      }
+    },
+    "vintageimprovements:lead_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal rod"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting rods for pipes and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Lead rod used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:lead_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal plate"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "item id prefix and tag forge:plates/lead",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in many crafting recipes, often carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting pipes, machine hulls, and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Lead sheet has many recipe usages"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Pileable sheet for TFC storage"
+        }
+      }
+    },
+    "vintageimprovements:lead_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting springs with low stiffness"
+          ],
+          "signal": "inferred",
+          "rationale": "Lead spring used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:lead_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Lead wire used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:lumium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined rod"
+        },
+        "material_family": {
+          "value": "lumium",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component rarity=uncommon",
+          "rationale": "Component set to uncommon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material, uncommon rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting lumium machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Lumium rod used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:lumium_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined sheet"
+        },
+        "material_family": {
+          "value": "lumium",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component rarity=uncommon",
+          "rationale": "Component set to uncommon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting lumium plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Lumium sheet used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:lumium_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "lumium",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component rarity=uncommon",
+          "rationale": "Component set to uncommon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material, uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting lumium springs"
+          ],
+          "signal": "inferred",
+          "rationale": "Lumium spring used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:lumium_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "lumium",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component rarity=uncommon",
+          "rationale": "Component set to uncommon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material, uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting lumium wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Lumium wire used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:manyullyn_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined rod"
+        },
+        "material_family": {
+          "value": "manyullyn",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting manyullyn components"
+          ],
+          "signal": "inferred",
+          "rationale": "Manyullyn rod used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:manyullyn_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined sheet"
+        },
+        "material_family": {
+          "value": "manyullyn",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting manyullyn plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Manyullyn sheet used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:manyullyn_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "manyullyn",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting manyullyn springs"
+          ],
+          "signal": "inferred",
+          "rationale": "Manyullyn spring used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:manyullyn_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "manyullyn",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting manyullyn wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Manyullyn wire used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:netherite_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined rod"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting netherite rod components"
+          ],
+          "signal": "inferred",
+          "rationale": "Netherite rod used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:netherite_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined sheet"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting netherite plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Netherite sheet used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:netherite_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting netherite springs"
+          ],
+          "signal": "inferred",
+          "rationale": "Netherite spring used in recipes"
+        }
+      }
+    },
+    "vintageimprovements:netherite_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "evidence": "item id prefix",
+          "rationale": "Material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting netherite wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Netherite wire used in recipes"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "vintageimprovements:ironwood_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "Name indicates spring form"
+    },
+    {
+      "item": "vintageimprovements:ironwood_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Name indicates wire form"
+    },
+    {
+      "item": "vintageimprovements:knightmetal_rod",
+      "facet": "form",
+      "value": "rod",
+      "rationale": "Name indicates rod form"
+    },
+    {
+      "item": "vintageimprovements:knightmetal_sheet",
+      "facet": "form",
+      "value": "sheet",
+      "rationale": "Name indicates sheet form"
+    },
+    {
+      "item": "vintageimprovements:knightmetal_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "Name indicates spring form"
+    },
+    {
+      "item": "vintageimprovements:knightmetal_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Name indicates wire form"
+    },
+    {
+      "item": "vintageimprovements:lead_rod",
+      "facet": "form",
+      "value": "rod",
+      "rationale": "Name indicates rod form"
+    },
+    {
+      "item": "vintageimprovements:lead_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "Name indicates spring form"
+    },
+    {
+      "item": "vintageimprovements:lead_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Name indicates wire form"
+    },
+    {
+      "item": "vintageimprovements:lumium_rod",
+      "facet": "form",
+      "value": "rod",
+      "rationale": "Name indicates rod form"
+    },
+    {
+      "item": "vintageimprovements:lumium_sheet",
+      "facet": "form",
+      "value": "sheet",
+      "rationale": "Name indicates sheet form"
+    },
+    {
+      "item": "vintageimprovements:lumium_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "Name indicates spring form"
+    },
+    {
+      "item": "vintageimprovements:lumium_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Name indicates wire form"
+    },
+    {
+      "item": "vintageimprovements:manyullyn_rod",
+      "facet": "form",
+      "value": "rod",
+      "rationale": "Name indicates rod form"
+    },
+    {
+      "item": "vintageimprovements:manyullyn_sheet",
+      "facet": "form",
+      "value": "sheet",
+      "rationale": "Name indicates sheet form"
+    },
+    {
+      "item": "vintageimprovements:manyullyn_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "Name indicates spring form"
+    },
+    {
+      "item": "vintageimprovements:manyullyn_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Name indicates wire form"
+    },
+    {
+      "item": "vintageimprovements:netherite_rod",
+      "facet": "form",
+      "value": "rod",
+      "rationale": "Name indicates rod form"
+    },
+    {
+      "item": "vintageimprovements:netherite_sheet",
+      "facet": "form",
+      "value": "sheet",
+      "rationale": "Name indicates sheet form"
+    },
+    {
+      "item": "vintageimprovements:netherite_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "Name indicates spring form"
+    },
+    {
+      "item": "vintageimprovements:netherite_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Name indicates wire form"
+    }
+  ],
+  "vocabulary_proposals": [],
+  "schema_proposals": [],
+  "corrections": []
+}

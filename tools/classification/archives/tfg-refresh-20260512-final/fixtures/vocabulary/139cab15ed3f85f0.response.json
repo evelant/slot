@@ -1,0 +1,130 @@
+{
+  "values": [
+    {
+      "id": "slot:bulk",
+      "label": "Bulk",
+      "state": "accepted",
+      "description": "High-quantity storage for common or raw materials.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "pack_definition",
+          "id": "tfg:stock_profile",
+          "confidence": 0.99
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:display",
+      "label": "Display",
+      "state": "accepted",
+      "description": "Items showcased for decoration or easy access.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "pack_definition",
+          "id": "tfg:stock_profile",
+          "confidence": 0.99
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:overflow",
+      "label": "Overflow",
+      "state": "accepted",
+      "description": "Excess items routed to overflow storage to prevent clogging.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "pack_definition",
+          "id": "tfg:stock_profile",
+          "confidence": 0.99
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:reserve",
+      "label": "Reserve",
+      "state": "accepted",
+      "description": "Stored items for future use or backup supply.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "pack_definition",
+          "id": "tfg:stock_profile",
+          "confidence": 0.99
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:singleton",
+      "label": "Singleton",
+      "state": "accepted",
+      "description": "Unique items kept as singles for specific uses.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "pack_definition",
+          "id": "tfg:stock_profile",
+          "confidence": 0.99
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:small_batch",
+      "label": "Small Batch",
+      "state": "accepted",
+      "description": "Moderate quantity storage for less common items.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "pack_definition",
+          "id": "tfg:stock_profile",
+          "confidence": 0.99
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:tooling",
+      "label": "Tooling",
+      "state": "accepted",
+      "description": "Tools and equipment stored for repeated use.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "pack_definition",
+          "id": "tfg:stock_profile",
+          "confidence": 0.99
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

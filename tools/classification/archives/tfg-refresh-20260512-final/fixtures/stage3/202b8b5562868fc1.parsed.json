@@ -1,0 +1,1327 @@
+{
+  "items": {
+    "gtceu:diorite_tin_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined for tin"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tin",
+            "smelt into ingots",
+            "mill into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes for tin"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining, then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore in GTCEu"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in bulk when mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "underground ore"
+        }
+      }
+    },
+    "gtceu:diorite_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for topaz"
+        },
+        "primary_uses": {
+          "values": [
+            "source of topaz",
+            "smelt/crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for topaz"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk storage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "underground"
+        }
+      }
+    },
+    "gtceu:diorite_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for tricalcium phosphate"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tricalcium phosphate",
+            "processing into material"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemical"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "underground"
+        }
+      }
+    },
+    "gtceu:diorite_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for trona"
+        },
+        "primary_uses": {
+          "values": [
+            "source of trona",
+            "processed into soda ash"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for trona"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:diorite_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for tungstate"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tungsten",
+            "processed into tungsten products"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:diorite_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for uranium"
+        },
+        "primary_uses": {
+          "values": [
+            "source of uranium",
+            "radioactive processing"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "hazardous but not rare"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:diorite_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for vanadium magnetite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of vanadium",
+            "iron processing"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:diorite_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for wulfenite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lead and molybdenum",
+            "processed for metals"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:diorite_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for yellow garnet"
+        },
+        "primary_uses": {
+          "values": [
+            "source of garnet",
+            "gem processing"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:diorite_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for limonite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of iron",
+            "smelt into iron"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:diorite_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for zeolite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of zeolite",
+            "chemical processing"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:dioxygen_difluoride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "transport dioxygen difluoride",
+            "use in chemical processes"
+          ],
+          "signal": "inferred",
+          "rationale": "buckets carry reactive fluids"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when needed for specific recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "buckets are made of iron"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "rationale": "id suffix _bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket containing liquid"
+        }
+      }
+    },
+    "gtceu:diphenyl_isophthalate_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transport diphenyl isophthalate",
+            "chemical precursor"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:dirty_hexafluorosilicic_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transport dirty hexafluorosilicic acid",
+            "used in etching"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:dissolved_calcium_acetate_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transport dissolved calcium acetate",
+            "chemical reaction"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:distilled_water_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "water transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transport distilled water",
+            "used in steam machines"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "distilled water is common in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:distillation_tower": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "machine block with UI for fluid distillation"
+        },
+        "primary_uses": {
+          "values": [
+            "distill fluids",
+            "refine chemical mixtures"
+          ],
+          "signal": "inferred",
+          "rationale": "player places and operates to process fluids"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:dolomite_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for almandine"
+        },
+        "primary_uses": {
+          "values": [
+            "source of almandine",
+            "gem processing"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:dolomite_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for aluminium"
+        },
+        "primary_uses": {
+          "values": [
+            "source of aluminium",
+            "smelt into ingots"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:dolomite_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for alunite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of alunite",
+            "processed for potassium/aluminium"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:dolomite_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for amethyst"
+        },
+        "primary_uses": {
+          "values": [
+            "source of amethyst",
+            "gem processing"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:dolomite_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for apatite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of apatite",
+            "fertilizer processing"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:dolomite_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for armalcolite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of armalcolite",
+            "titanium processing"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:dolomite_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for asbestos"
+        },
+        "primary_uses": {
+          "values": [
+            "source of asbestos",
+            "insulation material"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:dolomite_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore for barite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of barite",
+            "used in drilling mud"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:dioxygen_difluoride_bucket",
+      "facet": "material_family",
+      "value": "iron",
+      "rationale": "bucket is made of iron"
+    },
+    {
+      "item": "gtceu:diphenyl_isophthalate_bucket",
+      "facet": "material_family",
+      "value": "iron",
+      "rationale": "bucket is made of iron"
+    },
+    {
+      "item": "gtceu:dirty_hexafluorosilicic_acid_bucket",
+      "facet": "material_family",
+      "value": "iron",
+      "rationale": "bucket is made of iron"
+    },
+    {
+      "item": "gtceu:dissolved_calcium_acetate_bucket",
+      "facet": "material_family",
+      "value": "iron",
+      "rationale": "bucket is made of iron"
+    },
+    {
+      "item": "gtceu:distilled_water_bucket",
+      "facet": "material_family",
+      "value": "iron",
+      "rationale": "bucket is made of iron"
+    },
+    {
+      "item": "gtceu:distillation_tower",
+      "facet": "form",
+      "value": "machine",
+      "rationale": "machine block, not a simple block form"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

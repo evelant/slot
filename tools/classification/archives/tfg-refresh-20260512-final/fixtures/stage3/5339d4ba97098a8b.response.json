@@ -1,0 +1,1893 @@
+{
+  "items": {
+    "gtceu:granite_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of magnesite"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract metal or mineral content"
+        }
+      }
+    },
+    "gtceu:granite_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of magnetite"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract metal or mineral content"
+        }
+      }
+    },
+    "gtceu:granite_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of malachite"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract metal or mineral content"
+        }
+      }
+    },
+    "gtceu:granite_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of mica"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract mineral"
+        }
+      }
+    },
+    "gtceu:granite_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of molybdenite"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract metal or mineral content"
+        }
+      }
+    },
+    "gtceu:granite_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract metal"
+        }
+      }
+    },
+    "gtceu:granite_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of monazite"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract rare earths"
+        }
+      }
+    },
+    "gtceu:granite_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "processed via milling only (no smelting recipes)"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "crushed into dusts",
+            "source of naquadah"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract naquadah"
+        }
+      }
+    },
+    "gtceu:granite_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "processed via milling only (no smelting recipes)"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "crushed into dusts",
+            "source of neodymium"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract neodymium"
+        }
+      }
+    },
+    "gtceu:granite_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of nether quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract nether quartz"
+        }
+      }
+    },
+    "gtceu:granite_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract nickel"
+        }
+      }
+    },
+    "gtceu:granite_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of oilsands"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract oil or bitumen"
+        }
+      }
+    },
+    "gtceu:granite_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of olivine"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract olivine"
+        }
+      }
+    },
+    "gtceu:granite_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of opal"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract opal"
+        }
+      }
+    },
+    "gtceu:granite_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "processed via milling only (no smelting recipes)"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "crushed into dusts",
+            "source of palladium"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract palladium"
+        }
+      }
+    },
+    "gtceu:granite_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of pentlandite"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract nickel"
+        }
+      }
+    },
+    "gtceu:granite_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of uranium"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract uranium"
+        }
+      }
+    },
+    "gtceu:granite_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of platinum"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract platinum"
+        }
+      }
+    },
+    "gtceu:granite_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of cesium"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract cesium"
+        }
+      }
+    },
+    "gtceu:granite_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract molybdenum"
+        }
+      }
+    },
+    "gtceu:granite_pyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of iron/sulfur"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract iron or sulfur"
+        }
+      }
+    },
+    "gtceu:granite_pyrochlore_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of niobium"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract niobium"
+        }
+      }
+    },
+    "gtceu:granite_pyrolusite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of manganese"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract manganese"
+        }
+      }
+    },
+    "gtceu:granite_pyrope_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of pyrope"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract magnesium/aluminum"
+        }
+      }
+    },
+    "gtceu:granite_quartzite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining output carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity:common",
+          "rationale": "common rarity from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite-hosted ore found underground in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player interaction is mining"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is smelted, blasted, or milled into products"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting, blasting, and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, mined in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed into dusts",
+            "source of quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to extract quartz"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

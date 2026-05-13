@@ -1,0 +1,2008 @@
+{
+  "items": {
+    "gtceu:dripstone_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain aluminium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain aluminium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain amethyst"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain apatite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain armalcolite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain asbestos"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain barite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain mineral sand"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain bastnasite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain bauxite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain bentonite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain beryllium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_bismuth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain bismuth"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_blue_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain blue topaz"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_borax_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain borax"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_bornite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain bornite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_calcite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain calcite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_cassiterite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain tin"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_cassiterite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain tin"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_certus_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain certus quartz"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_chalcocite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain copper"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_chalcopyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain copper"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_chromite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain chromium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_cinnabar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ingots",
+            "Crushed into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses ore to obtain mercury"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    },
+    "gtceu:dripstone_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into coal",
+            "Used as fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "coal ore smelts to coal, primary fuel source"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot carried back to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone ore generates in caves"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stage before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block, fits unprocessed ores bucket"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input in smelting workflows"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

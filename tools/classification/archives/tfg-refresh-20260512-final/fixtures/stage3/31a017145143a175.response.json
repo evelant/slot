@@ -1,0 +1,1489 @@
+{
+  "items": {
+    "gtceu:rhodium_plated_palladium_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine frame block placed as multiblock component"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building LUV machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; crafted from plates and rods"
+        },
+        "primary_uses": {
+          "values": [
+            "building LUV-tier machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural component for multiblock machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "rationale": "Matches pack:tfg/frames group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Frame is a structural part of GT multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Common rarity from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be stored in any normal inventory"
+        }
+      }
+    },
+    "gtceu:rhodium_plated_palladium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Form ingot from tag forge:ingots"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ingots implies process stage"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "Recipe examples reference LUV machines",
+          "rationale": "Used in LUV-tier recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting material carried in stacks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot; produced from processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced LUV components"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient for high-tier machine parts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Matches pileable ingots group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack of 16, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_plated_palladium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Form nugget from tag forge:nuggets"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:nuggets implies process stage"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "Same material as ingot, used in LUV recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Small qty used, not heavily carried"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot; produced from processing"
+        },
+        "primary_uses": {
+          "values": [
+            "small amounts for crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in precise recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "rationale": "Matches pack:tfg/nuggets group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack of 64, small batch"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_plated_palladium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Form plate from tag forge:plates"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:plates implies process stage"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "Used in LUV machine recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common machine part material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot; produced from rolling or cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine hulls and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredient for LUV machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Matches pileable sheets group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack of 16, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_plated_palladium_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, not a tool"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "Same material, used in LUV recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in specific machine builds"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot; crafted from rods"
+        },
+        "primary_uses": {
+          "values": [
+            "component in advanced machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rotors and other parts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_plated_palladium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Form rod from tag forge:rods"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:rods implies process stage"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "Used in LUV tool recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common ingredient for tools and machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot; produced from lathe"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many crafting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral output category"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack of 32, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_plated_palladium_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for machines"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "Used in LUV machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specific machine component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot; crafted from rings and rods"
+        },
+        "primary_uses": {
+          "values": [
+            "component in machines and aircraft"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in LUV machines and airships"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_plated_palladium_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small crafting component"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "Same material tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Small item, used in moderate amounts"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot; crafted from rods"
+        },
+        "primary_uses": {
+          "values": [
+            "small fastener for machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced machine assembles"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_plated_palladium_whisk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for food processor"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "id contains material name"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "Used in LUV food machine"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specialized component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted, no loot"
+        },
+        "primary_uses": {
+          "values": [
+            "component in food processors"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in LUV food processor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Form rod from tag forge:rods"
+        },
+        "material_family": {
+          "value": "rhodium",
+          "signal": "pattern",
+          "rationale": "id 'rhodium' is material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:rods implies process stage"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, produced via lathe"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many tool and machine recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral output"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack of 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small crafting component"
+        },
+        "material_family": {
+          "value": "rhodium",
+          "signal": "pattern",
+          "rationale": "id 'rhodium' is material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Small item, moderate use"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, crafted from rods"
+        },
+        "primary_uses": {
+          "values": [
+            "small fastener for machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhodium_sulfate_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "Bucket item, player uses to carry fluid"
+        },
+        "material_family": {
+          "value": "rhodium_sulfate",
+          "signal": "pattern",
+          "rationale": "id contains fluid name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing fluids"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Probably made via fluid processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting rhodium sulfate fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket of a chemical fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket contains fluid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Player can fill/empty this bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common from component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard inventory item"
+        }
+      }
+    },
+    "gtceu:rhyolite_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for processing"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "rationale": "From ore id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "It is an ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines this ore"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common ore carried while mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in rhyolite underground"
+        },
+        "primary_uses": {
+          "values": [
+            "source of almandine; smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into almandine material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Ores are not extremely abundant"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard block item"
+        }
+      }
+    },
+    "gtceu:rhyolite_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "From ore id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "It is an ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for aluminium"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Commonly carried when mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in rhyolite underground"
+        },
+        "primary_uses": {
+          "values": [
+            "source of aluminium; processed into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into aluminium metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Ore rarity"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard block"
+        }
+      }
+    },
+    "gtceu:rhyolite_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "rationale": "From ore id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of alunite; processed into ingots"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of amethyst; gem material"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of apatite; used for fertilizer"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of armalcolite; titanium processing"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "asbestos",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of asbestos; fireproof material"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "barite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of barite; used in drilling"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "basaltic_mineral_sand",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of mineral sand; processing"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "bastnasite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of bastnasite; rare earths"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "bauxite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of aluminium; bauxite processing"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "bentonite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of bentonite; clay material"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rhyolite_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "source of beryllium; used in alloys"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:rhodium_plated_palladium_frame",
+      "facet": "form",
+      "value": "frame",
+      "rationale": "id ends _frame"
+    },
+    {
+      "item": "gtceu:rhodium_plated_palladium_frame",
+      "facet": "required_tool",
+      "value": "wrench",
+      "rationale": "Block tag forge:mineable/wrench"
+    }
+  ]
+}

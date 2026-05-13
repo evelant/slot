@@ -1,0 +1,1206 @@
+{
+  "items": {
+    "tfc:metal/shield/copper": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "shield is offhand defense, stored with combat gear"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "copper is early metal tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "player carries shield for expeditions"
+        },
+        "primary_uses": {
+          "values": [
+            "Block attacks, protect from damage"
+          ],
+          "signal": "inferred",
+          "rationale": "shield primary function"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted at anvil"
+        }
+      }
+    },
+    "tfc:metal/shield/red_steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "shield is combat gear"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "id contains red_steel"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "inferred",
+          "rationale": "red_steel is top tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "player carries shield for exploration"
+        },
+        "primary_uses": {
+          "values": [
+            "Block attacks, protect from damage"
+          ],
+          "signal": "inferred",
+          "rationale": "shield function"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        }
+      }
+    },
+    "tfc:metal/shield/steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "shield is combat gear"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id contains steel"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "player carries shield"
+        },
+        "primary_uses": {
+          "values": [
+            "Block attacks, protect from damage"
+          ],
+          "signal": "inferred",
+          "rationale": "shield function"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "uncommon rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        }
+      }
+    },
+    "tfc:metal/shield/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "shield is combat gear"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "id contains wrought_iron"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "wrought iron is iron tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "player carries shield"
+        },
+        "primary_uses": {
+          "values": [
+            "Block attacks, protect from damage"
+          ],
+          "signal": "inferred",
+          "rationale": "shield function"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        }
+      }
+    },
+    "tfc:metal/shovel/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel is digging tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id contains bismuth_bronze"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "inferred",
+          "rationale": "bismuth bronze tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "shovel is core tool always carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand; collect loose blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel primary uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for digging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        }
+      }
+    },
+    "tfc:metal/shovel/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "id contains black_bronze"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "inferred",
+          "rationale": "black bronze tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel/black_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "id contains black_steel"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "black steel tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "rare"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "id contains blue_steel"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "blue steel tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel/bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "id contains bronze"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "inferred",
+          "rationale": "bronze tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel/copper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "copper tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel/red_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "id contains red_steel"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "inferred",
+          "rationale": "red steel tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel/steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id contains steel"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "uncommon"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "shovel"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "id contains wrought_iron"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "wrought iron tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel uses"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate tool component"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id contains bismuth_bronze"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "inferred",
+          "rationale": "matches metal tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels at anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make shovel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "id contains black_bronze"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels at anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/black_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "rare"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/copper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "uncommon"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/shovel_head/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft shovels"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/sword/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "sword is melee weapon"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "sword is essential combat tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Deal melee damage, fight mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "sword function"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/sword/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "sword"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential"
+        },
+        "primary_uses": {
+          "values": [
+            "Deal melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "tfc:metal/sword/black_steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "sword"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "id"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential"
+        },
+        "primary_uses": {
+          "values": [
+            "Deal melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": ""
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "combat"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "rare"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

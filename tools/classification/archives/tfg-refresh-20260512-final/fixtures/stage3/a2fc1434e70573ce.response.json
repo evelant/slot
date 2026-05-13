@@ -1,0 +1,1331 @@
+{
+  "items": {
+    "gtceu:naquadah_alloy_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "GTCEu gear component used in machine crafting"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id and tag"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component, carried when building machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine rotors and parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in multiple machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed by GTCEu machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from ingot, intermediate form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 4 indicates small batch"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/hammers",
+          "rationale": "crafting and mining tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in 1500+ crafting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components",
+            "mining blocks with crushing"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Crushes Blocks, many crafting uses"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and mining"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hammer_heads",
+          "rationale": "component for tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in tool crafting, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting naquadah alloy hammer"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in tool assembly"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for UV energy transport"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UV energy at 32A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu power network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "itself a cable"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for UV energy transport"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UV energy at 32A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu power network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "itself a wire, but works like cable"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:hoes",
+          "rationale": "farming tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for tilling, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling ground for farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Farmer: Tills Ground"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "farming tool"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hoe_heads",
+          "rationale": "component for tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in tool crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting naquadah alloy hoe"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in tool assembly"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "raw crafting material"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when bulk-crafting components"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting plates, rods, and other components"
+          ],
+          "signal": "inferred",
+          "rationale": "basic material for GTCEu crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed by machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu basic material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable in piles, used in bulk"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/knives",
+          "rationale": "crafting and combat tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes and combat"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting items in crafting",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "useful as sword, many crafting uses"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting and combat tool"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:knife_heads",
+          "rationale": "component for tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in tool crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting naquadah alloy knife"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in tool assembly"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "small material unit"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "small value, rarely carried individually"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into ingots or small components"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget used for precision crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed by machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable, used in bulk"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for UV energy transport"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UV energy at 16A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu power network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "itself a cable"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for UV energy transport"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UV energy at 16A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu power network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "itself a wire, but works like cable"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "processed material form"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine casings, gears, rotors"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed by machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable, used in bulk"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for UV energy transport"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UV energy at 8A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu power network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "itself a cable"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for UV energy transport"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UV energy at 8A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu power network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "itself a wire, but works like cable"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rings",
+          "rationale": "component part"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "small component, rarely carried individually"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rotors, tools, and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed by machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 64 but used in small quantities"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "processed material form"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting tools and components"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools, screws, bolts, and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in hundreds of recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed by machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable, used in bulk"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rotors",
+          "rationale": "machine component"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine rotors and pumps"
+          ],
+          "signal": "inferred",
+          "rationale": "used in multiple GTCEu recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed by machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "small component"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "very small component, rarely carried individually"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rotors, turbines, and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed by machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 64 but used in small quantities"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_screwdriver_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screwdriver_tips",
+          "rationale": "component for tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in tool crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting naquadah alloy screwdriver"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in tool assembly"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_scythe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/scythes",
+          "rationale": "farming and combat tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized farming tool, not always carried"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting crops in area",
+            "tilling ground",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Farmer, Harvester, Attack Damage"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "farming and combat"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_scythe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:scythe_heads",
+          "rationale": "component for tool"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "part of naquadah alloy family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in tool crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting naquadah alloy scythe"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in tool assembly"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV-tier GTCEu component"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for UV energy transport"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UV energy at 2A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu power network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "itself a cable"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for UV energy transport"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "inferred",
+          "rationale": "tooltip shows UV voltage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UV energy at 2A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu power network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "itself a wire, but works like cable"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

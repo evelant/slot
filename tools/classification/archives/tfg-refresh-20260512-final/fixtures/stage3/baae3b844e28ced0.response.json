@@ -1,0 +1,852 @@
+{
+  "items": {
+    "gtceu:lapotronic_energy_orb": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable handheld battery for powering tools"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "named",
+          "rationale": "tag gtceu:batteries and tooltip 'Reusable Battery'",
+          "evidence": "gtceu:batteries tag"
+        },
+        "primary_uses": {
+          "values": [
+            "rechargeable energy storage for tools and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "carried to recharge items"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players carry batteries routinely for power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "reusable battery, not rare"
+        }
+      }
+    },
+    "gtceu:lapotronic_energy_orb_cluster": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "larger reusable battery for power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "named",
+          "rationale": "tag gtceu:batteries and tooltip 'Reusable Battery'"
+        },
+        "primary_uses": {
+          "values": [
+            "high-capacity rechargeable energy storage"
+          ],
+          "signal": "inferred",
+          "rationale": "carried for high-end power needs"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players carry batteries routinely"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "reusable battery, common"
+        }
+      }
+    },
+    "gtceu:large_arc_smelter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine with UI for arc smelting"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine, part of GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting ores with arc furnace recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Arc Furnace recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried in inventory"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine, crafted"
+        }
+      }
+    },
+    "gtceu:large_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for assembling"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "assembling complex items from parts"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Assembler recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_autoclave": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for crystallization"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "crystallizing items with autoclave recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Autoclave recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_brewer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for brewing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing and fermenting fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Brewery, Fermenter, Fluid Heater recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_centrifuge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for centrifuging"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "centrifuging materials into components"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Centrifuge, Thermal Centrifuge recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_chemical_bath": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for chemical washing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "washing ores and chemical bathing"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Ore Washer, Chemical Bath recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_chemical_reactor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for chemical reactions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "performing large-scale chemical reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip mentions 'Black Box Reactor' and perfect overclocking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_circuit_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for circuit assembly"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "assembling circuits and electronic components"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Circuit Assembler recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_combustion_engine": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "power generation machine block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "named",
+          "rationale": "tooltip: 'Base Production: 2048 EU/t', clearly a generator",
+          "evidence": "semantic_text: 'Base Production: 2048 EU/t'"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "generates EU from fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "generating EU from combustion fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows EU production and oxygen boost"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier generator"
+        }
+      }
+    },
+    "gtceu:large_cutter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for cutting"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting and lathing materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Cutter, Lathe recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_distillery": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for distillation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "distilling fluids into components"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Distillation Tower, Distillery recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_duct_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pipe block for pneumatic transport, part of system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:duct"
+          ],
+          "signal": "named",
+          "rationale": "name and tooltip: air transfer, part of GTCEu duct subsystem",
+          "evidence": "semantic_text: 'Air transfer rate: 8.0'"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "transports air/fluids between machines"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting machines for air/fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "duct pipe for pneumatic transfer"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe block"
+        }
+      }
+    },
+    "gtceu:large_electrolyzer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for electrolysis"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "electrolyzing compounds into elements"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Electrolyzer recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_electromagnet": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for electromagnetic separation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "separating materials with electromagnets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Electromagnetic Separator, Polarizer recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_engraving_laser": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for laser engraving"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "laser engraving items and circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Laser Engraver recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_extractor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for extraction"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "extracting and canning materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Extractor, Canner recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_extruder": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for extrusion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "extruding rods, pipes, and profiles"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Extruder recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_maceration_tower": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for maceration"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing and macerating ores and materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Macerator recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_material_press": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for pressing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "bending, compressing, forging, and forming materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Bender, Compressor, Forge Hammer, Forming Press recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_mixer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for mixing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "mixing ingredients into compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Mixer recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_packer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock machine for packaging"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "large machine in GTCEu multiblock system"
+        },
+        "primary_uses": {
+          "values": [
+            "packing and unpacking items"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists Packer recipe type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier machine"
+        }
+      }
+    },
+    "gtceu:large_pipe_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable mold used at casting table"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "named",
+          "rationale": "tag gtceu:casting_molds, part of typical mold storage",
+          "evidence": "gtceu:casting_molds tag"
+        },
+        "primary_uses": {
+          "values": [
+            "casting large pipe shapes from molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "name and mold type"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when casting pipes, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool item"
+        }
+      }
+    },
+    "gtceu:large_pipe_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable extruder mold for large pipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "named",
+          "rationale": "tag gtceu:extruder_molds, stored with other molds",
+          "evidence": "gtceu:extruder_molds tag"
+        },
+        "primary_uses": {
+          "values": [
+            "extruding large pipe profiles from metal"
+          ],
+          "signal": "inferred",
+          "rationale": "name and mold type"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when extruding, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

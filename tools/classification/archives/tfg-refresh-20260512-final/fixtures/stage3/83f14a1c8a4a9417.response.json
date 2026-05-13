@@ -1,0 +1,1192 @@
+{
+  "items": {
+    "tfg:wood/stomping_barrel/mahoe": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed block with UI for stomping grapes"
+        },
+        "material_family": {
+          "value": "mahoe",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in winery, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "stomping grapes for wine"
+          ],
+          "signal": "inferred",
+          "rationale": "firmalife stomping barrel purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "food processing via stomping"
+        },
+        "workflow": {
+          "values": [
+            "tfc:winemaking"
+          ],
+          "signal": "inferred",
+          "rationale": "part of winemaking process"
+        }
+      }
+    },
+    "tfg:wood/stomping_barrel/strophar": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed block with UI for stomping grapes"
+        },
+        "material_family": {
+          "value": "strophar",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in winery, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "stomping grapes for wine"
+          ],
+          "signal": "inferred",
+          "rationale": "firmalife stomping barrel purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "food processing via stomping"
+        },
+        "workflow": {
+          "values": [
+            "tfc:winemaking"
+          ],
+          "signal": "inferred",
+          "rationale": "part of winemaking process"
+        }
+      }
+    },
+    "tfg:wood/stripped_log/araucaria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stripped log used as building material"
+        },
+        "material_family": {
+          "value": "araucaria",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "crafting lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped log primary uses"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped logs stored with logs"
+        }
+      }
+    },
+    "tfg:wood/stripped_log/beech": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stripped log used as building material"
+        },
+        "material_family": {
+          "value": "beech",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "crafting lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped log primary uses"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped logs stored with logs"
+        }
+      }
+    },
+    "tfg:wood/stripped_log/mahoe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stripped log used as building material"
+        },
+        "material_family": {
+          "value": "mahoe",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "crafting lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped log primary uses"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped logs stored with logs"
+        }
+      }
+    },
+    "tfg:wood/stripped_wood/araucaria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stripped wood used as building material"
+        },
+        "material_family": {
+          "value": "araucaria",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "crafting lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped wood primary uses"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped wood stored with logs"
+        }
+      }
+    },
+    "tfg:wood/stripped_wood/beech": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stripped wood used as building material"
+        },
+        "material_family": {
+          "value": "beech",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "crafting lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped wood primary uses"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped wood stored with logs"
+        }
+      }
+    },
+    "tfg:wood/stripped_wood/mahoe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stripped wood used as building material"
+        },
+        "material_family": {
+          "value": "mahoe",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "crafting lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped wood primary uses"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped wood stored with logs"
+        }
+      }
+    },
+    "tfg:wood/support/araucaria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "support beam placed as structural block"
+        },
+        "material_family": {
+          "value": "araucaria",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in mining runs for shoring"
+        },
+        "primary_uses": {
+          "values": [
+            "mine support beams"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structural support"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/support/beech": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "support beam placed as structural block"
+        },
+        "material_family": {
+          "value": "beech",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in mining runs for shoring"
+        },
+        "primary_uses": {
+          "values": [
+            "mine support beams"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structural support"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/support/ginkgo": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "support beam placed as structural block"
+        },
+        "material_family": {
+          "value": "ginkgo",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in mining runs for shoring"
+        },
+        "primary_uses": {
+          "values": [
+            "mine support beams"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structural support"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/support/mahoe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "support beam placed as structural block"
+        },
+        "material_family": {
+          "value": "mahoe",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in mining runs for shoring"
+        },
+        "primary_uses": {
+          "values": [
+            "mine support beams"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present, no loot"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structural support"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/tool_rack/aeronos": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to store tools"
+        },
+        "material_family": {
+          "value": "aeronos",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not moved"
+        },
+        "primary_uses": {
+          "values": [
+            "store tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/tool_rack/araucaria": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to store tools"
+        },
+        "material_family": {
+          "value": "araucaria",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not moved"
+        },
+        "primary_uses": {
+          "values": [
+            "store tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/tool_rack/beech": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to store tools"
+        },
+        "material_family": {
+          "value": "beech",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not moved"
+        },
+        "primary_uses": {
+          "values": [
+            "store tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/tool_rack/ginkgo": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to store tools"
+        },
+        "material_family": {
+          "value": "ginkgo",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not moved"
+        },
+        "primary_uses": {
+          "values": [
+            "store tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/tool_rack/glacian": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to store tools"
+        },
+        "material_family": {
+          "value": "glacian",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not moved"
+        },
+        "primary_uses": {
+          "values": [
+            "store tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/tool_rack/mahoe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to store tools"
+        },
+        "material_family": {
+          "value": "mahoe",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not moved"
+        },
+        "primary_uses": {
+          "values": [
+            "store tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/tool_rack/strophar": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to store tools"
+        },
+        "material_family": {
+          "value": "strophar",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not moved"
+        },
+        "primary_uses": {
+          "values": [
+            "store tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/trapdoor/araucaria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "trapdoor is a building component"
+        },
+        "material_family": {
+          "value": "araucaria",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building access"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor as building entrance"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/trapdoor/beech": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "trapdoor is a building component"
+        },
+        "material_family": {
+          "value": "beech",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building access"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor as building entrance"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/trapdoor/mahoe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "trapdoor is a building component"
+        },
+        "material_family": {
+          "value": "mahoe",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building access"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor as building entrance"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking product"
+        }
+      }
+    },
+    "tfg:wood/trapped_chest/aeronos": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "chest variant with storage UI"
+        },
+        "material_family": {
+          "value": "aeronos",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "storage with redstone output"
+          ],
+          "signal": "inferred",
+          "rationale": "trapped chest emits redstone when opened"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for item storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "chest family storage"
+        }
+      }
+    },
+    "tfg:wood/trapped_chest/araucaria": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "chest variant with storage UI"
+        },
+        "material_family": {
+          "value": "araucaria",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "storage with redstone output"
+          ],
+          "signal": "inferred",
+          "rationale": "trapped chest emits redstone when opened"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for item storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "chest family storage"
+        }
+      }
+    },
+    "tfg:wood/trapped_chest/beech": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "chest variant with storage UI"
+        },
+        "material_family": {
+          "value": "beech",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "storage with redstone output"
+          ],
+          "signal": "inferred",
+          "rationale": "trapped chest emits redstone when opened"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for item storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "chest family storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

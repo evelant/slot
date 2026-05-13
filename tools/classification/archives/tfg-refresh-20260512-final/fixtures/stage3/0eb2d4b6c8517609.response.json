@@ -1,0 +1,2471 @@
+{
+  "items": {
+    "gtceu:pure_iron_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate for metal processing"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "evidence": "id suffix pure_iron",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into iron ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_kyanite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "kyanite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_kyanite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_lapis_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "evidence": "id suffix pure_lapis",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_lazurite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_lazurite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_lead_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "id suffix pure_lead",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lead ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_lepidolite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "lepidolite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_lepidolite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_lithium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "lithium",
+          "signal": "pattern",
+          "evidence": "id suffix pure_lithium",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_magnesite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "magnesite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_magnesite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_magnetite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "magnetite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_magnetite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into cast iron ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_malachite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "malachite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_malachite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into copper ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_mica_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "mica",
+          "signal": "pattern",
+          "evidence": "id suffix pure_mica",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_molybdenite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "molybdenite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_molybdenite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into molybdenum ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_molybdenum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "evidence": "id suffix pure_molybdenum",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into molybdenum ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_monazite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_monazite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_naquadah_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "evidence": "id suffix pure_naquadah",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_neodymium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "neodymium",
+          "signal": "pattern",
+          "evidence": "id suffix pure_neodymium",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_nether_quartz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "evidence": "id suffix pure_nether_quartz",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_nickel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "id suffix pure_nickel",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into nickel ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_oilsands_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "oilsands",
+          "signal": "pattern",
+          "evidence": "id suffix pure_oilsands",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_olivine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "olivine",
+          "signal": "pattern",
+          "evidence": "id suffix pure_olivine",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_opal_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "opal",
+          "signal": "pattern",
+          "evidence": "id suffix pure_opal",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_palladium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "evidence": "id suffix pure_palladium",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_pentlandite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "pentlandite",
+          "signal": "pattern",
+          "evidence": "id suffix pure_pentlandite",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into nickel ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_pitchblende_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "pitchblende",
+          "signal": "pattern",
+          "evidence": "id suffix pure_pitchblende",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    },
+    "gtceu:pure_platinum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust in forge:pure_dusts tag",
+          "rationale": "crafting intermediate"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "id suffix pure_platinum",
+          "rationale": "base material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base for batch processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from crushed ore",
+          "rationale": "not directly world-sourced"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into platinum ingots",
+            "Washing into clean dust",
+            "Centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "main consumption routes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form dust",
+          "rationale": "stage-2 form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable material handled in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:splashing#input",
+            "vintageimprovements:centrifugation#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to each"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust grouped with refined ores"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

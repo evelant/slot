@@ -1,0 +1,1730 @@
+{
+  "items": {
+    "gtceu:dripstone_cobalt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into metal"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into metal"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into metal"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into metal"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing for desh dust"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into crushed ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "only milling recipe available"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "milled in millstone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into diamonds",
+            "crushing for diamond dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into gems"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into emeralds",
+            "crushing for emerald dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into gems"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into gold ingots",
+            "crushing for gold dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into gold"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into graphite",
+            "crushing for graphite dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into carbon material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into gems",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into gem material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron ingots",
+            "crushing for iron dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into iron"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron ingots",
+            "crushing for iron dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into iron"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dripstone_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "processing into material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/dripstone",
+          "rationale": "spawns in underground dripstone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption example",
+          "rationale": "input to smelting and milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in",
+          "rationale": "smelted in furnace or milled"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

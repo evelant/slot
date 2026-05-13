@@ -1,0 +1,1169 @@
+{
+  "items": {
+    "gtceu:gold_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for fluid transport in GT networks"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports fluids in automation setups"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while building piping networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes",
+          "rationale": "Part of GT fluid pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport in GT networks",
+            "Part of logistics piping"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places pipe to move fluids"
+        }
+      }
+    },
+    "gtceu:gold_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for energy transport"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Transfers energy in GT power grid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when wiring machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables",
+          "rationale": "Part of GT cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport in GT networks",
+            "Connecting machines to HV power"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places cable for power transmission"
+        }
+      }
+    },
+    "gtceu:gold_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for conducting electricity"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in energy transport infrastructure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wires are part of cable/energy subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Conduct electricity",
+            "Craft into cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places wire or crafts cable from it"
+        }
+      }
+    },
+    "gtceu:gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into gold"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id gold_ore",
+          "rationale": "Ore of gold"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for gold processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into gold ingots",
+            "Process into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    },
+    "gtceu:gold_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for energy transport"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Transfers energy in GT power grid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when wiring machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables",
+          "rationale": "Part of GT cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport in GT networks",
+            "Connecting machines to HV power"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places cable for power transmission"
+        }
+      }
+    },
+    "gtceu:gold_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for fluid transport"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports fluids in automation setups"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while building piping networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_fluid_pipes",
+          "rationale": "Part of GT fluid pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport in GT networks",
+            "Part of logistics piping"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places pipe to move fluids"
+        }
+      }
+    },
+    "gtceu:gold_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for conducting electricity"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in energy transport infrastructure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wires are part of cable/energy subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Conduct electricity",
+            "Craft into cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places wire or crafts cable from it"
+        }
+      }
+    },
+    "gtceu:gold_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small metal component used in crafting"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id gold_ring",
+          "rationale": "Made of gold"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Component used in machine and equipment crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Small stackable crafting component often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft digger helmets and tools",
+            "Machine component ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as crafting ingredient in many recipes"
+        }
+      }
+    },
+    "gtceu:gold_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form rod from tag",
+          "rationale": "Metal rod used in crafting"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id gold_rod",
+          "rationale": "Made of gold"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Component used in tool and machine crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried in inventory for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft tools and machine components",
+            "Forged from ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "Used extensively as crafting ingredient"
+        }
+      }
+    },
+    "gtceu:gold_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tiny metal fastener used in crafting"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id gold_screw",
+          "rationale": "Made of gold"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Component used in precise machine assembly"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Small stackable item often carried for recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft tools and machines",
+            "Small component in GT recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in many crafting recipes"
+        }
+      }
+    },
+    "gtceu:gold_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for energy transport"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Transfers energy in GT power grid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when wiring machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables",
+          "rationale": "Part of GT cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport in GT networks",
+            "Connecting machines to HV power"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places cable for power transmission"
+        }
+      }
+    },
+    "gtceu:gold_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for conducting electricity"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in energy transport infrastructure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wires are part of cable/energy subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Conduct electricity",
+            "Craft into cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places wire or crafts cable from it"
+        }
+      }
+    },
+    "gtceu:gold_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for fluid transport"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports fluids in automation setups"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while building piping networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_fluid_pipes",
+          "rationale": "Part of GT fluid pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport in GT networks",
+            "Part of logistics piping"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places pipe to move fluids"
+        }
+      }
+    },
+    "gtceu:gold_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal spring used in mechanical crafting"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id gold_spring",
+          "rationale": "Made of gold"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Component used in machine and tool crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Small stackable component often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft mechanical components",
+            "Used in flintlock mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in specific recipes"
+        }
+      }
+    },
+    "gtceu:gold_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for fluid transport"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id pattern gold_",
+          "rationale": "Material from id"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports fluids in automation setups"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while building piping networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_fluid_pipes",
+          "rationale": "Part of GT fluid pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport in GT networks",
+            "Part of logistics piping"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places pipe to move fluids"
+        }
+      }
+    },
+    "gtceu:good_electronic_circuit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Electronic component used in machine crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft MV machines and electronic devices"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafted and then consumed in recipes, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable, MV-tier component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Players store circuits together"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft MV machines and components",
+            "Electronic circuit for automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component in GT machine recipes"
+        }
+      }
+    },
+    "gtceu:good_integrated_circuit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Electronic component used in machine crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft MV machines and electronic devices"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafted and then consumed in recipes, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable, MV-tier component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Players store circuits together"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft MV machines and components",
+            "Electronic circuit for automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component in GT machine recipes"
+        }
+      }
+    },
+    "gtceu:granite_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into almandine"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "id granite_almandine_ore",
+          "rationale": "Ore of almandine"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for almandine processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into almandine material",
+            "Source of gem dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    },
+    "gtceu:granite_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into aluminium"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "evidence": "id granite_aluminium_ore",
+          "rationale": "Ore of aluminium"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for aluminium processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into aluminium",
+            "Process into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    },
+    "gtceu:granite_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into alunite"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "evidence": "id granite_alunite_ore",
+          "rationale": "Ore of alunite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for alunite processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into alunite",
+            "Source of potassium and aluminium"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    },
+    "gtceu:granite_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into amethyst"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "evidence": "id granite_amethyst_ore",
+          "rationale": "Ore of amethyst"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for amethyst processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into amethyst",
+            "Source of gem material"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    },
+    "gtceu:granite_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into apatite"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern",
+          "evidence": "id granite_apatite_ore",
+          "rationale": "Ore of apatite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for apatite processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into apatite",
+            "Source of phosphate"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    },
+    "gtceu:granite_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into armalcolite"
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "pattern",
+          "evidence": "id granite_armalcolite_ore",
+          "rationale": "Ore of armalcolite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for armalcolite processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into armalcolite",
+            "Source of titanium and iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    },
+    "gtceu:granite_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into asbestos"
+        },
+        "material_family": {
+          "value": "asbestos",
+          "signal": "pattern",
+          "evidence": "id granite_asbestos_ore",
+          "rationale": "Ore of asbestos"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for asbestos processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into asbestos",
+            "Source of fireproof material"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    },
+    "gtceu:granite_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "Mined and processed into barite"
+        },
+        "material_family": {
+          "value": "barite",
+          "signal": "pattern",
+          "evidence": "id granite_barite_ore",
+          "rationale": "Ore of barite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for barite processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, fairly abundant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into barite",
+            "Source of barium"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore to get material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1808 @@
+{
+  "items": {
+    "gtceu:claystone_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of copper"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain copper metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of desh"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain desh"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of diamond"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain diamonds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of diatomite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain diatomite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of electrotine"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain electrotine"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of emerald"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain emeralds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of fuller's earth"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain fuller's earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of galena"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain galena"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of garnet sand"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain garnet sand"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of garnierite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain garnierite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of glauconite sand"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain glauconite sand"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of goethite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain goethite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain gold"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of granitic mineral sand"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain granitic mineral sand"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of graphite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain graphite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of green sapphire"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain green sapphire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of grossular"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain grossular"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gypsum"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain gypsum"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of hematite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain hematite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of ilmenite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain ilmenite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of iron"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of kyanite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain kyanite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lapis"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain lapis lazuli"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lazurite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain lazurite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    },
+    "gtceu:claystone_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lead"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain lead"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores + form ore",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/claystone",
+          "rationale": "generates underground in claystone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural rock/ore appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone/gold specks typical of ore"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mining loot"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

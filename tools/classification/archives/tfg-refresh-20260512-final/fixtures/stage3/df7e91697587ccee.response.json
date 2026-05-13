@@ -1,0 +1,1953 @@
+{
+  "items": {
+    "gtceu:yellow_sand_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into electrotine ingot",
+            "Process into electrotine dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into emerald",
+            "Process into emerald dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into fuller's earth",
+            "Process into fuller's earth dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Mineral ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into galena ingot",
+            "Process into lead and silver"
+          ],
+          "signal": "inferred",
+          "rationale": "Lead-silver ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into garnet sand",
+            "Process into garnet dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem sand ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into garnierite ingot",
+            "Process into nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "Nickel ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into glauconite sand",
+            "Process into glauconite dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Mineral sand ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into goethite ingot",
+            "Process into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Iron ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into gold ingot",
+            "Process into gold dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Gold ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into granitic mineral sand",
+            "Process into mineral dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Mineral sand ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into graphite",
+            "Process into graphite dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Carbon ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into green sapphire",
+            "Process into green sapphire dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into grossular",
+            "Process into grossular dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into gypsum",
+            "Process into gypsum dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Mineral ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into hematite ingot",
+            "Process into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Iron ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into ilmenite ingot",
+            "Process into titanium"
+          ],
+          "signal": "inferred",
+          "rationale": "Titanium ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into iron ingot",
+            "Process into iron dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Iron ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into kyanite",
+            "Process into kyanite dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lapis lazuli",
+            "Process into lapis dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lazurite",
+            "Process into lazurite dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lead ingot",
+            "Process into lead dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Lead ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lepidolite",
+            "Process into lithium"
+          ],
+          "signal": "inferred",
+          "rationale": "Lithium ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lignite coal",
+            "Use as fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "Coal-type ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lithium ingot",
+            "Process into lithium dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Lithium ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    },
+    "gtceu:yellow_sand_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into magnesite",
+            "Process into magnesium"
+          ],
+          "signal": "inferred",
+          "rationale": "Magnesium ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly mined and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Rarity component says common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates in yellow sand on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for materials"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Input to furnace/blast/mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe role",
+          "rationale": "Consumed in processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe station",
+          "rationale": "Processed in furnace/blast/mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore block awaiting processing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

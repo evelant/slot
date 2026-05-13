@@ -1,0 +1,1474 @@
+{
+  "items": {
+    "gtceu:mv_super_tank": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Fluid storage container that is placed and opened"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common",
+          "evidence": "minecraft:rarity = common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "high-capacity fluid storage",
+            "safe storage for hot/cold light fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes storage role"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid storage is part of logistics setup"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "Analogous to chest but for fluids"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:tank"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of GTCEu fluid tank subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Only stores fluids, not items"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid tank container"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial machine appearance"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "Place block and fill with fluids"
+        }
+      }
+    },
+    "gtceu:mv_thermal_centrifuge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine with UI for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "precise ore separation",
+            "thermal centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in ore processing automation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial machine"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place block"
+        }
+      }
+    },
+    "gtceu:mv_transformer_16a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy conversion block without UI, part of power network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "voltage conversion between MV and HV",
+            "16A energy transformation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip details usage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of GTCEu energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted (no direct output recipe but has production likely)"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial machine"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Place and configure with screwdriver"
+        }
+      }
+    },
+    "gtceu:mv_transformer_1a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy conversion block, same family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "primary_uses": {
+          "values": [
+            "voltage conversion 1A MV/HV"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip details transformer role"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of GTCEu energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial machine"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Place and configure"
+        }
+      }
+    },
+    "gtceu:mv_transformer_2a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy conversion block, same family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "primary_uses": {
+          "values": [
+            "voltage conversion 2A MV/HV"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip details transformer role"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of GTCEu energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted (no direct output but production likely)"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial machine"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Place and configure"
+        }
+      }
+    },
+    "gtceu:mv_transformer_4a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy conversion block, same family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "primary_uses": {
+          "values": [
+            "voltage conversion 4A MV/HV"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip details transformer role"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of GTCEu energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted (no direct output but production likely)"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial machine"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Place and configure"
+        }
+      }
+    },
+    "gtceu:mv_vanadium_steel_buzzsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric crafting saw tool with durability"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Name includes vanadium_steel"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "Tooltip 'Tier MV'",
+          "rationale": "Electric tool voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used often but left in base sometimes"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting wood and blocks as saw",
+            "crafting lumber and support beams"
+          ],
+          "signal": "inferred",
+          "rationale": "Uses as saw in many recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for cutting construction materials"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "rationale": "Tagged as artisan table tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Electric tool"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:repair"
+          ],
+          "signal": "inferred",
+          "rationale": "Equip as tool and repair"
+        }
+      }
+    },
+    "gtceu:mv_vanadium_steel_chainsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric chainsaw tool for felling trees"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Name includes vanadium_steel"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "Tooltip 'Tier MV'",
+          "rationale": "Electric tool voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for tree felling, carried when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "tree felling with Lumberjack",
+            "cutting wood and stripping logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes tree felling ability"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for wood harvesting and building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Electric tool"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:repair"
+          ],
+          "signal": "inferred",
+          "rationale": "Equip and repair"
+        }
+      }
+    },
+    "gtceu:mv_vanadium_steel_drill": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric mining drill tool"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Name includes vanadium_steel"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "Tooltip 'Tier MV'",
+          "rationale": "Electric tool voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Primary mining tool, often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "mining with 3x3 area-of-effect",
+            "placing torches on right-click"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes AOE and torch place"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for mining ores and blocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Electric tool"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:repair"
+          ],
+          "signal": "inferred",
+          "rationale": "Equip and repair"
+        }
+      }
+    },
+    "gtceu:mv_vanadium_steel_screwdriver": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric screwdriver for adjusting machines"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Name includes vanadium_steel"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "Tooltip 'Tier MV'",
+          "rationale": "Electric tool voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when configuring machines"
+        },
+        "primary_uses": {
+          "values": [
+            "adjusting covers and machines",
+            "configuring machine settings"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes adjustment role"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to configure automation components"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "rationale": "Tagged as artisan table tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Electric tool"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:repair"
+          ],
+          "signal": "inferred",
+          "rationale": "Equip and repair"
+        }
+      }
+    },
+    "gtceu:mv_vanadium_steel_wire_cutter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric wire cutter for crafting wires"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Name includes vanadium_steel"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "Tooltip 'Tier MV'",
+          "rationale": "Electric tool voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for crafting wires, carried when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting wires and cables",
+            "crafting single wires from materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip indicates wire cutter usage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting wire components for automation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "rationale": "Tagged as artisan table tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Electric tool"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:repair"
+          ],
+          "signal": "inferred",
+          "rationale": "Equip and repair"
+        }
+      }
+    },
+    "gtceu:mv_vanadium_steel_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Electric wrench for dismantling machines"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Name includes vanadium_steel"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "Tooltip 'Tier MV'",
+          "rationale": "Electric tool voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or dismantling machines"
+        },
+        "primary_uses": {
+          "values": [
+            "dismantling machines with left-click",
+            "rotating blocks with Mechanic ability"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes dismantling and rotation"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to maintain automation setups"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Electric tool"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:repair"
+          ],
+          "signal": "inferred",
+          "rationale": "Equip and repair"
+        }
+      }
+    },
+    "gtceu:mv_voltage_coil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component used in machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component carried in stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting MV energy hatches and coils",
+            "component in GTCEu machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes for energy components"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build automation machines"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component for storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has production recipe examples"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Generic component"
+        }
+      }
+    },
+    "gtceu:mv_wiremill": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block wire production machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "primary_uses": {
+          "values": [
+            "producing wires efficiently"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes wire production"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated wire production"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has shaped production recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial machine"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place block"
+        }
+      }
+    },
+    "gtceu:mv_world_accelerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Tick acceleration machine with UI"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "primary_uses": {
+          "values": [
+            "tick acceleration of nearby blocks",
+            "two modes: tile entity and random tick"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes acceleration modes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to speed up automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial machine"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Place and configure with screwdriver"
+        }
+      }
+    },
+    "gtceu:name_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable mold used in forming press to name items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when naming items in machine"
+        },
+        "primary_uses": {
+          "values": [
+            "naming items in the Forming Press",
+            "renamable mold for custom names"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes naming function"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine automation for naming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "rationale": "Is a mold item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Has artisan table production recipe"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple mold item"
+        }
+      }
+    },
+    "gtceu:nan_certificate": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Joke collectible item, not a real trophy"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "pattern",
+          "rationale": "Component rarity is epic, stage2 sets unique"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Kept as keepsake, not useful"
+        },
+        "primary_uses": {
+          "values": [
+            "display as proof of progression"
+          ],
+          "signal": "inferred",
+          "rationale": "Novelty item"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple paper certificate"
+        }
+      }
+    },
+    "gtceu:nand_chip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Circuit component used in crafting machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ULV machines and components",
+            "basic circuit board"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in many machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation machine crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "pattern",
+          "rationale": "Is a circuit component"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Generic electronic component"
+        }
+      }
+    },
+    "gtceu:nand_memory_chip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Logic gate component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting logic circuits and memory components"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: NAND Logic Gate"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation electronics"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit group"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        }
+      }
+    },
+    "gtceu:nand_memory_wafer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw wafer for memory chips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into NAND memory chips"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw logic gate material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of circuit production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit material"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        }
+      }
+    },
+    "gtceu:nano_cpu_chip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "CPU component for nano processors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common circuit component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting nano processors and circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Central processing unit chip"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced circuit crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit component"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        }
+      }
+    },
+    "gtceu:nano_cpu_wafer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw wafer for nano CPU"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into nano CPU chips"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw nano circuit material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of circuit production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit material"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        }
+      }
+    },
+    "gtceu:nano_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "HV-tier circuit component"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "Tooltip 'HV-Tier Circuit'",
+          "rationale": "Circuit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common advanced circuit"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HV machines and components",
+            "advanced circuit for automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes HV-Tier Circuit"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in high-level automation crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "pattern",
+          "rationale": "Circuit item"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        }
+      }
+    },
+    "gtceu:nano_processor_assembly": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "EV-tier circuit component"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "named",
+          "evidence": "Tooltip 'EV-Tier Circuit'",
+          "rationale": "Circuit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common advanced circuit"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting EV machines and multiblocks",
+            "advanced circuit for automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes EV-Tier Circuit"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in high-level automation crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "pattern",
+          "rationale": "Circuit item"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        }
+      }
+    },
+    "gtceu:nano_processor_computer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "IV-tier circuit component"
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "evidence": "Tooltip 'IV-Tier Circuit'",
+          "rationale": "Circuit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common advanced circuit"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting IV machines and large multiblocks",
+            "advanced circuit for automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes IV-Tier Circuit"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in high-level automation crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "pattern",
+          "rationale": "Circuit item"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "gtceu:mv_super_tank",
+      "facet": "rarity",
+      "current": "unique",
+      "suggested": "common",
+      "rationale": "Component rarity is common, stage2 incorrectly used unique",
+      "confidence": 1
+    }
+  ],
+  "fill_ins": []
+}

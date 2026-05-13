@@ -1,0 +1,889 @@
+{
+  "items": {
+    "minecraft:enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collectible set items."
+        },
+        "primary_uses": {
+          "values": [
+            "spawning endermen"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to summon mob."
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not carried in survival."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Component rarity."
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only",
+          "rationale": "Creative-only item."
+        }
+      }
+    },
+    "minecraft:endermite_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collectible set items."
+        },
+        "primary_uses": {
+          "values": [
+            "spawning endermites"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to summon mob."
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not carried in survival."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Component rarity."
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only",
+          "rationale": "Creative-only item."
+        }
+      }
+    },
+    "minecraft:evoker_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collectible set items."
+        },
+        "primary_uses": {
+          "values": [
+            "spawning evokers"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to summon mob."
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not carried in survival."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Component rarity."
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only",
+          "rationale": "Creative-only item."
+        }
+      }
+    },
+    "minecraft:experience_bottle": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Thrown to gain XP, consumed on use."
+        },
+        "primary_uses": {
+          "values": [
+            "gain experience",
+            "enchant items",
+            "repair tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for XP."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when needing XP."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component rarity uncommon",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "XP used for enchanting."
+        }
+      }
+    },
+    "minecraft:explorer_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Archaeology collectible with multiple patterns."
+        },
+        "primary_uses": {
+          "values": [
+            "decorating pots",
+            "collecting archaeology finds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft decorated pots."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected while exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        }
+      }
+    },
+    "minecraft:exposed_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Copper block used for construction."
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id and block tag domum_ornamentum:copper",
+          "rationale": "Made of copper."
+        },
+        "primary_uses": {
+          "values": [
+            "building with copper",
+            "decorative oxidation stages"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction and decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building."
+        }
+      }
+    },
+    "minecraft:exposed_cut_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cut copper block used for construction."
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "block tag domum_ornamentum:copper",
+          "rationale": "Made of copper."
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut copper",
+            "creating copper variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building."
+        }
+      }
+    },
+    "minecraft:exposed_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of cut copper."
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "Made of copper."
+        },
+        "primary_uses": {
+          "values": [
+            "building with copper slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building."
+        }
+      }
+    },
+    "minecraft:exposed_cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant of cut copper."
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "Made of copper."
+        },
+        "primary_uses": {
+          "values": [
+            "building with copper stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs for construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building."
+        }
+      }
+    },
+    "minecraft:eye_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Applied in smithing table to trim armor."
+        },
+        "primary_uses": {
+          "values": [
+            "applying eye trim to armor",
+            "customizing armor appearance"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for armor trim."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept a set of trims."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smithing_trim"
+          ],
+          "signal": "pattern",
+          "evidence": "trim template id",
+          "rationale": "Part of smithing trim process."
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smithing_trim#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used as input to trim",
+          "rationale": "Consumed in trim recipe."
+        }
+      }
+    },
+    "minecraft:farmland": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block used for growing crops."
+        },
+        "primary_uses": {
+          "values": [
+            "growing crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Supports crop growth."
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not normally carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only",
+          "rationale": "Creative-only item."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for farming."
+        }
+      }
+    },
+    "minecraft:feather": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for arrows and books."
+        },
+        "primary_uses": {
+          "values": [
+            "making arrows",
+            "crafting books",
+            "fletching"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many crafting recipes."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common ingredient, players carry stacks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:fox_spawns_with",
+          "rationale": "Dropped by chickens."
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredients for arrows used in combat."
+        }
+      }
+    },
+    "minecraft:fermented_spider_eye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Brewing ingredient."
+        },
+        "primary_uses": {
+          "values": [
+            "brewing potions",
+            "crafting weakness potion"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in brewing."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when brewing."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in brewing potions."
+        }
+      }
+    },
+    "minecraft:fern": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Plant placed in nature for decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "decorating gardens",
+            "collecting plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative plant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for landscaping."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        }
+      }
+    },
+    "minecraft:filled_map": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool for navigation."
+        },
+        "primary_uses": {
+          "values": [
+            "exploring terrain",
+            "marking locations"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for exploration."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Explorers carry maps when traveling."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for exploration."
+        }
+      }
+    },
+    "minecraft:fire_charge": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Disposable fire starter."
+        },
+        "primary_uses": {
+          "values": [
+            "igniting blocks",
+            "lighting campfires",
+            "breaking nether portals"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to start fires."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for specific tasks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe crafting_shapeless",
+          "rationale": "Crafted from materials."
+        }
+      }
+    },
+    "minecraft:fire_coral": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Living coral placed underwater."
+        },
+        "primary_uses": {
+          "values": [
+            "decorating underwater builds",
+            "collecting corals"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative aquatic plant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for aquariums."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        }
+      }
+    },
+    "minecraft:fire_coral_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full coral block used for construction."
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Made of coral."
+        },
+        "primary_uses": {
+          "values": [
+            "building underwater",
+            "decorating with coral blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for builds."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        }
+      }
+    },
+    "minecraft:fire_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Fan coral, natural decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "decorating underwater builds",
+            "collecting coral fans"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative aquatic plant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for decoration."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        }
+      }
+    },
+    "minecraft:firework_rocket": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "rationale": "Used as crossbow ammo and for elytra boosting."
+        },
+        "primary_uses": {
+          "values": [
+            "flying with elytra",
+            "firework displays",
+            "crossbow ammunition"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiple uses."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Elytra users carry stacks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe crafting_shapeless",
+          "rationale": "Crafted from firework star and paper."
+        }
+      }
+    },
+    "minecraft:firework_star": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ingredient for crafting firework rockets."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fireworks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to make rockets."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting fireworks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        }
+      }
+    },
+    "minecraft:fishing_rod": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Tool used for fishing."
+        },
+        "primary_uses": {
+          "values": [
+            "fishing for food and treasure"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary fishing tool."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common activity, players carry frequently."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "pattern",
+          "evidence": "TFC fishing workflow known use.",
+          "rationale": "Part of TFC fishing process."
+        }
+      }
+    },
+    "minecraft:fletching_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Villager workstation for fletchers."
+        },
+        "primary_uses": {
+          "values": [
+            "assigning fletcher villagers",
+            "decorating workshop"
+          ],
+          "signal": "inferred",
+          "rationale": "Villager profession block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for villager."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in builds."
+        }
+      }
+    },
+    "minecraft:flint": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for tools and fire."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools",
+            "making fire",
+            "knapping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common material, players carry stacks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained from gravel while mining."
+        }
+      }
+    },
+    "minecraft:flint_and_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Tool for igniting fires."
+        },
+        "primary_uses": {
+          "values": [
+            "lighting fires",
+            "igniting nether portals"
+          ],
+          "signal": "inferred",
+          "rationale": "Fire starter."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common carry item for lighting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component rarity."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

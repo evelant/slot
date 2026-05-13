@@ -1,0 +1,983 @@
+{
+  "items": {
+    "gtceu:small_red_garnet_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "suffix _dust indicates refined material input"
+        },
+        "material_family": {
+          "value": "red_garnet",
+          "signal": "pattern",
+          "rationale": "from id suffix"
+        },
+        "primary_uses": {
+          "values": [
+            "material processing ingredient",
+            "gemstone dust"
+          ],
+          "signal": "inferred",
+          "rationale": "pulverized gem used in alloys and circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in stacks for processing, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common GT material, stackable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "small dust fits refined ores group"
+        }
+      }
+    },
+    "gtceu:small_red_granite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "brick block used for construction"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "furnace/forge insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "block tags indicate oven/bloomery insulation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone brick variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "rationale": "brick block fits brick storage group"
+        }
+      }
+    },
+    "gtceu:small_red_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a metal"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "alloy ingredient",
+            "metal powder processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft red steel components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate processing material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common GT material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "metal dust in refined ores"
+        }
+      }
+    },
+    "gtceu:small_redrock_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of stone"
+        },
+        "material_family": {
+          "value": "redrock",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "fill material",
+            "dye component"
+          ],
+          "signal": "inferred",
+          "rationale": "stone dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "for crafting, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_redstone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of redstone"
+        },
+        "material_family": {
+          "value": "redstone",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone circuitry",
+            "power component"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone is essential for circuits"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "players often carry redstone for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mineral dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_reinforced_epoxy_resin_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of resin"
+        },
+        "material_family": {
+          "value": "reinforced_epoxy_resin",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "polymer ingredient",
+            "insulation component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced circuit boards"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common GT material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rhenium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a metal"
+        },
+        "material_family": {
+          "value": "rhenium",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "alloy ingredient",
+            "high-temperature metal"
+          ],
+          "signal": "inferred",
+          "rationale": "rhenium used in high-tier alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare but stackable"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "rhenium is a rare metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rhodium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a metal"
+        },
+        "material_family": {
+          "value": "rhodium",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "catalyst ingredient",
+            "platinum group metal"
+          ],
+          "signal": "inferred",
+          "rationale": "rhodium used in specialized alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare but stackable"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "rhodium is a precious metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rhodium_plated_palladium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of an alloy"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "alloy ingredient",
+            "precious metal composite"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-end machine components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate processing material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "precious alloy, rare"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rhodium_plated_palladium_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "machine component used as crafting input"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component",
+            "gearbox part"
+          ],
+          "signal": "inferred",
+          "rationale": "small gear used in GT machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in stacks for machine building"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "precious material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "gear as refined component"
+        }
+      }
+    },
+    "gtceu:small_rock_salt_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of rock salt"
+        },
+        "material_family": {
+          "value": "rock_salt",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "food preservation",
+            "chemical ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "salt used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "staple but not everyday carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mineral"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rocket_alloy_t1_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a rocket alloy"
+        },
+        "material_family": {
+          "value": "rocket_alloy_t1",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "space material",
+            "rocket component ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make rocket parts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "late-game material, carried for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rocket_alloy_t2_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a rocket alloy"
+        },
+        "material_family": {
+          "value": "rocket_alloy_t2",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "space material",
+            "rocket component ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make higher-tier rocket parts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "late-game material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rare advanced alloy"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rose_gold_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of an alloy"
+        },
+        "material_family": {
+          "value": "rose_gold",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative metal",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "rose gold used in jewelry and circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "gold alloy"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rtm_alloy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of an alloy"
+        },
+        "material_family": {
+          "value": "rtm_alloy",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "high-temperature alloy",
+            "rocket component ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rare alloy"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rubber_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of rubber"
+        },
+        "material_family": {
+          "value": "rubber",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "polymer processing",
+            "insulation ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "rubber used for cables and seals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common organic material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_ruby_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a gem"
+        },
+        "material_family": {
+          "value": "ruby",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "gemstone dust",
+            "laser component ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "ruby used in lenses and circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for advanced crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common GT gem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_ruridit_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of an alloy"
+        },
+        "material_family": {
+          "value": "ruridit",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "superalloy ingredient",
+            "high-end machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "ruridit used in high-tier parts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rare endgame alloy"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_ruthenium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a metal"
+        },
+        "material_family": {
+          "value": "ruthenium",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "platinum group metal",
+            "catalyst ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "ruthenium used in specialized alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare metal"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "precious metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_ruthenium_tetroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a compound"
+        },
+        "material_family": {
+          "value": "ruthenium_tetroxide",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical intermediate",
+            "hazardous material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare intermediate"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "compound"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_ruthenium_trinium_americium_neutronate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of an exotic compound"
+        },
+        "material_family": {
+          "value": "ruthenium_trinium_americium_neutronate",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "nuclear material",
+            "endgame component ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "hazardous, used in fusion/fission"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "very rare material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "exotic & hazardous"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_rutile_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a mineral"
+        },
+        "material_family": {
+          "value": "rutile",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "titanium source",
+            "white pigment"
+          ],
+          "signal": "inferred",
+          "rationale": "rutile processed to titanium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mineral"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_salt_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of salt"
+        },
+        "material_family": {
+          "value": "salt",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "food preservation",
+            "chemical ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "salt used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "staple but not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mineral"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_saltpeter_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of saltpeter"
+        },
+        "material_family": {
+          "value": "saltpeter",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "fertilizer ingredient",
+            "gunpowder component"
+          ],
+          "signal": "inferred",
+          "rationale": "saltpeter used for explosives and farming"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mineral"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    },
+    "gtceu:small_samarium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a rare earth metal"
+        },
+        "material_family": {
+          "value": "samarium",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "magnet ingredient",
+            "rare earth catalyst"
+          ],
+          "signal": "inferred",
+          "rationale": "samarium used in magnets and lasers"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare earth material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "rare earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust fits refined ores"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

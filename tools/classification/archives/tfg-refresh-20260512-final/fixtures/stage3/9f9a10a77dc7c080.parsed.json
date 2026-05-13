@@ -1,0 +1,1277 @@
+{
+  "items": {
+    "tfc:rock/cobble/chert_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used for constructing structures"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id contains chert",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building projects, not carried everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with chert cobble slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant of cobble"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "slabs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/chert_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used for building"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id contains chert",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building, not everyday carry"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with chert cobble stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant of cobble"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "stairs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/chert_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used for building"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id contains chert",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building, not everyday carry"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with chert cobble walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant of cobble"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "walls grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/claystone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cobble block used for building"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id contains claystone",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building, not everyday carry"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with claystone cobble"
+          ],
+          "signal": "inferred",
+          "rationale": "base cobble block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/claystone"
+          ],
+          "signal": "pattern",
+          "evidence": "rock-specific tag",
+          "rationale": "stored with claystone items"
+        }
+      }
+    },
+    "tfc:rock/cobble/claystone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used for building"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id contains claystone",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with claystone cobble slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "slabs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/claystone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used for building"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id contains claystone",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with claystone cobble stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "stairs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/claystone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used for building"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id contains claystone",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with claystone cobble walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "walls grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cobble block used for building"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id contains conglomerate",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with conglomerate cobble"
+          ],
+          "signal": "inferred",
+          "rationale": "base cobble block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/conglomerate"
+          ],
+          "signal": "pattern",
+          "evidence": "rock-specific tag",
+          "rationale": "stored with conglomerate items"
+        }
+      }
+    },
+    "tfc:rock/cobble/conglomerate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used for building"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id contains conglomerate",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with conglomerate cobble slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "slabs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/conglomerate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used for building"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id contains conglomerate",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with conglomerate cobble stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "stairs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/conglomerate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used for building"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id contains conglomerate",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with conglomerate cobble walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "walls grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/dacite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cobble block used for building"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id contains dacite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dacite cobble"
+          ],
+          "signal": "inferred",
+          "rationale": "base cobble block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dacite"
+          ],
+          "signal": "pattern",
+          "evidence": "rock-specific tag",
+          "rationale": "stored with dacite items"
+        }
+      }
+    },
+    "tfc:rock/cobble/dacite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used for building"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id contains dacite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dacite cobble slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "slabs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/dacite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used for building"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id contains dacite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dacite cobble stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "stairs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/dacite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used for building"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id contains dacite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dacite cobble walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "walls grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/diorite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cobble block used for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with diorite cobble"
+          ],
+          "signal": "inferred",
+          "rationale": "base cobble block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "pattern",
+          "evidence": "rock-specific tag",
+          "rationale": "stored with diorite items"
+        }
+      }
+    },
+    "tfc:rock/cobble/diorite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with diorite cobble slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "slabs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/diorite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with diorite cobble stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "stairs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/diorite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with diorite cobble walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "walls grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/dolomite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cobble block used for building"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id contains dolomite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dolomite cobble"
+          ],
+          "signal": "inferred",
+          "rationale": "base cobble block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dolomite"
+          ],
+          "signal": "pattern",
+          "evidence": "rock-specific tag",
+          "rationale": "stored with dolomite items"
+        }
+      }
+    },
+    "tfc:rock/cobble/dolomite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used for building"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id contains dolomite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dolomite cobble slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "slabs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/dolomite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used for building"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id contains dolomite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dolomite cobble stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "stairs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/dolomite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used for building"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id contains dolomite",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dolomite cobble walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "walls grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/gabbro": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cobble block used for building"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "evidence": "id contains gabbro",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with gabbro cobble"
+          ],
+          "signal": "inferred",
+          "rationale": "base cobble block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gabbro"
+          ],
+          "signal": "pattern",
+          "evidence": "rock-specific tag",
+          "rationale": "stored with gabbro items"
+        }
+      }
+    },
+    "tfc:rock/cobble/gabbro_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used for building"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "evidence": "id contains gabbro",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with gabbro cobble slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "slabs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/gabbro_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used for building"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "evidence": "id contains gabbro",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with gabbro cobble stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "stairs grouped together"
+        }
+      }
+    },
+    "tfc:rock/cobble/gabbro_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used for building"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "evidence": "id contains gabbro",
+          "rationale": "rock type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with gabbro cobble walls"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "walls grouped together"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

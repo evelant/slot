@@ -1,0 +1,1031 @@
+{
+  "items": {
+    "ad_astra:chiseled_permafrost_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair block used for building structures"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "Made from permafrost rock"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places for vertical access"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during build projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted stone variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Rock stairs storage section"
+        }
+      }
+    },
+    "ad_astra:chiseled_permafrost_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full block for walls and decoration"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "Chiseled variant of permafrost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a stone brick block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted stone brick variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block storage"
+        }
+      }
+    },
+    "ad_astra:chiseled_venus_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative brick block"
+        },
+        "material_family": {
+          "value": "trachyte",
+          "signal": "inferred",
+          "rationale": "Venus stone is trachyte"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with venus stone bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a brick block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from venus stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage"
+        }
+      }
+    },
+    "ad_astra:chiseled_venus_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "material_family": {
+          "value": "trachyte",
+          "signal": "inferred",
+          "rationale": "Venus stone"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for floors and half-blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places as a slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Rock slab storage"
+        }
+      }
+    },
+    "ad_astra:chiseled_venus_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "material_family": {
+          "value": "trachyte",
+          "signal": "inferred",
+          "rationale": "Venus stone"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places for elevation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted stair variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Rock stairs storage"
+        }
+      }
+    },
+    "ad_astra:coal_generator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine that generates power from coal"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "named",
+          "evidence": "advancement description",
+          "rationale": "Advancement calls it power generation"
+        },
+        "primary_uses": {
+          "values": [
+            "Generating energy from coal",
+            "Early-game power"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses to power machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, then fueled"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "First power source"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Ad Astra energy system"
+        }
+      }
+    },
+    "ad_astra:compressor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine that presses ingots into plates"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to automate plate production"
+        },
+        "primary_uses": {
+          "values": [
+            "Pressing ingots into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Key step for rocket crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Early-machine"
+        }
+      }
+    },
+    "ad_astra:conglomerate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Raw stone block for building"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "rationale": "Id and display name indicate stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and used in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sedimentary stone group"
+        }
+      }
+    },
+    "ad_astra:corrupted_lunarian_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collected by players"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning corrupted lunarians"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to summon mob"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Creative-only or command use"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "Not normally obtainable in survival"
+        }
+      }
+    },
+    "ad_astra:cracked_glacio_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cracked brick block for decoration"
+        },
+        "material_family": {
+          "value": "phonolite",
+          "signal": "inferred",
+          "rationale": "Glacio stone is phonolite"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building cracked brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted stone brick variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block storage"
+        }
+      }
+    },
+    "ad_astra:cracked_mars_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cracked brick block"
+        },
+        "material_family": {
+          "value": "argillite",
+          "signal": "inferred",
+          "rationale": "Mars stone is argillite"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building cracked brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Build projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage"
+        }
+      }
+    },
+    "ad_astra:cracked_mercury_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cracked brick block"
+        },
+        "material_family": {
+          "value": "komatiite",
+          "signal": "inferred",
+          "rationale": "Mercury stone is komatiite"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building cracked brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Build projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage"
+        }
+      }
+    },
+    "ad_astra:cracked_moon_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cracked brick block"
+        },
+        "material_family": {
+          "value": "anorthosite",
+          "signal": "inferred",
+          "rationale": "Moon stone is anorthosite"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building cracked brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Build projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage"
+        }
+      }
+    },
+    "ad_astra:cracked_permafrost_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cracked brick block"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "Permafrost rock"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building cracked brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Build projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage"
+        }
+      }
+    },
+    "ad_astra:cracked_venus_sandstone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cracked brick block"
+        },
+        "material_family": {
+          "value": "trachyte_sandstone",
+          "signal": "inferred",
+          "rationale": "Venus sandstone is trachyte sandstone"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building cracked brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Build projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage"
+        }
+      }
+    },
+    "ad_astra:cracked_venus_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cracked brick block"
+        },
+        "material_family": {
+          "value": "trachyte",
+          "signal": "inferred",
+          "rationale": "Venus stone is trachyte"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building cracked brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Build projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick storage"
+        }
+      }
+    },
+    "ad_astra:cryo_freezer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine that produces cryo fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automates fuel production"
+        },
+        "primary_uses": {
+          "values": [
+            "Producing cryo fuel from ice shards"
+          ],
+          "signal": "inferred",
+          "rationale": "Key step for advanced rocket fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Mid-game machine"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Supports rocket fuel production"
+        }
+      }
+    },
+    "ad_astra:cryo_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fuel bucket used to power rockets"
+        },
+        "primary_uses": {
+          "values": [
+            "Fueling rockets",
+            "Space travel"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rocket fuel slot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during space trips"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires progression to obtain"
+        }
+      }
+    },
+    "ad_astra:cyan_flag": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Flag placed for decoration"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "pattern",
+          "rationale": "Name includes cyan"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Marking territory",
+            "Decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places flags as markers"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block group"
+        }
+      }
+    },
+    "ad_astra:cyan_industrial_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Lamp placed for lighting and decoration"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "pattern",
+          "rationale": "Name includes cyan"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for base lighting"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting up areas"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides light"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in bases for illumination"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Lamp storage"
+        }
+      }
+    },
+    "ad_astra:deepslate_calorite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into calorite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of calorite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for smelting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Needs deepslate mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore storage"
+        }
+      }
+    },
+    "ad_astra:deepslate_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block for desh"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into desh ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of desh"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Deepslate ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore storage"
+        }
+      }
+    },
+    "ad_astra:deepslate_ice_shard_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore for ice shards"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into ice shards"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of ice shards for cryo fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined during cold planet trips"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires deepslate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore storage"
+        }
+      }
+    },
+    "ad_astra:deepslate_ostrum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore for ostrum"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into ostrum ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of ostrum"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Deepslate ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore storage"
+        }
+      }
+    },
+    "ad_astra:desh_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted desh for storage and crafting"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "rationale": "Id and tags indicate desh material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting recipes for components"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of desh",
+            "Crafting desh plates"
+          ],
+          "signal": "inferred",
+          "rationale": "9 desh ingots compressed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires desh ingots"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Material storage block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

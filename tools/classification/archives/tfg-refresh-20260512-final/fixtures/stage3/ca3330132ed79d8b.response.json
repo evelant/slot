@@ -1,0 +1,1037 @@
+{
+  "items": {
+    "gtceu:polybenzimidazole_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fluid pipe placed for machine logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GTCEu machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Connects machines in fluid network"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried when building machine setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polybenzimidazole",
+          "signal": "pattern",
+          "evidence": "id suffix _polybenzimidazole",
+          "rationale": "From item name and material tag"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu pipe subsystem fluid transport"
+        }
+      }
+    },
+    "gtceu:polybenzimidazole_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Tiny fluid pipe for machine connections"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GTCEu machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Smaller throughput pipe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried when building machine setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polybenzimidazole",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:polycaprolactam_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed material storage block, not functional container"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact plastic storage",
+            "Crafting plates and pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as material stockpile and crafting input"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Bulk material often carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polycaprolactam",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        }
+      }
+    },
+    "gtceu:polycaprolactam_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid carrier for transport and use"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting liquid polycaprolactam"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket of polymer fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polycaprolactam",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket used to fill and empty fluids"
+        }
+      }
+    },
+    "gtceu:polycaprolactam_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component in dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes for pipes and parts"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polycaprolactam",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/polycaprolactam",
+          "rationale": "From dust tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust, placed in pure dusts bucket"
+        }
+      }
+    },
+    "gtceu:polycaprolactam_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Thin sheet crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polycaprolactam",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        }
+      }
+    },
+    "gtceu:polycaprolactam_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Standard ingot form of plastic material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Base form for many recipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polycaprolactam",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/polycaprolactam",
+          "rationale": "From ingot tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Pileable ingot storage group"
+        }
+      }
+    },
+    "gtceu:polycaprolactam_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small piece of plastic material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in precise recipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polycaprolactam",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/polycaprolactam",
+          "rationale": "From nugget tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget storage group"
+        }
+      }
+    },
+    "gtceu:polycaprolactam_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Sheet form of plastic material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine hulls and pipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polycaprolactam",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/polycaprolactam",
+          "rationale": "From plate tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Pileable sheets storage group"
+        }
+      }
+    },
+    "gtceu:polychlorinated_biphenyl_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid carrier for hazardous material"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting polychlorinated biphenyl"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket of hazardous fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polychlorinated_biphenyl",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket used to fill and empty fluids"
+        }
+      }
+    },
+    "gtceu:polydimethylsiloxane_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting dust for silicone materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting silicone components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in polymer recipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polydimethylsiloxane",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/polydimethylsiloxane",
+          "rationale": "From dust tag"
+        }
+      }
+    },
+    "gtceu:polyethylene_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed plastic storage block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact plastic storage",
+            "Crafting plates and pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as material stockpile"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Bulk material often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        }
+      }
+    },
+    "gtceu:polyethylene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid carrier for liquid polyethylene"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting liquid polyethylene"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket of polymer fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket used to fill and empty fluids"
+        }
+      }
+    },
+    "gtceu:polyethylene_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting dust for polyethylene"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes for pipes and parts"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/polyethylene",
+          "rationale": "From dust tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust, placed in pure dusts bucket"
+        }
+      }
+    },
+    "gtceu:polyethylene_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Thin plastic foil for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting polyethylene foil products"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        }
+      }
+    },
+    "gtceu:polyethylene_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Large fluid pipe for machine logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "High volume fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Huge pipe for high throughput"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common in machine builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:polyethylene_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Standard ingot form of polyethylene"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Base form for many recipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/polyethylene",
+          "rationale": "From ingot tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Pileable ingot storage group"
+        }
+      }
+    },
+    "gtceu:polyethylene_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Large fluid pipe for machine connections"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GTCEu machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Large throughput pipe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common in machine builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:polyethylene_mallet": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Used to pause/start GTCEu machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Pausing and starting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Soft mallet interaction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specialized tool, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "From item name"
+        }
+      }
+    },
+    "gtceu:polyethylene_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multi-channel fluid pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Multi-channel fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Nonuple pipe for 9 channels"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common in machine builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:polyethylene_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Standard fluid pipe for machine connections"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport for GTCEu machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Normal throughput pipe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common in machine builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:polyethylene_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small piece of polyethylene"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in precise recipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/polyethylene",
+          "rationale": "From nugget tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget storage group"
+        }
+      }
+    },
+    "gtceu:polyethylene_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Sheet form of polyethylene"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting plastic machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine hulls and pipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/polyethylene",
+          "rationale": "From plate tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Pileable sheets storage group"
+        }
+      }
+    },
+    "gtceu:polyethylene_plunger": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Used to drain fluids from machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Draining fluids from GTCEu machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Plunger interaction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specialized tool, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "From item name"
+        }
+      }
+    },
+    "gtceu:polyethylene_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multi-channel fluid pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Multi-channel fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Quadruple pipe for 4 channels"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common in machine builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Item component rarity field"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "From item name"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu pipe subsystem"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:polybenzimidazole_small_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Fluid pipe shape from id and tag"
+    },
+    {
+      "item": "gtceu:polybenzimidazole_tiny_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Tiny fluid pipe shape"
+    },
+    {
+      "item": "gtceu:polycaprolactam_block",
+      "facet": "form",
+      "value": "storage_block",
+      "rationale": "Storage block form from tag"
+    },
+    {
+      "item": "gtceu:polycaprolactam_foil",
+      "facet": "form",
+      "value": "foil",
+      "rationale": "Foil form from id and tag"
+    },
+    {
+      "item": "gtceu:polyethylene_block",
+      "facet": "form",
+      "value": "storage_block",
+      "rationale": "Storage block form from tag"
+    },
+    {
+      "item": "gtceu:polyethylene_foil",
+      "facet": "form",
+      "value": "foil",
+      "rationale": "Foil form from id and tag"
+    },
+    {
+      "item": "gtceu:polyethylene_huge_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Huge fluid pipe shape"
+    },
+    {
+      "item": "gtceu:polyethylene_large_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Large fluid pipe shape"
+    },
+    {
+      "item": "gtceu:polyethylene_nonuple_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Nonuple fluid pipe shape"
+    },
+    {
+      "item": "gtceu:polyethylene_normal_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Normal fluid pipe shape"
+    },
+    {
+      "item": "gtceu:polyethylene_quadruple_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Quadruple fluid pipe shape"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

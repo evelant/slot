@@ -1,0 +1,3223 @@
+# Items to classify
+{
+  "items": [
+    {
+      "id": "gtceu:ev_laser_engraver",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Laser Engraver III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_laser_engraver"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_laser_engraver"
+      ],
+      "model_parents": [
+        "item/ev_laser_engraver",
+        "block/machine/ev_laser_engraver",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_laser_engraver",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Don't look directly at the Laser"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_lathe",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Lathe III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_lathe"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_lathe"
+      ],
+      "model_parents": [
+        "item/ev_lathe",
+        "block/machine/ev_lathe",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_lathe",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Produces Rods more efficiently"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_macerator",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Macerator III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_macerator"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_macerator"
+      ],
+      "model_parents": [
+        "item/ev_macerator",
+        "block/machine/ev_macerator",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_macerator",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Shredding your Ores with Byproducts"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_machine_casing",
+      "namespace": "gtceu",
+      "display_name": "EV Machine Casing",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling",
+        "kubejs:shaped"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 2,
+        "greate:milling": 1,
+        "kubejs:shaped": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 4,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_machine_casing",
+        "greate:shaped/titanium_encased_fan",
+        "greate:shaped/titanium_millstone",
+        "gtceu:shaped/ev_machine_hull"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/casing_ev"
+      ],
+      "model_parents": [
+        "item/ev_machine_casing",
+        "block/ev_machine_casing",
+        "block/cube/tinted/bottom_top",
+        "block/cube/tinted/default",
+        "block/cube"
+      ],
+      "creative_tabs": [
+        "gtceu:decoration"
+      ],
+      "loot_source_count": 1,
+      "loot_source_examples": [
+        "gtceu:blocks/ev_machine_casing"
+      ],
+      "block_context": {
+        "block_id": "gtceu:ev_machine_casing",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling",
+            "kubejs:shaped"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_machine_hull",
+      "namespace": "gtceu",
+      "display_name": "§5EV §fMachine Hull",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "create:mechanical_crafting",
+        "greate:milling",
+        "kubejs:shaped"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 59,
+        "create:mechanical_crafting": 1,
+        "greate:milling": 1,
+        "kubejs:shaped": 11
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 72,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_machine_hull",
+        "greate:shaped/titanium_mechanical_mixer",
+        "greate:shaped/titanium_mechanical_press",
+        "greate:titanium_crushing_wheel",
+        "gtceu:shaped/ev_16a_energy_converter",
+        "gtceu:shaped/ev_1a_energy_converter",
+        "gtceu:shaped/ev_4a_energy_converter",
+        "gtceu:shaped/ev_8a_energy_converter",
+        "gtceu:shaped/ev_alloy_smelter",
+        "gtceu:shaped/ev_aqueous_accumulator",
+        "gtceu:shaped/ev_arc_furnace",
+        "gtceu:shaped/ev_assembler",
+        "gtceu:shaped/ev_autoclave",
+        "gtceu:shaped/ev_battery_buffer_16x",
+        "gtceu:shaped/ev_battery_buffer_4x",
+        "gtceu:shaped/ev_battery_buffer_8x",
+        "gtceu:shaped/ev_bender",
+        "gtceu:shaped/ev_block_breaker",
+        "gtceu:shaped/ev_brewery",
+        "gtceu:shaped/ev_canner",
+        "gtceu:shaped/ev_centrifuge",
+        "gtceu:shaped/ev_charger_4x",
+        "gtceu:shaped/ev_chemical_bath",
+        "gtceu:shaped/ev_chemical_reactor",
+        "gtceu:shaped/ev_circuit_assembler",
+        "gtceu:shaped/ev_compressor",
+        "gtceu:shaped/ev_cutter",
+        "gtceu:shaped/ev_diode",
+        "gtceu:shaped/ev_distillery",
+        "gtceu:shaped/ev_electric_furnace",
+        "gtceu:shaped/ev_electrolyzer",
+        "gtceu:shaped/ev_electromagnetic_separator",
+        "gtceu:shaped/ev_extractor",
+        "gtceu:shaped/ev_extruder",
+        "gtceu:shaped/ev_fermenter",
+        "gtceu:shaped/ev_fluid_heater",
+        "gtceu:shaped/ev_fluid_solidifier",
+        "gtceu:shaped/ev_food_oven",
+        "gtceu:shaped/ev_food_processor",
+        "gtceu:shaped/ev_forge_hammer",
+        "gtceu:shaped/ev_forming_press",
+        "gtceu:shaped/ev_gas_collector",
+        "gtceu:shaped/ev_gas_pressurizer",
+        "gtceu:shaped/ev_item_collector",
+        "gtceu:shaped/ev_laser_engraver",
+        "gtceu:shaped/ev_lathe",
+        "gtceu:shaped/ev_macerator",
+        "gtceu:shaped/ev_mixer",
+        "gtceu:shaped/ev_muffler_hatch",
+        "gtceu:shaped/ev_ore_washer",
+        "gtceu:shaped/ev_packer",
+        "gtceu:shaped/ev_polarizer",
+        "gtceu:shaped/ev_pump",
+        "gtceu:shaped/ev_rock_crusher",
+        "gtceu:shaped/ev_scanner",
+        "gtceu:shaped/ev_sifter",
+        "gtceu:shaped/ev_thermal_centrifuge",
+        "gtceu:shaped/ev_transformer_1a",
+        "gtceu:shaped/ev_wiremill",
+        "gtceu:shaped/large_combustion_engine",
+        "gtceu:shaped/large_gas_turbine",
+        "gtceu:shaped/passthrough_hatch_fluid_ev",
+        "gtceu:shaped/passthrough_hatch_item_ev",
+        "tfg:shaped/bioreactor",
+        "tfg:shaped/evaporation_tower",
+        "tfg:shaped/fission_reactor_mk1",
+        "tfg:shaped/heat_battery_mk1",
+        "tfg:shaped/heat_exchanger",
+        "tfg:shaped/interplanetary_item_launcher",
+        "tfg:shaped/nuclear_fuel_factory",
+        "tfg:shaped/nuclear_turbine",
+        "tfg:shaped/ostrum_linear_accelerator"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_machine_hull"
+      ],
+      "model_parents": [
+        "item/ev_machine_hull",
+        "block/machine/ev_machine_hull",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_machine_hull",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7You just need §5I§dm§4a§cg§ei§an§ba§3t§7i§1o§5n§7 to use this"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "create:mechanical_crafting",
+            "greate:milling",
+            "kubejs:shaped"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_mixer",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Mixer III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_mixer"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_mixer"
+      ],
+      "model_parents": [
+        "item/ev_mixer",
+        "block/machine/ev_mixer",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_mixer",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Will it Blend?"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§9Fluid Capacity: §f16,000 mB"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_muffler_hatch",
+      "namespace": "gtceu",
+      "display_name": "Muffler Hatch §5EV",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_muffler_hatch"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_muffler_hatch"
+      ],
+      "model_parents": [
+        "item/ev_muffler_hatch",
+        "block/machine/ev_muffler_hatch",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_muffler_hatch",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Recovers waste from machines"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§bRecovery Chance: §f40%"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "Multiblock Sharing §aEnabled"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "DO NOT OBSTRUCT THE OUTPUT!"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_ore_washer",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Ore Washer III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_ore_washer"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_ore_washer"
+      ],
+      "model_parents": [
+        "item/ev_ore_washer",
+        "block/machine/ev_ore_washer",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_ore_washer",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Getting more Byproducts from your Ores"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§9Fluid Capacity: §f32,000 mB"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_ostrum_iodide_buzzsaw",
+      "namespace": "gtceu",
+      "display_name": "Ostrum Iodide Buzzsaw (EV)",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "forge:tools/buzzsaws",
+        "forge:tools/saws",
+        "gtceu:tools/crafting_saws",
+        "minecraft:breaks_decorated_pots",
+        "minecraft:tools",
+        "tfc:deals_slashing_damage",
+        "tfc:saws",
+        "tfc:usable_on_tool_rack",
+        "tfg:artisan_table_tools"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling",
+        "tfc:damage_inputs_shapeless_crafting"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 250,
+        "crafting_shapeless": 330,
+        "greate:milling": 1,
+        "tfc:damage_inputs_shapeless_crafting": 147
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 728,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "afc:crafting/wood/baobab_support",
+        "afc:crafting/wood/teak_support",
+        "createdeco:brass_window_pane",
+        "domum_ornamentum:cactus_extra_silken_pincushion_cactus",
+        "firmaciv:crafting/uncraft_hickory_roofing",
+        "firmaciv:crafting/uncraft_rosewood_roofing",
+        "firmacivplus:crafting/wood/lumber/cypress",
+        "firmacivplus:crafting/wood/lumber/tualang",
+        "greate:shaped/andesite_alloy_shaft_bismuth_bronze",
+        "gtceu:shaped/bolt_saw_aluminium",
+        "gtceu:shaped/bolt_saw_brass",
+        "gtceu:shaped/bolt_saw_diamond",
+        "gtceu:shaped/bolt_saw_inconel_718",
+        "gtceu:shaped/bolt_saw_manganese",
+        "gtceu:shaped/bolt_saw_neutronium",
+        "gtceu:shaped/bolt_saw_rene_41",
+        "gtceu:shaped/bolt_saw_silver",
+        "gtceu:shaped/bolt_saw_tritanium",
+        "gtceu:shaped/bolt_saw_wrought_iron",
+        "gtceu:shaped/gear_wood",
+        "gtceu:shaped/magenta_glass_pane",
+        "gtceu:shaped/small_gear_wood",
+        "gtceu:shaped/stick_long_black_bronze",
+        "gtceu:shaped/stick_long_cupronickel",
+        "gtceu:shaped/stick_long_gem_flawless_diamond",
+        "gtceu:shaped/stick_long_iridium",
+        "gtceu:shaped/stick_long_naquadah_alloy",
+        "gtceu:shaped/stick_long_platinum",
+        "gtceu:shaped/stick_long_rose_gold",
+        "gtceu:shaped/stick_long_thorium_230",
+        "gtceu:shaped/stick_long_tungsten",
+        "gtceu:shaped/stick_long_wrought_iron",
+        "gtceu:shaped/tiny_neutronium_pipe",
+        "gtceu:shaped/treated_wood_stick_saw",
+        "mcw_tfc_aio:roofs/acacia_roofs/acacia_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/birch_roofs/birch_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/douglas_fir_roofs/douglas_fir_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/hickory_roofs/hickory_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/light_gray_terracotta_roofs/light_gray_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/maple_roofs/maple_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/pine_roofs/pine_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/rosewood_roofs/rosewood_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/thatch2_roofs/thatch2_roof_uncraft",
+        "mcw_tfc_aio:roofs/willow_roofs/willow_plank_roof_uncraft",
+        "minecraft:gray_carpet",
+        "minecraft:purple_carpet",
+        "tfc:crafting/wood/birch_support",
+        "tfc:crafting/wood/maple_support",
+        "tfc:crafting/wood/white_cedar_support",
+        "tfg:create/shapeless/crimson_window_pane",
+        "tfg:create/shapeless/oak_window_pane",
+        "tfg:everycompat/shapeless/ash_window_pane",
+        "tfg:everycompat/shapeless/cypress_window_pane",
+        "tfg:everycompat/shapeless/hickory_window_pane",
+        "tfg:everycompat/shapeless/palm_window_pane",
+        "tfg:everycompat/shapeless/tualang_window_pane",
+        "tfg:shaped/ash_crafting_station",
+        "tfg:shaped/cypress_crafting_station",
+        "tfg:shaped/horse_crank_bismuth_bronze",
+        "tfg:shaped/mahogany_crafting_station",
+        "tfg:shaped/sequoia_crafting_station",
+        "tfg:shaped/white_cedar_crafting_station",
+        "tfg:shapeless/aeronos_lumber_from_log",
+        "tfg:shapeless/araucaria_lumber_from_slab",
+        "tfg:shapeless/aspen_lumber_from_log",
+        "tfg:shapeless/bamboo_lumber_from_plank",
+        "tfg:shapeless/beech_lumber_from_log",
+        "tfg:shapeless/birch_lumber_from_slab",
+        "tfg:shapeless/chestnut_lumber_from_log",
+        "tfg:shapeless/crimson_lumber_from_slab",
+        "tfg:shapeless/diorite_pressure_plate_to_button",
+        "tfg:shapeless/eucalyptus_lumber_from_slab",
+        "tfg:shapeless/ginkgo_lumber_from_plank",
+        "tfg:shapeless/glacian_lumber_from_stair",
+        "tfg:shapeless/hickory_lumber_from_log",
+        "tfg:shapeless/ironwood_lumber_from_log",
+        "tfg:shapeless/kapok_lumber_from_stair",
+        "tfg:shapeless/mahogany_lumber_from_plank",
+        "tfg:shapeless/maple_lumber_from_plank",
+        "tfg:shapeless/oak_lumber_from_stair",
+        "tfg:shapeless/phyllite_pressure_plate_to_button",
+        "tfg:shapeless/rosewood_lumber_from_plank",
+        "tfg:shapeless/saw_bamboo_pressure_plate_to_button",
+        "tfg:shapeless/saw_crimson_pressure_plate_to_button",
+        "tfg:shapeless/saw_glacian_pressure_plate_to_button",
+        "tfg:shapeless/saw_mahogany_pressure_plate_to_button",
+        "tfg:shapeless/saw_sequoia_pressure_plate_to_button",
+        "tfg:shapeless/saw_warped_pressure_plate_to_button",
+        "tfg:shapeless/shale_pressure_plate_to_button",
+        "tfg:shapeless/strophar_lumber_from_plank",
+        "tfg:shapeless/sycamore_lumber_from_stair",
+        "tfg:shapeless/tualang_lumber_from_log",
+        "tfg:shapeless/white_cedar_lumber_from_log",
+        "tfg:shapeless/willow_lumber_from_stair",
+        "tfg_tacz:trapdoor_rifle"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ostrum_iodide_ev_buzzsaw"
+      ],
+      "recipe_examples_truncated": true,
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:tool"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Not suitable for harvesting Blocks"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "-1/-1 EU - Tier §5EV"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "61,920 §aCrafting Uses"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "61,919 §eTotal Durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "61,920 §bDurability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Usable as: §fSaw"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Craft with a Repair Kit to repair 25% durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "Craft with a new Tool Head to replace it"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Very Heavy ⇲ Very Large"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Deals §fSlashing§7 Damage"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 1,
+        "minecraft:max_damage": 61919,
+        "minecraft:enchantable": {},
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "has_durability": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_durability_from_component"
+        },
+        "has_enchantments": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_enchantments_from_component"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling",
+            "tfc:damage_inputs_shapeless_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_ostrum_iodide_chainsaw",
+      "namespace": "gtceu",
+      "display_name": "Ostrum Iodide Chainsaw (EV)",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "forge:tools",
+        "forge:tools/chainsaws",
+        "minecraft:axes",
+        "minecraft:breaks_decorated_pots",
+        "minecraft:tools",
+        "tfc:axes",
+        "tfc:axes_that_log",
+        "tfc:deals_slashing_damage",
+        "tfc:saws",
+        "tfc:usable_on_tool_rack",
+        "tfg:silk_harvest_ice"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling",
+        "tfc:damage_inputs_shapeless_crafting"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 2,
+        "crafting_shapeless": 20,
+        "greate:milling": 1,
+        "tfc:damage_inputs_shapeless_crafting": 148
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 171,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "afc:crafting/wood/baobab_support",
+        "afc:crafting/wood/eucalyptus_support",
+        "afc:crafting/wood/hevea_support",
+        "afc:crafting/wood/ipe_support",
+        "afc:crafting/wood/mahogany_support",
+        "afc:crafting/wood/tualang_support",
+        "beneath:crafting/wood/crimson_support",
+        "beneath:crafting/wood/warped_support",
+        "domum_ornamentum:cactus_extra_barrel_cactus",
+        "domum_ornamentum:cactus_extra_prickly_pear_purple",
+        "firmaciv:crafting/uncraft_acacia_roofing",
+        "firmaciv:crafting/uncraft_aspen_roofing",
+        "firmaciv:crafting/uncraft_birch_roofing",
+        "firmaciv:crafting/uncraft_chestnut_roofing",
+        "firmaciv:crafting/uncraft_hickory_roofing",
+        "firmaciv:crafting/uncraft_mangrove_roofing",
+        "firmaciv:crafting/uncraft_oak_roofing",
+        "firmaciv:crafting/uncraft_palm_roofing",
+        "firmaciv:crafting/uncraft_rosewood_roofing",
+        "firmaciv:crafting/uncraft_spruce_roofing",
+        "firmaciv:crafting/uncraft_white_cedar_roofing",
+        "firmacivplus:crafting/wood/lumber/baobab",
+        "firmacivplus:crafting/wood/lumber/crimson",
+        "firmacivplus:crafting/wood/lumber/eucalyptus",
+        "firmacivplus:crafting/wood/lumber/hevea",
+        "firmacivplus:crafting/wood/lumber/ironwood",
+        "firmacivplus:crafting/wood/lumber/teak",
+        "firmacivplus:crafting/wood/lumber/tualang",
+        "greate:milling/integration/gtceu/macerator/macerate_ev_ostrum_iodide_chainsaw",
+        "mcw_tfc_aio:roofs/acacia_roofs/acacia_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/ash_roofs/ash_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/aspen_roofs/aspen_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/base_roofs/base_roof_uncraft",
+        "mcw_tfc_aio:roofs/birch_roofs/birch_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/black_roofs/black_roof_uncraft",
+        "mcw_tfc_aio:roofs/blackwood_roofs/blackwood_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/blackwood_roofs/blackwood_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/brown_concrete_roofs/brown_concrete_roof_uncraft",
+        "mcw_tfc_aio:roofs/chestnut_roofs/chestnut_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/cyan_concrete_roofs/cyan_concrete_roof_uncraft",
+        "mcw_tfc_aio:roofs/cyan_terracotta_roofs/cyan_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/douglas_fir_roofs/douglas_fir_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/gray_roofs/gray_roof_uncraft",
+        "mcw_tfc_aio:roofs/green_concrete_roofs/green_concrete_roof_uncraft",
+        "mcw_tfc_aio:roofs/hickory_roofs/hickory_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/hickory_roofs/hickory_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/kapok_roofs/kapok_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/light_blue_terracotta_roofs/light_blue_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/light_gray_roofs/light_gray_roof_uncraft",
+        "mcw_tfc_aio:roofs/light_gray_terracotta_roofs/light_gray_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/lime_terracotta_roofs/lime_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/magenta_terracotta_roofs/magenta_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/mangrove_roofs/mangrove_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/maple_roofs/maple_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/oak_roofs/oak_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/orange_concrete_roofs/orange_concrete_roof_uncraft",
+        "mcw_tfc_aio:roofs/palm_roofs/palm_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/pine_roofs/pine_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/pink_concrete_roofs/pink_concrete_roof_uncraft",
+        "mcw_tfc_aio:roofs/pink_terracotta_roofs/pink_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/purple_terracotta_roofs/purple_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/red_terracotta_roofs/red_terracotta_roof_uncraft",
+        "mcw_tfc_aio:roofs/rosewood_roofs/rosewood_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/spruce_roofs/spruce_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/sycamore_roofs/sycamore_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/thatch2_roofs/thatch2_roof_uncraft",
+        "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_plank_roof_uncraft",
+        "mcw_tfc_aio:roofs/white_roofs/white_roof_uncraft",
+        "mcw_tfc_aio:roofs/willow_roofs/willow_log_roof_uncraft",
+        "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_roof_uncraft",
+        "minecraft:black_carpet",
+        "minecraft:blue_carpet",
+        "minecraft:cyan_carpet",
+        "minecraft:green_carpet",
+        "minecraft:light_gray_carpet",
+        "minecraft:magenta_carpet",
+        "minecraft:orange_carpet",
+        "minecraft:purple_carpet",
+        "minecraft:white_carpet",
+        "tfc:crafting/vanilla/lectern",
+        "tfc:crafting/wood/ash_support",
+        "tfc:crafting/wood/aspen_support",
+        "tfc:crafting/wood/blackwood_support",
+        "tfc:crafting/wood/douglas_fir_support",
+        "tfc:crafting/wood/kapok_support",
+        "tfc:crafting/wood/mangrove_support",
+        "tfc:crafting/wood/oak_support",
+        "tfc:crafting/wood/pine_support",
+        "tfc:crafting/wood/sequoia_support",
+        "tfc:crafting/wood/sycamore_support",
+        "tfc:crafting/wood/white_cedar_support",
+        "tfg:crafting/strip_hardwood",
+        "tfg:sophisticated_backpacks/shaped/tool_swapper_upgrade"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ostrum_iodide_ev_chainsaw"
+      ],
+      "recipe_examples_truncated": true,
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:tool"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "-1/-1 EU - Tier §5EV"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "15,479 §eTotal Durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "15,480 §bDurability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "104 §dMining Speed"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§eHarvest Level 4 §f(§dNetherite§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§dSculptor:§r Silk harvests Packed Ice"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cBrute: §fDisables Shields"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§4Lumberjack: §fTree Felling"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Usable as: §fAxe"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Craft with a Repair Kit to repair 25% durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "Craft with a new Tool Head to replace it"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Very Heavy ⇲ Very Large"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Deals §fSlashing§7 Damage"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 1,
+        "minecraft:max_damage": 15479,
+        "minecraft:enchantable": {},
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "has_durability": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_durability_from_component"
+        },
+        "has_enchantments": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_enchantments_from_component"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling",
+            "tfc:damage_inputs_shapeless_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_ostrum_iodide_drill",
+      "namespace": "gtceu",
+      "display_name": "Ostrum Iodide Drill (EV)",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "forge:tools",
+        "forge:tools/drills",
+        "minecraft:breaks_decorated_pots",
+        "minecraft:cluster_max_harvestables",
+        "minecraft:hoes",
+        "minecraft:pickaxes",
+        "minecraft:shovels",
+        "minecraft:tools",
+        "tfc:deals_crushing_damage",
+        "tfc:deals_piercing_damage",
+        "tfc:extinguisher",
+        "tfc:sharp_tools",
+        "tfc:usable_on_tool_rack"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shapeless": 8,
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 9,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_ostrum_iodide_drill",
+        "tfg:shapeless/sift_coarse_alfisol_dirt",
+        "tfg:shapeless/sift_coarse_loam_dirt",
+        "tfg:shapeless/sift_coarse_mollisol_dirt",
+        "tfg:shapeless/sift_coarse_oxisol_dirt",
+        "tfg:shapeless/sift_coarse_podzol_dirt",
+        "tfg:shapeless/sift_coarse_sandy_loam_dirt",
+        "tfg:shapeless/sift_coarse_silt_dirt",
+        "tfg:shapeless/sift_coarse_silty_loam_dirt"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ostrum_iodide_ev_drill"
+      ],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:tool"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "-1/-1 EU - Tier §5EV"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "92,879 §eTotal Durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "92,880 §bDurability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "24 §dMining Speed"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§eHarvest Level 4 §f(§dNetherite§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§5Area-of-Effect: §f7x7x7"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§eSpelunker: §fPlaces Torches on Right-Click"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Usable as: §fDrill"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Craft with a Repair Kit to repair 25% durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "Craft with a new Tool Head to replace it"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Medium ⇲ Large"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Deals §fPiercing§7 Damage"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 1,
+        "minecraft:max_damage": 92879,
+        "minecraft:enchantable": {},
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "has_durability": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_durability_from_component"
+        },
+        "has_enchantments": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_enchantments_from_component"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_ostrum_iodide_screwdriver",
+      "namespace": "gtceu",
+      "display_name": "Ostrum Iodide Screwdriver (EV)",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "forge:tools/screwdrivers",
+        "gtceu:tools/crafting_screwdrivers",
+        "tfc:deals_piercing_damage",
+        "tfc:usable_on_tool_rack",
+        "tfg:artisan_table_tools"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling",
+        "kubejs:shaped",
+        "tfc:advanced_shaped_crafting"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 362,
+        "crafting_shapeless": 34,
+        "greate:milling": 1,
+        "kubejs:shaped": 7,
+        "tfc:advanced_shaped_crafting": 20
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 424,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "create_connected:crafting/kinetics/item_silo",
+        "gtceu:shaped/blue_steel_lv_chainsaw",
+        "gtceu:shaped/boron_carbide_hv_buzzsaw",
+        "gtceu:shaped/boron_carbide_hv_wirecutter",
+        "gtceu:shaped/diamond_tipped_mo_50_re_mv_chainsaw",
+        "gtceu:shaped/diamond_tipped_mo_50_re_mv_wrench",
+        "gtceu:shaped/dual_hatch_output_to_input_luv",
+        "gtceu:shaped/duranium_iv_buzzsaw",
+        "gtceu:shaped/duranium_iv_wrench",
+        "gtceu:shaped/electric_pump_ev_silicone_rubber",
+        "gtceu:shaped/electric_pump_iv_silicone_rubber",
+        "gtceu:shaped/electric_pump_lv_styrene_butadiene_rubber",
+        "gtceu:shaped/ev_power_unit_ev_vanadium_battery",
+        "gtceu:shaped/fluid_hatch_4x_input_to_output_uhv",
+        "gtceu:shaped/fluid_hatch_4x_output_to_input_iv",
+        "gtceu:shaped/fluid_hatch_9x_input_to_output_ev",
+        "gtceu:shaped/fluid_hatch_9x_input_to_output_uv",
+        "gtceu:shaped/fluid_hatch_9x_output_to_input_uhv",
+        "gtceu:shaped/fluid_hatch_input_to_output_1",
+        "gtceu:shaped/fluid_hatch_input_to_output_6",
+        "gtceu:shaped/fluid_hatch_output_to_input_0",
+        "gtceu:shaped/fluid_hatch_output_to_input_5",
+        "gtceu:shaped/fluid_hatch_output_to_input_9",
+        "gtceu:shaped/hsse_iv_screwdriver",
+        "gtceu:shaped/hv_power_unit_hv_lithium_battery",
+        "gtceu:shaped/item_bus_input_to_output_2",
+        "gtceu:shaped/item_bus_input_to_output_7",
+        "gtceu:shaped/item_bus_output_to_input_1",
+        "gtceu:shaped/item_bus_output_to_input_6",
+        "gtceu:shaped/iv_power_unit_iv_vanadium_battery",
+        "gtceu:shaped/lv_power_unit_lv_sodium_battery",
+        "gtceu:shaped/me_item_bus_input_to_output",
+        "gtceu:shaped/mv_power_unit_mv_sodium_battery",
+        "gtceu:shaped/naquadah_alloy_iv_drill",
+        "gtceu:shaped/neutronium_zpm_buzzsaw",
+        "gtceu:shaped/neutronium_zpm_wrench",
+        "gtceu:shaped/ostrum_iodide_ev_drill",
+        "gtceu:shaped/red_steel_lv_chainsaw",
+        "gtceu:shaped/red_steel_lv_wrench",
+        "gtceu:shaped/rotor_bronze",
+        "gtceu:shaped/rotor_darmstadtium",
+        "gtceu:shaped/rotor_naquadah_alloy",
+        "gtceu:shaped/rotor_stainless_steel",
+        "gtceu:shaped/rotor_tungsten_steel",
+        "gtceu:shaped/steam_bus_output_to_input",
+        "gtceu:shaped/tungsten_carbide_ev_screwdriver",
+        "gtceu:shaped/turbine_blade_mo_si_b",
+        "gtceu:shaped/turbine_blade_rocket_alloy_t1",
+        "gtceu:shaped/turbine_blade_ultimet",
+        "gtceu:shaped/ultimet_hv_screwdriver",
+        "gtceu:shaped/vanadium_steel_mv_drill",
+        "gtceu:shaped/wire_cutter_bismuth_bronze",
+        "gtceu:shaped/wire_cutter_copper",
+        "gtceu:shaped/wire_cutter_wrought_iron",
+        "gtceu:shaped/wrench_blue_steel",
+        "gtceu:shaped/wrench_steel",
+        "minecraft:kjs/vintageimprovements_helve_hammer_slot_cover",
+        "tfc:crafting/rock/basalt_pressure_plate",
+        "tfc:crafting/rock/conglomerate_pressure_plate",
+        "tfc:crafting/rock/gneiss_pressure_plate",
+        "tfc:crafting/rock/phyllite_pressure_plate",
+        "tfc:crafting/rock/slate_pressure_plate",
+        "tfg:crafting/terminal",
+        "tfg:create/shaped/electron_tube3",
+        "tfg:create/shaped/redstone_contact",
+        "tfg:grapplemod/downgrades/angle",
+        "tfg:immersive_aircraft/shaped/gyroscope_dials",
+        "tfg:radio",
+        "tfg:shaped/acacia_pressure_plate",
+        "tfg:shaped/ad_astra_ostrum_pressure_plate",
+        "tfg:shaped/ash_pressure_plate",
+        "tfg:shaped/beech_pressure_plate",
+        "tfg:shaped/cypress_pressure_plate",
+        "tfg:shaped/flintlock_mechanism_iron",
+        "tfg:shaped/hevea_pressure_plate",
+        "tfg:shaped/mahoe_pressure_plate",
+        "tfg:shaped/oak_pressure_plate",
+        "tfg:shaped/railgun_input_bus_create_2",
+        "tfg:shaped/railgun_input_bus_create_6",
+        "tfg:shaped/railgun_input_convert_1",
+        "tfg:shaped/railgun_input_convert_5",
+        "tfg:shaped/railgun_output_convert_0",
+        "tfg:shaped/railgun_output_convert_4",
+        "tfg:shaped/railgun_output_convert_9",
+        "tfg:shaped/spruce_pressure_plate",
+        "tfg:shaped/titanium_landing_gear",
+        "tfg:shaped/white_cedar_pressure_plate",
+        "tfg:shapeless/brown_locometal_boiler",
+        "tfg:shapeless/dripstone_locometal_boiler",
+        "tfg:shapeless/light_blue_locometal_boiler",
+        "tfg:shapeless/magenta_locometal_boiler",
+        "tfg:shapeless/orange_locometal_boiler",
+        "tfg:shapeless/royal_blue_locometal_boiler",
+        "tfg:shapeless/tuff_locometal_boiler",
+        "tfg:sophisticated_backpacks/shaped/tank_upgrade",
+        "tfg_tacz:trapdoor_scope"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ostrum_iodide_ev_screwdriver"
+      ],
+      "recipe_examples_truncated": true,
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:tool"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Adjusts Covers and Machines"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "-1/-1 EU - Tier §5EV"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "61,920 §aCrafting Uses"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "61,919 §eTotal Durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "61,920 §bDurability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Usable as: §fScrewdriver"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Craft with a Repair Kit to repair 25% durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "Craft with a new Tool Head to replace it"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Medium ⇲ Large"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Deals §fPiercing§7 Damage"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 1,
+        "minecraft:max_damage": 61919,
+        "minecraft:enchantable": {},
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "has_durability": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_durability_from_component"
+        },
+        "has_enchantments": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_enchantments_from_component"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling",
+            "kubejs:shaped",
+            "tfc:advanced_shaped_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_ostrum_iodide_wire_cutter",
+      "namespace": "gtceu",
+      "display_name": "Ostrum Iodide Wire Cutter (EV)",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "forge:tools/wire_cutters",
+        "gtceu:tools/crafting_wire_cutters",
+        "tfc:deals_piercing_damage",
+        "tfc:usable_on_tool_rack",
+        "tfg:artisan_table_tools"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling",
+        "tfc:damage_inputs_shaped_crafting"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 91,
+        "crafting_shapeless": 41,
+        "greate:milling": 1,
+        "tfc:damage_inputs_shaped_crafting": 7
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 140,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_ostrum_iodide_wire_cutter",
+        "gtceu:shaped/aluminium_wire_single",
+        "gtceu:shaped/black_steel_wire_single",
+        "gtceu:shaped/blue_alloy_wire_single",
+        "gtceu:shaped/copper_wire_single",
+        "gtceu:shaped/cupronickel_wire_single",
+        "gtceu:shaped/electric_jetpack_advanced",
+        "gtceu:shaped/electrum_wire_single",
+        "gtceu:shaped/europium_wire_single",
+        "gtceu:shaped/fluid_jetpack",
+        "gtceu:shaped/graphene_wire_single",
+        "gtceu:shaped/hssg_wire_single",
+        "gtceu:shaped/iron_wire_single",
+        "gtceu:shaped/kanthal_wire_single",
+        "gtceu:shaped/lead_wire_single",
+        "gtceu:shaped/maintenance_hatch",
+        "gtceu:shaped/manganese_phosphide_wire_single",
+        "gtceu:shaped/nano_boots",
+        "gtceu:shaped/nano_chestplate_advanced",
+        "gtceu:shaped/nano_leggings",
+        "gtceu:shaped/naquadah_alloy_wire_single",
+        "gtceu:shaped/nichrome_wire_single",
+        "gtceu:shaped/nickel_wire_single",
+        "gtceu:shaped/niobium_titanium_wire_single",
+        "gtceu:shaped/osmium_wire_single",
+        "gtceu:shaped/plunger_rubber",
+        "gtceu:shaped/plunger_silicone_rubber",
+        "gtceu:shaped/red_alloy_wire_single",
+        "gtceu:shaped/rtm_alloy_wire_single",
+        "gtceu:shaped/ruthenium_trinium_americium_neutronate_wire_single",
+        "gtceu:shaped/silver_wire_single",
+        "gtceu:shaped/small_gear_aluminium",
+        "gtceu:shaped/small_gear_black_bronze",
+        "gtceu:shaped/small_gear_blue_steel",
+        "gtceu:shaped/small_gear_bronze",
+        "gtceu:shaped/small_gear_darmstadtium",
+        "gtceu:shaped/small_gear_hsss",
+        "gtceu:shaped/small_gear_iron",
+        "gtceu:shaped/small_gear_osmiridium",
+        "gtceu:shaped/small_gear_red_alloy",
+        "gtceu:shaped/small_gear_stainless_steel",
+        "gtceu:shaped/small_gear_steel",
+        "gtceu:shaped/small_gear_titanium",
+        "gtceu:shaped/small_gear_tungsten_carbide",
+        "gtceu:shaped/small_gear_tungsten_steel",
+        "gtceu:shaped/steel_wire_single",
+        "gtceu:shaped/tin_wire_single",
+        "gtceu:shaped/tritanium_wire_single",
+        "gtceu:shaped/tungsten_steel_wire_single",
+        "gtceu:shaped/uranium_rhodium_dinaquadide_wire_single",
+        "gtceu:shaped/uranium_triplatinum_wire_single",
+        "gtceu:shaped/yttrium_barium_cuprate_wire_single",
+        "gtceu:shapeless/fine_wire_aluminium",
+        "gtceu:shapeless/fine_wire_annealed_copper",
+        "gtceu:shapeless/fine_wire_black_steel",
+        "gtceu:shapeless/fine_wire_cobalt",
+        "gtceu:shapeless/fine_wire_cupronickel",
+        "gtceu:shapeless/fine_wire_electrum",
+        "gtceu:shapeless/fine_wire_europium",
+        "gtceu:shapeless/fine_wire_gold",
+        "gtceu:shapeless/fine_wire_indium_tin_barium_titanium_cuprate",
+        "gtceu:shapeless/fine_wire_iridium",
+        "gtceu:shapeless/fine_wire_magnesium_diboride",
+        "gtceu:shapeless/fine_wire_manganese_phosphide",
+        "gtceu:shapeless/fine_wire_naquadah",
+        "gtceu:shapeless/fine_wire_naquadria",
+        "gtceu:shapeless/fine_wire_osmiridium",
+        "gtceu:shapeless/fine_wire_palladium",
+        "gtceu:shapeless/fine_wire_platinum",
+        "gtceu:shapeless/fine_wire_rhodium",
+        "gtceu:shapeless/fine_wire_ruridit",
+        "gtceu:shapeless/fine_wire_samarium_iron_arsenic_oxide",
+        "gtceu:shapeless/fine_wire_silver",
+        "gtceu:shapeless/fine_wire_tantalum",
+        "gtceu:shapeless/fine_wire_tin",
+        "gtceu:shapeless/fine_wire_tungsten_bismuth_oxide_composite",
+        "gtceu:shapeless/fine_wire_tungsten_steel",
+        "gtceu:shapeless/fine_wire_uranium_triplatinum",
+        "gtceu:shapeless/fine_wire_yttrium_barium_cuprate",
+        "gtceu:shapeless/fine_wire_zirconium",
+        "tfc:kjs/damage/shaped/fishing_net/brass",
+        "tfc:kjs/damage/shaped/fishing_net/invar",
+        "tfc:kjs/damage/shaped/fishing_net/magnalium",
+        "tfc:kjs/damage/shaped/fishing_net/rose_gold",
+        "tfc:kjs/damage/shaped/fishing_net/tin_alloy",
+        "tfg:create/shaped/electron_tube",
+        "tfg:railways/shaped/track_coupler",
+        "tfg:shaped/flintlock_mechanism_iron",
+        "tfg:shaped/railgun_input_bus_create_0",
+        "tfg:shaped/railgun_input_bus_create_1",
+        "tfg:shaped/railgun_input_bus_create_3",
+        "tfg:shaped/railgun_input_bus_create_4",
+        "tfg:shaped/railgun_input_bus_create_6",
+        "tfg:shaped/railgun_input_bus_create_7",
+        "tfg:shaped/railgun_input_bus_create_9",
+        "tfg:shaped/rebar_support"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ostrum_iodide_ev_wirecutter"
+      ],
+      "recipe_examples_truncated": true,
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:tool"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "-1/-1 EU - Tier §5EV"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "3,870 §aCrafting Uses"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "15,479 §eTotal Durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "15,480 §bDurability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "24 §dMining Speed"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§eHarvest Level 4 §f(§dNetherite§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Usable as: §fWire Cutter"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Craft with a Repair Kit to repair 25% durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "Craft with a new Tool Head to replace it"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Medium ⇲ Large"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Deals §fPiercing§7 Damage"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 1,
+        "minecraft:max_damage": 15479,
+        "minecraft:enchantable": {},
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "has_durability": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_durability_from_component"
+        },
+        "has_enchantments": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_enchantments_from_component"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling",
+            "tfc:damage_inputs_shaped_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_ostrum_iodide_wrench",
+      "namespace": "gtceu",
+      "display_name": "Ostrum Iodide Wrench (EV)",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "create:chain_rideable",
+        "forge:tools/wrench",
+        "forge:tools/wrenches",
+        "framedblocks:disable_intangible",
+        "gtceu:tools/crafting_wrenches",
+        "tfc:deals_crushing_damage",
+        "tfc:usable_on_tool_rack"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling",
+        "kubejs:shaped"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 452,
+        "greate:milling": 1,
+        "kubejs:shaped": 12
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 465,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "create:shaped/chain_conveyor",
+        "greate:milling/integration/gtceu/macerator/macerate_ev_ostrum_iodide_wrench",
+        "greate:shaped/aluminium_mechanical_saw",
+        "greate:shaped/rhodium_plated_palladium_whisk",
+        "greate:shaped/stainless_steel_whisk",
+        "greate:shaped/steel_mechanical_pump",
+        "greate:shaped/titanium_mechanical_mixer",
+        "gtceu:shaped/blue_steel_buzzsaw",
+        "gtceu:shaped/blue_steel_lv_wrench",
+        "gtceu:shaped/boron_carbide_hv_wirecutter",
+        "gtceu:shaped/casing_bronze_bricks",
+        "gtceu:shaped/casing_invar_heatproof",
+        "gtceu:shaped/casing_stainless_clean",
+        "gtceu:shaped/casing_steel_solid",
+        "gtceu:shaped/casing_tungstensteel_gearbox",
+        "gtceu:shaped/casing_uv",
+        "gtceu:shaped/diamond_tipped_mo_50_re_mv_buzzsaw",
+        "gtceu:shaped/diamond_tipped_mo_50_re_mv_wrench",
+        "gtceu:shaped/duranium_iv_wirecutter",
+        "gtceu:shaped/electric_pump_hv_rubber",
+        "gtceu:shaped/electric_pump_lv_rubber",
+        "gtceu:shaped/electric_pump_mv_styrene_butadiene_rubber",
+        "gtceu:shaped/frame_aluminium",
+        "gtceu:shaped/frame_bronze",
+        "gtceu:shaped/frame_hastelloy_c_276",
+        "gtceu:shaped/frame_hsss",
+        "gtceu:shaped/frame_mo_50_re",
+        "gtceu:shaped/frame_rhodium_plated_palladium",
+        "gtceu:shaped/frame_tritanium",
+        "gtceu:shaped/frame_watertight_steel",
+        "gtceu:shaped/gear_bronze",
+        "gtceu:shaped/gear_hsse",
+        "gtceu:shaped/gear_iron",
+        "gtceu:shaped/gear_osmiridium",
+        "gtceu:shaped/gear_rocket_alloy_t1",
+        "gtceu:shaped/gear_silicone_rubber",
+        "gtceu:shaped/gear_trinium",
+        "gtceu:shaped/gear_ultimet",
+        "gtceu:shaped/hsse_iv_chainsaw",
+        "gtceu:shaped/hsse_iv_wrench",
+        "gtceu:shaped/huge_copper_pipe",
+        "gtceu:shaped/huge_electrum_pipe",
+        "gtceu:shaped/huge_niobium_titanium_pipe",
+        "gtceu:shaped/huge_tin_pipe",
+        "gtceu:shaped/hv_magnet_hv_cadmium_battery",
+        "gtceu:shaped/large_duct_steel",
+        "gtceu:shaped/large_naquadah_pipe",
+        "gtceu:shaped/large_steel_pipe",
+        "gtceu:shaped/large_tungsten_steel_pipe",
+        "gtceu:shaped/maintenance_hatch",
+        "gtceu:shaped/medium_duranium_pipe",
+        "gtceu:shaped/medium_niobium_titanium_pipe",
+        "gtceu:shaped/medium_tin_pipe",
+        "gtceu:shaped/minecart_steel",
+        "gtceu:shaped/naquadah_alloy_iv_drill",
+        "gtceu:shaped/neutronium_zpm_chainsaw",
+        "gtceu:shaped/ostrum_iodide_ev_buzzsaw",
+        "gtceu:shaped/ostrum_iodide_ev_wirecutter",
+        "gtceu:shaped/red_steel_lv_screwdriver",
+        "gtceu:shaped/small_duct_steel",
+        "gtceu:shaped/small_naquadah_pipe",
+        "gtceu:shaped/small_steel_pipe",
+        "gtceu:shaped/small_ultimet_pipe",
+        "gtceu:shaped/tiny_iridium_pipe",
+        "gtceu:shaped/tiny_stainless_steel_pipe",
+        "gtceu:shaped/tiny_tungsten_steel_pipe",
+        "gtceu:shaped/tungsten_carbide_ev_wirecutter",
+        "gtceu:shaped/ultimet_hv_screwdriver",
+        "gtceu:shaped/ulv_output_bus",
+        "gtceu:shaped/vanadium_steel_mv_screwdriver",
+        "tfg:create/shaped/andesite_funnel",
+        "tfg:create/shaped/brass_funnel_leather",
+        "tfg:create/shaped/contraption_controls",
+        "tfg:create/shaped/factory_gauge",
+        "tfg:create/shaped/mechanical_arm",
+        "tfg:create/shaped/mechanical_plough",
+        "tfg:create/shaped/rotation_speed_controller",
+        "tfg:grapplemod/downgrades/vertical_throwing_angle",
+        "tfg:immersive_aircraft/shaped/gyroscope_dials",
+        "tfg:shaped/aluminium_gearbox",
+        "tfg:shaped/andesite_alloy_vertical_gearbox",
+        "tfg:shaped/railgun_input_bus_create_1",
+        "tfg:shaped/railgun_input_bus_create_6",
+        "tfg:shaped/redblu_steel_hull_reinforcement",
+        "tfg:shaped/stainless_steel_gearbox",
+        "tfg:shaped/steam_bloomery",
+        "tfg:shaped/titanium_gearbox",
+        "tfg:sophisticated_backpacks/shaped/tank_upgrade",
+        "tfg:temp/large_fluid_pipe_lead",
+        "tfg:temp/large_item_pipe_osmium",
+        "tfg:temp/normal_fluid_pipe_gold",
+        "tfg:temp/normal_item_pipe_cobalt",
+        "tfg:temp/small_fluid_pipe_aluminium",
+        "tfg:temp/small_item_pipe_brass",
+        "tfg:temp/small_item_pipe_rose_gold",
+        "tfg:temp/tiny_fluid_pipe_ostrum"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ostrum_iodide_ev_wrench"
+      ],
+      "recipe_examples_truncated": true,
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:tool"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Hold left click to dismantle Machines"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "-1/-1 EU - Tier §5EV"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "15,480 §aCrafting Uses"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "15,479 §eTotal Durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "15,480 §bDurability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "104 §dMining Speed"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§eHarvest Level 4 §f(§dNetherite§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§2Mechanic: §fRotates Blocks"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aConfiguration Mode:§r §dBoth (Fluid And Item)§r"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Usable as: §fWrench"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§8Craft with a Repair Kit to repair 25% durability"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "Craft with a new Tool Head to replace it"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Very Heavy ⇲ Very Large"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Deals §fCrushing§7 Damage"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 1,
+        "minecraft:max_damage": 15479,
+        "minecraft:enchantable": {},
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "has_durability": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_durability_from_component"
+        },
+        "has_enchantments": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_enchantments_from_component"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling",
+            "kubejs:shaped"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_output_bus",
+      "namespace": "gtceu",
+      "display_name": "§5EV Output Bus",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 1,
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 2,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_output_bus",
+        "gtceu:shaped/item_bus_output_to_input_4"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/item_bus_input_to_output_4"
+      ],
+      "model_parents": [
+        "item/ev_output_bus",
+        "block/machine/ev_output_bus",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_output_bus",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Item Output for Multiblocks"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§6Item Slots: §f25"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_output_hatch",
+      "namespace": "gtceu",
+      "display_name": "§5EV Output Hatch",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 3,
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 4,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_output_hatch",
+        "gtceu:shaped/fluid_export_hatch_4x_ev",
+        "gtceu:shaped/fluid_export_hatch_9x_ev",
+        "gtceu:shaped/fluid_hatch_output_to_input_4"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/fluid_hatch_input_to_output_4"
+      ],
+      "model_parents": [
+        "item/ev_output_hatch",
+        "block/machine/ev_output_hatch",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_output_hatch",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Fluid Output for Multiblocks"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§9Fluid Capacity: §f128,000 mB"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_output_hatch_4x",
+      "namespace": "gtceu",
+      "display_name": "§5EV Quadruple Output Hatch",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 1,
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 2
+      },
+      "recipe_ingredient_count": 2,
+      "recipe_output_count": 2,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_output_hatch_4_x",
+        "gtceu:shaped/fluid_hatch_4x_output_to_input_ev"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/fluid_export_hatch_4x_ev",
+        "gtceu:shaped/fluid_hatch_4x_input_to_output_ev"
+      ],
+      "model_parents": [
+        "item/ev_output_hatch_4x",
+        "block/machine/ev_output_hatch_4x",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_output_hatch_4x",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Fluid Output for Multiblocks"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§9Fluid Capacity: §f4 §7Tanks, §f32,000 mB §7each"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_output_hatch_9x",
+      "namespace": "gtceu",
+      "display_name": "§5EV Nonuple Output Hatch",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 1,
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 2
+      },
+      "recipe_ingredient_count": 2,
+      "recipe_output_count": 2,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_output_hatch_9_x",
+        "gtceu:shaped/fluid_hatch_9x_output_to_input_ev"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/fluid_export_hatch_9x_ev",
+        "gtceu:shaped/fluid_hatch_9x_input_to_output_ev"
+      ],
+      "model_parents": [
+        "item/ev_output_hatch_9x",
+        "block/machine/ev_output_hatch_9x",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_output_hatch_9x",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Fluid Output for Multiblocks"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§9Fluid Capacity: §f9 §7Tanks, §f16,000 mB §7each"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_packer",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Packer III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_packer"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_packer"
+      ],
+      "model_parents": [
+        "item/ev_packer",
+        "block/machine/ev_packer",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_packer",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Puts things into and Grabs things out of Boxes"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_polarizer",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Polarizer III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling",
+        "kubejs:shaped"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1,
+        "kubejs:shaped": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 2,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_polarizer",
+        "tfg:gravity_normalizer"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_polarizer"
+      ],
+      "model_parents": [
+        "item/ev_polarizer",
+        "block/machine/ev_polarizer",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_polarizer",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Bipolarising your Magnets"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling",
+            "kubejs:shaped"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_power_unit",
+      "namespace": "gtceu",
+      "display_name": "EV Power Unit",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "tfclunchbox:electric_batteries"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 12,
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 2
+      },
+      "recipe_ingredient_count": 13,
+      "recipe_output_count": 2,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_power_unit",
+        "gtceu:shaped/ostrum_iodide_ev_buzzsaw",
+        "gtceu:shaped/ostrum_iodide_ev_chainsaw",
+        "gtceu:shaped/ostrum_iodide_ev_drill",
+        "gtceu:shaped/ostrum_iodide_ev_screwdriver",
+        "gtceu:shaped/ostrum_iodide_ev_wirecutter",
+        "gtceu:shaped/ostrum_iodide_ev_wrench",
+        "gtceu:shaped/tungsten_carbide_ev_buzzsaw",
+        "gtceu:shaped/tungsten_carbide_ev_chainsaw",
+        "gtceu:shaped/tungsten_carbide_ev_drill",
+        "gtceu:shaped/tungsten_carbide_ev_screwdriver",
+        "gtceu:shaped/tungsten_carbide_ev_wirecutter",
+        "gtceu:shaped/tungsten_carbide_ev_wrench"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_power_unit_ev_vanadium_battery",
+        "gtceu:shaped/ev_power_unit_lapotron_crystal"
+      ],
+      "model_parents": [
+        "item/ev_power_unit",
+        "item/generated"
+      ],
+      "creative_tabs": [
+        "gtceu:item"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "0/6,400,000 EU - Tier §5EV"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Very Light ⇲ Very Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 64,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_pump",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Pump III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_pump"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_pump"
+      ],
+      "model_parents": [
+        "item/ev_pump",
+        "block/machine/ev_pump",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_pump",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7The best way to empty Oceans!"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§9Fluid Capacity: §f64,000 mB"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§bWorking Area: §f64x64"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_robot_arm",
+      "namespace": "gtceu",
+      "display_name": "EV Robot Arm",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "gtceu:robot_arms"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "crafting",
+        "greate:milling",
+        "kubejs:shaped"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 5,
+        "greate:milling": 1,
+        "kubejs:shaped": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 7,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_robot_arm",
+        "gtceu:shaped/ev_assembler",
+        "gtceu:shaped/ev_circuit_assembler",
+        "gtceu:shaped/ev_food_oven",
+        "gtceu:shaped/ev_packer",
+        "gtmutils:shaped/ev_auto_charger_4x",
+        "tfg:shaped/nuclear_fuel_factory"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/robot_arm_ev"
+      ],
+      "model_parents": [
+        "item/ev_robot_arm",
+        "item/generated"
+      ],
+      "creative_tabs": [
+        "gtceu:item"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Limits §fItems§7 to specific quantities as §fCover§7."
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§bTransfer Rate: §f3 stacks/s"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Very Light ⇲ Very Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 64,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "greate:milling",
+            "kubejs:shaped"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_rock_crusher",
+      "namespace": "gtceu",
+      "display_name": "§5Advanced Rock Crusher III§r",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "recipe_ingredient_count": 1,
+      "recipe_output_count": 1,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_rock_crusher"
+      ],
+      "recipe_output_examples": [
+        "gtceu:shaped/ev_rock_crusher"
+      ],
+      "model_parents": [
+        "item/ev_rock_crusher",
+        "block/machine/ev_rock_crusher",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_rock_crusher",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "§7Place Water and Lava horizontally adjacent"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§aVoltage IN: §f2,048 EU/t (§5EV§f)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "§cEnergy Capacity: §r131,072 EU"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "This Machine will not explode when exposed to the Elements"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "gtceu:ev_rotor_holder",
+      "namespace": "gtceu",
+      "display_name": "§5EV Rotor Holder",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "greate:milling",
+        "kubejs:shaped"
+      ],
+      "recipe_consumption_by_type": {
+        "greate:milling": 1,
+        "kubejs:shaped": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 2,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_ev_rotor_holder",
+        "tfg:shaped/bioculture_rotor_primary"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [
+        "item/ev_rotor_holder",
+        "block/machine/ev_rotor_holder",
+        "block/block"
+      ],
+      "creative_tabs": [
+        "gtceu:machine"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:ev_rotor_holder",
+        "block_tags": [
+          "forge:mineable/wrench",
+          "gtceu:mineable/pickaxe_or_wrench"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Multiblock Sharing §4Disabled"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "greate:milling",
+            "kubejs:shaped"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    }
+  ]
+}
+# Final response checklist
+- Respond with one strict JSON object matching the expected output shape above. No markdown, no prose, no comments.
+- Include every item id from `items` exactly once. If output gets long, shorten rationales instead of dropping items.
+- `schema_proposals`, `vocabulary_proposals`, `corrections`, and `fill_ins` are top-level arrays only. Never put them inside `<item_id>.facets`; every key inside `facets` must be a real facet id.
+- Use `ambiguous: true` only for single-value enum/free_text facets. Never put `ambiguous` on multi-value facets such as `origin`, `activity`, `organization_group`, or `mod_subsystem`.
+- Pick `role` from the player's storage-home mental model, not from recipe participation. Machine parts, machine components, hulls, casings, pumps, presses, pipes, cables, and placed processing parts are mechanisms or functional blocks, not generic materials, even when they are ingredients.
+- Keep high-value inventory semantics first: `role`, `primary_uses`, `carry_frequency`, and `rarity` should be present unless the item data is genuinely unusable.
+- Do not re-emit `stage2_facets` in `facets`. Use `corrections` only for clearly wrong stage-2 values; use `fill_ins` only for missing deterministic facets and only with values allowed by the schema.
+- Vocabulary-backed facets may use only ids listed for that exact facet in `Pack facet vocabulary`. If that facet has no section, or no listed id fits, omit the facet and add `vocabulary_proposals` when a useful missing value is clear. Copy accepted ids exactly as printed; do not rewrite slashes, underscores, namespace, or pack prefix.
+- Do not move ids across vocabulary-backed facets. A good `mod_subsystem` id such as `modid:kinetics` is not an `organization_group` unless that exact id is listed under `organization_group`; use the subsystem facet, omit the organization group, or add a vocabulary proposal for the missing storage bucket.
+- For `organization_group`, use an accepted storage-bucket id when one clearly matches the item's manual storage family. Do not omit an obvious bucket such as molds, unprocessed ores, seeds, logs, cloth, or voltage components just because `role`, `form`, or `material_family` is already present.
+- Emit `mod_subsystem` only when the item itself belongs to a listed subsystem. Never assign it just because the item is consumed or produced by a subsystem recipe.
+- Optional low-evidence facets are better omitted than guessed.

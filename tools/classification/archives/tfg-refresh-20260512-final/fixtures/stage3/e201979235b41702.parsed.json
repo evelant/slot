@@ -1,0 +1,2324 @@
+{
+  "items": {
+    "gtceu:granite_realgar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_red_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust item used as crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "pottery or dye?"
+          ],
+          "signal": "inferred",
+          "rationale": "Generic dust material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Generic item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Likely produced in moderate amounts"
+        }
+      }
+    },
+    "gtceu:granite_red_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_rock_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_ruby_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_saltpeter_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_scheelite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_silver_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_soapstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_sodalite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_spessartine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_sphalerite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_spodumene_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_stibnite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_sulfur_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_talc_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_tantalite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_tarkianite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_tetrahedrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_thorium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption type",
+          "rationale": "Ore consumed in milling only"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption type",
+          "rationale": "Input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption type",
+          "rationale": "Processed at mill"
+        }
+      }
+    },
+    "gtceu:granite_tin_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    },
+    "gtceu:granite_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed into crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting material",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore and processes it"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity field"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Underground in granite, a common stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore is mined"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "All unprocessed ores stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Ore consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption types",
+          "rationale": "Processed at these stations"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

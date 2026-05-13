@@ -1,0 +1,1231 @@
+{
+  "items": {
+    "tfc:rock/smooth/basalt_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs placed as structure."
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "inferred",
+          "rationale": "Rock type from id and tags."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried during construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block, easily crafted."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing buildings."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing stone structures",
+            "Crafting into other stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block with stonecutter uses."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs grouped together."
+        }
+      }
+    },
+    "tfc:rock/smooth/basalt_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall placed as structure."
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "inferred",
+          "rationale": "Rock type from id and tags."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried during construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing structures."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing stone walls",
+            "Crafting into other stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block with stonecutter uses."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Walls grouped together."
+        }
+      }
+    },
+    "tfc:rock/smooth/chalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block placed as building material."
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "inferred",
+          "rationale": "Rock type from id and tags."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material for construction projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted stone block."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build stone structures."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing buildings",
+            "Crafting into slabs, stairs, walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block for stone variant crafting."
+        }
+      }
+    },
+    "tfc:rock/smooth/chalk_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab placed as structure component."
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "inferred",
+          "rationale": "Rock type from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building steps and roofs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building steps and half-blocks",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slabs grouped together."
+        }
+      }
+    },
+    "tfc:rock/smooth/chalk_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs for building."
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing staircases",
+            "Stonecutter crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/chalk_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall for building."
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences/walls",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Walls grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/chert": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone building block."
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "Rock type from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Base stone block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/chert",
+          "rationale": "Chert stone group."
+        }
+      }
+    },
+    "tfc:rock/smooth/chert_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab."
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-blocks",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slabs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/chert_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs."
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing staircases",
+            "Stonecutter crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/chert_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall."
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences/walls",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Walls grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/claystone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block."
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/claystone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/claystone",
+          "rationale": "Claystone stone group."
+        }
+      }
+    },
+    "tfc:rock/smooth/claystone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab."
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-blocks",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slabs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/claystone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs."
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing staircases",
+            "Stonecutter crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/claystone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall."
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences/walls",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Walls grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block."
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/conglomerate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/conglomerate",
+          "rationale": "Conglomerate stone group."
+        }
+      }
+    },
+    "tfc:rock/smooth/conglomerate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab."
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-blocks",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slabs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/conglomerate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs."
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing staircases",
+            "Stonecutter crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/conglomerate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall."
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences/walls",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Walls grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/dacite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block."
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dacite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/dacite",
+          "rationale": "Dacite stone group."
+        }
+      }
+    },
+    "tfc:rock/smooth/dacite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab."
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-blocks",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slabs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/dacite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs."
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing staircases",
+            "Stonecutter crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/dacite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall."
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences/walls",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Walls grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/diorite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block."
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/diorite",
+          "rationale": "Diorite stone group."
+        }
+      }
+    },
+    "tfc:rock/smooth/diorite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab."
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-blocks",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slabs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/diorite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs."
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing staircases",
+            "Stonecutter crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs grouped."
+        }
+      }
+    },
+    "tfc:rock/smooth/diorite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall."
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "inferred",
+          "rationale": "Rock type."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences/walls",
+            "Stonecutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Walls grouped."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "tfc:rock/smooth/chalk",
+      "facet": "organization_group",
+      "label": "Chalk",
+      "proposed_id": "pack:tfg/chalk",
+      "rationale": "Missing storage bucket for chalk stone blocks.",
+      "evidence": "Item is smooth chalk, belonging with other chalk stone types."
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

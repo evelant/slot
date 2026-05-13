@@ -1,0 +1,794 @@
+{
+  "values": [
+    {
+      "id": "tfc:steel",
+      "label": "Steel",
+      "state": "accepted",
+      "description": "Steel is a major material milestone unlocking advanced tools and machinery.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/iron_age",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/metal/anvil/steel",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:bronze",
+      "label": "Bronze",
+      "state": "accepted",
+      "description": "Bronze age is a key progression tier enabling bronze tools and equipment.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/bronze_age",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/steel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:moon",
+      "label": "Moon",
+      "state": "accepted",
+      "description": "Landing on the Moon is a major dimension unlock.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:moon",
+          "confidence": 0.65
+        },
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/hv__high_voltage",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:venus",
+      "label": "Venus",
+      "state": "accepted",
+      "description": "Landing on Venus is a dimension unlock requiring advanced heat protection.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:venus",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/surviving_mars/venus_and_mercury",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:mars",
+      "label": "Mars",
+      "state": "accepted",
+      "description": "Landing on Mars is a key progression step for late-game resources.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:mars",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/surviving_mars/trophies",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:mercury",
+      "label": "Mercury",
+      "state": "accepted",
+      "description": "Landing on Mercury is a hot planet unlock.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:mercury",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/surviving_mars/venus_and_mercury",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:blue_steel",
+      "label": "Blue Steel",
+      "state": "accepted",
+      "description": "Blue Steel is a top-tier metal requiring advanced alloying.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/blue_steel",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/steel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:black_steel",
+      "label": "Black Steel",
+      "state": "accepted",
+      "description": "Black Steel is an intermediate steel variant required for high-tier alloys.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/black_steel",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/steel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:black_bronze",
+      "label": "Black Bronze",
+      "state": "rejected",
+      "description": "Black Bronze is a bronze variant, not a broad progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/black_bronze_horse_armor",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:beneath",
+      "label": "Processing Items using Deployers",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/deployer_processing",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:anvil/working/guide",
+      "label": "Anvil Working Guide",
+      "state": "rejected",
+      "description": "A guide entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/anvil_working_guide",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:mechanical_power",
+      "label": "Mechanical Power",
+      "state": "rejected",
+      "description": "Mechanical power is a system/tutorial, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/mechanical_power",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:space",
+      "label": "Astronaut",
+      "state": "rejected",
+      "description": "Crafting a space suit is an item milestone, not a gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:astronaut",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:setting/up/steam/engines",
+      "label": "Setting up Steam Engines",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/steam_engine",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:space",
+      "label": "Setting up Steam Engines",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/steam_engine",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:space",
+      "label": "Crankshafts",
+      "state": "rejected",
+      "description": "Crankshafts are a mechanical component, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/crankshaft",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:beneath",
+      "label": "The Nether...?",
+      "state": "accepted",
+      "description": "The Beneath is an underground dimension with unique resources.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/categories/beneath",
+          "confidence": 0.7
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/beneath",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:mechanical/power",
+      "label": "Mechanical Power",
+      "state": "rejected",
+      "description": "Mechanical power is a system/tutorial, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/mechanical_power",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:red_steel",
+      "label": "Red Steel",
+      "state": "accepted",
+      "description": "Red Steel is a top-tier metal alongside Blue Steel.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/red_steel",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/categories/mechanics",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:wrought_iron",
+      "label": "Wrought Iron",
+      "state": "accepted",
+      "description": "Wrought Iron is a key milestone leading to the Iron Age and steel.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/iron_age",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:story/iron_armor",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:bismuth_bronze",
+      "label": "Bismuth Bronze",
+      "state": "rejected",
+      "description": "Bismuth Bronze is a bronze variant, not a broad progression gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/bismuth_bronze_horse_armor",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:crucible",
+      "label": "The Crucible",
+      "state": "rejected",
+      "description": "The Crucible is a device, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/crucible",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/crucible",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:steel",
+      "label": "Steel Ingot From Alloying Iron Ingot And Coals",
+      "state": "rejected",
+      "description": "A recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:smart_blasting",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:blast_furnace",
+      "label": "Blast Furnace",
+      "state": "accepted",
+      "description": "The Blast Furnace is a critical multiblock for steel production.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/blast_furnace",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/blast_furnace",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create_connected:space",
+      "label": "Connecting to inventories with Inventory Access Port",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/inventory_access_port",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:bismuth/bronze",
+      "label": "Bismuth Bronze",
+      "state": "rejected",
+      "description": "Variant label, not a broad gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfc:metal/chisel_head/bismuth_bronze",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:black/bronze",
+      "label": "Black Bronze",
+      "state": "rejected",
+      "description": "Variant label, not a broad gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfc:metal/chisel_head/black_bronze",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:black/steel",
+      "label": "Black Steel",
+      "state": "accepted",
+      "description": "Black Steel is an intermediate steel variant.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfc:metal/chisel_head/black_steel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:blue/steel",
+      "label": "Blue Steel",
+      "state": "accepted",
+      "description": "Blue Steel is a top-tier metal.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfc:metal/chisel_head/blue_steel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:red/steel",
+      "label": "Red Steel",
+      "state": "accepted",
+      "description": "Red Steel is a top-tier metal.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfc:metal/chisel_head/red_steel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:filling/items/using/a/spout",
+      "label": "Filling Items using a Spout",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/spout_filling",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:steel",
+      "label": "Using Empty Blaze Burners",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/empty_blaze_burner",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:using/empty/blaze/burners",
+      "label": "Using Empty Blaze Burners",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/empty_blaze_burner",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:beneath",
+      "label": "Processing Items with the Laser",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/laser",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:processing/items/with/the/laser",
+      "label": "Processing Items with the Laser",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/laser",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:blast/furnace",
+      "label": "Blast Furnace",
+      "state": "accepted",
+      "description": "The Blast Furnace is a critical multiblock for steel production.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/blast_furnace",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:processing/items/using/deployers",
+      "label": "Processing Items using Deployers",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/deployer_processing",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:processing/items/with/the/mechanical/press",
+      "label": "Processing Items with the Mechanical Press",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_press",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:temperature/management",
+      "label": "Temperature Management",
+      "state": "rejected",
+      "description": "A guide entry about temperature, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/cooling",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create_connected:connecting/to/inventories/with/inventory/access/port",
+      "label": "Connecting to inventories with Inventory Access Port",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/inventory_access_port",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:more/fertilizer/options",
+      "label": "More Fertilizer Options",
+      "state": "rejected",
+      "description": "A guide entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/more_fertilizer",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:the/hellforge",
+      "label": "The Hellforge",
+      "state": "rejected",
+      "description": "A multiblock station, not a broad progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/hellforge",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:nether",
+      "label": "Tracks and the Nether",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/track_portal",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:tracks/and/the/nether",
+      "label": "Tracks and the Nether",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/track_portal",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "firmalife:steel",
+      "label": "Stainless Steel Greenhouse Panel Roof",
+      "state": "rejected",
+      "description": "Stainless steel is a material, but evidence is thin and not a major gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "firmalife:crafting/greenhouse/stainless_steel_greenhouse_panel_roof",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create_connected:connecting/two/inventories/with/inventory/bridge",
+      "label": "Connecting two inventories with Inventory Bridge",
+      "state": "rejected",
+      "description": "A tutorial entry, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/inventory_bridge",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:orbit",
+      "label": "Space Station",
+      "state": "accepted",
+      "description": "Building a space station in orbit is a progression milestone.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:recipes/space_stations/space_station/moon_orbit_space_station",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_moon/space_station",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:casting/with/channels",
+      "label": "Casting with Channels",
+      "state": "rejected",
+      "description": "A guide entry about channel casting, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfcchannelcasting/channel_casting",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

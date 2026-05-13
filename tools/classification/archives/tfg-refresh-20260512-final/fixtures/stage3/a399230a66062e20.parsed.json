@@ -1,0 +1,1043 @@
+{
+  "items": {
+    "railways:granite_locometal_flywheel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative train-themed building block, placed as structural decor"
+        },
+        "primary_uses": {
+          "values": [
+            "building train structures",
+            "decorating with locometal"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for train-themed builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_locometal_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural pillar block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building train structures",
+            "decorating with locometal"
+          ],
+          "signal": "inferred",
+          "rationale": "used as vertical structural element"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_locometal_rung_ladder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "climbable block, part of train structure"
+        },
+        "primary_uses": {
+          "values": [
+            "climbing in train builds",
+            "decorative ladder"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for vertical access"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative train smokebox block, purely aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating locomotives",
+            "building train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for locomotive look"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_locometal_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor as opening in train structure"
+        },
+        "primary_uses": {
+          "values": [
+            "creating openings in builds",
+            "decorative trapdoor"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as functional opening"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_locometal_vent": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative vent block, builds train detail"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating train structures",
+            "building detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for texture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_paint_pitcher": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool used to paint locometal blocks, not placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "painting locometal blocks",
+            "applying colors to trains"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip shows paint level",
+          "rationale": "player uses to recolor blocks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried while painting train builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to apply paint during building"
+        }
+      }
+    },
+    "railways:granite_plated_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative plated block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building train structures",
+            "decorating with locometal"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as wall/floor block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative riveted block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating train structures",
+            "building detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for industrial look"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_round_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window block for train structures"
+        },
+        "primary_uses": {
+          "values": [
+            "adding windows to builds",
+            "decorative pane"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as transparent section"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_single_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window block for train structures"
+        },
+        "primary_uses": {
+          "values": [
+            "adding windows to builds",
+            "decorative pane"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as transparent section"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative slashed block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating train structures",
+            "building detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for texture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_sliding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "sliding door as opening in train structure"
+        },
+        "primary_uses": {
+          "values": [
+            "creating door openings in builds",
+            "decorative sliding door"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as functional opening"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_two_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window block for train structures"
+        },
+        "primary_uses": {
+          "values": [
+            "adding windows to builds",
+            "decorative pane"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as transparent section"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:granite_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative wrapped smokebox block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating locomotives",
+            "building train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for locomotive look"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_brass_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative wrapped block, part of locometal palette"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating train structures",
+            "building with locometal"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for wrapped texture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_brass_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative boiler block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating locomotives",
+            "building train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for boiler look"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_conductor_cap": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "wearable head item, part of conductor uniform"
+        },
+        "primary_uses": {
+          "values": [
+            "wearing as conductor hat",
+            "roleplaying train conductor"
+          ],
+          "signal": "inferred",
+          "rationale": "equipped in head slot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "worn occasionally during train use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common cosmetic item"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for aesthetic roleplay"
+        }
+      }
+    },
+    "railways:gray_copper_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative wrapped block, part of locometal palette"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating train structures",
+            "building with locometal"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for wrapped texture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_copper_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative boiler block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating locomotives",
+            "building train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for boiler look"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_copper_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokebox block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating locomotives",
+            "building train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for smokebox look"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_flat_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative flat riveted block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating train structures",
+            "building detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for texture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_flat_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative flat slashed block for train builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating train structures",
+            "building detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for texture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_folding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "folding door as opening in train structure"
+        },
+        "primary_uses": {
+          "values": [
+            "creating door openings in builds",
+            "decorative folding door"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as functional opening"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    },
+    "railways:gray_four_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window block for train structures"
+        },
+        "primary_uses": {
+          "values": [
+            "adding windows to builds",
+            "decorative pane"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as transparent section"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "railways:granite_locometal_flywheel",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "All locometal blocks share a tag and belong together in storage; no accepted id exists.",
+      "evidence": "tag tfg:locometal_blocks"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "railways:granite_locometal_flywheel",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "The material is locometal (a metal), not granite; color prefix misled rule.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_locometal_pillar",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_locometal_rung_ladder",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_locometal_smokebox",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_locometal_trapdoor",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_locometal_vent",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_plated_locometal",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_riveted_locometal",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_round_pane_locometal_window",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_single_pane_locometal_window",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_slashed_locometal",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_sliding_locometal_door",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_two_pane_locometal_window",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    },
+    {
+      "item": "railways:granite_wrapped_locometal_smokebox",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "locometal",
+      "rationale": "Same as other granite locometal blocks.",
+      "confidence": 0.95
+    }
+  ],
+  "fill_ins": [
+    {
+      "item": "railways:gray_brass_wrapped_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal; stage2 rule missed."
+    },
+    {
+      "item": "railways:gray_brass_wrapped_locometal_boiler",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal."
+    },
+    {
+      "item": "railways:gray_conductor_cap",
+      "facet": "material_family",
+      "value": "cloth",
+      "rationale": "Conductor cap is likely cloth fabric."
+    },
+    {
+      "item": "railways:gray_copper_wrapped_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal."
+    },
+    {
+      "item": "railways:gray_copper_wrapped_locometal_boiler",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal."
+    },
+    {
+      "item": "railways:gray_copper_wrapped_locometal_smokebox",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal."
+    },
+    {
+      "item": "railways:gray_flat_riveted_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal."
+    },
+    {
+      "item": "railways:gray_flat_slashed_locometal",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal."
+    },
+    {
+      "item": "railways:gray_folding_locometal_door",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal."
+    },
+    {
+      "item": "railways:gray_four_pane_locometal_window",
+      "facet": "material_family",
+      "value": "locometal",
+      "rationale": "Gray is a color variant, material is locometal."
+    }
+  ]
+}

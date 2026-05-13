@@ -1,0 +1,1205 @@
+{
+  "items": {
+    "gtceu:small_steel_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id contains steel, tag forge:small_springs/steel",
+          "rationale": "steel material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mechanical components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for machine crafting batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64, stored in bulk"
+        }
+      }
+    },
+    "gtceu:small_stellite_100_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "stellite_100",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/stellite_100",
+          "rationale": "stellite_100 material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_sterling_silver_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/sterling_silver",
+          "rationale": "sterling silver material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_stibnite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "stibnite",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/stibnite",
+          "rationale": "stibnite material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_stone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/stone",
+          "rationale": "stone material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_styrene_butadiene_rubber_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "styrene_butadiene_rubber",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/styrene_butadiene_rubber",
+          "rationale": "rubber material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_sugar_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "sugar",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/sugar",
+          "rationale": "sugar material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_sulfur_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/sulfur",
+          "rationale": "sulfur material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_talc_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "talc",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/talc",
+          "rationale": "talc material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tantalite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tantalite",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/tantalite",
+          "rationale": "tantalite material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tantalum_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tantalum_carbide",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/tantalum_carbide",
+          "rationale": "tantalum carbide material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tantalum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/tantalum",
+          "rationale": "tantalum material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tarkianite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tarkianite",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/tarkianite",
+          "rationale": "tarkianite material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tetrafluoroberyllate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tetrafluoroberyllate",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/tetrafluoroberyllate",
+          "rationale": "tetrafluoroberyllate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tetrahedrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tetrahedrite",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/tetrahedrite",
+          "rationale": "tetrahedrite material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_thallium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "thallium",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/thallium",
+          "rationale": "thallium material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_thermochemically_treated_hardwood_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "thermochemically_treated_hardwood",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/thermochemically_treated_hardwood",
+          "rationale": "thermochemically treated hardwood material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_thorium_230_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "thorium_230",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/thorium_230",
+          "rationale": "thorium 230 material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_thorium_232_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "thorium_232",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/thorium_232",
+          "rationale": "thorium 232 material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_thorium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "thorium",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/thorium",
+          "rationale": "thorium material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tin_alloy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tin_alloy",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/tin_alloy",
+          "rationale": "tin alloy material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tin_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/tin",
+          "rationale": "tin material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_tin_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "id contains tin, tag forge:small_springs/tin",
+          "rationale": "tin material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mechanical components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for machine crafting batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64, stored in bulk"
+        }
+      }
+    },
+    "gtceu:small_titanium_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "titanium_carbide",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/titanium_carbide",
+          "rationale": "titanium carbide material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:small_titanium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component stored with materials"
+        },
+        "material_family": {
+          "value": "titanium",
+          "signal": "pattern",
+          "evidence": "id suffix _dust, tag forge:small_dusts/titanium",
+          "rationale": "titanium material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting dust component"
+          ],
+          "signal": "inferred",
+          "rationale": "generic dust for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _dust, tag forge:small_dusts",
+          "rationale": "dust form"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:small_steel_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "id contains spring, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_tin_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "id contains spring, missing from stage2"
+    }
+  ]
+}

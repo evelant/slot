@@ -1,0 +1,1287 @@
+{
+  "items": {
+    "gtceu:molybdenum_disilicide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metal plate, crafting stock"
+        },
+        "material_family": {
+          "value": "molybdenum_disilicide",
+          "signal": "pattern",
+          "rationale": "from id and tag forge:plates/molybdenum_disilicide"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "pileable sheets storage group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack16, common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "craft high‑temperature components",
+            "alloy plate for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced machine recipes"
+        }
+      }
+    },
+    "gtceu:molybdenum_disilicide_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metal ring, crafting component"
+        },
+        "material_family": {
+          "value": "molybdenum_disilicide",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack64, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "primary_uses": {
+          "values": [
+            "industrial component",
+            "machine crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in shaped recipes"
+        }
+      }
+    },
+    "gtceu:molybdenum_disilicide_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metal rod, tool handle material"
+        },
+        "material_family": {
+          "value": "molybdenum_disilicide",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in tool and machine recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "primary_uses": {
+          "values": [
+            "tool handle component",
+            "machine part"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in many tool recipes"
+        }
+      }
+    },
+    "gtceu:molybdenum_disilicide_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metal spring, mechanical component"
+        },
+        "material_family": {
+          "value": "molybdenum_disilicide",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack16, common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialised component, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "primary_uses": {
+          "values": [
+            "mechanical component",
+            "spring for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine crafting"
+        }
+      }
+    },
+    "gtceu:molybdenum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "industrial dust"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id and tag forge:dusts/molybdenum"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "pure dust storage group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack64, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for alloying, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "alloy ingredient",
+            "smelt into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from milling, consumed in mixing/smelting"
+        }
+      }
+    },
+    "gtceu:molybdenum_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "thin metal foil"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack64, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in electronic/chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "primary_uses": {
+          "values": [
+            "thin metal for wrapping",
+            "electronic component"
+          ],
+          "signal": "inferred",
+          "rationale": "rolling output, used in crafting"
+        }
+      }
+    },
+    "gtceu:molybdenum_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "surface rock indicating ore"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, collected in small numbers"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "picked up during mining exploration"
+        },
+        "primary_uses": {
+          "values": [
+            "find molybdenum ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "surface indicator"
+        }
+      }
+    },
+    "gtceu:molybdenum_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metal ingot"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id and tag forge:ingots/molybdenum"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "pileable ingots storage group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack16, common material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "basic building material for machines and tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machines",
+            "smelted from ore"
+          ],
+          "signal": "inferred",
+          "rationale": "primary output of ore processing"
+        }
+      }
+    },
+    "gtceu:molybdenum_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small metal piece"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "rationale": "nugget group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack64, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in small crafts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "primary_uses": {
+          "values": [
+            "small metal piece",
+            "crafting alloy"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget form used in advanced recipes"
+        }
+      }
+    },
+    "gtceu:molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block, source of metal"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id and tag forge:ores/molybdenum"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, mined in quantity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground, found in stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary mining target"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        },
+        "primary_uses": {
+          "values": [
+            "source of molybdenum",
+            "smelt into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:molybdenum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metal plate"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "pileable sheets group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack16, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "machine casing component",
+            "rolled from ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate for advanced parts"
+        }
+      }
+    },
+    "gtceu:molybdenum_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metal rod"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "primary_uses": {
+          "values": [
+            "tool handle",
+            "machine part"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in tool and machine recipes"
+        }
+      }
+    },
+    "gtceu:molybdenum_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small hardware component"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack64, common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialised fastener, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "primary_uses": {
+          "values": [
+            "fastening component",
+            "machine assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in many machine recipes"
+        }
+      }
+    },
+    "gtceu:monazite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage of monazite"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "storage block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack16, compact storage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of monazite"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from dust/gems"
+        }
+      }
+    },
+    "gtceu:monazite_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "surface bud indicating ore"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, collected in small numbers"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "picked up during mining"
+        },
+        "primary_uses": {
+          "values": [
+            "find monazite ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "surface indicator"
+        }
+      }
+    },
+    "gtceu:monazite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "mineral dust"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "pure dust group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack64, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in gem/chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "processed gem material",
+            "chemical component"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate for gem and alloy"
+        }
+      }
+    },
+    "gtceu:monazite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "gem material"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "gem group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack64, common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in crafting and trade"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "primary_uses": {
+          "values": [
+            "gem for crafting",
+            "source of rare elements"
+          ],
+          "signal": "inferred",
+          "rationale": "sanding/polishing output"
+        }
+      }
+    },
+    "gtceu:monazite_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "surface rock indicating ore"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, collected in small numbers"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "picked up during mining"
+        },
+        "primary_uses": {
+          "values": [
+            "find monazite ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "surface indicator"
+        }
+      }
+    },
+    "gtceu:monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "from id and tag forge:ores/monazite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, mined in quantity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining target"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted into gem/ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "source of monazite",
+            "smelt into gem"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:monitor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine component, not a workstation"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "placed part, not carried"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of machine monitoring"
+        },
+        "primary_uses": {
+          "values": [
+            "machine interface",
+            "display information"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu machine cover"
+        }
+      }
+    },
+    "gtceu:monochloramine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket used as tool"
+        },
+        "material_family": {
+          "value": "monochloramine",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds chemical fluid"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack1, single item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical fluid transport",
+            "processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu chemical reactions"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, mined in quantity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining target"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted into gem/ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "source of almandine",
+            "smelt into gem"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, mined in quantity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining target"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted into aluminium"
+        },
+        "primary_uses": {
+          "values": [
+            "source of aluminium",
+            "smelt into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, mined in quantity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining target"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted into material"
+        },
+        "primary_uses": {
+          "values": [
+            "source of alunite",
+            "smelt into product"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack32, mined in quantity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining target"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted into gem"
+        },
+        "primary_uses": {
+          "values": [
+            "source of amethyst",
+            "smelt into gem"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

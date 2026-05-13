@@ -1,0 +1,1516 @@
+{
+  "items": {
+    "gtceu:small_duct_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GTCEu duct pipe for pneumatic air transport"
+        },
+        "primary_uses": {
+          "values": [
+            "pneumatic air transport"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of pneumatic system"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building pipe networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu pneumatic automation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "no loot, only crafting recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:duct"
+          ],
+          "signal": "inferred",
+          "rationale": "air transport duct subsystem"
+        }
+      }
+    },
+    "gtceu:small_duranium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "processed dust material"
+        },
+        "material_family": {
+          "value": "duranium",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name in id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "refining into duranium ingots",
+            "crafting duranium components"
+          ],
+          "signal": "inferred",
+          "rationale": "typical dust usage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipes via milling"
+        }
+      }
+    },
+    "gtceu:small_echo_shard_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust form"
+        },
+        "material_family": {
+          "value": "echo_shard",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name in id"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "potentially used in crafting"
+          ],
+          "signal": "guess",
+          "rationale": "hidden from recipe viewers, uncertain"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, likely unused"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common tier"
+        }
+      }
+    },
+    "gtceu:small_electrotine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "electrotine",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "refining into electrotine ingots",
+            "crafting redstone components"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in smelting and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production from ores/smelting"
+        }
+      }
+    },
+    "gtceu:small_electrum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "refining into electrum ingots",
+            "crafting wires and components"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via milling"
+        }
+      }
+    },
+    "gtceu:small_emerald_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting emerald components",
+            "glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in various recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via milling and crafting"
+        }
+      }
+    },
+    "gtceu:small_ender_eye_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust form"
+        },
+        "material_family": {
+          "value": "ender_eye",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "potentially used in crafting"
+          ],
+          "signal": "guess",
+          "rationale": "hidden from recipe viewers, uncertain"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, likely unused"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common tier"
+        }
+      }
+    },
+    "gtceu:small_ender_pearl_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "ender_pearl",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ender pearl components"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_endstone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust form"
+        },
+        "material_family": {
+          "value": "endstone",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "potentially used in crafting"
+          ],
+          "signal": "guess",
+          "rationale": "hidden from recipe viewers, uncertain"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, likely unused"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common tier"
+        }
+      }
+    },
+    "gtceu:small_enriched_naquadah_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "refining into enriched naquadah components",
+            "high-end crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via milling"
+        }
+      }
+    },
+    "gtceu:small_enriched_naquadah_sulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_sulfate",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in specialized recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_enriched_naquadah_trinium_europium_duranide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "high-end alloying",
+            "crafting superconductor wires"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via milling"
+        }
+      }
+    },
+    "gtceu:small_epoxy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting epoxy resin components",
+            "insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_europium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "refining into europium ingots",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via milling"
+        }
+      }
+    },
+    "gtceu:small_europium_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component, not placed as block"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pressure plates",
+            "redstone components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during crafting runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "vintageimprovements:coiling"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe from coiling",
+          "rationale": "produced by coiling machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only production via coiling"
+        }
+      }
+    },
+    "gtceu:small_ferrite_mixture_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "ferrite_mixture",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ferrite components",
+            "electronics"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_ferrosilite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "ferrosilite",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ferrosilite alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_fireclay_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust form"
+        },
+        "material_family": {
+          "value": "fireclay",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "potentially used in crafting"
+          ],
+          "signal": "guess",
+          "rationale": "hidden from recipe viewers, uncertain"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, likely unused"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common tier"
+        }
+      }
+    },
+    "gtceu:small_flint_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flint components",
+            "glass production"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in mixing and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_fullers_earth_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "fullers_earth",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fullers earth components",
+            "filtration"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_galena_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "galena",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "refining into lead",
+            "crafting lead components"
+          ],
+          "signal": "inferred",
+          "rationale": "hazardous, melts to lead"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via quern and crafting"
+        }
+      }
+    },
+    "gtceu:small_gallium_arsenide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "gallium_arsenide",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electronic components",
+            "semiconductors"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced electronics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_gallium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "gallium",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "refining into gallium ingots",
+            "crafting electronics"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via milling"
+        }
+      }
+    },
+    "gtceu:small_gallium_sulfide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "gallium_sulfide",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing",
+            "crafting gallium compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in specialized recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via crafting"
+        }
+      }
+    },
+    "gtceu:small_garnet_sand_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust material"
+        },
+        "material_family": {
+          "value": "garnet_sand",
+          "signal": "pattern",
+          "evidence": "id segment",
+          "rationale": "material name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Small Pile'",
+          "rationale": "small pile = tiny dust"
+        },
+        "primary_uses": {
+          "values": [
+            "refining into garnet",
+            "abrasive materials"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in smelting and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in automated machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production via quern and crafting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:small_duranium_dust",
+      "facet": "organization_group",
+      "label": "Small Dusts",
+      "proposed_id": "pack:tfg/small_dusts",
+      "rationale": "Many small dusts exist; players likely store them together in a dedicated section.",
+      "evidence": "Multiple items with 'small_' prefix and 'Small Pile' display name"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:small_duranium_dust",
+      "facet": "material_family",
+      "value": "duranium",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_echo_shard_dust",
+      "facet": "material_family",
+      "value": "echo_shard",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_electrotine_dust",
+      "facet": "material_family",
+      "value": "electrotine",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_electrum_dust",
+      "facet": "material_family",
+      "value": "electrum",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_emerald_dust",
+      "facet": "material_family",
+      "value": "emerald",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_ender_eye_dust",
+      "facet": "material_family",
+      "value": "ender_eye",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_ender_pearl_dust",
+      "facet": "material_family",
+      "value": "ender_pearl",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_endstone_dust",
+      "facet": "material_family",
+      "value": "endstone",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_enriched_naquadah_dust",
+      "facet": "material_family",
+      "value": "enriched_naquadah",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_enriched_naquadah_sulfate_dust",
+      "facet": "material_family",
+      "value": "enriched_naquadah_sulfate",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_enriched_naquadah_trinium_europium_duranide_dust",
+      "facet": "material_family",
+      "value": "enriched_naquadah_trinium_europium_duranide",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_epoxy_dust",
+      "facet": "material_family",
+      "value": "epoxy",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_europium_dust",
+      "facet": "material_family",
+      "value": "europium",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_europium_spring",
+      "facet": "material_family",
+      "value": "europium",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_ferrite_mixture_dust",
+      "facet": "material_family",
+      "value": "ferrite_mixture",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_ferrosilite_dust",
+      "facet": "material_family",
+      "value": "ferrosilite",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_fireclay_dust",
+      "facet": "material_family",
+      "value": "fireclay",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_flint_dust",
+      "facet": "material_family",
+      "value": "flint",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_fullers_earth_dust",
+      "facet": "material_family",
+      "value": "fullers_earth",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_galena_dust",
+      "facet": "material_family",
+      "value": "galena",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_gallium_arsenide_dust",
+      "facet": "material_family",
+      "value": "gallium_arsenide",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_gallium_dust",
+      "facet": "material_family",
+      "value": "gallium",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_gallium_sulfide_dust",
+      "facet": "material_family",
+      "value": "gallium_sulfide",
+      "rationale": "Id segment indicates material, missing from stage2"
+    },
+    {
+      "item": "gtceu:small_garnet_sand_dust",
+      "facet": "material_family",
+      "value": "garnet_sand",
+      "rationale": "Id segment indicates material, missing from stage2"
+    }
+  ]
+}

@@ -1,0 +1,1083 @@
+{
+  "items": {
+    "gtceu:tritanium_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small component part, stored with crafting materials"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "id suffix tritanium_screw",
+          "rationale": "screw made of tritanium"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting precision mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "used as a component in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common component"
+        }
+      }
+    },
+    "gtceu:tritanium_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "id suffix tritanium_single_cable",
+          "rationale": "cable made of tritanium"
+        },
+        "primary_uses": {
+          "values": [
+            "building power networks"
+          ],
+          "signal": "inferred",
+          "rationale": "conducts energy between machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "frequent carry when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy cable subsystem"
+        }
+      }
+    },
+    "gtceu:tritanium_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "id suffix tritanium_single_wire",
+          "rationale": "wire made of tritanium"
+        },
+        "primary_uses": {
+          "values": [
+            "wiring for energy networks"
+          ],
+          "signal": "inferred",
+          "rationale": "conducts energy between machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "frequent carry when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy cable subsystem"
+        }
+      }
+    },
+    "gtceu:tritanium_turbine_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component part for turbine crafting, not standalone"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "id suffix tritanium_turbine_blade",
+          "rationale": "blade made of tritanium"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting turbine rotors"
+          ],
+          "signal": "inferred",
+          "rationale": "used in generator turbine assembly"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power generators"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common component"
+        }
+      }
+    },
+    "gtceu:tritiated_water_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used for fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting tritiated water"
+          ],
+          "signal": "inferred",
+          "rationale": "carries hazardous fluid for processing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when needed for fluid handling"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "not a common bucket, special fluid"
+        }
+      }
+    },
+    "gtceu:tritium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used for gas transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting tritium gas"
+          ],
+          "signal": "inferred",
+          "rationale": "carries gas for processing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when needed for gas handling"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "not a common bucket, special gas"
+        }
+      }
+    },
+    "gtceu:trona_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form of a mineral"
+        },
+        "material_family": {
+          "value": "trona",
+          "signal": "pattern",
+          "evidence": "id suffix trona_dust",
+          "rationale": "trona dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into trona ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common dust"
+        }
+      }
+    },
+    "gtceu:trona_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating underground ore"
+        },
+        "material_family": {
+          "value": "trona",
+          "signal": "pattern",
+          "evidence": "id suffix trona_indicator",
+          "rationale": "trona surface rock"
+        },
+        "primary_uses": {
+          "values": [
+            "prospecting for trona deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "collected as indicator of ore"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only picked up when found on surface"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common surface rock"
+        }
+      }
+    },
+    "gtceu:trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "trona",
+          "signal": "pattern",
+          "evidence": "id suffix trona_ore",
+          "rationale": "trona ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into trona ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "inferred",
+          "rationale": "player thinks of almandine ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into almandine ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "inferred",
+          "rationale": "player thinks of aluminium ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into aluminium ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "inferred",
+          "rationale": "player thinks of alunite ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into alunite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "player thinks of amethyst ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into amethyst ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "inferred",
+          "rationale": "player thinks of apatite ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into apatite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "inferred",
+          "rationale": "player thinks of armalcolite ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into armalcolite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "asbestos",
+          "signal": "inferred",
+          "rationale": "player thinks of asbestos ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into asbestos ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "barite",
+          "signal": "inferred",
+          "rationale": "player thinks of barite ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into barite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "basaltic_mineral_sand",
+          "signal": "inferred",
+          "rationale": "player thinks of basaltic mineral sand ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into basaltic mineral sand ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "bastnasite",
+          "signal": "inferred",
+          "rationale": "player thinks of bastnasite ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into bastnasite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "bauxite",
+          "signal": "inferred",
+          "rationale": "player thinks of bauxite ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into bauxite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "bentonite",
+          "signal": "inferred",
+          "rationale": "player thinks of bentonite ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into bentonite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "inferred",
+          "rationale": "player thinks of beryllium ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into beryllium ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_bismuth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "inferred",
+          "rationale": "player thinks of bismuth ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into bismuth ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_blue_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "blue_topaz",
+          "signal": "inferred",
+          "rationale": "player thinks of blue topaz ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into blue topaz ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    },
+    "gtceu:tuff_borax_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "borax",
+          "signal": "inferred",
+          "rationale": "player thinks of borax ore, not stone prefix"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into borax ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to ingot via smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain resources"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "gtceu:tuff_almandine_ore",
+      "facet": "material_family",
+      "current": "tuff_almandine",
+      "suggested": "almandine",
+      "rationale": "Player mental model: almandine ore, not tuff almandine",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_aluminium_ore",
+      "facet": "material_family",
+      "current": "tuff_aluminium",
+      "suggested": "aluminium",
+      "rationale": "Player mental model: aluminium ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_alunite_ore",
+      "facet": "material_family",
+      "current": "tuff_alunite",
+      "suggested": "alunite",
+      "rationale": "Player mental model: alunite ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_amethyst_ore",
+      "facet": "material_family",
+      "current": "tuff_amethyst",
+      "suggested": "amethyst",
+      "rationale": "Player mental model: amethyst ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_apatite_ore",
+      "facet": "material_family",
+      "current": "tuff_apatite",
+      "suggested": "apatite",
+      "rationale": "Player mental model: apatite ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_armalcolite_ore",
+      "facet": "material_family",
+      "current": "tuff_armalcolite",
+      "suggested": "armalcolite",
+      "rationale": "Player mental model: armalcolite ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_asbestos_ore",
+      "facet": "material_family",
+      "current": "tuff_asbestos",
+      "suggested": "asbestos",
+      "rationale": "Player mental model: asbestos ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_barite_ore",
+      "facet": "material_family",
+      "current": "tuff_barite",
+      "suggested": "barite",
+      "rationale": "Player mental model: barite ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_basaltic_mineral_sand_ore",
+      "facet": "material_family",
+      "current": "tuff_basaltic_mineral_sand",
+      "suggested": "basaltic_mineral_sand",
+      "rationale": "Player mental model: basaltic mineral sand ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_bastnasite_ore",
+      "facet": "material_family",
+      "current": "tuff_bastnasite",
+      "suggested": "bastnasite",
+      "rationale": "Player mental model: bastnasite ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_bauxite_ore",
+      "facet": "material_family",
+      "current": "tuff_bauxite",
+      "suggested": "bauxite",
+      "rationale": "Player mental model: bauxite ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_bentonite_ore",
+      "facet": "material_family",
+      "current": "tuff_bentonite",
+      "suggested": "bentonite",
+      "rationale": "Player mental model: bentonite ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_beryllium_ore",
+      "facet": "material_family",
+      "current": "tuff_beryllium",
+      "suggested": "beryllium",
+      "rationale": "Player mental model: beryllium ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_bismuth_ore",
+      "facet": "material_family",
+      "current": "tuff_bismuth",
+      "suggested": "bismuth",
+      "rationale": "Player mental model: bismuth ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_blue_topaz_ore",
+      "facet": "material_family",
+      "current": "tuff_blue_topaz",
+      "suggested": "blue_topaz",
+      "rationale": "Player mental model: blue topaz ore, not stone prefix",
+      "confidence": 0.8
+    },
+    {
+      "item": "gtceu:tuff_borax_ore",
+      "facet": "material_family",
+      "current": "tuff_borax",
+      "suggested": "borax",
+      "rationale": "Player mental model: borax ore, not stone prefix",
+      "confidence": 0.8
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1358 @@
+{
+  "items": {
+    "tfg:rock/cracked_bricks_mars_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick slab placed as structure"
+        },
+        "material_family": {
+          "value": "argillite",
+          "signal": "pattern",
+          "evidence": "display_name 'Argillite'",
+          "rationale": "stone type from display name"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common brick slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "matches brick slab storage group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant of brick"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_mars_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick stairs"
+        },
+        "material_family": {
+          "value": "argillite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "matches brick stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_mars_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick wall"
+        },
+        "material_family": {
+          "value": "argillite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "matches brick walls"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_mercury_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick slab"
+        },
+        "material_family": {
+          "value": "komatiite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "matches brick slab group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_mercury_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick stairs"
+        },
+        "material_family": {
+          "value": "komatiite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "matches brick stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_mercury_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick wall"
+        },
+        "material_family": {
+          "value": "komatiite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "matches brick walls"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_moon_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick block"
+        },
+        "material_family": {
+          "value": "norite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common brick"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "brick blocks group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_moon_deepslate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick slab"
+        },
+        "material_family": {
+          "value": "norite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "matches brick slabs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_moon_deepslate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick stairs"
+        },
+        "material_family": {
+          "value": "norite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "matches brick stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_moon_deepslate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick wall"
+        },
+        "material_family": {
+          "value": "norite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "matches brick walls"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_moon_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick slab"
+        },
+        "material_family": {
+          "value": "anorthosite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "matches brick slabs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_moon_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick stairs"
+        },
+        "material_family": {
+          "value": "anorthosite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "matches brick stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_moon_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick wall"
+        },
+        "material_family": {
+          "value": "anorthosite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "matches brick walls"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_nether_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick slab"
+        },
+        "material_family": {
+          "value": "keratophyre",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "matches brick slabs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_nether_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick stairs"
+        },
+        "material_family": {
+          "value": "keratophyre",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "matches brick stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_nether_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick wall"
+        },
+        "material_family": {
+          "value": "keratophyre",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "matches brick walls"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_permafrost_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick slab"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "matches brick slabs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_permafrost_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick stairs"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "matches brick stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_permafrost_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick wall"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "matches brick walls"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_red_granite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick slab"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "matches brick slabs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_red_granite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick stairs"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "matches brick stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_red_granite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick wall"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "matches brick walls"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick slab"
+        },
+        "material_family": {
+          "value": "reconstituted_stone",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "matches brick slabs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick stairs"
+        },
+        "material_family": {
+          "value": "reconstituted_stone",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "matches brick stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    },
+    "tfg:rock/cracked_bricks_stone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick wall"
+        },
+        "material_family": {
+          "value": "reconstituted_stone",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "stone type"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "matches brick walls"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

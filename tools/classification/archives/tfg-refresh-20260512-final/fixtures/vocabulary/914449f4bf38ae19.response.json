@@ -1,0 +1,716 @@
+{
+  "values": [
+    {
+      "id": "createnuclear:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Fan processing block, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "createnuclear:fan_processing_catalysts/enriched",
+          "confidence": 0.75
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "create_connected:fan_enriched_catalyst",
+          "source": "runtime-items",
+          "text": "Dedicated _bulk enriched_ device for compatible mods. Content of the catalyst does not interact with the environment.",
+          "key": "lang:block.create_connected.fan_enriched_catalyst.tooltip.summary",
+          "label": "Fan Enriched Catalyst",
+          "item_ref_count": 1
+        }
+      ]
+    },
+    {
+      "id": "garnished:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Fan processing block, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "garnished:fan_processing_catalysts/freezing",
+          "confidence": 0.75
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "create_connected:fan_freezing_catalyst",
+          "source": "runtime-items",
+          "text": "Dedicated _bulk freezing_ device for compatible mods. Content of the catalyst does not interact with the environment.",
+          "key": "lang:block.create_connected.fan_freezing_catalyst.tooltip.summary",
+          "label": "Fan Freezing Catalyst",
+          "item_ref_count": 1
+        }
+      ]
+    },
+    {
+      "id": "betterp2p:network",
+      "label": "Network",
+      "state": "review",
+      "description": "P2P network management tools; possible subsystem but narrow.",
+      "aliases": [
+        "betterp2p"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "betterp2p",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "betterp2p",
+          "source": "mods-folder-scan",
+          "text": "An advanced tool for AE2, to manage P2P networks.",
+          "key": "mod-description:mod.betterp2p.description",
+          "label": "Better P2P",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "ae2:tank",
+      "label": "Tank",
+      "state": "rejected",
+      "description": "Storage block, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:sky_stone_tank",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:sky_stone_tank",
+          "source": "runtime-items",
+          "text": "Can Store up to 16 Buckets",
+          "key": "runtime-tooltip",
+          "label": "Sky Stone Tank",
+          "item_ref_count": 1
+        }
+      ]
+    },
+    {
+      "id": "ags_modernmarkings:energy",
+      "label": "Energy",
+      "state": "rejected",
+      "description": "Decorative wall marking, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ags_modernmarkings:wall_marking_voltage_fe",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ags_modernmarkings:wall_marking_voltage_fe",
+          "source": "runtime-items",
+          "text": "wall markings for power",
+          "key": "runtime-tooltip",
+          "label": "Forge Energy Wall Symbol",
+          "item_ref_count": 1
+        }
+      ]
+    },
+    {
+      "id": "expatternprovider:package",
+      "label": "Package",
+      "state": "rejected",
+      "description": "Specific item type, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "expatternprovider:package",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "expatternprovider:package",
+          "source": "runtime-items",
+          "text": "Invalid",
+          "key": "runtime-tooltip",
+          "label": "Packaged Device",
+          "item_ref_count": 1
+        }
+      ]
+    },
+    {
+      "id": "firmalife:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Fluid container, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "firmalife:bucket/fruity_fluid",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "firmalife:bucket/fruity_fluid",
+          "source": "runtime-items",
+          "text": "Temperature: 300 K",
+          "key": "runtime-tooltip",
+          "label": "Fruity Fluid Bucket",
+          "item_ref_count": 1
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Machine block, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:recipes/misc/fan",
+          "confidence": 0.65
+        },
+        {
+          "kind": "runtime_item",
+          "id": "ad_astra:fan",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "copycats:shaft",
+      "label": "Shaft",
+      "state": "rejected",
+      "description": "Decorative/functional block, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "copycats:recipes/crafting/copycat_shaft",
+          "confidence": 0.65
+        },
+        {
+          "kind": "runtime_item",
+          "id": "copycats:copycat_shaft",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "ae2:assembler",
+      "label": "Assembler",
+      "state": "rejected",
+      "description": "Autocrafting machine, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:molecular_assembler",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "ae2:charger",
+      "label": "Charger",
+      "state": "rejected",
+      "description": "Charging device, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:charger",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "ae2:export",
+      "label": "Export",
+      "state": "rejected",
+      "description": "Network component, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:export_bus",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "ae2:generator",
+      "label": "Generator",
+      "state": "rejected",
+      "description": "Power generation block, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:crystal_resonance_generator",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "ae2:network",
+      "label": "Network",
+      "state": "accepted",
+      "description": "Core AE2 network system for energy, data, and item storage.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:network_tool",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "createaddition:interface",
+      "label": "Interface",
+      "state": "rejected",
+      "description": "Energy transfer device, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "createaddition:portable_energy_interface",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "grapplemod:rocket",
+      "label": "Rocket",
+      "state": "rejected",
+      "description": "Grappling hook upgrade, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "grapplemod:rocketupgradeitem",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "railways:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Train smoke stack, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "railways:smokestack_diesel",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "tacz:kinetics",
+      "label": "Kinetics",
+      "state": "rejected",
+      "description": "Gun type, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tacz:modern_kinetic_gun",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "vintageimprovements:cover",
+      "label": "Cover",
+      "state": "rejected",
+      "description": "Small slot cover, not a subsystem.",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "vintageimprovements:helve_hammer_slot_cover",
+          "confidence": 1
+        }
+      ],
+      "semantic_evidence": []
+    },
+    {
+      "id": "botarium:energy",
+      "label": "Energy",
+      "state": "rejected",
+      "description": "Generic API concept, not a mod subsystem.",
+      "aliases": [
+        "botarium"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "botarium",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "botarium",
+          "source": "mods-folder-scan",
+          "text": "A crossplatform API for devs that makes transfer and storage of items, fluids and energy easier, as well as some other helpful things",
+          "key": "mod-description:mod.botarium.description",
+          "label": "Botarium",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "botarium:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Generic API concept, not a mod subsystem.",
+      "aliases": [
+        "botarium"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "botarium",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "botarium",
+          "source": "mods-folder-scan",
+          "text": "A crossplatform API for devs that makes transfer and storage of items, fluids and energy easier, as well as some other helpful things",
+          "key": "mod-description:mod.botarium.description",
+          "label": "Botarium",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "botarium:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic API concept, not a mod subsystem.",
+      "aliases": [
+        "botarium"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "botarium",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "botarium",
+          "source": "mods-folder-scan",
+          "text": "A crossplatform API for devs that makes transfer and storage of items, fluids and energy easier, as well as some other helpful things",
+          "key": "mod-description:mod.botarium.description",
+          "label": "Botarium",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "createliquidfuel:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Fluid transport block, not a subsystem.",
+      "aliases": [
+        "createliquidfuel"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "createliquidfuel",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "createliquidfuel",
+          "source": "mods-folder-scan",
+          "text": "\"Input liquid into blaze burner with pumps & pipes\"",
+          "key": "mod-description:mod.createliquidfuel.description",
+          "label": "Create Liquid Fuel",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "createliquidfuel:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Fluid transport device, not a subsystem.",
+      "aliases": [
+        "createliquidfuel"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "createliquidfuel",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "createliquidfuel",
+          "source": "mods-folder-scan",
+          "text": "\"Input liquid into blaze burner with pumps & pipes\"",
+          "key": "mod-description:mod.createliquidfuel.description",
+          "label": "Create Liquid Fuel",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "fzzy_config:engine",
+      "label": "Engine",
+      "state": "rejected",
+      "description": "Configuration engine, not a gameplay subsystem.",
+      "aliases": [
+        "fzzy_config"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "fzzy_config",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "fzzy_config",
+          "source": "mods-folder-scan",
+          "text": "Configuration engine with automatic GUI generation, client-server syncing, powerful validation and error handling, and much more.",
+          "key": "mod-description:mod.fzzy_config.description",
+          "label": "Fzzy Config",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "horsescanswim:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Makes horses swim in fluids, not a subsystem.",
+      "aliases": [
+        "horsescanswim"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "horsescanswim",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "horsescanswim",
+          "source": "mods-folder-scan",
+          "text": "Makes horses swim in fluid-related blocks",
+          "key": "mod-description:mod.horsescanswim.description",
+          "label": "Horses Can Swim",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "kreno:network",
+      "label": "Network",
+      "state": "rejected",
+      "description": "Performance network optimization, not a content subsystem.",
+      "aliases": [
+        "kreno"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "kreno",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "kreno",
+          "source": "mods-folder-scan",
+          "text": "Provides powerful network optimization capabilities for all mainstream systems.",
+          "key": "mod-description:mod.kreno.description",
+          "label": "Krypton Reno",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "moreredxcctcompat:cable",
+      "label": "Cable",
+      "state": "rejected",
+      "description": "Redstone cable type, not a subsystem.",
+      "aliases": [
+        "moreredxcctcompat"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "moreredxcctcompat",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "moreredxcctcompat",
+          "source": "mods-folder-scan",
+          "text": "Adds support for More Red colored and bundled cables to CC:Tweaked computers",
+          "key": "mod-description:mod.moreredxcctcompat.description",
+          "label": "More Red x CC:Tweaked Compat",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "nochatreports:track",
+      "label": "Track",
+      "state": "rejected",
+      "description": "Chat tracking removal, not a gameplay subsystem.",
+      "aliases": [
+        "nochatreports"
+      ],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "nochatreports",
+          "confidence": 0.6
+        }
+      ],
+      "semantic_evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "nochatreports",
+          "source": "mods-folder-scan",
+          "text": "Strips cryptographic signatures from player messages, making it impossible to track and associate them with your Mojang/Microsoft account, as well as use Player Chat Reporting feature.",
+          "key": "mod-description:mod.nochatreports.description",
+          "label": "No Chat Reports",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "tfc:rail",
+      "label": "Rail",
+      "state": "rejected",
+      "description": "Rail block, not a broad subsystem; part of transport but too narrow.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/redstone/activator_rail",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/redstone/detector_rail",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/redstone/powered_rail",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/redstone/rail",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/redstone/steel_activator_rail",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/redstone/steel_detector_rail",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/redstone/steel_rail",
+          "confidence": 0.65
+        }
+      ],
+      "semantic_evidence": []
+    }
+  ]
+}

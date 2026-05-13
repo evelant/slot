@@ -1,0 +1,293 @@
+{
+  "items": {
+    "waterflasks:iron_flask": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable fluid carrier for hydration"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Name and melt info indicate iron"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential hydration item carried always"
+        },
+        "primary_uses": {
+          "values": [
+            "Carry drinking water",
+            "Hydration on trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose of the item"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "named",
+          "evidence": "Fluid Capacity tooltip",
+          "rationale": "Explicitly holds fluid"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Durable item kept in hotbar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity from component"
+        }
+      }
+    },
+    "waterflasks:leather_flask": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable fluid carrier for hydration"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "named",
+          "evidence": "display_name Leather Flask",
+          "rationale": "Made from leather"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential hydration item carried always"
+        },
+        "primary_uses": {
+          "values": [
+            "Carry drinking water",
+            "Hydration on trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "named",
+          "evidence": "Fluid Capacity tooltip",
+          "rationale": "Explicitly holds fluid"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Durable item kept in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity from component"
+        }
+      }
+    },
+    "waterflasks:leather_side": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for flasks"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "named",
+          "evidence": "display_name Leather Flask Side",
+          "rationale": "Made from leather"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Crafting material not carried routinely"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting leather flasks"
+          ],
+          "signal": "inferred",
+          "rationale": "Only purpose is as component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "knapping recipes",
+          "rationale": "Produced by knapping leather"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity from component"
+        }
+      }
+    },
+    "waterflasks:red_steel_flask": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable fluid carrier, top tier"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "named",
+          "evidence": "Melts into Red Steel tooltip",
+          "rationale": "Made from red steel"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential hydration, unbreakable"
+        },
+        "primary_uses": {
+          "values": [
+            "Carry drinking water",
+            "Hydration on trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Core purpose"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "named",
+          "evidence": "Fluid Capacity tooltip",
+          "rationale": "Explicitly holds fluid"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "Permanent tool item"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=epic",
+          "rationale": "Rarity from component"
+        }
+      }
+    },
+    "waterflasks:unfinished_iron_flask": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Melts into cast iron, iron family"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only moved to crafting station"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting iron flask"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use is in shaped recipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe",
+          "rationale": "Produced on anvil"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity from component"
+        }
+      }
+    },
+    "waterflasks:unfinished_red_steel_flask": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "named",
+          "evidence": "Melts into Red Steel tooltip",
+          "rationale": "Made from red steel"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only moved to crafting station"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting red steel flask"
+          ],
+          "signal": "inferred",
+          "rationale": "Only use is in shaped recipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe",
+          "rationale": "Produced on anvil"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafting component, not rare despite red steel"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "waterflasks:iron_flask",
+      "facet": "organization_group",
+      "label": "Water Flasks",
+      "proposed_id": "pack:tfg/water_flasks",
+      "rationale": "All waterflask items (flasks, sides, unfinished) form a distinct storage group for players to organize their portable water containers.",
+      "evidence": "display_name 'Iron Flask', creative tab 'tfc:flasks', guide page 'Water Flasks'"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "waterflasks:unfinished_red_steel_flask",
+      "facet": "rarity",
+      "current": "unique",
+      "suggested": "common",
+      "rationale": "Stage2 derived rarity from component (epic) but as a crafting intermediate it's not perceived as unique by players.",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": []
+}

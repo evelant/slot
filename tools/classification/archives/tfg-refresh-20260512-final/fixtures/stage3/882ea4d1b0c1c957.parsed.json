@@ -1,0 +1,1160 @@
+{
+  "items": {
+    "gtceu:double_tin_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _plate, in material_item creative tab",
+          "rationale": "refined metal plate, crafting ingredient"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "id double_tin_plate",
+          "rationale": "tin derived from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components",
+            "advanced part fabrication"
+          ],
+          "signal": "inferred",
+          "rationale": "used in shaped recipes and machine crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build automated machinery"
+        }
+      }
+    },
+    "gtceu:double_titanium_carbide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern and creative tab",
+          "rationale": "refined metal plate"
+        },
+        "material_family": {
+          "value": "titanium_carbide",
+          "signal": "pattern",
+          "evidence": "id double_titanium_carbide_plate",
+          "rationale": "titanium carbide from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-tier machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated production lines"
+        }
+      }
+    },
+    "gtceu:double_titanium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined titanium plate"
+        },
+        "material_family": {
+          "value": "titanium",
+          "signal": "pattern",
+          "evidence": "id double_titanium_plate",
+          "rationale": "titanium from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine hulls and components",
+            "making field generators"
+          ],
+          "signal": "inferred",
+          "rationale": "used in EV-tier machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for automating machine production"
+        }
+      }
+    },
+    "gtceu:double_titanium_tungsten_carbide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined alloy plate"
+        },
+        "material_family": {
+          "value": "titanium_tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "id double_titanium_tungsten_carbide_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-end machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of high-tier automation"
+        }
+      }
+    },
+    "gtceu:double_trinium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined trinium plate"
+        },
+        "material_family": {
+          "value": "trinium",
+          "signal": "pattern",
+          "evidence": "id double_trinium_plate",
+          "rationale": "trinium from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-tier machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for advanced machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automated systems"
+        }
+      }
+    },
+    "gtceu:double_tritanium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined tritanium plate"
+        },
+        "material_family": {
+          "value": "tritanium",
+          "signal": "pattern",
+          "evidence": "id double_tritanium_plate",
+          "rationale": "tritanium from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting turbine blades",
+            "machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in turbine and machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automated machinery"
+        }
+      }
+    },
+    "gtceu:double_tungsten_carbide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined tungsten carbide plate"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "id double_tungsten_carbide_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting durable machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-wear components"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated production"
+        }
+      }
+    },
+    "gtceu:double_tungsten_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined tungsten plate"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "id double_tungsten_plate",
+          "rationale": "tungsten from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-temperature machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "tungsten used in advanced recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automated machinery"
+        }
+      }
+    },
+    "gtceu:double_tungsten_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined tungsten steel plate"
+        },
+        "material_family": {
+          "value": "tungsten_steel",
+          "signal": "pattern",
+          "evidence": "id double_tungsten_steel_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting IV-tier machines",
+            "field generators"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-voltage machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for advanced automation"
+        }
+      }
+    },
+    "gtceu:double_ultimet_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined ultimet plate"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "evidence": "id double_ultimet_plate",
+          "rationale": "ultimet from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-tier machine parts",
+            "turbine blades"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automated production"
+        }
+      }
+    },
+    "gtceu:double_uranium_235_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined uranium 235 plate"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "pattern",
+          "evidence": "id double_uranium_235_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "hazardous material, stored carefully"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel rod fabrication",
+            "nuclear reactor components"
+          ],
+          "signal": "inferred",
+          "rationale": "hazardous, used in fission recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in nuclear power automation"
+        }
+      }
+    },
+    "gtceu:double_uranium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined uranium plate"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "id double_uranium_plate",
+          "rationale": "uranium from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "hazardous, stored with caution"
+        },
+        "primary_uses": {
+          "values": [
+            "nuclear fuel precursor",
+            "radiation shielding components"
+          ],
+          "signal": "inferred",
+          "rationale": "hazardous material used in reactor recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for nuclear automation"
+        }
+      }
+    },
+    "gtceu:double_uranium_rhodium_dinaquadide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined exotic alloy plate"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "id double_uranium_rhodium_dinaquadide_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting extremely advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in late-game recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for high-end automation"
+        }
+      }
+    },
+    "gtceu:double_uranium_triplatinum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined uranium triplatinum plate"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "evidence": "id double_uranium_triplatinum_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting exotic components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-tier recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automation"
+        }
+      }
+    },
+    "gtceu:double_vanadium_gallium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined vanadium gallium plate"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "evidence": "id double_vanadium_gallium_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting superconducting components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for superconductor parts"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for advanced automation"
+        }
+      }
+    },
+    "gtceu:double_vanadium_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined vanadium steel plate"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "evidence": "id double_vanadium_steel_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-strength machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in metal press and machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automation"
+        }
+      }
+    },
+    "gtceu:double_watertight_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined watertight steel plate"
+        },
+        "material_family": {
+          "value": "watertight_steel",
+          "signal": "pattern",
+          "evidence": "id double_watertight_steel_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fluid-proof components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for waterproof machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fluid automation"
+        }
+      }
+    },
+    "gtceu:double_wrought_iron_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern, common in many recipes",
+          "rationale": "refined wrought iron plate"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "id double_wrought_iron_plate",
+          "rationale": "wrought iron from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "common intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools, machines, armor",
+            "building blast furnaces"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated crafting and machine builds"
+        }
+      }
+    },
+    "gtceu:double_yttrium_barium_cuprate_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined superconducting plate"
+        },
+        "material_family": {
+          "value": "yttrium_barium_cuprate",
+          "signal": "pattern",
+          "evidence": "id double_yttrium_barium_cuprate_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting superconducting components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-tech recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for advanced automation"
+        }
+      }
+    },
+    "gtceu:double_zeron_100_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined zeron-100 plate"
+        },
+        "material_family": {
+          "value": "zeron_100",
+          "signal": "pattern",
+          "evidence": "id double_zeron_100_plate",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting corrosion-resistant components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for durable parts"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automation"
+        }
+      }
+    },
+    "gtceu:double_zinc_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined zinc plate"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id double_zinc_plate",
+          "rationale": "zinc from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting brass and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in alloy and machine recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automated production"
+        }
+      }
+    },
+    "gtceu:double_zirconium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "refined zirconium plate"
+        },
+        "material_family": {
+          "value": "zirconium",
+          "signal": "pattern",
+          "evidence": "id double_zirconium_plate",
+          "rationale": "zirconium from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting nuclear reactor components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for cladding etc."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for nuclear automation"
+        }
+      }
+    },
+    "gtceu:dough": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for bread, not eaten directly"
+        },
+        "material_family": {
+          "value": "dough",
+          "signal": "inferred",
+          "rationale": "itself a raw food material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when baking, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "baking into bread"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is bread making"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking workflow"
+        }
+      }
+    },
+    "gtceu:drilling_fluid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "id ends _bucket",
+          "rationale": "bucket of fluid used as tool"
+        },
+        "material_family": {
+          "value": "drilling_fluid",
+          "signal": "inferred",
+          "rationale": "the fluid itself"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when drilling"
+        },
+        "primary_uses": {
+          "values": [
+            "lubricate drilling rigs",
+            "fluid for oil drilling"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu drilling process"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of resource extraction automation"
+        }
+      }
+    },
+    "gtceu:dripstone_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be smelted into material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of almandine",
+            "smelting into almandine glass or ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or milled for gem dust"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from the world"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "ore block does not emit light"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "named",
+          "evidence": "block tag mineable/pickaxe",
+          "rationale": "requires pickaxe to mine"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:double_tin_plate",
+      "facet": "material_family",
+      "value": "tin",
+      "rationale": "id pattern double_tin_plate"
+    },
+    {
+      "item": "gtceu:double_titanium_carbide_plate",
+      "facet": "material_family",
+      "value": "titanium_carbide",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_titanium_plate",
+      "facet": "material_family",
+      "value": "titanium",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_titanium_tungsten_carbide_plate",
+      "facet": "material_family",
+      "value": "titanium_tungsten_carbide",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_trinium_plate",
+      "facet": "material_family",
+      "value": "trinium",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_tritanium_plate",
+      "facet": "material_family",
+      "value": "tritanium",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_tungsten_carbide_plate",
+      "facet": "material_family",
+      "value": "tungsten_carbide",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_tungsten_plate",
+      "facet": "material_family",
+      "value": "tungsten",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_tungsten_steel_plate",
+      "facet": "material_family",
+      "value": "tungsten_steel",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_ultimet_plate",
+      "facet": "material_family",
+      "value": "ultimet",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_uranium_235_plate",
+      "facet": "material_family",
+      "value": "uranium_235",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_uranium_plate",
+      "facet": "material_family",
+      "value": "uranium",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_uranium_rhodium_dinaquadide_plate",
+      "facet": "material_family",
+      "value": "uranium_rhodium_dinaquadide",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_uranium_triplatinum_plate",
+      "facet": "material_family",
+      "value": "uranium_triplatinum",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_vanadium_gallium_plate",
+      "facet": "material_family",
+      "value": "vanadium_gallium",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_vanadium_steel_plate",
+      "facet": "material_family",
+      "value": "vanadium_steel",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_watertight_steel_plate",
+      "facet": "material_family",
+      "value": "watertight_steel",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_wrought_iron_plate",
+      "facet": "material_family",
+      "value": "wrought_iron",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_yttrium_barium_cuprate_plate",
+      "facet": "material_family",
+      "value": "yttrium_barium_cuprate",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_zeron_100_plate",
+      "facet": "material_family",
+      "value": "zeron_100",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_zinc_plate",
+      "facet": "material_family",
+      "value": "zinc",
+      "rationale": "id pattern"
+    },
+    {
+      "item": "gtceu:double_zirconium_plate",
+      "facet": "material_family",
+      "value": "zirconium",
+      "rationale": "id pattern"
+    }
+  ]
+}

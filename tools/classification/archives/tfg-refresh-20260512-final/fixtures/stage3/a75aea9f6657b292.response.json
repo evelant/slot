@@ -1,0 +1,813 @@
+{
+  "items": {
+    "tfc:metal/axe_head/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head, crafting component for axes"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "red_steel in id"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "inferred",
+          "rationale": "Top-tier TFC metal for tools"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting red steel axes"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for tool crafting"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at anvil to make axe"
+        }
+      }
+    },
+    "tfc:metal/axe_head/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head, crafting component for axes"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "steel in id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Mid-high tier TFC metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting steel axes"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for tool crafting"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at anvil to make axe"
+        }
+      }
+    },
+    "tfc:metal/axe_head/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head, crafting component for axes"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "wrought_iron in id"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "Early-mid tier metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting wrought iron axes"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for tool crafting"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at anvil to make axe"
+        }
+      }
+    },
+    "tfc:metal/bars/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars for construction"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "bismuth_bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable, no special rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material, placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/bars/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "black_bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable, no special rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/bars/black_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "black_steel in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/bars/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "blue_steel in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/bars/bronze": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/bars/copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "copper in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/bars/red_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "red_steel in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/bars/steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "steel in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/bars/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable metal bars"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "wrought_iron in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal bars",
+            "Crafting machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable and used in recipes"
+        }
+      }
+    },
+    "tfc:metal/block/bismuth": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal block"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "rationale": "bismuth in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal plated blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building block"
+        }
+      }
+    },
+    "tfc:metal/block/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal block"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "bismuth_bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal plated blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building block"
+        }
+      }
+    },
+    "tfc:metal/block/bismuth_bronze_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal slab"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "bismuth_bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building slab"
+        }
+      }
+    },
+    "tfc:metal/block/bismuth_bronze_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal stairs"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "bismuth_bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building stairs"
+        }
+      }
+    },
+    "tfc:metal/block/bismuth_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal slab"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "rationale": "bismuth in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building slab"
+        }
+      }
+    },
+    "tfc:metal/block/bismuth_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal stairs"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "rationale": "bismuth in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building stairs"
+        }
+      }
+    },
+    "tfc:metal/block/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal block"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "black_bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal plated blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building block"
+        }
+      }
+    },
+    "tfc:metal/block/black_bronze_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal slab"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "black_bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building slab"
+        }
+      }
+    },
+    "tfc:metal/block/black_bronze_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal stairs"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "black_bronze in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building stairs"
+        }
+      }
+    },
+    "tfc:metal/block/black_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal block"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "black_steel in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal plated blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building block"
+        }
+      }
+    },
+    "tfc:metal/block/black_steel_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal slab"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "black_steel in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building slab"
+        }
+      }
+    },
+    "tfc:metal/block/black_steel_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal stairs"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "black_steel in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building stairs"
+        }
+      }
+    },
+    "tfc:metal/block/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable plated metal block"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "blue_steel in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "stackable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with metal plated blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

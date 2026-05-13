@@ -1,0 +1,819 @@
+{
+  "items": {
+    "greate:refined_radiance_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form of a refined material, crafting ingredient"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "evidence": "id prefix refined_radiance",
+          "rationale": "material name from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material not always on hand"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting refined radiance items"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in further processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity common",
+          "rationale": "explicit rarity component"
+        }
+      }
+    },
+    "greate:refined_radiance_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingot form of a refined material"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ingot used when needed for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting refined radiance components"
+          ],
+          "signal": "inferred",
+          "rationale": "ingot for further crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:refined_radiance_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "nugget form of refined material"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "rationale": "material name from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nugget used in small amounts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting refined radiance items"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget for recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:refined_radiance_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "plate form of refined material"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "rationale": "material name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "plate used in crafting machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting refined radiance mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "plate is a component in machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:refined_radiance_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "rod form of refined material"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "rationale": "material name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rod used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting refined radiance components"
+          ],
+          "signal": "inferred",
+          "rationale": "rod for machining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:refined_radiance_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "screw is a small crafting component"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "rationale": "material name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "screw used when building machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting refined radiance mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "screw is a component in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:refined_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed into material"
+        },
+        "material_family": {
+          "value": "refined_rose_quartz",
+          "signal": "named",
+          "evidence": "stage2:material_family_from_ore_id",
+          "rationale": "material family derived from ore type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ore carried after mining, then smelted"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into refined rose quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "primary process is smelting/milling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ],
+          "signal": "inferred",
+          "rationale": "ore storage group"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_cogwheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic component for transmitting rotation"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting rotation in machines"
+          ],
+          "signal": "inferred",
+          "rationale": "cogwheel for mechanical power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_crushing_wheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing component for crushing"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up crushing setup"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing ores to dust"
+          ],
+          "signal": "inferred",
+          "rationale": "crushing wheel for ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_encased_fan": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fan component for air-based processing"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building fan setups"
+        },
+        "primary_uses": {
+          "values": [
+            "blowing items for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "encased fan for bulk processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "gearbox for altering rotation transmission"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building complex machines"
+        },
+        "primary_uses": {
+          "values": [
+            "changing rotation axis in machines"
+          ],
+          "signal": "inferred",
+          "rationale": "gearbox for mechanical power routing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_mechanical_mixer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "mixing component for processing"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building mixing setup"
+        },
+        "primary_uses": {
+          "values": [
+            "mixing recipes in basin"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical mixer for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_mechanical_press": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pressing component for processing"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building press setup"
+        },
+        "primary_uses": {
+          "values": [
+            "pressing items into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical press for shaping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_mechanical_pump": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid pump component"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building fluid systems"
+        },
+        "primary_uses": {
+          "values": [
+            "pumping fluids in contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical pump for fluid transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_mechanical_saw": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cutting component"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building saw setup"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting wood and blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical saw for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_millstone": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "grinding component"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building milling setup"
+        },
+        "primary_uses": {
+          "values": [
+            "grinding items into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "millstone for ore grinding"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_shaft": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "shaft for transmitting rotation"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building rotation chains"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting rotation in machines"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical shaft"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhodium_plated_palladium_vertical_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "vertical gearbox for rotation axis change"
+        },
+        "material_family": {
+          "value": "rhodium_plated_palladium",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building vertical power routing"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical rotation transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "vertical gearbox for space-saving"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rhyolite_rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "named",
+          "evidence": "stage2 material_family",
+          "rationale": "material from ore type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ore carried after mining"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into rose quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ],
+          "signal": "inferred",
+          "rationale": "ore storage group"
+        }
+      }
+    },
+    "greate:rich_raw_rose_quartz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "rich raw ore material"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "raw material carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "polished or pressed into rose quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "processing raw ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common raw material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rich_raw_materials",
+          "rationale": "rich raw material group"
+        }
+      }
+    },
+    "greate:rose_quartz_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface indicator of ore, natural feature"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred",
+          "rationale": "associated with rose quartz ore"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only collected for indication"
+        },
+        "primary_uses": {
+          "values": [
+            "indicating rose quartz ore location"
+          ],
+          "signal": "inferred",
+          "rationale": "surface bud marker"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface feature"
+        }
+      }
+    },
+    "greate:rose_quartz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form of rose quartz"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "dust used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rose quartz items"
+          ],
+          "signal": "inferred",
+          "rationale": "dust for further processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rose_quartz_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating ore"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "inferred",
+          "rationale": "associated with rose quartz"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for indication"
+        },
+        "primary_uses": {
+          "values": [
+            "indicating rose quartz ore"
+          ],
+          "signal": "inferred",
+          "rationale": "surface marker"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface rock"
+        }
+      }
+    },
+    "greate:rose_quartz_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "lens is a crafting component"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "lens used when crafting machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting optical components"
+          ],
+          "signal": "inferred",
+          "rationale": "lens component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "explicit rarity"
+        }
+      }
+    },
+    "greate:rose_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "material from ore type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ore carried after mining"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into rose quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ],
+          "signal": "inferred",
+          "rationale": "ore storage group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

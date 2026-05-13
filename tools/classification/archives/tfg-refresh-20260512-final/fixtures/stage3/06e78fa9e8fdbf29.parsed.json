@@ -1,0 +1,1079 @@
+{
+  "items": {
+    "gtceu:magnalium_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Item pipe is a placed block for logistics, not a material."
+        },
+        "material_family": {
+          "value": "magnalium",
+          "signal": "pattern",
+          "rationale": "id contains magnalium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players carry pipes in bulk for infrastructure building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item, no rarity component."
+        },
+        "primary_uses": {
+          "values": [
+            "transporting items through piping"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function of an item pipe."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation logistics networks."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to GTCEu item/fluid pipe subsystem."
+        }
+      }
+    },
+    "gtceu:magnesia_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust used as crafting input."
+        },
+        "material_family": {
+          "value": "magnesia",
+          "signal": "pattern",
+          "rationale": "id contains magnesia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing refractory mixes."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust, no rarity component."
+        },
+        "primary_uses": {
+          "values": [
+            "alloying and refractory brick production"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing for magnesia refractory."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:magnesite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust used as crafting input."
+        },
+        "material_family": {
+          "value": "magnesite",
+          "signal": "pattern",
+          "rationale": "id contains magnesite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing ore dusts."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust, no rarity component."
+        },
+        "primary_uses": {
+          "values": [
+            "refining into magnesium dust and ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Produces magnesium via processing."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:magnesite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock found in world, indicates ore."
+        },
+        "material_family": {
+          "value": "magnesite",
+          "signal": "pattern",
+          "rationale": "id contains magnesite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Picked up when prospecting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "primary_uses": {
+          "values": [
+            "surface indicator for magnesite ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to locate ore deposits."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Loose surface rock fits with dirt/rocks group."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected during mining/exploration."
+        }
+      }
+    },
+    "gtceu:magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore to be smelted or processed."
+        },
+        "material_family": {
+          "value": "magnesite",
+          "signal": "pattern",
+          "rationale": "id contains magnesite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into magnesium ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is ore processing."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block belongs with unprocessed ores."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from the ground."
+        }
+      }
+    },
+    "gtceu:magnesium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool for transporting and pouring liquid metal."
+        },
+        "material_family": {
+          "value": "magnesium",
+          "signal": "pattern",
+          "rationale": "id contains magnesium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting or moving metal."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common bucket."
+        },
+        "primary_uses": {
+          "values": [
+            "carry and pour liquid magnesium"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard fluid transport bucket."
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding fluid."
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in casting workflow."
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of metal casting process."
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input material for casting."
+        }
+      }
+    },
+    "gtceu:magnesium_chloride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust used as chemical input."
+        },
+        "material_family": {
+          "value": "magnesium_chloride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for chemical processing."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust."
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes producing magnesium compounds."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block of ingots, not a container."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for compact storage or building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block, no special rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of magnesium diboride"
+          ],
+          "signal": "inferred",
+          "rationale": "9x ingot compact form."
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool for transporting and pouring liquid superconductor."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting superconducting parts."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common bucket."
+        },
+        "primary_uses": {
+          "values": [
+            "carry and pour liquid magnesium diboride"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport for casting."
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding fluid."
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in casting workflow."
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed energy transport wire for power networks."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV Superconductor",
+          "rationale": "Displayed as MV superconductor."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up power lines."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wire."
+        },
+        "primary_uses": {
+          "values": [
+            "MV superconductive energy transport",
+            "power cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports energy with zero loss."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy cable subsystem."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV-tier component, grouped with others."
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Base dust for making ingots and components."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for alloying and smelting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust."
+        },
+        "primary_uses": {
+          "values": [
+            "producing ingots and superconductors"
+          ],
+          "signal": "inferred",
+          "rationale": "Precursor to all MgB2 forms."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Thin component used in crafting."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specific small component."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material."
+        },
+        "primary_uses": {
+          "values": [
+            "component for superconducting circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fine wire and other recipes."
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed high-amperage wire for power networks."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV Superconductor",
+          "rationale": "Displayed as MV superconductor."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for high-power installations."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wire."
+        },
+        "primary_uses": {
+          "values": [
+            "MV superconductive energy transport",
+            "high-amperage cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "Transmits 64A at MV."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy cable subsystem."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV-tier component."
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Base ingot for crafting and compacting."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for smithing and crafting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ingot."
+        },
+        "primary_uses": {
+          "values": [
+            "craft wires, plates, and blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary form for further processing."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ingots"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_ingots"
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small metal piece for precise alloying."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Little used individually."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common nugget."
+        },
+        "primary_uses": {
+          "values": [
+            "small material unit for fine recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "1/9 of an ingot."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:nuggets"
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed wire for moderate-amperage power."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV Superconductor",
+          "rationale": "Displayed as MV superconductor."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for power infrastructure."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wire."
+        },
+        "primary_uses": {
+          "values": [
+            "MV superconductive energy transport",
+            "32A cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "Transmits 32A at MV."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy cable subsystem."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV-tier component."
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Flat component used in crafting."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine and wire crafting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common plate."
+        },
+        "primary_uses": {
+          "values": [
+            "craft foils, wires, and casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate form for further shaping."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:plates"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_sheets"
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed wire for medium-amperage power."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV Superconductor",
+          "rationale": "Displayed as MV superconductor."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for power lines."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wire."
+        },
+        "primary_uses": {
+          "values": [
+            "MV superconductive energy transport",
+            "16A cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "Transmits 16A at MV."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy cable subsystem."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV-tier component."
+        }
+      }
+    },
+    "gtceu:magnesium_diboride_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed wire for low-amperage power."
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV Superconductor",
+          "rationale": "Displayed as MV superconductor."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fine power connections."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wire."
+        },
+        "primary_uses": {
+          "values": [
+            "MV superconductive energy transport",
+            "4A cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "Transmits 4A at MV."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy cable subsystem."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV-tier component."
+        }
+      }
+    },
+    "gtceu:magnesium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Basic dust from ore processing."
+        },
+        "material_family": {
+          "value": "magnesium",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for alloying and smelting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust."
+        },
+        "primary_uses": {
+          "values": [
+            "alloying and magnesium diboride production"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredient for MgB2 and magnalium."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:magnetic_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative sign block, placed for looks."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "One-off decoration, not carried often."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative warning sign"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic hazard sign for builds."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decorating bases."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits with decorative blocks."
+        }
+      }
+    },
+    "gtceu:magnetic_iron_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block of ingots."
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for compact storage."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block."
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of magnetic iron"
+          ],
+          "signal": "inferred",
+          "rationale": "9x ingot form."
+        }
+      }
+    },
+    "gtceu:magnetic_iron_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small component used in crafting."
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tool and machine crafting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common bolt."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tool parts and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many assembly recipes."
+        }
+      }
+    },
+    "gtceu:magnetic_iron_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust that smelts into magnetic iron."
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for smelting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust."
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into magnetic iron ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct precursor to ingot."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Clean dust, fits with pure dusts."
+        }
+      }
+    },
+    "gtceu:magnetic_iron_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Base ingot for magnetic iron components."
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tools and machines."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ingot."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting magnetic tools and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many magnetic recipes."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ingots"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_ingots"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

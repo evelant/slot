@@ -1,0 +1,452 @@
+{
+  "values": [
+    {
+      "id": "pack:tfg/ae2wtlib_items",
+      "label": "AE2WTLib Items",
+      "state": "review",
+      "description": "Narrow mod-specific items bucket for wireless terminals. Needs human confirmation.",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "ae2wtlib",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/toolbelt_items",
+      "label": "Tool Belt Items",
+      "state": "review",
+      "description": "Mod-specific items for tool belts and pouches. Needs human confirmation.",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "toolbelt",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/tfclunchbox_items",
+      "label": "TFC Lunch Box Items",
+      "state": "review",
+      "description": "Minor mod items for lunchboxes. Needs human confirmation.",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "tfclunchbox",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/applied_ammo_box_items",
+      "label": "Applied Ammo Box Items",
+      "state": "review",
+      "description": "Niche ammo box items. Needs human confirmation.",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "applied_ammo_box",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "tfg:hv_components",
+      "label": "HV Components",
+      "state": "accepted",
+      "description": "High Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:hv_boron_carbide_screwdriver",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:mv_components",
+      "label": "MV Components",
+      "state": "accepted",
+      "description": "Medium Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:mv_diamond_tipped_mo_50_re_screwdriver",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "deafission:ev_components",
+      "label": "EV Components",
+      "state": "accepted",
+      "description": "Extreme Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "deafission:battery_heat_port_ev",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:ev_components",
+      "label": "EV Components",
+      "state": "accepted",
+      "description": "Extreme Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:ev_food_oven",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:iv_components",
+      "label": "IV Components",
+      "state": "accepted",
+      "description": "Insane Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:iv_food_oven",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:luv_components",
+      "label": "LUV Components",
+      "state": "accepted",
+      "description": "Luv Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:luv_food_oven",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:lv_components",
+      "label": "LV Components",
+      "state": "accepted",
+      "description": "Low Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:lv_food_oven",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:zpm_components",
+      "label": "ZPM Components",
+      "state": "accepted",
+      "description": "ZPM Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:zpm_food_oven",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:uhv_components",
+      "label": "UHV Components",
+      "state": "accepted",
+      "description": "Ultra High Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:uhv_universal_circuit",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:ulv_components",
+      "label": "ULV Components",
+      "state": "accepted",
+      "description": "Ultra Low Voltage tier components and machine parts. A common player storage section.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "tfg:ulv_universal_circuit",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/data",
+      "label": "Data",
+      "state": "rejected",
+      "description": "Too vague for a player storage section. Evidence is from quests and guides, not item grouping.",
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/data",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/technological_help",
+      "label": "Technological Help",
+      "state": "rejected",
+      "description": "A quest chapter group, not a player storage section.",
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapter_groups",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "minecraft:axes",
+      "label": "Axes",
+      "state": "accepted",
+      "description": "Vanilla tool category. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:axes",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:boats",
+      "label": "Boats",
+      "state": "accepted",
+      "description": "Vanilla boat variants. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:boats",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:decorated_pot_sherds",
+      "label": "Decorated Pot Sherds",
+      "state": "accepted",
+      "description": "Vanilla decorative sherds. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:decorated_pot_sherds",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:enchanted_books",
+      "label": "Enchanted Books",
+      "state": "accepted",
+      "description": "Vanilla enchanted books. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:enchanted_books",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:goat_horns",
+      "label": "Goat Horns",
+      "state": "accepted",
+      "description": "Vanilla goat horns. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:goat_horns",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:hoes",
+      "label": "Hoes",
+      "state": "accepted",
+      "description": "Vanilla tool category. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:hoes",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:infested_blocks",
+      "label": "Infested Blocks",
+      "state": "accepted",
+      "description": "Vanilla infested stone blocks. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:infested_blocks",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:lingering_potions",
+      "label": "Lingering Potions",
+      "state": "accepted",
+      "description": "Vanilla potion variant. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:lingering_potions",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:minecarts",
+      "label": "Minecarts",
+      "state": "accepted",
+      "description": "Vanilla minecarts. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:minecarts",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:pickaxes",
+      "label": "Pickaxes",
+      "state": "accepted",
+      "description": "Vanilla tool category. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:pickaxes",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:potions",
+      "label": "Potions",
+      "state": "accepted",
+      "description": "Vanilla potions. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:potions",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:shovels",
+      "label": "Shovels",
+      "state": "accepted",
+      "description": "Vanilla tool category. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:shovels",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:spawn_eggs",
+      "label": "Spawn Eggs",
+      "state": "accepted",
+      "description": "Vanilla spawn eggs. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:spawn_eggs",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:splash_potions",
+      "label": "Splash Potions",
+      "state": "accepted",
+      "description": "Vanilla potion variant. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:splash_potions",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "minecraft:suspicious_stews",
+      "label": "Suspicious Stews",
+      "state": "accepted",
+      "description": "Vanilla suspicious stews. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "minecraft:suspicious_stews",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "tfg:axes",
+      "label": "Axes",
+      "state": "accepted",
+      "description": "TFG-specific axes stack group. Good storage bucket.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "stack_group",
+          "id": "tfg:axes",
+          "confidence": 0.75
+        }
+      ]
+    }
+  ]
+}

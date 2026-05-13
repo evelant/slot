@@ -1,0 +1,1092 @@
+{
+  "items": {
+    "create:cardboard_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable boots with durability"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name and material theme"
+        },
+        "primary_uses": {
+          "values": [
+            "provides minimal armor protection",
+            "part of stealth set"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "armor is usually carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn during combat"
+        }
+      }
+    },
+    "create:cardboard_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable chestplate"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "primary_uses": {
+          "values": [
+            "provides minimal armor protection",
+            "part of stealth set"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "armor carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn during combat"
+        }
+      }
+    },
+    "create:cardboard_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable helmet"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "primary_uses": {
+          "values": [
+            "provides minimal armor protection",
+            "part of stealth set"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "armor carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn during combat"
+        }
+      }
+    },
+    "create:cardboard_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable leggings"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "primary_uses": {
+          "values": [
+            "provides minimal armor protection",
+            "part of stealth set"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "armor carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn during combat"
+        }
+      }
+    },
+    "create:cardboard_package_10x12": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "used to send items via package network"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "primary_uses": {
+          "values": [
+            "sending items through package logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "package transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "package transport is logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create package system"
+        }
+      }
+    },
+    "create:cardboard_package_10x8": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "used to send items via package network"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "primary_uses": {
+          "values": [
+            "sending items through package logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "package transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "package transport is logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create package system"
+        }
+      }
+    },
+    "create:cardboard_package_12x10": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "used to send items via package network"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "primary_uses": {
+          "values": [
+            "sending items through package logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "package transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "package transport is logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create package system"
+        }
+      }
+    },
+    "create:cardboard_package_12x12": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "used to send items via package network"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "primary_uses": {
+          "values": [
+            "sending items through package logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "package transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "package transport is logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create package system"
+        }
+      }
+    },
+    "create:cardboard_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "named sword and melee weapon"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "item name"
+        },
+        "primary_uses": {
+          "values": [
+            "weak melee attack",
+            "novelty weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "mostly harmless weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        }
+      }
+    },
+    "create:cart_assembler": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic block for assembling minecarts"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "mineable with axe",
+          "rationale": "mineable with axe implies wood"
+        },
+        "primary_uses": {
+          "values": [
+            "assembling minecart contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "core function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when building contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automation systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "enables minecart contraptions"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    },
+    "create:chain_conveyor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic block for vertical item transport"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "mineable with axe"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical item transport on belts"
+          ],
+          "signal": "inferred",
+          "rationale": "core function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    },
+    "create:cherry_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable window block"
+        },
+        "material_family": {
+          "value": "wood_cherry",
+          "signal": "pattern",
+          "evidence": "id prefix cherry_",
+          "rationale": "stage2 material_family"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative window building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks and light"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "create:cherry_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable window pane"
+        },
+        "material_family": {
+          "value": "wood_cherry",
+          "signal": "pattern",
+          "evidence": "id prefix cherry_",
+          "rationale": "stage2 material_family"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative window glass"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as thin window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    },
+    "create:chest_minecart_contraption": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "minecart contraption with chest"
+        },
+        "primary_uses": {
+          "values": [
+            "moving along rails with inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "mobile storage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "occurs only with contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "rail transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "part of contraption system"
+        }
+      }
+    },
+    "create:chocolate_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrying tool"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "bucket is typically iron"
+        },
+        "primary_uses": {
+          "values": [
+            "storing and pouring molten chocolate"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "situational use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chocolate processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "create:chocolate_glazed_berries": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "has food component, edible"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for hunger and saturation"
+          ],
+          "signal": "inferred",
+          "rationale": "food item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "snack, kept on hand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "berries are fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "coated with chocolate"
+        }
+      }
+    },
+    "create:chromatic_compound": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw material for advanced crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced items"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "rationale": "component rarity uncommon"
+        }
+      }
+    },
+    "create:chute": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic block for vertical item transport"
+        },
+        "material_family": {
+          "value": "metal",
+          "signal": "pattern",
+          "evidence": "mineable with pickaxe",
+          "rationale": "pickaxe mineable implies metal"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "dropping items down"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in logistics setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    },
+    "create:cinder_flour": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "powdered material used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "create:clipboard": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block UI for copying settings"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "likely wooden frame"
+        },
+        "primary_uses": {
+          "values": [
+            "copying and applying block settings"
+          ],
+          "signal": "inferred",
+          "rationale": "setting management tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed at work area"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "create:clockwork_bearing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic block for rotating structures"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "mineable with axe",
+          "rationale": "axe mineable"
+        },
+        "primary_uses": {
+          "values": [
+            "creating rotating contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "core mechanical function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "enables contraption movement"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    },
+    "create:clutch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic power control block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "mineable with axe",
+          "rationale": "axe mineable"
+        },
+        "primary_uses": {
+          "values": [
+            "controlling power flow in contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "disengage/engage power"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "power management"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "power control component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    },
+    "create:cogwheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic power transmission block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "mineable with axe",
+          "rationale": "axe mineable"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting rotational power"
+          ],
+          "signal": "inferred",
+          "rationale": "gear function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential for many contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "core automation component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "power transmission part"
+        }
+      }
+    },
+    "create:content_observer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "outputs redstone signal based on inventory"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "mineable with axe",
+          "rationale": "axe mineable"
+        },
+        "primary_uses": {
+          "values": [
+            "monitoring inventory and emitting redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "sensor function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone signal output"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    },
+    "create:contraption_controls": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "controls for moving contraptions"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "mineable with axe",
+          "rationale": "axe mineable"
+        },
+        "primary_uses": {
+          "values": [
+            "controlling movable contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "driver seat functionality"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed per contraption"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of contraption control"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "contraption control component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has production recipe"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

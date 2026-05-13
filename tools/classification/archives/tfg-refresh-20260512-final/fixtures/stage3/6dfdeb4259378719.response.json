@@ -1,0 +1,988 @@
+{
+  "items": {
+    "gtceu:mv_electric_pump": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fluid transfer cover placed on machine sides"
+        },
+        "primary_uses": {
+          "values": [
+            "Pump fluids via machine cover",
+            "Craft MV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as both cover and ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up fluid logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common from component data"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fluid transport and automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component for material storage"
+        }
+      }
+    },
+    "gtceu:mv_electrolyzer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UI-driven processing machine placed as workstation"
+        },
+        "primary_uses": {
+          "values": [
+            "Electrolyze fluids and materials",
+            "Process chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine tooltip says electrolyzing molecules"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common tier machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated processing line"
+        }
+      }
+    },
+    "gtceu:mv_electromagnetic_separator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Separate magnetic ores",
+            "Process ore byproducts"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: separating magnetic ores"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated ore processing"
+        }
+      }
+    },
+    "gtceu:mv_emitter": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component crafted into machines, stored as crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft MV machines",
+            "Make emitter components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building new machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        }
+      }
+    },
+    "gtceu:mv_energy_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for energy input, placed as part of structure"
+        },
+        "primary_uses": {
+          "values": [
+            "Supply power to multiblocks",
+            "Build MV multiblock systems"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Energy Input for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in multiblock and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock process"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy hatch part of GTCEu hatch subsystem"
+        }
+      }
+    },
+    "gtceu:mv_energy_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for energy output"
+        },
+        "primary_uses": {
+          "values": [
+            "Extract power from multiblocks",
+            "Build MV multiblock systems"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Energy Output for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock process"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Dynamo hatch part of hatch subsystem"
+        }
+      }
+    },
+    "gtceu:mv_extractor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Extract fluids from solids",
+            "Process extraction recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Dejuicer-Device of Doom (extraction)"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated extraction"
+        }
+      }
+    },
+    "gtceu:mv_extruder": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine for metal forming"
+        },
+        "primary_uses": {
+          "values": [
+            "Extrude metal shapes",
+            "Form items with molds"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Universal Machine for Metal Working"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated forming"
+        }
+      }
+    },
+    "gtceu:mv_fermenter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine for fermentation"
+        },
+        "primary_uses": {
+          "values": [
+            "Ferment fluids",
+            "Process bio-chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Fermenting Fluids"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated fermentation"
+        }
+      }
+    },
+    "gtceu:mv_field_generator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component used in crafting machines and upgrades"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft advanced machines",
+            "Upgrade equipment"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient for super chests, tanks, grapple mod"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        }
+      }
+    },
+    "gtceu:mv_fisher": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Automated fishing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated fishing",
+            "Fish collection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Costs string to fish"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated fishing"
+        }
+      }
+    },
+    "gtceu:mv_fluid_drilling_rig": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Multiblock fluid extraction machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Drill fluids from bedrock",
+            "Extract oil/water"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Oil Extraction Pump"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated fluid drilling"
+        }
+      }
+    },
+    "gtceu:mv_fluid_heater": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine for heating fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "Heat fluids",
+            "Process fluid heating recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Heating up your Fluids"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated heating"
+        }
+      }
+    },
+    "gtceu:mv_fluid_passthrough_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for fluid passthrough"
+        },
+        "primary_uses": {
+          "values": [
+            "Pass fluids through multiblock walls",
+            "Build fluid multiblock systems"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Fluid passthrough hatch"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid hatch part of hatch subsystem"
+        }
+      }
+    },
+    "gtceu:mv_fluid_regulator": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cover for regulating fluid flow on machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Regulate fluid flow as cover",
+            "Restrict fluid transfer rates"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Limits Fluids to specific quantities as Cover"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid systems"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fluid automation logistics"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        }
+      }
+    },
+    "gtceu:mv_fluid_solidifier": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine for solidifying fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "Solidify fluids into solids",
+            "Cast molten metals"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Cools Fluids down to form Solids"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated solidification"
+        }
+      }
+    },
+    "gtceu:mv_forge_hammer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine for forging"
+        },
+        "primary_uses": {
+          "values": [
+            "Forge metal items",
+            "Process hammering recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Stop, Hammertime!"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated forging"
+        }
+      }
+    },
+    "gtceu:mv_forming_press": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine for pressing/forming"
+        },
+        "primary_uses": {
+          "values": [
+            "Form items with molds",
+            "Imprint images"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Imprinting Images into things"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated forming"
+        }
+      }
+    },
+    "gtceu:mv_gas_collector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine for gas collection"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect gases from air",
+            "Dimension-specific gas gathering"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Collects Gas from the air depending on the dimension"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated gas collection"
+        }
+      }
+    },
+    "gtceu:mv_gas_turbine": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Power generation machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Generate EU from gas fuel",
+            "Power MV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Gas Turbine Generator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary generator"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation activity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu generator subsystem"
+        }
+      }
+    },
+    "gtceu:mv_hermetic_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative/structural block used in multiblock walls"
+        },
+        "primary_uses": {
+          "values": [
+            "Build multiblock structures",
+            "Industrial decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing block for machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when constructing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building structures"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing part of multiblock system"
+        }
+      }
+    },
+    "gtceu:mv_input_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for item input"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide item input to multiblocks",
+            "Feed items into machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Item Input for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        }
+      }
+    },
+    "gtceu:mv_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for fluid input"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide fluid input to multiblocks",
+            "Supply fluids to machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Fluid Input for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid hatch part of hatch subsystem"
+        }
+      }
+    },
+    "gtceu:mv_item_collector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Area item collection machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated item collection",
+            "Pick up items in area"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Collects Items around itself"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stationary machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated item collection"
+        }
+      }
+    },
+    "gtceu:mv_item_passthrough_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for item passthrough"
+        },
+        "primary_uses": {
+          "values": [
+            "Pass items through multiblock walls",
+            "Build item logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Item Passthrough Hatch"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item automation"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Item passthrough part of hatch subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1105 @@
+{
+  "items": {
+    "createdeco:cracked_verdant_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs are structural building components"
+        },
+        "primary_uses": {
+          "values": [
+            "building staircases",
+            "decorative construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Players use stairs for access and decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building projects, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component shows common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used primarily for building structures"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Brick-type block from a brick series"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick variant stored with other bricks"
+        }
+      }
+    },
+    "createdeco:cracked_verdant_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Walls are building components"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "enclosing areas"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for boundaries and defense"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Brick-type block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Matched brick_walls bucket"
+        }
+      }
+    },
+    "createdeco:cracked_verdant_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full brick block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "decorative construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as base building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Brick material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Core brick storage bucket"
+        }
+      }
+    },
+    "createdeco:cyan_placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall sign for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling areas",
+            "decorating walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for signage and aesthetics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "named",
+          "evidence": "display_name 'Cyan Placard'",
+          "rationale": "Explicit color in name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall-mounted decorative sign"
+        }
+      }
+    },
+    "createdeco:cyan_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Openable container for item storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items",
+            "decorative storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest-like block for organization"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for organizing inventory"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "pattern",
+          "evidence": "tag createdeco:chest_mounted_storage",
+          "rationale": "Chest-like storage container"
+        }
+      }
+    },
+    "createdeco:dean_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab building component"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-slabs",
+            "decorative floors/stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for steps and transitions"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Brick material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "createdeco:dean_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair building component"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "decorative elevation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for vertical access"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Brick material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs group, no specific brick stairs bucket"
+        }
+      }
+    },
+    "createdeco:dean_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall building component"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "enclosing areas"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for boundaries"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Brick material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    },
+    "createdeco:dean_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full brick block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "structural construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Base building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Brick material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Core brick storage bucket"
+        }
+      }
+    },
+    "createdeco:decal_creeper": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "adding warning signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic wall symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall-mounted decorative decal"
+        }
+      }
+    },
+    "createdeco:decal_cross": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "adding symbols"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic wall symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall-mounted decal"
+        }
+      }
+    },
+    "createdeco:decal_down": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "directional signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Arrow decal for direction"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_down_left": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "directional signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Arrow decal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_down_right": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "directional signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Arrow decal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_electrical": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "warning signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Electrical hazard symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall-mounted decal"
+        }
+      }
+    },
+    "createdeco:decal_fire": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "warning signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Fire hazard symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_fire_diamond": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "warning signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Fire diamond symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_flow": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "directional signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Flow indicator decal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_fluid": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "warning signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid hazard symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_ice": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "warning signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Ice hazard symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_left": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "directional signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Left arrow decal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_no_entry": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "restriction signs"
+          ],
+          "signal": "inferred",
+          "rationale": "No entry symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_radioactive": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "warning signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Radioactive symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_right": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "directional signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Right arrow decal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    },
+    "createdeco:decal_skull": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating walls",
+            "warning signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Skull symbol"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decal"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

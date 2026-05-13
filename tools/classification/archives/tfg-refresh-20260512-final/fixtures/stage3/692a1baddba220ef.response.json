@@ -1,0 +1,664 @@
+{
+  "items": {
+    "advancedperipherals:overpowered_husbandry_automata_core": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Turtle enhancement core, applied to improve abilities"
+        },
+        "primary_uses": {
+          "values": [
+            "Enhance turtle with husbandry automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Upgrade for ComputerCraft turtle"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized upgrade, not carried often"
+        }
+      }
+    },
+    "advancedperipherals:overpowered_weak_automata_core": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Basic turtle enhancement core"
+        },
+        "primary_uses": {
+          "values": [
+            "Enhance turtle with weak automata"
+          ],
+          "signal": "inferred",
+          "rationale": "Upgrade for ComputerCraft turtle"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized upgrade, rarely carried"
+        }
+      }
+    },
+    "advancedperipherals:peripheral_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable decorative/structural block for peripheral setups"
+        },
+        "primary_uses": {
+          "values": [
+            "Construct peripheral structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block in Advanced Peripherals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried in bulk"
+        }
+      }
+    },
+    "advancedperipherals:player_detector": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Functional block that detects players, integrates with redstone/computers"
+        },
+        "primary_uses": {
+          "values": [
+            "Detect players in area",
+            "Integrate with computer control"
+          ],
+          "signal": "inferred",
+          "rationale": "Peripheral block for automation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten, not carried"
+        }
+      }
+    },
+    "advancedperipherals:redstone_integrator": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Block that bridges redstone and computers"
+        },
+        "primary_uses": {
+          "values": [
+            "Read/write redstone signals via computer"
+          ],
+          "signal": "inferred",
+          "rationale": "Key peripheral for redstone automation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        }
+      }
+    },
+    "advancedperipherals:rs_bridge": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Bridge between Advanced Peripherals and Refined Storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Integrate Refined Storage with computers"
+          ],
+          "signal": "inferred",
+          "rationale": "Cross-mod bridge block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Single placed block, not carried"
+        }
+      }
+    },
+    "advancedperipherals:weak_automata_core": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Basic turtle upgrade core"
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade turtle with weak automata abilities"
+          ],
+          "signal": "inferred",
+          "rationale": "Core enhancement for turtles"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized upgrade, not everyday carry"
+        }
+      }
+    },
+    "ae2:16k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of AE2 autocrafting CPU multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Store crafting patterns in AE2 system"
+          ],
+          "signal": "inferred",
+          "rationale": "Component of automated crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in autocrafting setup, not carried often"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-specific component, stored with other AE2 items"
+        }
+      }
+    },
+    "ae2:1k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Smallest AE2 crafting storage block"
+        },
+        "primary_uses": {
+          "values": [
+            "Store small number of crafting patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Component of AE2 autocrafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in CPU, not carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item, stored with mod peers"
+        }
+      }
+    },
+    "ae2:256k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "High-capacity AE2 crafting storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Store many crafting patterns in AE2"
+          ],
+          "signal": "inferred",
+          "rationale": "Upgraded CPU component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item"
+        }
+      }
+    },
+    "ae2:4k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Mid-tier AE2 crafting storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Store patterns for autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 CPU part"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed, not carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item"
+        }
+      }
+    },
+    "ae2:64k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Large AE2 crafting storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Store many patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 CPU component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed, not carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item"
+        }
+      }
+    },
+    "ae2:advanced_card": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for AE2 upgrades"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft advanced AE2 upgrades",
+            "Upgrade pattern providers"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate crafting item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in crafting, kept in storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 component"
+        }
+      }
+    },
+    "ae2:annihilation_core": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Core component for AE2 planes"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft annihilation/formation planes"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredient for AE2 device parts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting material, stored in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item"
+        }
+      }
+    },
+    "ae2:annihilation_plane": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Functional block that breaks blocks into AE2 network"
+        },
+        "primary_uses": {
+          "values": [
+            "Automatically mine and import blocks into ME"
+          ],
+          "signal": "inferred",
+          "rationale": "Key automation component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in automation setup, not carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 device"
+        }
+      }
+    },
+    "ae2:auto_complete_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Card that auto-completes patterns in pattern providers"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-complete crafting patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade card"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized upgrade, not carried often"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade item"
+        }
+      }
+    },
+    "ae2:basic_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Base AE2 upgrade card for pattern providers"
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade pattern providers",
+            "Craft advanced cards"
+          ],
+          "signal": "inferred",
+          "rationale": "Multi-purpose upgrade component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Common upgrade, sometimes carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item"
+        }
+      }
+    },
+    "ae2:black_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "id contains 'cable'",
+          "rationale": "AE2 network cable, part of the ME network"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME devices",
+            "Color-coded network cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "Essential for AE2 network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when expanding network"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network component"
+        }
+      }
+    },
+    "ae2:black_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "Dense variant of AE2 covered cable"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect many ME channels"
+          ],
+          "signal": "inferred",
+          "rationale": "High-throughput cabling"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used for dense backbones, not often carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable"
+        }
+      }
+    },
+    "ae2:black_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "Glass cable variant, part of AE2 network"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME devices with visible channel lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic network cabling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building network"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable"
+        }
+      }
+    },
+    "ae2:black_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to paint cables with luminescent effect"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint ME cables for visibility"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative tool for AE2 cabling"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized, not often carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 utility item"
+        }
+      }
+    },
+    "ae2:black_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to paint ME cables"
+        },
+        "primary_uses": {
+          "values": [
+            "Color-code ME cables black"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable decoration tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized utility, rarely carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 utility"
+        }
+      }
+    },
+    "ae2:black_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "Smart cable that shows channel usage"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect devices and monitor channel usage"
+          ],
+          "signal": "inferred",
+          "rationale": "Smart network cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when building/troubleshooting network"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable"
+        }
+      }
+    },
+    "ae2:black_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "Dense smart cable for high-channel networks"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect many channels with monitoring"
+          ],
+          "signal": "inferred",
+          "rationale": "High-capacity smart cabling"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized for dense backbones"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable"
+        }
+      }
+    },
+    "ae2:blank_pattern": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Base item for crafting encoded patterns"
+        },
+        "primary_uses": {
+          "values": [
+            "Create crafting patterns for AE2"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw material for automation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried when setting up autocrafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 crafting component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

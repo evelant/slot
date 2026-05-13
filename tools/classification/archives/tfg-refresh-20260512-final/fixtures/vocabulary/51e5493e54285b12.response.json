@@ -1,0 +1,514 @@
+{
+  "values": [
+    {
+      "id": "advancedperipherals:block/reader",
+      "label": "Block reader",
+      "state": "accepted",
+      "description": "A peripheral block that reads data from blocks in front of it.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "advancedperipherals:manual/en_us/entries/peripherals/block_reader",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "advancedperipherals:chat/box",
+      "label": "Chat Box",
+      "state": "accepted",
+      "description": "A peripheral block for interacting with game chat.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "advancedperipherals:manual/en_us/entries/peripherals/chat_box",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "advancedperipherals:colony/integrator",
+      "label": "Colony integrator",
+      "state": "accepted",
+      "description": "A peripheral block that interfaces with MineColonies colonies.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "advancedperipherals:manual/en_us/entries/peripherals/colony_integrator",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:blast_furnace",
+      "label": "Blast Furnace",
+      "state": "accepted",
+      "description": "A multiblock for smelting ores and alloys at high temperatures.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:blast_furnace",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "deafission:component_hb",
+      "label": "Heat Battery Components",
+      "state": "rejected",
+      "description": "Not a player-facing station or process; a component grouping.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": []
+    },
+    {
+      "id": "ae2wtlib:upgrade",
+      "label": "Upgrade",
+      "state": "rejected",
+      "description": "Not a player-facing station or process; an upgrade category.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": []
+    },
+    {
+      "id": "create_factory_logistics:network_link_qualification",
+      "label": "Network Link Qualification",
+      "state": "rejected",
+      "description": "Not a player-facing station or process; a recipe mechanic.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": []
+    },
+    {
+      "id": "firmalife:stinky_soup",
+      "label": "Stinky Soup",
+      "state": "rejected",
+      "description": "Not a player-facing station or process; a food recipe type.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": []
+    },
+    {
+      "id": "tfc:pot_soup",
+      "label": "Pot Soup",
+      "state": "rejected",
+      "description": "Not a player-facing station or process; a recipe type.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": []
+    },
+    {
+      "id": "vintageimprovements:pressurizing",
+      "label": "Pressurizing",
+      "state": "review",
+      "description": "Possible process involving pressure; lacks clear evidence as a player-facing station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:pressurizing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:creating/plates",
+      "label": "Creating Plates",
+      "state": "rejected",
+      "description": "A guide topic; the actual station is the compressor.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:detection",
+      "label": "Detection",
+      "state": "rejected",
+      "description": "A guide category; not a player-facing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:energizer",
+      "label": "Energizer",
+      "state": "accepted",
+      "description": "A machine that charges items and stores energy.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/surviving_mars/energizer",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:flags",
+      "label": "Flags",
+      "state": "rejected",
+      "description": "Decorative blocks; not a processing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:generating/energy",
+      "label": "Generating Energy",
+      "state": "rejected",
+      "description": "A guide topic; the actual station is the coal generator.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:gravity/normalizer",
+      "label": "Gravity Normalizer",
+      "state": "accepted",
+      "description": "A machine that creates artificial gravity in sealed areas.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_moon/gravity_normalizer",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:industrial/lamps",
+      "label": "Industrial Lamps",
+      "state": "rejected",
+      "description": "Decorative blocks; not a processing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:mars",
+      "label": "Mars",
+      "state": "rejected",
+      "description": "A planet, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:preparing/to/launch",
+      "label": "Preparing to Launch",
+      "state": "rejected",
+      "description": "A guide topic; not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:proxima/centauri",
+      "label": "Proxima Centauri",
+      "state": "rejected",
+      "description": "A star system, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:radio",
+      "label": "Radio",
+      "state": "rejected",
+      "description": "A decorative/music block, not a processing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:solar/panel",
+      "label": "Solar Panel",
+      "state": "accepted",
+      "description": "A power-generating machine that produces energy from sunlight.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_moon/solar_panel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:ti/value_69",
+      "label": "Ti-69",
+      "state": "review",
+      "description": "A handheld device for environmental readings; not a stationary processing surface.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_moon/ti_69",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:trophies",
+      "label": "Trophies",
+      "state": "rejected",
+      "description": "Decorative blocks; not a processing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:venus/and/mercury",
+      "label": "Venus and Mercury",
+      "state": "rejected",
+      "description": "A guide topic about planets; not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "buildinggadgets2:anchor",
+      "label": "Anchor",
+      "state": "rejected",
+      "description": "A building gadget mode, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "buildinggadgets2:build/to/me",
+      "label": "Build To Me",
+      "state": "rejected",
+      "description": "A building gadget mode, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "buildinggadgets2:grid",
+      "label": "Grid",
+      "state": "rejected",
+      "description": "A building gadget mode, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfc:a/place/to/sleep",
+      "label": "A Place to Sleep",
+      "state": "review",
+      "description": "The thatch bed is a surface for setting spawn, but not a processing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/a_place_to_sleep",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:armor/trims",
+      "label": "Armor Trims",
+      "state": "rejected",
+      "description": "A guide topic; the actual station is the smithing table.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfc:bellows",
+      "label": "Bellows",
+      "state": "accepted",
+      "description": "A device that increases air flow and temperature in heating devices.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/bellows",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:clay_knapping",
+      "label": "Clay Knapping Recipe",
+      "state": "accepted",
+      "description": "A crafting process using clay to form pottery and tools.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:clay_knapping",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "block.simplylight.edge_light_top:info",
+      "label": "Will morph depending on the blocks present around itself on placement. Shape will persist afterward, letting you make shapes using temporary blocks.",
+      "state": "rejected",
+      "description": "Informational text about a block's behavior, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "block.simplylight.edge_light:info",
+      "label": "Will morph depending on the blocks present around itself on placement. Shape will persist afterward, letting you make shapes using temporary blocks.",
+      "state": "rejected",
+      "description": "Informational text about a block's behavior, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "deathpunishment:penalties",
+      "label": "Death Penalties",
+      "state": "rejected",
+      "description": "A configuration category, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "emi:anvil_repairing",
+      "label": "Anvil Repairing",
+      "state": "rejected",
+      "description": "EMI internal category; not a standalone station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "emi:world_interaction",
+      "label": "World Interaction",
+      "state": "rejected",
+      "description": "Generic EMI category, not a specific station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "firmaciv:transfer/error/barrel_sealed",
+      "label": "Barrel is currently sealed",
+      "state": "rejected",
+      "description": "An error message, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "greate:byproducts",
+      "label": "Byproducts from HS+",
+      "state": "rejected",
+      "description": "Informational recipe category, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "greate:recipe_tier",
+      "label": "Recipe Tier:",
+      "state": "rejected",
+      "description": "Informational label, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "gtceu:bedrock_fluid_diagram",
+      "label": "Bedrock Fluid Diagram",
+      "state": "rejected",
+      "description": "Informational diagram, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "gtceu:bedrock_fluid/heavy_oil_deposit",
+      "label": "Heavy Oil Deposit",
+      "state": "rejected",
+      "description": "A resource deposit, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "gtceu:bedrock_fluid/lava_deposit",
+      "label": "Lava Deposit",
+      "state": "rejected",
+      "description": "A resource deposit, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "minecraft:campfire_cooking",
+      "label": "Campfire Cooking",
+      "state": "accepted",
+      "description": "Cooking food on a campfire.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "minecraft:campfire_cooking",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "sodium.extras.options:desc",
+      "label": "If enabled, JEI item list will be hidden unless you search for something. Press space to search for everything.",
+      "state": "rejected",
+      "description": "Config description text, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "sodium.extras.options:title",
+      "label": "Hide JEI Until Searching",
+      "state": "rejected",
+      "description": "Config option title, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "vintageimprovements:text/auto_smithing/text1",
+      "label": "Using the Helve",
+      "state": "rejected",
+      "description": "Informational text, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "vintageimprovements:text/auto_smithing/text2",
+      "label": "Hammer on a",
+      "state": "rejected",
+      "description": "Incomplete informational text, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,997 @@
+{
+  "items": {
+    "gtceu:copper_wire_cutter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "durable crafting tool for wires"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "name and melting info"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "harvest level 2 (iron equivalent)"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "standard tool carried always"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "early game tool"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wires and cables",
+            "cutting wire materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many wire recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft machine components"
+        }
+      }
+    },
+    "gtceu:copper_wire_cutter_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component part for tool repair/crafting"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "name and tag forge:wire_cutter_heads/copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when repairing tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic component"
+        },
+        "primary_uses": {
+          "values": [
+            "repairing wire cutters",
+            "crafting wire cutter tool"
+          ],
+          "signal": "inferred",
+          "rationale": "used in damage_inputs recipe"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "pattern",
+          "rationale": "produced at anvil per recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output"
+          ],
+          "signal": "pattern",
+          "rationale": "output of anvil smithing"
+        }
+      }
+    },
+    "gtceu:copper_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "durable tool for dismantling machines"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "name and melting info"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "harvest level 2"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential tool for machine maintenance"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic tool"
+        },
+        "primary_uses": {
+          "values": [
+            "dismantling machines",
+            "rotating blocks",
+            "configuring pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and high recipe count"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place and configure machinery"
+        }
+      }
+    },
+    "gtceu:copper_wrench_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component part for tool repair/crafting"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "name and tag forge:wrench_tips/copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when repairing tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic component"
+        },
+        "primary_uses": {
+          "values": [
+            "repairing wrenches",
+            "crafting wrench tool"
+          ],
+          "signal": "inferred",
+          "rationale": "used in damage_inputs recipe"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "pattern",
+          "rationale": "produced at anvil per recipe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output"
+          ],
+          "signal": "pattern",
+          "rationale": "output of anvil smithing"
+        }
+      }
+    },
+    "gtceu:corrosion_proof_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "machine casing block placed as structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic casing block"
+        },
+        "primary_uses": {
+          "values": [
+            "building machine casings",
+            "constructing multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration tab and block form"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a structural block"
+        }
+      }
+    },
+    "gtceu:cpu_chip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "electronic component for circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting computers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "mid-game component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting computers",
+            "making advanced circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and recipe context"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "named",
+          "rationale": "group for electronic components"
+        }
+      }
+    },
+    "gtceu:cpu_wafer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw wafer used for cpu chips"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing wafers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic precursor"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cpu chips"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and cutting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "named",
+          "rationale": "group for electronic components"
+        }
+      }
+    },
+    "gtceu:cracked_bauxite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when moving hot slurry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting hot bauxite slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket with process fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "bucket form and fluid content"
+        }
+      }
+    },
+    "gtceu:cracked_dark_concrete_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick block for construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "tag tfg:stone_composition/concrete"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "variant block placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with dark concrete bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration tab"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick variant storage"
+        }
+      }
+    },
+    "gtceu:cracked_light_concrete_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick block for construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "tag tfg:stone_composition/concrete"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "variant block placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with light concrete bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration tab"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick variant storage"
+        }
+      }
+    },
+    "gtceu:cracked_marble_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick block for construction"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "inferred",
+          "rationale": "name and decoration tab"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "variant block placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with marble bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration tab"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick group"
+        }
+      }
+    },
+    "gtceu:cracked_red_granite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick block for construction"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "rationale": "tag tfg:stone_composition/igneous_felsic"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "variant block placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building with red granite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration tab"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/red_granite"
+          ],
+          "signal": "named",
+          "rationale": "group for red granite blocks"
+        }
+      }
+    },
+    "gtceu:cracker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "processing machine for oil cracking"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed machine, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-game machine"
+        },
+        "primary_uses": {
+          "values": [
+            "cracking heavy oil into light products"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and machine name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated oil processing"
+        }
+      }
+    },
+    "gtceu:creative_chest": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "creative-only debug block"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "tooltip says creative mode needed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtained in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "testing with infinite items"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tab machine"
+        }
+      }
+    },
+    "gtceu:creative_computation_provider": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "creative-only debug block"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "tooltip says creative mode needed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtained in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "providing infinite computation for testing"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tab machine"
+        }
+      }
+    },
+    "gtceu:creative_data_access_hatch": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "creative-only debug block"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "tooltip says creative mode needed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtained in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "accessing data in multiblock for testing"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tab machine"
+        }
+      }
+    },
+    "gtceu:creative_energy": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "creative-only debug block"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "tooltip says creative mode needed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtained in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "providing infinite energy for testing"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tab machine"
+        }
+      }
+    },
+    "gtceu:creative_tank": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "creative-only debug block"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "tooltip says creative mode needed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtained in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "providing infinite fluid for testing"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tab machine"
+        }
+      }
+    },
+    "gtceu:creosote_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when moving creosote"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting creosote oil"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket with fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "bucket form and fluid content"
+        }
+      }
+    },
+    "gtceu:crimsite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts/crimsite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common byproduct"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into crimsite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "dust to ingot chain"
+        }
+      }
+    },
+    "gtceu:crushed_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing product"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores/almandine"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:crushed_ore"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore product"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into purified ore and dust"
+          ],
+          "signal": "inferred",
+          "rationale": "milling and splashing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "named",
+          "rationale": "group for crushed ore storage"
+        }
+      }
+    },
+    "gtceu:crushed_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing product"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores/aluminium"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:crushed_ore"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore product"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into aluminium dust and ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "milling and smelting chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "named",
+          "rationale": "group for crushed ore storage"
+        }
+      }
+    },
+    "gtceu:crushed_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing product"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores/alunite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:crushed_ore"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore product"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into alunite dust"
+          ],
+          "signal": "inferred",
+          "rationale": "milling chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "named",
+          "rationale": "group for crushed ore storage"
+        }
+      }
+    },
+    "gtceu:crushed_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing product"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores/amethyst"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:crushed_ore"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore product"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into amethyst dust"
+          ],
+          "signal": "inferred",
+          "rationale": "milling chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "named",
+          "rationale": "group for crushed ore storage"
+        }
+      }
+    },
+    "gtceu:crushed_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing product"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores/apatite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:crushed_ore"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:crushed_ores"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore product"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into apatite dust"
+          ],
+          "signal": "inferred",
+          "rationale": "milling chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crushed_ores"
+          ],
+          "signal": "named",
+          "rationale": "group for crushed ore storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1691 @@
+{
+  "items": {
+    "tfc:bucket/metal/high_carbon_black_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used for pouring molten metal"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Late-game metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core casting workflow"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Black steel progression"
+        }
+      }
+    },
+    "tfc:bucket/metal/high_carbon_blue_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used for pouring molten metal"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Late-game metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core casting workflow"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:blue_steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Blue steel progression"
+        }
+      }
+    },
+    "tfc:bucket/metal/high_carbon_red_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used for pouring molten metal"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Late-game metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core casting workflow"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:red_steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Red steel progression"
+        }
+      }
+    },
+    "tfc:bucket/metal/high_carbon_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used for pouring molten metal"
+        },
+        "material_family": {
+          "value": "high_carbon_steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core casting workflow"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Steel progression"
+        }
+      }
+    },
+    "tfc:bucket/metal/nickel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten nickel"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common base metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/metal/pig_iron": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten pig iron"
+        },
+        "material_family": {
+          "value": "pig_iron",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/metal/red_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten red steel"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Top-tier metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:red_steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Red steel progression"
+        }
+      }
+    },
+    "tfc:bucket/metal/rose_gold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten rose gold"
+        },
+        "material_family": {
+          "value": "rose_gold",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Alloy, but not top-tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/metal/silver": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten silver"
+        },
+        "material_family": {
+          "value": "silver",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common precious metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/metal/steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten steel"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Mid-game metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Steel progression"
+        }
+      }
+    },
+    "tfc:bucket/metal/sterling_silver": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten sterling silver"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Alloy but accessible"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/metal/tin": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten tin"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common base metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/metal/unknown": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of unknown molten metal"
+        },
+        "material_family": {
+          "value": "unknown",
+          "signal": "pattern",
+          "rationale": "Id implies unknown"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Placeholder, not a real metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/metal/weak_blue_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten weak blue steel"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Intermediate for blue steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:blue_steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Towards blue steel"
+        }
+      }
+    },
+    "tfc:bucket/metal/weak_red_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten weak red steel"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Intermediate for red steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:red_steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Towards red steel"
+        }
+      }
+    },
+    "tfc:bucket/metal/weak_steel": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten weak steel"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Intermediate for steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Towards steel"
+        }
+      }
+    },
+    "tfc:bucket/metal/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten wrought iron"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Key milestone metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:wrought_iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Iron age gate"
+        }
+      }
+    },
+    "tfc:bucket/metal/zinc": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten zinc"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Metal name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common base metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Pour into casting molds",
+            "Transport molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "named",
+          "rationale": "TFC casting process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "pattern",
+          "rationale": "Molten stage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/milk_vinegar": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of milk vinegar"
+        },
+        "material_family": {
+          "value": "milk_vinegar",
+          "signal": "pattern",
+          "rationale": "Fluid name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cheesemaking/pickling ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for food processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Pickling ingredient",
+            "Cheesemaking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in barrel recipes"
+        },
+        "workflow": {
+          "values": [
+            "tfc:barrel_sealed"
+          ],
+          "signal": "inferred",
+          "rationale": "Barrel sealed process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:barrel_sealed"
+          ],
+          "signal": "inferred",
+          "rationale": "Sealed barrel station"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/olive_oil": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of olive oil"
+        },
+        "material_family": {
+          "value": "olive_oil",
+          "signal": "pattern",
+          "rationale": "Fluid name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common cooking ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for cooking"
+        },
+        "primary_uses": {
+          "values": [
+            "Cooking oil",
+            "Lamp fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in pot and lamps"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking pot"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking pot station"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/olive_oil_water": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of olive oil water mixture"
+        },
+        "material_family": {
+          "value": "olive_oil_water",
+          "signal": "pattern",
+          "rationale": "Fluid name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate cooking fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Cooking ingredient",
+            "Soaps? (if applicable)"
+          ],
+          "signal": "guess",
+          "rationale": "Unclear exact use"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/orange_dye": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of orange dye"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "Dye fluid"
+        },
+        "dye_color": {
+          "value": "orange",
+          "signal": "pattern",
+          "rationale": "Color in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dye"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for dyeing"
+        },
+        "primary_uses": {
+          "values": [
+            "Dyeing items",
+            "Coloring fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in barrels for dyeing"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "named",
+          "rationale": "Dye workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Barrel station for dyeing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/pink_dye": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of pink dye"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "Dye fluid"
+        },
+        "dye_color": {
+          "value": "pink",
+          "signal": "pattern",
+          "rationale": "Color in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dye"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for dyeing"
+        },
+        "primary_uses": {
+          "values": [
+            "Dyeing items",
+            "Coloring fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in barrels for dyeing"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "named",
+          "rationale": "Dye workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Barrel station for dyeing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/pufferfish": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fish in a water bucket"
+        },
+        "material_family": {
+          "value": "pufferfish",
+          "signal": "pattern",
+          "rationale": "Fish type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Fishing loot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Niche use, not commonly carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport pufferfish",
+            "Aquarium decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Mobile fish container"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Contains water and fish"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    },
+    "tfc:bucket/purple_dye": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of purple dye"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "Dye fluid"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "pattern",
+          "rationale": "Color in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dye"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for dyeing"
+        },
+        "primary_uses": {
+          "values": [
+            "Dyeing items",
+            "Coloring fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in barrels for dyeing"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "named",
+          "rationale": "Dye workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Barrel station for dyeing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Fluid container"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1111 @@
+{
+  "items": {
+    "tfg:flask": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container carried for transporting liquids"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "tag tfc:glass_bottles indicates glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needed for fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "storing and carrying fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows fluid capacity"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard glass bottle"
+        },
+        "palette": {
+          "values": [
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "glass appearance"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:glass_bottles + semantic_text",
+          "rationale": "glass container for fluids"
+        }
+      }
+    },
+    "tfg:flavolite_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "mined ore for smelting"
+        },
+        "material_family": {
+          "value": "flavolite_lorandite",
+          "signal": "inferred",
+          "rationale": "stage2 set, but player thinks lorandite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lorandite ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in flavolite"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "ores stored in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "named",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "tfg:flavolite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural support placed in mines"
+        },
+        "material_family": {
+          "value": "flavolite",
+          "signal": "inferred",
+          "rationale": "stone type from display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "primary_uses": {
+          "values": [
+            "structural support in mines and builds"
+          ],
+          "signal": "inferred",
+          "rationale": "support beam function"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "support beam block"
+        }
+      }
+    },
+    "tfg:flawed_fluix_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:flawed_gems/fluix",
+          "rationale": "gem crafting component"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "gem type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "low quality gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gems stored, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into better gems or components"
+          ],
+          "signal": "inferred",
+          "rationale": "cutting recipes"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "gems accumulate in moderate quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "named",
+          "evidence": "tag forge:flawed_gems",
+          "rationale": "gem storage bucket"
+        }
+      }
+    },
+    "tfg:flawed_zircon_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:flawed_gems/zircon",
+          "rationale": "gem crafting component"
+        },
+        "material_family": {
+          "value": "zircon",
+          "signal": "inferred",
+          "rationale": "gem type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "low quality gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gems stored, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into better gems or components"
+          ],
+          "signal": "inferred",
+          "rationale": "cutting recipes"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "gems accumulate in moderate quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "named",
+          "evidence": "tag forge:flawed_gems",
+          "rationale": "gem storage bucket"
+        }
+      }
+    },
+    "tfg:flawless_fluix_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/fluix",
+          "rationale": "higher quality gem"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "gem type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "still relatively common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gems stored, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into higher tier components"
+          ],
+          "signal": "inferred",
+          "rationale": "cutting and crafting uses"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "gems in moderate quantity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "named",
+          "evidence": "tag forge:flawless_gems",
+          "rationale": "gem storage bucket"
+        }
+      }
+    },
+    "tfg:flawless_zircon_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/zircon",
+          "rationale": "higher quality gem"
+        },
+        "material_family": {
+          "value": "zircon",
+          "signal": "inferred",
+          "rationale": "gem type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "still relatively common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gems stored, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into higher tier components"
+          ],
+          "signal": "inferred",
+          "rationale": "cutting and crafting uses"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "gems in moderate quantity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "named",
+          "evidence": "tag forge:flawless_gems",
+          "rationale": "gem storage bucket"
+        }
+      }
+    },
+    "tfg:flax_bundle": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed flax for further crafting"
+        },
+        "material_family": {
+          "value": "flax",
+          "signal": "inferred",
+          "rationale": "plant fiber"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common agricultural product"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into flax fibers"
+          ],
+          "signal": "inferred",
+          "rationale": "cutting and centrifugation recipes"
+        }
+      }
+    },
+    "tfg:flax_line": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "fiber used for weaving"
+        },
+        "material_family": {
+          "value": "flax",
+          "signal": "inferred",
+          "rationale": "plant fiber"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving into linen thread",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and tags"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "textile fiber"
+        }
+      }
+    },
+    "tfg:flax_product": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw stems for processing"
+        },
+        "material_family": {
+          "value": "flax",
+          "signal": "inferred",
+          "rationale": "plant material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common plant product"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during harvest"
+        },
+        "primary_uses": {
+          "values": [
+            "composting",
+            "processing into fibers"
+          ],
+          "signal": "inferred",
+          "rationale": "tags and recipes"
+        }
+      }
+    },
+    "tfg:flax_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "planted to grow flax"
+        },
+        "material_family": {
+          "value": "flax",
+          "signal": "inferred",
+          "rationale": "seed type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common seed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during farming runs"
+        },
+        "primary_uses": {
+          "values": [
+            "planting to grow flax",
+            "animal feed",
+            "crafting seed oil"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple use tags"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "named",
+          "evidence": "tag forge:seeds, tfc:seeds",
+          "rationale": "seed storage"
+        }
+      }
+    },
+    "tfg:flax_tow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "coarser fibers for rope and burlap"
+        },
+        "material_family": {
+          "value": "flax",
+          "signal": "inferred",
+          "rationale": "plant fiber"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving into burlap and ropes",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and tags"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "textile fiber"
+        }
+      }
+    },
+    "tfg:flax_waste": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "byproduct used in composting"
+        },
+        "material_family": {
+          "value": "flax",
+          "signal": "inferred",
+          "rationale": "plant residue"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common byproduct"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "primary_uses": {
+          "values": [
+            "composting",
+            "fiber source"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes"
+        }
+      }
+    },
+    "tfg:flax_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "wild plant in world"
+        },
+        "material_family": {
+          "value": "flax",
+          "signal": "inferred",
+          "rationale": "plant type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wild crop"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not typically carried; gathered on spot"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting seeds",
+            "tilling into crop"
+          ],
+          "signal": "inferred",
+          "rationale": "wild crop behavior"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "source of seeds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_crops"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:wild_crops",
+          "rationale": "wild crop storage"
+        }
+      }
+    },
+    "tfg:fletching": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "arrow crafting component"
+        },
+        "material_family": {
+          "value": "feather",
+          "signal": "inferred",
+          "rationale": "made from feathers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when making arrows"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting arrows"
+          ],
+          "signal": "inferred",
+          "rationale": "used in arrow recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "arrows used in combat"
+        }
+      }
+    },
+    "tfg:flibe_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport bucket"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized nuclear fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in specific reactor setups"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting FLiBe for nuclear reactors"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid name and context"
+        }
+      }
+    },
+    "tfg:flint_arrow_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "arrow component"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common knapped item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting arrows"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting arrows"
+          ],
+          "signal": "inferred",
+          "rationale": "used in arrow recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "arrow component"
+        }
+      }
+    },
+    "tfg:flint_club_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "club component"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "inferred",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common knapped item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting clubs"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flint club"
+          ],
+          "signal": "inferred",
+          "rationale": "used in club recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "weapon component"
+        }
+      }
+    },
+    "tfg:flintlock_mechanism": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "firearm component"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "crafted from iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flintlock firearms"
+          ],
+          "signal": "inferred",
+          "rationale": "used in gun recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "firearm component"
+        }
+      }
+    },
+    "tfg:flippers": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "wearable equipment for swimming"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "crafted from leather (or rubber)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "worn, not carried in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "improving swimming speed"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Improves agility in water",
+          "rationale": "effect stated"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "underwater exploration"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:speed_boost"
+          ],
+          "signal": "inferred",
+          "rationale": "swimming speed improvement"
+        }
+      }
+    },
+    "tfg:flora_pellets": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "consumed as fuel and compost"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "biomass pellets"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from plants"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used as fuel in automated setups"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for blaze burners",
+            "compost ingredient",
+            "mossifying stone"
+          ],
+          "signal": "inferred",
+          "rationale": "tags and recipe evidence"
+        }
+      }
+    },
+    "tfg:fluix_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport bucket"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized AE2 fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in AE2 automation"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten fluix for AE2 crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid name and context"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting uses"
+        }
+      }
+    },
+    "tfg:foil_pack": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "packaging for food preservation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common container"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in food preservation, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "packaging food",
+            "preservation"
+          ],
+          "signal": "inferred",
+          "rationale": "tag tfg:foil_packs suggests group"
+        }
+      }
+    },
+    "tfg:food/brioche_bun": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible food item"
+        },
+        "material_family": {
+          "value": "bread",
+          "signal": "inferred",
+          "rationale": "baked bread product"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food often carried for eating"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for nutrition",
+            "crafting burgers"
+          ],
+          "signal": "inferred",
+          "rationale": "food component and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "related to food preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "baked bread bun"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "baked"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "generic food storage"
+        }
+      }
+    },
+    "tfg:food/brioche_dough": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "food ingredient for baking"
+        },
+        "material_family": {
+          "value": "dough",
+          "signal": "inferred",
+          "rationale": "unbaked dough"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when baking"
+        },
+        "primary_uses": {
+          "values": [
+            "baking into brioche bun"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "baking process"
+        },
+        "food_category": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "unbaked dough"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for buns"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "raw dough state"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "generic food storage"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "tfg:flavolite_support",
+      "facet": "form",
+      "value": "support",
+      "rationale": "id suffix _support indicates support beam form"
+    },
+    {
+      "item": "tfg:flawed_fluix_gem",
+      "facet": "form",
+      "value": "gem",
+      "rationale": "id and tag indicate gem form"
+    },
+    {
+      "item": "tfg:flawed_zircon_gem",
+      "facet": "form",
+      "value": "gem",
+      "rationale": "id and tag indicate gem form"
+    },
+    {
+      "item": "tfg:flawless_fluix_gem",
+      "facet": "form",
+      "value": "gem",
+      "rationale": "id and tag indicate gem form"
+    },
+    {
+      "item": "tfg:flawless_zircon_gem",
+      "facet": "form",
+      "value": "gem",
+      "rationale": "id and tag indicate gem form"
+    },
+    {
+      "item": "tfg:flora_pellets",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "tag create:blaze_burner_fuel/regular indicates fuel"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

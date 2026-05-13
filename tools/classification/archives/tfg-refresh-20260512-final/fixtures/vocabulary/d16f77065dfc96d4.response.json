@@ -1,0 +1,658 @@
+{
+  "values": [
+    {
+      "id": "tfc:wild/animals",
+      "label": "Wild Animals",
+      "state": "rejected",
+      "description": "Not a station, machine, tool, or surface.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:vibrating",
+      "label": "Vibrating",
+      "state": "review",
+      "description": "Recipe type for vibrating process; possibly a vibrating table or centrifuge.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vibrating",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:glassworking",
+      "label": "Glassworking",
+      "state": "accepted",
+      "description": "Player-facing process using blowpipe, paddle, jacks, and gem saw on heated glass batch.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/glassworking",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "kubejs:shapeless",
+      "label": "Shapeless",
+      "state": "rejected",
+      "description": "Generic crafting recipe type, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "domum_ornamentum:architects_cutter",
+      "label": "Architects Cutter",
+      "state": "accepted",
+      "description": "Station for cutting and shaping decorative blocks.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "domum_ornamentum:architects_cutter",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "firmalife:vat",
+      "label": "Vat",
+      "state": "accepted",
+      "description": "Station for liquid-based processing, such as soaking or fermenting.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:vat",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:pot_jam",
+      "label": "Pot Jam",
+      "state": "rejected",
+      "description": "Recipe type for jam making, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:ores/and/minerals",
+      "label": "Ores and Minerals",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfg:artisan",
+      "label": "Artisan",
+      "state": "rejected",
+      "description": "Generic category, not a specific station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "firmalife:mixing_bowl",
+      "label": "Mixing Bowl",
+      "state": "accepted",
+      "description": "Station for mixing ingredients, e.g., for chocolate or dough.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:mixing_bowl",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:wild/fruits",
+      "label": "Wild Fruits",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "firmalife:bowl_pot",
+      "label": "Bowl Pot",
+      "state": "review",
+      "description": "Recipe type; potentially a station for bowl-based cooking.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:bowl_pot",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "kubejs_tfc:advanced_shapeless_crafting",
+      "label": "Advanced Shapeless Crafting",
+      "state": "rejected",
+      "description": "Generic crafting recipe type, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:extra_products_shapeless_crafting",
+      "label": "Extra Products Shapeless Crafting",
+      "state": "rejected",
+      "description": "Generic crafting recipe type, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:animal/husbandry",
+      "label": "Animal Husbandry",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:papermaking",
+      "label": "Papermaking",
+      "state": "rejected",
+      "description": "Guide topic describing a process, not a specific station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:using/the/elevator/pulley",
+      "label": "Using the Elevator Pulley",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:automated/recipes/with/factory/gauges",
+      "label": "Automated Recipes with Factory Gauges",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:earth/tree/index",
+      "label": "Earth Tree Index",
+      "state": "rejected",
+      "description": "Guide index, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:sewing",
+      "label": "Sewing",
+      "state": "rejected",
+      "description": "Recipe type without a clear station; sewing is done at a workbench, not a dedicated station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:anvils",
+      "label": "Anvils",
+      "state": "accepted",
+      "description": "Station for metalworking: forging and welding.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/anvils",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:extraterrestrial/fauna",
+      "label": "Extraterrestrial Fauna",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:glass/products",
+      "label": "Glass Products",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:assembling/trains",
+      "label": "Assembling Trains",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:using/the/deployer",
+      "label": "Using the Deployer",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:mixing",
+      "label": "Mixing",
+      "state": "accepted",
+      "description": "Process using a Mechanical Mixer station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:anvil/working/guide",
+      "label": "Anvil Working Guide",
+      "state": "rejected",
+      "description": "Guide topic, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:transporting/packages/between/frogports",
+      "label": "Transporting packages between Frogports",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:hazardous/materials",
+      "label": "Hazardous Materials",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "firmalife:drying",
+      "label": "Drying",
+      "state": "accepted",
+      "description": "Station/process using a Drying Mat or Solar Drier.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:drying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:setting/up/steam/engines",
+      "label": "Setting up Steam Engines",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "firmalife:oven",
+      "label": "Oven",
+      "state": "accepted",
+      "description": "Station for baking and heating food.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:oven",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:vacuumizing",
+      "label": "Vacuumizing",
+      "state": "review",
+      "description": "Recipe type; likely a vacuum chamber process.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vacuumizing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:sloops",
+      "label": "Sloops",
+      "state": "rejected",
+      "description": "Guide topic about building sloops, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:distribution/modes/of/the/brass/tunnel",
+      "label": "Distribution Modes of the Brass Tunnel",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:selling/items/with/table/cloths",
+      "label": "Selling items with Table Cloths",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:blast/furnace",
+      "label": "Blast Furnace",
+      "state": "accepted",
+      "description": "Multi-block station for producing steel.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/blast_furnace",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:introduction",
+      "label": "Introduction",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:ordering/items/with/stock/tickers",
+      "label": "Ordering items with Stock tickers",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:restocking/with/factory/gauges",
+      "label": "Restocking with Factory Gauges",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:using/weighted/ejectors",
+      "label": "Using Weighted Ejectors",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "diggerhelmet:helmet_repair",
+      "label": "Digger Helmet Repair",
+      "state": "rejected",
+      "description": "Recipe type for item repair, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:ores/metal/and/casting",
+      "label": "Ores, Metal, and Casting",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:bloomery",
+      "label": "Bloomery",
+      "state": "accepted",
+      "description": "Station for smelting iron ore into blooms.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:bloomery",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:mechanical/power",
+      "label": "Mechanical Power",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:pottery",
+      "label": "Pottery",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:wild/crops",
+      "label": "Wild Crops",
+      "state": "rejected",
+      "description": "Guide topic, not a station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:transporting/packages/between/postboxes",
+      "label": "Transporting packages between Postboxes",
+      "state": "rejected",
+      "description": "Ponder guide title, not a station identifier.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

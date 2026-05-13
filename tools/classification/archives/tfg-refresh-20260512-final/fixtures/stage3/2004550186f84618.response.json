@@ -1,0 +1,1493 @@
+{
+  "items": {
+    "gtceu:niobium_titanium_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy transport component, player stores with GT cables"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "tooltip §dLuV",
+          "rationale": "voltage tier from tooltip"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable bulk component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used often for wiring machines"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used in energy transport network"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting LuV energy (64A)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage and amperage"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier cable grouped with components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy conductor, player stores with cables"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "tooltip §dLuV",
+          "rationale": "voltage tier from tooltip"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for wiring"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used in energy transport network"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting LuV energy (64A)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage/amperage"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier wire grouped with components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed fluid transport pipe, player stores with pipes"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "same material family as LuV cables",
+          "rationale": "LuV tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for fluid piping"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used in fluid transport network"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids at 33600 mB/t"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier pipe grouped with components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots + form ingot",
+          "rationale": "basic refined material for crafting"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "used to make LuV cables and components",
+          "rationale": "LuV tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable in bulk"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for crafting components"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting LuV components and alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "basic ingredient for advanced parts"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV tier material grouped with components"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed fluid transporter"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:large_fluid_pipes/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for piping"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids at 16800 mB/t"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed fluid transporter with 9 channels"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:nonuple_fluid_pipes/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in multiblock piping"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport with multiple channels"
+        },
+        "primary_uses": {
+          "values": [
+            "multi-channel fluid transport (2800 mB/t per channel)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows channels and transfer rate"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed fluid transporter"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard pipe size often carried"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids at 8400 mB/t"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "small metal piece"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "same material as other LuV items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "small value, not often carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into ingots or small parts"
+          ],
+          "signal": "inferred",
+          "rationale": "basic metal piece"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV tier material"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport component"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "tooltip §dLuV",
+          "rationale": "voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for wiring"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting LuV energy (32A)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage/amperage"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy conductor"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "tooltip §dLuV",
+          "rationale": "voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for wiring"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting LuV energy (32A)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage/amperage"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "refined material sheet"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for crafting pipes and casings"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pipes, casings, and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile intermediate component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV tier material"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport component"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "tooltip §dLuV",
+          "rationale": "voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for wiring"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting LuV energy (16A)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage/amperage"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed fluid transporter with 4 channels"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_fluid_pipes/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in multiblock piping"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "4-channel fluid transport (2800 mB/t)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows channels and transfer rate"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy conductor"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "tooltip §dLuV",
+          "rationale": "voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for wiring"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting LuV energy (16A)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage/amperage"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "refined rod for crafting"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable in bulk"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for tool and screw crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools, screws, and springs"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GT recipes"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV tier material"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "small fastener crafting component"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "small component, not carried in large quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "assembling machines and advanced items"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many crafted machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV tier component"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "basic energy transport cable"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "tooltip §dLuV",
+          "rationale": "voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "most common cable size, often carried"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting LuV energy (4A)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage/amperage"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "basic energy conductor"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "evidence": "tooltip §dLuV",
+          "rationale": "voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for wiring"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting LuV energy (4A)"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage/amperage"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed fluid transporter"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:small_fluid_pipes/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "small pipe often carried for connections"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids at 2800 mB/t"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:springs",
+          "rationale": "mechanical component material"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:springs/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized component, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flintlock mechanisms and other machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in specific recipes"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV tier component"
+        }
+      }
+    },
+    "gtceu:niobium_titanium_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed tiny fluid transporter"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_fluid_pipes/niobium_titanium",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "inferred",
+          "rationale": "LuV tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "small pipe often used in tight spaces"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids at 1400 mB/t"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV-tier pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:nitration_mixture_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to transport hazardous chemical fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only carried when processing chemicals"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying nitration mixture for chemical processes"
+          ],
+          "signal": "inferred",
+          "rationale": "hazardous fluid used in GT chemistry"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket that holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:nitric_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to transport nitric acid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when doing chemical processing"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying nitric acid for chemical reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid used in GT chemistry"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket that holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:nitric_oxide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to transport nitric oxide gas"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only used in specialized recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "gas transport"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying nitric oxide gas for chemical synthesis"
+          ],
+          "signal": "inferred",
+          "rationale": "gas used in GT chemistry"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid",
+            "gas"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket that holds gas"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:gas_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds gas"
+        }
+      }
+    },
+    "gtceu:nitrobenzene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to transport nitrobenzene gas"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when processing chemicals"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid/gas transport"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying nitrobenzene for chemical processes"
+          ],
+          "signal": "inferred",
+          "rationale": "hazardous gas used in GT chemistry"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid",
+            "gas"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket that holds gas"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:gas_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds gas"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:niobium_titanium_ingot",
+      "facet": "progression_stage",
+      "label": "LuV",
+      "proposed_id": "pack:tfg/luv",
+      "rationale": "These niobium titanium items are LuV tier (LuV voltage) as shown on cables. Missing from progression_stage vocabulary.",
+      "evidence": "tooltip on cables: §dLuV"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:niobium_titanium_hex_cable",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:hex_cables/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_hex_wire",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:hex_wires/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_huge_fluid_pipe",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:huge_fluid_pipes/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_ingot",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:ingots/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_large_fluid_pipe",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:large_fluid_pipes/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_nonuple_fluid_pipe",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:nonuple_fluid_pipes/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_normal_fluid_pipe",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:normal_fluid_pipes/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_nugget",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:nuggets/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_octal_cable",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:octal_cables/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_octal_wire",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:octal_wires/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_plate",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:plates/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_quadruple_cable",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:quadruple_cables/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_quadruple_fluid_pipe",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:quadruple_fluid_pipes/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_quadruple_wire",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:quadruple_wires/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_rod",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:rods/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_screw",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:screws/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_single_cable",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:single_cables/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_single_wire",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:single_wires/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_small_fluid_pipe",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:small_fluid_pipes/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_spring",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:springs/niobium_titanium"
+    },
+    {
+      "item": "gtceu:niobium_titanium_tiny_fluid_pipe",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "tag forge:tiny_fluid_pipes/niobium_titanium"
+    }
+  ]
+}

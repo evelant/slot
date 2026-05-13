@@ -1,0 +1,990 @@
+{
+  "items": {
+    "gtceu:osmium_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block placed in networks"
+        },
+        "primary_uses": {
+          "values": [
+            "energy transport",
+            "connecting GT machines"
+          ],
+          "signal": "inferred",
+          "rationale": "cable for power"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common cable item"
+        },
+        "material_family": {
+          "value": "osmium",
+          "signal": "pattern",
+          "evidence": "id contains osmium + tag forge:single_cables/osmium",
+          "rationale": "osmium material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables",
+          "rationale": "cable subsystem in GT"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of energy logistics"
+        }
+      }
+    },
+    "gtceu:osmium_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block placed in networks"
+        },
+        "primary_uses": {
+          "values": [
+            "energy transport",
+            "connecting GT machines"
+          ],
+          "signal": "inferred",
+          "rationale": "wire for power"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wire item"
+        },
+        "material_family": {
+          "value": "osmium",
+          "signal": "pattern",
+          "evidence": "id contains osmium + tag forge:single_wires/osmium",
+          "rationale": "osmium material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires",
+          "rationale": "cable subsystem in GT"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of energy logistics"
+        }
+      }
+    },
+    "gtceu:osmium_small_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "item transport block placed in networks"
+        },
+        "primary_uses": {
+          "values": [
+            "item transport",
+            "moving items between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe for items"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe item"
+        },
+        "material_family": {
+          "value": "osmium",
+          "signal": "pattern",
+          "evidence": "id contains osmium + tag forge:small_item_pipes/osmium",
+          "rationale": "osmium material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_item_pipes",
+          "rationale": "pipe subsystem in GT"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of item logistics"
+        }
+      }
+    },
+    "gtceu:osmium_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "item transport block with priority"
+        },
+        "primary_uses": {
+          "values": [
+            "item transport with priority",
+            "moving items between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "restrictive pipe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe variant"
+        },
+        "material_family": {
+          "value": "osmium",
+          "signal": "pattern",
+          "evidence": "id contains osmium + tag forge:small_restrictive_pipes/osmium",
+          "rationale": "osmium material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_restrictive_pipes",
+          "rationale": "pipe subsystem in GT"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of item logistics"
+        }
+      }
+    },
+    "gtceu:osmium_tetroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "crafting material in dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing",
+            "crafting osmium compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized dust, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material dust"
+        },
+        "material_family": {
+          "value": "osmium_tetroxide",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/osmium_tetroxide",
+          "rationale": "compound dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:ostrum_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool, not a material"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid ostrum",
+            "used in casting or alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "carries molten metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when handling ostrum"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "special space alloy fluid"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern",
+          "evidence": "id contains ostrum",
+          "rationale": "ostrum material"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        }
+      }
+    },
+    "gtceu:ostrum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "crafting material in dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ostrum ingots",
+            "crafting alloy components"
+          ],
+          "signal": "inferred",
+          "rationale": "base material for ostrum"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized dust"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "space alloy dust"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/ostrum",
+          "rationale": "ostrum material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:ostrum_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component in foil form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced components",
+            "wiring applications"
+          ],
+          "signal": "inferred",
+          "rationale": "thin metal sheet"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "space alloy foil"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/ostrum",
+          "rationale": "ostrum material"
+        }
+      }
+    },
+    "gtceu:ostrum_frame": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural block placed in machine casings"
+        },
+        "primary_uses": {
+          "values": [
+            "building machine casings",
+            "structural multiblock component"
+          ],
+          "signal": "inferred",
+          "rationale": "frame block for structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common structural component"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern",
+          "evidence": "tag forge:frames/ostrum",
+          "rationale": "ostrum material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:frames",
+          "rationale": "frame storage group"
+        }
+      }
+    },
+    "gtceu:ostrum_harvester": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine that performs a task"
+        },
+        "primary_uses": {
+          "values": [
+            "automated ostrum dust harvesting"
+          ],
+          "signal": "inferred",
+          "rationale": "harvests infinite dust"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only placed once per deposit"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized machine"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "made from ostrum"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated resource gathering"
+        }
+      }
+    },
+    "gtceu:ostrum_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport block placed in networks"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "moving liquids between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "large pipe for fluids"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building fluid lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe item"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes/ostrum",
+          "rationale": "ostrum material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes",
+          "rationale": "pipe subsystem in GT"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage form of the material"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of ostrum iodide"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when moving bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common storage block"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/ostrum_iodide",
+          "rationale": "ostrum iodide compound"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid ostrum iodide"
+          ],
+          "signal": "inferred",
+          "rationale": "molten compound bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when handling iodide"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "special fluid bucket"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "id contains ostrum_iodide",
+          "rationale": "ostrum iodide compound"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "tool used for butchering animals"
+        },
+        "primary_uses": {
+          "values": [
+            "butchering animals for more meat"
+          ],
+          "signal": "inferred",
+          "rationale": "butchery knife"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when hunting or ranching"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier tool"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:butchery_knife_heads/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for tool"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting butchery knives"
+          ],
+          "signal": "inferred",
+          "rationale": "tool head"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:butchery_knife_heads/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for buzz saw"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting buzz saw blades"
+          ],
+          "signal": "inferred",
+          "rationale": "saw blade component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:buzz_saw_heads/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_chainsaw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for chainsaw"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting chainsaws"
+          ],
+          "signal": "inferred",
+          "rationale": "chainsaw head component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:chainsaw_heads/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "tool for removing covers and rotating rails"
+        },
+        "primary_uses": {
+          "values": [
+            "removing covers from machines",
+            "rotating rails"
+          ],
+          "signal": "inferred",
+          "rationale": "crowbar functions"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when maintaining machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier tool"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "inferred",
+          "rationale": "made from ostrum iodide"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_drill_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for drill"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting drills"
+          ],
+          "signal": "inferred",
+          "rationale": "drill head component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:drill_heads/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "crafting material in dust form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ostrum iodide components",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "base dust for iodide"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material dust"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/ostrum_iodide",
+          "rationale": "ostrum iodide compound"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting tool used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components",
+            "shaping materials"
+          ],
+          "signal": "inferred",
+          "rationale": "file tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential for crafting many items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:file_heads/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "artisan tool group"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for file"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting files"
+          ],
+          "signal": "inferred",
+          "rationale": "file head component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:file_heads/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component in foil form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "thin metal foil"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material form"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component in gear form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine parts",
+            "gears for mechanics"
+          ],
+          "signal": "inferred",
+          "rationale": "gear component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/ostrum_iodide",
+          "rationale": "ostrum iodide material"
+        }
+      }
+    },
+    "gtceu:ostrum_iodide_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting and mining tool"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting plates and components",
+            "mining with crushing"
+          ],
+          "signal": "inferred",
+          "rationale": "hammer tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential for many crafting recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "inferred",
+          "rationale": "made from ostrum iodide"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "artisan tool group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:ostrum_iodide_block",
+      "facet": "form",
+      "value": "storage_block",
+      "rationale": "tag forge:storage_blocks implies storage block form"
+    }
+  ]
+}

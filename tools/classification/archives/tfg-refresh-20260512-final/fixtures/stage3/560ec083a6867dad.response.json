@@ -1,0 +1,1103 @@
+{
+  "items": {
+    "minecraft:shaper_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "semantic_text 'Shaper Armor Trim' + tag minecraft:trim_templates",
+          "rationale": "smithing template applied in smithing table to add trim"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in stash, used only when trimming armor"
+        },
+        "primary_uses": {
+          "values": [
+            "apply shaper armor trim design"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in smithing table to decorate armor"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "trimming is cosmetic decoration"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smithing_trim"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output via tfc:sewing and trim template tag",
+          "rationale": "part of smithing trim process"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smithing_trim#input"
+          ],
+          "signal": "pattern",
+          "rationale": "template is consumed as input in trim recipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by tfc:sewing recipe",
+          "rationale": "crafted from sewing table"
+        }
+      }
+    },
+    "minecraft:sheaf_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archeology collectible, one of many pottery patterns"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected occasionally from archeology"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate pots with sheaf pattern",
+            "collect all patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft decorated pot variants"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to create decorative pots"
+        }
+      }
+    },
+    "minecraft:shears": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "stage2 form tool, id ends shears",
+          "rationale": "harvesting tool for leaves, wool, tripwires"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "vanilla shears are iron tier crafted with iron ingots"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "iron tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "commonly carried for shearing and harvesting leaves"
+        },
+        "primary_uses": {
+          "values": [
+            "shear sheep",
+            "mine leaves quickly",
+            "disarm tripwires"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of shears"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "shearing animals and harvesting crops"
+        }
+      }
+    },
+    "minecraft:sheep_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg, collectible set"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only item, never carried in survival"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 is_creative_only true",
+          "rationale": "spawn eggs are creative-only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn sheep in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place a sheep"
+        }
+      }
+    },
+    "minecraft:shelter_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archeology collectible, one of many pottery patterns"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected occasionally from archeology"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate pots with shelter pattern",
+            "collect all patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft decorated pot variants"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to create decorative pots"
+        }
+      }
+    },
+    "minecraft:shield": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "stage2 form tool, id ends shield",
+          "rationale": "defensive equipment, not weapon"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "crafted from oak planks and iron, but primary material is wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried in offhand for protection"
+        },
+        "primary_uses": {
+          "values": [
+            "block attacks",
+            "protect from projectiles",
+            "reduce damage"
+          ],
+          "signal": "inferred",
+          "rationale": "primary defensive tool"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat for blocking"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by crafting_shaped recipe",
+          "rationale": "crafted from planks and iron ingot"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "worn in offhand slot"
+        }
+      }
+    },
+    "minecraft:shroomlight": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for lighting and decoration, not functional"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component minecraft:light_emission = 15",
+          "rationale": "emits light when placed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building lighting"
+        },
+        "primary_uses": {
+          "values": [
+            "lighting in builds",
+            "decoration with warm glow"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as light source and decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building and decoration"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "natural block found in nether"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "grouped with other lighting blocks"
+        }
+      }
+    },
+    "minecraft:shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "portable container that stores items when placed"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "inferred",
+          "rationale": "made from shulker shells"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for organized portable storage"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "transport items between bases",
+            "organize inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items when placed, retains contents when broken"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for storing and managing items"
+        }
+      }
+    },
+    "minecraft:shulker_shell": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mob drop used as crafting component for shulker boxes"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "inferred",
+          "rationale": "derived from shulkers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "farmed from shulkers, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft shulker boxes",
+            "craft drive/io port shells"
+          ],
+          "signal": "inferred",
+          "rationale": "primary ingredient for storage containers"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "dropped by shulkers in end cities"
+        }
+      }
+    },
+    "minecraft:shulker_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg, collectible set"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only item"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 is_creative_only true",
+          "rationale": "spawn eggs are creative-only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn shulkers in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place a shulker"
+        }
+      }
+    },
+    "minecraft:silence_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "semantic_text 'Silence Armor Trim' + tag minecraft:trim_templates",
+          "rationale": "smithing template applied in smithing table to add trim"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in stash, used only when trimming armor"
+        },
+        "primary_uses": {
+          "values": [
+            "apply silence armor trim design"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in smithing table to decorate armor"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "trimming is cosmetic decoration"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smithing_trim"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output via tfc:sewing and trim template tag",
+          "rationale": "part of smithing trim process"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smithing_trim#input"
+          ],
+          "signal": "pattern",
+          "rationale": "template is consumed as input in trim recipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by tfc:sewing recipe",
+          "rationale": "crafted from sewing table"
+        }
+      }
+    },
+    "minecraft:silverfish_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg, collectible set"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only item"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 is_creative_only true",
+          "rationale": "spawn eggs are creative-only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn silverfish in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place a silverfish"
+        }
+      }
+    },
+    "minecraft:skeleton_horse_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg, collectible set"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only item"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 is_creative_only true",
+          "rationale": "spawn eggs are creative-only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn skeleton horse in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place a skeleton horse"
+        }
+      }
+    },
+    "minecraft:skeleton_skull": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "mob head collectible, displayed as trophy"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for display, not often moved"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative display",
+            "redstone with noteblocks",
+            "craft bone meal"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decoration or used in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration and noteblock mechanics"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "dropped by skeletons when killed by charged creeper"
+        }
+      }
+    },
+    "minecraft:skeleton_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg, collectible set"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only item"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 is_creative_only true",
+          "rationale": "spawn eggs are creative-only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn skeletons in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place a skeleton"
+        }
+      }
+    },
+    "minecraft:skull_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "banner pattern, collected as a set"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in stash until used on banner"
+        },
+        "primary_uses": {
+          "values": [
+            "apply skull charge pattern to banners"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed to customize banner design"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for banner decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by tfc:sewing recipe",
+          "rationale": "crafted from sewing table"
+        }
+      }
+    },
+    "minecraft:skull_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archeology collectible, one of many pottery patterns"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected occasionally from archeology"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate pots with skull pattern",
+            "collect all patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft decorated pot variants"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to create decorative pots"
+        }
+      }
+    },
+    "minecraft:slime_ball": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mob drop used as crafting component"
+        },
+        "material_family": {
+          "value": "slime",
+          "signal": "named",
+          "evidence": "stage2 material_family from id",
+          "rationale": "exact id match"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when planning to craft pistons or leads"
+        },
+        "primary_uses": {
+          "values": [
+            "craft sticky pistons",
+            "craft leads",
+            "craft slime blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "key ingredient for redstone and tools"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone contraptions"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "dropped by slimes"
+        }
+      }
+    },
+    "minecraft:slime_block": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "block used in redstone contraptions for bouncing and sticky pistons"
+        },
+        "material_family": {
+          "value": "slime",
+          "signal": "named",
+          "evidence": "stage2 material_family from id",
+          "rationale": "exact id match"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building redstone machines"
+        },
+        "primary_uses": {
+          "values": [
+            "bounce entities",
+            "create sticky piston walls",
+            "craft slime contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "core physics block for redstone"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "integral to redstone and contraption building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by crafting_shapeless recipe",
+          "rationale": "crafted from slime balls"
+        },
+        "environmental_property": {
+          "values": [
+            "bounces"
+          ],
+          "signal": "inferred",
+          "rationale": "entities bounce off slime blocks"
+        }
+      }
+    },
+    "minecraft:slime_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg, collectible set"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only item"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 is_creative_only true",
+          "rationale": "spawn eggs are creative-only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn slimes in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place a slime"
+        }
+      }
+    },
+    "minecraft:small_amethyst_bud": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "growing crystal found in geodes, source of amethyst"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "amethyst crystal growth"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component minecraft:light_emission = 1",
+          "rationale": "emits low light when placed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "gathered when mining geodes, not regularly carried"
+        },
+        "primary_uses": {
+          "values": [
+            "source of amethyst shards",
+            "decoration",
+            "lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to get shards, also placed as decor"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from geodes"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found in amethyst geodes underground"
+        }
+      }
+    },
+    "minecraft:small_dripleaf": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "living plant from lush caves, can be planted"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected for decoration or farming"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "grow into big dripleaf",
+            "lush cave flora"
+          ],
+          "signal": "inferred",
+          "rationale": "planted for aesthetic or functional growth"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in decoration and plant farming"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found naturally in lush caves"
+        }
+      }
+    },
+    "minecraft:smithing_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "workstation that opens UI for smithing upgrades and trims"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not routinely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade tools to netherite",
+            "apply armor trims"
+          ],
+          "signal": "inferred",
+          "rationale": "core smithing table functions"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by crafting_shaped recipe",
+          "rationale": "crafted from iron ingot and planks"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smithing_trim"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smithing trim process"
+        }
+      }
+    },
+    "minecraft:smoker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "workstation that opens UI for faster cooking"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not routinely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "smoke food",
+            "cook food faster than furnace"
+          ],
+          "signal": "inferred",
+          "rationale": "specialized cooking station"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used for cooking food"
+        }
+      }
+    },
+    "minecraft:smooth_basalt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone variant used in construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building with basalt"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "crafting polished and brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "used as foundation for decorative stone blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/basalt"
+          ],
+          "signal": "inferred",
+          "rationale": "grouped with other basalt stone types"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found as part of basalt deltas or crafted from basalt"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "minecraft:smooth_basalt",
+      "facet": "material_family",
+      "value": "basalt",
+      "rationale": "derived from basalt stone type"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

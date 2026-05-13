@@ -1,0 +1,1535 @@
+{
+  "items": {
+    "tfc:deposit/native_gold/schist": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal, not built or planted"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native gold",
+            "source of gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting, processed in batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel from riverbeds"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel awaiting processing"
+        }
+      }
+    },
+    "tfc:deposit/native_gold/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native gold",
+            "source of gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_gold/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native gold",
+            "source of gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/basalt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/chalk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/chert": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/claystone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/dacite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/diorite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/dolomite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/gabbro": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/gneiss": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/granite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/limestone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/marble": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/phyllite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/quartzite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/schist": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:deposit/native_silver/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore gravel processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "pan/sluice for native silver",
+            "source of silver nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says process with sluice/pan"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during river prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip references sluice"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices"
+          ],
+          "signal": "inferred",
+          "rationale": "primary processing station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore-bearing gravel"
+        }
+      }
+    },
+    "tfc:dirt/loam": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw soil used for farming, mud, and compost"
+        },
+        "primary_uses": {
+          "values": [
+            "farming base soil",
+            "crafting mud and daub",
+            "compost ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "common dirt uses in TFC"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for farming and construction"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "widespread surface block"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for farmland and terrain shaping"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:dirt + tfc:dirt",
+          "rationale": "dirt storage group"
+        }
+      }
+    },
+    "tfc:dirt/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw soil used for farming, mud, and compost"
+        },
+        "primary_uses": {
+          "values": [
+            "farming base soil",
+            "crafting mud and daub",
+            "compost ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "common dirt uses in TFC"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for farming and construction"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "widespread surface block"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for farmland and terrain shaping"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:dirt + tfc:dirt",
+          "rationale": "dirt storage group"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "tfc:deposit/native_gold/schist",
+      "facet": "material_family",
+      "value": "gold",
+      "rationale": "deposit name indicates gold content"
+    },
+    {
+      "item": "tfc:deposit/native_gold/shale",
+      "facet": "material_family",
+      "value": "gold",
+      "rationale": "deposit name indicates gold content"
+    },
+    {
+      "item": "tfc:deposit/native_gold/slate",
+      "facet": "material_family",
+      "value": "gold",
+      "rationale": "deposit name indicates gold content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/andesite",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/basalt",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/chalk",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/chert",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/claystone",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/conglomerate",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/dacite",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/diorite",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/dolomite",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/gabbro",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/gneiss",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/granite",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/limestone",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/marble",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/phyllite",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/quartzite",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/rhyolite",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/schist",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/shale",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:deposit/native_silver/slate",
+      "facet": "material_family",
+      "value": "silver",
+      "rationale": "deposit name indicates silver content"
+    },
+    {
+      "item": "tfc:dirt/loam",
+      "facet": "material_family",
+      "value": "loam",
+      "rationale": "id and block family indicate loam dirt"
+    },
+    {
+      "item": "tfc:dirt/sandy_loam",
+      "facet": "material_family",
+      "value": "sandy_loam",
+      "rationale": "id indicates sandy loam dirt"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

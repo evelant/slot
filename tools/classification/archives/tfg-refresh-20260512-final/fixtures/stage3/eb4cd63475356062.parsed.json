@@ -1,0 +1,1567 @@
+{
+  "items": {
+    "tfc:ore/poor_native_gold/schist": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined for gold processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted into gold"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from veins"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block before processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large stacks"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found underground in schist"
+        }
+      }
+    },
+    "tfc:ore/poor_native_gold/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined for gold"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from shale"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground in shale"
+        }
+      }
+    },
+    "tfc:ore/poor_native_gold/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined for gold"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining loadout"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from slate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk storage"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "slate caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore piece for smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into silver"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to silver ingot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ore_pieces"
+          ],
+          "signal": "inferred",
+          "rationale": "small ore piece"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in quantity"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in smelting or milling"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "drops from silver ore blocks"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted for silver"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from andesite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "andesite caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/basalt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from basalt"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "basalt caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/chalk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/chert": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "chert mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "chert caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/claystone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "claystone mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "claystone caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "conglomerate mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "conglomerate caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/dacite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "dacite mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dacite caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/diorite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/dolomite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "dolomite mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dolomite caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/gabbro": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gabbro mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "gabbro caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/gneiss": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gneiss mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "gneiss caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/granite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "granite mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "granite caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/limestone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "limestone mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "limestone caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/marble": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "marble mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "marble caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/phyllite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "phyllite mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "phyllite caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/quartzite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "quartzite mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "quartzite caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "rhyolite mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "rhyolite caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/schist": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "schist mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "schist caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "shale mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "shale caves"
+        }
+      }
+    },
+    "tfc:ore/poor_native_silver/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "silver ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of silver"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "slate mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "slate caves"
+        }
+      }
+    },
+    "tfc:ore/poor_sphalerite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore piece for zinc"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into zinc"
+          ],
+          "signal": "inferred",
+          "rationale": "processed to zinc ingot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ore_pieces"
+          ],
+          "signal": "inferred",
+          "rationale": "small ore piece"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in quantity"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in smelting or milling"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "drops from sphalerite blocks"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "tfc:ore/poor_native_gold/schist",
+      "facet": "material_family",
+      "current": "schist",
+      "suggested": "gold",
+      "rationale": "player thinks of this as gold ore, not schist",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_gold/shale",
+      "facet": "material_family",
+      "current": "shale",
+      "suggested": "gold",
+      "rationale": "gold ore, not shale",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_gold/slate",
+      "facet": "material_family",
+      "current": "slate",
+      "suggested": "gold",
+      "rationale": "gold ore, not slate",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/andesite",
+      "facet": "material_family",
+      "current": "andesite",
+      "suggested": "silver",
+      "rationale": "silver ore, not andesite",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/basalt",
+      "facet": "material_family",
+      "current": "basalt",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/chalk",
+      "facet": "material_family",
+      "current": "chalk",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/chert",
+      "facet": "material_family",
+      "current": "chert",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/claystone",
+      "facet": "material_family",
+      "current": "claystone",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/conglomerate",
+      "facet": "material_family",
+      "current": "conglomerate",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/dacite",
+      "facet": "material_family",
+      "current": "dacite",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/diorite",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/dolomite",
+      "facet": "material_family",
+      "current": "dolomite",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/gabbro",
+      "facet": "material_family",
+      "current": "gabbro",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/gneiss",
+      "facet": "material_family",
+      "current": "gneiss",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/granite",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/limestone",
+      "facet": "material_family",
+      "current": "limestone",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/marble",
+      "facet": "material_family",
+      "current": "marble",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/phyllite",
+      "facet": "material_family",
+      "current": "phyllite",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/quartzite",
+      "facet": "material_family",
+      "current": "quartzite",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/rhyolite",
+      "facet": "material_family",
+      "current": "rhyolite",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/schist",
+      "facet": "material_family",
+      "current": "schist",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/shale",
+      "facet": "material_family",
+      "current": "shale",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver/slate",
+      "facet": "material_family",
+      "current": "slate",
+      "suggested": "silver",
+      "rationale": "silver ore",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_native_silver",
+      "facet": "material_family",
+      "current": "native_silver",
+      "suggested": "silver",
+      "rationale": "player sees it as silver ore",
+      "confidence": 0.8
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "fill_ins": []
+}

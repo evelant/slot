@@ -1,0 +1,1245 @@
+{
+  "items": {
+    "tfg:schist_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Player places support beams for cave stability, structural block"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "evidence": "id contains schist",
+          "rationale": "Rock type from block name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once then left, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "reinforcing cave walls",
+            "mining support"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to prevent cave-ins in TFC"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as structural block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "Part of support beam family"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped crafting output",
+          "rationale": "No loot source, only crafted"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for structural integrity"
+        }
+      }
+    },
+    "tfg:scorchia_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Player places support beams for cave stability, structural block"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id contains scorchia",
+          "rationale": "Rock type from block name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once then left, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "reinforcing cave walls",
+            "mining support"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to prevent cave-ins in TFC"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as structural block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "Part of support beam family"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped crafting output",
+          "rationale": "No loot source, only crafted"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for structural integrity"
+        }
+      }
+    },
+    "tfg:scoria_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Player places support beams for cave stability, structural block"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id contains scoria",
+          "rationale": "Rock type from block name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once then left, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "reinforcing cave walls",
+            "mining support"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to prevent cave-ins in TFC"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as structural block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "Part of support beam family"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped crafting output",
+          "rationale": "No loot source, only crafted"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for structural integrity"
+        }
+      }
+    },
+    "tfg:screwdriver_tip_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player stores with molds as crafting component for extruder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted tooling item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used only when setting up machine, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "extruding screwdriver tips"
+          ],
+          "signal": "pattern",
+          "evidence": "display name contains Extruder Mold (Screwdriver Tip)",
+          "rationale": "Used in GTCE extruder for shape"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:molds",
+          "rationale": "Stored with other extruder molds"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Made at artisan table, no loot source"
+        }
+      }
+    },
+    "tfg:scythe_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player stores with molds as crafting component for extruder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted tooling item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used only when setting up machine, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "extruding scythe heads"
+          ],
+          "signal": "pattern",
+          "evidence": "display name contains Extruder Mold (Sycthe Head)",
+          "rationale": "Used in GTCE extruder for shape"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:molds",
+          "rationale": "Stored with other extruder molds"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Made at artisan table, no loot source"
+        }
+      }
+    },
+    "tfg:sedimentary_carbonate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient used in mixing and flux recipes"
+        },
+        "material_family": {
+          "value": "sedimentary_carbonate",
+          "signal": "pattern",
+          "evidence": "id contains sedimentary_carbonate",
+          "rationale": "Dust type from material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common refined dust from milling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory for bulk crafting, but not every day"
+        },
+        "primary_uses": {
+          "values": [
+            "flux in smelting",
+            "making chalk",
+            "concrete component"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes for flux, chalk, concrete",
+          "rationale": "Primary ingredient in many mixing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Pure processed dust, fits with other refined dusts"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by milling",
+          "rationale": "No loot source, only crafted from milling"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be stored in any normal container"
+        }
+      }
+    },
+    "tfg:sedimentary_clastic_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient used in mixing recipes"
+        },
+        "material_family": {
+          "value": "sedimentary_clastic",
+          "signal": "pattern",
+          "evidence": "id contains sedimentary_clastic",
+          "rationale": "Dust type from material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common refined dust from milling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory for bulk crafting, but not every day"
+        },
+        "primary_uses": {
+          "values": [
+            "making concrete",
+            "component in drilling fluid"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes for concrete and drilling fluid",
+          "rationale": "Used in construction and mining fluid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Pure processed dust, fits with other refined dusts"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by milling",
+          "rationale": "No loot source, only crafted from milling"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be stored in any normal container"
+        }
+      }
+    },
+    "tfg:sedimentary_organic_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient used in mixing recipes"
+        },
+        "material_family": {
+          "value": "sedimentary_organic",
+          "signal": "pattern",
+          "evidence": "id contains sedimentary_organic",
+          "rationale": "Dust type from material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common refined dust from milling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory for bulk crafting, but not every day"
+        },
+        "primary_uses": {
+          "values": [
+            "making concrete",
+            "component in drilling fluid"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes for concrete and drilling fluid",
+          "rationale": "Used in construction and mining fluid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Pure processed dust, fits with other refined dusts"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by milling",
+          "rationale": "No loot source, only crafted from milling"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be stored in any normal container"
+        }
+      }
+    },
+    "tfg:semiheavy_ammoniacal_water_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of chemical fluid, used as tool-like item to pour/place"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted chemical fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when transporting fluids for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing",
+            "fluid transport for reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input in chemical mixing recipes"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid contents",
+          "rationale": "Bucket that holds fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in normal inventory"
+        }
+      }
+    },
+    "tfg:semiheavy_water_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of chemical fluid, used as tool-like item to pour/place"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted chemical fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when transporting fluids for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing",
+            "fluid transport for reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input in chemical mixing recipes"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid contents",
+          "rationale": "Bucket that holds fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in normal inventory"
+        }
+      }
+    },
+    "tfg:shale_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined ore, processed into thallium/lorandite ingot"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "id contains lorandite",
+          "rationale": "Ore material from id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Rare ore for thallium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in bulk then processed, not carried after"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lorandite",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes",
+          "rationale": "Ore processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "ore in shale underground",
+          "rationale": "Mined in caves"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Raw ore block, belongs with other ores"
+        }
+      }
+    },
+    "tfg:shale_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Player places support beams for cave stability, structural block"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "evidence": "id contains shale",
+          "rationale": "Rock type from block name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once then left, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "reinforcing cave walls",
+            "mining support"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to prevent cave-ins in TFC"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as structural block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "Part of support beam family"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped crafting output",
+          "rationale": "No loot source, only crafted"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for structural integrity"
+        }
+      }
+    },
+    "tfg:shell_bullet_casing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component used to craft ammunition rounds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted intermediate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only in inventory when crafting bullets, then stored"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ammunition"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Shell Bullet Casing'",
+          "rationale": "Clearly part of bullet crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Regular item, storable in any container"
+        }
+      }
+    },
+    "tfg:shell_casing_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player stores with molds as crafting component for extruder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted tooling item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used only when setting up machine, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "extruding shell casings"
+          ],
+          "signal": "pattern",
+          "evidence": "display name contains Extruder Mold (Shell Bullet Casing)",
+          "rationale": "Used in GTCE extruder for shape"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:molds",
+          "rationale": "Stored with other extruder molds"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Made at artisan table, no loot source"
+        }
+      }
+    },
+    "tfg:shovel_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player stores with molds as crafting component for extruder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted tooling item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used only when setting up machine, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "extruding shovel heads"
+          ],
+          "signal": "pattern",
+          "evidence": "display name contains Extruder Mold (Shovel Head)",
+          "rationale": "Used in GTCE extruder for shape"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:molds",
+          "rationale": "Stored with other extruder molds"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Made at artisan table, no loot source"
+        }
+      }
+    },
+    "tfg:silane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of gaseous chemical, used as tool to deliver fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted chemical bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when transporting for reactions"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing",
+            "silicon production"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes for silicon"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid contents",
+          "rationale": "Bucket that holds fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in normal inventory"
+        }
+      }
+    },
+    "tfg:silica_aerogel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Insulation material used in machine components"
+        },
+        "material_family": {
+          "value": "silica_aerogel",
+          "signal": "pattern",
+          "evidence": "id contains silica_aerogel",
+          "rationale": "Material from id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Advanced material, not trivial to make"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in machine setups, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "thermal insulation in machines"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:insulation_t3/cryo",
+          "rationale": "Cryogenic insulation component"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in any container"
+        }
+      }
+    },
+    "tfg:silica_gel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of chemical fluid, used as tool to deliver fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted chemical bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when transporting for reactions"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing",
+            "drying agent"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical recipes"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid contents",
+          "rationale": "Bucket that holds fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in normal inventory"
+        }
+      }
+    },
+    "tfg:silicon_carbide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten silicon carbide, used as tool to pour"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted chemical bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when transporting molten materials"
+        },
+        "primary_uses": {
+          "values": [
+            "casting silicon carbide into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Molten form used in casting"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid contents",
+          "rationale": "Bucket that holds fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in normal inventory"
+        }
+      }
+    },
+    "tfg:silicon_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Processing dust that is smelted or compacted"
+        },
+        "material_family": {
+          "value": "silicon_carbide",
+          "signal": "pattern",
+          "evidence": "id contains silicon_carbide",
+          "rationale": "Material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory for processing chains"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "making plates"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes for smelting and milling",
+          "rationale": "Processing into higher forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust, fits with other pure dusts"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced by milling ingots/plates",
+          "rationale": "Recycled from other forms"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in any container"
+        }
+      }
+    },
+    "tfg:silicon_carbide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Standard metal ingot form"
+        },
+        "material_family": {
+          "value": "silicon_carbide",
+          "signal": "pattern",
+          "evidence": "id contains silicon_carbide",
+          "rationale": "Material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory for crafting components"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced components",
+            "making turbine blades"
+          ],
+          "signal": "pattern",
+          "evidence": "used in rolling and crafting recipes",
+          "rationale": "Base material for high-end parts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal ingot, grouped with processed materials"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "smelted from dust",
+          "rationale": "Produced from dust smelting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in any container"
+        }
+      }
+    },
+    "tfg:silicon_carbide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Standard plate form"
+        },
+        "material_family": {
+          "value": "silicon_carbide",
+          "signal": "pattern",
+          "evidence": "id contains silicon_carbide",
+          "rationale": "Material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common refined plate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine building, but not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "machine casings",
+            "advanced structural components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting high-tier machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined plate, grouped with processed materials"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "rolled from ingot",
+          "rationale": "Produced by rolling"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in any container"
+        }
+      }
+    },
+    "tfg:silicon_carbide_silicon_carbide_turbine_blade": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Component used in GTCE generators/turbines"
+        },
+        "material_family": {
+          "value": "silicon_carbide_silicon_carbide",
+          "signal": "pattern",
+          "evidence": "id contains silicon_carbide_silicon_carbide",
+          "rationale": "Material from id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Advanced component for high-tier generators"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in machines, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "power generation in turbines"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:turbine_blades",
+          "rationale": "Turbine blade for GTCE generators"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "pattern",
+          "evidence": "turbine blade part",
+          "rationale": "Part of GTCE generator multiblock"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot source, complex craft"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in any container"
+        }
+      }
+    },
+    "tfg:silicon_seed_crystal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Seed crystal used to grow silicon boules in semiconductor process"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Important intermediate in silicon wafer production"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in specific machine setups, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "silicon boule growth",
+            "wafer fabrication"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Silicon Seed Crystal'",
+          "rationale": "Seed crystal for crystal growth process"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot source, crafted from chemical processes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in any container"
+        }
+      }
+    },
+    "tfg:silicon_tetrachloride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of chemical fluid, used as tool to deliver fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted chemical bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when transporting for reactions"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing",
+            "silicon production"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in silicon purification processes"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket + fluid contents",
+          "rationale": "Bucket that holds fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Storable in normal inventory"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1149 @@
+{
+  "items": {
+    "gtceu:ultimet_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pipe for item transport in GregTech pipe network"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "inferred",
+          "rationale": "named in id and tooltip"
+        },
+        "primary_uses": {
+          "values": [
+            "transport items in pipe network"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in pipe network, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe network is logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe is part of GT pipe subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present, no loot"
+        }
+      }
+    },
+    "gtceu:ultimet_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "sword with damage stats"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "inferred",
+          "rationale": "from id"
+        },
+        "tier": {
+          "value": "ultimet",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "slashing damage"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows damage and slashing"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "weapon carried for combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for combat"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ultimet_sword_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting sword"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "inferred",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ultimet swords"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sword recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable, kept in crafting stash"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present (though it's intermediate product?) Actually it has no production recipe in data? The recipe_output_count is 0, so it's not produced by a recipe in the runtime? Wait, recipe_production_by_type is empty. So no production evidence. So we cannot set origin crafted_only. Omit origin."
+        }
+      }
+    },
+    "gtceu:ultimet_turbine_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for turbines"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "inferred",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting turbines"
+          ],
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable, kept in crafting stash"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present (crafting_shaped output)"
+        }
+      }
+    },
+    "gtceu:ultimet_wire_cutter_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for wire cutter"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "inferred",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wire cutters"
+          ],
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present (crafting_shaped output)"
+        }
+      }
+    },
+    "gtceu:ultimet_wrench_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for wrench"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "inferred",
+          "rationale": "from id"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wrenches"
+          ],
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present (crafting_shaped output)"
+        }
+      }
+    },
+    "gtceu:ulv_16a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for energy conversion"
+        },
+        "primary_uses": {
+          "values": [
+            "converting between EU and FE"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip explains conversion"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy conversion is automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy conversion subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_1a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for energy conversion"
+        },
+        "primary_uses": {
+          "values": [
+            "converting between EU and FE"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy conversion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_4a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for energy conversion"
+        },
+        "primary_uses": {
+          "values": [
+            "converting between EU and FE"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy conversion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_8a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for energy conversion"
+        },
+        "primary_uses": {
+          "values": [
+            "converting between EU and FE"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy conversion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_battery_buffer_16x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for battery management"
+        },
+        "primary_uses": {
+          "values": [
+            "buffer battery energy for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage and amperage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy storage/management"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT battery subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_battery_buffer_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for battery management"
+        },
+        "primary_uses": {
+          "values": [
+            "buffer battery energy"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT battery subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_battery_buffer_8x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for battery management"
+        },
+        "primary_uses": {
+          "values": [
+            "buffer battery energy"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT battery subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "charge rechargeable tools and batteries"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip indicates charging"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "charging is automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "inferred",
+          "rationale": "charger subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_energy_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock component for energy input"
+        },
+        "primary_uses": {
+          "values": [
+            "provide energy input to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says energy input for multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed on multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "multiblock energy management"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "hatch is part of multiblock interface"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_energy_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock component for energy output"
+        },
+        "primary_uses": {
+          "values": [
+            "output energy from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "multiblock energy management"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "hatch subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_hermetic_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "casing used in multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "construct multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "component for multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable, kept for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of multiblock construction"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing is a multiblock component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_input_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock item input component"
+        },
+        "primary_uses": {
+          "values": [
+            "item input for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "multiblock logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "input bus is a hatch type"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock fluid input component"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid input for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "multiblock fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "hatch subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "creative tab decoration, decorative casing block"
+        },
+        "primary_uses": {
+          "values": [
+            "building decoration with machine aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration tab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block group"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_machine_hull": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine hull used as base for machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GT machines"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable, kept in storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_output_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock item output component"
+        },
+        "primary_uses": {
+          "values": [
+            "item output from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "multiblock logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "output bus is a hatch type"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock fluid output component"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid output from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "multiblock fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "hatch subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_solar_panel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cover that generates solar power"
+        },
+        "primary_uses": {
+          "values": [
+            "generate solar energy as a cover"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: produces energy from sun"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable, placed on machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "generates power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "solar panel is a generator cover"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    },
+    "gtceu:ulv_super_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "placeable chest with 10k item capacity"
+        },
+        "primary_uses": {
+          "values": [
+            "store up to 10,000 items"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows capacity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for storage, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "storage management"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "chest storage group"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

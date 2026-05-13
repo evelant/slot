@@ -1,0 +1,807 @@
+{
+  "items": {
+    "railways:black_hazard_stripes_chevron_on_white": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hazard stripe block from palettes tab, placed for looks."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Part of locometal block family."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building train decorations."
+        },
+        "primary_uses": {
+          "value": "Decorative building for trains, hazard markings",
+          "signal": "inferred",
+          "rationale": "Player places these for aesthetic warning stripes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with decorative blocks."
+        }
+      }
+    },
+    "railways:black_hazard_stripes_diagonal_on_black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hazard stripe block from palettes tab."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects."
+        },
+        "primary_uses": {
+          "value": "Decorative train building",
+          "signal": "inferred",
+          "rationale": "Placed as part of train-themed builds."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block group."
+        }
+      }
+    },
+    "railways:black_hazard_stripes_diagonal_on_white": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hazard stripe block from palettes tab."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Decorative train building",
+          "signal": "inferred",
+          "rationale": "Used for decoration."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_hinged_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door, part of building envelope, not decorative-only."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal door."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building structures."
+        },
+        "primary_uses": {
+          "value": "Building entrances with metal doors",
+          "signal": "inferred",
+          "rationale": "Placed as a functional door."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other locometal blocks."
+        }
+      }
+    },
+    "railways:black_incomplete_conductor_cap": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component, hidden from recipes."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "part of railways mod, likely locometal",
+          "rationale": "Conductor cap components."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not typically carried, only during assembly."
+        },
+        "primary_uses": {
+          "value": "Crafting conductor caps",
+          "signal": "inferred",
+          "rationale": "Incomplete item used in sequenced assembly."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Likely stored with other railways materials."
+        }
+      }
+    },
+    "railways:black_iron_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative variant from palettes tab."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Iron wrapped locometal block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Building with industrial decorative blocks",
+          "signal": "inferred",
+          "rationale": "Placed for aesthetic."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_iron_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block, no function."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal boiler."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building train parts."
+        },
+        "primary_uses": {
+          "value": "Building train-like structures",
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_iron_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal smokebox."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Building locomotive aesthetic",
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal boiler."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Building train decoration",
+          "signal": "inferred",
+          "rationale": "Placed for looks."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_locometal_end_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Ladder, carried for climbing, placed temporarily."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal ladder."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players carry ladders for exploration and building access."
+        },
+        "primary_uses": {
+          "value": "Climbing vertical surfaces",
+          "signal": "inferred",
+          "rationale": "Used for traversal."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with locometal blocks, but also could be in ladders group."
+        }
+      }
+    },
+    "railways:black_locometal_flywheel": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Palette flywheel, purely decorative."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal flywheel."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Building train decorations",
+          "signal": "inferred",
+          "rationale": "Placed as decorative element."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_locometal_pillar": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Pillar block from palettes tab."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal pillar."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Decorative structural pillar",
+          "signal": "inferred",
+          "rationale": "Used in building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_locometal_rung_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Ladder, carried and placed for climbing."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal ladder."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players carry ladders for access."
+        },
+        "primary_uses": {
+          "value": "Climbing",
+          "signal": "inferred",
+          "rationale": "Used for vertical movement."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with locometal."
+        }
+      }
+    },
+    "railways:black_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox from palettes."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Building train decoration",
+          "signal": "inferred",
+          "rationale": "Placed for aesthetics."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_locometal_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Trapdoor, part of building openings."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal trapdoor."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "primary_uses": {
+          "value": "Building floor/ceiling access",
+          "signal": "inferred",
+          "rationale": "Placed as a functional opening."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with locometal."
+        }
+      }
+    },
+    "railways:black_locometal_vent": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Vent block from palettes, decorative."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal vent."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Decorative vent detail",
+          "signal": "inferred",
+          "rationale": "Used for industrial aesthetic."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_paint_pitcher": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Paint pitcher used to recolor locometal blocks."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred",
+          "rationale": "Contains paint for locometal."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when painting train structures."
+        },
+        "primary_uses": {
+          "value": "Painting locometal blocks",
+          "signal": "inferred",
+          "rationale": "Used to apply color to blocks."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with railways decoration tools."
+        }
+      }
+    },
+    "railways:black_plated_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Plated variant from palettes."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Decorative building surface",
+          "signal": "inferred",
+          "rationale": "Plated blocks for train aesthetic."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Riveted variant from palettes."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Decorative building with riveted pattern",
+          "signal": "inferred",
+          "rationale": "Used for industrial style."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_round_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window block, part of building envelope."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal window frame."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "primary_uses": {
+          "value": "Building with decorative windows",
+          "signal": "inferred",
+          "rationale": "Provides light transmission and aesthetic."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_single_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal window."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Building windows",
+          "signal": "inferred",
+          "rationale": "Used for light and view."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Slashed variant from palettes."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Decorative building",
+          "signal": "inferred",
+          "rationale": "Textured block for train builds."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_sliding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sliding door, part of building."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal door."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "primary_uses": {
+          "value": "Building sliding door entrances",
+          "signal": "inferred",
+          "rationale": "Used as a door."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_two_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window block."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal window."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Building windows",
+          "signal": "inferred",
+          "rationale": "Used for light and view."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "railways:black_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative wrapped smokebox from palettes."
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "Locometal."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "value": "Building train decoration",
+          "signal": "inferred",
+          "rationale": "Placed for aesthetic."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

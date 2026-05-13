@@ -1,0 +1,990 @@
+{
+  "items": {
+    "tfg:wood/crafting_station/warped_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "slab variant of crafting station, opens UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items",
+            "workstation for recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "player places and uses for crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried routinely"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component from recipe"
+        },
+        "material_family": {
+          "value": "wood_warped",
+          "signal": "pattern",
+          "rationale": "id contains 'warped'"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "crafting station block, opens UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items",
+            "workstation for recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "player places and uses for crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried routinely"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component from recipe"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "id contains 'white_cedar'"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/white_cedar_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "slab variant of crafting station, opens UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items",
+            "workstation for recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "player places and uses for crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried routinely"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component from recipe"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "rationale": "id contains 'white_cedar'"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/willow": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "crafting station block, opens UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items",
+            "workstation for recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "player places and uses for crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried routinely"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component from recipe"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "id contains 'willow'"
+        }
+      }
+    },
+    "tfg:wood/crafting_station/willow_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "slab variant of crafting station, opens UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items",
+            "workstation for recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "player places and uses for crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried routinely"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component from recipe"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "rationale": "id contains 'willow'"
+        }
+      }
+    },
+    "tfg:wood/door/araucaria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "allow passage through walls",
+            "build entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "player places as part of buildings"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_araucaria",
+          "signal": "pattern",
+          "rationale": "id contains 'araucaria'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfg:wood/door/beech": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "allow passage through walls",
+            "build entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "player places as part of buildings"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_beech",
+          "signal": "pattern",
+          "rationale": "id contains 'beech'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfg:wood/door/mahoe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "allow passage through walls",
+            "build entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "player places as part of buildings"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_mahoe",
+          "signal": "pattern",
+          "rationale": "id contains 'mahoe'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfg:wood/fence/araucaria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "enclose areas",
+            "build boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to create pens or borders"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_araucaria",
+          "signal": "pattern",
+          "rationale": "id contains 'araucaria'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "matches fence storage section"
+        }
+      }
+    },
+    "tfg:wood/fence/beech": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "enclose areas",
+            "build boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to create pens or borders"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_beech",
+          "signal": "pattern",
+          "rationale": "id contains 'beech'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "matches fence storage section"
+        }
+      }
+    },
+    "tfg:wood/fence/mahoe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "enclose areas",
+            "build boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to create pens or borders"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_mahoe",
+          "signal": "pattern",
+          "rationale": "id contains 'mahoe'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "matches fence storage section"
+        }
+      }
+    },
+    "tfg:wood/fence_gate/araucaria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "pass through fence lines",
+            "build fence openings"
+          ],
+          "signal": "inferred",
+          "rationale": "player places alongside fences"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_araucaria",
+          "signal": "pattern",
+          "rationale": "id contains 'araucaria'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gates grouped with fences"
+        }
+      }
+    },
+    "tfg:wood/fence_gate/beech": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "pass through fence lines",
+            "build fence openings"
+          ],
+          "signal": "inferred",
+          "rationale": "player places alongside fences"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_beech",
+          "signal": "pattern",
+          "rationale": "id contains 'beech'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gates grouped with fences"
+        }
+      }
+    },
+    "tfg:wood/fence_gate/mahoe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate is structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "pass through fence lines",
+            "build fence openings"
+          ],
+          "signal": "inferred",
+          "rationale": "player places alongside fences"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_mahoe",
+          "signal": "pattern",
+          "rationale": "id contains 'mahoe'"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gates grouped with fences"
+        }
+      }
+    },
+    "tfg:wood/food_shelf/aeronos": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "food shelf used for storing and aging food"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "age cheese and preserves"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife food storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_aeronos",
+          "signal": "pattern",
+          "rationale": "id contains 'aeronos'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preservation workflow"
+        }
+      }
+    },
+    "tfg:wood/food_shelf/araucaria": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "food shelf used for storing and aging food"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "age cheese and preserves"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife food storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_araucaria",
+          "signal": "pattern",
+          "rationale": "id contains 'araucaria'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preservation workflow"
+        }
+      }
+    },
+    "tfg:wood/food_shelf/beech": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "food shelf used for storing and aging food"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "age cheese and preserves"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife food storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_beech",
+          "signal": "pattern",
+          "rationale": "id contains 'beech'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preservation workflow"
+        }
+      }
+    },
+    "tfg:wood/food_shelf/ginkgo": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "food shelf used for storing and aging food"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "age cheese and preserves"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife food storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_ginkgo",
+          "signal": "pattern",
+          "rationale": "id contains 'ginkgo'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preservation workflow"
+        }
+      }
+    },
+    "tfg:wood/food_shelf/glacian": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "food shelf used for storing and aging food"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "age cheese and preserves"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife food storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_glacian",
+          "signal": "pattern",
+          "rationale": "id contains 'glacian'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preservation workflow"
+        }
+      }
+    },
+    "tfg:wood/food_shelf/mahoe": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "food shelf used for storing and aging food"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "age cheese and preserves"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife food storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_mahoe",
+          "signal": "pattern",
+          "rationale": "id contains 'mahoe'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preservation workflow"
+        }
+      }
+    },
+    "tfg:wood/food_shelf/strophar": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "food shelf used for storing and aging food"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "age cheese and preserves"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife food storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "rationale": "id contains 'strophar'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preservation workflow"
+        }
+      }
+    },
+    "tfg:wood/hanger/aeronos": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "hanger used for smoking/drying food"
+        },
+        "primary_uses": {
+          "values": [
+            "hang food for smoking",
+            "dry meats"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_aeronos",
+          "signal": "pattern",
+          "rationale": "id contains 'aeronos'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smoking/drying workflow"
+        }
+      }
+    },
+    "tfg:wood/hanger/araucaria": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "hanger used for smoking/drying food"
+        },
+        "primary_uses": {
+          "values": [
+            "hang food for smoking",
+            "dry meats"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_araucaria",
+          "signal": "pattern",
+          "rationale": "id contains 'araucaria'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smoking/drying workflow"
+        }
+      }
+    },
+    "tfg:wood/hanger/beech": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "hanger used for smoking/drying food"
+        },
+        "primary_uses": {
+          "values": [
+            "hang food for smoking",
+            "dry meats"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_beech",
+          "signal": "pattern",
+          "rationale": "id contains 'beech'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smoking/drying workflow"
+        }
+      }
+    },
+    "tfg:wood/hanger/ginkgo": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "hanger used for smoking/drying food"
+        },
+        "primary_uses": {
+          "values": [
+            "hang food for smoking",
+            "dry meats"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Firmalife processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common item"
+        },
+        "material_family": {
+          "value": "wood_ginkgo",
+          "signal": "pattern",
+          "rationale": "id contains 'ginkgo'"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smoking/drying workflow"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

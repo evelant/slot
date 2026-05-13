@@ -1,0 +1,1098 @@
+{
+  "items": {
+    "tfc:plant/peach_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Tree leaves are living nature, placed or harvested in garden/farm areas."
+        },
+        "material_family": {
+          "value": "peach",
+          "signal": "inferred",
+          "rationale": "From peach fruit tree."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of tree growth and composting workflow."
+        },
+        "primary_uses": {
+          "values": [
+            "composting and mossy conversion",
+            "tree growth support"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in compost and to make mossy blocks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when gardening or cutting trees, not carried daily."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common resource from fruit trees."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/peach_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Saplings are living nature, planted to grow trees."
+        },
+        "material_family": {
+          "value": "peach",
+          "signal": "inferred",
+          "rationale": "Sapling of peach tree."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted to grow fruit trees."
+        },
+        "primary_uses": {
+          "values": [
+            "growing peach trees",
+            "crafting sticks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to plant trees or cut into sticks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when gardening, not everyday."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common sapling from fruit tree harvesting."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "inferred",
+          "rationale": "Saplings grouped together."
+        }
+      }
+    },
+    "tfc:plant/perovskia": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Flower plant, placed in garden or used for dye."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for decoration and used to make purple dye."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "dye production",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decoration, milled for purple dye, and compost."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring or gardening."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld flower."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/philodendron": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Foliage plant, placed in gardens."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted as decoration or for beekeeping."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting",
+            "bee forage"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for looks, composted, and supports bees."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring or gardening."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common plant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/phragmite": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Reed plant, generated in world."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration or for water gardens."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration and composting."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring wetlands."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common water plant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/pickerelweed": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Aquatic flower plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for decoration and used to make purple dye."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "dye production",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decoration, milled for purple dye, and compost."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring water areas."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common aquatic plant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/pine_krummholz": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Alpine tree form, natural plant."
+        },
+        "material_family": {
+          "value": "pine",
+          "signal": "inferred",
+          "rationale": "Pine tree variant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of tree growth, can be planted."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting",
+            "wood source"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for alpine landscaping, composted, or yields wood."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring highlands."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common in cold biomes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/pistia": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Floating water plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in water gardens, used for antipoison potions."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting",
+            "herbal ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration, compost, and making antipoison tablets."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring water bodies."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common water plant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/plum_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Tree leaves, part of living nature."
+        },
+        "material_family": {
+          "value": "plum",
+          "signal": "inferred",
+          "rationale": "From plum fruit tree."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of tree growth and composting."
+        },
+        "primary_uses": {
+          "values": [
+            "composting and mossy conversion",
+            "tree growth support"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in compost and to make mossy blocks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when gardening or cutting trees."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common resource from fruit trees."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/plum_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Sapling, living nature for tree growth."
+        },
+        "material_family": {
+          "value": "plum",
+          "signal": "inferred",
+          "rationale": "Sapling of plum tree."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted to grow fruit trees."
+        },
+        "primary_uses": {
+          "values": [
+            "growing plum trees",
+            "crafting sticks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to plant trees or cut into sticks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when gardening."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common sapling."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "inferred",
+          "rationale": "Saplings grouped together."
+        }
+      }
+    },
+    "tfc:plant/poppy": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Flower plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for decoration and used to make red dye."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "dye production",
+            "composting",
+            "absorption potion ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration, milled for red dye, compost, and potions."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common flower."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/primrose": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Flower plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for decoration and used to make white dye."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "dye production",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration, milled for white dye, and compost."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common flower."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/pulsatilla": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Flower plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for decoration and used to make magenta dye."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "dye production",
+            "composting",
+            "poison potion ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration, milled for magenta dye, compost, and poison potions."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common flower."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/raddia_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Grass plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for ground cover or composting."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting",
+            "butterfly grass mutant"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover, compost, and for butterfly breeding."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common grass."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/raspberry_bush": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Berry bush, living nature for fruit production."
+        },
+        "material_family": {
+          "value": "raspberry",
+          "signal": "inferred",
+          "rationale": "From raspberry bush."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Grown for fruit harvest."
+        },
+        "primary_uses": {
+          "values": [
+            "fruit production",
+            "composting",
+            "trellis planter"
+          ],
+          "signal": "inferred",
+          "rationale": "Grows raspberries, compostable, used in trellis planters."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when planting berry patches."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common bush."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/red_algae": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Aquatic plant/algae."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in water gardens, used for composting."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as underwater decoration and compost."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring water."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common algae."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/red_apple_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Tree leaves, living nature."
+        },
+        "material_family": {
+          "value": "apple",
+          "signal": "inferred",
+          "rationale": "From red apple fruit tree."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of tree growth and composting."
+        },
+        "primary_uses": {
+          "values": [
+            "composting and mossy conversion",
+            "tree growth support"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in compost and to make mossy blocks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when gardening or cutting trees."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common resource from fruit trees."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/red_apple_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Sapling, living nature."
+        },
+        "material_family": {
+          "value": "apple",
+          "signal": "inferred",
+          "rationale": "Sapling of red apple tree."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted to grow fruit trees."
+        },
+        "primary_uses": {
+          "values": [
+            "growing red apple trees",
+            "crafting sticks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to plant trees or cut into sticks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when gardening."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common sapling."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "inferred",
+          "rationale": "Saplings grouped together."
+        }
+      }
+    },
+    "tfc:plant/red_sealing_wax_palm": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Palm-like plant, living nature."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for tropical decoration and compost."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common plant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/reindeer_lichen": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Lichen, living nature cover."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for mossy blocks and green dye."
+        },
+        "primary_uses": {
+          "values": [
+            "mossy block crafting",
+            "dye production",
+            "composting",
+            "slow fall potion ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Makes mossy bricks, green dye, compost, and slow fall potion."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common lichen."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/rose": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Flower plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for decoration and used to make red dye."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "dye production",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration, milled for red dye, and compost."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common flower."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/ryegrass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Grass plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for ground cover or composting."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting",
+            "butterfly grass mutant"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover, compost, and for butterfly breeding."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common grass."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/sacred_datura": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Flower plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for decoration and used to make pink dye and regeneration potions."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "dye production",
+            "composting",
+            "regeneration potion ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration, milled for pink dye, compost, and regeneration potions."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common flower."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/sagebrush": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Shrub plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted for desert decoration or composting."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for arid landscaping and compost."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common shrub."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    },
+    "tfc:plant/sago": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Aquatic plant."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted in water gardens."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as underwater decoration and compost."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when exploring water."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common water plant."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant items grouped together."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

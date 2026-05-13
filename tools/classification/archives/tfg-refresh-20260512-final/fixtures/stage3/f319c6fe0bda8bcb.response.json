@@ -1,0 +1,980 @@
+{
+  "items": {
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative bookshelf, not a storage container."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decorative furniture."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating rooms."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_bookshelf_cupboard": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Cupboard bookshelf, opens to store items."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood cabinets"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage functionality."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Both decorative and storage use."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer bookshelf, storage container."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried when decorating."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chair, decorative seating."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood chairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_coffee_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coffee table, decorative furniture."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Counter, storage block with drawers."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood counters"
+          ],
+          "signal": "inferred",
+          "rationale": "Counter storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative and storage use."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_covered_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Covered desk, decorative furniture."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood desks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_cupboard_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Cupboard counter, storage block."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood cupboards"
+          ],
+          "signal": "inferred",
+          "rationale": "Cupboard storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative and storage."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Desk, decorative furniture."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood desks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_double_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Double drawer, storage container."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_double_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Double drawer counter, storage."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood counters"
+          ],
+          "signal": "inferred",
+          "rationale": "Counter storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative and storage."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_double_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Double wardrobe, storage container."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood wardrobes"
+          ],
+          "signal": "inferred",
+          "rationale": "Wardrobe storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer, storage container."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer counter, storage."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood counters"
+          ],
+          "signal": "inferred",
+          "rationale": "Counter storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_end_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "End table, decorative furniture."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_glass_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Glass table, decorative furniture."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_large_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Large drawer, storage container."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood large drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_lower_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Lower bookshelf drawer, storage."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood drawer units"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_lower_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Lower triple drawer, storage."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood triple drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_modern_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Modern chair, decorative seating."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood modern chairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_modern_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Modern desk, decorative furniture."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood modern desks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_modern_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Modern wardrobe, storage container."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in rosewood modern wardrobes"
+          ],
+          "signal": "inferred",
+          "rationale": "Wardrobe storage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, carried during build."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted item."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and decoration."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_stool_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Stool, decorative seating."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood stools"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_striped_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Striped chair, decorative seating."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood striped chairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Table, decorative furniture."
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Item id contains rosewood."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with rosewood tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for decorating."
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "mcw_tfc_aio:furniture/rosewood_furniture/rosewood_bookshelf",
+      "facet": "organization_group",
+      "label": "Rosewood Furniture",
+      "proposed_id": "pack:tfg/furniture",
+      "rationale": "These are all rosewood furniture items; a dedicated furniture group would let players store them together.",
+      "evidence": "All items share the same mod and theme of rosewood furniture, displayed in creative tab 'furnitureitemgroup'."
+    }
+  ],
+  "schema_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,792 @@
+{
+  "values": [
+    {
+      "id": "create:milling#input",
+      "label": "Milling Input",
+      "state": "review",
+      "description": "Input items for the milling process. Single recipe_type evidence; minimal supporting text.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:milling"
+    },
+    {
+      "id": "create:milling#output",
+      "label": "Milling Output",
+      "state": "review",
+      "description": "Output items from the milling process. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:milling"
+    },
+    {
+      "id": "firmalife:stomping#input",
+      "label": "Stomping Input",
+      "state": "review",
+      "description": "Input items for stomping (e.g. grapes). Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stomping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:stomping"
+    },
+    {
+      "id": "firmalife:stomping#output",
+      "label": "Stomping Output",
+      "state": "review",
+      "description": "Output items from stomping. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stomping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:stomping"
+    },
+    {
+      "id": "create:pressing#input",
+      "label": "Pressing Input",
+      "state": "review",
+      "description": "Input items for pressing. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:pressing"
+    },
+    {
+      "id": "create:pressing#output",
+      "label": "Pressing Output",
+      "state": "review",
+      "description": "Output items from pressing. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:pressing"
+    },
+    {
+      "id": "ad_astra:oxygen_loading#input",
+      "label": "Oxygen Loading Input",
+      "state": "review",
+      "description": "Input items/fluids for oxygen loading. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:oxygen_loading",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ad_astra:oxygen_loading"
+    },
+    {
+      "id": "ad_astra:oxygen_loading#output",
+      "label": "Oxygen Loading Output",
+      "state": "review",
+      "description": "Output from oxygen loading. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:oxygen_loading",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ad_astra:oxygen_loading"
+    },
+    {
+      "id": "ad_astra:space_station_recipe#input",
+      "label": "Space Station Recipe Input",
+      "state": "rejected",
+      "description": "Rejected: parent workflow 'ad_astra:space_station_recipe' is a one-off recipe, not a reusable player process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:space_station_recipe",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ad_astra:space_station_recipe"
+    },
+    {
+      "id": "ad_astra:space_station_recipe#output",
+      "label": "Space Station Recipe Output",
+      "state": "rejected",
+      "description": "Rejected: parent workflow not a valid player process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:space_station_recipe",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ad_astra:space_station_recipe"
+    },
+    {
+      "id": "greate:haunting#input",
+      "label": "Haunting Input",
+      "state": "rejected",
+      "description": "Rejected: parent workflow 'greate:haunting' is not clearly a player-facing process; insufficient evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:haunting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:haunting"
+    },
+    {
+      "id": "greate:haunting#output",
+      "label": "Haunting Output",
+      "state": "rejected",
+      "description": "Rejected: parent workflow not a valid process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:haunting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:haunting"
+    },
+    {
+      "id": "tfc:pot_soup#input",
+      "label": "Pot Soup Input",
+      "state": "review",
+      "description": "Input items for making soup in a pot. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_soup",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:pot_soup"
+    },
+    {
+      "id": "tfc:pot_soup#output",
+      "label": "Pot Soup Output",
+      "state": "review",
+      "description": "Output from pot soup. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_soup",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:pot_soup"
+    },
+    {
+      "id": "vintageimprovements:pressurizing#input",
+      "label": "Pressurizing Input",
+      "state": "review",
+      "description": "Input items for pressurizing. Single recipe_type evidence; workflow accepted as review.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:pressurizing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:pressurizing"
+    },
+    {
+      "id": "vintageimprovements:pressurizing#output",
+      "label": "Pressurizing Output",
+      "state": "review",
+      "description": "Output from pressurizing. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:pressurizing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:pressurizing"
+    },
+    {
+      "id": "exposure:film_developing#input",
+      "label": "Film Developing Input",
+      "state": "review",
+      "description": "Input items for film developing. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:film_developing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "exposure:film_developing"
+    },
+    {
+      "id": "exposure:film_developing#output",
+      "label": "Film Developing Output",
+      "state": "review",
+      "description": "Output from film developing. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:film_developing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "exposure:film_developing"
+    },
+    {
+      "id": "firmalife:smoking#input",
+      "label": "Smoking Input",
+      "state": "review",
+      "description": "Input items for smoking. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:smoking",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:smoking"
+    },
+    {
+      "id": "firmalife:smoking#output",
+      "label": "Smoking Output",
+      "state": "review",
+      "description": "Output from smoking. Single recipe_type evidence.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:smoking",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:smoking"
+    },
+    {
+      "id": "tfc:papermaking#input",
+      "label": "Papermaking Input",
+      "state": "review",
+      "description": "Input items for papermaking. Single guide_page evidence with rich semantic text.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/papermaking",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:papermaking"
+    },
+    {
+      "id": "tfc:papermaking#output",
+      "label": "Papermaking Output",
+      "state": "review",
+      "description": "Output from papermaking. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/papermaking",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:papermaking"
+    },
+    {
+      "id": "tfc:anvils#input",
+      "label": "Anvils Input",
+      "state": "review",
+      "description": "Input items for anvil working/welding. Single guide_page evidence with extensive semantic text.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/anvils",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:anvils"
+    },
+    {
+      "id": "tfc:anvils#output",
+      "label": "Anvils Output",
+      "state": "review",
+      "description": "Output from anvil working/welding. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/anvils",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:anvils"
+    },
+    {
+      "id": "tfc:bloomery#input",
+      "label": "Bloomery Input",
+      "state": "accepted",
+      "description": "Input items for bloomery smelting. Multiple evidence types: advancement, guide_page, recipe_type.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/bloomery",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/bloomery",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:bloomery",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:bloomery"
+    },
+    {
+      "id": "tfc:bloomery#output",
+      "label": "Bloomery Output",
+      "state": "accepted",
+      "description": "Output from bloomery (blooms). Multiple evidence types.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/bloomery",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/bloomery",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:bloomery",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:bloomery"
+    },
+    {
+      "id": "tfc:pottery#input",
+      "label": "Pottery Input",
+      "state": "review",
+      "description": "Input items for pottery (clay knapping). Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/pottery",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:pottery"
+    },
+    {
+      "id": "tfc:pottery#output",
+      "label": "Pottery Output",
+      "state": "review",
+      "description": "Output from pottery. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/pottery",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:pottery"
+    },
+    {
+      "id": "tfc:barrels#input",
+      "label": "Barrels Input",
+      "state": "review",
+      "description": "Input items/fluids for barrel recipes. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/barrels",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:barrels"
+    },
+    {
+      "id": "tfc:barrels#output",
+      "label": "Barrels Output",
+      "state": "review",
+      "description": "Output from barrel recipes. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/barrels",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:barrels"
+    },
+    {
+      "id": "tfc:ovens#input",
+      "label": "Ovens Input",
+      "state": "review",
+      "description": "Input items for oven baking. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/ovens",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:ovens"
+    },
+    {
+      "id": "tfc:ovens#output",
+      "label": "Ovens Output",
+      "state": "review",
+      "description": "Output from oven baking. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/ovens",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:ovens"
+    },
+    {
+      "id": "tfc:planters#input",
+      "label": "Planters Input",
+      "state": "review",
+      "description": "Input seeds/saplings for planters. Single guide_page evidence with additional support from advancement and tooltips.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/planters",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:planters"
+    },
+    {
+      "id": "tfc:planters#output",
+      "label": "Planters Output",
+      "state": "review",
+      "description": "Output crops from planters. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/planters",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:planters"
+    },
+    {
+      "id": "tfc:primitive/anvils#input",
+      "label": "Primitive Anvils Input",
+      "state": "review",
+      "description": "Input items for stone anvil welding. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/primitive_anvils",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:primitive/anvils"
+    },
+    {
+      "id": "tfc:primitive/anvils#output",
+      "label": "Primitive Anvils Output",
+      "state": "review",
+      "description": "Output from primitive anvil welding. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/primitive_anvils",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:primitive/anvils"
+    },
+    {
+      "id": "tfc:winemaking#input",
+      "label": "Winemaking Input",
+      "state": "review",
+      "description": "Input grapes etc. for winemaking. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/wine",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:winemaking"
+    },
+    {
+      "id": "tfc:winemaking#output",
+      "label": "Winemaking Output",
+      "state": "review",
+      "description": "Output wine from winemaking. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/wine",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:winemaking"
+    },
+    {
+      "id": "tfc:composter#input",
+      "label": "Composter Input",
+      "state": "review",
+      "description": "Input items for composter (green/brown). Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/composter",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:composter"
+    },
+    {
+      "id": "tfc:composter#output",
+      "label": "Composter Output",
+      "state": "review",
+      "description": "Output compost from composter. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/composter",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:composter"
+    },
+    {
+      "id": "tfc:irrigation#input",
+      "label": "Irrigation Input",
+      "state": "review",
+      "description": "Input water/pipes for irrigation system. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/irrigation",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:irrigation"
+    },
+    {
+      "id": "tfc:irrigation#output",
+      "label": "Irrigation Output",
+      "state": "review",
+      "description": "Output (water distribution) from irrigation. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/irrigation",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:irrigation"
+    },
+    {
+      "id": "tfc:greenhouse#input",
+      "label": "Greenhouse Input",
+      "state": "review",
+      "description": "Input blocks/materials for greenhouse construction. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/greenhouse",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:greenhouse"
+    },
+    {
+      "id": "tfc:greenhouse#output",
+      "label": "Greenhouse Output",
+      "state": "review",
+      "description": "Output (climate control) from greenhouse. Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/greenhouse",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:greenhouse"
+    },
+    {
+      "id": "tfc:preservation#input",
+      "label": "Preservation Input",
+      "state": "rejected",
+      "description": "Rejected: parent workflow 'tfc:preservation' is a broad topic, not a single reusable player process.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/decay",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:preservation"
+    },
+    {
+      "id": "tfc:preservation#output",
+      "label": "Preservation Output",
+      "state": "rejected",
+      "description": "Rejected: parent workflow not a valid process.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/decay",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:preservation"
+    },
+    {
+      "id": "tfc:beekeeping#input",
+      "label": "Beekeeping Input",
+      "state": "review",
+      "description": "Input items for beekeeping (frames, hives). Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/beekeeping",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:beekeeping"
+    },
+    {
+      "id": "tfc:beekeeping#output",
+      "label": "Beekeeping Output",
+      "state": "review",
+      "description": "Output from beekeeping (honey, wax). Single guide_page evidence.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/beekeeping",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:beekeeping"
+    }
+  ]
+}

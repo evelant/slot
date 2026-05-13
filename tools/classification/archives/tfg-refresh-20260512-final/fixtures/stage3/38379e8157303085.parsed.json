@@ -1,0 +1,1669 @@
+{
+  "items": {
+    "tfc:food/rye_bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible food item"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat as bread",
+            "Make sandwiches"
+          ],
+          "signal": "inferred",
+          "rationale": "player eats or uses in sandwiches"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "staple food carried by players"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:bread",
+          "signal": "inferred",
+          "rationale": "it is bread"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "preparation_state": {
+          "value": "slot:cooked",
+          "signal": "inferred",
+          "rationale": "baked bread"
+        },
+        "workflow": {
+          "value": "tfc:bread",
+          "signal": "pattern",
+          "evidence": "part of bread making process",
+          "rationale": "output of bread workflow"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "common food storage group"
+        }
+      }
+    },
+    "tfc:food/rye_bread_jam_sandwich": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible food item"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat as sandwich"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat meal"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "convenient carried food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:prepared_meal",
+          "signal": "inferred",
+          "rationale": "sandwich is a prepared meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "common food storage group"
+        }
+      }
+    },
+    "tfc:food/rye_bread_sandwich": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible food item"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat as sandwich"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat meal"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "convenient carried food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:prepared_meal",
+          "signal": "inferred",
+          "rationale": "sandwich is a prepared meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "common food storage group"
+        }
+      }
+    },
+    "tfc:food/rye_dough": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible but typically baked"
+        },
+        "primary_uses": {
+          "values": [
+            "Bake into bread",
+            "Ingredient for dishes"
+          ],
+          "signal": "inferred",
+          "rationale": "main use is baking"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for baking soon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in cooking"
+        },
+        "food_category": {
+          "value": "slot:dough",
+          "signal": "inferred",
+          "rationale": "it is dough"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "not eaten raw typically"
+        },
+        "preparation_state": {
+          "value": "slot:dough",
+          "signal": "inferred",
+          "rationale": "unbaked dough"
+        },
+        "workflow": {
+          "value": "tfc:bread",
+          "signal": "pattern",
+          "evidence": "step in bread making",
+          "rationale": "part of bread workflow"
+        },
+        "used_at": {
+          "values": [
+            "firmalife:oven"
+          ],
+          "signal": "inferred",
+          "rationale": "baked in oven"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "common food storage group"
+        }
+      }
+    },
+    "tfc:food/rye_flour": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible but used as ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Make dough",
+            "Thickener"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into dough"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in cooking"
+        },
+        "food_category": {
+          "value": "slot:flour",
+          "signal": "inferred",
+          "rationale": "it is flour"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "not eaten raw"
+        },
+        "preparation_state": {
+          "value": "slot:flour",
+          "signal": "inferred",
+          "rationale": "ground flour"
+        },
+        "workflow": {
+          "value": "tfc:bread",
+          "signal": "inferred",
+          "rationale": "step in bread workflow"
+        },
+        "used_at": {
+          "values": [
+            "firmalife:mixing_bowl"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make dough in mixing bowl"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "common food storage group"
+        }
+      }
+    },
+    "tfc:food/rye_grain": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible grain"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into flour",
+            "Feed animals"
+          ],
+          "signal": "inferred",
+          "rationale": "ground into flour or fed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into flour for cooking"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "not eaten directly"
+        },
+        "workflow": {
+          "value": "tfc:bread",
+          "signal": "inferred",
+          "rationale": "first step in bread workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:quern"
+          ],
+          "signal": "inferred",
+          "rationale": "ground at quern"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        }
+      }
+    },
+    "tfc:food/salmon": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible fish"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook into meals",
+            "Use as bait"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked or fished with"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried after fishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "needs cooking"
+        },
+        "food_category": {
+          "value": "slot:fish",
+          "signal": "inferred",
+          "rationale": "it is fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "usually cooked before eating"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from entities/salmon",
+          "rationale": "dropped by salmon entity"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked on campfire"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc:food/shellfish": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible shellfish"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook into meals",
+            "Use as bait"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked or used as bait"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried after gathering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "needs cooking"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "inferred",
+          "rationale": "shellfish is meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "usually cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw shellfish"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from entities",
+          "rationale": "dropped by mobs"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc:food/smallmouth_bass": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible fish"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook into meals"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked for food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried after fishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "needs cooking"
+        },
+        "food_category": {
+          "value": "slot:fish",
+          "signal": "inferred",
+          "rationale": "it is fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "usually cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from entity",
+          "rationale": "dropped by smallmouth bass"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc:food/snowberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible berry"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat raw",
+            "Jam ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh or preserved"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "foraged and eaten on the go"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:fruit",
+          "signal": "inferred",
+          "rationale": "it is a fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten raw"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit storage group"
+        }
+      }
+    },
+    "tfc:food/soybean": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible legume"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat raw or cooked",
+            "Make tofu"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crop ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "often cooked"
+        },
+        "food_category": {
+          "value": "slot:vegetable",
+          "signal": "inferred",
+          "rationale": "it is a vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten raw or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw vegetable"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "named",
+          "evidence": "loot from crop blocks",
+          "rationale": "harvested from crops"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage group"
+        }
+      }
+    },
+    "tfc:food/squash": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible vegetable"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat raw or cooked",
+            "Ingredient for dishes"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crop ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "often cooked"
+        },
+        "food_category": {
+          "value": "slot:vegetable",
+          "signal": "inferred",
+          "rationale": "it is a vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten raw or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw vegetable"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "named",
+          "evidence": "loot from crop blocks",
+          "rationale": "harvested from crops"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage group"
+        }
+      }
+    },
+    "tfc:food/strawberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible berry"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat raw",
+            "Jam ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh or preserved"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "foraged and eaten on the go"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:fruit",
+          "signal": "inferred",
+          "rationale": "it is a fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten raw"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit storage group"
+        }
+      }
+    },
+    "tfc:food/sugarcane": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible stalk"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat raw or process into sugar"
+          ],
+          "signal": "inferred",
+          "rationale": "sugar source"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "processed for sugar"
+        },
+        "food_category": {
+          "value": "slot:vegetable",
+          "signal": "inferred",
+          "rationale": "considered vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient",
+            "slot:sweetener"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten raw and used as sweetener"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw plant"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "named",
+          "evidence": "loot from crop blocks",
+          "rationale": "harvested from crops"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage group"
+        }
+      }
+    },
+    "tfc:food/taro_root": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible root"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat raw or cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "staple root vegetable"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "often cooked"
+        },
+        "food_category": {
+          "value": "slot:vegetable",
+          "signal": "inferred",
+          "rationale": "it is a vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten raw or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw vegetable"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage group"
+        }
+      }
+    },
+    "tfc:food/tomato": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible fruit-vegetable"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat raw",
+            "Cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crop ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "often cooked"
+        },
+        "food_category": {
+          "value": "slot:vegetable",
+          "signal": "inferred",
+          "rationale": "considered vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten raw or used in recipes"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw vegetable"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "named",
+          "evidence": "loot from crop blocks",
+          "rationale": "harvested from crops"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage group"
+        }
+      }
+    },
+    "tfc:food/tropical_fish": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible fish"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook into meals",
+            "Use as bait"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked or used as bait"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried after fishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "needs cooking"
+        },
+        "food_category": {
+          "value": "slot:fish",
+          "signal": "inferred",
+          "rationale": "it is fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "usually cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from entity",
+          "rationale": "dropped by tropical fish"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc:food/turkey": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible poultry"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook into meals"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked for food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried after hunting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "needs cooking"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "inferred",
+          "rationale": "it is meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "usually cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from entity",
+          "rationale": "dropped by turkey"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc:food/turtle": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible reptile"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook into meals"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked for food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried after catching"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "needs cooking"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "inferred",
+          "rationale": "it is meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "usually cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from entity",
+          "rationale": "dropped by turtle"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc:food/vegetables_salad": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible salad"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "healthy meal"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "prepared meal carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:prepared_meal",
+          "signal": "inferred",
+          "rationale": "it is a prepared salad"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food storage"
+        }
+      }
+    },
+    "tfc:food/vegetables_soup": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible soup"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for warmth and nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "warming meal"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "prepared meal carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:prepared_meal",
+          "signal": "inferred",
+          "rationale": "it is soup"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "preparation_state": {
+          "value": "slot:cooked",
+          "signal": "inferred",
+          "rationale": "cooked soup"
+        },
+        "workflow": {
+          "value": "tfc:pot_soup",
+          "signal": "pattern",
+          "evidence": "soup made in pot",
+          "rationale": "part of soup making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food storage"
+        }
+      }
+    },
+    "tfc:food/venison": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible game meat"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook into meals"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked for food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried after hunting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "needs cooking"
+        },
+        "food_category": {
+          "value": "slot:meat",
+          "signal": "inferred",
+          "rationale": "it is meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "usually cooked"
+        },
+        "preparation_state": {
+          "value": "slot:raw",
+          "signal": "inferred",
+          "rationale": "raw meat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from multiple entities",
+          "rationale": "dropped by deer-like animals"
+        },
+        "workflow": {
+          "value": "minecraft:campfire_cooking",
+          "signal": "inferred",
+          "rationale": "commonly cooked"
+        },
+        "used_at": {
+          "values": [
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc:food/wheat": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible grain"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into flour",
+            "Feed animals"
+          ],
+          "signal": "inferred",
+          "rationale": "ground into flour or fed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "processed for bread"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "not eaten directly"
+        },
+        "workflow": {
+          "value": "tfc:bread",
+          "signal": "inferred",
+          "rationale": "first step in bread workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:quern"
+          ],
+          "signal": "inferred",
+          "rationale": "ground at quern"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        }
+      }
+    },
+    "tfc:food/wheat_bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible wheat bread"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat as bread",
+            "Make sandwiches"
+          ],
+          "signal": "inferred",
+          "rationale": "staple food"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "staple carried food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:bread",
+          "signal": "inferred",
+          "rationale": "it is bread"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "preparation_state": {
+          "value": "slot:cooked",
+          "signal": "inferred",
+          "rationale": "baked bread"
+        },
+        "workflow": {
+          "value": "tfc:bread",
+          "signal": "pattern",
+          "evidence": "part of bread making",
+          "rationale": "output of bread workflow"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "common food storage group"
+        }
+      }
+    },
+    "tfc:food/wheat_bread_jam_sandwich": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible sandwich"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat as sandwich"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat meal"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "convenient carried food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "food_category": {
+          "value": "slot:prepared_meal",
+          "signal": "inferred",
+          "rationale": "sandwich is a prepared meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "common food storage group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,898 @@
+{
+  "items": {
+    "create:cut_dripstone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as stone brick, used for building"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "inferred",
+          "rationale": "stone type from block tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and not frequently carried"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:stone_bricks + tfc:rock/bricks",
+          "rationale": "brick-type building blocks"
+        }
+      }
+    },
+    "create:cut_dripstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab for building"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "inferred",
+          "rationale": "stone type from block tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easy to craft"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant for detailing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "stone slab section"
+        }
+      }
+    },
+    "create:cut_dripstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs for building"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "inferred",
+          "rationale": "stone type from block tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed rarely"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for elevation"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "stone stairs section"
+        }
+      }
+    },
+    "create:cut_dripstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall for enclosures"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "inferred",
+          "rationale": "stone type from block tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building component"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "wall for detailing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "stone walls section"
+        }
+      }
+    },
+    "create:cut_granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut stone block for building"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "actual chert stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "cut chert block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/chert",
+          "rationale": "chert stone storage group"
+        }
+      }
+    },
+    "create:cut_granite_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab for building"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "chert stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant of chert bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "stone type tag",
+          "rationale": "store with other chert blocks"
+        }
+      }
+    },
+    "create:cut_granite_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "chert stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building component"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for elevation"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "stone type tag",
+          "rationale": "store with chert"
+        }
+      }
+    },
+    "create:cut_granite_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "chert stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "wall for boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "stone type tag",
+          "rationale": "store with chert"
+        }
+      }
+    },
+    "create:cut_granite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick block"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "chert stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "chert bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "stone type tag",
+          "rationale": "chert stone group"
+        }
+      }
+    },
+    "create:cut_granite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut slab"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "chert"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "cut chert slab"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "stone type tag",
+          "rationale": "store with chert"
+        }
+      }
+    },
+    "create:cut_granite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut stairs"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "chert"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building component"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "cut chert stairs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "stone type tag",
+          "rationale": "store with chert"
+        }
+      }
+    },
+    "create:cut_granite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut wall"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "inferred",
+          "rationale": "chert"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "cut chert wall"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "stone type tag",
+          "rationale": "store with chert"
+        }
+      }
+    },
+    "create:cut_limestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut limestone block"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "inferred",
+          "rationale": "limestone stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "cut limestone"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/limestone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/limestone",
+          "rationale": "limestone stone group"
+        }
+      }
+    },
+    "create:cut_limestone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "limestone brick slab"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "decorative stonework"
+          ],
+          "signal": "inferred",
+          "rationale": "limestone brick slab"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/limestone"
+          ],
+          "signal": "pattern",
+          "rationale": "store with limestone"
+        }
+      }
+    },
+    "create:cut_limestone_brick_stairs": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "limestone",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/limestone"
+        ],
+        "signal": "inferred",
+        "rationale": "limestone brick stairs"
+      }
+    },
+    "create:cut_limestone_brick_wall": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "limestone",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/limestone"
+        ],
+        "signal": "inferred",
+        "rationale": "limestone brick wall"
+      }
+    },
+    "create:cut_limestone_bricks": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "limestone",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/limestone"
+        ],
+        "signal": "inferred",
+        "rationale": "limestone bricks"
+      }
+    },
+    "create:cut_limestone_slab": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "limestone",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/limestone"
+        ],
+        "signal": "inferred",
+        "rationale": "cut limestone slab"
+      }
+    },
+    "create:cut_limestone_stairs": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "limestone",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/limestone"
+        ],
+        "signal": "inferred",
+        "rationale": "cut limestone stairs"
+      }
+    },
+    "create:cut_limestone_wall": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "limestone",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/limestone"
+        ],
+        "signal": "inferred",
+        "rationale": "cut limestone wall"
+      }
+    },
+    "create:cut_ochrum": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "ochrum",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/bricks"
+        ],
+        "signal": "inferred",
+        "rationale": "cut ochrum block (brick-like)"
+      }
+    },
+    "create:cut_ochrum_brick_slab": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "ochrum",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/rock_slabs"
+        ],
+        "signal": "pattern",
+        "evidence": "tag tfg:brick_slabs (inferred from slab)",
+        "rationale": "ochrum brick slab, stored with stone slabs"
+      }
+    },
+    "create:cut_ochrum_brick_stairs": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "ochrum",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/rock_stairs"
+        ],
+        "signal": "pattern",
+        "rationale": "ochrum brick stairs"
+      }
+    },
+    "create:cut_ochrum_brick_wall": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "ochrum",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/rock_walls"
+        ],
+        "signal": "pattern",
+        "rationale": "ochrum brick wall"
+      }
+    },
+    "create:cut_ochrum_bricks": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "ochrum",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "primary_uses": [
+          "building stone structures",
+          "decorative stonework"
+        ],
+        "activity": [
+          "slot:building"
+        ],
+        "organization_group": [
+          "pack:tfg/bricks"
+        ],
+        "signal": "pattern",
+        "evidence": "tag forge:stone_bricks + tfc:rock/bricks",
+        "rationale": "ochrum bricks, stored with brick blocks"
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "create:cut_dripstone_bricks",
+      "facet": "organization_group",
+      "label": "Dripstone",
+      "proposed_id": "pack:tfg/dripstone",
+      "rationale": "No accepted group for dripstone stone type; players would store all dripstone blocks together."
+    },
+    {
+      "item": "create:cut_ochrum_bricks",
+      "facet": "organization_group",
+      "label": "Ochrum",
+      "proposed_id": "pack:tfg/ochrum",
+      "rationale": "No accepted group for ochrum stone type; Create-specific stone."
+    }
+  ],
+  "schema_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1305 @@
+{
+  "items": {
+    "gtceu:uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore is mined and smelted, stored with crafting materials"
+        },
+        "material_family": {
+          "value": "uraninite",
+          "signal": "pattern",
+          "evidence": "id suffix and tag forge:ores/uraninite",
+          "rationale": "Ore of uraninite mineral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Seen in mining runs, not rare"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during mining trips, stored after"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines ore as part of mining activity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into uranium ingots",
+            "source of nuclear fuel materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is smelting and processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Raw ore group"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in underground rocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large quantities"
+        }
+      }
+    },
+    "gtceu:uranium_235_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compact storage of uranium, not a container"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "pattern",
+          "evidence": "id and tag forge:storage_blocks/uranium_235",
+          "rationale": "Block form of uranium_235"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common mid-game material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Usually placed in base storage, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of uranium 235",
+            "source of plates via cutting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for storage and processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:storage_blocks tag",
+          "rationale": "Material storage block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk as blocks"
+        }
+      }
+    },
+    "gtceu:uranium_235_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport tool, like other buckets"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "inferred",
+          "rationale": "Contains liquid uranium 235"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to transport fluids in machine setups"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid uranium 235",
+            "supplying nuclear reactors"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid handling for atomic processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid uranium"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Can place fluid or empty it"
+        }
+      }
+    },
+    "gtceu:uranium_235_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Intermediate material dust"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/uranium_235",
+          "rationale": "Dust of uranium 235"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during batch processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into uranium 235 ingot",
+            "mixing into advanced alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into ingots or alloy components"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Clean refined dust group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form d: from stage2",
+          "rationale": "Dust is a material stage"
+        }
+      }
+    },
+    "gtceu:uranium_235_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "Standard craftable ingot"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/uranium_235",
+          "rationale": "Ingot of uranium 235"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common mid-game material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players always carry ingots for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into plates, rods, wires",
+            "making machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic unit for metalworking"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Group for stackable ingots"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Ingot stage"
+        }
+      }
+    },
+    "gtceu:uranium_235_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "Small metal piece"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/uranium_235",
+          "rationale": "Nugget of uranium 235"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common byproduct"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Usually stored, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "recycling into ingots",
+            "crafting small components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to reclaim metal or make tiny parts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "Nugget storage group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Nugget stage"
+        }
+      }
+    },
+    "gtceu:uranium_235_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:plates tag",
+          "rationale": "Processed metal plate"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/uranium_235",
+          "rationale": "Plate of uranium 235"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential for crafting wires, foils, machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into wires and foils",
+            "making machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Plate used as component material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Sheet/plate group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Plate stage"
+        }
+      }
+    },
+    "gtceu:uranium_235_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:rods tag",
+          "rationale": "Metal rod form"
+        },
+        "material_family": {
+          "value": "uranium_235",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/uranium_235",
+          "rationale": "Rod of uranium 235"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tool crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tool handles",
+            "reinforcing structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in tool and weapon recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Rod stage"
+        }
+      }
+    },
+    "gtceu:uranium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block, not a container"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/uranium",
+          "rationale": "Block of uranium 238"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common storage block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in base, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of uranium 238",
+            "source of plates via cutting"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk storage and processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:storage_blocks tag",
+          "rationale": "Material storage block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk"
+        }
+      }
+    },
+    "gtceu:uranium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport tool"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "inferred",
+          "rationale": "Contains liquid uranium 238"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fluid automation"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid uranium 238",
+            "supplying nuclear processes"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid handling for uranium processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid uranium"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Can place fluid or empty it"
+        }
+      }
+    },
+    "gtceu:uranium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Intermediate dust"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/uranium",
+          "rationale": "Dust of uranium 238"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during batch processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into uranium ingot",
+            "mixing into alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into ingots or alloy components"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Clean refined dust group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Dust stage"
+        }
+      }
+    },
+    "gtceu:uranium_hexafluoride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport tool"
+        },
+        "material_family": {
+          "value": "uranium_hexafluoride",
+          "signal": "inferred",
+          "rationale": "Contains uranium hexafluoride gas"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving gaseous fluids"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in gas handling for enrichment"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting uranium hexafluoride gas",
+            "fuel for centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "Key input for uranium enrichment"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:gas_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds gaseous fluid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Can place or empty gas"
+        }
+      }
+    },
+    "gtceu:uranium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "Standard ingot"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/uranium",
+          "rationale": "Ingot of uranium 238"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common base material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential for crafting, players carry often"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into plates, rods",
+            "making machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic metal unit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Group for stackable ingots"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Ingot stage"
+        }
+      }
+    },
+    "gtceu:uranium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "Small metal piece"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/uranium",
+          "rationale": "Nugget of uranium 238"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common byproduct"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Usually stored, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "recycling into ingots",
+            "crafting tiny components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to reclaim or make small parts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "Nugget storage group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Nugget stage"
+        }
+      }
+    },
+    "gtceu:uranium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:plates tag",
+          "rationale": "Processed plate"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/uranium",
+          "rationale": "Plate of uranium 238"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential for crafting wires, machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into wires and foils",
+            "making machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Plate used as component material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Sheet/plate group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Plate stage"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compact storage of alloy, not a container"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/uranium_rhodium_dinaquadide",
+          "rationale": "Block of alloy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common alloy block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored in base, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of alloy",
+            "source of plates via cutting"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk storage and processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:storage_blocks tag",
+          "rationale": "Material storage block group"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport tool"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "inferred",
+          "rationale": "Contains liquid alloy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving liquid alloy"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fluid automation for superconductor processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid alloy",
+            "supplying superconductor casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid handling for advanced alloy"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Can place fluid or empty it"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power-transmitting cable, part of energy network"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:double_wires/uranium_rhodium_dinaquadide",
+          "rationale": "Superconductor wire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common superconductor cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building wiring"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in energy transport for automation"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting ZPM energy",
+            "superconductor cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "High-voltage power transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_wires, tooltip superconductor",
+          "rationale": "Part of GTCEu cable system"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM tier component"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM superconductor is high voltage tier"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Alloy dust"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/uranium_rhodium_dinaquadide",
+          "rationale": "Dust of alloy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into alloy ingots",
+            "mixing into advanced composites"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into ingots or mixed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Refined dust group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Dust stage"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:foils tag",
+          "rationale": "Thin metal foil"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/uranium_rhodium_dinaquadide",
+          "rationale": "Foil of alloy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used occasionally in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into fine wires",
+            "making circuit components"
+          ],
+          "signal": "inferred",
+          "rationale": "Foil used in high-precision crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "inferred",
+          "rationale": "Foil is a variant of plate"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "High-capacity power cable"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires/uranium_rhodium_dinaquadide",
+          "rationale": "Superconductor wire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common superconductor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during large wiring projects"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport for automation"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting ZPM energy at high amperage",
+            "superconductor backbone"
+          ],
+          "signal": "inferred",
+          "rationale": "High-current power transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires, tooltip superconductor",
+          "rationale": "Part of GTCEu cable system"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM tier component"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM superconductor"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "Alloy ingot"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/uranium_rhodium_dinaquadide",
+          "rationale": "Ingot of alloy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common advanced alloy"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential for superconductor crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into superconductor wires",
+            "making ZPM components"
+          ],
+          "signal": "inferred",
+          "rationale": "Base material for high-tier wiring"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Group for stackable ingots"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Ingot stage"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "Small metal piece"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/uranium_rhodium_dinaquadide",
+          "rationale": "Nugget of alloy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common byproduct"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Usually stored, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "recycling into ingots",
+            "crafting tiny components"
+          ],
+          "signal": "inferred",
+          "rationale": "Reclaim or small parts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "Nugget storage group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Nugget stage"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "High-capacity power cable"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/uranium_rhodium_dinaquadide",
+          "rationale": "Superconductor wire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common superconductor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during large wiring projects"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport for automation"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting ZPM energy at very high amperage",
+            "superconductor trunk lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Very high current power transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires, tooltip superconductor",
+          "rationale": "Part of GTCEu cable system"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM tier component"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM superconductor"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:plates tag",
+          "rationale": "Metal plate"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/uranium_rhodium_dinaquadide",
+          "rationale": "Plate of alloy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential for wire and foil crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into superconductor wires",
+            "making foils and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Plate used for high-tier wiring"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Sheet/plate group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "form from stage2",
+          "rationale": "Plate stage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1043 @@
+{
+  "items": {
+    "create:dough": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "food ingredient for baking, not consumed directly"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept when cooking, not every day"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preparation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "stored with other food ingredients"
+        },
+        "food_category": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "pattern",
+          "evidence": "display_name Dough",
+          "rationale": "dough is a food category"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "component for bread and other meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "pattern",
+          "evidence": "id and display name",
+          "rationale": "unbaked dough state"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting bread",
+            "baking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "main use in food crafting"
+        }
+      }
+    },
+    "create:dripstone_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone block for structures"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "pattern",
+          "evidence": "id prefix dripstone_",
+          "rationale": "made from dripstone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "stored with dripstone variants"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "used as pillar and slab crafting input"
+        }
+      }
+    },
+    "create:electron_tube": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stockpiled for building automations"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many Create recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "electronic circuit component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting kinetic blocks",
+            "Create circuitry"
+          ],
+          "signal": "inferred",
+          "rationale": "key ingredient for many machines"
+        }
+      }
+    },
+    "create:elevator_contact": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "contraption component for elevators"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building elevators"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of elevator automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mechanism"
+        },
+        "primary_uses": {
+          "values": [
+            "elevator floor detection",
+            "contraption input"
+          ],
+          "signal": "inferred",
+          "rationale": "signals floor in elevator system"
+        }
+      }
+    },
+    "create:elevator_pulley": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "core block for elevator movement"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for elevator builds"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "moves elevator contacts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mechanism"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical transport",
+            "elevator system"
+          ],
+          "signal": "inferred",
+          "rationale": "pulls elevator contacts up/down"
+        }
+      }
+    },
+    "create:empty_blaze_burner": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "heat source component for automation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up processing"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "provides heat for bulk processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "primary_uses": {
+          "values": [
+            "heating source",
+            "blaze cake fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "fueled for smelting and smoking"
+        }
+      }
+    },
+    "create:empty_schematic": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used at schematic table for blueprints"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when using schematics"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "creates building blueprints"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "writing schematics",
+            "copying builds"
+          ],
+          "signal": "inferred",
+          "rationale": "filled with structure data"
+        }
+      }
+    },
+    "create:encased_chain_drive": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "transmits rotational power via chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in power train builds"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of kinetic power network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mechanism"
+        },
+        "primary_uses": {
+          "values": [
+            "power transmission",
+            "chain drive system"
+          ],
+          "signal": "inferred",
+          "rationale": "connects shafts and belts"
+        }
+      }
+    },
+    "create:encased_fan": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "creates air flow for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in fan processing setups"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables bulk washing, smoking, etc."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "primary_uses": {
+          "values": [
+            "air flow processing",
+            "item transport via air"
+          ],
+          "signal": "inferred",
+          "rationale": "pushes items and entities"
+        }
+      }
+    },
+    "create:experience_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact XP storage, broken for XP"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not carried often, stored in base"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "used for enchanting and XP management"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "evidence": "component rarity uncommon",
+          "rationale": "uncommon item"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "light_emission 15",
+          "rationale": "bright light source"
+        },
+        "primary_uses": {
+          "values": [
+            "storing experience",
+            "decorative XP block"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from XP nuggets"
+        }
+      }
+    },
+    "create:experience_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw XP currency, used for enchanting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "obtained from machines, kept for enchanting"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "redeemed for XP or crafting block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "evidence": "component rarity uncommon",
+          "rationale": "uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting",
+            "compact XP storage"
+          ],
+          "signal": "inferred",
+          "rationale": "used directly or crafted into block"
+        }
+      }
+    },
+    "create:exposed_copper_shingle_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of roofing block"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix exposed_copper_",
+          "rationale": "copper based"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building roofs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "copper roofing component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "primary_uses": {
+          "values": [
+            "copper roofing",
+            "decorative slab"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for varied roof designs"
+        }
+      }
+    },
+    "create:exposed_copper_shingle_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair variant of roofing block"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix exposed_copper_",
+          "rationale": "copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building roofs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "copper roofing component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "copper roof stairs",
+            "decorative stair"
+          ],
+          "signal": "inferred",
+          "rationale": "stair for roof edges"
+        }
+      }
+    },
+    "create:exposed_copper_shingles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block for copper roofing"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix exposed_copper_",
+          "rationale": "copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "copper roofing block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "copper roofing",
+            "decorative copper block"
+          ],
+          "signal": "inferred",
+          "rationale": "main roofing material"
+        }
+      }
+    },
+    "create:exposed_copper_tile_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab of copper tile variant"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix exposed_copper_",
+          "rationale": "copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "copper tiling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "copper tile roofing",
+            "decorative slab"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for copper tiled roofs"
+        }
+      }
+    },
+    "create:exposed_copper_tile_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs of copper tile variant"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix exposed_copper_",
+          "rationale": "copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "copper tiling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "copper tile stairs",
+            "decorative stair"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for copper tiled roofs"
+        }
+      }
+    },
+    "create:exposed_copper_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block of copper tile variant"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix exposed_copper_",
+          "rationale": "copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "copper tiling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "copper tiling",
+            "decorative block"
+          ],
+          "signal": "inferred",
+          "rationale": "main tile block for copper roofs"
+        }
+      }
+    },
+    "create:extendo_grip": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "gadget for extended reach in off-hand"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining or building"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "increases reach for both activities"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "evidence": "component rarity uncommon",
+          "rationale": "uncommon gadget"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:reach_boost"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: increases reach distance",
+          "rationale": "grants extended reach"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "useful for mining hard-to-reach blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "extended reach",
+            "off-hand utility"
+          ],
+          "signal": "inferred",
+          "rationale": "primary function is reach boost"
+        }
+      }
+    },
+    "create:factory_gauge": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "logistics block for package requests"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized automation block"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers automatic package sending"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mechanism"
+        },
+        "primary_uses": {
+          "values": [
+            "package request automation",
+            "logistics signal"
+          ],
+          "signal": "inferred",
+          "rationale": "detects item amounts and sends signals"
+        }
+      }
+    },
+    "create:filter": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "configuration item for filter slots"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up machines"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used to configure conveyor filtering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "primary_uses": {
+          "values": [
+            "item filtering",
+            "machine configuration"
+          ],
+          "signal": "inferred",
+          "rationale": "sets allowed items in chutes and funnels"
+        }
+      }
+    },
+    "create:fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for fluid transport builds"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "moves fluids between tanks and machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:fluid"
+          ],
+          "signal": "pattern",
+          "evidence": "id and function",
+          "rationale": "core component of Create fluid system"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "plumbing"
+          ],
+          "signal": "inferred",
+          "rationale": "connects fluid sources and consumers"
+        }
+      }
+    },
+    "create:fluid_tank": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid storage block for Create network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building fluid systems"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and distributes bulk fluids"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:fluid"
+          ],
+          "signal": "pattern",
+          "evidence": "function and tags",
+          "rationale": "part of Create fluid storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "primary_uses": {
+          "values": [
+            "bulk fluid storage",
+            "fluid inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "holds large amounts of fluid"
+        }
+      }
+    },
+    "create:fluid_valve": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid flow controller"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in fluid routing"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "controls fluid passage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:fluid"
+          ],
+          "signal": "pattern",
+          "evidence": "id and behavior",
+          "rationale": "valve in Create fluid system"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid flow control",
+            "pipe shutoff"
+          ],
+          "signal": "inferred",
+          "rationale": "opens/closes fluid pipe"
+        }
+      }
+    },
+    "create:flywheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic energy storage and decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in large contraptions, not daily"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores rotational momentum"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "primary_uses": {
+          "values": [
+            "kinetic energy smoothing",
+            "decorative machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "spins and stabilizes rotation"
+        }
+      }
+    },
+    "create:framed_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative transparent block"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "evidence": "tag forge:glass and id",
+          "rationale": "glass type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building windows"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for windows and facades"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "glass building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative windows",
+            "ornamental glass"
+          ],
+          "signal": "inferred",
+          "rationale": "framed glass aesthetic"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

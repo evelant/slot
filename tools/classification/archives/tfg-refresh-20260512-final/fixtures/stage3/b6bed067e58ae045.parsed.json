@@ -1,0 +1,1783 @@
+{
+  "items": {
+    "tfc:wood/hanging_sign/copper/blackwood": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign used for text decoration"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "evidence": "id contains blackwood",
+          "rationale": "primary wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building base labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only produced via crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/chestnut": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/hickory": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "evidence": "id contains hickory",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/kapok": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "evidence": "id contains kapok",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/mangrove": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "pattern",
+          "evidence": "id contains mangrove",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/maple": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "maple",
+          "signal": "pattern",
+          "evidence": "id contains maple",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/oak": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "oak",
+          "signal": "pattern",
+          "evidence": "id contains oak",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/palm": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/pine": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "pine",
+          "signal": "pattern",
+          "evidence": "id contains pine",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/rosewood": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "evidence": "id contains rosewood",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/sequoia": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "evidence": "id contains sequoia",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/spruce": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "pattern",
+          "evidence": "id contains spruce",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/sycamore": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "pattern",
+          "evidence": "id contains sycamore",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "evidence": "id contains white_cedar",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/copper/willow": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "pattern",
+          "evidence": "id contains willow",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/acacia": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/ash": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/aspen": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "evidence": "id contains aspen",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/birch": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "evidence": "id contains birch",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/blackwood": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "evidence": "id contains blackwood",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/chestnut": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/hickory": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "evidence": "id contains hickory",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/red_steel/kapok": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign for decoration"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "evidence": "id contains kapok",
+          "rationale": "wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "red_steel"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "chain material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building labels"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative labeling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative signage with text",
+            "Base and item labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "player places to write names"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "lives with other decorative blocks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on walls or ceilings"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

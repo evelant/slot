@@ -1,0 +1,1045 @@
+{
+  "items": {
+    "gtceu:diamond_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "rod form used as crafting component"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "diamond is a precious material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many recipes but not everyday carry"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tool handles and machine components",
+            "intermediate in precision crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many tool and component recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used as component in automated machining"
+        }
+      }
+    },
+    "gtceu:diamond_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "screw form used as crafting component"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "diamond is a precious material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many recipes but not everyday carry"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machinery components",
+            "fasteners for precision assemblies"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many shaped recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used as component in automated crafting"
+        }
+      }
+    },
+    "gtceu:diatomite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form, intermediate for smelting"
+        },
+        "material_family": {
+          "value": "diatomite",
+          "signal": "pattern",
+          "rationale": "id contains diatomite"
+        },
+        "form": {
+          "value": "dust",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore product"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "material in alloy recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted to produce ingots"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in milling and smelting"
+        }
+      }
+    },
+    "gtceu:diatomite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating ore vein"
+        },
+        "material_family": {
+          "value": "diatomite",
+          "signal": "pattern",
+          "rationale": "id contains diatomite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface feature"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not typically kept in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "prospecting for diatomite ore",
+            "surface indicator"
+          ],
+          "signal": "inferred",
+          "rationale": "players break to find ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used during mining exploration"
+        }
+      }
+    },
+    "gtceu:diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "diatomite",
+          "signal": "pattern",
+          "rationale": "ore id diatomite_ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored before smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into diatomite ingots",
+            "source of diatomite material"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting to ingot"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:dichlorobenzene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport chemical fluid"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when needed for specific processes"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting dichlorobenzene fluid",
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid, but bucket item itself is standard"
+        }
+      }
+    },
+    "gtceu:dichlorobenzidine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport chemical fluid"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting dichlorobenzidine fluid",
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid, but bucket item itself is standard"
+        }
+      }
+    },
+    "gtceu:dichloroethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport chemical fluid"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting dichloroethane fluid",
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid, but bucket item itself is standard"
+        }
+      }
+    },
+    "gtceu:diesel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport fuel"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for fueling machines"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for diesel generators",
+            "transporting diesel fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fuel in recipes (?), fluid transport"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid, but bucket item itself is standard"
+        }
+      }
+    },
+    "gtceu:diethylenetriamine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport chemical fluid"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting diethylenetriamine fluid",
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid, but bucket item itself is standard"
+        }
+      }
+    },
+    "gtceu:diethylenetriamine_pentaacetonitrile_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport chemical fluid"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting diethylenetriamine pentaacetonitrile fluid",
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid, but bucket item itself is standard"
+        }
+      }
+    },
+    "gtceu:diethylenetriaminepentaacetic_acid_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "diethylenetriaminepentaacetic_acid",
+          "signal": "pattern",
+          "rationale": "id suffix diethylenetriaminepentaacetic_acid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in specific recipes only"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient in rad-away mixing",
+            "chemical intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing recipe for rad away"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in mechanical mixer"
+        }
+      }
+    },
+    "gtceu:diluted_hydrochloric_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport acid"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient",
+            "acid for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical reactions"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid"
+        }
+      }
+    },
+    "gtceu:diluted_sulfuric_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport acid"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient",
+            "acid for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical reactions"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid"
+        }
+      }
+    },
+    "gtceu:dimethylamine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport gaseous chemical"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient",
+            "gas transport"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid"
+        }
+      }
+    },
+    "gtceu:dimethylbenzene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport xylene"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient",
+            "solvent in recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid"
+        }
+      }
+    },
+    "gtceu:dimethyldichlorosilane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport gaseous chemical"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient",
+            "silicon production"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid"
+        }
+      }
+    },
+    "gtceu:dimethylhydrazine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport hazardous chemical"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "rocket fuel component",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid"
+        }
+      }
+    },
+    "gtceu:dinitrogen_tetroxide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport gaseous chemical"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "buckets are typically iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "rocket oxidizer",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can hold fluid"
+        }
+      }
+    },
+    "gtceu:diode": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "electronic component used in crafting machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine circuits",
+            "component in voltage regulators"
+          ],
+          "signal": "inferred",
+          "rationale": "used in numerous machine recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "electronic circuit component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated machine crafting"
+        }
+      }
+    },
+    "gtceu:diorite_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "rationale": "ore id almandine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into almandine gems",
+            "source of garnet material"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting to ingot (gem)"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:diorite_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "ore id aluminium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into aluminium ingots",
+            "source of aluminium material"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting to ingot"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:diorite_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "rationale": "ore id alunite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into potassium/aluminium products",
+            "source of alunite"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting to ingot"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:diorite_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "ore id amethyst"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "amethyst is a gem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into amethyst gems",
+            "source of amethyst material"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting to ingot"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:diorite_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore block mined for processing"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern",
+          "rationale": "ore id apatite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into apatite products",
+            "source of phosphate"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting to ingot"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

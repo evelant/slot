@@ -1,0 +1,1318 @@
+{
+  "items": {
+    "afc:wood/log/gum_arabic": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Logs are placed as building material in structures"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses: building and firepit fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when harvesting or building, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly found tree log"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples",
+          "rationale": "Harvested from surface trees"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other logs in wood storage"
+        }
+      }
+    },
+    "afc:wood/log/hevea": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Logs are placed building blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Building and fuel source"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when chopping or building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tree log"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_sources",
+          "rationale": "Harvested from trees"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs storage group"
+        }
+      }
+    },
+    "afc:wood/log/ipe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log used in building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasionally carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common log"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "Tree harvest"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with logs"
+        }
+      }
+    },
+    "afc:wood/log/ironwood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasionally carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common log"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "Tree harvest"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs storage"
+        }
+      }
+    },
+    "afc:wood/log/mahogany": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "Tree"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs group"
+        }
+      }
+    },
+    "afc:wood/log/poplar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "From trees"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs"
+        }
+      }
+    },
+    "afc:wood/log/rainbow_eucalyptus": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "Tree harvest"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs storage"
+        }
+      }
+    },
+    "afc:wood/log/redcedar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "Tree"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs"
+        }
+      }
+    },
+    "afc:wood/log/rubber_fig": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "Tree harvest"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs group"
+        }
+      }
+    },
+    "afc:wood/log/teak": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "Tree"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs"
+        }
+      }
+    },
+    "afc:wood/log/tualang": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material and fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot",
+          "rationale": "Tree"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs storage"
+        }
+      }
+    },
+    "afc:wood/lumber/baobab": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processed wood used as crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and crafting wood items"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items and building materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in recipes for planks, furniture, etc."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for crafting many items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by processing logs, no world loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other woodworking materials"
+        }
+      }
+    },
+    "afc:wood/lumber/cypress": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use in recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from logs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking storage"
+        }
+      }
+    },
+    "afc:wood/lumber/eucalyptus": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe input"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Frequent carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted only"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking"
+        }
+      }
+    },
+    "afc:wood/lumber/fig": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking"
+        }
+      }
+    },
+    "afc:wood/lumber/hevea": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting building items"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Frequently carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking"
+        }
+      }
+    },
+    "afc:wood/lumber/ipe": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Frequent"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking"
+        }
+      }
+    },
+    "afc:wood/lumber/ironwood": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Frequent carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking"
+        }
+      }
+    },
+    "afc:wood/lumber/mahogany": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Frequent"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking"
+        }
+      }
+    },
+    "afc:wood/lumber/teak": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Frequent carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking"
+        }
+      }
+    },
+    "afc:wood/lumber/tualang": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Frequent"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking"
+        }
+      }
+    },
+    "afc:wood/planks/baobab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Planks used as building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking storage"
+        }
+      }
+    },
+    "afc:wood/planks/baobab_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for decoration and enchanting boost"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "enchanting setup"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic and functional enchanting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed seldom, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture, stored with woodworking"
+        }
+      }
+    },
+    "afc:wood/planks/baobab_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wooden button used for redstone signals"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal input"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides momentary redstone signal when pressed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building redstone contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Small wooden items stored together"
+        }
+      }
+    },
+    "afc:wood/planks/baobab_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door used as building opening"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction of entrances"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrance, access control"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a door in builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or renovating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building components stored together"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "afc:wood/log/gum_arabic",
+      "facet": "material_family",
+      "value": "wood_gum_arabic",
+      "rationale": "Wood from gum arabic tree"
+    },
+    {
+      "item": "afc:wood/log/hevea",
+      "facet": "material_family",
+      "value": "wood_hevea",
+      "rationale": "Hevea wood"
+    },
+    {
+      "item": "afc:wood/log/ipe",
+      "facet": "material_family",
+      "value": "wood_ipe",
+      "rationale": "Ipe wood"
+    },
+    {
+      "item": "afc:wood/log/ironwood",
+      "facet": "material_family",
+      "value": "wood_ironwood",
+      "rationale": "Ironwood tree"
+    },
+    {
+      "item": "afc:wood/log/mahogany",
+      "facet": "material_family",
+      "value": "wood_mahogany",
+      "rationale": "Mahogany wood"
+    },
+    {
+      "item": "afc:wood/log/poplar",
+      "facet": "material_family",
+      "value": "wood_poplar",
+      "rationale": "Poplar wood"
+    },
+    {
+      "item": "afc:wood/log/rainbow_eucalyptus",
+      "facet": "material_family",
+      "value": "wood_rainbow_eucalyptus",
+      "rationale": "Eucalyptus variant"
+    },
+    {
+      "item": "afc:wood/log/redcedar",
+      "facet": "material_family",
+      "value": "wood_redcedar",
+      "rationale": "Redcedar wood"
+    },
+    {
+      "item": "afc:wood/log/rubber_fig",
+      "facet": "material_family",
+      "value": "wood_rubber_fig",
+      "rationale": "Rubber fig wood"
+    },
+    {
+      "item": "afc:wood/log/teak",
+      "facet": "material_family",
+      "value": "wood_teak",
+      "rationale": "Teak wood"
+    },
+    {
+      "item": "afc:wood/log/tualang",
+      "facet": "material_family",
+      "value": "wood_tualang",
+      "rationale": "Tualang wood"
+    },
+    {
+      "item": "afc:wood/lumber/baobab",
+      "facet": "material_family",
+      "value": "wood_baobab",
+      "rationale": "Baobab lumber"
+    },
+    {
+      "item": "afc:wood/lumber/cypress",
+      "facet": "material_family",
+      "value": "wood_cypress",
+      "rationale": "Cypress lumber"
+    },
+    {
+      "item": "afc:wood/lumber/eucalyptus",
+      "facet": "material_family",
+      "value": "wood_eucalyptus",
+      "rationale": "Eucalyptus lumber"
+    },
+    {
+      "item": "afc:wood/lumber/fig",
+      "facet": "material_family",
+      "value": "wood_fig",
+      "rationale": "Fig lumber"
+    },
+    {
+      "item": "afc:wood/lumber/hevea",
+      "facet": "material_family",
+      "value": "wood_hevea",
+      "rationale": "Hevea lumber"
+    },
+    {
+      "item": "afc:wood/lumber/ipe",
+      "facet": "material_family",
+      "value": "wood_ipe",
+      "rationale": "Ipe lumber"
+    },
+    {
+      "item": "afc:wood/lumber/ironwood",
+      "facet": "material_family",
+      "value": "wood_ironwood",
+      "rationale": "Ironwood lumber"
+    },
+    {
+      "item": "afc:wood/lumber/mahogany",
+      "facet": "material_family",
+      "value": "wood_mahogany",
+      "rationale": "Mahogany lumber"
+    },
+    {
+      "item": "afc:wood/lumber/teak",
+      "facet": "material_family",
+      "value": "wood_teak",
+      "rationale": "Teak lumber"
+    },
+    {
+      "item": "afc:wood/lumber/tualang",
+      "facet": "material_family",
+      "value": "wood_tualang",
+      "rationale": "Tualang lumber"
+    },
+    {
+      "item": "afc:wood/planks/baobab",
+      "facet": "material_family",
+      "value": "wood_baobab",
+      "rationale": "Baobab planks"
+    },
+    {
+      "item": "afc:wood/planks/baobab_bookshelf",
+      "facet": "material_family",
+      "value": "wood_baobab",
+      "rationale": "Baobab bookshelf"
+    },
+    {
+      "item": "afc:wood/planks/baobab_button",
+      "facet": "material_family",
+      "value": "wood_baobab",
+      "rationale": "Baobab button"
+    },
+    {
+      "item": "afc:wood/planks/baobab_door",
+      "facet": "material_family",
+      "value": "wood_baobab",
+      "rationale": "Baobab door"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

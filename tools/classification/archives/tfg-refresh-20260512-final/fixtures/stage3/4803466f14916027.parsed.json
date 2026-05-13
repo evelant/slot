@@ -1,0 +1,1250 @@
+{
+  "items": {
+    "create:controller_rail": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "rail for train network, player stores with tracks"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "variable-speed powered rail for trains"
+        },
+        "primary_uses": {
+          "values": [
+            "variable-speed powered rail",
+            "train routing"
+          ],
+          "signal": "inferred",
+          "rationale": "core rail component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rails placed not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "rail used in train system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:controls": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "train control block, part of contraption"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "train controls are typically metal"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "driving trains"
+        },
+        "primary_uses": {
+          "values": [
+            "train driving",
+            "controlling train movement"
+          ],
+          "signal": "inferred",
+          "rationale": "core train interface"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in trains, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "train controls subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_backtank": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "worn in chest slot, provides armor and air"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "underwater exploration with diving helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "wearable air tank",
+            "pressurized air for diving",
+            "chest armor"
+          ],
+          "signal": "inferred",
+          "rationale": "core diving gear"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn when diving, often in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_backtank_placeable": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "hidden technical item, not obtainable"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipes, no loot, barrier model"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not normally carried"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "admin item"
+        }
+      }
+    },
+    "create:copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative bars for building"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration and construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative bars",
+            "building with copper"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building blocks carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block group"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative casing block for machines"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "encasing machines"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative casing",
+            "machine housing"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic and functional casing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building blocks carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_diving_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "boots slot, armor for diving"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "underwater traversal"
+        },
+        "primary_uses": {
+          "values": [
+            "underwater walking",
+            "fast descent in liquids"
+          ],
+          "signal": "inferred",
+          "rationale": "diving gear"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn when diving, often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipes present"
+        }
+      }
+    },
+    "create:copper_diving_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "helmet slot, armor for diving"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "underwater breathing"
+        },
+        "primary_uses": {
+          "values": [
+            "water breathing",
+            "underwater exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "diving gear"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn when diving, often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipes present"
+        }
+      }
+    },
+    "create:copper_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door as building component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        },
+        "primary_uses": {
+          "values": [
+            "copper door for entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "building element"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "ladder for climbing, carried like vanilla ladders"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "vertical traversal"
+        },
+        "primary_uses": {
+          "values": [
+            "climbing",
+            "vertical traversal in caves and builds"
+          ],
+          "signal": "inferred",
+          "rationale": "utility for movement"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for exploration and building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ladders"
+          ],
+          "signal": "pattern",
+          "rationale": "ladder form"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "nugget form, crafting material"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name copper_"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "smelted from copper ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "basic material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common stackable material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "common material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "rationale": "nugget form"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipes present"
+        }
+      }
+    },
+    "create:copper_scaffolding": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "scaffolding for climbing, similar to ladders"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "scaffolding for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "climbing",
+            "scaffolding for building access"
+          ],
+          "signal": "inferred",
+          "rationale": "utility for building"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building and exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "plate form, crafting material"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:plates tag"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for machines",
+            "making plates and casings"
+          ],
+          "signal": "inferred",
+          "rationale": "core intermediate material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common material in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipes present"
+        }
+      }
+    },
+    "create:copper_shingle_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of copper shingles"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "copper roof slab",
+            "decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "roof block variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_shingle_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of copper shingles"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "copper roof stairs",
+            "decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "roof block variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_shingles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block for roofing"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "copper roof block",
+            "decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_table_cloth": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative table cover"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative table cover"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_tile_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of copper tiles"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration and building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper tile slab"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_tile_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of copper tiles"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration and building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper tile stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block of copper tiles"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration and building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper tile block"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copper_valve_handle": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "valve handle for fluid control"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "name prefix copper_"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid routing"
+        },
+        "primary_uses": {
+          "values": [
+            "manual fluid valve control",
+            "part of pipe network"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid system component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "valve handle for fluid pipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copycat_panel": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "mimics other blocks for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "mimics blocks for design"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative panel that mimics other blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "building decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:copycat_step": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "mimics other blocks as a step"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "mimics blocks for design"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative step that mimics other blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "building decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block, carried as needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot_tables",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:crafter_slot_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component for mechanical crafter"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "covers slots in mechanical crafter",
+            "recipe configuration"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in setups, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "create:crafting_blueprint": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "wall-mounted recipe guide"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on wall as reference"
+        },
+        "primary_uses": {
+          "values": [
+            "wall-mounted recipe guide for crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration and reference"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "production recipe present"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

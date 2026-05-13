@@ -1,0 +1,1352 @@
+{
+  "items": {
+    "gtceu:americium_241_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component used in tool recipes"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Name and chemical symbol Am"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tool handles and advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many tool recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        }
+      }
+    },
+    "gtceu:americium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage of ingots, not a container"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of americium"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block for the material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "gtceu:americium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport tool like other buckets"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Contains americium fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport molten americium"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket for fluid handling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holds fluid"
+        }
+      }
+    },
+    "gtceu:americium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of a metal"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into ingots",
+            "Mixing in alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for metal processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:americium_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Very thin sheet used in crafting"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Creating fine wires and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fine wire recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Less common form, carried when needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal form"
+        }
+      }
+    },
+    "gtceu:americium_huge_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics pipe for item transport"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Made of americium"
+        },
+        "primary_uses": {
+          "values": [
+            "Item transport in logistics networks"
+          ],
+          "signal": "inferred",
+          "rationale": "High-throughput pipe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item transport system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:huge_item_pipes"
+        }
+      }
+    },
+    "gtceu:americium_huge_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics pipe with priority control"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Made of americium"
+        },
+        "primary_uses": {
+          "values": [
+            "Item transport with high priority"
+          ],
+          "signal": "inferred",
+          "rationale": "Restrictive pipe for priority routing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item transport system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:huge_restrictive_pipes"
+        }
+      }
+    },
+    "gtceu:americium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ingot form of a metal"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting blocks, rods, and plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Base form for further processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_ingots"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ingots"
+        }
+      }
+    },
+    "gtceu:americium_large_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics pipe for item transport"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Made of americium"
+        },
+        "primary_uses": {
+          "values": [
+            "Item transport in logistics networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Medium-throughput pipe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item transport system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:large_item_pipes"
+        }
+      }
+    },
+    "gtceu:americium_large_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics pipe with priority control"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Made of americium"
+        },
+        "primary_uses": {
+          "values": [
+            "Item transport with high priority"
+          ],
+          "signal": "inferred",
+          "rationale": "Restrictive pipe for priority routing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item transport system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:large_restrictive_pipes"
+        }
+      }
+    },
+    "gtceu:americium_normal_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics pipe for item transport"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Made of americium"
+        },
+        "primary_uses": {
+          "values": [
+            "Item transport in logistics networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard pipe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item transport system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:normal_item_pipes"
+        }
+      }
+    },
+    "gtceu:americium_normal_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics pipe with priority control"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Made of americium"
+        },
+        "primary_uses": {
+          "values": [
+            "Item transport with high priority"
+          ],
+          "signal": "inferred",
+          "rationale": "Restrictive pipe for priority routing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item transport system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:normal_restrictive_pipes"
+        }
+      }
+    },
+    "gtceu:americium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Nugget form of a metal"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Small amounts for fine crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Unit of metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Less common, carried when needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:nuggets"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:nuggets"
+        }
+      }
+    },
+    "gtceu:americium_plasma_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Plasma transport tool"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Contains americium plasma"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport americium plasma"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket for plasma handling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving plasma"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holds fluid"
+        }
+      }
+    },
+    "gtceu:americium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Plate form of a metal"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_sheets"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:plates"
+        }
+      }
+    },
+    "gtceu:americium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Rod form used in tools"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tool handles and advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many tool recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal rod"
+        }
+      }
+    },
+    "gtceu:americium_small_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics pipe for item transport"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Made of americium"
+        },
+        "primary_uses": {
+          "values": [
+            "Item transport in logistics networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Low-throughput pipe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item transport system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:small_item_pipes"
+        }
+      }
+    },
+    "gtceu:americium_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics pipe with priority control"
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "inferred",
+          "rationale": "Made of americium"
+        },
+        "primary_uses": {
+          "values": [
+            "Item transport with high priority"
+          ],
+          "signal": "inferred",
+          "rationale": "Restrictive pipe for priority routing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item transport system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:small_restrictive_pipes"
+        }
+      }
+    },
+    "gtceu:amethyst_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Prospecting tool to find amethyst ore"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "Indicates amethyst ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates amethyst ore underground"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface indicator block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried often, used when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ore location"
+        }
+      }
+    },
+    "gtceu:amethyst_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of amethyst"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into amethyst components"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:amethyst_indicator": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Prospecting tool to find amethyst ore"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "Indicates amethyst ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates amethyst ore underground"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface rock indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried often, used when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ore location"
+        }
+      }
+    },
+    "gtceu:amethyst_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for optical machines"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "Made from amethyst"
+        },
+        "primary_uses": {
+          "values": [
+            "Component for optical machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in growth monitor etc."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        }
+      }
+    },
+    "gtceu:amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block providing amethyst"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of amethyst"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for amethyst"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        }
+      }
+    },
+    "gtceu:amethyst_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Plate form of amethyst"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_sheets"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:plates"
+        }
+      }
+    },
+    "gtceu:amethyst_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Rod form of amethyst"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "Name implies material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tool handles and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many tool recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral rod"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:americium_241_rod",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_block",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_bucket",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_dust",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_foil",
+      "facet": "form",
+      "value": "foil",
+      "rationale": "Missing from stage2, id and tag pattern suggest foil"
+    },
+    {
+      "item": "gtceu:americium_foil",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_huge_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Missing from stage2, block type is a pipe"
+    },
+    {
+      "item": "gtceu:americium_huge_item_pipe",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_huge_restrictive_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Missing from stage2, block type is a pipe"
+    },
+    {
+      "item": "gtceu:americium_huge_restrictive_item_pipe",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_ingot",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_large_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Missing from stage2, block type is a pipe"
+    },
+    {
+      "item": "gtceu:americium_large_item_pipe",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_large_restrictive_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Missing from stage2, block type is a pipe"
+    },
+    {
+      "item": "gtceu:americium_large_restrictive_item_pipe",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_normal_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Missing from stage2, block type is a pipe"
+    },
+    {
+      "item": "gtceu:americium_normal_item_pipe",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_normal_restrictive_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Missing from stage2, block type is a pipe"
+    },
+    {
+      "item": "gtceu:americium_normal_restrictive_item_pipe",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_nugget",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_plasma_bucket",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_plate",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_rod",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_small_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Missing from stage2, block type is a pipe"
+    },
+    {
+      "item": "gtceu:americium_small_item_pipe",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:americium_small_restrictive_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Missing from stage2, block type is a pipe"
+    },
+    {
+      "item": "gtceu:americium_small_restrictive_item_pipe",
+      "facet": "material_family",
+      "value": "americium",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:amethyst_bud_indicator",
+      "facet": "material_family",
+      "value": "amethyst",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:amethyst_dust",
+      "facet": "material_family",
+      "value": "amethyst",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:amethyst_indicator",
+      "facet": "material_family",
+      "value": "amethyst",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:amethyst_lens",
+      "facet": "form",
+      "value": "lens",
+      "rationale": "Missing from stage2, id ends _lens"
+    },
+    {
+      "item": "gtceu:amethyst_lens",
+      "facet": "material_family",
+      "value": "amethyst",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:amethyst_ore",
+      "facet": "material_family",
+      "value": "amethyst",
+      "rationale": "Stage2 has material_family from ore id, but not filled for all? Actually stage2 set material_family for amethyst_ore, but we add anyway? No, it's already present. Omit."
+    },
+    {
+      "item": "gtceu:amethyst_plate",
+      "facet": "material_family",
+      "value": "amethyst",
+      "rationale": "Missing from stage2, obvious from name"
+    },
+    {
+      "item": "gtceu:amethyst_rod",
+      "facet": "material_family",
+      "value": "amethyst",
+      "rationale": "Missing from stage2, obvious from name"
+    }
+  ]
+}

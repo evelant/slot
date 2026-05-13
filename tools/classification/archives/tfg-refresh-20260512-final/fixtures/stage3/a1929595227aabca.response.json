@@ -1,0 +1,1128 @@
+{
+  "items": {
+    "gtceu:vanadium_steel_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "specialized tool for butchering animals, has durability"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "material in item name"
+        },
+        "tier": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material tier from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized tool, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "Butcher animals for more meat"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Butcher",
+          "rationale": "player uses for animal processing"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "butchering animals is part of farming"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "made via shaped recipe"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag butchery_knife_heads, creative tab material_item",
+          "rationale": "component used to craft tool"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft butchery knife"
+          ],
+          "signal": "inferred",
+          "rationale": "used solely in tool assembly"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag buzz_saw_heads, creative tab material_item",
+          "rationale": "component for crafting buzz saw"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft buzz saw"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tool crafting"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_chainsaw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag chainsaw_heads, creative tab material_item",
+          "rationale": "component for crafting chainsaw"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft chainsaw"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tool crafting"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "specialized maintenance tool for rails and covers"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "tier": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when maintaining machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Rotate rails and dismount covers"
+          ],
+          "signal": "named",
+          "evidence": "tooltip",
+          "rationale": "player uses for rail and cover manipulation"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "maintenance of automation infrastructure"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "made via shaped recipe"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_drill_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag drill_heads, creative tab material_item",
+          "rationale": "component for crafting drill"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft drill"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tool crafting"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts, creative tab material_item",
+          "rationale": "refined dust form"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into ingots or craft components"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is further processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust stage of material processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "fits with other processed mineral forms"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting tool used in many recipes"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "tier": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in hotbar for batch crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting and shaping metal components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as tool in many shaped recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "made via shaped recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "fits with other artisan table tools"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag file_heads, creative tab material_item",
+          "rationale": "component for crafting file"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft file"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tool assembly"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:foils, creative tab material_item",
+          "rationale": "rolled thin sheet material"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized form, less common than plate"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft components requiring foil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in specific recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "fits with other processed metal forms"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gears, creative tab material_item",
+          "rationale": "machine component material"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft machines and mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "used in gear recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "fits with other processed metal forms"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "multi-purpose crafting and mining tool"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "tier": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for mining and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crush blocks for ores",
+            "Craft components via hammering"
+          ],
+          "signal": "inferred",
+          "rationale": "dual use as pickaxe and crafting tool"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used to crush blocks while mining"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "made via shaped recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "fits with other artisan table tools"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag hammer_heads, creative tab material_item",
+          "rationale": "component for crafting hammer"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft hammer"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tool assembly"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:hoes, creative tab tool",
+          "rationale": "farming tool for tilling soil"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "tier": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "farming tool, not always in hotbar"
+        },
+        "primary_uses": {
+          "values": [
+            "Till soil for farming"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Farmer: Tills Ground",
+          "rationale": "player uses for tilling"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "farming activity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "made via shaped recipe"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag hoe_heads, creative tab material_item",
+          "rationale": "component for crafting hoe"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft hoe"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tool assembly"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed pipe block for fluid transport"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for piping builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport fluids in machine networks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip transfer rate",
+          "rationale": "player uses for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport is part of logistics"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe is explicitly a fluid pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes, creative tab material_pipe",
+          "rationale": "part of GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots, creative tab material_item",
+          "rationale": "standard ingot form"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core material used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft vanadium steel parts and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "primary material for alloy components"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot stage of metal processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "fits with other processed metal forms"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "multi-use tool for cutting and combat"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "tier": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried as tool and weapon"
+        },
+        "primary_uses": {
+          "values": [
+            "Cutting food and materials",
+            "Combat melee weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "used as sword and general cutting tool"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used as weapon"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "made via shaped recipe"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag knife_heads, creative tab material_item",
+          "rationale": "component for crafting knife"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft knife"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tool assembly"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed pipe block for fluid transport"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for piping builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport fluids in machine networks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip transfer rate",
+          "rationale": "player uses for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport is part of logistics"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe is explicitly a fluid pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:large_fluid_pipes, creative tab material_pipe",
+          "rationale": "part of GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed pipe block for fluid transport"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for piping builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport fluids in machine networks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip transfer rate",
+          "rationale": "player uses for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport is part of logistics"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe is explicitly a fluid pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nonuple_fluid_pipes, creative tab material_pipe",
+          "rationale": "part of GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed pipe block for fluid transport"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for piping builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport fluids in machine networks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip transfer rate",
+          "rationale": "player uses for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport is part of logistics"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe is explicitly a fluid pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes, creative tab material_pipe",
+          "rationale": "part of GTCEu pipe subsystem"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets, creative tab material_item",
+          "rationale": "small metal unit"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "small denomination, less common than ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft vanadium steel components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in nugget recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget stage of metal processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "fits with other processed metal forms"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates, creative tab material_item",
+          "rationale": "rolled plate form"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material used in many machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft machine parts and components"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use in crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate stage of metal processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "fits with other processed metal forms"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed pipe block for fluid transport"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "named",
+          "rationale": "material in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common from component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for piping builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport fluids in machine networks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip transfer rate",
+          "rationale": "player uses for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport is part of logistics"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe is explicitly a fluid pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_fluid_pipes, creative tab material_pipe",
+          "rationale": "part of GTCEu pipe subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

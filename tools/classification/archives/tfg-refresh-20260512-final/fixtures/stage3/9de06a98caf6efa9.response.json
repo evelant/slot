@@ -1,0 +1,1007 @@
+{
+  "items": {
+    "gtceu:red_sand_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed into material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then stored; not carried long"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained through mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/milling",
+          "rationale": "input to furnace and mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "furnace/blast furnace"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ores family"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for vanadium magnetite",
+            "smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:red_sand_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then stored"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained through mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "input to furnace and mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "furnace/blast furnace"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ores family"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for wulfenite",
+            "smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:red_sand_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then stored"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained through mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "input to furnace and mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "furnace/blast furnace"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ores family"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for yellow garnet",
+            "smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:red_sand_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then stored"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained through mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "input to furnace and mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "furnace/blast furnace"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ores family"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for yellow limonite",
+            "smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:red_sand_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then stored"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained through mining"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "input to furnace and mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "furnace/blast furnace"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ores family"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for zeolite",
+            "smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        }
+      }
+    },
+    "gtceu:red_steel_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id suffix _axe + tags",
+          "rationale": "axe tool for chopping"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the tool"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential woodcutting tool"
+        },
+        "primary_uses": {
+          "values": [
+            "woodcutting and logging",
+            "tree felling",
+            "stripping logs"
+          ],
+          "signal": "inferred",
+          "rationale": "lumberjack and artisan abilities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "harvesting wood"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "inferred",
+          "rationale": "high-tier metal from mod"
+        }
+      }
+    },
+    "gtceu:red_steel_axe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting axes"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept until crafted into tool"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts red steel axe"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        }
+      }
+    },
+    "gtceu:red_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage block, not a container"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as storage or construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "compact metal block storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of red steel",
+            "building material"
+          ],
+          "signal": "inferred",
+          "rationale": "block form for storage and building"
+        }
+      }
+    },
+    "gtceu:red_steel_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small component used in crafting"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the bolt"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component kept for assembly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts screws and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        }
+      }
+    },
+    "gtceu:red_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket for molten metal transport"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when casting"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid red steel"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "poured into molds"
+        },
+        "primary_uses": {
+          "values": [
+            "transport molten red steel",
+            "pouring into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling for casting"
+        }
+      }
+    },
+    "gtceu:red_steel_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "specialized butchering tool"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the knife"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for butchering animals"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "butchering animals"
+        },
+        "primary_uses": {
+          "values": [
+            "butchering animals for more meat"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip butcher ability"
+        }
+      }
+    },
+    "gtceu:red_steel_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for butcher knife"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the head"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component kept for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts butchery knife"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        }
+      }
+    },
+    "gtceu:red_steel_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for buzzsaw"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the blade"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component kept for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts buzzsaw"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        }
+      }
+    },
+    "gtceu:red_steel_buzzsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "powered saw for crafting"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the saw"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized craft saw"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "cutting blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting blocks in crafting",
+            "sawing wood and stone"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting tool for cutting"
+        }
+      }
+    },
+    "gtceu:red_steel_chainsaw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for chainsaw"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the head"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component kept for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts chainsaw"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        }
+      }
+    },
+    "gtceu:red_steel_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "maintenance and rail tool"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the crowbar"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "dismounts covers"
+        },
+        "primary_uses": {
+          "values": [
+            "dismounting covers",
+            "rotating rails"
+          ],
+          "signal": "inferred",
+          "rationale": "crowbar abilities"
+        }
+      }
+    },
+    "gtceu:red_steel_drill_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for drill"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the head"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component kept for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts drill"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        }
+      }
+    },
+    "gtceu:red_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form of red steel"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in crafting and smelting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "pure dust storage"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting red steel components"
+          ],
+          "signal": "inferred",
+          "rationale": "dust processing chain"
+        }
+      }
+    },
+    "gtceu:red_steel_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "filing tool for metalworking"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the file"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized craft tool"
+        },
+        "primary_uses": {
+          "values": [
+            "filing metal components",
+            "crafting gears and screws"
+          ],
+          "signal": "inferred",
+          "rationale": "file used in many recipes"
+        }
+      }
+    },
+    "gtceu:red_steel_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for file"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the head"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component kept for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts file"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        }
+      }
+    },
+    "gtceu:red_steel_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal foil"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the foil"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component for advanced crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting capacitors and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in electronic recipes"
+        }
+      }
+    },
+    "gtceu:red_steel_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mechanical gear component"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the gear"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component for machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mechanical parts",
+            "power transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "gear in recipes"
+        }
+      }
+    },
+    "gtceu:red_steel_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id suffix _hammer + tags",
+          "rationale": "mining and crafting hammer"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the hammer"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential mining tool (pickaxe function)"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used as pickaxe for mining"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "mining blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "mining and crushing ores",
+            "hammering in anvil work"
+          ],
+          "signal": "inferred",
+          "rationale": "hammer and pickaxe roles"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "inferred",
+          "rationale": "high-tier metal tool"
+        }
+      }
+    },
+    "gtceu:red_steel_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for hammer"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the head"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "component kept for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts hammer"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        }
+      }
+    },
+    "gtceu:red_steel_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id suffix _hoe + tags",
+          "rationale": "farming hoe"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id prefix red_steel",
+          "rationale": "material of the hoe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "farming tool, not carried daily"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tilling farmland"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "tilling ground"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling farmland"
+          ],
+          "signal": "inferred",
+          "rationale": "farmer ability"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:red_steel_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "stage2 missed form for storage block"
+    }
+  ]
+}

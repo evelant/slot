@@ -1,0 +1,1173 @@
+{
+  "items": {
+    "tfc:grass_path/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as path decoration/route"
+        },
+        "material_family": {
+          "value": "sandy_loam",
+          "signal": "inferred",
+          "rationale": "soil variant indicated by id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building paths"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "common dirt variant"
+        },
+        "primary_uses": {
+          "values": [
+            "creating paths and roads",
+            "decorative terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "player places for paths"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "path blocks belong with road materials"
+        }
+      }
+    },
+    "tfc:grass_path/silt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as path decoration/route"
+        },
+        "material_family": {
+          "value": "silt",
+          "signal": "inferred",
+          "rationale": "soil variant indicated by id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building paths"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "common dirt variant"
+        },
+        "primary_uses": {
+          "values": [
+            "creating paths and roads",
+            "decorative terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "player places for paths"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "path blocks belong with road materials"
+        }
+      }
+    },
+    "tfc:grass_path/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as path decoration/route"
+        },
+        "material_family": {
+          "value": "silty_loam",
+          "signal": "inferred",
+          "rationale": "soil variant indicated by id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building paths"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "common dirt variant"
+        },
+        "primary_uses": {
+          "values": [
+            "creating paths and roads",
+            "decorative terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "player places for paths"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "path blocks belong with road materials"
+        }
+      }
+    },
+    "tfc:gray_poured_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass block for windows and decoration"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass material from name"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "named",
+          "evidence": "display name 'Gray Poured Glass'",
+          "rationale": "explicit color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building with glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted glass"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows",
+            "decorative glass structures"
+          ],
+          "signal": "inferred",
+          "rationale": "player places as window"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        }
+      }
+    },
+    "tfc:gray_windmill_blade": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component of windmill power structure"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "colored wool blades"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "named",
+          "evidence": "display name 'Gray Windmill Blade'",
+          "rationale": "explicit color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building windmill"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires wool and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "building windmill blades"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to construct windmill"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "part of TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:green_poured_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass block for windows and decoration"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass material from name"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "named",
+          "evidence": "display name 'Green Poured Glass'",
+          "rationale": "explicit color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building with glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted glass"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows",
+            "decorative glass structures"
+          ],
+          "signal": "inferred",
+          "rationale": "player places as window"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        }
+      }
+    },
+    "tfc:green_windmill_blade": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component of windmill power structure"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "colored wool blades"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "named",
+          "evidence": "display name 'Green Windmill Blade'",
+          "rationale": "explicit color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building windmill"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires wool and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "building windmill blades"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses to construct windmill"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "part of TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:grill": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed on firepit for cooking UI"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "made from wrought iron double sheet"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common material"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking food efficiently",
+            "grilling five items at once"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for cooking on firepit"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used for cooking food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooking_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "cookware accessory"
+        }
+      }
+    },
+    "tfc:groundcover/clam": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected as flux ingredient"
+        },
+        "material_family": {
+          "value": "shell",
+          "signal": "inferred",
+          "rationale": "seashell from mollusk"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally from beaches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flux",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "tag tfc:fluxstone and compost usage"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found on beaches and tide pools"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as flux in smelting"
+        }
+      }
+    },
+    "tfc:groundcover/dead_grass": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected for compost and drying"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "dead plant matter"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "composting",
+            "drying into dry grass"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe usage and tag"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting for fertilizer"
+        }
+      }
+    },
+    "tfc:groundcover/driftwood": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected for fuel and crafting"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "wood from driftwood"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up from shores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel",
+            "crafting sticks",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel tag and recipes"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found on beaches"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost"
+        }
+      }
+    },
+    "tfc:groundcover/guano": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected as fertilizer ingredient"
+        },
+        "material_family": {
+          "value": "excrement",
+          "signal": "inferred",
+          "rationale": "bird guano"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up rarely"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "fertilizer",
+            "crafting jarred guano"
+          ],
+          "signal": "inferred",
+          "rationale": "document context and recipes"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fertilizer"
+        }
+      }
+    },
+    "tfc:groundcover/humus": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected for compost and crafting"
+        },
+        "material_family": {
+          "value": "organic",
+          "signal": "inferred",
+          "rationale": "decomposed organic matter"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "composting",
+            "crafting flax tow"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe and tag evidence"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found on surface"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting"
+        }
+      }
+    },
+    "tfc:groundcover/mollusk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected as flux ingredient"
+        },
+        "material_family": {
+          "value": "shell",
+          "signal": "inferred",
+          "rationale": "seashell from mollusk"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally from beaches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flux",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "tag tfc:fluxstone and recipes"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found on beaches and tide pools"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as flux in smelting"
+        }
+      }
+    },
+    "tfc:groundcover/mussel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected as flux ingredient"
+        },
+        "material_family": {
+          "value": "shell",
+          "signal": "inferred",
+          "rationale": "seashell from bivalve"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally from beaches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flux",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "tag tfc:fluxstone and recipes"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found on beaches and tide pools"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as flux in smelting"
+        }
+      }
+    },
+    "tfc:groundcover/pinecone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected for kindling and compost"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "pine cone from trees"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "kindling for firepit",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel and kindling tags"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found under trees"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost"
+        }
+      }
+    },
+    "tfc:groundcover/pumice": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected for hide tanning and cleaning"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "volcanic rock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning moss from blocks",
+            "hide tanning",
+            "papermaking"
+          ],
+          "signal": "inferred",
+          "rationale": "deploying recipes and document"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found on surface and panning"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in leather making"
+        },
+        "workflow": {
+          "values": [
+            "tfc:leather/making"
+          ],
+          "signal": "inferred",
+          "rationale": "used in treating hides"
+        }
+      }
+    },
+    "tfc:groundcover/sea_urchin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected as flux ingredient"
+        },
+        "material_family": {
+          "value": "shell",
+          "signal": "inferred",
+          "rationale": "sea urchin test"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally from beaches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flux",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "tag tfc:fluxstone and recipes"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found on beaches and tide pools"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as flux in smelting"
+        }
+      }
+    },
+    "tfc:groundcover/seaweed": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "collected for compost and soda ash"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "marine algae"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common groundcover"
+        },
+        "primary_uses": {
+          "values": [
+            "composting",
+            "smelting into soda ash"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and tag"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found on beaches"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost"
+        }
+      }
+    },
+    "tfc:hand_wheel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "hand-powered tool with durability"
+        },
+        "material_family": {
+          "value": "wood_metal",
+          "signal": "inferred",
+          "rationale": "likely wood and iron construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing at quern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "primary_uses": {
+          "values": [
+            "powering hand-cranked machines",
+            "grinding at quern"
+          ],
+          "signal": "inferred",
+          "rationale": "used to operate quern"
+        },
+        "used_at": {
+          "values": [
+            "tfc:quern"
+          ],
+          "signal": "named",
+          "evidence": "advancement 'The Grind' links quern and handstone",
+          "rationale": "paired with quern"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "provides mechanical power"
+        }
+      }
+    },
+    "tfc:hand_wheel_base": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "structural component for hand wheel"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "likely wooden base"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed as part of mechanism"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "primary_uses": {
+          "values": [
+            "base for hand wheel mechanism"
+          ],
+          "signal": "inferred",
+          "rationale": "part of hand wheel structure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "part of hand-crank power system"
+        }
+      }
+    },
+    "tfc:handstone": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "grinding tool with durability"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "made of stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing at quern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stone"
+        },
+        "primary_uses": {
+          "values": [
+            "grinding items in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "used in quern for grinding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:quern"
+          ],
+          "signal": "named",
+          "evidence": "advancement 'The Grind'",
+          "rationale": "paired with quern"
+        },
+        "workflow": {
+          "values": [
+            "tfc:quern"
+          ],
+          "signal": "named",
+          "evidence": "guide page for quern",
+          "rationale": "key tool in quern workflow"
+        }
+      }
+    },
+    "tfc:hematitic_glass_batch": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate material for glassworking"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass batch material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when glassblowing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "primary_uses": {
+          "values": [
+            "making hematitic glass items"
+          ],
+          "signal": "inferred",
+          "rationale": "used in glassworking recipes"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "input for glassworking process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "used at glassworking station"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "glass material family"
+        }
+      }
+    },
+    "tfc:hematitic_glass_bottle": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container used for crafting"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "hematitic glass"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for fluids and crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from glass batch"
+        },
+        "primary_uses": {
+          "values": [
+            "storing fluids",
+            "crafting potions and dough"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container and recipe ingredient"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container",
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds 400 mB fluid, empty by default"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food and potion recipes"
+        }
+      }
+    },
+    "tfc:ice_pile": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as block for ice structures"
+        },
+        "material_family": {
+          "value": "ice",
+          "signal": "inferred",
+          "rationale": "ice material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building with ice"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ice block"
+        },
+        "primary_uses": {
+          "values": [
+            "building with ice",
+            "source of water when melted"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, melts to water"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "tfc:gray_poured_glass",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "block",
+      "rationale": "Poured glass is a full block, not a pane",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:green_poured_glass",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "block",
+      "rationale": "Poured glass is a full block, not a pane",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": []
+}

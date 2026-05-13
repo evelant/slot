@@ -1,0 +1,1358 @@
+{
+  "items": {
+    "mcw_tfc_aio:bridges/aspen_bridges/aspen_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "bridge blocks used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "build bridges over gaps",
+            "support bridge structures",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct bridge structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/aspen_bridges/aspen_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "bridge blocks used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "build bridges over gaps",
+            "support bridge structures",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct bridge structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/aspen_bridges/aspen_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural staircase bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "bridge stairs used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build bridge stairs",
+            "connect different height bridge sections",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to add steps to bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/aspen_bridges/aspen_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rail-support bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "rail bridges used for building rail lines over gaps"
+        },
+        "primary_uses": {
+          "values": [
+            "build rail bridges",
+            "support minecart rails over gaps",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct rail bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/aspen_bridges/aspen_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope bridge staircase component placed as part of building"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "rope bridge stairs used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build rope bridge stairs",
+            "connect different height bridge sections",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to add steps to rope bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/aspen_bridges/rope_aspen_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "rope bridges used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build rope bridges",
+            "cross gaps with rope",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct rope bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/bamboo_bridges/bamboo_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "bamboo bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "rationale": "material bamboo from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo bridge used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build bamboo bridges",
+            "cross gaps with bamboo",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct bamboo bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/bamboo_bridges/bamboo_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "bamboo bridge support placed as part of building"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "rationale": "material bamboo from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo bridge support used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "support bamboo bridges",
+            "build bridge pillars",
+            "decorative pillar"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these as supports for bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/bamboo_bridges/bamboo_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "bamboo bridge staircase component placed as part of building"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "rationale": "material bamboo from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo bridge stairs used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build bamboo bridge stairs",
+            "connect different height bridge sections",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to add steps to bamboo bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/bamboo_bridges/dry_bamboo_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dry bamboo bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "rationale": "material bamboo (dry bamboo is a variant) from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "dry bamboo bridge used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build dry bamboo bridges",
+            "cross gaps with dry bamboo",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct dry bamboo bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/bamboo_bridges/dry_bamboo_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dry bamboo bridge support placed as part of building"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "rationale": "material bamboo (dry bamboo variant) from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "dry bamboo bridge support used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "support dry bamboo bridges",
+            "build bridge pillars",
+            "decorative pillar"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these as supports for bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/bamboo_bridges/dry_bamboo_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dry bamboo bridge staircase component placed as part of building"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "rationale": "material bamboo (dry bamboo variant) from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "dry bamboo bridge stairs used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build dry bamboo bridge stairs",
+            "connect different height bridge sections",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to add steps to dry bamboo bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/birch_bridges/birch_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "birch bridge support placed as part of building"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "birch bridge support used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "support birch bridges",
+            "build bridge pillars",
+            "decorative pillar"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these as supports for bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/birch_bridges/birch_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "birch bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "birch bridge used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build birch bridges",
+            "cross gaps with birch",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct birch bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/birch_bridges/birch_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "birch bridge staircase component placed as part of building"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "birch bridge stairs used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build birch bridge stairs",
+            "connect different height bridge sections",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to add steps to birch bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/birch_bridges/birch_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "birch rail bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "birch rail bridge used for building rail lines"
+        },
+        "primary_uses": {
+          "values": [
+            "build rail bridges",
+            "support minecart rails over gaps",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct rail bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/birch_bridges/birch_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "birch rope bridge staircase component placed as part of building"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "birch rope bridge stairs used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build birch rope bridge stairs",
+            "connect different height bridge sections",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to add steps to rope bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/birch_bridges/rope_birch_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope birch bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "rope birch bridge used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build rope birch bridges",
+            "cross gaps with rope",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct rope bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/blackwood_bridges/blackwood_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blackwood bridge support placed as part of building"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "blackwood bridge support used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "support blackwood bridges",
+            "build bridge pillars",
+            "decorative pillar"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these as supports for bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/blackwood_bridges/blackwood_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blackwood bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "blackwood bridge used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build blackwood bridges",
+            "cross gaps with blackwood",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct blackwood bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/blackwood_bridges/blackwood_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blackwood bridge staircase component placed as part of building"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "blackwood bridge stairs used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build blackwood bridge stairs",
+            "connect different height bridge sections",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to add steps to blackwood bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/blackwood_bridges/blackwood_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blackwood rail bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "blackwood rail bridge used for building rail lines"
+        },
+        "primary_uses": {
+          "values": [
+            "build rail bridges",
+            "support minecart rails over gaps",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct rail bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/blackwood_bridges/blackwood_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blackwood rope bridge staircase component placed as part of building"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "blackwood rope bridge stairs used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build blackwood rope bridge stairs",
+            "connect different height bridge sections",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to add steps to rope bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/blackwood_bridges/rope_blackwood_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope blackwood bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "rationale": "wood type from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "rope blackwood bridge used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build rope blackwood bridges",
+            "cross gaps with rope",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct rope bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/brick_bridges/brick_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick bridge component placed as part of building"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "material brick from item path"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "brick bridge used for building pathways"
+        },
+        "primary_uses": {
+          "values": [
+            "build brick bridges",
+            "cross gaps with brick",
+            "decorative pathway"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses these to construct brick bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only crafting recipe output, no loot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "rationale": "bridge blocks belong in bridges storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,988 @@
+{
+  "items": {
+    "gtceu:advanced_integrated_circuit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafted circuit used as ingredient in machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many HV-tier recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in chests, carried when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "HV-Tier Circuit tooltip",
+          "rationale": "Tooltip says HV-Tier"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:circuits",
+          "rationale": "Electronic circuit storage group"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "named",
+          "evidence": "HV-Tier Circuit tooltip",
+          "rationale": "HV tier progression"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stacked in bulk for crafting"
+        }
+      }
+    },
+    "gtceu:advanced_item_detector_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed on machines for automation functions"
+        },
+        "primary_uses": {
+          "values": [
+            "Detect item storage status as redstone cover"
+          ],
+          "signal": "named",
+          "evidence": "Gives RS-Latch controlled Item Storage Status as Redstone as Cover",
+          "rationale": "Direct tooltip description"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "pattern",
+          "evidence": "name contains 'cover' and tooltip mentions Cover",
+          "rationale": "Part of GT cover system"
+        }
+      }
+    },
+    "gtceu:advanced_item_voiding_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed on machines to void items"
+        },
+        "primary_uses": {
+          "values": [
+            "Void items with amount control as cover"
+          ],
+          "signal": "named",
+          "evidence": "Voids Items with amount control as Cover",
+          "rationale": "Tooltip description"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when automating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "pattern",
+          "evidence": "name contains 'cover'",
+          "rationale": "Part of GT cover system"
+        }
+      }
+    },
+    "gtceu:advanced_monitor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block that displays info, interacts with network"
+        },
+        "primary_uses": {
+          "values": [
+            "Monitor machine status and data"
+          ],
+          "signal": "inferred",
+          "rationale": "Display block for automation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for monitoring automated systems"
+        }
+      }
+    },
+    "gtceu:advanced_nanomuscle_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Worn chestplate with protection and utility"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide high armor and insulation",
+            "Powered flight with hover mode"
+          ],
+          "signal": "named",
+          "evidence": "Armor, insulation, hover mode in tooltip",
+          "rationale": "Direct tooltip features"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Worn most of time when exploring"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "Tier HV in tooltip",
+          "rationale": "Energy tier HV"
+        },
+        "activity": {
+          "values": [
+            "slot:combat",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat and exploration"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "named",
+          "evidence": "Hover Mode in tooltip",
+          "rationale": "Enables flying"
+        },
+        "protection_context": {
+          "values": [
+            "slot:heat",
+            "slot:cold"
+          ],
+          "signal": "named",
+          "evidence": "Fully Insulated from ambient temperatures",
+          "rationale": "Thermal protection"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "named",
+          "evidence": "HV tier",
+          "rationale": "HV tier armor"
+        }
+      }
+    },
+    "gtceu:advanced_quarktech_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Top-tier chestplate with extreme protection"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide max protection and resistances",
+            "Nullify burning and freezing"
+          ],
+          "signal": "named",
+          "evidence": "Nullifies Burning, Prevents Freezing",
+          "rationale": "Tooltip perks"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Worn in endgame"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "named",
+          "evidence": "Tier LuV in tooltip",
+          "rationale": "Energy tier LuV"
+        },
+        "activity": {
+          "values": [
+            "slot:combat",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat and space travel"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "named",
+          "evidence": "Hover Mode in tooltip",
+          "rationale": "Enables flight"
+        },
+        "protection_context": {
+          "values": [
+            "slot:fire",
+            "slot:cold"
+          ],
+          "signal": "named",
+          "evidence": "Nullifies Burning, Prevents Freezing",
+          "rationale": "Fire and cold immunity"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV is beyond EV but EV is highest in vocab; approximate"
+        }
+      }
+    },
+    "gtceu:advanced_power_thruster": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component used to craft jetpacks"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced jetpack"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient in jetpack recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Rare component from tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Plausible storage with other advanced components"
+        }
+      }
+    },
+    "gtceu:advanced_smd_capacitor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Electronic component for circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced circuits and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in circuit recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other circuit components"
+        }
+      }
+    },
+    "gtceu:advanced_smd_diode": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Electronic component for circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting higher-tier circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in circuit assembly"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other circuit components"
+        }
+      }
+    },
+    "gtceu:advanced_smd_inductor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in circuit recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit component group"
+        }
+      }
+    },
+    "gtceu:advanced_smd_resistor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in circuit recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit component group"
+        }
+      }
+    },
+    "gtceu:advanced_smd_transistor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in circuit recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit component group"
+        }
+      }
+    },
+    "gtceu:advanced_soc": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Advanced chip for circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced processors"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in high-end circuit recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit component group"
+        }
+      }
+    },
+    "gtceu:advanced_soc_wafer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw wafer for chips"
+        },
+        "primary_uses": {
+          "values": [
+            "Producing advanced SOCs"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for ASoC"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of circuit production line"
+        }
+      }
+    },
+    "gtceu:agar_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust used in biological recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting growth medium"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust"
+        },
+        "material_family": {
+          "value": "agar",
+          "signal": "pattern",
+          "evidence": "id contains agar",
+          "rationale": "Material from name"
+        }
+      }
+    },
+    "gtceu:air_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of gas used for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting air",
+            "Filling gas tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for gases"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "Bucket that holds fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds gas/fluid"
+        }
+      }
+    },
+    "gtceu:alloy_blast_smelter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine block for alloy smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting alloys at high temperature"
+          ],
+          "signal": "named",
+          "evidence": "Available Recipe Types: Alloy Blast Smelter",
+          "rationale": "Tooltip indicates machine function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in factory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated production line"
+        }
+      }
+    },
+    "gtceu:allyl_chloride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of chemical"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting allyl chloride"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fluid logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "Bucket that holds fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds liquid"
+        }
+      }
+    },
+    "gtceu:almandine_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted storage of almandine gem"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of almandine",
+            "Decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block and building material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "id contains almandine",
+          "rationale": "Material from name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Block form for compact storage"
+        }
+      }
+    },
+    "gtceu:almandine_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface ore indicator, natural block"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicating almandine ore below",
+            "Decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on surface, marks ore"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common worldgen"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "id contains almandine",
+          "rationale": "Related to almandine"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore indicator"
+        }
+      }
+    },
+    "gtceu:almandine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground almandine for further processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Processing into almandine gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for gem production"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "id contains almandine",
+          "rationale": "Material from name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for gem"
+        }
+      }
+    },
+    "gtceu:almandine_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used in crafting and smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem items",
+            "Smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common gem"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "id contains almandine",
+          "rationale": "Material from name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "Gem storage group"
+        }
+      }
+    },
+    "gtceu:almandine_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating almandine ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicating almandine ore deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "Prospecting tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected when found"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "id contains almandine",
+          "rationale": "Related to almandine"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore indicator"
+        }
+      }
+    },
+    "gtceu:almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block that yields almandine"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for almandine gems",
+            "Smelting into almandine"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of almandine"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "id contains almandine",
+          "rationale": "Material from name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore storage group"
+        }
+      }
+    },
+    "gtceu:aluminium_alloy": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Alloy material for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced alloys and parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient in GT recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        },
+        "material_family": {
+          "value": "aluminium_alloy",
+          "signal": "pattern",
+          "evidence": "id contains aluminium_alloy",
+          "rationale": "Material from name"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

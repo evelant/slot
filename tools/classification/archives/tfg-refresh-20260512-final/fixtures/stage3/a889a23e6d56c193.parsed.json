@@ -1,0 +1,1013 @@
+{
+  "items": {
+    "gtceu:graphene_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed cable for energy transport network"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit IV energy",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy network component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "graphene",
+          "signal": "pattern",
+          "evidence": "id graphene_wire + tag forge:quadruple_wires/graphene",
+          "rationale": "Material is graphene"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire form equivalent to rod"
+        }
+      }
+    },
+    "gtceu:graphene_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed cable for energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit IV energy",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy network component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "graphene",
+          "signal": "pattern",
+          "evidence": "id graphene_cable + tag forge:single_cables/graphene",
+          "rationale": "Material is graphene"
+        }
+      }
+    },
+    "gtceu:graphene_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed wire for energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit IV energy",
+            "Craft thicker wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy network component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "graphene",
+          "signal": "pattern",
+          "evidence": "id graphene_wire + tag forge:single_wires/graphene",
+          "rationale": "Material is graphene"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire form"
+        }
+      }
+    },
+    "gtceu:graphite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust is a crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into graphite",
+            "Craft graphene",
+            "Used in arc furnaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Versatile crafting material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in bulk crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "graphite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/graphite",
+          "rationale": "Graphite dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined mineral dust"
+        }
+      }
+    },
+    "gtceu:graphite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicate graphite ore location"
+          ],
+          "signal": "inferred",
+          "rationale": "Prospecting marker"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only picked up when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "Found on surface as indicator"
+        }
+      }
+    },
+    "gtceu:graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine for graphite",
+            "Smelt into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of graphite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "graphite",
+          "signal": "pattern",
+          "evidence": "id graphite_ore + tag forge:ores/graphite",
+          "rationale": "Graphite ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/stone",
+          "rationale": "Underground ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:gravi_star": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Used as crafting component for engine"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft gravitation engine unit"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for high-tech item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when needed for crafting"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "Epic rarity from component"
+        }
+      }
+    },
+    "gtceu:gravitation_engine_unit": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Applied to grappling hook to upgrade it"
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade grappling hook to gravity mode"
+          ],
+          "signal": "inferred",
+          "rationale": "Grapplemod upgrade"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when upgrading"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "Epic rarity from component"
+        }
+      }
+    },
+    "gtceu:gray_borderless_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for lighting and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Light up base",
+            "Decorate"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "id contains gray",
+          "rationale": "Color in name"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 emits_light rule",
+          "rationale": "Stage2 emits_light rule"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:lamps",
+          "rationale": "Lamp block group"
+        }
+      }
+    },
+    "gtceu:gray_dye_spray_can": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Tool used for painting blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint blocks gray"
+          ],
+          "signal": "inferred",
+          "rationale": "Spray painting tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialty tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        }
+      }
+    },
+    "gtceu:gray_glass_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Glass material"
+        }
+      }
+    },
+    "gtceu:gray_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for lighting and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Light up base",
+            "Decorate"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "id contains gray",
+          "rationale": "Color in name"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 emits_light rule",
+          "rationale": "Stage2 emits_light rule"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:lamps",
+          "rationale": "Lamp block group"
+        }
+      }
+    },
+    "gtceu:gray_large_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative metal panel"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate industrial builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Building decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "id contains gray",
+          "rationale": "Color in name"
+        }
+      }
+    },
+    "gtceu:gray_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Building decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "id contains gray",
+          "rationale": "Color in name"
+        }
+      }
+    },
+    "gtceu:gray_studs": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative textured block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate floors/walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative stud pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "id contains gray",
+          "rationale": "Color in name"
+        }
+      }
+    },
+    "gtceu:green_borderless_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for lighting and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Light up base",
+            "Decorate"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "evidence": "id contains green",
+          "rationale": "Color in name"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 emits_light rule",
+          "rationale": "Stage2 emits_light rule"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:lamps",
+          "rationale": "Lamp block group"
+        }
+      }
+    },
+    "gtceu:green_dye_spray_can": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Tool for painting blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint blocks green"
+          ],
+          "signal": "inferred",
+          "rationale": "Spray painting tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialty tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        }
+      }
+    },
+    "gtceu:green_glass_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Glass material"
+        }
+      }
+    },
+    "gtceu:green_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for lighting and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Light up base",
+            "Decorate"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "evidence": "id contains green",
+          "rationale": "Color in name"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 emits_light rule",
+          "rationale": "Stage2 emits_light rule"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:lamps",
+          "rationale": "Lamp block group"
+        }
+      }
+    },
+    "gtceu:green_large_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative metal panel"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate industrial builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Building decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "evidence": "id contains green",
+          "rationale": "Color in name"
+        }
+      }
+    },
+    "gtceu:green_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Building decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "evidence": "id contains green",
+          "rationale": "Color in name"
+        }
+      }
+    },
+    "gtceu:green_studs": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative textured block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate floors/walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative stud pattern"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "evidence": "id contains green",
+          "rationale": "Color in name"
+        }
+      }
+    },
+    "gtceu:green_sand_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore material"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine for almandine",
+            "Smelt into product"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of almandine"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "id green_sand_almandine_ore",
+          "rationale": "Almandine ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:green_sand_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore material"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine for aluminium"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of aluminium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "evidence": "id green_sand_aluminium_ore",
+          "rationale": "Aluminium ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:green_sand_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore material"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine for alunite",
+            "Smelt into product"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of alunite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "evidence": "id green_sand_alunite_ore",
+          "rationale": "Alunite ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:green_sand_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore material"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine for amethyst",
+            "Smelt into product"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of amethyst"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common from component"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "evidence": "id green_sand_amethyst_ore",
+          "rationale": "Amethyst ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:graphene_quadruple_wire",
+      "facet": "mod_subsystem",
+      "label": "GTCEu Cables",
+      "proposed_id": "gtceu:cable",
+      "rationale": "Wire is part of GTCEu energy network subsystem",
+      "evidence": "id suffix _wire, creative tab material_pipe"
+    },
+    {
+      "item": "gtceu:graphene_single_cable",
+      "facet": "mod_subsystem",
+      "label": "GTCEu Cables",
+      "proposed_id": "gtceu:cable",
+      "rationale": "Cable is part of GTCEu energy network subsystem",
+      "evidence": "id suffix _cable, creative tab material_pipe"
+    },
+    {
+      "item": "gtceu:graphene_single_wire",
+      "facet": "mod_subsystem",
+      "label": "GTCEu Cables",
+      "proposed_id": "gtceu:cable",
+      "rationale": "Wire is part of GTCEu energy network subsystem",
+      "evidence": "id suffix _wire, creative tab material_pipe"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

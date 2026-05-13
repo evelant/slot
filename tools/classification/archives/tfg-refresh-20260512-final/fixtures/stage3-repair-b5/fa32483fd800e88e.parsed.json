@@ -1,0 +1,266 @@
+{
+  "items": {
+    "tfg:andesite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "support beam placed for structural reinforcement, building component"
+        },
+        "primary_uses": {
+          "values": [
+            "reinforcing tunnels",
+            "supporting ceilings",
+            "decorative stone building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a structural support in mining and building"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for mining/building trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common igneous extrusive rock block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples_count=2",
+          "rationale": "produced by shaped crafting recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "grouped with other igneous extrusive blocks"
+        }
+      }
+    },
+    "tfg:aniline_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport and dispense fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting aniline fluid",
+            "filling fluid machines",
+            "emptying fluid sources"
+          ],
+          "signal": "inferred",
+          "rationale": "standard bucket role for a liquid chemical"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried only when working with aniline processes"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "chemical intermediate, not trivial to obtain"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used for fluid transport and handling"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "named",
+          "evidence": "display name Aniline Bucket + 'State: Liquid' tooltip",
+          "rationale": "bucket containing a liquid"
+        }
+      }
+    },
+    "tfg:annealed_graphite_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed rod used as crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced tech components",
+            "high-temperature industrial uses",
+            "conductivity applications"
+          ],
+          "signal": "inferred",
+          "rationale": "specialized material rod likely used in high-tech crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed for specific automation setups"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced intermediate material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _rod",
+          "rationale": "rod form of a material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "kept in moderate stacks for specific builds"
+        }
+      }
+    },
+    "tfg:anorthosite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "support beam placed for structural reinforcement, building component"
+        },
+        "primary_uses": {
+          "values": [
+            "reinforcing tunnels",
+            "supporting ceilings",
+            "decorative stone building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a structural support in mining and building"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for mining/building trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common igneous intrusive rock block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples_count=1",
+          "rationale": "produced by shaped crafting recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "grouped with other igneous intrusive blocks"
+        }
+      }
+    },
+    "tfg:antipoison_pill": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "eaten to cure poison effect"
+        },
+        "primary_uses": {
+          "values": [
+            "curing poison",
+            "antidote for combat situations",
+            "cleansing venom effects"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed item that removes poison status"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when exploring dangerous biomes or fighting poison mobs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "medicine requiring mixing and specific ingredients"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples_count=3",
+          "rationale": "produced by mixing bowl and mixer recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "used when exploring to counter poison hazards"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "named",
+          "evidence": "food component with can_always_eat",
+          "rationale": "consumed by eating to activate effect"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "tfg:anorthosite_support",
+      "facet": "material_family",
+      "value": "anorthosite",
+      "rationale": "id prefix anorthosite_ clearly indicates material"
+    },
+    {
+      "item": "tfg:annealed_graphite_rod",
+      "facet": "material_family",
+      "value": "graphite",
+      "rationale": "id contains graphite, rod of that material"
+    },
+    {
+      "item": "tfg:annealed_graphite_rod",
+      "facet": "form",
+      "value": "rod",
+      "rationale": "id ends with _rod"
+    }
+  ]
+}

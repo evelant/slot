@@ -1,0 +1,2284 @@
+{
+  "items": {
+    "tfc:deposit/cassiterite/diorite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/dolomite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/gabbro": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/gneiss": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/granite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/limestone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/marble": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/phyllite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/quartzite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/schist": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/cassiterite/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "rationale": "id contains cassiterite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield tin ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into cassiterite pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/basalt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/chalk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/chert": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/claystone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/dacite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/diorite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/dolomite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/gabbro": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/gneiss": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    },
+    "tfc:deposit/native_copper/granite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore block processed via sluice/pan"
+        },
+        "material_family": {
+          "value": "native_copper",
+          "signal": "pattern",
+          "rationale": "id contains native_copper"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines to yield copper ore pieces"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_examples show splashing and vibrating",
+          "rationale": "Processed in these machines"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input to processing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sluices",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip: processed with sluice",
+          "rationale": "Used at sluice and vibrator"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into native copper pieces for smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use is sluicing/panning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined in batches, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity common"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural gravel deposit on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Unprocessed ore storage"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "tfc:deposit/cassiterite/diorite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/dolomite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/gabbro",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/gneiss",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/granite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/limestone",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/marble",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/phyllite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/quartzite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/rhyolite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/schist",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/shale",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/cassiterite/slate",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/andesite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/basalt",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/chalk",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/chert",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/claystone",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/conglomerate",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/dacite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/diorite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/dolomite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/gabbro",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/gneiss",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:deposit/native_copper/granite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Natural worldgen deposit, not crafted",
+      "confidence": 0.9
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "fill_ins": []
+}

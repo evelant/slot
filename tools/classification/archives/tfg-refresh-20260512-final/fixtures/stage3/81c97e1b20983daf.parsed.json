@@ -1,0 +1,1520 @@
+{
+  "items": {
+    "gtceu:red_granite_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into topaz",
+            "processed into crushed ore",
+            "gemstone source"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines ore for smelting/milling"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into tricalcium phosphate"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemical processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into trona (soda ash)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemical processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into tungstate (tungsten)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for metal extraction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into uranium",
+            "hazardous radioactive ore"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for nuclear fuel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into vanadium and iron"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for metal extraction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into molybdenum and lead"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for metal extraction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into garnet (abrasive)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gemstone/abrasive"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into iron (limonite)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for iron extraction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        }
+      }
+    },
+    "gtceu:red_granite_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into zeolite (catalyst)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemical processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_granite_windmill_a": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone brick variant for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative stone brick building",
+            "insulation for ovens"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction and decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "stone brick variant grouped with bricks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin crafted_only",
+          "rationale": "no natural generation, crafted via stonecutting"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/stonecutting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples stonecutting",
+          "rationale": "produced as output of stonecutting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/stonecutting#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples stonecutting",
+          "rationale": "output of stonecutting workflow"
+        }
+      }
+    },
+    "gtceu:red_granite_windmill_b": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone brick variant for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative stone brick building",
+            "insulation for ovens"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction and decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "stone brick variant grouped with bricks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin crafted_only",
+          "rationale": "no natural generation, crafted via stonecutting"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/stonecutting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples stonecutting",
+          "rationale": "produced as output of stonecutting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/stonecutting#output"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples stonecutting",
+          "rationale": "output of stonecutting workflow"
+        }
+      }
+    },
+    "gtceu:red_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative light-emitting block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative lighting",
+            "illuminates area"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for light and decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building lighting setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decoration and lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:lamps",
+          "rationale": "grouped with lamps"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted block, no natural generation"
+        }
+      }
+    },
+    "gtceu:red_large_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative metal sheet block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building material"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction and decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted, no natural generation"
+        }
+      }
+    },
+    "gtceu:red_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative metal sheet block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building material"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction and decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted, no natural generation"
+        }
+      }
+    },
+    "gtceu:red_sand_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into almandine (garnet)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gemstone"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_sand_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into aluminium"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for aluminium extraction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to milling"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in milling"
+        }
+      }
+    },
+    "gtceu:red_sand_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into alum (alunite)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemical processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_sand_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into amethyst"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gemstone"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_sand_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into apatite (phosphate)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemical processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_sand_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into armalcolite (titanium)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for rare metal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_sand_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into asbestos"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for mineral"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_sand_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into barite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for mineral"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_sand_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into mineral sand"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for metal content"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    },
+    "gtceu:red_sand_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into bastnasite (rare earth)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for rare earth elements"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity in component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "consumed as input in these workflows"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1181 @@
+{
+  "items": {
+    "tfc:wood/planks/hickory_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for enchanting boost and decoration, no UI"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Boosts enchanting table",
+            "Decorative storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Enchanting setup decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used with enchanting table"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture, stored with woodworking"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:buttons",
+          "rationale": "Wooden button is a redstone trigger"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone signal input"
+          ],
+          "signal": "inferred",
+          "rationale": "Button activates redstone"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden redstone component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:doors",
+          "rationale": "Door is a structural building element"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building entrance"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a door"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:fences",
+          "rationale": "Fence is a structural building element"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building boundaries and enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a fence"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag forge:fence_gates",
+          "rationale": "Fence gate is a structural building element"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building access point in fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a gate"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:fences",
+          "rationale": "A fence variant, structural"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building log-style fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a fence"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "Workstation for weaving, has UI"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Weaving cloth and paper"
+          ],
+          "signal": "inferred",
+          "rationale": "Loom workstation"
+        },
+        "workflow": {
+          "values": [
+            "tfc:weaving"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "Used for weaving"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "Player uses this block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden workstation stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:wooden_pressure_plates",
+          "rationale": "Pressure plate is a redstone trigger"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone pressure trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as floor switch"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden redstone component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slab is a structural building element"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-height blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as slab"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs are a structural building element"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building steps and slopes"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as stairs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "tag tfc:tool_racks",
+          "rationale": "Stores tools interactively"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing tools on wall"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool rack storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:trapdoors",
+          "rationale": "Trapdoor is a structural building element"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building ceiling/floor access"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as trapdoor"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/hickory_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "tag tfc:workbenches",
+          "rationale": "Crafting station with UI"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "rationale": "Id contains hickory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed but often carried for on-the-go crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting items"
+          ],
+          "signal": "inferred",
+          "rationale": "Workbench is for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden workstation stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:planks",
+          "rationale": "Planks are basic building block"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Crafting wood components"
+          ],
+          "signal": "inferred",
+          "rationale": "Planks for construction and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "Planks stored as lumber"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for enchanting boost and decoration, no UI"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Boosts enchanting table",
+            "Decorative storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Enchanting setup decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used with enchanting table"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture, stored with woodworking"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:buttons",
+          "rationale": "Wooden button is a redstone trigger"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone signal input"
+          ],
+          "signal": "inferred",
+          "rationale": "Button activates redstone"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden redstone component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:doors",
+          "rationale": "Door is a structural building element"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building entrance"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a door"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:fences",
+          "rationale": "Fence is a structural building element"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building boundaries and enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a fence"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag forge:fence_gates",
+          "rationale": "Fence gate is a structural building element"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building access point in fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a gate"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:fences",
+          "rationale": "A fence variant, structural"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building log-style fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a fence"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "Workstation for weaving, has UI"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Weaving cloth and paper"
+          ],
+          "signal": "inferred",
+          "rationale": "Loom workstation"
+        },
+        "workflow": {
+          "values": [
+            "tfc:weaving"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "Used for weaving"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "Player uses this block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden workstation stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:wooden_pressure_plates",
+          "rationale": "Pressure plate is a redstone trigger"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone pressure trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as floor switch"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden redstone component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slab is a structural building element"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building half-height blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as slab"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs are a structural building element"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Building steps and slopes"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as stairs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden building component stored with wood"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "tag tfc:tool_racks",
+          "rationale": "Stores tools interactively"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "rationale": "Id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing tools on wall"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool rack storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture stored with wood"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

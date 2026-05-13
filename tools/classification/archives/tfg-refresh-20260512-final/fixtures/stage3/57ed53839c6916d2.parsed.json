@@ -1,0 +1,1457 @@
+{
+  "items": {
+    "gtceu:pyroxenite_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "only greate:milling recipe available"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into diamonds",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into emeralds",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into gold ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into graphite",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into gems",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into grossular dust",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron ingots",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into kyanite",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    },
+    "gtceu:pyroxenite_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "raw ore mined for smelting into ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lapis lazuli",
+            "crushing into ore dust"
+          ],
+          "signal": "inferred",
+          "rationale": "main processing paths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "collected in bulk during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights common",
+          "rationale": "common ore block"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "milled into crushed ore"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in chests"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

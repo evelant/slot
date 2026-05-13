@@ -1,0 +1,1024 @@
+{
+  "items": {
+    "minecraft:magenta_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass pane used in building windows and partitions"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows and partitions",
+            "decorative glass panes"
+          ],
+          "signal": "inferred",
+          "rationale": "standard building use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:glass_panes",
+          "rationale": "glass pane family"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe via cutting",
+          "rationale": "crafted from magenta glass"
+        }
+      }
+    },
+    "minecraft:magenta_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "colored terracotta for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building colored walls and roofs",
+            "decorative terracotta blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production via barrel dyeing",
+          "rationale": "dyed terracotta"
+        }
+      }
+    },
+    "minecraft:magenta_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wool block used in building and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decorating",
+            "crafting carpets and banners"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for wool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production via barrel dyeing",
+          "rationale": "dyed wool"
+        }
+      }
+    },
+    "minecraft:magma_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "natural block with light/damage placed for effect"
+        },
+        "primary_uses": {
+          "values": [
+            "lighting builds",
+            "damaging mobs in traps"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses for light and entity damage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not carried often, used in specific builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building and trap making"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "pattern",
+          "evidence": "y_level_range nether_surface",
+          "rationale": "found in The Beneath / Nether"
+        }
+      }
+    },
+    "minecraft:magma_cream": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for potions and items"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing fire resistance potions",
+            "crafting magma blocks",
+            "smelting into glue"
+          ],
+          "signal": "inferred",
+          "rationale": "primary uses from recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when brewing or crafting specific items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in brewing"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "dropped by magma cubes"
+        }
+      }
+    },
+    "minecraft:magma_cube_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "collectible spawn egg for creative use"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning magma cubes in creative",
+            "collecting spawn eggs"
+          ],
+          "signal": "inferred",
+          "rationale": "creative and collection purposes"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        }
+      }
+    },
+    "minecraft:mangrove_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "vehicle for water travel"
+        },
+        "primary_uses": {
+          "values": [
+            "travelling across water"
+          ],
+          "signal": "inferred",
+          "rationale": "primary function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when planning water travel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for transport"
+        }
+      }
+    },
+    "minecraft:mangrove_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden button for redstone activation"
+        },
+        "primary_uses": {
+          "values": [
+            "activating redstone circuits",
+            "building redstone contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when working with redstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone interaction"
+        }
+      }
+    },
+    "minecraft:mangrove_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "boat with storage for transporting items"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting items across water while travelling"
+          ],
+          "signal": "inferred",
+          "rationale": "combined transport and storage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only for specific item transport journeys"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for water transport"
+        }
+      }
+    },
+    "minecraft:mangrove_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden door for building entrances"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances",
+            "separating rooms"
+          ],
+          "signal": "inferred",
+          "rationale": "structural use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "part of mangrove wood furniture"
+        }
+      }
+    },
+    "minecraft:mangrove_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden fence for enclosures"
+        },
+        "primary_uses": {
+          "values": [
+            "building fences and enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "structural use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _fence",
+          "rationale": "fence family"
+        }
+      }
+    },
+    "minecraft:mangrove_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate for access"
+        },
+        "primary_uses": {
+          "values": [
+            "building fence entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "structural use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden_fences"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fence family"
+        }
+      }
+    },
+    "minecraft:mangrove_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hanging sign for decoration and labeling"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling areas",
+            "decorative hanging signs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary uses"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not carried often, placed for labeling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden decorative item"
+        }
+      }
+    },
+    "minecraft:mangrove_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "part of living mangrove tree"
+        },
+        "primary_uses": {
+          "values": [
+            "building natural landscapes",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative and utility uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "evidence": "natural leaves",
+          "rationale": "plant block"
+        }
+      }
+    },
+    "minecraft:mangrove_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log used in building and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "building log cabins",
+            "crafting planks",
+            "fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "primary uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building and fuel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _log",
+          "rationale": "log family"
+        }
+      }
+    },
+    "minecraft:mangrove_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting wooden items"
+          ],
+          "signal": "inferred",
+          "rationale": "core building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "processed wood planks"
+        }
+      }
+    },
+    "minecraft:mangrove_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden pressure plate for redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "detecting players and entities",
+            "activating redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone interaction"
+        }
+      }
+    },
+    "minecraft:mangrove_propagule": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "propagule for growing mangrove trees"
+        },
+        "primary_uses": {
+          "values": [
+            "growing mangrove trees",
+            "reforestation"
+          ],
+          "signal": "inferred",
+          "rationale": "planting use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for planting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in farming/tree planting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "inferred",
+          "rationale": "sapling-like plantable"
+        }
+      }
+    },
+    "minecraft:mangrove_roots": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "living root block of mangrove tree"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative water-adjacent builds",
+            "collecting as building material"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative and structural uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "minecraft:mangrove_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "sign for labeling and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling chests and areas",
+            "decorative signs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary uses"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried few at a time for labeling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden decorative item"
+        }
+      }
+    },
+    "minecraft:mangrove_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden slab for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-slabs",
+            "creating step details"
+          ],
+          "signal": "inferred",
+          "rationale": "standard use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        }
+      }
+    },
+    "minecraft:mangrove_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden stairs for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "creating vertical access"
+          ],
+          "signal": "inferred",
+          "rationale": "standard use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        }
+      }
+    },
+    "minecraft:mangrove_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden trapdoor for building access"
+        },
+        "primary_uses": {
+          "values": [
+            "building floor/ceiling hatches",
+            "decorative access"
+          ],
+          "signal": "inferred",
+          "rationale": "standard use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        }
+      }
+    },
+    "minecraft:mangrove_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "bark block used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with bark",
+            "crafting stripped wood"
+          ],
+          "signal": "inferred",
+          "rationale": "standard uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block similar to logs"
+        }
+      }
+    },
+    "minecraft:map": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for mapping explored areas"
+        },
+        "primary_uses": {
+          "values": [
+            "creating maps of explored areas",
+            "navigation"
+          ],
+          "signal": "inferred",
+          "rationale": "primary uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "from component"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "used in exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "crafted from paper and compass"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

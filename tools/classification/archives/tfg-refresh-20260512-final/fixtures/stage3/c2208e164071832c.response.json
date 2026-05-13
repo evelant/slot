@@ -1,0 +1,1117 @@
+{
+  "items": {
+    "gtceu:uhv_machine_hull": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine hull placed as part of UHV multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building UHV multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is as a component for assembling machines"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried routinely"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common materials"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Hull is a core multiblock component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources, crafted"
+        }
+      }
+    },
+    "gtceu:uhv_output_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock port for item output"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing item output from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states item output function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed on multiblocks, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles item transfer for multi-blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Output bus is a hatch for multiblock systems"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uhv_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock port for fluid output"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing fluid output from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states fluid output function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed on multiblocks, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles fluid transfer for multi-blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Output hatch for multiblocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uhv_output_hatch_4x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock port with 4 fluid tanks"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing multi-tank fluid output from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes 4 tanks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed on multiblocks, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles fluid transfer for multi-blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Output hatch for multiblocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uhv_output_hatch_9x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock port with 9 fluid tanks"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing multi-tank fluid output from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes 9 tanks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed on multiblocks, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles fluid transfer for multi-blocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Output hatch for multiblocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uhv_quantum_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens to store items, like a chest"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing up to 1 billion items"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states huge item capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as storage, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Mass storage device for items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uhv_quantum_tank": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opens to store fluids, like a tank"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing up to 1 billion mB of fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states huge fluid capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as storage, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Mass fluid storage device"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uhv_substation_input_hatch_64a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy hatch for substation multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing 64A energy input to power substation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes voltage/amperage input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed on multiblocks, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy distribution for power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy hatch for substation energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uhv_substation_output_hatch_64a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy output hatch for substation multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing 64A energy output from power substation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes voltage/amperage output"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed on multiblocks, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy distribution for power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy hatch for substation energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uhv_ultimate_battery": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy storage block, part of power system"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing up to 9.22 exabytes of energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states enormous energy capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from UHV materials"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores power for generation/distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Ultimate battery is a GTCEU battery block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:uiv_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Casing block for UIV multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building UIV multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a component in multiblock structures"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from high-tier materials"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing is a core multiblock component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ulpic_chip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting MV-tier circuits and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in many crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting at workstations"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from silicon and other materials"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic circuit component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ulpic_wafer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw circuit component"
+        },
+        "primary_uses": {
+          "values": [
+            "Cutting to produce ULPIC chips"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in cutter to get chips"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing at machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from silicon"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Uncut wafer for circuits"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed material block, not a container"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage and crafting of ultimet"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as storage block and crafting input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as storage, not carried frequently"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from ultimet ingots"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "ID and tag forge:storage_blocks/ultimet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Block form of material for storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small metal component used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting screws and other small components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many advanced crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in bulk for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common alloy component"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "ID suffix _bolts/ultimet tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to transport molten metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting molten ultimet"
+          ],
+          "signal": "inferred",
+          "rationale": "Liquid ultimet bucket for fluid transfer"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when doing casting work"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from ultimet and bucket"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "ID suffix _bucket/ultimet"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds molten fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket containing fluid"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Specialized tool for butchering animals"
+        },
+        "primary_uses": {
+          "values": [
+            "Butchering animals for more meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states butchering function"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried if player does animal farming"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires ultimet alloy"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "Name prefix ultimet_"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in animal husbandry"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Wielded in hand to use"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted in tfc advanced shapeless"
+        }
+      }
+    },
+    "gtceu:ultimet_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting knife"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ultimet butchery knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in knife shaping"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common alloy component"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "ID suffix knife_head/ultimet"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting buzzsaw"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting buzzsaw for cutter machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutter recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common alloy component"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "Name prefix ultimet_"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_chainsaw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting chainsaw"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting chainsaw for tree felling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chainsaw recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common alloy component"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "Name prefix ultimet_"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Multi-purpose tool for dismounting and rotating"
+        },
+        "primary_uses": {
+          "values": [
+            "Dismounting covers and rotating rails"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes cover removal and rail rotation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when maintaining machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from ultimet"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "Name prefix ultimet_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and maintenance"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Wielded in hand to use"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from ultimet"
+        }
+      }
+    },
+    "gtceu:ultimet_drill_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting drill"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting drills for mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in drill recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common alloy component"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "Name prefix ultimet_"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ID suffix _dust + tag forge:dusts"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into ultimet ingots, crafting input"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in mixing and smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in bulk, carried when processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common processed material"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "ID suffix dust/ultimet"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts and name dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral output"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Tool used for shaping components in crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "Shaping metal components in crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in thousands of crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "High usage in GTCEu crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly crafted tool"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "Name prefix ultimet_"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Wielded in hand to use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool used at artisan table for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    },
+    "gtceu:ultimet_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting file"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ultimet files"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in file recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common alloy component"
+        },
+        "material_family": {
+          "value": "ultimet",
+          "signal": "pattern",
+          "rationale": "Name prefix ultimet_"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only crafted"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

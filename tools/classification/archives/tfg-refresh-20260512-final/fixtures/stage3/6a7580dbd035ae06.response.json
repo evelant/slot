@@ -1,0 +1,1729 @@
+{
+  "items": {
+    "gtceu:chalk_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for copper"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into copper ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for desh"
+        },
+        "primary_uses": {
+          "values": [
+            "Milling into crushed desh ore",
+            "Processing for desh metal"
+          ],
+          "signal": "inferred",
+          "rationale": "only milling recipe present"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "only greate:milling recipe",
+          "rationale": "ore consumed as input in milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "only milling recipe",
+          "rationale": "processed at mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for diamonds"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into diamonds",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for diatomite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into diatomite product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for electrotine"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into electrotine",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for emeralds"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into emeralds",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for fullers earth"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into fullers earth product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for lead/silver"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lead/silver",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for garnet sand"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into garnet sand product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for nickel"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into nickel",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for glauconite sand"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into glauconite sand product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for iron"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into iron",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for gold"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into gold ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for mineral sand"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into mineral sand product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for graphite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into graphite",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for green sapphire"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into green sapphire",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for grossular"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into grossular product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for gypsum"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into gypsum",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for iron"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into iron",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for titanium"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into titanium product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for iron"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into iron ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for kyanite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into kyanite product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for lapis lazuli"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lapis lazuli",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for lazurite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lazurite product",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    },
+    "gtceu:chalk_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and smelted for lead"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lead ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and then processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples include smelting, blasting, milling",
+          "rationale": "ore consumed as input in these workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types present",
+          "rationale": "processed at furnace, blast furnace, or mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard storage for raw ore blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large quantities, stored in bulk"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

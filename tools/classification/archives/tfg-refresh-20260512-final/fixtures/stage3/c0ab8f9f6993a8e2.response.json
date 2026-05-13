@@ -1,0 +1,1278 @@
+{
+  "items": {
+    "railways:gray_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "train smokebox part placed as decorative structure"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "rationale": "id starts 'gray'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "id contains locometal and tag"
+        },
+        "primary_uses": {
+          "values": [
+            "train smokebox decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "part of train palette"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train construction"
+        }
+      }
+    },
+    "railways:green_brass_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative locometal block palette"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_brass_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "train boiler part placed as structure"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "train boiler decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "boiler variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train construction"
+        }
+      }
+    },
+    "railways:green_conductor_cap": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "component equippable slot head",
+          "rationale": "wearable on head"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "primary_uses": {
+          "values": [
+            "cosmetic conductor headwear"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cap"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn often when near trains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "evidence": "barrel dyeing recipe",
+          "rationale": "produced by dyeing"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "equippable head item"
+        }
+      }
+    },
+    "railways:green_copper_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative locometal palette"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_copper_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "train boiler part placed as structure"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "train boiler decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "boiler variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train construction"
+        }
+      }
+    },
+    "railways:green_copper_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "train smokebox part placed as structure"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "train smokebox decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "smokebox variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train construction"
+        }
+      }
+    },
+    "railways:green_flat_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative locometal palette"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_flat_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative locometal palette"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_folding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:doors",
+          "rationale": "door used as building opening"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "folding train door access"
+          ],
+          "signal": "inferred",
+          "rationale": "door variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "door for building"
+        }
+      }
+    },
+    "railways:green_four_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window block for train structures"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "train window"
+          ],
+          "signal": "inferred",
+          "rationale": "pane window variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "colored pane variant"
+        }
+      }
+    },
+    "railways:green_hazard_stripes_chevron_on_black": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard stripe block"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "hazard stripe decoration for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_hazard_stripes_chevron_on_white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard stripe block"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "hazard stripe decoration for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_hazard_stripes_diagonal_on_black": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard stripe block"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "hazard stripe decoration for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_hazard_stripes_diagonal_on_white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard stripe block"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "hazard stripe decoration for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_hinged_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:doors",
+          "rationale": "door used as building opening"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "hinged train door access"
+          ],
+          "signal": "inferred",
+          "rationale": "door variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "door for building"
+        }
+      }
+    },
+    "railways:green_incomplete_conductor_cap": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "evidence": "hidden from recipe viewers",
+          "rationale": "intermediate crafting component"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting conductor caps"
+          ],
+          "signal": "inferred",
+          "rationale": "incomplete item used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only during crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, probably crafted"
+        }
+      }
+    },
+    "railways:green_iron_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative locometal palette"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block for trains"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_iron_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "train boiler part placed as structure"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "train boiler decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "boiler variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train construction"
+        }
+      }
+    },
+    "railways:green_iron_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "train smokebox part placed as structure"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "train smokebox decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "smokebox variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train construction"
+        }
+      }
+    },
+    "railways:green_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "train boiler part placed as structure"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "train boiler"
+          ],
+          "signal": "inferred",
+          "rationale": "boiler variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "block placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train construction"
+        }
+      }
+    },
+    "railways:green_locometal_end_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "ladder carried and placed for climbing"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "climbing on train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "ladder for vertical access"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction access"
+        }
+      }
+    },
+    "railways:green_locometal_flywheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic storage component in Create"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "store rotational energy"
+          ],
+          "signal": "inferred",
+          "rationale": "flywheel function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in a system"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component for automation"
+        }
+      }
+    },
+    "railways:green_locometal_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative pillar for train structures"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative pillar block"
+          ],
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction"
+        }
+      }
+    },
+    "railways:green_locometal_rung_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "ladder carried and placed for climbing"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id starts 'green'"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "tag railways:locometal"
+        },
+        "primary_uses": {
+          "values": [
+            "climbing on train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "rung ladder variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "rarity component",
+          "rationale": "rarity=common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction access"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "railways:gray_wrapped_locometal_smokebox",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items; players would store them together.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_brass_wrapped_locometal",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_copper_wrapped_locometal",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_flat_riveted_locometal",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_flat_slashed_locometal",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_folding_locometal_door",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_four_pane_locometal_window",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_hazard_stripes_chevron_on_black",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_hazard_stripes_chevron_on_white",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_hazard_stripes_diagonal_on_black",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_hazard_stripes_diagonal_on_white",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_hinged_locometal_door",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_iron_wrapped_locometal",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_iron_wrapped_locometal_boiler",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_iron_wrapped_locometal_smokebox",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_locometal_boiler",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_locometal_end_ladder",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_locometal_flywheel",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_locometal_pillar",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    },
+    {
+      "item": "railways:green_locometal_rung_ladder",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all locometal items.",
+      "evidence": "tag tfg:locometal_blocks"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

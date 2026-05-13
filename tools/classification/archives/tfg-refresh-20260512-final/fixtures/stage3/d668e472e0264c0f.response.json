@@ -1,0 +1,1128 @@
+{
+  "items": {
+    "copycats:copycat_vertical_slope": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Copycat slope used for shaping structures"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players use it for decorative building"
+        },
+        "primary_uses": {
+          "values": [
+            "create sloped copycat blocks",
+            "build detailed structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Copycat blocks mimic other blocks for building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building specific slopes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only from another slope"
+        }
+      }
+    },
+    "copycats:copycat_vertical_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs shape used in building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players place stairs for access and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "create vertical stairs",
+            "build decorative staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Copycat stairs mimic other blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only from stairs"
+        }
+      }
+    },
+    "copycats:copycat_vertical_step": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Step shape used in building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players place steps for stepping up"
+        },
+        "primary_uses": {
+          "values": [
+            "create vertical steps",
+            "build detailed structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Copycat step mimics other blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building steps"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "copycats:copycat_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall is a structural block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players build walls for enclosures"
+        },
+        "primary_uses": {
+          "values": [
+            "create copycat walls",
+            "build fences and barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Copycat walls mimic other blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building walls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "copycats:copycat_wooden_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Button used for redstone signal"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Players use it to create hidden redstone triggers"
+        },
+        "primary_uses": {
+          "values": [
+            "create hidden redstone buttons",
+            "trigger contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Copycat button can mimic any block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources, likely crafted"
+        }
+      }
+    },
+    "copycats:copycat_wooden_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Pressure plate used for redstone signal"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Players use it to detect entity presence"
+        },
+        "primary_uses": {
+          "values": [
+            "create hidden pressure plates",
+            "detect entities"
+          ],
+          "signal": "inferred",
+          "rationale": "Copycat pressure plate can mimic any block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "craftingstation:crafting_station": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block workstation with crafting UI"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items quickly",
+            "keep crafting grid persistent"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides a permanent crafting grid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe consumption suggests crafting"
+        }
+      }
+    },
+    "craftingstation:crafting_station_slab": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Slab version of crafting station"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items in tight spaces",
+            "place vertically"
+          ],
+          "signal": "inferred",
+          "rationale": "Half-slab crafting station"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:acacia_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window block used in building"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix acacia_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players build windows for light and views"
+        },
+        "primary_uses": {
+          "values": [
+            "build transparent walls",
+            "create windowed facades"
+          ],
+          "signal": "inferred",
+          "rationale": "Full block window from Create"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:acacia_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane used in building"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix acacia_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players build panes for windows"
+        },
+        "primary_uses": {
+          "values": [
+            "build thin window panes",
+            "create glass-like barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Thin pane version of acacia window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:adjustable_chain_gearshift": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Kinetic power transmission component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to adjust speed in contraptions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's kinetic contraption system"
+        },
+        "primary_uses": {
+          "values": [
+            "adjust rotational speed",
+            "control contraption speed"
+          ],
+          "signal": "inferred",
+          "rationale": "Chain gearshift changes speed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        }
+      }
+    },
+    "create:analog_lever": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Outputs variable redstone signal"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for analog redstone control"
+        },
+        "primary_uses": {
+          "values": [
+            "provide variable redstone signal"
+          ],
+          "signal": "inferred",
+          "rationale": "Lever with strength control"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:andesite_alloy": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Primary crafting component for Create machines"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Key material for building automation"
+        },
+        "primary_uses": {
+          "values": [
+            "craft Create machine parts",
+            "build contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement calls it most important resource"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Frequently carried in stacks for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        }
+      }
+    },
+    "create:andesite_alloy_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed form of andesite alloy for storage"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of andesite alloy",
+            "decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingots compressed into a block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving stores, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        }
+      }
+    },
+    "create:andesite_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Metal bars used in building"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players build bars for windows or fences"
+        },
+        "primary_uses": {
+          "values": [
+            "build barred windows",
+            "create decorative fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Bar block similar to iron bars"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:andesite_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Casing component for contraptions"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used extensively in machine crafting"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic casing for kinetic machines"
+        },
+        "primary_uses": {
+          "values": [
+            "encase shafts and cogwheels",
+            "build machine blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: apply to stripped wood for casing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:andesite_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door used as building opening"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players install doors in buildings"
+        },
+        "primary_uses": {
+          "values": [
+            "build metal doors",
+            "secure entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "Door block that can be opened/closed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:andesite_encased_cogwheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cogwheel for kinetic transmission"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Transmits rotation in contraptions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Core kinetic component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit rotation",
+            "power machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Cogwheel with casing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        }
+      }
+    },
+    "create:andesite_encased_large_cogwheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Large cogwheel for kinetic transmission"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Transmits rotation at different speeds"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Core kinetic component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit rotation with gear ratio",
+            "power large machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Large cogwheel variants"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        }
+      }
+    },
+    "create:andesite_encased_shaft": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Shaft for rotational power transfer"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Transmits rotation along a line"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Core kinetic component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit rotation along shafts",
+            "connect distant machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Encased shaft for clean lines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        }
+      }
+    },
+    "create:andesite_funnel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Logistics component for item transfer"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to insert/extract items from containers"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create's item logistics network"
+        },
+        "primary_uses": {
+          "values": [
+            "insert items into containers",
+            "extract items from containers"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement: funnel for item transfer"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried often when setting up logistics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        }
+      }
+    },
+    "create:andesite_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Carried and placed for climbing traversal"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "primary_uses": {
+          "values": [
+            "climb vertically",
+            "traverse caves and builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Ladder used for ascent"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Players carry ladders when exploring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:andesite_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar used in construction"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Players build pillars for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "build decorative pillars",
+            "create structured columns"
+          ],
+          "signal": "inferred",
+          "rationale": "Stone pillar variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building decorative structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:andesite_scaffolding": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Temporary building aid carried in stacks"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to reach heights while building"
+        },
+        "primary_uses": {
+          "values": [
+            "build temporary scaffolding",
+            "climb while building"
+          ],
+          "signal": "inferred",
+          "rationale": "Scaffolding block for vertical access"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building large structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "create:andesite_table_cloth": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative cover for tables"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from id",
+          "rationale": "Id prefix andesite_"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Players place it for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate tables",
+            "cover surfaces with metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Place on top of tables"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried, placed once for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "Rarity component is common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

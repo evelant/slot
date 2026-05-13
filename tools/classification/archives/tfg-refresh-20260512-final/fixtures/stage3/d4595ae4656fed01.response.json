@@ -1,0 +1,1677 @@
+{
+  "items": {
+    "gtceu:steel_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Casing block for multiblock structures, placed not workstation"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machine housings"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated machine structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building multiblock machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as structural component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing used in multiblock machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "crafted from steel plates"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        }
+      }
+    },
+    "gtceu:steel_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Crafting hammer for smithing and crushing"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Regularly carried for crafting and mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crushing blocks",
+            "Smithing crafting tool"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip indicates crushing and pickaxe use"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as hammer at anvil for smithing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "crafted from steel ingot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard tool item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Wielded as tool"
+        }
+      }
+    },
+    "gtceu:steel_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when crafting tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting steel hammer"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in tool assembly"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe at anvil",
+          "rationale": "Produced at anvil or via curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable item"
+        }
+      }
+    },
+    "gtceu:steel_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Worn on head for protection"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Worn during exploration and combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Worn for protection in fights"
+        },
+        "primary_uses": {
+          "values": [
+            "Head armor for combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in helmet slot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard armor item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped on head"
+        }
+      }
+    },
+    "gtceu:steel_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy cable placed in network"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy transport automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at EV voltage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows max voltage 2048 EV"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable component of GT energy network"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier cable; players store with EV components"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier voltage in tooltip"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for cable network"
+        }
+      }
+    },
+    "gtceu:steel_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy wire placed in network"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy transport automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at EV voltage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows max voltage 2048 EV"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire is similar to cable for energy net"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier wire; players store with EV components"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier voltage in tooltip"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel wire"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for wire network"
+        }
+      }
+    },
+    "gtceu:steel_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Farming tool for tilling"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Farming tool often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for tilling farmland"
+        },
+        "primary_uses": {
+          "values": [
+            "Tilling farmland"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Farmer: Tills Ground"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel head and handle"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard tool item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Wielded as tool"
+        }
+      }
+    },
+    "gtceu:steel_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when crafting tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting steel hoe"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in tool assembly"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe at anvil or curving",
+          "rationale": "Produced from steel ingot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable item"
+        }
+      }
+    },
+    "gtceu:steel_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fluid pipe placed in network"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid transport automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Large-scale fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows 2400 mB/t transfer"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid pipe component of GT network"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel plates"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for pipe network"
+        }
+      }
+    },
+    "gtceu:steel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:ingots"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Basic crafting material always kept"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting steel tools, machines, and blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal ingot; stored with processed ores"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ingots indicates form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Players keep large stacks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and casting recipes",
+          "rationale": "Produced from iron/coal"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable item"
+        }
+      }
+    },
+    "gtceu:steel_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Multi-purpose cutting tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried for cutting tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Cutting food and materials",
+            "Combat as sword"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: usable as sword, used in many cuts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooking_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Knife is a kitchen tool for food prep"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel head and handle"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard tool item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Wielded as tool"
+        }
+      }
+    },
+    "gtceu:steel_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when crafting tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting steel knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in tool assembly"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe at anvil or curving",
+          "rationale": "Produced from steel ingot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable item"
+        }
+      }
+    },
+    "gtceu:steel_large_boiler": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Deprecated steam boiler block, part of machine network"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Unlikely to be carried (deprecated)"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Deprecated item, less common"
+        },
+        "primary_uses": {
+          "values": [
+            "Steam generation (obsolete)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: deprecated, steam production"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        }
+      }
+    },
+    "gtceu:steel_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fluid pipe placed in network"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid transport automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows 1200 mB/t transfer"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid pipe component of GT network"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel plates"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for pipe network"
+        }
+      }
+    },
+    "gtceu:steel_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Worn on legs for protection"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Worn during exploration and combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Worn for protection in fights"
+        },
+        "primary_uses": {
+          "values": [
+            "Leg armor for combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in leggings slot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard armor item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped on legs"
+        }
+      }
+    },
+    "gtceu:steel_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Casing block for multiblock machines"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machine housings"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated machine structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building machine casings for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as structural component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing used in multiblock machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel plates"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        }
+      }
+    },
+    "gtceu:steel_minecart_wheels": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for minecarts"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when crafting minecarts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting steel minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in minecart recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with other minecart components"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel ingots"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable item"
+        }
+      }
+    },
+    "gtceu:steel_mining_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Mining tool for large area breaks"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mining tool often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mines large area, places torches"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining large areas",
+            "Placing torches while mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Mines 3x3x1, places torches"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel ingots"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard tool item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Wielded as tool"
+        }
+      }
+    },
+    "gtceu:steel_mining_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when crafting tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting steel mining hammer"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in tool assembly"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe at anvil or curving",
+          "rationale": "Produced from steel ingot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable item"
+        }
+      }
+    },
+    "gtceu:steel_mortar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Grinding tool for dusts and flours"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for crafting dusts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Grinding items into dust",
+            "Making flours"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many mortar recipes (coal, gems, grains)"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooking_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking tool for grinding ingredients"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel ingot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard tool item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Wielded as tool"
+        }
+      }
+    },
+    "gtceu:steel_multiblock_tank": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock controller for fluid storage"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building tank multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid storage automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Large fluid storage (up to 8M mB)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Fluid Capacity 8000000 mB"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock controller for tank"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel plates"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as controller block"
+        }
+      }
+    },
+    "gtceu:steel_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multi-channel fluid pipe placed in network"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid transport automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Multi-channel fluid transport (9 channels)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows channels and transfer rate"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid pipe component of GT network"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel plates"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for pipe network"
+        }
+      }
+    },
+    "gtceu:steel_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fluid pipe placed in network"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid transport automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Fluid transport (600 mB/t)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows transfer rate"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid pipe component of GT network"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "Crafted from steel plates"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for pipe network"
+        }
+      }
+    },
+    "gtceu:steel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:nuggets"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Basic crafting material always kept"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting steel items in smaller quantities"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes requiring nuggets"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal nugget; stored with processed ores"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets indicates form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Players keep stacks of nuggets"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and anvil recipes",
+          "rationale": "Produced from ingot or smelting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable item"
+        }
+      }
+    },
+    "gtceu:steel_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy cable placed in network"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix steel_"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy transport automation"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at EV voltage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows max voltage 2048 EV"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable component of GT energy network"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier cable; players store with EV components"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/ev"
+          ],
+          "signal": "inferred",
+          "rationale": "EV tier voltage in tooltip"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed block item"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world for cable network"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

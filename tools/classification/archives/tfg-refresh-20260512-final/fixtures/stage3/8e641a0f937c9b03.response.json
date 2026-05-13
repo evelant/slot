@@ -1,0 +1,1078 @@
+{
+  "items": {
+    "gtceu:cobalt_brass_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "GTCEu component used in crafting machines"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "value": "crafting machines and components",
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "liquid bucket for transporting molten metal"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried as needed for fluid tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "value": "transporting molten metals",
+          "signal": "inferred",
+          "rationale": "scoop and pour liquid"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "inferred",
+          "rationale": "carries molten cobalt brass"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "bucket holds fluid",
+          "evidence": "form=bucket"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tool head component, not a tool itself"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialty component, small stack size"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "value": "crafting buzz saws",
+          "signal": "inferred",
+          "rationale": "tag forge:buzz_saw_heads"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined metal intermediate"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in welding and hammering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_double_ingots"
+        },
+        "primary_uses": {
+          "value": "hammering into plates or welding",
+          "signal": "inferred",
+          "rationale": "consumed in hammering and welding recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_double_ingots suggests group"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw material for smelting"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common intermediate in ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "primary_uses": {
+          "value": "smelting into ingots",
+          "signal": "inferred",
+          "rationale": "smelting recipe to ingot"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "GTCEu component for machines"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in machine crafting but not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "value": "crafting machines and mechanisms",
+          "signal": "inferred",
+          "rationale": "gear component in many recipes"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_huge_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport, no UI"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:large_item_pipes tag suggests pipe subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport for automation"
+        },
+        "primary_uses": {
+          "value": "automated item transport",
+          "signal": "inferred",
+          "rationale": "transfers items with rate/priority"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "moves items"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_huge_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block with priority, part of logistics"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:large_restrictive_pipes tag"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport for automation"
+        },
+        "primary_uses": {
+          "value": "high-priority item transport",
+          "signal": "inferred",
+          "rationale": "restrictive pipe with different priority"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "moves items"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "base refined metal form"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ingots"
+        },
+        "primary_uses": {
+          "value": "crafting advanced components",
+          "signal": "inferred",
+          "rationale": "used in rolling, compacting, anvil"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_ingots"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_large_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:large_item_pipes tag"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport for automation"
+        },
+        "primary_uses": {
+          "value": "automated item transport",
+          "signal": "inferred",
+          "rationale": "transfers items"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "moves items"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_large_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block with priority"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:large_restrictive_pipes tag"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport"
+        },
+        "primary_uses": {
+          "value": "high-priority item transport",
+          "signal": "inferred",
+          "rationale": "restrictive pipe with priority"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "rationale": "moves items"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_normal_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:normal_item_pipes tag"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport"
+        },
+        "primary_uses": {
+          "value": "automated item transport",
+          "signal": "inferred",
+          "rationale": "transfers items"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "rationale": "moves items"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_normal_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block with priority"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:normal_restrictive_pipes tag"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport"
+        },
+        "primary_uses": {
+          "value": "high-priority item transport",
+          "signal": "inferred",
+          "rationale": "restrictive pipe"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "rationale": "moves items"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets"
+        },
+        "primary_uses": {
+          "value": "crafting components and alloys",
+          "signal": "inferred",
+          "rationale": "used in anvil recipes"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined sheet metal"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:plates"
+        },
+        "primary_uses": {
+          "value": "crafting gears, rotors, and casings",
+          "signal": "inferred",
+          "rationale": "consumed in many machine recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_sheets"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for rotors and other parts"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "value": "crafting rotors and digger helmets",
+          "signal": "inferred",
+          "rationale": "ingredient in rotor and helmet recipes"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined long metal piece"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used in tool and component crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:rods"
+        },
+        "primary_uses": {
+          "value": "crafting tools, bolts, and screws",
+          "signal": "inferred",
+          "rationale": "used in many tool and component recipes"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for turbines and airships"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialty component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "value": "crafting turbines, propellers, and airships",
+          "signal": "inferred",
+          "rationale": "used in immersive aircraft and GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small fastener component"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common in machine recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "value": "crafting machines and assemblies",
+          "signal": "inferred",
+          "rationale": "used in many shaped recipes"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_small_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "small placed pipe for item transport"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:small_item_pipes tag"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport"
+        },
+        "primary_uses": {
+          "value": "low-volume item transport",
+          "signal": "inferred",
+          "rationale": "small pipe transfer rate"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "rationale": "moves items"
+        }
+      }
+    },
+    "gtceu:cobalt_brass_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "small restrictive pipe"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:small_restrictive_pipes tag"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport"
+        },
+        "primary_uses": {
+          "value": "low-volume high-priority transport",
+          "signal": "inferred",
+          "rationale": "restrictive small pipe"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "rationale": "moves items"
+        }
+      }
+    },
+    "gtceu:cobalt_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "liquid bucket for molten cobalt"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "inferred",
+          "rationale": "from display name and chemical formula Co"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried as needed for fluid tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "primary_uses": {
+          "value": "transporting molten metals",
+          "signal": "inferred",
+          "rationale": "scoop and pour liquid"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:molten"
+          ],
+          "signal": "inferred",
+          "rationale": "carries molten cobalt"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "form=bucket"
+        }
+      }
+    },
+    "gtceu:cobalt_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:double_cables tag"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport for automation"
+        },
+        "primary_uses": {
+          "value": "energy transport at LV tier",
+          "signal": "inferred",
+          "rationale": "tooltip shows LV voltage and amperage"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "transmits EU"
+        }
+      }
+    },
+    "gtceu:cobalt_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined metal intermediate"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in welding and hammering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_double_ingots"
+        },
+        "primary_uses": {
+          "value": "hammering into plates or welding",
+          "signal": "inferred",
+          "rationale": "consumed in hammering and welding recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_double_ingots suggests group"
+        }
+      }
+    },
+    "gtceu:cobalt_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport (wire form)"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "inferred",
+          "rationale": "from id and display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "forge:double_wires tag, used in cable recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "value": "energy transport at LV tier",
+          "signal": "inferred",
+          "rationale": "tooltip shows same voltage/amperage as cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "rationale": "transmits EU"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

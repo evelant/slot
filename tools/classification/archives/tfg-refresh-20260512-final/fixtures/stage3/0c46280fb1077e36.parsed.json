@@ -1,0 +1,1041 @@
+{
+  "items": {
+    "species:birt_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Throwable item that applies movement prevention; used as projectile"
+        },
+        "primary_uses": {
+          "values": [
+            "Throw at mobs to immobilize",
+            "Crafting music discs"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip indicates throwable; recipe as ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Useful crowd control item, players keep on hotbar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/eggs"
+          ],
+          "signal": "inferred",
+          "rationale": "Egg item grouped with other eggs"
+        },
+        "food_category": {
+          "values": [
+            "slot:egg"
+          ],
+          "signal": "pattern",
+          "rationale": "Egg tag and name"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible raw but also used in crafting"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "Raw egg, no cooking"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable up to 32"
+        }
+      }
+    },
+    "species:birt_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs collected by players"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning birt mobs in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "Creative-only spawn item"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Stage2 rule: spawn egg id pattern"
+        }
+      }
+    },
+    "species:birtday_cake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Placeable cake block eaten in slices; food item"
+        },
+        "primary_uses": {
+          "values": [
+            "Place as decoration",
+            "Eat slices for food"
+          ],
+          "signal": "inferred",
+          "rationale": "Block item that dispenses food slices"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for placement, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Cake is a prepared food; no exact slot: cake, so use prepared_meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly after slicing"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked cake"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Max stack 1"
+        }
+      }
+    },
+    "species:birtday_cake_slice": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible food item"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food and birt effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Food component with effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Situational food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Slice of prepared cake"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked cake"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        }
+      }
+    },
+    "species:bone_bark": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Skeletal bone block used as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative bone structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Block from archaeology, placed for looks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with bone theme"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "material_family": {
+          "value": "bone",
+          "signal": "named",
+          "rationale": "Name contains bone"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "pattern",
+          "rationale": "Stage2 from loot tables"
+        }
+      }
+    },
+    "species:bone_spike": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Skeletal bone block used as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative bone structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Block from archaeology, placed for looks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with bone theme"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "material_family": {
+          "value": "bone",
+          "signal": "named",
+          "rationale": "Name contains bone"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "pattern",
+          "rationale": "Stage2 from loot tables"
+        }
+      }
+    },
+    "species:bone_vertebra": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Skeletal bone block used as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative bone structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Block from archaeology, placed for looks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with bone theme"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "material_family": {
+          "value": "bone",
+          "signal": "named",
+          "rationale": "Name contains bone"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "pattern",
+          "rationale": "Stage2 from loot tables"
+        }
+      }
+    },
+    "species:broken_links": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mob drop likely used in crafting; no recipe evidence but plausible"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component"
+          ],
+          "signal": "guess",
+          "rationale": "No recipe output, but hidden_from_recipe_viewers false, could be crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rare mob drop, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "rationale": "Stage2 from loot tables"
+        }
+      }
+    },
+    "species:chaindelier": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative light source, placed for ambiance"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting and decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Emits light (13), placed as chandelier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for base decoration projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Stage2 from component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        }
+      }
+    },
+    "species:cliff_hanger_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collected by players"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning cliff hanger mobs in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "Creative-only spawn item"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Stage2 rule: spawn egg id pattern"
+        }
+      }
+    },
+    "species:coil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, used in shaped recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Output of a shaped recipe, likely input elsewhere"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specific crafting component, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        }
+      }
+    },
+    "species:cracked_wraptor_egg": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible egg with food component"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for food and wither resistance"
+          ],
+          "signal": "inferred",
+          "rationale": "Food with effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Situational food for wither resistance"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "food_category": {
+          "values": [
+            "slot:egg"
+          ],
+          "signal": "pattern",
+          "rationale": "Egg item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible raw but also used in crafting (juice)"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw egg"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        },
+        "origin": {
+          "values": [
+            "mob_drop",
+            "archaeology_site"
+          ],
+          "signal": "pattern",
+          "rationale": "Loot from wraptor egg block and coop chest"
+        }
+      }
+    },
+    "species:crankbow": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "Bow-like weapon with damage, in combat tab"
+        },
+        "primary_uses": {
+          "values": [
+            "Ranged combat",
+            "Ramps up speed over time"
+          ],
+          "signal": "inferred",
+          "rationale": "Weapon with unique mechanic"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Primary weapon, carried constantly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Max stack 1, tool durability"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        }
+      }
+    },
+    "species:cranktrap": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Trap block that interacts with redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Create traps with redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Block designed as a trap"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        }
+      }
+    },
+    "species:cruncher_egg": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Ancient egg block that can hatch; similar to sniffer egg"
+        },
+        "primary_uses": {
+          "values": [
+            "Hatch into Cruncher mob",
+            "Decorative block"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed egg that hatches"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when transporting to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "pattern",
+          "rationale": "Stage2 from loot tables"
+        }
+      }
+    },
+    "species:cruncher_pellet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Block placed by Cruncher mob, likely decorative"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative block",
+            "Mob interaction"
+          ],
+          "signal": "guess",
+          "rationale": "No recipe, hidden from recipe viewers, probably natural block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried, naturally placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        }
+      }
+    },
+    "species:cruncher_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collected by players"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning cruncher mobs in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "Creative-only spawn item"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Stage2 rule: spawn egg id pattern"
+        }
+      }
+    },
+    "species:deepfish_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fish, used to transport aquatic mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport deepfish",
+            "Catch and release fish"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket tool for mob transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when fishing or moving fish"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Max stack 1"
+        }
+      }
+    },
+    "species:deepfish_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collected by players"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning deepfish mobs in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "Creative-only spawn item"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Stage2 rule: spawn egg id pattern"
+        }
+      }
+    },
+    "species:deflector_dummy": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Block that absorbs damage when powered, reacts to redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Defense mechanism with redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: When Powered: damage absorb"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for base defense builds"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "rationale": "Component rarity uncommon"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Max stack 1"
+        }
+      }
+    },
+    "species:frozen_hair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Block from frozen biome, likely decorative"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative block"
+          ],
+          "signal": "guess",
+          "rationale": "No recipe, hidden from recipe viewers, natural block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried, naturally occurring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        }
+      }
+    },
+    "species:frozen_meat": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Block from frozen biome, likely decorative"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative block"
+          ],
+          "signal": "guess",
+          "rationale": "No recipe, hidden from recipe viewers, natural block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried, naturally occurring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        }
+      }
+    },
+    "species:ghoul_head": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Mob head, placed as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative head block"
+          ],
+          "signal": "inferred",
+          "rationale": "Similar to vanilla mob heads"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for decoration builds"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "rationale": "Component rarity uncommon"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 32"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "Dropped by ghoul entity"
+        }
+      }
+    },
+    "species:ghoul_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collected by players"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning ghoul mobs in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "Creative-only spawn item"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, not carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Stage2 rule: spawn egg id pattern"
+        }
+      }
+    },
+    "species:ghoul_tongue": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Mob drop with no crafting use, collected as novelty"
+        },
+        "primary_uses": {
+          "values": [
+            "Mob drop trophy"
+          ],
+          "signal": "inferred",
+          "rationale": "No recipe, hidden from recipe viewers"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rare mob drop, not commonly kept"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "pattern",
+          "rationale": "Stackable 64"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "rationale": "Stage2 from loot tables"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

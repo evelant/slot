@@ -1,0 +1,1570 @@
+{
+  "items": {
+    "gtceu:impure_lithium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "lithium",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/lithium"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into metal"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_magnesite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "magnesite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/magnesite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into metal"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_magnetite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "magnetite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/magnetite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted directly or cleaned"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    },
+    "gtceu:impure_malachite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "malachite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/malachite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted directly or cleaned"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    },
+    "gtceu:impure_mica_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "mica",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/mica"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into material"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_molybdenite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "molybdenite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/molybdenite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted directly or cleaned"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    },
+    "gtceu:impure_molybdenum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/molybdenum"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted directly or cleaned"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    },
+    "gtceu:impure_monazite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/monazite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into rare earths"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_naquadah_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/naquadah"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into naquadah"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_naquadria_solution_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket used for transport and containment"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "id contains naquadria"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holding a fluid solution"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized fluid, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "no rarity indicator"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting impure naquadria solution"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and fluid bucket use"
+        }
+      }
+    },
+    "gtceu:impure_neodymium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "neodymium",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/neodymium"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into metal"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_nether_quartz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/nether_quartz"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_nickel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/nickel"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted directly or cleaned"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    },
+    "gtceu:impure_oilsands_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "oilsands",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/oilsands"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into oil products"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_olivine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "olivine",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/olivine"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into gem materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_opal_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "opal",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/opal"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into gem materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_palladium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/palladium"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into precious metal"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_pentlandite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "pentlandite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/pentlandite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted directly or cleaned"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    },
+    "gtceu:impure_pitchblende_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "pitchblende",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/pitchblende"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into radioactive materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust', hazardous"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_platinum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/platinum"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted directly or cleaned"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    },
+    "gtceu:impure_pollucite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "pollucite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/pollucite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into caesium materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_powellite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "powellite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/powellite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_pyrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "pyrite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/pyrite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into cast iron"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Melts into ... Cast Iron' and cleaning"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    },
+    "gtceu:impure_pyrochlore_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "pyrochlore",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/pyrochlore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "further refinement into niobium"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Drop in Water to get Clean Dust'"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing and centrifugation recipes"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes impure dust through these machines"
+        }
+      }
+    },
+    "gtceu:impure_pyrolusite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate processing material, form is dust"
+        },
+        "material_family": {
+          "value": "pyrolusite",
+          "signal": "pattern",
+          "rationale": "id suffix and tag forge:impure_dusts/pyrolusite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form, intermediate stage before cleaning"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing chains"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component from crushed ores"
+        },
+        "primary_uses": {
+          "values": [
+            "cleaning into pure dust",
+            "direct smelting into ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "can be smelted directly or cleaned"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/blasting",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in splashing, centrifugation, and smelting"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "vintageimprovements:centrifugation",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "player can clean or smelt directly"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:impure_lithium_dust",
+      "facet": "organization_group",
+      "label": "Impure Dusts",
+      "proposed_id": "pack:tfg/impure_dusts",
+      "rationale": "Players store impure dusts separately from pure dusts and crushed ores during processing.",
+      "evidence": "Tag forge:impure_dusts and item name includes 'Impure'"
+    }
+  ],
+  "schema_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

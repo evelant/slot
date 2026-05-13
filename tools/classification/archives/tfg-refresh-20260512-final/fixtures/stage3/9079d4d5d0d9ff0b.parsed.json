@@ -1,0 +1,1364 @@
+{
+  "items": {
+    "tfc:rock/smooth/diorite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall block used in construction"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "rationale": "Rock type from id and tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone from world/stonecutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative structural wall"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other stone walls"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting/stonecutting"
+        }
+      }
+    },
+    "tfc:rock/smooth/dolomite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block used in construction"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "rationale": "Rock type from id and tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone from world/crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as full block or stonecutting input"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "Stored with sedimentary rock items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/dolomite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab used in construction"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for flooring and stepping"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other stone slabs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/dolomite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs used in construction"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other stone stairs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/dolomite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall block used in construction"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative structural wall"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other stone walls"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/gabbro": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block used in construction"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "rationale": "Rock type from id and tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone from world/crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as full block or stonecutting input"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "Stored with other igneous intrusive rock items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/gabbro_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab used in construction"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for flooring and stepping"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other stone slabs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/gabbro_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs used in construction"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other stone stairs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/gabbro_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall block used in construction"
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative structural wall"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other stone walls"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/gneiss": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block used in construction"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "rationale": "Rock type from id and tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone from world/crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as full block or stonecutting input"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Stored with metamorphic rock items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/gneiss_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab used in construction"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for flooring and stepping"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other stone slabs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/gneiss_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs used in construction"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other stone stairs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/gneiss_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall block used in construction"
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative structural wall"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other stone walls"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block used in construction"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "rationale": "Rock type from id and tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone from world/crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as full block or stonecutting input"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "Stored with other igneous intrusive rock items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/granite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab used in construction"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for flooring and stepping"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other stone slabs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/granite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs used in construction"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other stone stairs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/granite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall block used in construction"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative structural wall"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other stone walls"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/limestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block used in construction"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Rock type from id and tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone from world/crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as full block or stonecutting input"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "Stored with sedimentary rock items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/limestone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab used in construction"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for flooring and stepping"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other stone slabs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/limestone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs used in construction"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other stone stairs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/limestone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall block used in construction"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative structural wall"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other stone walls"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/marble": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Smooth stone block used in construction"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "rationale": "Rock type from id and tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone from world/crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as full block or stonecutting input"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Stored with metamorphic rock items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/marble_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab used in construction"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for flooring and stepping"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "Stored with other stone slabs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/marble_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs used in construction"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "Stored with other stone stairs"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    },
+    "tfc:rock/smooth/marble_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall block used in construction"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "rationale": "Rock type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative structural wall"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "Stored with other stone walls"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Only obtained through crafting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

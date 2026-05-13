@@ -1,0 +1,1170 @@
+{
+  "items": {
+    "create:cut_crimsite_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone wall block for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "inferred",
+          "rationale": "display name and stone type tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building projects, not carried everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "stone building walls"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative wall block for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "brick wall storage section"
+        }
+      }
+    },
+    "create:cut_crimsite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone brick block for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "inferred",
+          "rationale": "stone type from id and display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stockpiled for building, not carried daily"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick building blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick block for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "brick storage section"
+        }
+      }
+    },
+    "create:cut_crimsite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "inferred",
+          "rationale": "stone type from tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone slabs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone slab building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "rock slab storage section"
+        }
+      }
+    },
+    "create:cut_crimsite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "inferred",
+          "rationale": "stone type from tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone stair building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "rock stairs storage section"
+        }
+      }
+    },
+    "create:cut_crimsite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall for building"
+        },
+        "material_family": {
+          "value": "crimsite",
+          "signal": "inferred",
+          "rationale": "stone type from tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone walls"
+        },
+        "primary_uses": {
+          "values": [
+            "stone wall building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "inferred",
+          "rationale": "rock wall storage section"
+        }
+      }
+    },
+    "create:cut_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut migmatite stone block for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "inferred",
+          "rationale": "display name says Cut Migmatite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stone building block"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut stone block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate/migmatite storage section"
+        }
+      }
+    },
+    "create:cut_deepslate_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "migmatite brick slab for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "inferred",
+          "rationale": "parent stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone slabs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick slab building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate/migmatite family storage"
+        }
+      }
+    },
+    "create:cut_deepslate_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "migmatite brick stairs for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "inferred",
+          "rationale": "parent stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick stair building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate/migmatite family storage"
+        }
+      }
+    },
+    "create:cut_deepslate_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "migmatite brick wall for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "inferred",
+          "rationale": "parent stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone walls"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick wall building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate/migmatite family storage"
+        }
+      }
+    },
+    "create:cut_deepslate_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "migmatite brick block for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "inferred",
+          "rationale": "parent stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick building blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate/migmatite family storage"
+        }
+      }
+    },
+    "create:cut_deepslate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "migmatite slab for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "inferred",
+          "rationale": "display name says Cut Migmatite Slab"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone slabs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone slab building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate/migmatite family storage"
+        }
+      }
+    },
+    "create:cut_deepslate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "migmatite stairs for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "inferred",
+          "rationale": "display name says Cut Migmatite Stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone stair building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate/migmatite family storage"
+        }
+      }
+    },
+    "create:cut_deepslate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "migmatite wall for building"
+        },
+        "material_family": {
+          "value": "migmatite",
+          "signal": "inferred",
+          "rationale": "display name says Cut Migmatite Wall"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone walls"
+        },
+        "primary_uses": {
+          "values": [
+            "stone wall building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate/migmatite family storage"
+        }
+      }
+    },
+    "create:cut_diorite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut diorite block for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "stone type in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stone building block"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/diorite",
+          "rationale": "diorite stone storage section"
+        }
+      }
+    },
+    "create:cut_diorite_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "diorite brick slab for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone slabs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick slab building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite stone storage section"
+        }
+      }
+    },
+    "create:cut_diorite_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "diorite brick stairs for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick stair building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite stone storage section"
+        }
+      }
+    },
+    "create:cut_diorite_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "diorite brick wall for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone walls"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick wall building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite stone storage section"
+        }
+      }
+    },
+    "create:cut_diorite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "diorite brick block for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick building blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite stone storage section"
+        }
+      }
+    },
+    "create:cut_diorite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "diorite slab for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone slabs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone slab building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite stone storage section"
+        }
+      }
+    },
+    "create:cut_diorite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "diorite stairs for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone stair building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite stone storage section"
+        }
+      }
+    },
+    "create:cut_diorite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "diorite wall for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone walls"
+        },
+        "primary_uses": {
+          "values": [
+            "stone wall building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite stone storage section"
+        }
+      }
+    },
+    "create:cut_dripstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut travertine block for building"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "inferred",
+          "evidence": "display name Cut Travertine",
+          "rationale": "pack renames dripstone to Travertine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building construction"
+        },
+        "primary_uses": {
+          "values": [
+            "stone building block"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative cut stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone/travertine storage section"
+        }
+      }
+    },
+    "create:cut_dripstone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "travertine brick slab for building"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "inferred",
+          "rationale": "parent stone type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone slabs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick slab building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone/travertine storage section"
+        }
+      }
+    },
+    "create:cut_dripstone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "travertine brick stairs for building"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "inferred",
+          "rationale": "parent stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick stair building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone/travertine storage section"
+        }
+      }
+    },
+    "create:cut_dripstone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "travertine brick wall for building"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "inferred",
+          "rationale": "parent stone type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with stone walls"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick wall building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "dripstone/travertine storage section"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

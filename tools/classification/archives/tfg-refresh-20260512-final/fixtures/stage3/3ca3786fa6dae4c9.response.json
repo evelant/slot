@@ -1,0 +1,1301 @@
+{
+  "items": {
+    "gtceu:hsss_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "crafting dust form of HSS-S"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "id + tag forge:dusts/hsss",
+          "rationale": "alloy family from id and tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64, used in batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting runs"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HSS-S components"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is as ingredient"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral output"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes present",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "gtceu:hsss_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:foils",
+          "rationale": "foil is a material form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/hsss",
+          "rationale": "alloy from tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wires and fine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "foil used for small components"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal product"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine casing component, not decoration"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:frames/hsss",
+          "rationale": "alloy from tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32, used per machine build"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when building machines"
+        },
+        "primary_uses": {
+          "values": [
+            "building high-tier machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:frames",
+          "rationale": "frames storage bucket"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "part of multiblock system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/hsss",
+          "rationale": "gear is a material component"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/hsss",
+          "rationale": "alloy from tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 4, used as component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "needed for assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "gear used in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/hsss",
+          "rationale": "standard ingot form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/hsss",
+          "rationale": "alloy from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 16, used in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HSS-S tools and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "base form for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/hsss",
+          "rationale": "nugget form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/hsss",
+          "rationale": "alloy from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only for specific recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting small HSS-S parts"
+          ],
+          "signal": "inferred",
+          "rationale": "1/9 of ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget storage bucket"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/hsss",
+          "rationale": "plate form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/hsss",
+          "rationale": "alloy from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:plates"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 16, used in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "needed for casing crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine casings and components"
+          ],
+          "signal": "inferred",
+          "rationale": "plate is a common intermediate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal plate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/hsss",
+          "rationale": "ring is a material form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/hsss",
+          "rationale": "alloy from tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in specific recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rotors and seals"
+          ],
+          "signal": "inferred",
+          "rationale": "ring used in rotor crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/hsss",
+          "rationale": "rod form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/hsss",
+          "rationale": "alloy from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:rods"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 32"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "widely used in tool and machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "rod is a versatile component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal rod"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rotors/hsss",
+          "rationale": "rotor is a component"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:rotors/hsss",
+          "rationale": "alloy from tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 16, used per machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only for specific builds"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting turbines and engines"
+          ],
+          "signal": "inferred",
+          "rationale": "rotor used in power generation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_round": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rounds/hsss",
+          "rationale": "round is a material form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:rounds/hsss",
+          "rationale": "alloy from tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in small amounts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting small components"
+          ],
+          "signal": "inferred",
+          "rationale": "round used for bolts etc."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/hsss",
+          "rationale": "screw is a material form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/hsss",
+          "rationale": "alloy from tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 64"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "screw used in many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hsss_turbine_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:turbine_blades/hsss",
+          "rationale": "turbine blade form"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "tag forge:turbine_blades/hsss",
+          "rationale": "alloy from tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack 4"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only for turbine builds"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting large turbines"
+          ],
+          "signal": "inferred",
+          "rationale": "turbine blade specific"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "high-end component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "no loot, production recipes",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:huge_duct_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "air transport pipe, part of duct system"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "transferring air in machines"
+          ],
+          "signal": "inferred",
+          "rationale": "air duct pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:duct"
+          ],
+          "signal": "pattern",
+          "evidence": "tag and name",
+          "rationale": "air duct subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:huge_pipe_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable casting tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "casting huge pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "mold for pipe casting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:casting_molds",
+          "rationale": "mold storage"
+        },
+        "container_state": {
+          "values": [
+            "slot:reusable_mold"
+          ],
+          "signal": "named",
+          "evidence": "tag gtceu:casting_molds",
+          "rationale": "reusable mold"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:huge_pipe_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable extruder tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when extruding"
+        },
+        "primary_uses": {
+          "values": [
+            "extruding huge pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "mold for pipe extrusion"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:extruder_molds",
+          "rationale": "mold storage"
+        },
+        "container_state": {
+          "values": [
+            "slot:reusable_mold"
+          ],
+          "signal": "named",
+          "evidence": "tag gtceu:extruder_molds",
+          "rationale": "reusable mold"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hv_16a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block energy conversion UI"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "converting 16A HV EU to FE"
+          ],
+          "signal": "inferred",
+          "rationale": "energy conversion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hv_1a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block energy conversion UI"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "converting 1A HV EU to FE"
+          ],
+          "signal": "inferred",
+          "rationale": "energy conversion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hv_4a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block energy conversion UI"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "converting 4A HV EU to FE"
+          ],
+          "signal": "inferred",
+          "rationale": "energy conversion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hv_8a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block energy conversion UI"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "converting 8A HV EU to FE"
+          ],
+          "signal": "inferred",
+          "rationale": "energy conversion"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hv_air_scrubber": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block processing machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "scrubbing air in machines"
+          ],
+          "signal": "inferred",
+          "rationale": "air scrubber"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT machine line"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "likely crafted, no loot"
+        }
+      }
+    },
+    "gtceu:hv_alloy_smelter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block alloy smelter"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "alloy smelter"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "GT machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hv_arc_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block arc furnace"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "arc smelting ores"
+          ],
+          "signal": "inferred",
+          "rationale": "arc furnace"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "GT machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hv_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block assembler"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "assembling components"
+          ],
+          "signal": "inferred",
+          "rationale": "assembler machine"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "GT machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    },
+    "gtceu:hv_autoclave": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block autoclave"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "crystallizing dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "autoclave process"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "GT machine"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "crafted only"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

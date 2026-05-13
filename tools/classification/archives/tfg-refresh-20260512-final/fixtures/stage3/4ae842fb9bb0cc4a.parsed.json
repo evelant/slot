@@ -1,0 +1,1701 @@
+{
+  "items": {
+    "gtceu:impure_pyrope_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "impure dust is an intermediate ore processing material"
+        },
+        "material_family": {
+          "value": "pyrope",
+          "signal": "pattern",
+          "rationale": "id suffix after impure_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component_highlights shows common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in batches for dust cleaning, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in splashing and centrifugation machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced from crushed ore via milling/pressing, no loot"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust by washing or centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "main use is to produce clean dust"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe_ingredient_examples include splashing"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "used in splashing station"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input in splashing"
+        }
+      }
+    },
+    "gtceu:impure_quartzite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "intermediate ore processing dust"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch processing item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via washing/centrifugation"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes present"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed in splashing"
+        }
+      }
+    },
+    "gtceu:impure_realgar_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "realgar",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in batches"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing/centrifugation"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_red_garnet_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "red_garnet",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_redstone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "redstone",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing/centrifugation"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_rock_salt_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "rock_salt",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_ruby_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "ruby",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_salt_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "salt",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_saltpeter_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "saltpeter",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_sapphire_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "sapphire",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_scheelite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "scheelite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_silver_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate, also smeltable"
+        },
+        "material_family": {
+          "value": "silver",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing and smelting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust",
+            "smelted into silver ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "can be cleaned or directly smelted"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "has splashing, smelting, and blasting recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "used in splashing and furnaces"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to multiple processes"
+        }
+      }
+    },
+    "gtceu:impure_soapstone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "soapstone",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_sodalite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "sodalite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_spessartine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_sphalerite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate, smeltable"
+        },
+        "material_family": {
+          "value": "sphalerite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing and smelting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust",
+            "smelted into zinc ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "can be cleaned or directly smelted"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "has splashing, smelting, and blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "multiple stations"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to multiple processes"
+        }
+      }
+    },
+    "gtceu:impure_spodumene_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "spodumene",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_stibnite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate, smeltable"
+        },
+        "material_family": {
+          "value": "stibnite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing and smelting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust",
+            "smelted into antimony ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "can be cleaned or directly smelted"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "multiple stations"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to multiple"
+        }
+      }
+    },
+    "gtceu:impure_sulfur_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_talc_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "talc",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_tantalite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "tantalite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_tarkianite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "tarkianite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_tetrahedrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate, smeltable"
+        },
+        "material_family": {
+          "value": "tetrahedrite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing and smelting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust",
+            "smelted into copper ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "can be cleaned or directly smelted"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "has all three"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "multiple stations"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to multiple"
+        }
+      }
+    },
+    "gtceu:impure_thorium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate"
+        },
+        "material_family": {
+          "value": "thorium",
+          "signal": "pattern",
+          "rationale": "id suffix (thorianite)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cleaned via splashing"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "splashing recipes"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing"
+          ],
+          "signal": "pattern",
+          "rationale": "input to splashing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input"
+        }
+      }
+    },
+    "gtceu:impure_tin_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore processing intermediate, smeltable"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine processing and smelting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from crushed ore"
+        },
+        "primary_uses": {
+          "values": [
+            "purified into clean dust",
+            "smelted into tin ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "can be cleaned or directly smelted"
+        },
+        "workflow": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "has all three"
+        },
+        "used_at": {
+          "values": [
+            "greate:splashing",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "multiple stations"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:splashing#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to multiple"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:impure_pyrope_dust",
+      "facet": "organization_group",
+      "label": "Impure Dusts",
+      "proposed_id": "pack:tfg/impure_dusts",
+      "rationale": "No existing bucket for impure dusts, but players likely store them together",
+      "evidence": "multiple impure_dust items from various ores"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,986 @@
+{
+  "items": {
+    "tfg:clay/alfisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Clay dirt used as crafting ingredient for daub, compost, etc."
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay type dirt block"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common world block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for specific recipes, not always carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting daub and compost",
+            "Terrain filling"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses in recipes and building"
+        },
+        "origin": {
+          "value": "overworld_surface",
+          "signal": "inferred",
+          "rationale": "Natural surface clay block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Common storage group for dirt/clay blocks"
+        }
+      }
+    },
+    "tfg:clay/mollisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Volcanic clay dirt used as ingredient"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay type dirt block"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common world block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for specific recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting daub and compost",
+            "Terrain filling"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses in recipes and building"
+        },
+        "origin": {
+          "value": "overworld_surface",
+          "signal": "inferred",
+          "rationale": "Natural surface clay block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Common storage group for dirt/clay blocks"
+        }
+      }
+    },
+    "tfg:clay/oxisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tropical clay dirt used as ingredient"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay type dirt block"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common world block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for specific recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting daub and compost",
+            "Terrain filling"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses in recipes and building"
+        },
+        "origin": {
+          "value": "overworld_surface",
+          "signal": "inferred",
+          "rationale": "Natural surface clay block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Common storage group for dirt/clay blocks"
+        }
+      }
+    },
+    "tfg:clay/podzol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Layered clay dirt used as ingredient"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay type dirt block"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common world block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for specific recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting daub and compost",
+            "Terrain filling"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses in recipes and building"
+        },
+        "origin": {
+          "value": "overworld_surface",
+          "signal": "inferred",
+          "rationale": "Natural surface clay block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Common storage group for dirt/clay blocks"
+        }
+      }
+    },
+    "tfg:clay_grass/alfisol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Grass-covered clay block, placed as living terrain"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay base with grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common world block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried; mined only for landscaping"
+        },
+        "primary_uses": {
+          "values": [
+            "Terrain decoration",
+            "Soil for planting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as natural ground cover"
+        },
+        "origin": {
+          "value": "overworld_surface",
+          "signal": "inferred",
+          "rationale": "Natural surface grass block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with dirt and clay blocks"
+        }
+      }
+    },
+    "tfg:clay_grass/mollisol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Volcanic clay grass, living terrain block"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay base with grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common world block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Terrain decoration",
+            "Soil for planting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as natural ground cover"
+        },
+        "origin": {
+          "value": "overworld_surface",
+          "signal": "inferred",
+          "rationale": "Natural surface grass block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with dirt and clay blocks"
+        }
+      }
+    },
+    "tfg:clay_grass/oxisol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Tropical clay grass, living terrain block"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay base with grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common world block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Terrain decoration",
+            "Soil for planting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as natural ground cover"
+        },
+        "origin": {
+          "value": "overworld_surface",
+          "signal": "inferred",
+          "rationale": "Natural surface grass block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with dirt and clay blocks"
+        }
+      }
+    },
+    "tfg:clay_grass/podzol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Layered clay grass, living terrain block"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay base with grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common world block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Terrain decoration",
+            "Soil for planting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as natural ground cover"
+        },
+        "origin": {
+          "value": "overworld_surface",
+          "signal": "inferred",
+          "rationale": "Natural surface grass block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with dirt and clay blocks"
+        }
+      }
+    },
+    "tfg:claystone_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore block, mined and processed into material"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "id pattern and forge:ores/lorandite tag",
+          "rationale": "Lorandite mineral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Ore is relatively common underground"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined when encountered, used in processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lorandite ingots",
+            "Source of thallium"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing goal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and mining tool requirement",
+          "rationale": "Mined and processed"
+        },
+        "origin": {
+          "value": "overworld_cave",
+          "signal": "inferred",
+          "rationale": "Underground ore in claystone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        }
+      }
+    },
+    "tfg:claystone_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "Support beam block, structural building element"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "inferred",
+          "rationale": "Made from claystone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for mining support placement"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine support beams",
+            "Structural decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Prevents cave-ins and adds detail"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of mining infrastructure"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "pattern",
+          "evidence": "production recipes (damage_inputs_shaped_crafting)",
+          "rationale": "Crafted from claystone"
+        }
+      }
+    },
+    "tfg:clean_almandine_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid used for transport and processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport gem slurry",
+            "Input for gem processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_amethyst_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for gem processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport gem slurry",
+            "Input for gem processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_andradite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for gem processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport gem slurry",
+            "Input for gem processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_apatite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for gem processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport gem slurry",
+            "Input for gem processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_armalcolite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for gem processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport gem slurry",
+            "Input for gem processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_blue_topaz_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for gem processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport gem slurry",
+            "Input for gem processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_cinnabar_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for gem processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport gem slurry",
+            "Input for gem processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_coal_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for coal processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport coal slurry",
+            "Input for coal refinement"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_diamond_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for diamond processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport diamond slurry",
+            "Input for diamond refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_emerald_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for emerald processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport emerald slurry",
+            "Input for emerald refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_foil_pack": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate item used in gem processing recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly produced intermediate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during processing chains"
+        },
+        "primary_uses": {
+          "values": [
+            "Gem processing intermediary",
+            "Recycling material"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing and splashing recipes"
+        }
+      }
+    },
+    "tfg:clean_green_sapphire_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for green sapphire processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport green sapphire slurry",
+            "Input for gem refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_grossular_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for grossular processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport grossular slurry",
+            "Input for gem refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_lapis_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for lapis processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport lapis slurry",
+            "Input for lapis refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    },
+    "tfg:clean_lazurite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid for lazurite processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Intermediate processing fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried during gem processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport lazurite slurry",
+            "Input for lazurite refining"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid used in ore refinement"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form and fluid content",
+          "rationale": "Bucket holding liquid"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "tfg:claystone_support",
+      "facet": "organization_group",
+      "label": "Support Beams",
+      "proposed_id": "pack:tfg/support_beams",
+      "rationale": "Claystone support beam belongs with other support beams for storage",
+      "evidence": "tag tfc:support_beams"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

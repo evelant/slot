@@ -1,0 +1,1167 @@
+{
+  "items": {
+    "tfc_textile:tiger_shirt": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable clothes for warmth; equippable in chest slot"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides warmth and insulation stat when worn"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players often carry spare or swap for temperature"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Component rarity is common"
+        },
+        "material_family": {
+          "value": "burlap",
+          "signal": "pattern",
+          "evidence": "Display name contains 'tiger' but material not explicit; inferred from mod pattern",
+          "rationale": "Made by tfc_textile; likely cloth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "pattern",
+          "evidence": "Mod namespace matches group id",
+          "rationale": "TFC textile mod items stored together"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_beer": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Absorption buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Absorption effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for buff in exploration or combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket/item model and fluid content",
+          "rationale": "Bucket holding aged beer fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid, drinkable",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Absorption effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_cider": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Speed buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Speed effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for buff in exploration or combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding aged cider fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Speed effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_corn_whiskey": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Haste buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Haste effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for buff in mining/building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding aged corn whiskey fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Haste effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_mead": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Regeneration buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Regeneration effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for health regen in combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding aged mead fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Regeneration effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_rum": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Speed II buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Speed II effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for speed boost"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding aged rum fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Speed II effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_rye_whiskey": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Haste buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Haste effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for mining/building haste"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding aged rye whiskey fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Haste effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_sake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Resistance buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Resistance effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for damage reduction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding aged sake fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Resistance effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_vodka": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Resistance II buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Resistance II effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for strong damage reduction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding aged vodka fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Resistance II effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcagedalcohol:bucket/aged_whiskey": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid giving Haste II buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for Haste II effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect when consumed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for strong mining speed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holding aged whiskey fluid"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: state liquid",
+          "rationale": "Alcoholic drink item"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "named",
+          "evidence": "Provides Haste II effect",
+          "rationale": "Consumed for temporary status boost"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:fermented"
+          ],
+          "signal": "inferred",
+          "evidence": "Name includes 'aged'",
+          "rationale": "Aged alcohol is fermented"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "pattern",
+          "rationale": "Stack size 1 bucket"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible drink belongs with foods"
+        }
+      }
+    },
+    "tfcambiental:burlap_cowl": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable head clothing for warmth and sun protection"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for warmth and sun protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides insulation and blocks sunlight"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "burlap",
+          "signal": "pattern",
+          "evidence": "Name contains 'burlap'",
+          "rationale": "Made from burlap material"
+        }
+      }
+    },
+    "tfcambiental:burlap_pants": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable leg clothing for warmth"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for leg warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides insulation when worn"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "burlap",
+          "signal": "pattern",
+          "evidence": "Name contains 'burlap'",
+          "rationale": "Made from burlap material"
+        }
+      }
+    },
+    "tfcambiental:burlap_shirt": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable torso clothing for warmth"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for torso warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides insulation when worn"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "burlap",
+          "signal": "pattern",
+          "evidence": "Name contains 'burlap'",
+          "rationale": "Made from burlap material"
+        }
+      }
+    },
+    "tfcambiental:burlap_shoes": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable feet clothing for warmth"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for foot warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides insulation when worn"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "burlap",
+          "signal": "pattern",
+          "evidence": "Name contains 'burlap'",
+          "rationale": "Made from burlap material"
+        }
+      }
+    },
+    "tfcambiental:house_tester": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool to check if location is inside or outside"
+        },
+        "primary_uses": {
+          "values": [
+            "Check indoor/outdoor status"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: right-click to check if inside or outside",
+          "rationale": "Player-usable diagnostic item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or testing bases"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        }
+      }
+    },
+    "tfcambiental:insulated_leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable boots with extra warmth"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for foot warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides +2 warmth and insulation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "pattern",
+          "evidence": "Name contains 'leather'",
+          "rationale": "Made from leather"
+        }
+      }
+    },
+    "tfcambiental:insulated_leather_hat": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable hat with warmth and sun protection"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for head warmth and sun protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides +2 warmth and blocks sunlight"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "pattern",
+          "evidence": "Name contains 'leather'",
+          "rationale": "Made from leather"
+        }
+      }
+    },
+    "tfcambiental:insulated_leather_pants": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable pants with extra warmth"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for leg warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides +2 warmth and insulation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "pattern",
+          "evidence": "Name contains 'leather'",
+          "rationale": "Made from leather"
+        }
+      }
+    },
+    "tfcambiental:insulated_leather_tunic": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable tunic with extra warmth"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for torso warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides +2 warmth and insulation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "pattern",
+          "evidence": "Name contains 'leather'",
+          "rationale": "Made from leather"
+        }
+      }
+    },
+    "tfcambiental:leather_apron": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable apron for leg insulation"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for leg insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides insulation when worn"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "pattern",
+          "evidence": "Name contains 'leather'",
+          "rationale": "Made from leather"
+        }
+      }
+    },
+    "tfcambiental:silk_cowl": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable head clothing, light and sunblocking"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for light warmth and sun protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides -1 warmth, blocks sunlight"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "silk",
+          "signal": "pattern",
+          "evidence": "Name contains 'silk'",
+          "rationale": "Made from silk"
+        }
+      }
+    },
+    "tfcambiental:silk_pants": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable leg clothing, light"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for light leg warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides -1 warmth, +1 insulation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "silk",
+          "signal": "pattern",
+          "evidence": "Name contains 'silk'",
+          "rationale": "Made from silk"
+        }
+      }
+    },
+    "tfcambiental:silk_shirt": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable torso clothing, light"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for light torso warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides -1 warmth, +1 insulation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "silk",
+          "signal": "pattern",
+          "evidence": "Name contains 'silk'",
+          "rationale": "Made from silk"
+        }
+      }
+    },
+    "tfcambiental:silk_shoes": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable feet clothing, light"
+        },
+        "primary_uses": {
+          "values": [
+            "Worn for light foot warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides -1 warmth, +1 insulation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for temperature management"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "No rarity component, default common"
+        },
+        "material_family": {
+          "value": "silk",
+          "signal": "pattern",
+          "evidence": "Name contains 'silk'",
+          "rationale": "Made from silk"
+        }
+      }
+    },
+    "tfcambiental:snowshoes": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable feet equipment to prevent sinking in snow"
+        },
+        "primary_uses": {
+          "values": [
+            "Walk on powdered snow without sinking"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip: no more sinking into powdered snow",
+          "rationale": "Provides snow-walking ability"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when exploring snowy biomes"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Specialized mobility gear"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

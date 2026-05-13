@@ -1,0 +1,1089 @@
+{
+  "items": {
+    "expatternprovider:assembler_matrix_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for Assembler Matrix, part of AE2 autocrafting."
+        },
+        "primary_uses": {
+          "values": [
+            "Construct Assembler Matrix multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as frame for crafting array."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used when building the multiblock."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component rarity is common."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon item; players store with AE2 gear."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of autocrafting system."
+        }
+      }
+    },
+    "expatternprovider:assembler_matrix_glass": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock wall component for Assembler Matrix."
+        },
+        "primary_uses": {
+          "values": [
+            "Build Assembler Matrix casing"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as glass pane in multiblock."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only during construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon multiblock component."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of autocrafting structure."
+        }
+      }
+    },
+    "expatternprovider:assembler_matrix_pattern": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Pattern core for Assembler Matrix."
+        },
+        "primary_uses": {
+          "values": [
+            "Control recipe patterns in Assembler Matrix"
+          ],
+          "signal": "inferred",
+          "rationale": "Core that holds pattern logic."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used when setting up the matrix."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting component."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Core part of autocrafting."
+        }
+      }
+    },
+    "expatternprovider:assembler_matrix_speed": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Speed upgrade core for Assembler Matrix."
+        },
+        "primary_uses": {
+          "values": [
+            "Boost Assembler Matrix crafting speed"
+          ],
+          "signal": "inferred",
+          "rationale": "Upgrades throughput of the matrix."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used when upgrading the matrix."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting upgrade component."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of autocrafting speed enhancement."
+        }
+      }
+    },
+    "expatternprovider:assembler_matrix_wall": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Wall block for Assembler Matrix multiblock."
+        },
+        "primary_uses": {
+          "values": [
+            "Construct Assembler Matrix walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as wall in multiblock structure."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only during construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 multiblock component."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of autocrafting structure."
+        }
+      }
+    },
+    "expatternprovider:caner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine with UI for canning items/fluids."
+        },
+        "primary_uses": {
+          "values": [
+            "Fill cans with fluids or items"
+          ],
+          "signal": "inferred",
+          "rationale": "Processes cans in AE2 system."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, used occasionally for canning."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon machine."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated fluid/item handling machine."
+        }
+      }
+    },
+    "expatternprovider:circuit_cutter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine with UI for cutting circuits."
+        },
+        "primary_uses": {
+          "values": [
+            "Slice circuits for AE2 processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Processes circuit materials."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, used for circuit production."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon machine."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated circuit cutting."
+        }
+      }
+    },
+    "expatternprovider:crystal_fixer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine with UI for repairing AE2 crystals."
+        },
+        "primary_uses": {
+          "values": [
+            "Repair damaged AE2 crystals"
+          ],
+          "signal": "inferred",
+          "rationale": "Fixes crystals needed for crafting."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, used intermittently."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon machine."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crystal repair."
+        }
+      }
+    },
+    "expatternprovider:drive_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Applied to ME drives to enhance them."
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade ME drive capacity or speed"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed on drive in a UI."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only held when performing upgrades."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 drive upgrade component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Upgrade for ME storage drives."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Enhances storage system capacity."
+        }
+      }
+    },
+    "expatternprovider:ex_charger": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine with UI for charging items."
+        },
+        "primary_uses": {
+          "values": [
+            "Charge AE2 tools and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Recharges using ME energy."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, used to keep items charged."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 charging machine."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated charging station."
+        }
+      }
+    },
+    "expatternprovider:ex_crafting_terminal": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cable part for accessing ME crafting grid."
+        },
+        "primary_uses": {
+          "values": [
+            "Access extended ME crafting interface"
+          ],
+          "signal": "inferred",
+          "rationale": "Terminal on cable for crafting."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable part."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable-attached terminal part."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Terminal for crafting with ME network."
+        }
+      }
+    },
+    "expatternprovider:ex_drive": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine block housing ME storage cells."
+        },
+        "primary_uses": {
+          "values": [
+            "Store and access ME cells"
+          ],
+          "signal": "inferred",
+          "rationale": "Main storage block for AE2."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, used to manage cells."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage machine."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Central storage hub for ME system."
+        }
+      }
+    },
+    "expatternprovider:ex_export_bus_part": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cable part for exporting items from ME network."
+        },
+        "primary_uses": {
+          "values": [
+            "Export items from ME to external inventories"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation bus part."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept for setting up export lines."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable part."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable bus part."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Item export automation."
+        }
+      }
+    },
+    "expatternprovider:ex_import_bus_part": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cable part for importing items into ME network."
+        },
+        "primary_uses": {
+          "values": [
+            "Import items from external into ME"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation bus part."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept for import setups."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable part."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable bus part."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Item import automation."
+        }
+      }
+    },
+    "expatternprovider:ex_inscriber": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine with UI for inscribing circuits."
+        },
+        "primary_uses": {
+          "values": [
+            "Inscribe AE2 circuits and processors"
+          ],
+          "signal": "inferred",
+          "rationale": "Key processing station for AE2."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for circuit production."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 processing machine."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit crafting automation."
+        }
+      }
+    },
+    "expatternprovider:ex_interface": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine block for ME interfacing."
+        },
+        "primary_uses": {
+          "values": [
+            "Interface ME network with external inventories"
+          ],
+          "signal": "inferred",
+          "rationale": "Transfers items between ME and other blocks."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for automation setups."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network block."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item transfer between systems."
+        }
+      }
+    },
+    "expatternprovider:ex_interface_part": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cable part version of ME interface."
+        },
+        "primary_uses": {
+          "values": [
+            "Interface ME network on cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable-attached interface for tight spaces."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when building cable-based interfaces."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable part."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable part."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item transfer on cables."
+        }
+      }
+    },
+    "expatternprovider:ex_io_port": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine with UI for bulk cell I/O."
+        },
+        "primary_uses": {
+          "values": [
+            "Batch import/export ME cells"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles multiple cells at once."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for cell management."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage machine."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk cell input/output."
+        }
+      }
+    },
+    "expatternprovider:ex_molecular_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine for autocrafting using patterns."
+        },
+        "primary_uses": {
+          "values": [
+            "Craft items from ME patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting machine."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for autocrafting setups."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting machine."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting from patterns."
+        }
+      }
+    },
+    "expatternprovider:ex_pattern_access_part": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cable part terminal for pattern access."
+        },
+        "primary_uses": {
+          "values": [
+            "Access pattern storage in ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Terminal for managing patterns."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely moved."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable part."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable-attached terminal."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Pattern management terminal."
+        }
+      }
+    },
+    "expatternprovider:ex_pattern_provider": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine block supplying patterns to machines."
+        },
+        "primary_uses": {
+          "values": [
+            "Provide patterns to adjacent machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Sends crafting patterns to devices."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for autocrafting setups."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting block."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Supplies patterns for automated crafting."
+        }
+      }
+    },
+    "expatternprovider:ex_pattern_provider_part": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cable part version of pattern provider."
+        },
+        "primary_uses": {
+          "values": [
+            "Provide patterns on cables"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable-mounted pattern provider."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when building cable-based pattern provision."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable part."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable part."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Pattern provision for automation."
+        }
+      }
+    },
+    "expatternprovider:fishbig": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative block from ExtendedAE, likely ornamental."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate bases and fish-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Fun decorative block."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in decoration projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "ExtendedAE mod item; stored with mod items."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block."
+        }
+      }
+    },
+    "expatternprovider:infinity_cell": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Storage cell providing infinite water, used in ME drives."
+        },
+        "primary_uses": {
+          "values": [
+            "Supply infinite water to ME system"
+          ],
+          "signal": "inferred",
+          "rationale": "Cell that never depletes."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Inserted once into drive, rarely carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cell."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "ME storage cell component."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides infinite fluid storage in ME network."
+        }
+      }
+    },
+    "expatternprovider:ingredient_buffer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine block that buffers ingredients for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "Buffer items for autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Keeps ingredients ready for machines."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for inventory management."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 addon machine."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Buffers items for automated processes."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

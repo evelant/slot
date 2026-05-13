@@ -1,0 +1,1963 @@
+{
+  "items": {
+    "gtceu:red_granite_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for ore processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for ore processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for gem processing",
+            "milled into crushed ore",
+            "used in crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "emerald ore yields gems"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for ore processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for lead/silver processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "galena yields lead and silver"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for garnet sand",
+            "milled into crushed ore",
+            "used in abrasive crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "garnet sand has industrial uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for nickel processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "garnierite yields nickel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for glauconite sand",
+            "milled into crushed ore",
+            "used in pottery/fertilizer"
+          ],
+          "signal": "inferred",
+          "rationale": "glauconite sand has industrial uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for iron processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "goethite yields iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for gold processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "gold ore yields gold"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for mineral sand",
+            "milled into crushed ore",
+            "processed into components"
+          ],
+          "signal": "inferred",
+          "rationale": "granitic mineral sand yields industrial minerals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for graphite",
+            "milled into crushed ore",
+            "used in refractory/lubricant"
+          ],
+          "signal": "inferred",
+          "rationale": "graphite ore industrial use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for green sapphire",
+            "milled into crushed ore",
+            "used in gem crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "green sapphire ore yields gems"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for grossular garnet",
+            "milled into crushed ore",
+            "used in gem/abrasive"
+          ],
+          "signal": "inferred",
+          "rationale": "grossular ore yields garnet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for gypsum",
+            "milled into crushed ore",
+            "used in construction/fertilizer"
+          ],
+          "signal": "inferred",
+          "rationale": "gypsum ore industrial use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for iron processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "hematite yields iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for titanium/iron",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "ilmenite yields titanium and iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for iron processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore yields iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for kyanite",
+            "milled into crushed ore",
+            "used in refractory/ceramics"
+          ],
+          "signal": "inferred",
+          "rationale": "kyanite ore industrial use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for lapis lazuli",
+            "milled into crushed ore",
+            "used in dye/enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "lapis ore yields lapis"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for lazurite",
+            "milled into crushed ore",
+            "used in gem/dye processing"
+          ],
+          "signal": "inferred",
+          "rationale": "lazurite ore yields gem material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for lead processing",
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "lead ore yields lead"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for lithium",
+            "milled into crushed ore",
+            "used in glass/ceramics"
+          ],
+          "signal": "inferred",
+          "rationale": "lepidolite yields lithium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for lignite coal",
+            "used as fuel source",
+            "milled into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "lignite ore yields coal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:red_granite_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for lithium",
+            "milled into crushed ore",
+            "used in battery production"
+          ],
+          "signal": "inferred",
+          "rationale": "lithium ore yields lithium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen ore block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore in red granite stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "mined as primary activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore blocks stored together"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "processed in furnace, blast furnace, mill"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to these stations"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore stage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

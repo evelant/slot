@@ -1,0 +1,1398 @@
+{
+  "items": {
+    "gtceu:hv_battery_buffer_16x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for energy distribution, not a workstation."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name: High Voltage",
+          "rationale": "Tier directly in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity per component."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left, not carried."
+        },
+        "primary_uses": {
+          "values": [
+            "buffering EU power at HV tier"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says voltage IN/OUT and amperage."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated power grid."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy storage/distribution."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples present",
+          "rationale": "Only crafting recipes for aquisition."
+        }
+      }
+    },
+    "gtceu:hv_battery_buffer_4x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for energy distribution."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "Tier directly in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "primary_uses": {
+          "values": [
+            "buffering EU power at HV tier"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows voltage/amperage."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated power management."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy storage."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Only shaped recipe for aquisition."
+        }
+      }
+    },
+    "gtceu:hv_battery_buffer_8x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for energy distribution."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "Tier from name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "primary_uses": {
+          "values": [
+            "buffering EU power at HV tier"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows voltage/amperage."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated power management."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy storage."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Only shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_battery_hull": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for HV batteries."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "semantic_text: HV Battery Hull",
+          "rationale": "Tier in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in base storage, not always carried."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HV batteries"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in battery recipes."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier crafting component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, only used as ingredient; likely crafted."
+        }
+      }
+    },
+    "gtceu:hv_bedrock_ore_miner": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for automated mining."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name: Advanced Bedrock Ore Miner II",
+          "rationale": "HV tier from allowed voltage tiers in tooltip."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "primary_uses": {
+          "values": [
+            "automated bedrock ore mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Drills ores from veins under bedrock."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for automated mining."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, likely crafted."
+        }
+      }
+    },
+    "gtceu:hv_bender": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed processing machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "bending plates into shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine name and GT recipe purpose."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated processing."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_block_breaker": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for automatic mining."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "automatic block breaking and collection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Mines block on front face and collects drops."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated block mining."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_brewery": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for automated potion brewing."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "automated potion brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Compact and efficient potion brewing."
+        },
+        "activity": {
+          "values": [
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for potion brewing."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_buffer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for item/fluid buffering."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "buffering items and fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: store items and fluids."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item/fluid logistics."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_cadmium_battery": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable rechargeable power storage item."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "semantic_text: Tier HV",
+          "rationale": "Tier in tooltip."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players often carry charged batteries for tools."
+        },
+        "primary_uses": {
+          "values": [
+            "portable HV power storage",
+            "crafting component for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Reusable battery and used in many recipes."
+        },
+        "container_state": {
+          "values": [
+            "slot:energy_container"
+          ],
+          "signal": "named",
+          "evidence": "semantic_text: 0/1,600,000 EU",
+          "rationale": "Stores EU energy."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier component, players store with other HV parts."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "named",
+          "evidence": "tag: gtceu:batteries/hv",
+          "rationale": "Part of GTCEu battery system."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, used in recipes, likely crafted."
+        }
+      }
+    },
+    "gtceu:hv_canner": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for canning."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "canning items into containers"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Puts things into and out of Containers."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated processing."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_centrifuge": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed processing machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "centrifugal separation of materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Separating Molecules."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated processing."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for charging items."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "charging batteries and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Voltage IN/OUT, item slots for charging."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu charger system."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_chemical_bath": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed processing machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "chemical treatment of ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Bathing Ores in Chemicals."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated ore processing."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_chemical_reactor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed processing machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "chemical reactions between items and fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Letting Chemicals react."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated chemical processing."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_circuit_assembler": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for circuit assembly."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "circuit board assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Pick-n-Place."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated circuit crafting."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_combustion": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed power generation machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "generating EU by burning fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Voltage OUT, fluid capacity."
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu generator system."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_compressor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed processing machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "compressing materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine name and GT recipe purpose."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated processing."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_conveyor_module": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component used as a cover."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "item name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in base storage, not everyday carry."
+        },
+        "primary_uses": {
+          "values": [
+            "transferring items as a machine cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Transfers Items as Cover."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:conveyor"
+          ],
+          "signal": "named",
+          "evidence": "tag: gtceu:conveyor_modules",
+          "rationale": "Part of GTCEu conveyor system."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipes for production."
+        }
+      }
+    },
+    "gtceu:hv_cutter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed processing machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "cutting materials into shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Slice'N Dice."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated cutting."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_diode": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed component for directional energy flow."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "directional energy flow control"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Allows Energy Flow in one direction."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GTCEu energy network."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_distillery": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed processing machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "fluid distillation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Extracting most relevant Parts of Fluids."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated fluid processing."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_electric_furnace": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed electric smelting machine."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "display_name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "electric smelting of materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine name and GT recipe purpose."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated smelting."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier machine component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipe."
+        }
+      }
+    },
+    "gtceu:hv_electric_motor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for many machines."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "item name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not always carried."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient in many machine recipes."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipes for production."
+        }
+      }
+    },
+    "gtceu:hv_electric_piston": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for many machines."
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "item name",
+          "rationale": "HV in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in base, not always carried."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient in many machine recipes."
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage-tier component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples",
+          "rationale": "Shaped recipes for production."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,821 @@
+{
+  "items": {
+    "buildinggadgets2:gadget_copy_paste": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld gadget for building tasks"
+        },
+        "primary_uses": {
+          "values": [
+            "copy and paste structures",
+            "building large projects"
+          ],
+          "signal": "inferred",
+          "rationale": "gadget copies blocks in area"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/buildinggadgets2_items"
+          ],
+          "signal": "inferred",
+          "rationale": "mod-specific gadget storage"
+        }
+      }
+    },
+    "buildinggadgets2:gadget_cut_paste": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld gadget for cutting/pasting"
+        },
+        "primary_uses": {
+          "values": [
+            "cut and paste structures"
+          ],
+          "signal": "inferred",
+          "rationale": "gadget moves blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/buildinggadgets2_items"
+          ],
+          "signal": "inferred",
+          "rationale": "mod-specific gadget storage"
+        }
+      }
+    },
+    "buildinggadgets2:gadget_destruction": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld gadget for destroying blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "destroy blocks in patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "gadget breaks blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during mining/building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/buildinggadgets2_items"
+          ],
+          "signal": "inferred",
+          "rationale": "mod-specific gadget storage"
+        }
+      }
+    },
+    "buildinggadgets2:gadget_exchanging": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld gadget for swapping blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "exchange blocks quickly"
+          ],
+          "signal": "inferred",
+          "rationale": "gadget swaps blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/buildinggadgets2_items"
+          ],
+          "signal": "inferred",
+          "rationale": "mod-specific gadget storage"
+        }
+      }
+    },
+    "buildinggadgets2:redprint": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "stores structure data for gadgets"
+        },
+        "primary_uses": {
+          "values": [
+            "store building templates",
+            "load into copy gadget"
+          ],
+          "signal": "inferred",
+          "rationale": "holds saved structure data"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when saving/loading"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/buildinggadgets2_items"
+          ],
+          "signal": "inferred",
+          "rationale": "mod-specific gadget storage"
+        }
+      }
+    },
+    "buildinggadgets2:template": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "stores structure data from paper"
+        },
+        "primary_uses": {
+          "values": [
+            "store structure data",
+            "load into copy gadget"
+          ],
+          "signal": "inferred",
+          "rationale": "holds saved structure data"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when saving/loading"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/buildinggadgets2_items"
+          ],
+          "signal": "inferred",
+          "rationale": "mod-specific gadget storage"
+        }
+      }
+    },
+    "buildinggadgets2:template_manager": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block with UI for managing templates"
+        },
+        "primary_uses": {
+          "values": [
+            "save and load templates",
+            "manage structure data"
+          ],
+          "signal": "inferred",
+          "rationale": "UI allows saving/loading structures"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and used occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/buildinggadgets2_items"
+          ],
+          "signal": "inferred",
+          "rationale": "mod-specific gadget storage"
+        }
+      }
+    },
+    "chalk:black_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:blue_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:brown_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:chalk_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "opens UI to store multiple chalks"
+        },
+        "primary_uses": {
+          "values": [
+            "store and organize chalks",
+            "quick access to multiple chalks"
+          ],
+          "signal": "inferred",
+          "rationale": "holds chalks for easy carrying"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when using chalk colors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        }
+      }
+    },
+    "chalk:cyan_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:gray_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:green_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:light_blue_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:light_gray_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:lime_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "lime",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:magenta_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "magenta",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:orange_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "orange",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:pink_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "pink",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:purple_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:red_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "red",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:white_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "chalk:yellow_chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld chalk for marking paths"
+        },
+        "primary_uses": {
+          "values": [
+            "mark paths and blocks",
+            "draw on blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "chalk used for marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "named",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "comforts:hammock_black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "furniture block for sleeping/decor"
+        },
+        "primary_uses": {
+          "values": [
+            "sleep in hammock",
+            "decorate base"
+          ],
+          "signal": "inferred",
+          "rationale": "bed-like block placed once"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity common"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "rationale": "color in name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/comforts_items"
+          ],
+          "signal": "inferred",
+          "rationale": "mod-specific furniture storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

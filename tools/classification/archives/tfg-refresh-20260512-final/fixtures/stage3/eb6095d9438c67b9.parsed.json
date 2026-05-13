@@ -1,0 +1,771 @@
+{
+  "items": {
+    "create:andesite_tunnel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Player uses it to build belt tunnels and factory structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Covering belts in automation lines",
+            "Building factory infrastructure"
+          ],
+          "signal": "inferred",
+          "rationale": "Common building block for Create contraptions"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily crafted"
+        }
+      }
+    },
+    "create:asurine": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Natural stone block used for building and crafting variants"
+        },
+        "material_family": {
+          "value": "asurine",
+          "signal": "inferred",
+          "rationale": "Specific stone type"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with asurine stone",
+            "Stonecutting into decorative blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Mainly used in construction and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone"
+        }
+      }
+    },
+    "create:asurine_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone pillar block"
+        },
+        "material_family": {
+          "value": "asurine",
+          "signal": "inferred",
+          "rationale": "Same stone as base asurine"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative pillars",
+            "Stonecutting from asurine"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common decorative variant"
+        }
+      }
+    },
+    "create:attribute_filter": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Helps filter items by attributes in contraptions"
+        },
+        "primary_uses": {
+          "values": [
+            "Filtering items in Create logistics",
+            "Configuring attribute-based sorting"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool for setting up item filters"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when setting up filters"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common materials"
+        }
+      }
+    },
+    "create:bamboo_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window block used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows and glass walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a decorative building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily crafted"
+        }
+      }
+    },
+    "create:bamboo_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane block for building"
+        },
+        "dye_color": {
+          "value": null,
+          "signal": "inferred",
+          "rationale": "Not dyed; natural bamboo color"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Crafting ingredient for many glass pane recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and as a crafting component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:bar_of_chocolate": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "food component (nutrition 6)",
+          "rationale": "Edible food item"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Chocolate is a sweet treat, akin to fruit-based snack"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating to restore hunger"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic food item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Snack carried sometimes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to make"
+        }
+      }
+    },
+    "create:basin": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of Create processing contraption, no UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Holding items/fluids for mixing/crushing",
+            "Input for mechanical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated workflows"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted early game"
+        }
+      }
+    },
+    "create:belt_connector": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Connects shafts to transmit rotational power"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "named",
+          "evidence": "advancement 'Kelp Drive'",
+          "rationale": "Explicitly about mechanical power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmitting rotational power between shafts",
+            "Creating conveyor belts"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component for Create's power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building contraptions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from basic materials"
+        }
+      }
+    },
+    "create:birch_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows and glass walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:birch_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:black_postbox": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Station for sending/receiving packages"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "evidence": "id prefix 'black_'",
+          "rationale": "Dyed black variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Sending packages via Create logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Interactive block for package system"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and used occasionally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds packages"
+        }
+      }
+    },
+    "create:black_seat": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Furniture for decoration and sitting"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "Black colored seat"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative seating",
+            "Sitting in bases"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places as furniture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common decorative block"
+        }
+      }
+    },
+    "create:black_table_cloth": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Table decoration block"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "Black colored cloth"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:black_toolbox": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Container that stores items"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "Black colored toolbox"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in a compact block"
+          ],
+          "signal": "inferred",
+          "rationale": "Player opens to access inventory"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed at base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common container"
+        }
+      }
+    },
+    "create:black_valve_handle": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Player input component for contraptions"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "Black colored handle"
+        },
+        "primary_uses": {
+          "values": [
+            "Manually controlling contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Right-click to rotate and adjust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:blaze_burner": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Heat source for processing contraptions"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing heat for automated cooking/smoking",
+            "Superheating with special fuels"
+          ],
+          "signal": "inferred",
+          "rationale": "Feeds heat into mechanical processes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in automation setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        }
+      }
+    },
+    "create:blaze_cake": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Feeds blaze burners for superheat"
+        },
+        "primary_uses": {
+          "values": [
+            "Fueling blaze burners to superheat"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed by block, not player"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when upgrading burners"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        }
+      }
+    },
+    "create:blaze_cake_base": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting into blaze cake"
+          ],
+          "signal": "inferred",
+          "rationale": "Only purpose is as recipe component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for later crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        }
+      }
+    },
+    "create:blue_postbox": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Package sending station"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "Blue colored postbox"
+        },
+        "primary_uses": {
+          "values": [
+            "Sending packages via Create logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Interactive block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:blue_seat": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Furniture block"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "Blue seat"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative seating",
+            "Sitting in bases"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as furniture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:blue_table_cloth": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Table decoration"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "Blue cloth"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:blue_toolbox": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Container block"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "Blue toolbox"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items"
+          ],
+          "signal": "inferred",
+          "rationale": "Opens to access inventory"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed at base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:blue_valve_handle": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Manual control for contraptions"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "Blue handle"
+        },
+        "primary_uses": {
+          "values": [
+            "Manually controlling contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "Right-click to rotate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        }
+      }
+    },
+    "create:bound_cardboard_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Block used for building or crafting"
+        },
+        "material_family": {
+          "value": "cardboard",
+          "signal": "inferred",
+          "rationale": "Made of cardboard"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with cardboard blocks",
+            "Crafting into cardboard items"
+          ],
+          "signal": "inferred",
+          "rationale": "Both decorative and crafting intermediate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common materials"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

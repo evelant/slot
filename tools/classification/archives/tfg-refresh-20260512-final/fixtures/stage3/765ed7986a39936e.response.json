@@ -1,0 +1,1171 @@
+{
+  "items": {
+    "gtceu:steel_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for mechanisms and weapons"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id and tags: forge:springs/steel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component with common tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components",
+            "springs for mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "used in flintlock, ricoshield, etc."
+        }
+      }
+    },
+    "gtceu:steel_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "id suffix _sword and tag minecraft:swords"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material is steel"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players carry sword everywhere"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable tool"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat, slashing damage"
+          ],
+          "signal": "inferred",
+          "rationale": "sword tooltip"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is fighting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe tfc:advanced_shapeless_crafting",
+          "rationale": "crafted on anvil"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "wielded as weapon"
+        }
+      }
+    },
+    "gtceu:steel_sword_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool part, not a finished tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel swords"
+          ],
+          "signal": "inferred",
+          "rationale": "component in sword recipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe tfc:anvil",
+          "rationale": "shaped on anvil"
+        }
+      }
+    },
+    "gtceu:steel_tank_valve": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock component for fluid I/O"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building tanks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common machine part"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid input/output for multiblock tanks",
+            "building fluid systems"
+          ],
+          "signal": "inferred",
+          "evidence": "tooltip: Use to fill and drain multiblock tanks",
+          "rationale": "player perception from tooltip"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling part"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:steel_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix and tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "pipes used often in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids",
+            "building fluid networks"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:tiny_fluid_pipes"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "pattern",
+          "rationale": "fluid pipe"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:steel_turbine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock casing for turbine"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix (note: display name says Magnalium but id is steel)"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building turbines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common machine casing"
+        },
+        "primary_uses": {
+          "values": [
+            "building turbine multiblocks",
+            "machine housing"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for power gen"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of turbine power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for multiblock structure"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe crafting_shaped",
+          "rationale": "crafted from steel plates"
+        }
+      }
+    },
+    "gtceu:steel_whisk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "component used in mixer recipe, not tool itself"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix and tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mechanical mixers",
+            "crafting food processors"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Greate mixer and LV food processor"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build automation machines"
+        }
+      }
+    },
+    "gtceu:steel_wire_cutter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "durable tool with 2560 uses, tag forge:tools/wire_cutters"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes, kept handy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting wires",
+            "crafting electronic components",
+            "stripping cables"
+          ],
+          "signal": "inferred",
+          "rationale": "used in 139 recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe tfc:advanced_shaped_crafting",
+          "rationale": "crafted on anvil"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:machine_setup"
+          ],
+          "signal": "inferred",
+          "rationale": "essential for building machines"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "wielded tool"
+        }
+      }
+    },
+    "gtceu:steel_wire_cutter_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool part, not finished tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix and tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel wire cutters"
+          ],
+          "signal": "inferred",
+          "rationale": "component in wire cutter recipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe tfc:anvil",
+          "rationale": "shaped on anvil"
+        }
+      }
+    },
+    "gtceu:steel_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "durable tool with 2560 uses, tag forge:tools/wrenches"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential for machine work, always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "primary_uses": {
+          "values": [
+            "dismantling machines",
+            "rotating blocks",
+            "configuring pipes"
+          ],
+          "signal": "inferred",
+          "evidence": "tooltip: Hold left click to dismantle Machines",
+          "rationale": "player-facing function"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine maintenance tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe tfc:advanced_shaped_crafting",
+          "rationale": "crafted on anvil"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:machine_setup",
+            "slot:base_maintenance"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building and fixing machines"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Rotates Blocks/Configures"
+        }
+      }
+    },
+    "gtceu:steel_wrench_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool part"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id prefix and tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel wrenches"
+          ],
+          "signal": "inferred",
+          "rationale": "component in wrench recipe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe tfc:anvil",
+          "rationale": "shaped on anvil"
+        }
+      }
+    },
+    "gtceu:stellite_100_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "compressed material block, not a container"
+        },
+        "material_family": {
+          "value": "stellite_100",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy, less common"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of stellite-100",
+            "crafting plates via cutting"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block usage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:storage_blocks"
+        }
+      }
+    },
+    "gtceu:stellite_100_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten metal, used for casting"
+        },
+        "material_family": {
+          "value": "stellite_100",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when casting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "pouring molten stellite-100 into molds",
+            "casting stellite-100 items"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for casting workflow"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "used to pour into casting table"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "molten metal poured at casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "item placed into casting mold"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds molten metal fluid"
+        }
+      }
+    },
+    "gtceu:stellite_100_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of alloy"
+        },
+        "material_family": {
+          "value": "stellite_100",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "alloy dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "mixing into alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "dust processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "rationale": "pure dust (not impure)"
+        }
+      }
+    },
+    "gtceu:stellite_100_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot form"
+        },
+        "material_family": {
+          "value": "stellite_100",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting stellite-100 components",
+            "alloying with other metals"
+          ],
+          "signal": "inferred",
+          "rationale": "base material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ingots"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_ingots"
+        }
+      }
+    },
+    "gtceu:stellite_100_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "nugget form"
+        },
+        "material_family": {
+          "value": "stellite_100",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting small amounts"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "alloy nugget"
+        },
+        "primary_uses": {
+          "values": [
+            "alloying small amounts",
+            "crafting tiny components"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget usage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "rationale": "nugget storage"
+        }
+      }
+    },
+    "gtceu:stellite_100_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "plate form"
+        },
+        "material_family": {
+          "value": "stellite_100",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "alloy plate"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine casings",
+            "fabricating components"
+          ],
+          "signal": "inferred",
+          "rationale": "plate usage in crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:plates"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_sheets"
+        }
+      }
+    },
+    "gtceu:stem_cells": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "guess",
+          "rationale": "no recipes, mysterious item 'Raw Intelligence'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "guess",
+          "rationale": "kept in storage, not carried"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "guess",
+          "rationale": "special item with no known use"
+        },
+        "primary_uses": {
+          "values": [
+            "unknown, possibly advanced crafting"
+          ],
+          "signal": "guess",
+          "rationale": "tooltip suggests biological component"
+        }
+      }
+    },
+    "gtceu:sterilized_growth_medium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in bio processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "growing cells in lab processes"
+          ],
+          "signal": "guess",
+          "rationale": "name suggests growth medium"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        }
+      }
+    },
+    "gtceu:sterilizing_filter_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock casing for filter"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building filter"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common machine part"
+        },
+        "primary_uses": {
+          "values": [
+            "building sterilizing filter multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing name indicates filter structure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "part of multiblock filter"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe crafting_shaped",
+          "rationale": "crafted"
+        }
+      }
+    },
+    "gtceu:sterling_silver_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "compressed material block"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common alloy block"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of sterling silver",
+            "crafting plates"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block usage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:storage_blocks"
+        }
+      }
+    },
+    "gtceu:sterling_silver_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small component"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tongs",
+            "assembling machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        }
+      }
+    },
+    "gtceu:sterling_silver_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten metal"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common alloy fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "pouring molten sterling silver",
+            "casting sterling silver items"
+          ],
+          "signal": "inferred",
+          "rationale": "casting workflow"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "used at casting table"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "molten metal poured into casting table"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input for casting"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds molten metal"
+        }
+      }
+    },
+    "gtceu:sterling_silver_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "double ingot form"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "forging into plates or rods",
+            "anvil welding"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate step in metal forming"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:double_ingots"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:pileable_double_ingots"
+        }
+      }
+    },
+    "gtceu:sterling_silver_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common alloy dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "mixing into alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "dust processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "rationale": "pure dust"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

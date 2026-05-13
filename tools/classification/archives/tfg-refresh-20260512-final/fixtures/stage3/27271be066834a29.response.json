@@ -1,0 +1,1433 @@
+{
+  "items": {
+    "gtceu:deepslate_tin_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and smelted into materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, smelted later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into tin ingots",
+            "Source of tin for crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into topaz gems",
+            "Source of topaz for crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into tricalcium phosphate",
+            "Source of phosphate"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into trona",
+            "Source of soda ash"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into tungsten",
+            "Source of tungsten"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into uranium",
+            "Source of uranium"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into vanadium magnetite",
+            "Source of vanadium and iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into molybdenum and lead",
+            "Source of molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into yellow garnet gems",
+            "Source of garnet"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into iron",
+            "Source of iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:deepslate_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried out of mines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore in deepslate"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in deepslate caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of mining, processed later"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace or blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnace or blast furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore blocks to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into zeolite",
+            "Source of zeolite"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is material extraction"
+        }
+      }
+    },
+    "gtceu:dense_beryllium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-tier machines",
+            "Component in quantum chests and tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_darmstadtium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-tier machines",
+            "Component in quantum chests and tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_desh_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-tier machines",
+            "Component in space-related recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_hsla_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-tier machines",
+            "Component in advanced structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_lead_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting radiation shielding",
+            "Component in advanced machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_magnetic_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting magnetic components",
+            "Component in advanced machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_maraging_steel_300_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-strength components",
+            "Component in advanced machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_naquadah_alloy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-tier machines",
+            "Component in mega blast furnace"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_obsidian_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed obsidian plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting blast-resistant components",
+            "Component in advanced machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_rhodium_plated_palladium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed alloy plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-end machines",
+            "Component in vacuum freezer and quantum tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_rocket_alloy_t1_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed rocket alloy plate"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting rocket components",
+            "Component in space-tier machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_rocket_alloy_t2_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed rocket alloy plate"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting rocket components",
+            "Component in space-tier machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_rtm_alloy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in advanced machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed RTM alloy plate"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-end machines",
+            "Component in advanced structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a material in advanced recipes"
+        }
+      }
+    },
+    "gtceu:dense_ostrum_vapor_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used for fluid transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when moving gases"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid container"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to transport dense ostrum vapor"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting dense ostrum vapor",
+            "Fluid handling in logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket for moving a specific gas"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:dense_beryllium_plate",
+      "facet": "material_family",
+      "value": "beryllium",
+      "rationale": "Id pattern indicates beryllium material"
+    },
+    {
+      "item": "gtceu:dense_beryllium_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_darmstadtium_plate",
+      "facet": "material_family",
+      "value": "darmstadtium",
+      "rationale": "Id pattern indicates darmstadtium material"
+    },
+    {
+      "item": "gtceu:dense_darmstadtium_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_desh_plate",
+      "facet": "material_family",
+      "value": "desh",
+      "rationale": "Id pattern indicates desh material"
+    },
+    {
+      "item": "gtceu:dense_desh_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_hsla_steel_plate",
+      "facet": "material_family",
+      "value": "hsla_steel",
+      "rationale": "Id pattern indicates HSLA steel material"
+    },
+    {
+      "item": "gtceu:dense_hsla_steel_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_lead_plate",
+      "facet": "material_family",
+      "value": "lead",
+      "rationale": "Id pattern indicates lead material"
+    },
+    {
+      "item": "gtceu:dense_lead_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_magnetic_steel_plate",
+      "facet": "material_family",
+      "value": "magnetic_steel",
+      "rationale": "Id pattern indicates magnetic steel material"
+    },
+    {
+      "item": "gtceu:dense_magnetic_steel_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_maraging_steel_300_plate",
+      "facet": "material_family",
+      "value": "maraging_steel_300",
+      "rationale": "Id pattern indicates maraging steel 300 material"
+    },
+    {
+      "item": "gtceu:dense_maraging_steel_300_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_naquadah_alloy_plate",
+      "facet": "material_family",
+      "value": "naquadah_alloy",
+      "rationale": "Id pattern indicates naquadah alloy material"
+    },
+    {
+      "item": "gtceu:dense_naquadah_alloy_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_obsidian_plate",
+      "facet": "material_family",
+      "value": "obsidian",
+      "rationale": "Id pattern indicates obsidian material"
+    },
+    {
+      "item": "gtceu:dense_obsidian_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_rhodium_plated_palladium_plate",
+      "facet": "material_family",
+      "value": "rhodium_plated_palladium",
+      "rationale": "Id pattern indicates rhodium plated palladium material"
+    },
+    {
+      "item": "gtceu:dense_rhodium_plated_palladium_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_rocket_alloy_t1_plate",
+      "facet": "material_family",
+      "value": "rocket_alloy_t1",
+      "rationale": "Id pattern indicates rocket alloy T1 material"
+    },
+    {
+      "item": "gtceu:dense_rocket_alloy_t1_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_rocket_alloy_t2_plate",
+      "facet": "material_family",
+      "value": "rocket_alloy_t2",
+      "rationale": "Id pattern indicates rocket alloy T2 material"
+    },
+    {
+      "item": "gtceu:dense_rocket_alloy_t2_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    },
+    {
+      "item": "gtceu:dense_rtm_alloy_plate",
+      "facet": "material_family",
+      "value": "rtm_alloy",
+      "rationale": "Id pattern indicates RTM alloy material"
+    },
+    {
+      "item": "gtceu:dense_rtm_alloy_plate",
+      "facet": "form",
+      "value": "dense_plate",
+      "rationale": "Name indicates dense plate form"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

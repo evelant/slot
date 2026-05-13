@@ -1,0 +1,1046 @@
+{
+  "items": {
+    "gtceu:vanadium_steel_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component; used in machine recipes."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components",
+            "used in rotor and tool recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe ingredient for many GTCEu items."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory for crafting runs."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "evidence": "id prefix vanadium_steel",
+          "rationale": "Metal component material."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable but not bulk-used."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Standard GTCEu rod; used in crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tool heads",
+            "machine component base"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed in many tool and machine recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in material stash."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack of 32."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafted component used in advanced recipes."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting generators",
+            "propellers",
+            "turbines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in airship and HV turbine recipes."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for machine crafting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack of 16."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small crafting component."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machines",
+            "tools",
+            "accessories"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe ingredient in many items."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in bulk."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_screwdriver_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head part."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting MV screwdriver"
+          ],
+          "signal": "inferred",
+          "rationale": "Only in screwdriver recipe."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Single-use in crafting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common part."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_scythe": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "High damage slashing weapon; primary use combat."
+        },
+        "primary_uses": {
+          "values": [
+            "combat",
+            "harvesting crops",
+            "tilling ground"
+          ],
+          "signal": "inferred",
+          "rationale": "Multi-purpose tool/weapon."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when farming or exploring."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted tool."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        },
+        "activity": {
+          "values": [
+            "slot:combat",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat and farming."
+        },
+        "tier": {
+          "value": "vanadium_steel",
+          "signal": "inferred",
+          "rationale": "Material tier."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_scythe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Part for crafting scythe."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting vanadium steel scythe"
+          ],
+          "signal": "inferred",
+          "rationale": "Single recipe usage."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Held until used."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common part."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fluid transport block in GTCEu pipe network."
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable fluid pipe."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during base building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common pipe."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid logistics."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of GTCEu fluid pipe subsystem."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id suffix _sword",
+          "rationale": "Combat sword."
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "High damage slashing weapon."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Primary weapon, always carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted tool."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Combat activity."
+        },
+        "tier": {
+          "value": "vanadium_steel",
+          "signal": "inferred",
+          "rationale": "Material tier."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_sword_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting part for sword."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting vanadium steel sword"
+          ],
+          "signal": "inferred",
+          "rationale": "Single recipe."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Held until used."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common part."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Small fluid pipe, part of GTCEu pipe network."
+        },
+        "primary_uses": {
+          "values": [
+            "transporting small amounts of fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable pipe."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during base building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common pipe."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid logistics."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of GTCEu fluid pipe subsystem."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_wire_cutter_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head part."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting MV wire cutter"
+          ],
+          "signal": "inferred",
+          "rationale": "Single recipe."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Held until used."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common part."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        }
+      }
+    },
+    "gtceu:vanadium_steel_wrench_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Tool head part."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting MV wrench"
+          ],
+          "signal": "inferred",
+          "rationale": "Single recipe."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Held until used."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common part."
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Id prefix."
+        }
+      }
+    },
+    "gtceu:venus_stone_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore to be smelted/processed."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into almandine",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore, not abundant."
+        },
+        "material_family": {
+          "value": "venus_stone_almandine",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus dimension."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        }
+      }
+    },
+    "gtceu:venus_stone_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore to be processed."
+        },
+        "primary_uses": {
+          "values": [
+            "milling into crushed aluminium ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Only milling recipe present."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during mining."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_aluminium",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_alunite",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore for gem."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_amethyst",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_apatite",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_armalcolite",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_asbestos",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_barite",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_basaltic_mineral_sand",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_bastnasite",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_bauxite",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    },
+    "gtceu:venus_stone_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace/macerator."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mining trips."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Space ore."
+        },
+        "material_family": {
+          "value": "venus_stone_bentonite",
+          "signal": "pattern",
+          "rationale": "From ore id."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Venus."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

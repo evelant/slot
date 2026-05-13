@@ -1,0 +1,1086 @@
+{
+  "items": {
+    "gtceu:asbestos_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicator for ore prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Prospecting for asbestos ore",
+            "Surface ore indicator"
+          ],
+          "signal": "inferred",
+          "rationale": "Player picks up to find ore below"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Picked up during prospecting trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in ore prospecting while mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on surface as indicator"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface rocks are raw ore indicators"
+        }
+      }
+    },
+    "gtceu:asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block, mined and smelted into ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into asbestos ingot",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines and processes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:ash_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust form of ash, used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Ingredient in dust mixing",
+            "Disassembly into smaller dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted with and used as component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust, stored with other pure dusts"
+        }
+      }
+    },
+    "gtceu:assembly_line": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block machine for automatic assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Automatic assembly of components"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed and configured for automation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated processing lines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "gtceu:assembly_line_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural casing for assembly line multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Constructing assembly line structure"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building multiblocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "gtceu:assembly_line_grating": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative grating for assembly line"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of decorative building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common decoration block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "gtceu:assembly_line_unit": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Control casing for assembly line multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Building assembly control section"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "gtceu:asurine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust from asurine stone, used in mixing"
+        },
+        "primary_uses": {
+          "values": [
+            "Ingredient in regolith slurry",
+            "Milling product"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fluid mixing recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust from processing"
+        }
+      }
+    },
+    "gtceu:atomic_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Casing used in fission reactor structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building atomic/fission multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted via shaped recipe"
+        }
+      }
+    },
+    "gtceu:auto_maintenance_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Hatch component for multiblock maintenance"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated maintenance of multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed on multiblock for auto-repair"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "One per multiblock, rarely in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted machine part"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock systems"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted via shaped recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Type of multiblock hatch"
+        }
+      }
+    },
+    "gtceu:bacteria_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting bacterial fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting bacterial fluid for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as fluid carrier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when needed for recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid bucket"
+        }
+      }
+    },
+    "gtceu:bacterial_sludge_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting bacterial sludge"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting bacterial sludge for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as fluid carrier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when needed for recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common fluid bucket"
+        }
+      }
+    },
+    "gtceu:ball_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable mold for casting balls"
+        },
+        "primary_uses": {
+          "values": [
+            "Casting balls from molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at casting table"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept in base, rarely in hotbar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting mold, stored with other molds"
+        },
+        "container_state": {
+          "values": [
+            "slot:reusable_mold"
+          ],
+          "signal": "inferred",
+          "rationale": "Reusable casting mold"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to cast metal into ball shape"
+        }
+      }
+    },
+    "gtceu:barite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust form of barite, used in processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Ingredient in chemical processes",
+            "Smelting product from barite ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate dust, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:barite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicator for barite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Prospecting for barite ore",
+            "Surface ore indicator"
+          ],
+          "signal": "inferred",
+          "rationale": "Player picks up to find ore below"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in ore prospecting while mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on surface as indicator"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface rocks are raw ore indicators"
+        }
+      }
+    },
+    "gtceu:barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block, mined and smelted into barite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into barite",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Player mines and processes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:barium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Elemental dust of barium, used in superconductor mixing"
+        },
+        "primary_uses": {
+          "values": [
+            "Ingredient in superconductor mixing",
+            "Disassembly into smaller dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced alloy recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material for high-tier recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust"
+        }
+      }
+    },
+    "gtceu:barium_sulfide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compound dust of barium sulfide"
+        },
+        "primary_uses": {
+          "values": [
+            "Ingredient in chemical reactions",
+            "Disassembly into smaller dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in processing chains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate chemical dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined chemical dust"
+        }
+      }
+    },
+    "gtceu:basalt_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block for almandine garnet"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting for almandine",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:basalt_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block for aluminium"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting for aluminium",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:basalt_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block for alunite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting for alunite",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:basalt_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block for amethyst gem"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting for amethyst",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:basalt_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block for apatite (phosphate)"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting for apatite",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:basalt_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block for armalcolite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting for armalcolite",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    },
+    "gtceu:basalt_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block for asbestos"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting for asbestos",
+            "Mining for material"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:asbestos_indicator",
+      "facet": "form",
+      "value": "surface_rock",
+      "rationale": "Block is a surface rock indicator, not an ore block"
+    },
+    {
+      "item": "gtceu:asbestos_indicator",
+      "facet": "material_family",
+      "value": "asbestos",
+      "rationale": "Tag forge:surface_rocks/asbestos indicates material"
+    },
+    {
+      "item": "gtceu:barite_indicator",
+      "facet": "form",
+      "value": "surface_rock",
+      "rationale": "Block is a surface rock indicator"
+    },
+    {
+      "item": "gtceu:barite_indicator",
+      "facet": "material_family",
+      "value": "barite",
+      "rationale": "Tag forge:surface_rocks/barite indicates material"
+    }
+  ]
+}

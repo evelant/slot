@@ -1,0 +1,1138 @@
+{
+  "items": {
+    "gtceu:tiny_ruridit_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a material, stored with materials"
+        },
+        "material_family": {
+          "value": "ruridit",
+          "signal": "pattern",
+          "rationale": "extracted from id suffix"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred",
+          "rationale": "tiny dust, used in small quantities"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "primary_uses": {
+          "value": "crafting advanced materials",
+          "signal": "inferred",
+          "rationale": "used in shaped recipes for full dust"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "no loot, only crafted or milled"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern",
+          "evidence": "forge:tiny_dusts tag",
+          "rationale": "tiny dusts grouped with small dusts"
+        }
+      }
+    },
+    "gtceu:tiny_ruthenium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a material"
+        },
+        "material_family": {
+          "value": "ruthenium",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "rationale": "form dust"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred",
+          "rationale": "tiny quantity"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named",
+          "evidence": "common rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored"
+        },
+        "primary_uses": {
+          "value": "crafting advanced materials",
+          "signal": "inferred",
+          "rationale": "used in shapes"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred",
+          "rationale": "processing"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "no loot"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern",
+          "evidence": "forge:tiny_dusts",
+          "rationale": "dust group"
+        }
+      }
+    },
+    "gtceu:tiny_ruthenium_tetroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form"
+        },
+        "material_family": {
+          "value": "ruthenium_tetroxide",
+          "signal": "pattern",
+          "rationale": "from id"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "rationale": "form dust"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred",
+          "rationale": "tiny"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "crafting compounds",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_ruthenium_trinium_americium_neutronate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "ruthenium_trinium_americium_neutronate",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "crafting exotic alloys",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_rutile_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "rutile",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "titanium processing",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_salt_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "salt",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "food preservation or chemistry",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_saltpeter_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "saltpeter",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "gunpowder or fertilizer",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_samarium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "samarium",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "magnetic material crafting",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "no loot, only crafted/milled"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_samarium_iron_arsenic_oxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "samarium_iron_arsenic_oxide",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "superconductor crafting",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sapphire_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sapphire",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "gem processing",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_scheelite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "scheelite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "tungsten extraction",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sculk_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sculk",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "sculk-based crafting",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_silicon_dioxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "silicon_dioxide",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "glass manufacturing",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_silicon_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "silicon",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "semiconductor production",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_silicone_rubber_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "silicone_rubber",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "rubber production",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_silver_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "silver",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "conductor or alloy crafting",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_soapstone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "soapstone",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "ceramics or insulation",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_soda_ash_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "soda_ash",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "glass or dye production",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sodalite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sodalite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "aluminium silicate source",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sodium_bicarbonate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sodium_bicarbonate",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "food or chemistry",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sodium_bisulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sodium_bisulfate",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "acid production",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sodium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sodium",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "chemical reactions",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sodium_hydroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sodium_hydroxide",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "biodiesel or soap production",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sodium_nitrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sodium_nitrite",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "preservative or dye",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:tiny_sodium_sulfide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sodium_sulfide",
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "value": "leather or ore processing",
+          "signal": "inferred"
+        },
+        "activity": {
+          "value": "slot:automation",
+          "signal": "inferred"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "value": "pack:tfg/small_dusts",
+          "signal": "pattern"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

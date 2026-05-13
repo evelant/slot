@@ -1,0 +1,1059 @@
+{
+  "items": {
+    "ae2:sky_stone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant of suevite, used in building"
+        },
+        "material_family": {
+          "value": "suevite",
+          "signal": "inferred",
+          "rationale": "display name and tag tfg:stone_types/suevite"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "decorative enclosure"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "rock wall storage group"
+        }
+      }
+    },
+    "ae2:small_quartz_bud": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "growing crystal source of certus quartz"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "id and display name"
+        },
+        "primary_uses": {
+          "values": [
+            "source of certus quartz",
+            "growing crystals"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for quartz"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not carried, found in world"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "growing crystal, not too common"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "minecraft:light_emission=1",
+          "rationale": "stage2 confirmed"
+        }
+      }
+    },
+    "ae2:smithing_table_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for encoding AE2 auto-crafting patterns"
+        },
+        "primary_uses": {
+          "values": [
+            "encoding smithing patterns",
+            "automated crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip indicates pattern viewing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in ME system, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting item"
+        }
+      }
+    },
+    "ae2:smooth_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative block variant of certus quartz"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "stage2 rule",
+          "rationale": "stage2 material_family from id"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "crafting quartz variants"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecutter recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stacked for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "ae2:smooth_quartz_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of smooth quartz"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "stage2 rule",
+          "rationale": "stage2 material_family from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building slabs",
+            "decorative details"
+          ],
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stacked for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/certus_half",
+          "rationale": "rock slab storage group"
+        }
+      }
+    },
+    "ae2:smooth_quartz_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of smooth quartz"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "stage2 rule",
+          "rationale": "stage2 material_family from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "decorative details"
+          ],
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stacked for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/certus",
+          "rationale": "rock stairs storage group"
+        }
+      }
+    },
+    "ae2:smooth_quartz_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant of smooth quartz"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "stage2 rule",
+          "rationale": "stage2 material_family from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "decorative details"
+          ],
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "rock walls storage group"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "smooth suevite block used in construction"
+        },
+        "material_family": {
+          "value": "suevite",
+          "signal": "inferred",
+          "rationale": "display name 'Smooth Suevite'"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "crafting sky stone variants"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecutter recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stacked for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest block, opens to store items"
+        },
+        "material_family": {
+          "value": "suevite",
+          "signal": "inferred",
+          "rationale": "made of sky stone"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items",
+            "AE2 networked storage"
+          ],
+          "signal": "inferred",
+          "rationale": "chest with AE2 integration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chest"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "storage activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "chest storage group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 networked chest"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of smooth suevite"
+        },
+        "material_family": {
+          "value": "suevite",
+          "signal": "inferred",
+          "rationale": "display name"
+        },
+        "primary_uses": {
+          "values": [
+            "building slabs",
+            "decorative details"
+          ],
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stacked for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "rock slab storage group"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of smooth suevite"
+        },
+        "material_family": {
+          "value": "suevite",
+          "signal": "inferred",
+          "rationale": "display name"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "decorative details"
+          ],
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stacked for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "rock stairs storage group"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant of smooth suevite"
+        },
+        "material_family": {
+          "value": "suevite",
+          "signal": "inferred",
+          "rationale": "display name"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "decorative details"
+          ],
+          "signal": "inferred",
+          "rationale": "common wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "rock walls storage group"
+        }
+      }
+    },
+    "ae2:spatial_anchor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "spatial storage component, part of AE2 network"
+        },
+        "primary_uses": {
+          "values": [
+            "spatial storage anchor",
+            "AE2 spatial IO"
+          ],
+          "signal": "inferred",
+          "rationale": "block in spatial system"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in base"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized AE2 component"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "spatial storage activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage subsystem"
+        }
+      }
+    },
+    "ae2:spatial_cell_component_128": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component used to craft spatial storage cells"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting spatial storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "component part"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "crafting stash item"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        }
+      }
+    },
+    "ae2:spatial_cell_component_16": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for spatial cells"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting spatial storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "component part"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "crafting stash item"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        }
+      }
+    },
+    "ae2:spatial_cell_component_2": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for spatial cells"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting spatial storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "component part"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "crafting stash item"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        }
+      }
+    },
+    "ae2:spatial_io_port": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine for spatial IO in AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "spatial storage IO",
+            "transporting spatial cells"
+          ],
+          "signal": "inferred",
+          "rationale": "block used in spatial setup"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized machine"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "spatial storage activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage subsystem"
+        }
+      }
+    },
+    "ae2:spatial_pylon": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pylon for spatial dimensions, part of AE2 spatial system"
+        },
+        "primary_uses": {
+          "values": [
+            "spatial storage pylon",
+            "forming spatial dimensions"
+          ],
+          "signal": "inferred",
+          "rationale": "block in spatial storage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "spatial storage activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage subsystem"
+        }
+      }
+    },
+    "ae2:spatial_storage_cell_128": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "spatial storage cell, portable storage medium"
+        },
+        "primary_uses": {
+          "values": [
+            "spatial storage",
+            "storing spatial regions"
+          ],
+          "signal": "inferred",
+          "rationale": "holds spatial data"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in drives, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cell subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        }
+      }
+    },
+    "ae2:spatial_storage_cell_16": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "spatial storage cell, portable storage medium"
+        },
+        "primary_uses": {
+          "values": [
+            "spatial storage",
+            "storing spatial regions"
+          ],
+          "signal": "inferred",
+          "rationale": "holds spatial data"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in drives"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cell subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        }
+      }
+    },
+    "ae2:spatial_storage_cell_2": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "spatial storage cell, portable storage medium"
+        },
+        "primary_uses": {
+          "values": [
+            "spatial storage",
+            "storing spatial regions"
+          ],
+          "signal": "inferred",
+          "rationale": "holds spatial data"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in drives"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cell subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        }
+      }
+    },
+    "ae2:speed_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "upgrades machines speed, applied in UI"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading AE2 machine speed"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip lists supported machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "players keep multiple for upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        }
+      }
+    },
+    "ae2:stonecutting_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "pattern for encoding stonecutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "encoding stonecutting patterns",
+            "automated crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip indicates pattern viewing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in ME system"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pattern item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        }
+      }
+    },
+    "ae2:storage_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME network component that connects external storage"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting external storage",
+            "ME network expansion"
+          ],
+          "signal": "inferred",
+          "rationale": "standard AE2 part"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "players use multiple in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common network component"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "storage management activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage subsystem"
+        }
+      }
+    },
+    "ae2:storage_monitor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "display block for AE2 inventory monitoring"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying stored items",
+            "monitoring inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common monitor"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "storage management activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1829 @@
+{
+  "items": {
+    "tfg:food/cooked_surfer_steak": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked meat eaten for hunger, also used as ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for hunger and saturation",
+            "Ingredient for sandwiches and meals"
+          ],
+          "signal": "inferred",
+          "rationale": "Food item with nutrition 8, used in many sandwich/meal recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Good hunger food, commonly carried for exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking recipes as ingredient, eaten as food"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked meat item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used as meal component"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced via tfc:heating from raw meat"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/meat_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:foods/cooked_meats tag",
+          "rationale": "Storage group for cooked meats"
+        }
+      }
+    },
+    "tfg:food/cooked_walker_steak": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked meat eaten for hunger, also used as ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for hunger and saturation",
+            "Ingredient for sandwiches and meals"
+          ],
+          "signal": "inferred",
+          "rationale": "Food item with nutrition 8, used in many sandwich/meal recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Good hunger food, commonly carried for exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking recipes as ingredient, eaten as food"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked meat item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used as meal component"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced via tfc:heating from raw meat"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/meat_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:foods/cooked_meats tag",
+          "rationale": "Storage group for cooked meats"
+        }
+      }
+    },
+    "tfg:food/cooked_whole_soarer": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked meat eaten for hunger, also used as ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for hunger and saturation",
+            "Ingredient for sandwiches and meals"
+          ],
+          "signal": "inferred",
+          "rationale": "Food item with nutrition 6, used in many sandwich/meal recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Good hunger food, commonly carried for exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking recipes as ingredient, eaten as food"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked meat item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used as meal component"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced via tfc:heating from raw meat"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/meat_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:foods/cooked_meats tag",
+          "rationale": "Storage group for cooked meats"
+        }
+      }
+    },
+    "tfg:food/cooked_wraptor": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked meat eaten for hunger, also used as ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for hunger and saturation",
+            "Ingredient for sandwiches and meals"
+          ],
+          "signal": "inferred",
+          "rationale": "Food item with nutrition 6, used in many sandwich/meal recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Good hunger food, commonly carried for exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking recipes as ingredient, eaten as food"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked meat item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used as meal component"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced via tfc:heating from raw meat"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/meat_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:foods/cooked_meats tag",
+          "rationale": "Storage group for cooked meats"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/banana": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/blackberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/blossom_berry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/blueberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/bunchberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/cave_pumpkin": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit/vegetable eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried cave pumpkin, treated as fruit snack"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/cherry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/chorus_fruit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried chorus fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried chorus fruit, fruit category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/cloudberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/cranberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/elderberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/fig": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/glow_berries": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried glow berries eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/gooseberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/green_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried green apple eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/lemon": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried lemon eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/magmango": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried magmango eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/melon_slice": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried melon slice eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/olive": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried olive eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit/vegetable, fruit category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/orange": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried orange eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    },
+    "tfg:food/freeze_dried/peach": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Freeze-dried peach eaten as snack"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for small hunger and saturation",
+            "Space food for long trips"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition 4, tagged space_food, used as light snack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food, carried for specific trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Item rarity component is common"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten as food, likely taken on space exploration"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Snack eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains freeze_dried",
+          "rationale": "Freeze-dried is a drying process"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Player eats this food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:space_food tag",
+          "rationale": "Tagged as space food, stored with other space food"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

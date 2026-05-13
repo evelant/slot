@@ -1,0 +1,1080 @@
+{
+  "items": {
+    "ad_astra:permafrost_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick variant used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with permafrost stone brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common raw material on permafrost planet"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building structures"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "made from permafrost stone"
+        }
+      }
+    },
+    "ad_astra:photovoltaic_etrium_cell": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for solar panels"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting large solar panel (tier 2)"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in solar panel recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building solar arrays"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common resources"
+        },
+        "material_family": {
+          "value": "etrium",
+          "signal": "inferred",
+          "rationale": "made from etrium material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Ad Astra energy generation system"
+        }
+      }
+    },
+    "ad_astra:photovoltaic_vesnium_cell": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for solar panels"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting large solar panel (tier 3)"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in solar panel recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building solar arrays"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common resources"
+        },
+        "material_family": {
+          "value": "vesnium",
+          "signal": "inferred",
+          "rationale": "made from vesnium material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Ad Astra energy generation system"
+        }
+      }
+    },
+    "ad_astra:pink_flag": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "flag placed for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with flags"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a decorative banner"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item in Ad Astra"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "dye_color": {
+          "value": "pink",
+          "signal": "named",
+          "evidence": "display name 'Pink Flag'",
+          "rationale": "color in name"
+        }
+      }
+    },
+    "ad_astra:pink_industrial_lamp": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "light source placed for illumination"
+        },
+        "primary_uses": {
+          "values": [
+            "providing light in bases"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when placed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during base construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "dye_color": {
+          "value": "pink",
+          "signal": "named",
+          "evidence": "display name 'Pink Industrial Lamp'",
+          "rationale": "color in name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "grouped with other lamp blocks"
+        }
+      }
+    },
+    "ad_astra:polished_conglomerate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished mesa caprock"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from mesa"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "inferred",
+          "rationale": "made from conglomerate stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "inferred",
+          "rationale": "sedimentary rock block family"
+        }
+      }
+    },
+    "ad_astra:polished_glacio_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished phonolite"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from glacio"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "glacio_stone",
+          "signal": "inferred",
+          "rationale": "made from glacio stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glacio_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "glacio stone family storage"
+        }
+      }
+    },
+    "ad_astra:polished_glacio_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of polished phonolite"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished phonolite slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative slab block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from glacio"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "glacio_stone",
+          "signal": "inferred",
+          "rationale": "made from glacio stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glacio_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "glacio stone family"
+        }
+      }
+    },
+    "ad_astra:polished_glacio_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of polished phonolite"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished phonolite stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stair block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from glacio"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "glacio_stone",
+          "signal": "inferred",
+          "rationale": "made from glacio stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glacio_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "glacio stone family"
+        }
+      }
+    },
+    "ad_astra:polished_mars_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished argillite"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from mars"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "mars_stone",
+          "signal": "inferred",
+          "rationale": "made from mars stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/mars_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "mars stone family storage"
+        }
+      }
+    },
+    "ad_astra:polished_mars_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of polished argillite"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished argillite slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative slab block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from mars"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "mars_stone",
+          "signal": "inferred",
+          "rationale": "made from mars stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/mars_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "mars stone family"
+        }
+      }
+    },
+    "ad_astra:polished_mars_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of polished argillite"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished argillite stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stair block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from mars"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "mars_stone",
+          "signal": "inferred",
+          "rationale": "made from mars stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/mars_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "mars stone family"
+        }
+      }
+    },
+    "ad_astra:polished_mercury_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished komatiite"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from mercury"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "mercury_stone",
+          "signal": "inferred",
+          "rationale": "made from mercury stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/mercury_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "mercury stone family storage"
+        }
+      }
+    },
+    "ad_astra:polished_mercury_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of polished komatiite"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished komatiite slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative slab block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from mercury"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "mercury_stone",
+          "signal": "inferred",
+          "rationale": "made from mercury stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/mercury_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "mercury stone family"
+        }
+      }
+    },
+    "ad_astra:polished_mercury_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of polished komatiite"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished komatiite stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stair block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from mercury"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "mercury_stone",
+          "signal": "inferred",
+          "rationale": "made from mercury stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/mercury_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "mercury stone family"
+        }
+      }
+    },
+    "ad_astra:polished_moon_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished anorthosite"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from moon"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "moon_stone",
+          "signal": "inferred",
+          "rationale": "made from moon stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon stone family storage"
+        }
+      }
+    },
+    "ad_astra:polished_moon_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of polished anorthosite"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished anorthosite slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative slab block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from moon"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "moon_stone",
+          "signal": "inferred",
+          "rationale": "made from moon stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon stone family"
+        }
+      }
+    },
+    "ad_astra:polished_moon_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of polished anorthosite"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished anorthosite stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stair block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from moon"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "moon_stone",
+          "signal": "inferred",
+          "rationale": "made from moon stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon stone family"
+        }
+      }
+    },
+    "ad_astra:polished_permafrost": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished permafrost"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from permafrost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "made from permafrost stone"
+        }
+      }
+    },
+    "ad_astra:polished_permafrost_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of polished permafrost"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished permafrost slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative slab block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from permafrost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "made from permafrost stone"
+        }
+      }
+    },
+    "ad_astra:polished_permafrost_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of polished permafrost"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished permafrost stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stair block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from permafrost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "made from permafrost stone"
+        }
+      }
+    },
+    "ad_astra:polished_venus_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished trachyte"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth decorative block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from venus"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "venus_stone",
+          "signal": "inferred",
+          "rationale": "made from venus stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/venus_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "venus stone family storage"
+        }
+      }
+    },
+    "ad_astra:polished_venus_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of polished trachyte"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished trachyte slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative slab block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from venus"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "venus_stone",
+          "signal": "inferred",
+          "rationale": "made from venus stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/venus_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "venus stone family"
+        }
+      }
+    },
+    "ad_astra:polished_venus_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of polished trachyte"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished trachyte stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stair block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone from venus"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "material_family": {
+          "value": "venus_stone",
+          "signal": "inferred",
+          "rationale": "made from venus stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/venus_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "venus stone family"
+        }
+      }
+    },
+    "ad_astra:purple_flag": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "flag placed for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with flags"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a decorative banner"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item in Ad Astra"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "display name 'Purple Flag'",
+          "rationale": "color in name"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

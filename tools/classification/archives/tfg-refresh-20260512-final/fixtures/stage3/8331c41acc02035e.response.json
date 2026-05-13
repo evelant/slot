@@ -1,0 +1,1092 @@
+{
+  "items": {
+    "gtceu:spodumene_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed material from ore milling"
+        },
+        "material_family": {
+          "value": "spodumene",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + tag forge:dusts/spodumene",
+          "rationale": "material from dust name"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from ores via processing"
+        },
+        "primary_uses": [
+          "smelting into ingots",
+          "alloy component"
+        ],
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "pure dust storage bucket"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in bulk as dust"
+        }
+      }
+    },
+    "gtceu:spodumene_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock found in world, not crafted"
+        },
+        "material_family": {
+          "value": "spodumene",
+          "signal": "pattern",
+          "evidence": "id suffix _indicator + tag forge:surface_rocks/spodumene",
+          "rationale": "ore indicator material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "picked up while exploring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "found on surface"
+        },
+        "primary_uses": [
+          "indicating spodumene ore deposits"
+        ],
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "collected during exploration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "small rock item"
+        }
+      }
+    },
+    "gtceu:spodumene_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined and processed into metal"
+        },
+        "material_family": {
+          "value": "spodumene",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores/spodumene",
+          "rationale": "ore material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generated ore"
+        },
+        "primary_uses": [
+          "smelting into ingots",
+          "source of lithium"
+        ],
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore stage"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to smelting/blasting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        }
+      }
+    },
+    "gtceu:square_dark_concrete_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick block used for construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "evidence": "tag tfg:stone_composition/concrete",
+          "rationale": "concrete material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin crafted_only",
+          "rationale": "crafted from stonecutting"
+        },
+        "primary_uses": [
+          "building with dark concrete bricks"
+        ],
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block family"
+        }
+      }
+    },
+    "gtceu:square_light_concrete_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick block"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "concrete material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from stonecutting"
+        },
+        "primary_uses": [
+          "building with light concrete bricks"
+        ],
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block family"
+        }
+      }
+    },
+    "gtceu:square_marble_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "marble brick block"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_types/marble",
+          "rationale": "marble stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from stonecutting"
+        },
+        "primary_uses": [
+          "building with marble bricks"
+        ],
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/marble"
+          ],
+          "signal": "inferred",
+          "rationale": "marble stone group"
+        }
+      }
+    },
+    "gtceu:square_red_granite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "red granite brick block"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "evidence": "tag tfg:stonecutting/red_granite",
+          "rationale": "red granite material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from stonecutting"
+        },
+        "primary_uses": [
+          "building with red granite bricks"
+        ],
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/red_granite"
+          ],
+          "signal": "inferred",
+          "rationale": "red granite stone group"
+        }
+      }
+    },
+    "gtceu:stable_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine casing, part of multiblocks"
+        },
+        "material_family": {
+          "value": "titanium",
+          "signal": "inferred",
+          "evidence": "display_name contains Titanium",
+          "rationale": "titanium material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from recipes"
+        },
+        "primary_uses": [
+          "building stable machine casings"
+        ],
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of machine construction"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing used in multiblocks"
+        }
+      }
+    },
+    "gtceu:stainless_steel_alloy": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "unobtainable item, likely debug or creative-only"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id contains stainless_steel",
+          "rationale": "stainless steel material"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not normally obtained"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "no survival acquisition route"
+        },
+        "primary_uses": [
+          "possibly unused/debug item"
+        ],
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipes or loot, creative tab only"
+        }
+      }
+    },
+    "gtceu:stainless_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage block of stainless steel"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _block + tag forge:storage_blocks/stainless_steel",
+          "rationale": "stainless steel block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for storage or crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "compact storage of stainless steel",
+          "crafting into plates"
+        ],
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "metal storage block"
+        }
+      }
+    },
+    "gtceu:stainless_steel_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small component used in crafting"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _bolt + tag forge:bolts/stainless_steel",
+          "rationale": "stainless steel bolt"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "crafting screws and machine components"
+        ],
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine assembly"
+        }
+      }
+    },
+    "gtceu:stainless_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier like a bucket"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _bucket",
+          "rationale": "stainless steel bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "transporting molten stainless steel"
+        ],
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "contains liquid metal"
+        }
+      }
+    },
+    "gtceu:stainless_steel_crate": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest-like container with slots"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id contains stainless_steel",
+          "rationale": "stainless steel material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "storing items in a compact chest"
+        ],
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "storage container"
+        }
+      }
+    },
+    "gtceu:stainless_steel_drum": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "block for fluid storage"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "stainless steel material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base for fluid storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "storing large amounts of fluid"
+        ]
+      }
+    },
+    "gtceu:stainless_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed dust material"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + tag forge:dusts/stainless_steel",
+          "rationale": "stainless steel dust"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "smelting into ingots"
+        ],
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "pure dust storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in bulk"
+        }
+      }
+    },
+    "gtceu:stainless_steel_fluid_cell": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "portable fluid container"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "stainless steel material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for fluid transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "transporting fluids in small cells"
+        ],
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "empty cell"
+        }
+      }
+    },
+    "gtceu:stainless_steel_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal sheet"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _foil + tag forge:foils/stainless_steel",
+          "rationale": "stainless steel foil"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "crafting thin metal parts"
+        ]
+      }
+    },
+    "gtceu:stainless_steel_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine frame, structural component"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _frame + tag forge:frames/stainless_steel",
+          "rationale": "stainless steel frame"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "building machine frames"
+        ],
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "inferred",
+          "rationale": "frame storage bucket"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "frame used in multiblocks"
+        }
+      }
+    },
+    "gtceu:stainless_steel_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gear component"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _gear + tag forge:gears/stainless_steel",
+          "rationale": "stainless steel gear"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "crafting gears for machines"
+        ]
+      }
+    },
+    "gtceu:stainless_steel_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "gearbox casing, part of machinery"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id contains stainless_steel",
+          "rationale": "stainless steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building gearboxes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "building gearbox casings"
+        ],
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for multiblocks"
+        }
+      }
+    },
+    "gtceu:stainless_steel_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pipe for fluid transport"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id contains stainless_steel",
+          "rationale": "stainless steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building fluid lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "transporting fluids in large volumes"
+        ],
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        }
+      }
+    },
+    "gtceu:stainless_steel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "standard metal ingot"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id suffix _ingot + tag forge:ingots/stainless_steel",
+          "rationale": "stainless steel ingot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "crafting stainless steel items"
+        ],
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "ingot storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in bulk as ingots"
+        }
+      }
+    },
+    "gtceu:stainless_steel_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pipe for fluid transport"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "stainless steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building fluid lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "transporting fluids in large pipes"
+        ],
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        }
+      }
+    },
+    "gtceu:stainless_steel_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multi-channel pipe"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "stainless steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in advanced fluid transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "transporting fluids with multiple channels"
+        ],
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        }
+      }
+    },
+    "gtceu:stainless_steel_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "standard fluid pipe"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "stainless steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building fluid lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common rarity"
+        },
+        "primary_uses": [
+          "transporting fluids"
+        ],
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:spodumene_indicator",
+      "facet": "form",
+      "value": "surface_rock",
+      "rationale": "tag forge:surface_rocks indicates form"
+    },
+    {
+      "item": "gtceu:stainless_steel_bolt",
+      "facet": "form",
+      "value": "bolt",
+      "rationale": "tag forge:bolts indicates form"
+    },
+    {
+      "item": "gtceu:stainless_steel_foil",
+      "facet": "form",
+      "value": "foil",
+      "rationale": "tag forge:foils indicates form"
+    },
+    {
+      "item": "gtceu:stainless_steel_frame",
+      "facet": "form",
+      "value": "frame",
+      "rationale": "tag forge:frames indicates form"
+    },
+    {
+      "item": "gtceu:stainless_steel_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "tag forge:gears indicates form"
+    },
+    {
+      "item": "gtceu:stainless_steel_huge_fluid_pipe",
+      "facet": "form",
+      "value": "huge_fluid_pipe",
+      "rationale": "tag forge:huge_fluid_pipes indicates form"
+    },
+    {
+      "item": "gtceu:stainless_steel_large_fluid_pipe",
+      "facet": "form",
+      "value": "large_fluid_pipe",
+      "rationale": "tag forge:large_fluid_pipes indicates form"
+    },
+    {
+      "item": "gtceu:stainless_steel_nonuple_fluid_pipe",
+      "facet": "form",
+      "value": "nonuple_fluid_pipe",
+      "rationale": "tag forge:nonuple_fluid_pipes indicates form"
+    },
+    {
+      "item": "gtceu:stainless_steel_normal_fluid_pipe",
+      "facet": "form",
+      "value": "normal_fluid_pipe",
+      "rationale": "tag forge:normal_fluid_pipes indicates form"
+    }
+  ]
+}

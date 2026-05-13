@@ -1,0 +1,833 @@
+{
+  "items": {
+    "gtceu:uv_electric_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier electric furnace, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting ores and items at UV speed"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses this machine for automated smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_electric_motor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for UV machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting UV machines and parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in many UV recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only at UV tier"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component, stored with UV parts"
+        }
+      }
+    },
+    "gtceu:uv_electric_piston": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for UV machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting UV machines and parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in many UV recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only at UV tier"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component, stored with UV parts"
+        }
+      }
+    },
+    "gtceu:uv_electric_pump": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for UV machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting UV machines and parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in many UV recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only at UV tier"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component, stored with UV parts"
+        }
+      }
+    },
+    "gtceu:uv_electrolyzer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier electrolyzer, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Electrolyzing fluids into elements"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is electrolysis"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_electromagnetic_separator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier separator, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Separating materials magnetically"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is magnetic separation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_emitter": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for UV machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting UV machines and parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in many UV recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only at UV tier"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component, stored with UV parts"
+        }
+      }
+    },
+    "gtceu:uv_energy_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock energy input component, placed and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing UV power input to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states Energy Input for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame multiblock part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu hatch system for multiblocks"
+        }
+      }
+    },
+    "gtceu:uv_energy_input_hatch_16a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock energy input component, placed and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing UV 16A power input to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states Multiple Ampere Energy Input for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame multiblock part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu hatch system for multiblocks"
+        }
+      }
+    },
+    "gtceu:uv_energy_input_hatch_4a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock energy input component, placed and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing UV 4A power input to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states Multiple Ampere Energy Input for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame multiblock part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu hatch system for multiblocks"
+        }
+      }
+    },
+    "gtceu:uv_energy_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock energy output component, placed and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "Extracting UV power from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states Energy Output for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame multiblock part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu hatch system for multiblocks"
+        }
+      }
+    },
+    "gtceu:uv_energy_output_hatch_16a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock energy output component, placed and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "Extracting UV 16A power from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states Multiple Ampere Energy Output for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame multiblock part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu hatch system for multiblocks"
+        }
+      }
+    },
+    "gtceu:uv_energy_output_hatch_4a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock energy output component, placed and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "Extracting UV 4A power from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states Multiple Ampere Energy Output for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame multiblock part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu hatch system for multiblocks"
+        }
+      }
+    },
+    "gtceu:uv_extractor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier extractor, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Extracting fluids from items"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is extraction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_extruder": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier extruder, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Extruding items into shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is extrusion"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_fermenter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier fermenter, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Fermenting fluids into products"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is fermentation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_field_generator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for UV machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting UV machines and upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine and grapple upgrades"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only at UV tier"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component, stored with UV parts"
+        }
+      }
+    },
+    "gtceu:uv_fluid_heater": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier fluid heater, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Heating fluids to high temperatures"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is fluid heating"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_fluid_passthrough_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock fluid passthrough component, placed and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "Transferring fluids between multiblock parts"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip indicates Multiblock Sharing enabled"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame multiblock part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu hatch system for multiblocks"
+        }
+      }
+    },
+    "gtceu:uv_fluid_regulator": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cover item installed on machines to regulate fluid flow"
+        },
+        "primary_uses": {
+          "values": [
+            "Regulating fluid transfer through machine sides"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states limits fluids as Cover"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building/upgrading machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only at UV tier"
+        }
+      }
+    },
+    "gtceu:uv_fluid_solidifier": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier solidifier, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Solidifying fluids into solid items"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is solidification"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_forge_hammer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier forge hammer, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Forging metals with high impact"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is forging"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_forming_press": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier forming press, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Pressing items into different shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is pressing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    },
+    "gtceu:uv_fusion_reactor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock controller for fusion, placed as part of large structure"
+        },
+        "primary_uses": {
+          "values": [
+            "Fusing elements into heavier ones in reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip describes fusion process"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame multiblock controller"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated processing line"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "fusion reactor is a GTCEu reactor subsystem"
+        }
+      }
+    },
+    "gtceu:uv_gas_collector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "UV-tier gas collector, a placed machine with a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Collecting gases from the atmosphere"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states collects gas from solar system"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once and rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted-only endgame machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine used in automated processing lines"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

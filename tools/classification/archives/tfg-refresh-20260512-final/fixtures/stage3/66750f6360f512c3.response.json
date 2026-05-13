@@ -1,0 +1,1158 @@
+{
+  "items": {
+    "create:cut_ochrum_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used to build structures, not a tool or station"
+        },
+        "material_family": {
+          "value": "ochrum",
+          "signal": "pattern",
+          "evidence": "id suffix ochrum",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:slabs tag",
+          "rationale": "non-brick stone slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut stone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_ochrum_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used as a building component"
+        },
+        "material_family": {
+          "value": "ochrum",
+          "signal": "pattern",
+          "evidence": "id suffix ochrum",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:stairs tag",
+          "rationale": "non-brick stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut stone stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_ochrum_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used as a building component"
+        },
+        "material_family": {
+          "value": "ochrum",
+          "signal": "pattern",
+          "evidence": "id suffix ochrum",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:walls tag",
+          "rationale": "non-brick stone wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scorchia": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut stone block used as a building component"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id suffix scorchia",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut scorchia"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scorchia_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab used in structures"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id suffix scorchia",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:brick_slabs tag",
+          "rationale": "brick slab variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scorchia brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scorchia_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs used in structures"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id suffix scorchia",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:brick_stairs tag",
+          "rationale": "brick stairs variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scorchia brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scorchia_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall used in structures"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id suffix scorchia",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:brick_walls tag",
+          "rationale": "brick wall variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scorchia brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scorchia_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick block used in structures"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id suffix scorchia",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:brick_index tag",
+          "rationale": "brick block variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scorchia bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scorchia_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used to build structures"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id suffix scorchia",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:slabs tag",
+          "rationale": "non-brick stone slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut scorchia slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scorchia_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used as a building component"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id suffix scorchia",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:stairs tag",
+          "rationale": "non-brick stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut scorchia stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scorchia_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used as a building component"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id suffix scorchia",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:walls tag",
+          "rationale": "non-brick stone wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut scorchia walls"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scoria": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut stone block used as a building component"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id suffix scoria",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut scoria"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scoria_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab used in structures"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id suffix scoria",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:brick_slabs tag",
+          "rationale": "brick slab variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scoria_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs used in structures"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id suffix scoria",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:brick_stairs tag",
+          "rationale": "brick stairs variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scoria_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall used in structures"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id suffix scoria",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:brick_walls tag",
+          "rationale": "brick wall variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scoria_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick block used in structures"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id suffix scoria",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tfg:brick_index tag",
+          "rationale": "brick block variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with scoria bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scoria_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used to build structures"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id suffix scoria",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:slabs tag",
+          "rationale": "non-brick stone slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut scoria slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scoria_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone stairs used as a building component"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id suffix scoria",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:stairs tag",
+          "rationale": "non-brick stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut scoria stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_scoria_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone wall used as a building component"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id suffix scoria",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:walls tag",
+          "rationale": "non-brick stone wall"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut scoria walls"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_tuff": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut stone block used as a building component"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id suffix tuff",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut tuff"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_tuff_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick slab used in structures"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id suffix tuff",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:slabs tag",
+          "rationale": "brick slab (no tfg:brick_slabs tag, but has brick in name)"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_tuff_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick stairs used in structures"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id suffix tuff",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:stairs tag",
+          "rationale": "brick stairs (no tfg:brick_stairs tag, but brick in name)"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_tuff_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick wall used in structures"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id suffix tuff",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:walls tag",
+          "rationale": "brick wall (no tfg:brick_walls tag, but brick in name)"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_tuff_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick block used in structures"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id suffix tuff",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block (no tfg:brick_index tag but clearly brick variant)"
+        },
+        "primary_uses": {
+          "values": [
+            "building with tuff bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    },
+    "create:cut_tuff_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone slab used to build structures"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id suffix tuff",
+          "rationale": "stone type from Create"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:slabs tag",
+          "rationale": "non-brick stone slab"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut tuff slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as building material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

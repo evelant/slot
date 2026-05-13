@@ -1,0 +1,990 @@
+{
+  "items": {
+    "tfg:radish_product": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible vegetable crop, eaten or used in cooking"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when cooking or as snack, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used as cooking ingredient and harvested from farming"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "tagged as vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly and used in meal recipes"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "sold as raw vegetable"
+        },
+        "primary_uses": {
+          "values": [
+            "eaten for nutrition",
+            "cooking ingredient for meals"
+          ],
+          "signal": "inferred",
+          "rationale": "direct food and recipe input"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/vegetables and tfc:foods",
+          "rationale": "stored with vegetables"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "directly edible"
+        }
+      }
+    },
+    "tfg:radish_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seed for planting crops"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during farming runs"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to plant radish crops"
+        },
+        "primary_uses": {
+          "values": [
+            "planting radish crops",
+            "fishing bait",
+            "crafting seed balls"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is planting; also bait and compost"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:seeds and forge:seeds",
+          "rationale": "seed item stored with seeds"
+        }
+      }
+    },
+    "tfg:radish_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "wild plant block found in nature"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected occasionally as decoration or for seed"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wild plant",
+            "source for propagating radish"
+          ],
+          "signal": "inferred",
+          "rationale": "wild crop player may pick for aesthetics or seeds"
+        }
+      }
+    },
+    "tfg:railgun_ammo_loader": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed machine for loading railgun ammo"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and rarely moved"
+        },
+        "primary_uses": {
+          "values": [
+            "automated ammo loading into railgun"
+          ],
+          "signal": "inferred",
+          "rationale": "machine for loading ammo"
+        }
+      }
+    },
+    "tfg:railgun_ammo_shell": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for railgun ammunition"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when manufacturing ammo"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting railgun ammunition"
+          ],
+          "signal": "inferred",
+          "rationale": "ammo shell used in recipe"
+        }
+      }
+    },
+    "tfg:rapeseed_product": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "canola ovules used in crafting and compost"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when cooking or composting"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing recipes for compost and pills"
+        },
+        "primary_uses": {
+          "values": [
+            "composting",
+            "crafting medicinal pills",
+            "crafting snorkel"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in multiple recipes"
+        }
+      }
+    },
+    "tfg:rapeseed_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "canola seeds for planting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during farming runs"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to plant canola"
+        },
+        "primary_uses": {
+          "values": [
+            "planting canola crops",
+            "fishing bait",
+            "pressing oil"
+          ],
+          "signal": "inferred",
+          "rationale": "seeds used for planting and processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:seeds and forge:seeds",
+          "rationale": "seed item stored with seeds"
+        }
+      }
+    },
+    "tfg:rapeseed_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "wild canola plant found in nature"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected occasionally as decoration or for seeds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wild plant",
+            "source for canola seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "wild crop player may pick for aesthetics or seeds"
+        }
+      }
+    },
+    "tfg:raw_aromatic_mix_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of gaseous raw aromatic mix, tool for fluid transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried when processing chemicals"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting raw aromatic mix",
+            "input for chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container used in processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed or emptied into machines"
+        }
+      }
+    },
+    "tfg:raw_graphite_briquette": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "solid fuel briquette for smelting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common fuel carried for smelting operations"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for furnaces and smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "briquette used as fuel"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "burned as fuel"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "named as briquette, likely fuel"
+        }
+      }
+    },
+    "tfg:raw_lorandite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "raw ore material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining and processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lorandite ingot",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined metal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "raw ore stored with unprocessed ores"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw form of ore"
+        }
+      }
+    },
+    "tfg:raw_lorandite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compacted raw lorandite for storage, not a container"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed as compact storage, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of raw lorandite",
+            "used in facade crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block and ingredient for facades"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block stored with unprocessed ores"
+        }
+      }
+    },
+    "tfg:raw_oil_slick": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "solid oil slick block, likely a raw resource"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected and processed occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "source of oil products"
+          ],
+          "signal": "inferred",
+          "rationale": "raw oil resource block"
+        }
+      }
+    },
+    "tfg:raw_oil_tar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tar block, raw resource for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined and processed infrequently"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tar products"
+          ],
+          "signal": "inferred",
+          "rationale": "raw tar block"
+        }
+      }
+    },
+    "tfg:raw_rich_brine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of brine, fluid transport tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried when processing brine"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting rich brine",
+            "input for chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container used in recipes"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed or emptied into machines"
+        }
+      }
+    },
+    "tfg:rebar_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural support beam for mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining to place supports"
+        },
+        "primary_uses": {
+          "values": [
+            "mining tunnel support",
+            "climbable structure"
+          ],
+          "signal": "inferred",
+          "rationale": "placed to prevent collapse, also climbable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "grouped with other support beams"
+        }
+      }
+    },
+    "tfg:recovered_ionic_complex_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form of material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during material processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into small/tiny dusts",
+            "recycling into components"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in dust aggregating recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "tfg:recovery_powder": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "healing item with food component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for emergency healing"
+        },
+        "primary_uses": {
+          "values": [
+            "antidote and healing",
+            "cures poison"
+          ],
+          "signal": "inferred",
+          "rationale": "provides instant health and regeneration"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed via eating"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "inferred",
+          "rationale": "healing effect, not regular food"
+        }
+      }
+    },
+    "tfg:red_granite_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block of lorandite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lorandite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lorandite ore",
+            "smelting into lorandite ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "ore block processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore stored with unprocessed ores"
+        }
+      }
+    },
+    "tfg:red_granite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone support beam for mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining to place supports"
+        },
+        "primary_uses": {
+          "values": [
+            "mining tunnel support"
+          ],
+          "signal": "inferred",
+          "rationale": "placed to prevent collapse"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "grouped with other support beams"
+        }
+      }
+    },
+    "tfg:red_sand_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore in sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lorandite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lorandite ore",
+            "smelting into lorandite ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "ore block processed into material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore stored with unprocessed ores"
+        }
+      }
+    },
+    "tfg:redblu_steel_hull_reinforcement": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "aircraft upgrade item applied to vehicles"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when upgrading aircraft"
+        },
+        "primary_uses": {
+          "values": [
+            "increase aircraft durability by 125%"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states durability bonus"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/aircraft_upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "group of immersive aircraft upgrades"
+        }
+      }
+    },
+    "tfg:redblu_steel_landing_gear": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "aircraft upgrade for landing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when upgrading aircraft"
+        },
+        "primary_uses": {
+          "values": [
+            "increase takeoff speed by 65%"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states takeoff speed bonus"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/aircraft_upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "group of immersive aircraft upgrades"
+        }
+      }
+    },
+    "tfg:redblu_steel_plated_airplane_propeller": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "aircraft upgrade for propeller"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when upgrading aircraft"
+        },
+        "primary_uses": {
+          "values": [
+            "reduce air friction by 40%"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states air friction bonus"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/aircraft_upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "group of immersive aircraft upgrades"
+        }
+      }
+    },
+    "tfg:redstone_chloride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of redstone chloride, fluid transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried when processing chemicals"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting redstone chloride",
+            "input for chemical reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container used in processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed or emptied into machines"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "tfg:redblu_steel_hull_reinforcement",
+      "facet": "organization_group",
+      "label": "Aircraft Upgrades",
+      "proposed_id": "pack:tfg/aircraft_upgrades",
+      "rationale": "No existing organization group for aircraft upgrades; these three upgrades form a natural storage bucket.",
+      "evidence": "All tagged immersive_aircraft:upgrades and have aircraft upgrade tooltips."
+    },
+    {
+      "item": "tfg:redblu_steel_landing_gear",
+      "facet": "organization_group",
+      "label": "Aircraft Upgrades",
+      "proposed_id": "pack:tfg/aircraft_upgrades",
+      "rationale": "Same as above.",
+      "evidence": ""
+    },
+    {
+      "item": "tfg:redblu_steel_plated_airplane_propeller",
+      "facet": "organization_group",
+      "label": "Aircraft Upgrades",
+      "proposed_id": "pack:tfg/aircraft_upgrades",
+      "rationale": "Same as above.",
+      "evidence": ""
+    }
+  ],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "tfg:raw_graphite_briquette",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "Named briquette, clearly intended as fuel."
+    }
+  ]
+}

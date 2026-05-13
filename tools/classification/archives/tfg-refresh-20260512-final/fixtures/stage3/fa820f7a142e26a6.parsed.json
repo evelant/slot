@@ -1,0 +1,1677 @@
+{
+  "items": {
+    "tfc_textile:lion_shirt": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable clothing providing warmth, equippable in chest slot"
+        },
+        "material_family": {
+          "value": "lion_fur",
+          "signal": "inferred",
+          "rationale": "Made from lion fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Component rarity field"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn but may carry spare for climate changes"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for temperature management in exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from furs via shaped recipe"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1, each piece is individual"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in armor slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth and insulation stats"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod items stored together"
+        }
+      }
+    },
+    "tfc_textile:panther_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable foot clothing with warmth"
+        },
+        "material_family": {
+          "value": "panther_fur",
+          "signal": "inferred",
+          "rationale": "Made from panther fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management for exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from panther fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in feet slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4, insulation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:panther_fur": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Stackable raw ingredient for clothing"
+        },
+        "material_family": {
+          "value": "panther_fur",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "Panther fur as a material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried often, stored until used"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained from panther mobs"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 64"
+        },
+        "primary_uses": {
+          "values": [
+            "crafted into warm clothing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in shaped recipes for panther clothes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod materials"
+        }
+      }
+    },
+    "tfc_textile:panther_hat": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable head clothing with warmth and sun protection"
+        },
+        "material_family": {
+          "value": "panther_fur",
+          "signal": "inferred",
+          "rationale": "Made from panther fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for temperature and sunlight protection"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from panther fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in head slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and sun protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip mentions sun protection"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:panther_pants": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable leg clothing with warmth"
+        },
+        "material_family": {
+          "value": "panther_fur",
+          "signal": "inferred",
+          "rationale": "Made from panther fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from panther fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in legs slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:panther_shirt": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable torso clothing with warmth"
+        },
+        "material_family": {
+          "value": "panther_fur",
+          "signal": "inferred",
+          "rationale": "Made from panther fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from panther fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in chest slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:polar_bear_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable foot clothing with warmth and freeze immunity"
+        },
+        "material_family": {
+          "value": "polar_bear_fur",
+          "signal": "inferred",
+          "rationale": "Made from polar bear fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Essential for cold biome exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from polar bear fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in feet slot"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:freeze_immune_wearables",
+          "rationale": "Prevents freezing in powdered snow"
+        },
+        "protection_context": {
+          "values": [
+            "slot:cold"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze immunity and high warmth"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and freeze protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +6 and freeze immunity tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:polar_bear_fur": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Stackable raw ingredient for polar bear clothing"
+        },
+        "material_family": {
+          "value": "polar_bear_fur",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "Polar bear fur material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried frequently, stored until crafted"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained from polar bears"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 64"
+        },
+        "primary_uses": {
+          "values": [
+            "crafted into warm freeze-proof clothing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes for polar bear clothes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod materials"
+        }
+      }
+    },
+    "tfc_textile:polar_bear_hat": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable head clothing with warmth and freeze immunity"
+        },
+        "material_family": {
+          "value": "polar_bear_fur",
+          "signal": "inferred",
+          "rationale": "Made from polar bear fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Essential for cold biomes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from polar bear fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in head slot"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:freeze_immune_wearables",
+          "rationale": "Freeze immunity"
+        },
+        "protection_context": {
+          "values": [
+            "slot:cold"
+          ],
+          "signal": "inferred",
+          "rationale": "High warmth and freeze immunity"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and freeze protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +6"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:polar_bear_pants": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable leg clothing with warmth and freeze immunity"
+        },
+        "material_family": {
+          "value": "polar_bear_fur",
+          "signal": "inferred",
+          "rationale": "Made from polar bear fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Cold biome exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from polar bear fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in legs slot"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:freeze_immune_wearables",
+          "rationale": "Freeze immunity"
+        },
+        "protection_context": {
+          "values": [
+            "slot:cold"
+          ],
+          "signal": "inferred",
+          "rationale": "High warmth + freeze immunity"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and freeze protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +6"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:polar_bear_shirt": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable torso clothing with warmth and freeze immunity"
+        },
+        "material_family": {
+          "value": "polar_bear_fur",
+          "signal": "inferred",
+          "rationale": "Made from polar bear fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Cold biome exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from polar bear fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in chest slot"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:freeze_immune_wearables",
+          "rationale": "Freeze immunity"
+        },
+        "protection_context": {
+          "values": [
+            "slot:cold"
+          ],
+          "signal": "inferred",
+          "rationale": "High warmth + freeze immunity"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and freeze protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +6"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:primitive_insulation": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Stackable crafting component made from hides"
+        },
+        "material_family": {
+          "value": "hide",
+          "signal": "inferred",
+          "rationale": "Made from animal hides"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Craft once and use, not carried often"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from hides via shapeless recipe"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 64"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for clothing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod materials"
+        }
+      }
+    },
+    "tfc_textile:raw_hat": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Primitive wearable head clothing providing basic warmth"
+        },
+        "material_family": {
+          "value": "raw_hide",
+          "signal": "inferred",
+          "rationale": "Made from raw hide via knapping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Early game, quickly replaced; not carried long"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic warmth for early exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from raw hide"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in head slot"
+        },
+        "primary_uses": {
+          "values": [
+            "basic warmth and sun protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +2"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:raw_pants": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Primitive wearable leg clothing providing basic warmth"
+        },
+        "material_family": {
+          "value": "raw_hide",
+          "signal": "inferred",
+          "rationale": "Made from raw hide via knapping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Early game, quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic warmth for early exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from raw hide"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in legs slot"
+        },
+        "primary_uses": {
+          "values": [
+            "basic warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +2"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:raw_shirt": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Primitive wearable torso clothing providing basic warmth"
+        },
+        "material_family": {
+          "value": "raw_hide",
+          "signal": "inferred",
+          "rationale": "Made from raw hide via knapping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Early game, quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic warmth for early exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from raw hide"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in chest slot"
+        },
+        "primary_uses": {
+          "values": [
+            "basic warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +2"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:raw_socks": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Primitive wearable foot clothing providing basic warmth"
+        },
+        "material_family": {
+          "value": "raw_hide",
+          "signal": "inferred",
+          "rationale": "Made from raw hide via knapping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Early game, quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic warmth for early exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Knapped from raw hide"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in feet slot"
+        },
+        "primary_uses": {
+          "values": [
+            "basic warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +2"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:sabertooth_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable foot clothing providing warmth"
+        },
+        "material_family": {
+          "value": "sabertooth_fur",
+          "signal": "inferred",
+          "rationale": "Made from sabertooth fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from sabertooth fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in feet slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:sabertooth_fur": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Stackable raw ingredient for sabertooth clothing"
+        },
+        "material_family": {
+          "value": "sabertooth_fur",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "Sabertooth fur material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried frequently"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained from sabertooth mobs"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 64"
+        },
+        "primary_uses": {
+          "values": [
+            "crafted into warm clothing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sabertooth clothing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod materials"
+        }
+      }
+    },
+    "tfc_textile:sabertooth_hat": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable head clothing providing warmth and sun protection"
+        },
+        "material_family": {
+          "value": "sabertooth_fur",
+          "signal": "inferred",
+          "rationale": "Made from sabertooth fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from sabertooth fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in head slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and sun protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:sabertooth_pants": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable leg clothing providing warmth"
+        },
+        "material_family": {
+          "value": "sabertooth_fur",
+          "signal": "inferred",
+          "rationale": "Made from sabertooth fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from sabertooth fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in legs slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:sabertooth_shirt": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable torso clothing providing warmth"
+        },
+        "material_family": {
+          "value": "sabertooth_fur",
+          "signal": "inferred",
+          "rationale": "Made from sabertooth fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from sabertooth fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in chest slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:tiger_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable foot clothing providing warmth"
+        },
+        "material_family": {
+          "value": "tiger_fur",
+          "signal": "inferred",
+          "rationale": "Made from tiger fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from tiger fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in feet slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:tiger_fur": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Stackable raw ingredient for tiger clothing"
+        },
+        "material_family": {
+          "value": "tiger_fur",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "Tiger fur material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried frequently"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained from tiger mobs"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable to 64"
+        },
+        "primary_uses": {
+          "values": [
+            "crafted into warm clothing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in tiger clothing recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod materials"
+        }
+      }
+    },
+    "tfc_textile:tiger_hat": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable head clothing providing warmth and sun protection"
+        },
+        "material_family": {
+          "value": "tiger_fur",
+          "signal": "inferred",
+          "rationale": "Made from tiger fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from tiger fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in head slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and sun protection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    },
+    "tfc_textile:tiger_pants": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable leg clothing providing warmth"
+        },
+        "material_family": {
+          "value": "tiger_fur",
+          "signal": "inferred",
+          "rationale": "Made from tiger fur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Worn, may carry spare"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Temperature management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from tiger fur"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "Equipped in legs slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wear for warmth and insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows warmth +4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tfc_textile_items"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC textile mod storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

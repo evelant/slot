@@ -1,0 +1,1167 @@
+{
+  "items": {
+    "gtceu:crushed_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate processing material, crafting stash"
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "From ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Milled to dust, splashed to purify"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining/processing runs"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common from many ore variants"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore is a processed mineral output"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "gtceu:crushed_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate processing material"
+        },
+        "material_family": {
+          "value": "asbestos",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "From ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining/processing"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing workflow"
+        }
+      }
+    },
+    "gtceu:crushed_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "barite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in mining trips"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "basaltic_mineral_sand",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common sand ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "bastnasite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "bauxite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "bentonite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_bismuth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_blue_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "blue_topaz",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_borax_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "borax",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_bornite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "bornite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_calcite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "calcite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_cassiterite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "cassiterite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_cassiterite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "cassiterite_sand",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_certus_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_chalcocite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "chalcocite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_chalcopyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "chalcopyrite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_chromite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "chromite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_cinnabar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material, fuel source"
+        },
+        "material_family": {
+          "value": "coal",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into dust, also used as fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed coal can be smelted or burned"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for fuel or processing"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common coal ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore is processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of mining/processing"
+        }
+      }
+    },
+    "gtceu:crushed_cobalt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "cobaltite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processing material"
+        },
+        "material_family": {
+          "value": "cooperite",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    },
+    "gtceu:crushed_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "stage2",
+          "rationale": "Ore type"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into impure dust and purified ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Crushed ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:crushed_armalcolite_ore",
+      "facet": "material_process_stage",
+      "label": "Crushed Ore",
+      "proposed_id": "slot:crushed_ore",
+      "rationale": "Crushed ore is a distinct processing stage between raw ore and dust; missing from current vocabulary.",
+      "evidence": "id suffix and forge:crushed_ores tag"
+    }
+  ],
+  "schema_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,253 @@
+{
+  "items": {
+    "primitive_creatures:ww_3": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant-like item, placed as living nature"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipes known, likely decorative plant"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "occasional collectible, not frequently carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "from component data"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/primitive_creatures_items"
+          ],
+          "signal": "pattern",
+          "evidence": "mod namespace primitive_creatures",
+          "rationale": "mod-specific storage section"
+        }
+      }
+    },
+    "primitive_creatures:yhgi": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag minecraft:swords + deals slashing damage",
+          "rationale": "club tagged as sword, deals slashing"
+        },
+        "primary_uses": {
+          "values": [
+            "early game melee weapon",
+            "slashing damage"
+          ],
+          "signal": "inferred",
+          "rationale": "low durability, used for combat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early game weapon, not primary"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "from component data"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "weapon used in combat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples from entities",
+          "rationale": "dropped by mobs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/primitive_creatures_items"
+          ],
+          "signal": "pattern",
+          "evidence": "mod namespace primitive_creatures",
+          "rationale": "mod-specific storage section"
+        }
+      }
+    },
+    "railways:benchcart": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "evidence": "model item/minecart",
+          "rationale": "minecart vehicle for rail travel"
+        },
+        "primary_uses": {
+          "values": [
+            "mobile crafting station",
+            "rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "workbench on rails"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during rail construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "from component data"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for rail transport"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "minecart item",
+          "rationale": "stored with minecarts"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Steam 'n' Rails train system"
+        }
+      }
+    },
+    "railways:big_buffer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "train connector block, not standalone workstation"
+        },
+        "primary_uses": {
+          "values": [
+            "train buffer connector",
+            "decorative train part"
+          ],
+          "signal": "inferred",
+          "rationale": "buffer block for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "from component data"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in rail transport context"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples only block break",
+          "rationale": "no loot from entities/chests"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "buffer is a train component"
+        }
+      }
+    },
+    "railways:black_brass_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative block used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "train-themed construction"
+          ],
+          "signal": "inferred",
+          "rationale": "colored block for aesthetics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "from component data"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "evidence": "id prefix black_ + dye group tags",
+          "rationale": "color variant of brass wrapped locometal"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples only block break",
+          "rationale": "no loot from entities/chests"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with locometal blocks"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

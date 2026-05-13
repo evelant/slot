@@ -1,0 +1,1300 @@
+{
+  "items": {
+    "gtceu:dense_silicon_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafted intermediate plate used in machine recipes"
+        },
+        "material_family": {
+          "value": "silicon",
+          "signal": "pattern",
+          "rationale": "id contains silicon"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT machine recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "consumption example greate:milling",
+          "rationale": "milled in macerator"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed as input in milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "processed in mill"
+        }
+      }
+    },
+    "gtceu:dense_steam_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container used for transport and fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport for steam-based automation"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting high pressure steam",
+            "fuel for steam machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used as power source"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried only when needed for fueling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of fluid"
+        }
+      }
+    },
+    "gtceu:dense_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "industrial plate used in machining"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id contains steel"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel is a standard tool/armor tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "high-tier machine part ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed in milling"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to macerator"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "milled in greate macerator"
+        }
+      }
+    },
+    "gtceu:dense_tungsten_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "advanced metal plate for high-tier machines"
+        },
+        "material_family": {
+          "value": "tungsten_steel",
+          "signal": "pattern",
+          "rationale": "id contains tungsten_steel"
+        },
+        "tier": {
+          "value": "tungsten_steel",
+          "signal": "inferred",
+          "rationale": "high-tier material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-voltage machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-tier machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT EV+ recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed in milling"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to macerator"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "milled in greate macerator"
+        }
+      }
+    },
+    "gtceu:dense_zirconium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "zirconium plate for machine crafting"
+        },
+        "material_family": {
+          "value": "zirconium",
+          "signal": "pattern",
+          "rationale": "id contains zirconium"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine components"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "consumed in milling"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to macerator"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "milled in greate macerator"
+        }
+      }
+    },
+    "gtceu:depleted_uranium_hexafluoride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "waste fluid bucket handled in nuclear processing"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "byproduct of automated nuclear chain"
+        },
+        "primary_uses": {
+          "values": [
+            "waste product from uranium processing"
+          ],
+          "signal": "inferred",
+          "rationale": "depleted UF6 is nuclear waste"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried, stored in fluid systems"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "hazardous, not everyday"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of fluid"
+        }
+      }
+    },
+    "gtceu:desh_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "liquid metal bucket for casting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in casting/alloying automation"
+        },
+        "primary_uses": {
+          "values": [
+            "casting desh parts",
+            "alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "molten desh for casting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of molten metal"
+        }
+      }
+    },
+    "gtceu:desh_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined metal dust used in mixing"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "rationale": "id contains desh"
+        },
+        "tier": {
+          "value": "desh",
+          "signal": "inferred",
+          "rationale": "space-age material tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT compression and alloying"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting desh components"
+          ],
+          "signal": "inferred",
+          "rationale": "further processed into desh items"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:desh_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal foil for electronic components"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "rationale": "id contains desh"
+        },
+        "tier": {
+          "value": "desh",
+          "signal": "inferred",
+          "rationale": "space material tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-end circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electronic components",
+            "wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "foil used in machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        }
+      }
+    },
+    "gtceu:desh_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine frame, structural component of multiblocks"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "rationale": "id contains desh"
+        },
+        "tier": {
+          "value": "desh",
+          "signal": "inferred",
+          "rationale": "space-age frame"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated machine construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building desh machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "frame for hulls"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when constructing multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "inferred",
+          "rationale": "frames are stored together as structural components"
+        }
+      }
+    },
+    "gtceu:desh_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gear component used in machine crafting"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "rationale": "id contains desh"
+        },
+        "tier": {
+          "value": "desh",
+          "signal": "inferred",
+          "rationale": "space material tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in rotary machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rotary machines"
+          ],
+          "signal": "inferred",
+          "rationale": "gear for transmitting force"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        }
+      }
+    },
+    "gtceu:desh_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicating desh ore location"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "rationale": "id contains desh"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used to locate ore deposits"
+        },
+        "primary_uses": {
+          "values": [
+            "indicating desh ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "surface indicator for prospecting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only picked up when found"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common surface block"
+        }
+      }
+    },
+    "gtceu:desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block mined for desh"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "rationale": "id contains desh"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for desh"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into desh ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into desh"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "desh ore is found underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored together"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "consumption example greate:milling",
+          "rationale": "milled into crushed ore"
+        }
+      }
+    },
+    "gtceu:desh_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "metal rod used in tool and machine crafting"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "rationale": "id contains desh"
+        },
+        "tier": {
+          "value": "desh",
+          "signal": "inferred",
+          "rationale": "space material tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine crafting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "rod used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:rods"
+        }
+      }
+    },
+    "gtceu:deuterium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for fusion fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel for fusion reactor automation"
+        },
+        "primary_uses": {
+          "values": [
+            "fusion reactor fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "deuterium is fuel component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fueling reactor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common fluid bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of gas"
+        }
+      }
+    },
+    "gtceu:diaminobenzidine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "chemical intermediate bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "precursor for dyes or drugs"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialty chemical, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of liquid"
+        }
+      }
+    },
+    "gtceu:diamond_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny diamond fastener used in crafting"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "inferred",
+          "rationale": "diamond tier material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting diamond tools",
+            "fasteners"
+          ],
+          "signal": "inferred",
+          "rationale": "screws and bolts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common small part"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common"
+        }
+      }
+    },
+    "gtceu:diamond_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "bud indicator for diamond ore"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used to locate diamond ore"
+        },
+        "primary_uses": {
+          "values": [
+            "indicating diamond ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "bud for prospecting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only picked up when found"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common surface block"
+        }
+      }
+    },
+    "gtceu:diamond_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "powdered diamond used in crafting"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "inferred",
+          "rationale": "diamond tier material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting diamond components",
+            "abrasives"
+          ],
+          "signal": "inferred",
+          "rationale": "dust for sintering"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:diamond_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "diamond gear component"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "inferred",
+          "rationale": "diamond tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in rotary machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting diamond rotary parts"
+          ],
+          "signal": "inferred",
+          "rationale": "gear for machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common"
+        }
+      }
+    },
+    "gtceu:diamond_grinding_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "grinding component used in machine recipes"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "inferred",
+          "rationale": "diamond component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in macerator and crusher recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "grinding component for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build grinders"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common"
+        }
+      }
+    },
+    "gtceu:diamond_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock for diamond ore"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore indicator"
+        },
+        "primary_uses": {
+          "values": [
+            "indicating diamond ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "surface indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only picked up when found"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common surface block"
+        }
+      }
+    },
+    "gtceu:diamond_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "diamond optical component"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "inferred",
+          "rationale": "diamond tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in laser and optical machines"
+        },
+        "primary_uses": {
+          "values": [
+            "optical component",
+            "laser focusing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT optical processors"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common"
+        }
+      }
+    },
+    "gtceu:diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw diamond ore mined for diamonds"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for diamond"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into diamond"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into diamond material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond ore found in caves"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stored together"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "consumption example greate:milling",
+          "rationale": "milled into crushed ore"
+        }
+      }
+    },
+    "gtceu:diamond_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "diamond plate for industrial crafting"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "inferred",
+          "rationale": "diamond tier"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting diamond machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "plate used in high-end machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:plates"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:dense_silicon_plate",
+      "facet": "form",
+      "value": "plate",
+      "rationale": "name and id suffix _plate indicate plate form"
+    },
+    {
+      "item": "gtceu:dense_steel_plate",
+      "facet": "form",
+      "value": "plate",
+      "rationale": "name and id suffix _plate"
+    },
+    {
+      "item": "gtceu:dense_tungsten_steel_plate",
+      "facet": "form",
+      "value": "plate",
+      "rationale": "name and id suffix _plate"
+    },
+    {
+      "item": "gtceu:dense_zirconium_plate",
+      "facet": "form",
+      "value": "plate",
+      "rationale": "name and id suffix _plate"
+    },
+    {
+      "item": "gtceu:desh_foil",
+      "facet": "form",
+      "value": "foil",
+      "rationale": "tag forge:foils and name indicates foil"
+    },
+    {
+      "item": "gtceu:desh_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "tag forge:gears and name indicates gear"
+    },
+    {
+      "item": "gtceu:diamond_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "tag forge:gears and name indicates gear"
+    },
+    {
+      "item": "gtceu:diamond_bolt",
+      "facet": "form",
+      "value": "bolt",
+      "rationale": "tag forge:bolts and name indicates bolt"
+    },
+    {
+      "item": "gtceu:diamond_lens",
+      "facet": "form",
+      "value": "lens",
+      "rationale": "tag forge:lenses and name indicates lens"
+    },
+    {
+      "item": "gtceu:desh_frame",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "block tags include mineable/wrench and mineable/pickaxe"
+    },
+    {
+      "item": "gtceu:desh_ore",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "requires correct tool, typical for ore"
+    },
+    {
+      "item": "gtceu:diamond_ore",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "requires correct tool, typical for ore"
+    }
+  ]
+}

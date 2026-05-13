@@ -1,0 +1,2096 @@
+{
+  "items": {
+    "gtceu:purified_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing",
+            "greate:mixing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "greate:mixing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing",
+            "greate:mixing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; vibrate for gems; further processing",
+          "signal": "inferred",
+          "rationale": "gem processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; vibrate for gems; further processing",
+          "signal": "inferred",
+          "rationale": "gem processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; vibrate for gems; further processing",
+          "signal": "inferred",
+          "rationale": "gem processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; vibrate for gems; further processing",
+          "signal": "inferred",
+          "rationale": "gem processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; vibrate; further processing",
+          "signal": "inferred",
+          "rationale": "standard and gem processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "no smelting recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "smelt to ingots; mill to dust; further processing",
+          "signal": "inferred",
+          "rationale": "standard ore processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input",
+            "greate:pressing#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    },
+    "gtceu:purified_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "purified ore is a processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during ore processing batches"
+        },
+        "primary_uses": {
+          "value": "mill to dust; vibrate for gems; further processing",
+          "signal": "inferred",
+          "rationale": "gem processing steps"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:purified_ore"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate stage after washing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable intermediate processed in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples via splashing/barrel/AE",
+          "rationale": "produced by processing, no worldgen"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "consumed in these processes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "greate:pressing#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input in each workflow"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "greate:pressing",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where consumed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "material_process_stage",
+      "value": "slot:purified_ore",
+      "rationale": "Missing purified ore stage for GTCEu purified ores, a key intermediate in ore processing"
+    }
+  ],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

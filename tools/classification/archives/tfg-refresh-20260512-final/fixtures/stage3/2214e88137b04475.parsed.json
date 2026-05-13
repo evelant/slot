@@ -1,0 +1,811 @@
+{
+  "items": {
+    "create:stock_ticker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block with UI for ordering items via mobs"
+        },
+        "primary_uses": {
+          "value": "Automate item ordering from mobs",
+          "signal": "inferred",
+          "rationale": "Player uses to request items"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Orders items, part of logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Logistics network component"
+        }
+      }
+    },
+    "create:stockpile_switch": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Outputs redstone based on inventory level"
+        },
+        "primary_uses": {
+          "value": "Monitor inventory levels and output redstone",
+          "signal": "inferred",
+          "rationale": "Used for redstone control"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed, used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Redstone signal device"
+        }
+      }
+    },
+    "create:stressometer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Measures stress on kinetic network"
+        },
+        "primary_uses": {
+          "value": "Monitor mechanical stress levels",
+          "signal": "inferred",
+          "rationale": "Gauge for contraption management"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed, used occasionally"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation setups"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Contraption monitoring component"
+        }
+      }
+    },
+    "create:sturdy_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Sheet crafting component"
+        },
+        "primary_uses": {
+          "value": "Crafting component for advanced items",
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized material, not commonly carried"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "signal": "inferred",
+          "rationale": "Made from powdered obsidian"
+        }
+      }
+    },
+    "create:super_glue": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool used to temporarily connect blocks"
+        },
+        "primary_uses": {
+          "value": "Temporarily glue blocks together",
+          "signal": "inferred",
+          "rationale": "Used in contraption building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building contraptions"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building aid"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to create contraptions"
+        }
+      }
+    },
+    "create:sweet_roll": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "component minecraft:food",
+          "rationale": "Has food component, edible"
+        },
+        "primary_uses": {
+          "value": "Eat to restore hunger and saturation",
+          "signal": "inferred",
+          "rationale": "Food item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Good food, carried for eating"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Sweet roll is a prepared food"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other foods"
+        }
+      }
+    },
+    "create:tiled_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Glass block used in building"
+        },
+        "primary_uses": {
+          "value": "Decorative glass building",
+          "signal": "inferred",
+          "rationale": "Construction material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "Id suffix _glass and forge:glass tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass block family"
+        }
+      }
+    },
+    "create:tiled_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Glass pane used in building"
+        },
+        "primary_uses": {
+          "value": "Decorative glass panes",
+          "signal": "inferred",
+          "rationale": "Window material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "Id suffix _glass_pane"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane family"
+        }
+      }
+    },
+    "create:track": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Rail track for train movement"
+        },
+        "primary_uses": {
+          "value": "Build railway networks",
+          "signal": "inferred",
+          "rationale": "Track for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building rails"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train transportation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Core train track component"
+        }
+      }
+    },
+    "create:track_observer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Outputs redstone when train passes"
+        },
+        "primary_uses": {
+          "value": "Detect trains on track for redstone",
+          "signal": "inferred",
+          "rationale": "Sensor block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed near tracks"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used with train system"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train sensor component"
+        }
+      }
+    },
+    "create:track_signal": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Controls train traffic, no UI"
+        },
+        "primary_uses": {
+          "value": "Manage train traffic signals",
+          "signal": "inferred",
+          "rationale": "Signals for track segments"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed along tracks"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train traffic control"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train signal component"
+        }
+      }
+    },
+    "create:track_station": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to manage train schedules"
+        },
+        "primary_uses": {
+          "value": "Create and manage train stations",
+          "signal": "inferred",
+          "rationale": "Station block with UI"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per station"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train station operation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train station component"
+        }
+      }
+    },
+    "create:train_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door placed on trains or buildings"
+        },
+        "primary_uses": {
+          "value": "Build train doors",
+          "signal": "inferred",
+          "rationale": "Structural door"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building trains"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Train door is metal"
+        },
+        "form": {
+          "value": "door",
+          "signal": "named",
+          "rationale": "minecraft:doors tag"
+        }
+      }
+    },
+    "create:train_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Trapdoor placed on trains"
+        },
+        "primary_uses": {
+          "value": "Build train trapdoors",
+          "signal": "inferred",
+          "rationale": "Access hatch"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Train trapdoor is metal"
+        },
+        "form": {
+          "value": "trapdoor",
+          "signal": "named",
+          "rationale": "minecraft:trapdoors tag"
+        }
+      }
+    },
+    "create:transmitter": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for network items"
+        },
+        "primary_uses": {
+          "value": "Craft network links and stock links",
+          "signal": "inferred",
+          "rationale": "Used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized component"
+        }
+      }
+    },
+    "create:tree_fertilizer": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Item used on saplings to grow trees"
+        },
+        "primary_uses": {
+          "value": "Force grow saplings in tight spaces",
+          "signal": "inferred",
+          "rationale": "Fertilizer tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tree farming"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Applied to saplings"
+        }
+      }
+    },
+    "create:tuff_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar block"
+        },
+        "primary_uses": {
+          "value": "Decorative tuff pillar building",
+          "signal": "inferred",
+          "rationale": "Stone building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "named",
+          "rationale": "stage2 rule from id"
+        }
+      }
+    },
+    "create:turntable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Rotates entities using rotational force"
+        },
+        "primary_uses": {
+          "value": "Rotate entities and blocks",
+          "signal": "inferred",
+          "rationale": "Kinetic rotation device"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in automation setups"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of contraptions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Contraption moving component"
+        }
+      }
+    },
+    "create:unprocessed_obsidian_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting item"
+        },
+        "primary_uses": {
+          "value": "Intermediate crafting step",
+          "signal": "inferred",
+          "rationale": "Processed into sturdy sheet"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not kept in inventory long"
+        }
+      }
+    },
+    "create:veridium": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone block for building"
+        },
+        "primary_uses": {
+          "value": "Decorative veridium stone building",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "material_family": {
+          "value": "veridium",
+          "signal": "inferred",
+          "rationale": "Custom stone type"
+        }
+      }
+    },
+    "create:veridium_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar block"
+        },
+        "primary_uses": {
+          "value": "Decorative veridium pillar building",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "material_family": {
+          "value": "veridium",
+          "signal": "inferred",
+          "rationale": "Veridium stone variant"
+        }
+      }
+    },
+    "create:vertical_framed_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Framed glass block for building"
+        },
+        "primary_uses": {
+          "value": "Decorative framed glass building",
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "forge:glass tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass block family"
+        }
+      }
+    },
+    "create:vertical_framed_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Framed glass pane for building"
+        },
+        "primary_uses": {
+          "value": "Decorative framed glass panes",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "forge:glass_panes tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane family"
+        }
+      }
+    },
+    "create:vertical_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Gearbox that changes rotation axis"
+        },
+        "primary_uses": {
+          "value": "Change rotation axis in kinetic network",
+          "signal": "inferred",
+          "rationale": "Mechanical power component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in power lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Kinetic power transmission"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Gearbox is a contraption component"
+        }
+      }
+    },
+    "create:wand_of_symmetry": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Wand tool for building symmetry"
+        },
+        "primary_uses": {
+          "value": "Mirror block placement",
+          "signal": "inferred",
+          "rationale": "Building aid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized tool, not always carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = uncommon"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "inferred",
+          "rationale": "Wand likely brass"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building tool"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "create:tiled_glass",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "block",
+      "rationale": "tiled_glass is a full block, not a pane",
+      "confidence": 0.9
+    },
+    {
+      "item": "create:vertical_framed_glass",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "block",
+      "rationale": "vertical_framed_glass is a full block, not a pane",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": [
+    {
+      "item": "create:tiled_glass",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Block item, cube_all model"
+    },
+    {
+      "item": "create:tuff_pillar",
+      "facet": "form",
+      "value": "pillar",
+      "rationale": "Pillar variant block"
+    },
+    {
+      "item": "create:veridium",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Stone block, cube_all model"
+    },
+    {
+      "item": "create:veridium_pillar",
+      "facet": "form",
+      "value": "pillar",
+      "rationale": "Pillar variant block"
+    },
+    {
+      "item": "create:vertical_framed_glass",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Block item, cube_column model"
+    },
+    {
+      "item": "create:vertical_gearbox",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Block item, connected texture model"
+    }
+  ]
+}

@@ -1,0 +1,1196 @@
+{
+  "items": {
+    "gtceu:vanadium_gallium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed metal block, player stores with materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of vanadium gallium",
+            "Source of ingots when broken down"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for material storage and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving bulk material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "ZPM tier cables use this material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Compact storage block for materials"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used as tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting molten vanadium gallium"
+          ],
+          "signal": "inferred",
+          "rationale": "Carries high-temperature liquid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Single-use item rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport wire, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of a material"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into ingots",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into other forms"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "Source material for ZPM cables"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust for processing"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Thin metal sheet used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced components",
+            "Material for rolling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in precise recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting specific items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "Derived from ZPM material"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport wire, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ingot of a known crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ZPM components",
+            "Smelting into plates and wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Base form for further processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "Base material for ZPM cables"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Ingots that can be piled"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Nugget form of a metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting into ingots",
+            "Small crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "1/9 of an ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "Derived from ZPM material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "Small metal pieces"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport wire, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Plate form of a metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced components",
+            "Rolling into foils and wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate form for further processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "Derived from ZPM material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Sheets that can be piled"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport wire, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Rod form of a metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tools and components",
+            "Coiling into springs and wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Versatile crafting intermediate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "Derived from ZPM material"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport wire, placed as infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy transport at ZPM voltage",
+            "Power distribution network"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-voltage power lines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "pattern",
+          "rationale": "Tooltip shows ZPM voltage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport cable in GTCEu"
+        }
+      }
+    },
+    "gtceu:vanadium_gallium_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Spring form of a metal, used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mechanical components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_gallium",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_gallium"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "inferred",
+          "rationale": "Derived from ZPM material"
+        }
+      }
+    },
+    "gtceu:vanadium_magnetite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of an ore mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into cast iron and vanadium",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into metal ingots"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing ores"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_magnetite",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_magnetite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined dust for processing"
+        }
+      }
+    },
+    "gtceu:vanadium_magnetite_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating ore deposit"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates vanadium magnetite ore",
+            "Can be processed into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Exploration marker and source of dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Picked up when prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_magnetite",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_magnetite"
+        }
+      }
+    },
+    "gtceu:vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Mined for vanadium and iron",
+            "Smelted into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of vanadium magnetite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining and processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_magnetite",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_magnetite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining for ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed metal block, player stores with materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of vanadium steel",
+            "Source of ingots when broken down"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for material storage and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving bulk material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_steel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Compact storage block for materials"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced components and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_steel"
+        }
+      }
+    },
+    "gtceu:vanadium_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used as tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting molten vanadium steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Carries high-temperature liquid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Single-use item rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component rarity"
+        },
+        "material_family": {
+          "value": "vanadium_steel",
+          "signal": "pattern",
+          "rationale": "Item id contains vanadium_steel"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:vanadium_gallium_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Compressed block form from storage block tag"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_double_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Double cable form from tag forge:double_cables"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_double_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Double wire form from tag forge:double_wires"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_foil",
+      "facet": "form",
+      "value": "foil",
+      "rationale": "Foil form from tag forge:foils"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_hex_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Hex cable form from tag forge:hex_cables"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_hex_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Hex wire form from tag forge:hex_wires"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_octal_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Octal cable form from tag forge:octal_cables"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_octal_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Octal wire form from tag forge:octal_wires"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_quadruple_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Quadruple cable form from tag forge:quadruple_cables"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_quadruple_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Quadruple wire form from tag forge:quadruple_wires"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_single_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Single cable form from tag forge:single_cables"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_single_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Single wire form from tag forge:single_wires"
+    },
+    {
+      "item": "gtceu:vanadium_gallium_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "Spring form from tag forge:springs"
+    },
+    {
+      "item": "gtceu:vanadium_magnetite_indicator",
+      "facet": "form",
+      "value": "surface_rock",
+      "rationale": "Surface rock indicator from tag forge:surface_rocks"
+    },
+    {
+      "item": "gtceu:vanadium_steel_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Compressed block form from storage block tag"
+    },
+    {
+      "item": "gtceu:vanadium_steel_bolt",
+      "facet": "form",
+      "value": "bolt",
+      "rationale": "Bolt form from tag forge:bolts"
+    }
+  ],
+  "vocabulary_proposals": [],
+  "schema_proposals": [],
+  "corrections": []
+}

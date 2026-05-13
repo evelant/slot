@@ -1,0 +1,1301 @@
+{
+  "items": {
+    "tfc:metal/scythe/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Harvesting tool used by hand; part of TFC tool set"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id material segment",
+          "rationale": "Metal from ID path"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "Metal tier from ID"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Early bronze alloy, common tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential farming tool, kept in inventory"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to harvest crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in wide area",
+            "Dealing melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interaction: farming, secondary combat"
+        }
+      }
+    },
+    "tfc:metal/scythe/black_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Harvesting tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "Stage2 confirmed rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential farming tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvesting crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in wide area",
+            "Dealing melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary farming, secondary combat"
+        }
+      }
+    },
+    "tfc:metal/scythe/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Harvesting tool"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "Stage2 maps epic to unique"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "High-end tool, still carried for farming"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvesting crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in wide area",
+            "Dealing melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary farming, secondary combat"
+        }
+      }
+    },
+    "tfc:metal/scythe/bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Harvesting tool"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common bronze tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential farming tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvesting crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in wide area",
+            "Dealing melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary farming, secondary combat"
+        }
+      }
+    },
+    "tfc:metal/scythe/copper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Harvesting tool"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common early metal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential farming tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvesting crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in wide area",
+            "Dealing melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary farming, secondary combat"
+        }
+      }
+    },
+    "tfc:metal/scythe/red_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Harvesting tool"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "Stage2 maps epic to unique"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "High-end tool, still carried for farming"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvesting crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in wide area",
+            "Dealing melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary farming, secondary combat"
+        }
+      }
+    },
+    "tfc:metal/scythe/steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Harvesting tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "Stage2 confirmed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential farming tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvesting crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in wide area",
+            "Dealing melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary farming, secondary combat"
+        }
+      }
+    },
+    "tfc:metal/scythe/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Harvesting tool"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common tool material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential farming tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvesting crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in wide area",
+            "Dealing melee damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary farming, secondary combat"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for scythe; stackable, no use on its own"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "Metal tier of final tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common metal component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafted and stored until used in anvil"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil, no loot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input for welding scythe"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed on anvil to make scythe"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed on anvil for welding"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is to make scythe"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for scythe"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for scythe welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Make scythe"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/black_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "stage2 rarity",
+          "rationale": "Stage2 confirms rare"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Make scythe"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "stage2 rarity",
+          "rationale": "Stage2 maps epic to unique"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Make scythe"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Make scythe"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/copper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Make scythe"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "stage2 rarity",
+          "rationale": "Stage2 maps epic to unique"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Make scythe"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "stage2 rarity",
+          "rationale": "Stage2 confirms uncommon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Make scythe"
+        }
+      }
+    },
+    "tfc:metal/scythe_blade/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made on anvil"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting scythes on the anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "Make scythe"
+        }
+      }
+    },
+    "tfc:metal/shears/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Used for shearing and hide cutting; part of tool set"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common bronze alloy"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential for leatherworking and animal husbandry"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for shearing and crafting with hides"
+        },
+        "primary_uses": {
+          "values": [
+            "Shearing leaves and wool",
+            "Cutting hides in leather crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main functions: harvesting and crafting"
+        }
+      }
+    },
+    "tfc:metal/shears/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shearing tool"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common bronze"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential for leatherworking"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Shearing and hide cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Shearing leaves and wool",
+            "Cutting hides in leather crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main functions"
+        }
+      }
+    },
+    "tfc:metal/shears/black_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shearing tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "stage2 rarity",
+          "rationale": "Stage2 confirms rare"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Shearing and hide cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Shearing leaves and wool",
+            "Cutting hides in leather crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main functions"
+        }
+      }
+    },
+    "tfc:metal/shears/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shearing tool"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "stage2 rarity",
+          "rationale": "Stage2 maps epic to unique"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Shearing and hide cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Shearing leaves and wool",
+            "Cutting hides in leather crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main functions"
+        }
+      }
+    },
+    "tfc:metal/shears/bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shearing tool"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common bronze"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Shearing and hide cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Shearing leaves and wool",
+            "Cutting hides in leather crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main functions"
+        }
+      }
+    },
+    "tfc:metal/shears/copper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shearing tool"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common early metal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Shearing and hide cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Shearing leaves and wool",
+            "Cutting hides in leather crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main functions"
+        }
+      }
+    },
+    "tfc:metal/shears/red_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shearing tool"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "stage2 rarity",
+          "rationale": "Stage2 maps epic to unique"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Shearing and hide cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Shearing leaves and wool",
+            "Cutting hides in leather crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main functions"
+        }
+      }
+    },
+    "tfc:metal/shears/steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Shearing tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Metal from ID"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Metal tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "stage2 rarity",
+          "rationale": "Stage2 confirms uncommon"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Shearing and hide cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Shearing leaves and wool",
+            "Cutting hides in leather crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

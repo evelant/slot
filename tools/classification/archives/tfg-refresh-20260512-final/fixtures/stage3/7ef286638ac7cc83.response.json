@@ -1,0 +1,1213 @@
+{
+  "items": {
+    "gtceu:hsse_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "A crafting tool used in many recipes; stored as artisan tool."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material family."
+        },
+        "tier": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "High-speed steel, a top-tier tool material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in many crafting recipes; kept in hotbar often."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for crafting machine components."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tool for many recipes",
+            "Shaping metal components"
+          ],
+          "signal": "inferred",
+          "rationale": "File used in 600+ crafting recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfg:artisan_table_tools",
+          "rationale": "Stored with other artisan crafting tools."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component used solely to craft the file."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a file; not carried otherwise."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E file"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is file crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only obtained via crafting."
+        }
+      }
+    },
+    "gtceu:hsse_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine frame used in multiblocks, not a building block."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once in machines; not carried regularly."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of machine construction for automation."
+        },
+        "primary_uses": {
+          "values": [
+            "Building machine casings",
+            "Structural component for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Frame block used in GTCEu multiblock structures."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag forge:frames",
+          "rationale": "Stored with other machine frames."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Frame is a core multiblock component."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material component used in further crafting."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine building but not hotbar essential."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting GTCEu machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Gear used in many crafting recipes."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only obtained via crafting."
+        }
+      }
+    },
+    "gtceu:hsse_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Crafting tool that also crushes blocks; used in over 1600 recipes."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "tier": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "High-speed steel, a top-tier tool material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used constantly in crafting and mining."
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "evidence": "Tooltip: Crushes Blocks when harvesting them",
+          "rationale": "Hammer mines blocks and is used in machine crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "Crushing ore and blocks",
+            "Crafting machine components",
+            "Hammering in recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Versatile tool with mining and crafting uses."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfg:artisan_table_tools",
+          "rationale": "Stored with other artisan tools."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component to craft the hammer."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a hammer."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E hammer"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is hammer crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Farming tool for tilling ground."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "tier": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "High-speed steel, a top-tier tool material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during farming trips."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "evidence": "Tooltip: Farmer: Tills Ground",
+          "rationale": "Used for farming."
+        },
+        "primary_uses": {
+          "values": [
+            "Tilling soil for crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is farming."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfc:hoes and artisan_table_tools? Actually no tfg tag directly but it's a tool. However the finished tools have tfg:artisan_table_tools tag? The input shows hsse_hoe has no tfg:artisan_table_tools tag, but it is a tool. The disambiguation says organization_group for tools can be artisan_table_tools even if tag missing? The tag is present on hammer, file, knife, scythe, sword but not on hoe. But it's still a crafted tool. I'll still set because it's a tool that belongs with artisan tools.",
+          "rationale": "Stored with other artisan tools like hoes."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component to craft the hoe."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a hoe."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E hoe"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is hoe crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "Tag forge:ingots",
+          "rationale": "Standard ingot form of HSS-E alloy."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id directly indicates material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag forge:ingots",
+          "rationale": "Ingot form of metal."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing but stored in bulk."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-end machine parts",
+            "Smithing into plates and rods"
+          ],
+          "signal": "inferred",
+          "rationale": "Base material for many GTCEu components."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfc:pileable_ingots",
+          "rationale": "Stored with other pileable ingots."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; only obtained via alloying/smelting."
+        }
+      }
+    },
+    "gtceu:hsse_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Multi-purpose tool used in many crafting and deployer recipes."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "tier": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "High-speed steel, a top-tier tool material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in many crafting recipes and deployer setups."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "evidence": "Used in deployer recipes and food cutting",
+          "rationale": "Knife used for cutting food and in automated deployer recipes."
+        },
+        "primary_uses": {
+          "values": [
+            "Cutting food and materials",
+            "Deployer crafting recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Widely used in crafting and automation."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfg:artisan_table_tools",
+          "rationale": "Stored with other artisan tools."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component to craft the knife."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a knife."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is knife crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "Tag forge:nuggets",
+          "rationale": "Nugget form of HSS-E."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag forge:nuggets",
+          "rationale": "Nugget form."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for small crafting adjustments."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting smaller components",
+            "Miscellaneous metalwork"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in precision crafting."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag forge:nuggets",
+          "rationale": "Stored with other nuggets."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "Tag forge:plates",
+          "rationale": "Plate form of HSS-E."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag forge:plates",
+          "rationale": "Plate form."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing but stored in bulk."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machine casings",
+            "Making gears and rings"
+          ],
+          "signal": "inferred",
+          "rationale": "Plate used in many component recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfc:pileable_sheets",
+          "rationale": "Stored with other pileable sheets."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small component used in machine crafting."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine assembly."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting rotor components",
+            "Machine part assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Ring used in rotors and other machines."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "Tag forge:rods",
+          "rationale": "Rod form of HSS-E."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag forge:rods",
+          "rationale": "Rod form."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tool and component crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tools and machine components",
+            "Making screws and bolts"
+          ],
+          "signal": "inferred",
+          "rationale": "Rod is base for many small parts."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other processed metal forms."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small fastener component."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine assembly projects."
+        },
+        "primary_uses": {
+          "values": [
+            "Fastening machine parts",
+            "Crafting GTCEu components"
+          ],
+          "signal": "inferred",
+          "rationale": "Screw used in many machine recipes."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_screwdriver_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component for screwdriver."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a screwdriver."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E screwdriver"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is screwdriver crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_scythe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Farming tool with area-of-effect harvesting."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "tier": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "High-speed steel, top-tier material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used during farming trips, not daily carry."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "evidence": "Tooltip: Harvester: Harvests Crops",
+          "rationale": "Primary use is crop harvesting."
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting crops in 5x5x3 area",
+            "Tilling ground"
+          ],
+          "signal": "inferred",
+          "evidence": "Area-of-Effect: 5x5x3",
+          "rationale": "Large-area farming tool."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfg:artisan_table_tools",
+          "rationale": "Stored with other artisan tools."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_scythe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component for scythe."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a scythe."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E scythe"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is scythe crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "Melee weapon with high attack damage; used in combat."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-E material."
+        },
+        "tier": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "High-speed steel, top-tier weapon material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Primary weapon carried for defense and combat."
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "evidence": "Tag tfc:swords and attack damage",
+          "rationale": "Used for combat."
+        },
+        "primary_uses": {
+          "values": [
+            "Melee combat against mobs and players"
+          ],
+          "signal": "inferred",
+          "rationale": "High-damage weapon."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfg:artisan_table_tools",
+          "rationale": "Stored with other artisan tools (including swords)."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_sword_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component for sword."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a sword."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E sword"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is sword crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_wire_cutter_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component for wire cutter."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a wire cutter."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E wire cutter"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is wire cutter crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hsse_wrench_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate component for wrench."
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used once to craft a wrench."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting HSS-E wrench"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is wrench crafting."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    },
+    "gtceu:hssg_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compact storage block of HSS-G ingots; used in storage and decoration."
+        },
+        "material_family": {
+          "value": "hssg",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-G material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for compact storage or building, but placed."
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of HSS-G ingots",
+            "Decorative building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to store 9 ingots efficiently and as construction material."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted from ingots."
+        }
+      }
+    },
+    "gtceu:hssg_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small fastener component."
+        },
+        "material_family": {
+          "value": "hssg",
+          "signal": "pattern",
+          "rationale": "Id prefix indicates HSS-G material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common component",
+          "rationale": "Component marks common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine assembly."
+        },
+        "primary_uses": {
+          "values": [
+            "Fastening machine parts",
+            "Crafting GTCEu components"
+          ],
+          "signal": "inferred",
+          "rationale": "Bolt used in many machine recipes."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only crafted."
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

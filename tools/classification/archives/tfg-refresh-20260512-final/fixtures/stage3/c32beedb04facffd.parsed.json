@@ -1,0 +1,1802 @@
+{
+  "items": {
+    "gtceu:purified_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_bismuth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_blue_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milled and vibrated"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling and vibrating"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milling and vibrating stations"
+        }
+      }
+    },
+    "gtceu:purified_borax_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_bornite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_calcite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_cassiterite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_cassiterite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_certus_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milled and vibrated"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling and vibrating"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milling and vibrating stations"
+        }
+      }
+    },
+    "gtceu:purified_chalcocite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_chalcopyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_chromite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_cinnabar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milled and vibrated"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling and vibrating"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milling and vibrating stations"
+        }
+      }
+    },
+    "gtceu:purified_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_cobalt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple processing routes"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling, smelting, blasting"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple stations"
+        }
+      }
+    },
+    "gtceu:purified_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milled and vibrated"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling and vibrating"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milling and vibrating stations"
+        }
+      }
+    },
+    "gtceu:purified_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    },
+    "gtceu:purified_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milled and vibrated"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input",
+            "vintageimprovements:vibrating#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling and vibrating"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling",
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "milling and vibrating stations"
+        }
+      }
+    },
+    "gtceu:purified_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ore processing item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mill into dusts",
+            "further purification"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via splashing/barrel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed ore stage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into dust"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "milling station"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

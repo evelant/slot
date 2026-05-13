@@ -1,0 +1,1381 @@
+{
+  "items": {
+    "tfc:metal/ingot/pig_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + tag forge:ingots",
+          "rationale": "Refined metal used to craft steel"
+        },
+        "material_family": {
+          "value": "pig_iron",
+          "signal": "named",
+          "evidence": "display_name 'Pig Iron Ingot'",
+          "rationale": "Material from display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when smithing or casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Worked into high carbon steel",
+            "Casting into pig iron ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in steel making chain"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ingot from tag forge:ingots",
+          "rationale": "Refined ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Stored with other pileable ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk stacks"
+        }
+      }
+    },
+    "tfc:metal/ingot/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + tag forge:ingots",
+          "rationale": "Refined top-tier metal"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "named",
+          "evidence": "display_name 'Red Steel Ingot'",
+          "rationale": "Material from display name"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "named",
+          "evidence": "doc context advancement 'Seeing Red'",
+          "rationale": "Top tier tool material"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "Very rare endgame material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tool/armor crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Forging tools and armor",
+            "Crafting red steel items",
+            "Anvil welding"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material for endgame gear"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ingot from tag forge:ingots",
+          "rationale": "Refined ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Stored with other pileable ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Rare, kept in smaller quantities"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil",
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in smithing and casting"
+        }
+      }
+    },
+    "tfc:metal/ingot/rose_gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot",
+          "rationale": "Refined alloy ingot"
+        },
+        "material_family": {
+          "value": "rose_gold",
+          "signal": "named",
+          "evidence": "display_name 'Rose Gold Ingot'",
+          "rationale": "Material from display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for decoration or specific recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting decorative items",
+            "Alloy component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in specific crafts"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other ingots despite no tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Not bulk, niche use"
+        }
+      }
+    },
+    "tfc:metal/ingot/silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot",
+          "rationale": "Refined metal ingot"
+        },
+        "material_family": {
+          "value": "silver",
+          "signal": "named",
+          "evidence": "display_name 'Silver Ingot'",
+          "rationale": "Material from display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for alloys and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Alloy component (sterling silver, etc.)",
+            "Crafting decorative items"
+          ],
+          "signal": "inferred",
+          "rationale": "Mainly used in alloys"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Not bulk, niche use"
+        }
+      }
+    },
+    "tfc:metal/ingot/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot",
+          "rationale": "Refined metal ingot"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "named",
+          "evidence": "display_name 'Steel Ingot'",
+          "rationale": "Material from display name"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "named",
+          "evidence": "doc context advancement 'Industrialized'",
+          "rationale": "Mid-high tier tool material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "Important progression material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for tool/armor crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Forging steel tools and armor",
+            "Anvil welding",
+            "Alloy base"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material for steel age"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stockpiled for mass use"
+        }
+      }
+    },
+    "tfc:metal/ingot/sterling_silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot",
+          "rationale": "Refined alloy ingot"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "named",
+          "evidence": "display_name 'Sterling Silver Ingot'",
+          "rationale": "Material from display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for decoration or specific recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting decorative items",
+            "Alloy component"
+          ],
+          "signal": "inferred",
+          "rationale": "Niche use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Not bulk"
+        }
+      }
+    },
+    "tfc:metal/ingot/tin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot",
+          "rationale": "Refined metal ingot"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "named",
+          "evidence": "display_name 'Tin Ingot'",
+          "rationale": "Material from display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for bronze alloying"
+        },
+        "primary_uses": {
+          "values": [
+            "Alloying bronze",
+            "Crafting tin items"
+          ],
+          "signal": "inferred",
+          "rationale": "Mainly for bronze"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Not bulk"
+        }
+      }
+    },
+    "tfc:metal/ingot/unknown": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + tag forge:ingots",
+          "rationale": "Refined unknown metal"
+        },
+        "material_family": {
+          "value": "unknown",
+          "signal": "named",
+          "evidence": "display_name 'Unknown Ingot'",
+          "rationale": "Material from display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Joke item, common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Useless metal, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "No practical use",
+            "Melting down"
+          ],
+          "signal": "inferred",
+          "rationale": "Trophy/curio item"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ingot from tag forge:ingots",
+          "rationale": "Refined ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Stored with other pileable ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:display"
+          ],
+          "signal": "inferred",
+          "rationale": "Kept as curiosity"
+        }
+      }
+    },
+    "tfc:metal/ingot/weak_blue_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + tag forge:ingots",
+          "rationale": "Intermediate alloy ingot"
+        },
+        "material_family": {
+          "value": "weak_blue_steel",
+          "signal": "named",
+          "evidence": "display_name 'Weak Blue Steel Ingot'",
+          "rationale": "Material from display name"
+        },
+        "tier": {
+          "value": "weak_blue_steel",
+          "signal": "inferred",
+          "rationale": "Precursor to blue steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Intermediate step"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for processing into blue steel"
+        },
+        "primary_uses": {
+          "values": [
+            "Worked into blue steel",
+            "Alloy intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Stepping stone to blue steel"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ingot from tag forge:ingots",
+          "rationale": "Refined ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Stored with other pileable ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate product, not bulk"
+        }
+      }
+    },
+    "tfc:metal/ingot/weak_red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + tag forge:ingots",
+          "rationale": "Intermediate alloy ingot"
+        },
+        "material_family": {
+          "value": "weak_red_steel",
+          "signal": "named",
+          "evidence": "display_name 'Weak Red Steel Ingot'",
+          "rationale": "Material from display name"
+        },
+        "tier": {
+          "value": "weak_red_steel",
+          "signal": "inferred",
+          "rationale": "Precursor to red steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Intermediate step"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for processing into red steel"
+        },
+        "primary_uses": {
+          "values": [
+            "Worked into red steel",
+            "Alloy intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Stepping stone to red steel"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ingot from tag forge:ingots",
+          "rationale": "Refined ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Stored with other pileable ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate product"
+        }
+      }
+    },
+    "tfc:metal/ingot/weak_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + tag forge:ingots",
+          "rationale": "Intermediate alloy ingot"
+        },
+        "material_family": {
+          "value": "weak_steel",
+          "signal": "named",
+          "evidence": "display_name 'Weak Steel Ingot'",
+          "rationale": "Material from display name"
+        },
+        "tier": {
+          "value": "weak_steel",
+          "signal": "inferred",
+          "rationale": "Precursor to steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Intermediate step"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for processing into black steel"
+        },
+        "primary_uses": {
+          "values": [
+            "Worked into black steel",
+            "Alloy intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Stepping stone to black steel"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ingot from tag forge:ingots",
+          "rationale": "Refined ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Stored with other pileable ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate product"
+        }
+      }
+    },
+    "tfc:metal/ingot/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot",
+          "rationale": "Refined metal ingot"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "named",
+          "evidence": "display_name 'Wrought Iron Ingot'",
+          "rationale": "Material from display name"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "named",
+          "evidence": "doc context advancement 'The Iron Age'",
+          "rationale": "Iron age tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common iron age metal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Primary iron material carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Forging tools and armor",
+            "Anvil welding",
+            "Crafting iron items"
+          ],
+          "signal": "inferred",
+          "rationale": "Main iron age material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stockpiled for mass use"
+        }
+      }
+    },
+    "tfc:metal/ingot/zinc": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot",
+          "rationale": "Refined metal ingot"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "named",
+          "evidence": "display_name 'Zinc Ingot'",
+          "rationale": "Material from display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for alloying brass"
+        },
+        "primary_uses": {
+          "values": [
+            "Alloying brass",
+            "Crafting zinc items"
+          ],
+          "signal": "inferred",
+          "rationale": "Mainly for brass"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Not bulk"
+        }
+      }
+    },
+    "tfc:metal/javelin/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "named",
+          "evidence": "display_name 'Bismuth Bronze Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "inferred",
+          "rationale": "Bronze tier weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common early weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for hunting/combat"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "combat_bonus": {
+          "values": [
+            "inflicts_poison"
+          ],
+          "signal": "guess",
+          "rationale": "No explicit bonus, default"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "display_name 'Black Bronze Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "inferred",
+          "rationale": "Bronze tier weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common early weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for hunting/combat"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin/black_steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "named",
+          "evidence": "display_name 'Black Steel Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "Advanced steel tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "Rare high-tier weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specialized weapon, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "named",
+          "evidence": "display_name 'Blue Steel Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "Top-tier endgame steel"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "Very rare endgame weapon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used sparingly but powerful"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin/bronze": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "named",
+          "evidence": "display_name 'Bronze Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "inferred",
+          "rationale": "Bronze tier weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common early weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for hunting/combat"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin/copper": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "evidence": "display_name 'Copper Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "Copper tier weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common early weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for hunting/combat"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin/red_steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "named",
+          "evidence": "display_name 'Red Steel Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "inferred",
+          "rationale": "Top-tier endgame steel"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "Very rare endgame weapon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used sparingly but powerful"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin/steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "named",
+          "evidence": "display_name 'Steel Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Mid-high tier weapon"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "Uncommon progression weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag tfc:javelins + deals_piercing_damage",
+          "rationale": "Thrown and melee weapon"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "named",
+          "evidence": "display_name 'Wrought Iron Javelin'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "Iron tier weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common iron age weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "Thrown ranged damage",
+            "Melee piercing attack"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual-purpose weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of combat loadout"
+        }
+      }
+    },
+    "tfc:metal/javelin_head/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:javelin_heads",
+          "rationale": "Component for crafting javelins"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "named",
+          "evidence": "display_name 'Bismuth Bronze Javelin Head'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "inferred",
+          "rationale": "Bronze tier component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting javelins"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting bismuth bronze javelins"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "guess",
+          "rationale": "Not an ingot, but a head; no stage fits"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to make combat gear"
+        }
+      }
+    },
+    "tfc:metal/javelin_head/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:javelin_heads",
+          "rationale": "Component for crafting javelins"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "display_name 'Black Bronze Javelin Head'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "inferred",
+          "rationale": "Bronze tier component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting javelins"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting black bronze javelins"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to make combat gear"
+        }
+      }
+    },
+    "tfc:metal/javelin_head/black_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:javelin_heads",
+          "rationale": "Component for crafting javelins"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "named",
+          "evidence": "display_name 'Black Steel Javelin Head'",
+          "rationale": "Material from display"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "inferred",
+          "rationale": "Advanced steel tier component"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "Rare component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting javelins"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting black steel javelins"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:combat_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to make combat gear"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

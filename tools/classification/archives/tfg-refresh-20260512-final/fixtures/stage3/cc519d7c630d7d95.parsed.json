@@ -1,0 +1,1034 @@
+{
+  "items": {
+    "tfg:dirty_grossular_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty gem slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_lab_equipment": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for medical items"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting penicillin or medical supplies"
+          ],
+          "signal": "inferred",
+          "rationale": "lore hints at penicillin"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific lab recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate item"
+        }
+      }
+    },
+    "tfg:dirty_lapis_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty lapis slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_lazurite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty lazurite slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_malachite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty malachite slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_mo_si_b_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust is a craftable material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting Mo-Si-B alloy components"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in advanced alloying"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust item"
+        },
+        "form": {
+          "value": "dust",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "stage2 derived form"
+        },
+        "material_family": {
+          "value": "mo_si_b",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/dirty_mo_si_b",
+          "rationale": "id and tag indicate Mo-Si-B material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/impure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts + name dirty",
+          "rationale": "dirty dust fits impure dusts group"
+        }
+      }
+    },
+    "tfg:dirty_monazite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty monazite slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_olivine_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty olivine slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_opal_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty opal slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_pyrope_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty pyrope slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_realgar_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty realgar slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_red_garnet_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty red garnet slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_rock_salt_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty sylvite slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_ruby_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty ruby slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_sapphire_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty sapphire slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_sodalite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty sodalite slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_spessartine_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty spessartine slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_topaz_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty topaz slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dirty_yellow_garnet_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying processing fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying dirty yellow garnet slurry for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT ore slurry cleaning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during specific processing tasks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate fluid bucket"
+        },
+        "form": {
+          "value": "bucket",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "stage2 derived form"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:dolomite_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block to be smelted"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lorandite ingot",
+            "milling for crushed ore"
+          ],
+          "signal": "pattern",
+          "rationale": "recipes: blasting, smelting, milling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore block"
+        },
+        "form": {
+          "value": "ore",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "stage2 derived form"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/lorandite",
+          "rationale": "stage2 derived material family"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and processed for ores"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "tfg:dolomite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural support beam placed in mines"
+        },
+        "primary_uses": {
+          "values": [
+            "preventing cave-ins in mining tunnels"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam mechanic"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for mining support construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id prefix dolomite",
+          "rationale": "stone type evident from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mining infrastructure"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "support beams group"
+        }
+      }
+    },
+    "tfg:double_boron_carbide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates",
+          "rationale": "advanced material form for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "double plate used in GT crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common refined material"
+        },
+        "material_family": {
+          "value": "boron_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/boron_carbide",
+          "rationale": "id indicates boron carbide"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/double_plates"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates",
+          "rationale": "double plates storage group"
+        }
+      }
+    },
+    "tfg:double_calorite_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates",
+          "rationale": "advanced material form for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "double plate used in GT crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common refined material"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/calorite",
+          "rationale": "id indicates calorite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/double_plates"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates",
+          "rationale": "double plates storage group"
+        }
+      }
+    },
+    "tfg:double_etrium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates",
+          "rationale": "advanced material form for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "double plate used in GT crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common refined material"
+        },
+        "material_family": {
+          "value": "etrium",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/etrium",
+          "rationale": "id indicates etrium"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/double_plates"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates",
+          "rationale": "double plates storage group"
+        }
+      }
+    },
+    "tfg:double_inconel_718_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates",
+          "rationale": "advanced material form for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "double plate used in GT crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common refined material"
+        },
+        "material_family": {
+          "value": "inconel_718",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/inconel_718",
+          "rationale": "id indicates inconel 718"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/double_plates"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates",
+          "rationale": "double plates storage group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "tfg:double_boron_carbide_plate",
+      "facet": "form",
+      "value": "double_plate",
+      "rationale": "missing form from stage2; tag forge:double_plates indicates double plate form"
+    },
+    {
+      "item": "tfg:double_calorite_plate",
+      "facet": "form",
+      "value": "double_plate",
+      "rationale": "missing form from stage2; tag forge:double_plates indicates double plate form"
+    },
+    {
+      "item": "tfg:double_etrium_plate",
+      "facet": "form",
+      "value": "double_plate",
+      "rationale": "missing form from stage2; tag forge:double_plates indicates double plate form"
+    },
+    {
+      "item": "tfg:double_inconel_718_plate",
+      "facet": "form",
+      "value": "double_plate",
+      "rationale": "missing form from stage2; tag forge:double_plates indicates double plate form"
+    }
+  ]
+}

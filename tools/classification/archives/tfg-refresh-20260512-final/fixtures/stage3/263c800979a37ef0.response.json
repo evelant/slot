@@ -1,0 +1,1286 @@
+{
+  "items": {
+    "mcw_tfc_aio:roofs/willow_roofs/willow_planks_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block placed as building structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common item component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with willow planks"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is roof construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks storage group"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/willow_roofs/willow_planks_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block placed as building structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with willow planks"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep top roof variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/willow_roofs/willow_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with willow logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Base willow roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/willow_roofs/willow_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with willow logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep base roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/willow_roofs/willow_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with willow logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Top roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/willow_roofs/willow_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with willow logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper lower roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/willow_roofs/willow_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with willow logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper steep roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block placed as building structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Attic roof variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Lower base roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Base yellow concrete roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep base roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Top roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper lower roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper steep roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Attic roof variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Lower base roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Base yellow terracotta roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep base roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Top roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper lower roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building roofs"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with yellow terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper steep roof"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roof_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'roof'",
+          "rationale": "Roof blocks"
+        }
+      }
+    },
+    "measurements:tape_measure": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Used for measuring distances"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not everyday but useful for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used when building to measure"
+        },
+        "primary_uses": {
+          "values": [
+            "measuring block distances",
+            "planning builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is measurement"
+        }
+      }
+    },
+    "megacells:16m_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of ME network crafting CPU, no UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building network, then placed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to expand AE2 storage network"
+        },
+        "primary_uses": {
+          "values": [
+            "expanding ME autocrafting storage",
+            "building crafting CPU"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component for autocrafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/megacells_items"
+          ],
+          "signal": "pattern",
+          "evidence": "modid megacells",
+          "rationale": "MEGA Cells mod items storage group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:network"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of MEGA Cells network subsystem"
+        }
+      }
+    },
+    "megacells:1m_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of ME network crafting CPU"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to expand AE2 storage"
+        },
+        "primary_uses": {
+          "values": [
+            "expanding ME autocrafting storage",
+            "building crafting CPU"
+          ],
+          "signal": "inferred",
+          "rationale": "Core autocrafting component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/megacells_items"
+          ],
+          "signal": "pattern",
+          "evidence": "modid megacells",
+          "rationale": "MEGA Cells mod items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:network"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of MEGA Cells network"
+        }
+      }
+    },
+    "megacells:256m_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of ME network crafting CPU"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "Common"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to expand AE2 storage"
+        },
+        "primary_uses": {
+          "values": [
+            "expanding ME autocrafting storage",
+            "building crafting CPU"
+          ],
+          "signal": "inferred",
+          "rationale": "Largest crafting storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/megacells_items"
+          ],
+          "signal": "pattern",
+          "evidence": "modid megacells",
+          "rationale": "MEGA Cells mod items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "megacells:network"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of MEGA Cells network"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "mcw_tfc_aio:roofs/willow_roofs/willow_planks_upper_lower_roof",
+      "facet": "material_family",
+      "value": "wood_willow",
+      "rationale": "Made of willow wood planks"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/willow_roofs/willow_planks_upper_steep_roof",
+      "facet": "material_family",
+      "value": "wood_willow",
+      "rationale": "Made of willow wood planks"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/willow_roofs/willow_roof",
+      "facet": "material_family",
+      "value": "wood_willow",
+      "rationale": "Made of willow wood logs"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/willow_roofs/willow_steep_roof",
+      "facet": "material_family",
+      "value": "wood_willow",
+      "rationale": "Made of willow wood logs"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/willow_roofs/willow_top_roof",
+      "facet": "material_family",
+      "value": "wood_willow",
+      "rationale": "Made of willow wood logs"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/willow_roofs/willow_upper_lower_roof",
+      "facet": "material_family",
+      "value": "wood_willow",
+      "rationale": "Made of willow wood logs"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/willow_roofs/willow_upper_steep_roof",
+      "facet": "material_family",
+      "value": "wood_willow",
+      "rationale": "Made of willow wood logs"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_attic_roof",
+      "facet": "material_family",
+      "value": "concrete",
+      "rationale": "Yellow concrete material"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_attic_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Explicitly yellow dyed concrete"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_lower_roof",
+      "facet": "material_family",
+      "value": "concrete",
+      "rationale": "Yellow concrete"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_lower_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_roof",
+      "facet": "material_family",
+      "value": "concrete",
+      "rationale": "Yellow concrete"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_steep_roof",
+      "facet": "material_family",
+      "value": "concrete",
+      "rationale": "Yellow concrete"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_steep_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_top_roof",
+      "facet": "material_family",
+      "value": "concrete",
+      "rationale": "Yellow concrete"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_top_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_upper_lower_roof",
+      "facet": "material_family",
+      "value": "concrete",
+      "rationale": "Yellow concrete"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_upper_lower_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_upper_steep_roof",
+      "facet": "material_family",
+      "value": "concrete",
+      "rationale": "Yellow concrete"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_concrete_roofs/yellow_concrete_upper_steep_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_attic_roof",
+      "facet": "material_family",
+      "value": "terracotta",
+      "rationale": "Yellow terracotta material"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_attic_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow terracotta"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_lower_roof",
+      "facet": "material_family",
+      "value": "terracotta",
+      "rationale": "Yellow terracotta"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_lower_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_roof",
+      "facet": "material_family",
+      "value": "terracotta",
+      "rationale": "Yellow terracotta"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_steep_roof",
+      "facet": "material_family",
+      "value": "terracotta",
+      "rationale": "Yellow terracotta"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_steep_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_top_roof",
+      "facet": "material_family",
+      "value": "terracotta",
+      "rationale": "Yellow terracotta"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_top_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_upper_lower_roof",
+      "facet": "material_family",
+      "value": "terracotta",
+      "rationale": "Yellow terracotta"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_upper_lower_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_upper_steep_roof",
+      "facet": "material_family",
+      "value": "terracotta",
+      "rationale": "Yellow terracotta"
+    },
+    {
+      "item": "mcw_tfc_aio:roofs/yellow_terracotta_roofs/yellow_terracotta_upper_steep_roof",
+      "facet": "dye_color",
+      "value": "yellow",
+      "rationale": "Dyed yellow"
+    }
+  ]
+}

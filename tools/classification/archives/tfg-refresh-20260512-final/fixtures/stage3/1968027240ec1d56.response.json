@@ -1,0 +1,933 @@
+{
+  "items": {
+    "tfg:large_nest_box_warped": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block for housing animals"
+        },
+        "primary_uses": {
+          "values": [
+            "housing animals"
+          ],
+          "signal": "inferred",
+          "rationale": "nest box for breeding or shelter"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per location"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "animal husbandry use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "animal housing item"
+        }
+      }
+    },
+    "tfg:large_steam_turbine": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock power generation component"
+        },
+        "primary_uses": {
+          "values": [
+            "power generation with steam"
+          ],
+          "signal": "inferred",
+          "rationale": "produces EU from steam"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in power setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted machine part"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power gen"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu turbine generator"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier power component"
+        }
+      }
+    },
+    "tfg:large_steel_boiler": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy-generation machine block"
+        },
+        "primary_uses": {
+          "values": [
+            "steam production for power"
+          ],
+          "signal": "inferred",
+          "rationale": "boiler creates steam"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in power setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted machine part"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power gen"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu boiler generator"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier power component"
+        }
+      }
+    },
+    "tfg:latex_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying latex fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "transport liquid latex"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when processing latex"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid"
+        }
+      }
+    },
+    "tfg:latex_soaked_gloves": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rubber gloves or items"
+          ],
+          "signal": "inferred",
+          "rationale": "used in vat recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        }
+      }
+    },
+    "tfg:lauryl_alcohol_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying lauryl alcohol"
+          ],
+          "signal": "inferred",
+          "rationale": "transport chemical"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid"
+        }
+      }
+    },
+    "tfg:lava_source": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "worldgen lava vent block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative lava source"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for ambiance"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common in world"
+        }
+      }
+    },
+    "tfg:leachate_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying rhenium leachate"
+          ],
+          "signal": "inferred",
+          "rationale": "transport processing fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid"
+        }
+      }
+    },
+    "tfg:lentil_product": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "food item with nutrition"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for hunger"
+          ],
+          "signal": "inferred",
+          "rationale": "edible lentils"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried as food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common food crop"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "food preparation"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "legume vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable food item"
+        }
+      }
+    },
+    "tfg:lentil_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plantable seeds"
+        },
+        "primary_uses": {
+          "values": [
+            "planting lentils"
+          ],
+          "signal": "inferred",
+          "rationale": "farming input"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common seed"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "crop planting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed storage"
+        }
+      }
+    },
+    "tfg:lentil_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "wild crop in world"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting wild lentils"
+          ],
+          "signal": "inferred",
+          "rationale": "foraging"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when foraging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wild plant"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "crop gathering"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_crops"
+          ],
+          "signal": "inferred",
+          "rationale": "wild crop collection"
+        }
+      }
+    },
+    "tfg:light_concrete_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural support beam"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting cave ceilings"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for stability"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in mining builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted block"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "made of light concrete"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural building"
+        }
+      }
+    },
+    "tfg:light_oil_slick": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "worldgen oil block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative or world feature"
+          ],
+          "signal": "inferred",
+          "rationale": "unobtainable, placed in world"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not normally obtained"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common worldgen block"
+        }
+      }
+    },
+    "tfg:light_oil_tar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mineable resource block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tar"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for processing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common resource"
+        }
+      }
+    },
+    "tfg:light_stock_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "drinkable liquid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "drinking for thirst"
+          ],
+          "signal": "inferred",
+          "rationale": "quenches thirst"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried as food/drink"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common cooked item"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "drinkable"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid drink"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid"
+        }
+      }
+    },
+    "tfg:limestone_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lorandite"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted for metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "tfg:limestone_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural support beam"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting cave ceilings"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for stability"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in mining builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted block"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "inferred",
+          "rationale": "made of limestone"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural building"
+        }
+      }
+    },
+    "tfg:linac_activated_gas_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "gas carrier bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying activated gas"
+          ],
+          "signal": "inferred",
+          "rationale": "transport gaseous fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:gas_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds gas"
+        }
+      }
+    },
+    "tfg:linen_cloth": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "textile crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting sails, filters, and clothing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common woven good"
+        },
+        "material_family": {
+          "value": "linen",
+          "signal": "inferred",
+          "rationale": "linen fiber"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "textile storage"
+        }
+      }
+    },
+    "tfg:linen_thread": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thread for sewing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "sewing and crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common textile"
+        },
+        "material_family": {
+          "value": "linen",
+          "signal": "inferred",
+          "rationale": "linen fiber"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "textile storage"
+        }
+      }
+    },
+    "tfg:linolenic_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying linolenic acid"
+          ],
+          "signal": "inferred",
+          "rationale": "transport chemical liquid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid"
+        }
+      }
+    },
+    "tfg:liquid_mars_air_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "cryogenic fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying liquid Mars air"
+          ],
+          "signal": "inferred",
+          "rationale": "transport cryogenic gas"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid"
+        }
+      }
+    },
+    "tfg:loaded_resin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate processing product"
+        },
+        "primary_uses": {
+          "values": [
+            "rhenium extraction processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in aciditic waste production"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate batch"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        }
+      }
+    },
+    "tfg:long_boron_carbide_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed rod component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced tools and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCEu recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rod"
+        },
+        "material_family": {
+          "value": "boron_carbide",
+          "signal": "inferred",
+          "rationale": "boron carbide material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed rod storage"
+        }
+      }
+    },
+    "tfg:long_diamond_tipped_mo_50_re_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "specialized rod component"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced nuclear or tool component"
+          ],
+          "signal": "inferred",
+          "rationale": "high-end rod"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized part"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted component"
+        },
+        "material_family": {
+          "value": "diamond_tipped_mo_50_re",
+          "signal": "inferred",
+          "rationale": "composite material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed rod storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

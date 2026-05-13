@@ -1,0 +1,1275 @@
+{
+  "items": {
+    "mcw_tfc_aio:roofs/thatch_roofs/thatch_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block placed as structural building component."
+        },
+        "material_family": {
+          "value": "thatch",
+          "signal": "pattern",
+          "evidence": "id contains 'thatch'",
+          "rationale": "Material from item name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity",
+          "rationale": "Component rarity is common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building projects, not everyday."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for constructing roof structures."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Player places the block."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Thatch is flammable."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/thatch_roofs/thatch_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof building block."
+        },
+        "material_family": {
+          "value": "thatch",
+          "signal": "pattern",
+          "rationale": "Material from name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place block."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Thatch burns."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/thatch_roofs/thatch_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Steep roof block."
+        },
+        "material_family": {
+          "value": "thatch",
+          "signal": "pattern",
+          "rationale": "Thatch."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Thatch."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/thatch_roofs/thatch_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Top roof block."
+        },
+        "material_family": {
+          "value": "thatch",
+          "signal": "pattern",
+          "rationale": "Thatch."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Thatch."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/thatch_roofs/thatch_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Upper lower roof."
+        },
+        "material_family": {
+          "value": "thatch",
+          "signal": "pattern",
+          "rationale": "Thatch."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Thatch."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/thatch_roofs/thatch_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Upper steep roof."
+        },
+        "material_family": {
+          "value": "thatch",
+          "signal": "pattern",
+          "rationale": "Thatch."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Thatch."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Attic roof block."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "Material from name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood is flammable."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Lower roof block."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Steep roof block."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Top roof block."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Upper lower roof."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Upper steep roof."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_planks_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Plank attic roof."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar planks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_planks_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Plank lower roof."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar planks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_planks_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Plank roof block."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar planks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_planks_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Plank steep roof."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar planks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_planks_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Plank top roof."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar planks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_planks_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Plank upper lower."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar planks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_cedar_roofs/white_cedar_planks_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Plank upper steep."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "White cedar planks."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_concrete_roofs/white_concrete_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Concrete attic roof."
+        },
+        "material_family": {
+          "value": "white_concrete",
+          "signal": "pattern",
+          "rationale": "Material from name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_concrete_roofs/white_concrete_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Concrete lower roof."
+        },
+        "material_family": {
+          "value": "white_concrete",
+          "signal": "pattern",
+          "rationale": "White concrete."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_concrete_roofs/white_concrete_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Concrete roof block."
+        },
+        "material_family": {
+          "value": "white_concrete",
+          "signal": "pattern",
+          "rationale": "White concrete."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_concrete_roofs/white_concrete_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Concrete steep roof."
+        },
+        "material_family": {
+          "value": "white_concrete",
+          "signal": "pattern",
+          "rationale": "White concrete."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/white_concrete_roofs/white_concrete_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Concrete top roof."
+        },
+        "material_family": {
+          "value": "white_concrete",
+          "signal": "pattern",
+          "rationale": "White concrete."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roofing."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

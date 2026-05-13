@@ -1,0 +1,1331 @@
+{
+  "items": {
+    "gtceu:small_maraging_steel_300_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "GTCEu small dust, a refined material intermediate"
+        },
+        "material_family": {
+          "value": "maraging_steel_300",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust, a standard process stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "players stack 64 of these, a bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base, not carried while exploring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "component rarity is common, craftable dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced GTCEu components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes for machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "small dusts are processed mineral outputs stored with refined ores"
+        }
+      }
+    },
+    "gtceu:small_marble_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as decorative brick for structures"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "evidence": "id contains marble",
+          "rationale": "marble stone brick"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "players stack 32 of these for building projects"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common stone brick variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative marble structures"
+          ],
+          "signal": "inferred",
+          "rationale": "used as a construction block for walls and floors"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "inferred",
+          "rationale": "marble is metamorphic, stored with its stone family"
+        }
+      }
+    },
+    "gtceu:small_marble_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "dust form of marble, a crafting material"
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not carried, stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in GTCEu processing",
+            "possible ingredient for marble products"
+          ],
+          "signal": "inferred",
+          "rationale": "though no consumption recipes shown, likely used in hidden recipes"
+        }
+      }
+    },
+    "gtceu:small_massicot_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of massicot, a lead oxide"
+        },
+        "material_family": {
+          "value": "massicot",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not carried, stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_meat_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "minced meat dust, a crafting material"
+        },
+        "material_family": {
+          "value": "meat",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting with GTCEu",
+            "possible food processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes"
+        }
+      }
+    },
+    "gtceu:small_mercury_barium_calcium_cuprate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of high-temperature superconductor"
+        },
+        "material_family": {
+          "value": "mercury_barium_calcium_cuprate",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not carried, stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced superconductors"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_metal_mixture_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of metal mixture"
+        },
+        "material_family": {
+          "value": "metal_mixture",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_mica_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of mica"
+        },
+        "material_family": {
+          "value": "mica",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "melts into aluminium silicate"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient and has melting info"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_mirabilite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of mirabilite"
+        },
+        "material_family": {
+          "value": "mirabilite",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_molybdenite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of molybdenite"
+        },
+        "material_family": {
+          "value": "molybdenite",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu components",
+            "quern processing output"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient and produced by quern from poor raw ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_molybdenum_disilicide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of molybdenum disilicide"
+        },
+        "material_family": {
+          "value": "molybdenum_disilicide",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced heating components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust"
+        }
+      }
+    },
+    "gtceu:small_molybdenum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of molybdenum"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu components",
+            "quern processing output"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient and produced by quern"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_monazite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of monazite"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu materials",
+            "milling of chipped gems"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient and produced from gem milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_naquadah_alloy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of naquadah alloy"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting EV components",
+            "milling naquadah alloy parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in many crafting and milling recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust of advanced alloy"
+        }
+      }
+    },
+    "gtceu:small_naquadah_alloy_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_gears tag",
+          "rationale": "small gear, a component for crafting machines"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern",
+          "rationale": "derived from id suffix after small_ and before _gear"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, kept in smaller quantities than bulk"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting EV machines",
+            "used as a component in advanced recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in various crafting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "naquadah alloy is EV tier, gear is an EV component"
+        }
+      }
+    },
+    "gtceu:small_naquadah_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of naquadah"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting naquadah components",
+            "milling naquadah parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaping and milling recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust of rare element"
+        }
+      }
+    },
+    "gtceu:small_naquadria_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of naquadria"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting naquadria components",
+            "milling naquadria parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust of advanced material"
+        }
+      }
+    },
+    "gtceu:small_naquadria_sulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of naquadria sulfate"
+        },
+        "material_family": {
+          "value": "naquadria_sulfate",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu components"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust"
+        }
+      }
+    },
+    "gtceu:small_neodymium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of neodymium"
+        },
+        "material_family": {
+          "value": "neodymium",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting neodymium magnets",
+            "quern processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes for magnets and rods"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined rare earth dust"
+        }
+      }
+    },
+    "gtceu:small_neptunium_237_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of neptunium 237"
+        },
+        "material_family": {
+          "value": "neptunium_237",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting nuclear components",
+            "milling neptunium rods"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaped recipes and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined radioactive dust"
+        }
+      }
+    },
+    "gtceu:small_nether_quartz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of nether quartz"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting quartz components",
+            "milling nether quartz gems"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined mineral dust"
+        }
+      }
+    },
+    "gtceu:small_nether_star_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of nether star"
+        },
+        "material_family": {
+          "value": "nether_star",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting extreme endgame items",
+            "milling nether star lens"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaping recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust of boss material"
+        }
+      }
+    },
+    "gtceu:small_netherite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "small dust of netherite"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in GTCEu netherite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "likely used in hidden recipes despite no consumption shown"
+        }
+      }
+    },
+    "gtceu:small_netherrack_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "small dust of keratophyre"
+        },
+        "material_family": {
+          "value": "keratophyre",
+          "signal": "pattern",
+          "rationale": "display name says Keratophyre Dust, not netherrack"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "possible ingredient in GTCEu recipes"
+          ],
+          "signal": "guess",
+          "rationale": "no consumption recipes, but hide tag suggests it has a use"
+        }
+      }
+    },
+    "gtceu:small_neutronium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + forge:small_dusts tag",
+          "rationale": "small dust of neutronium"
+        },
+        "material_family": {
+          "value": "neutronium",
+          "signal": "pattern",
+          "rationale": "derived from id after small_ and before _dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "form is dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, bulk material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component: rarity common",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ultimate components",
+            "milling neutronium parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in shaping and milling recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust of endgame material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

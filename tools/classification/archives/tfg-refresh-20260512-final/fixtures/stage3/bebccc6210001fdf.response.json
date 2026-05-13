@@ -1,0 +1,939 @@
+{
+  "items": {
+    "gtceu:iv_sensor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafted component used to build machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting IV machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in many GT recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried when building IV machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV voltage-tier component"
+        }
+      }
+    },
+    "gtceu:iv_sifter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "machine with UI for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "sieving materials for automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processes items via recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "IV-tier machine requires significant resources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine in a line"
+        }
+      }
+    },
+    "gtceu:iv_solar_panel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cover that generates energy when placed on machines"
+        },
+        "primary_uses": {
+          "values": [
+            "passive energy generation as cover"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says produces energy"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried; placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "likely uncraftable in this pack"
+        }
+      }
+    },
+    "gtceu:iv_substation_input_hatch_64a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy port for multiblock substation"
+        },
+        "primary_uses": {
+          "values": [
+            "energy input for substation"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip specifies energy input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed as part of multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable hatch component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier multiblock hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT hatch subsystem"
+        }
+      }
+    },
+    "gtceu:iv_substation_output_hatch_64a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy output port for substation"
+        },
+        "primary_uses": {
+          "values": [
+            "energy output from substation"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says energy output"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed as part of multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable hatch component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier multiblock hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT hatch subsystem"
+        }
+      }
+    },
+    "gtceu:iv_thermal_centrifuge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "processing machine with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "thermal centrifuge processing"
+          ],
+          "signal": "inferred",
+          "rationale": "machine name and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "IV-tier machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "gtceu:iv_transformer_16a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "transforms voltage between tiers"
+        },
+        "primary_uses": {
+          "values": [
+            "voltage conversion in power network"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip explains transform"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in power line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard transformer component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier power component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy system"
+        }
+      }
+    },
+    "gtceu:iv_transformer_1a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "transforms voltage between tiers"
+        },
+        "primary_uses": {
+          "values": [
+            "voltage conversion in power network"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip explains transform"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard transformer"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier power component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy system"
+        }
+      }
+    },
+    "gtceu:iv_transformer_2a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "transforms voltage between tiers"
+        },
+        "primary_uses": {
+          "values": [
+            "voltage conversion in power network"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip explains transform"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard transformer"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier power component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy system"
+        }
+      }
+    },
+    "gtceu:iv_transformer_4a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "transforms voltage between tiers"
+        },
+        "primary_uses": {
+          "values": [
+            "voltage conversion in power network"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip explains transform"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard transformer"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier power component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy system"
+        }
+      }
+    },
+    "gtceu:iv_vanadium_battery": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "rechargeable power storage component"
+        },
+        "primary_uses": {
+          "values": [
+            "powering GT machines, storing energy"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: reusable battery"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for portable power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable battery"
+        },
+        "material_family": {
+          "value": "vanadium",
+          "signal": "pattern",
+          "evidence": "id suffix _vanadium_battery",
+          "rationale": "named after vanadium"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT battery subsystem"
+        }
+      }
+    },
+    "gtceu:iv_voltage_coil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting machines and coils"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components, coil blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material when building IV machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component"
+        }
+      }
+    },
+    "gtceu:iv_wiremill": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "machine for wire production"
+        },
+        "primary_uses": {
+          "values": [
+            "wire manufacturing"
+          ],
+          "signal": "inferred",
+          "rationale": "machine name and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "IV-tier machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "gtceu:iv_world_accelerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "machine that tick-accelerates blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "tick acceleration of nearby blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip explains modes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely placed, not carried"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "likely unobtainable in survival (no recipes)"
+        }
+      }
+    },
+    "gtceu:kanthal_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage of kanthal ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage, decoration, crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building block and material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable block"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "id suffix _block, material name in display",
+          "rationale": "material name is kanthal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "compact metal block"
+        }
+      }
+    },
+    "gtceu:kanthal_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten metal for transport and casting"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten kanthal, casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: liquid state, temperature"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when working with molten metal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "producible bucket"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material name in id"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "poured into casting molds"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input for casting process"
+        }
+      }
+    },
+    "gtceu:kanthal_coil_block": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "coil block used as heating element in multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "heating element in multiblock machines"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip hints at coil bonus"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed in multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable coil block"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "component for multiblock structures"
+        }
+      }
+    },
+    "gtceu:kanthal_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy cable for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "power transmission in GT network"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage/amperage"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried when wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable cable"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT cable subsystem"
+        }
+      }
+    },
+    "gtceu:kanthal_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "uninsulated wire for power or crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cables, power transmission in machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make cables and in recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried when wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable wire"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire is part of cable subsystem"
+        }
+      }
+    },
+    "gtceu:kanthal_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed dust for smelting or mixing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots, mixing into alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "used in macerator and mixer"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in bulk, carried when processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust from maceration"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "pure dust from ingot maceration"
+        }
+      }
+    },
+    "gtceu:kanthal_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-amperage cable for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "high-amperage power transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 64A capacity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when wiring high-power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable cable"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT cable subsystem"
+        }
+      }
+    },
+    "gtceu:kanthal_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-amperage uninsulated wire"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-amperage cables, wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make hex cables"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable wire"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire part of cable subsystem"
+        }
+      }
+    },
+    "gtceu:kanthal_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "basic metal ingot for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting components, blocks, wires"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried when smithing/crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard ingot"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "TFC pileable ingot"
+        }
+      }
+    },
+    "gtceu:kanthal_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small piece of kanthal for precise crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into ingots, small parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in shapeless recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when processing metals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common nugget"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget storage"
+        }
+      }
+    },
+    "gtceu:kanthal_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "medium-amperage cable for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "power transmission at 32A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 32A capacity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable cable"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "rationale": "material in id"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT cable subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

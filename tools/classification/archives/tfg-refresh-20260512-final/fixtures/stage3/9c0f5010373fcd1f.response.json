@@ -1,0 +1,1861 @@
+{
+  "items": {
+    "gtceu:tungsten_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine frame block placed in multiblock structures"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "id and tag forge:frames/tungsten",
+          "rationale": "Name and material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier material for IV machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machines, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Machine frame construction",
+            "High-tier structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use in multiblocks"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier machine component storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, not placed as block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting ingredient kept in inventory"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machine components",
+            "High-tier gear"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier machine component storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_grinding_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient, not placed as block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "name contains tungsten",
+          "rationale": "Material from name"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specialized component, carried when needed"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-tier machines",
+            "Grinding head component"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredient in many machine recipes"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier machine component storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "IV-tier cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "IV-tier energy transport",
+            "High-amperage cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function from tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables",
+          "rationale": "Cable subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "IV-tier wire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "IV-tier wire for energy transfer",
+            "High-current wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function from tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional equivalent of cable subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable fluid transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-temperature pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity fluid transport",
+            "High-temperature pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function from tooltip"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:huge_fluid_pipes",
+          "rationale": "Pipe subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + tag forge:ingots",
+          "rationale": "Standard refined material"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier material, used in advanced recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Basic crafting material carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as crafting input for tech components"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced components",
+            "Smelted from tungsten ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material role"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal ingot storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable fluid transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:large_fluid_pipes/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-temperature pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "Large fluid transport",
+            "High-temperature pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:large_fluid_pipes",
+          "rationale": "Pipe subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable fluid transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:nonuple_fluid_pipes/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-temperature pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "Multi-channel fluid transport",
+            "High-temperature multi-pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function with channels"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nonuple_fluid_pipes",
+          "rationale": "Pipe subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable fluid transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-temperature pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "Standard fluid transport",
+            "High-temperature pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:normal_fluid_pipes",
+          "rationale": "Pipe subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Small metal piece"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier nugget"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Small crafting component, often carried"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as crafting input"
+        },
+        "primary_uses": {
+          "values": [
+            "Small tungsten piece",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material role"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget storage bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "IV-tier cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "IV energy transport",
+            "Medium amperage cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables",
+          "rationale": "Cable subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "IV-tier wire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "IV wire for energy transfer",
+            "Medium current wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional equivalent of cable subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Standard refined form"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as crafting input for tech components"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machine casings",
+            "Making components"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material role"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined plate storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "IV-tier cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "IV energy transport",
+            "Lower amperage cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables",
+          "rationale": "Cable subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable fluid transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_fluid_pipes/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-temperature pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "Multi-channel fluid transport",
+            "High-temperature quad pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function with channels"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_fluid_pipes",
+          "rationale": "Pipe subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "IV-tier wire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "IV wire for energy transfer",
+            "Lower current wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional equivalent of cable subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "Standard refined form"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as crafting input for tech components"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tools and components",
+            "Machine part ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material role"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined rod storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, not placed"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier fastener"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Tiny component, often carried in bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Tiny fastener for machines",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material role"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "IV-tier cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "IV energy transport",
+            "Low amperage cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables",
+          "rationale": "Cable subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable energy transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "IV-tier wire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "IV wire for energy transfer",
+            "Low current wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional equivalent of cable subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable fluid transport block"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:small_fluid_pipes/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-temperature pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building fluid networks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport and logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "Small fluid transport",
+            "High-temperature pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_fluid_pipes",
+          "rationale": "Pipe subsystem"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    },
+    "gtceu:tungsten_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component, not placed"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:springs/tungsten",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "High-tier component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Machine spring component",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material role"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_steel_alloy": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw alloy material"
+        },
+        "material_family": {
+          "value": "tungstensteel",
+          "signal": "inferred",
+          "rationale": "Composite material, not pure tungsten"
+        },
+        "tier": {
+          "value": "tungsten_steel",
+          "signal": "inferred",
+          "rationale": "Advanced alloy tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Alloy ingredient, often carried"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced alloy crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Alloy component for tungstensteel",
+            "High-end material ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary material role"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined alloy storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        }
+      }
+    },
+    "gtceu:tungsten_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block, not a container"
+        },
+        "material_family": {
+          "value": "tungstensteel",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/tungsten_steel",
+          "rationale": "Material tag"
+        },
+        "tier": {
+          "value": "tungsten_steel",
+          "signal": "inferred",
+          "rationale": "Advanced alloy tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Common block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Bulk storage, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for compact storage and building"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of tungstensteel",
+            "Decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block section"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in regular inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:tungsten_frame",
+      "facet": "form",
+      "value": "frame",
+      "rationale": "Tag forge:frames indicates form=frame"
+    },
+    {
+      "item": "gtceu:tungsten_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "Tag forge:gears indicates form=gear"
+    },
+    {
+      "item": "gtceu:tungsten_hex_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Tag forge:hex_cables indicates form=cable"
+    },
+    {
+      "item": "gtceu:tungsten_hex_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Tag forge:hex_wires indicates form=wire"
+    },
+    {
+      "item": "gtceu:tungsten_huge_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Tag forge:huge_fluid_pipes indicates form=pipe"
+    },
+    {
+      "item": "gtceu:tungsten_large_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Tag forge:large_fluid_pipes indicates form=pipe"
+    },
+    {
+      "item": "gtceu:tungsten_nonuple_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Tag forge:nonuple_fluid_pipes indicates form=pipe"
+    },
+    {
+      "item": "gtceu:tungsten_normal_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Tag forge:normal_fluid_pipes indicates form=pipe"
+    },
+    {
+      "item": "gtceu:tungsten_octal_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Tag forge:octal_cables indicates form=cable"
+    },
+    {
+      "item": "gtceu:tungsten_octal_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Tag forge:octal_wires indicates form=wire"
+    },
+    {
+      "item": "gtceu:tungsten_quadruple_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Tag forge:quadruple_cables indicates form=cable"
+    },
+    {
+      "item": "gtceu:tungsten_quadruple_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Tag forge:quadruple_fluid_pipes indicates form=pipe"
+    },
+    {
+      "item": "gtceu:tungsten_quadruple_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Tag forge:quadruple_wires indicates form=wire"
+    },
+    {
+      "item": "gtceu:tungsten_screw",
+      "facet": "form",
+      "value": "screw",
+      "rationale": "Tag forge:screws indicates form=screw"
+    },
+    {
+      "item": "gtceu:tungsten_single_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "Tag forge:single_cables indicates form=cable"
+    },
+    {
+      "item": "gtceu:tungsten_single_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "Tag forge:single_wires indicates form=wire"
+    },
+    {
+      "item": "gtceu:tungsten_small_fluid_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "Tag forge:small_fluid_pipes indicates form=pipe"
+    },
+    {
+      "item": "gtceu:tungsten_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "Tag forge:springs indicates form=spring"
+    },
+    {
+      "item": "gtceu:tungsten_steel_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Tag forge:storage_blocks indicates form=block"
+    }
+  ]
+}

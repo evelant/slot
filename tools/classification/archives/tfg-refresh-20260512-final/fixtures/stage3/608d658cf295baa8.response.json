@@ -1,0 +1,864 @@
+{
+  "items": {
+    "minecraft:black_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Portable container for storing items"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for moving items, often stored"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable item storage",
+            "Moving large quantities",
+            "Organizing inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as moving storage"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to organize and transport items"
+        },
+        "container_state": {
+          "values": [
+            "slot:accepts_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "Opens to store other items"
+        }
+      }
+    },
+    "minecraft:black_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Colored glass used for windows"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Stained glass is glass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with colored glass",
+            "Letting light through",
+            "Crafting panes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass storage bucket"
+        }
+      }
+    },
+    "minecraft:black_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Thin glass pane for windows"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "Glass pane is glass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with glass panes",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass storage bucket"
+        }
+      }
+    },
+    "minecraft:black_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Hardened clay for building"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "inferred",
+          "rationale": "Colored terracotta block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with colored terracotta",
+            "Crafting glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        }
+      }
+    },
+    "minecraft:black_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Colored wool for building and decoration"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "Sheep wool block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in builds but not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with colored wool",
+            "Crafting carpets and beds",
+            "Dampening vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "Multi-purpose building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "minecraft:blackstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Nether stone for building"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "inferred",
+          "rationale": "Blackstone rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and placed, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with blackstone",
+            "Crafting polished variants",
+            "Stonecutting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Nether worldgen block"
+        }
+      }
+    },
+    "minecraft:blackstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of blackstone"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "inferred",
+          "rationale": "Blackstone stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with blackstone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "minecraft:blackstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of blackstone"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "inferred",
+          "rationale": "Blackstone stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with blackstone stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "minecraft:blackstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant of blackstone"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "inferred",
+          "rationale": "Blackstone stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with blackstone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "minecraft:blade_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collected archeology artifacts"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Collected for pattern set"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting decorated pots",
+            "Collecting patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in decorative crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Found via archeology"
+        }
+      }
+    },
+    "minecraft:blast_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation for fast smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely moved"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting ores quickly",
+            "Making steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for smelting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated smelting process"
+        }
+      }
+    },
+    "minecraft:blaze_powder": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for potions and eyes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Commonly carried for brewing"
+        },
+        "primary_uses": {
+          "values": [
+            "Brewing potions",
+            "Crafting eyes of ender"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in brewing and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient for brewing"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "From blaze rods dropped by blazes"
+        }
+      }
+    },
+    "minecraft:blaze_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for blaze powder"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Carried for brewing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting blaze powder",
+            "Fuel for brewing stands"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as crafting component"
+        },
+        "activity": {
+          "values": [
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient for brewing"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Dropped by blazes"
+        }
+      }
+    },
+    "minecraft:blaze_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collectible set"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only in creative mode"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning blazes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to spawn mobs"
+        }
+      }
+    },
+    "minecraft:blue_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hangable banner for decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as decor"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with banners"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating structures"
+        }
+      }
+    },
+    "minecraft:blue_bed": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Bed for sleeping and decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "One per base, rarely moved"
+        },
+        "primary_uses": {
+          "values": [
+            "Sleeping to set spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for sleeping"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of home decoration"
+        }
+      }
+    },
+    "minecraft:blue_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative light source"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as decor"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with candles",
+            "Providing light"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration and light"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorating with candles"
+        }
+      }
+    },
+    "minecraft:blue_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Floor decoration"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "Wool carpet"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as floor covering"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Interior decoration"
+        }
+      }
+    },
+    "minecraft:blue_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid colored concrete block"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "Concrete material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in builds, carried in stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with colored concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material"
+        }
+      }
+    },
+    "minecraft:blue_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw material that hardens into concrete"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "Precursor to concrete"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting concrete"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting concrete",
+            "Falling block placement"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to create concrete blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Material for construction"
+        }
+      }
+    },
+    "minecraft:blue_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Coloring ingredient"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Commonly used for dyeing"
+        },
+        "primary_uses": {
+          "values": [
+            "Dyeing items",
+            "Crafting colored blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Coloring materials"
+        }
+      }
+    },
+    "minecraft:blue_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Glazed terracotta with pattern"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "inferred",
+          "rationale": "Glazed ceramic block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as decorative accent"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative construction"
+        }
+      }
+    },
+    "minecraft:blue_ice": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid ice block for building"
+        },
+        "material_family": {
+          "value": "ice",
+          "signal": "inferred",
+          "rationale": "Compressed ice"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and placed"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with blue ice",
+            "Cooling in fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "Building and modded use"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in icebergs"
+        }
+      }
+    },
+    "minecraft:blue_orchid": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild flower that can be planted"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected for dye or decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating gardens",
+            "Crafting blue dye"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative and dye ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Grows in swamp biomes"
+        }
+      }
+    },
+    "minecraft:blue_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Portable container for storing items"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for moving items, often stored"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable item storage",
+            "Moving large quantities",
+            "Organizing inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as moving storage"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to organize and transport items"
+        },
+        "container_state": {
+          "values": [
+            "slot:accepts_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "Opens to store other items"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:black_stained_glass",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "whole_block",
+      "rationale": "Item is a full block, not a pane",
+      "confidence": 1
+    }
+  ],
+  "fill_ins": [
+    {
+      "item": "minecraft:blue_candle",
+      "facet": "emits_light",
+      "value": true,
+      "rationale": "Candle emits light when lit"
+    }
+  ]
+}

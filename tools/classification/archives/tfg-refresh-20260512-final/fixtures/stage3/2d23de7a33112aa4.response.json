@@ -1,0 +1,986 @@
+{
+  "items": {
+    "minecraft:dropper": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "dispenses items via redstone, stored with redstone components"
+        },
+        "primary_uses": {
+          "values": [
+            "dispensing items with redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "core function of the block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common redstone component"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone contraptions"
+        }
+      }
+    },
+    "minecraft:drowned_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, collected by players"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning drowned"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns the mob in creative"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only, not carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard spawn egg rarity"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "stage2 hardcoded spawn egg pattern"
+        }
+      }
+    },
+    "minecraft:dune_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "consumed in smithing table to apply armor trim"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting dune armor trim"
+          ],
+          "signal": "inferred",
+          "rationale": "non-functional, used as upgrade input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed once per armor piece"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common trim template"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to decorate armor visually"
+        }
+      }
+    },
+    "minecraft:echo_shard": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for recovery compass"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting recovery compass"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose in vanilla"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed once for compass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        }
+      }
+    },
+    "minecraft:egg": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible food and cooking ingredient in this pack"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as food",
+            "crafting meals",
+            "throwing for chickens"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple uses for food and spawning"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "common ingredient, not a staple food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common food item"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used extensively in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:egg"
+          ],
+          "signal": "named",
+          "evidence": "tag forge:eggs and semantic_text shows nutrition",
+          "rationale": "recognised as egg food category"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many crafted meals and as raw ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed raw or cooked, initially raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/eggs"
+          ],
+          "signal": "named",
+          "evidence": "accepted vocabulary id for eggs",
+          "rationale": "players store eggs together"
+        }
+      }
+    },
+    "minecraft:elder_guardian_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, collected"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning elder guardian"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns the mob in creative"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard spawn egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "stage2 hardcoded spawn egg pattern"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "values": [
+            "armor",
+            "transport"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "both chest armor and primary flight vehicle"
+        },
+        "primary_uses": {
+          "values": [
+            "flying and gliding",
+            "chest armor"
+          ],
+          "signal": "inferred",
+          "rationale": "dual function in player mind"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "always carried for flight mobility"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "uncommon end city loot"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration",
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for exploration and fast travel"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "inferred",
+          "rationale": "enables player flight"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:exploration_trip"
+          ],
+          "signal": "inferred",
+          "rationale": "packed for exploration trips"
+        }
+      }
+    },
+    "minecraft:emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gems/emerald + stage2 form gem",
+          "rationale": "gem used as crafting and trade material"
+        },
+        "primary_uses": {
+          "values": [
+            "trading currency",
+            "crafting beacon base",
+            "crafting emerald blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "primary uses in player economy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for trading, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common gem material"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "id + tag forge:gems/emerald",
+          "rationale": "derived from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "accepted vocabulary for gems",
+          "rationale": "players store gems together"
+        }
+      }
+    },
+    "minecraft:emerald_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage form of emerald, not a container"
+        },
+        "primary_uses": {
+          "values": [
+            "compact emerald storage",
+            "beacon base"
+          ],
+          "signal": "inferred",
+          "rationale": "9x storage and beacon foundation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building beacon bases or decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common storage block"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "id minecraft:emerald_block",
+          "rationale": "derived from id"
+        }
+      }
+    },
+    "minecraft:emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined for emeralds"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for emeralds"
+          ],
+          "signal": "inferred",
+          "rationale": "source of emerald gems"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mined and smelted, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "ore id emerald_ore",
+          "rationale": "derived from ore id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for emeralds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "minecraft:enchanted_book": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "stores enchantments applied to items via anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "storing enchantments",
+            "applying to items"
+          ],
+          "signal": "inferred",
+          "rationale": "carried for enchanting gear"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when planning to enchant"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "uncommon rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in enchanting process"
+        }
+      }
+    },
+    "minecraft:enchanted_golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "food item with powerful buffs"
+        },
+        "primary_uses": {
+          "values": [
+            "emergency healing",
+            "buff food for combat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten for regeneration and resistance"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "saved for tough fights, not everyday food"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic rarity mapped to unique"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed during combat for buffs"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "made from apple, considered fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "provides powerful buffs when eaten"
+        }
+      }
+    },
+    "minecraft:enchanting_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "workstation with UI for enchanting"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting items",
+            "spending XP"
+          ],
+          "signal": "inferred",
+          "rationale": "core enchanting station"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once near XP source, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common workstation"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "used for enchanting"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component minecraft:light_emission = 7",
+          "rationale": "emits light from component"
+        }
+      }
+    },
+    "minecraft:end_crystal": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "carried to respawn dragon or as light source"
+        },
+        "primary_uses": {
+          "values": [
+            "respawning ender dragon",
+            "light source"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on bedrock portal to revive dragon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed for end fight or decoration"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "rare item from component"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ender dragon boss fight"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "known light source block, though component missing"
+        }
+      }
+    },
+    "minecraft:end_portal_frame": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only block for building end portal"
+        },
+        "primary_uses": {
+          "values": [
+            "building end portal"
+          ],
+          "signal": "inferred",
+          "rationale": "part of portal structure"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only, not carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common creative-only block"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component minecraft:light_emission = 1",
+          "rationale": "emits light from component"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "evidence": "stage2 hardcoded",
+          "rationale": "known vanilla creative-only item"
+        }
+      }
+    },
+    "minecraft:end_rod": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "light source placed for aesthetics and illumination"
+        },
+        "primary_uses": {
+          "values": [
+            "light source",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "bright decorative lamp"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building and lighting projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common end block"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction and decoration"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component minecraft:light_emission = 14",
+          "rationale": "emits light from component"
+        }
+      }
+    },
+    "minecraft:end_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "natural stone block used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building in the end",
+            "crafting end stone bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "main building material in end dimension"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        },
+        "material_family": {
+          "value": "end_stone",
+          "signal": "pattern",
+          "evidence": "id minecraft:end_stone",
+          "rationale": "derived from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        }
+      }
+    },
+    "minecraft:end_stone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of end stone bricks, used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative building element"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block variant"
+        },
+        "material_family": {
+          "value": "end_stone",
+          "signal": "pattern",
+          "evidence": "id prefix end_stone_",
+          "rationale": "derived from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "minecraft:end_stone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant, used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative building element"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block variant"
+        },
+        "material_family": {
+          "value": "end_stone",
+          "signal": "pattern",
+          "evidence": "id prefix end_stone_",
+          "rationale": "derived from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "minecraft:end_stone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant, used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative building element"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block variant"
+        },
+        "material_family": {
+          "value": "end_stone",
+          "signal": "pattern",
+          "evidence": "id prefix end_stone_",
+          "rationale": "derived from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "minecraft:end_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone brick, also used as insulation in TFC"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative structures",
+            "oven insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "both building and functional insulation block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building and insulation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "material_family": {
+          "value": "end_stone",
+          "signal": "pattern",
+          "evidence": "id minecraft:end_stone_bricks",
+          "rationale": "derived from id"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "minecraft:ender_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "container that opens to player's ender inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "portable storage access",
+            "securing items"
+          ],
+          "signal": "inferred",
+          "rationale": "linked to personal ender stash"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "players often carry one to access network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common storage block"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for personal storage access"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component minecraft:light_emission = 7",
+          "rationale": "emits light from component"
+        }
+      }
+    },
+    "minecraft:ender_dragon_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, collected"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning ender dragon"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns the boss in creative"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard spawn egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "stage2 hardcoded spawn egg pattern"
+        }
+      }
+    },
+    "minecraft:ender_eye": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown to locate stronghold, also crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "locating strongholds",
+            "crafting end crystals"
+          ],
+          "signal": "inferred",
+          "rationale": "exploration tool and component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during exploration trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common utility item"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "used to find strongholds"
+        }
+      }
+    },
+    "minecraft:ender_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown for teleportation, key crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "teleporting",
+            "crafting ender eyes",
+            "crafting ender chests"
+          ],
+          "signal": "inferred",
+          "rationale": "mobility and crafting uses"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for quick teleport and machine recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mob drop"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration",
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for escape teleport and exploration"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

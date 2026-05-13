@@ -1,0 +1,1631 @@
+{
+  "items": {
+    "mcw_tfc_aio:roofs/blue_concrete_roofs/blue_concrete_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains blue_concrete"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id contains blue_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/blue_terracotta_roofs/blue_terracotta_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id contains blue_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brick_roofs/bricks_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brick_roofs/bricks_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brick_roofs/bricks_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brick_roofs/bricks_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brick_roofs/bricks_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brick_roofs/bricks_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brick_roofs/bricks_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_concrete_roofs/brown_concrete_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_concrete_roofs/brown_concrete_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_concrete_roofs/brown_concrete_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_concrete_roofs/brown_concrete_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_concrete_roofs/brown_concrete_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_concrete_roofs/brown_concrete_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_concrete_roofs/brown_concrete_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_terracotta_roofs/brown_terracotta_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains brown_terracotta"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_terracotta_roofs/brown_terracotta_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains brown_terracotta"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/brown_terracotta_roofs/brown_terracotta_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roof block placed as building structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains brown_terracotta"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id contains brown_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to build roof structures"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:building_project"
+          ],
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 derived from loot tables",
+          "rationale": "stage2: crafted_only"
+        },
+        "primary_uses": {
+          "values": [
+            "building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as roof block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "mcw_tfc_aio:roofs/blue_concrete_roofs/blue_concrete_upper_steep_roof",
+      "facet": "organization_group",
+      "label": "Roofs",
+      "proposed_id": "pack:tfg/roofs",
+      "rationale": "No roofs storage bucket exists in vocabulary; these roof blocks clearly belong together."
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

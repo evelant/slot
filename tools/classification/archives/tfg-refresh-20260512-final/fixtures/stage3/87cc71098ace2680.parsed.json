@@ -1,0 +1,1339 @@
+{
+  "items": {
+    "tfc:dirt/silt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dirt is used as a structural terrain block"
+        },
+        "material_family": {
+          "value": "soil",
+          "signal": "inferred",
+          "rationale": "dirt family of blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building and terraforming"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building and terrain"
+        },
+        "primary_uses": {
+          "values": [
+            "building and terraforming",
+            "crafting mud and daub",
+            "creating farmland"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for dirt"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:dirt and tfc:dirt",
+          "rationale": "dirt storage section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in large quantities"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a block"
+        }
+      }
+    },
+    "tfc:dirt/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dirt variant used for building"
+        },
+        "material_family": {
+          "value": "soil",
+          "signal": "inferred",
+          "rationale": "dirt family"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when terraforming"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building and terrain"
+        },
+        "primary_uses": {
+          "values": [
+            "building and terraforming",
+            "crafting mud",
+            "creating farmland"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:dirt",
+          "rationale": "dirt storage section"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in bulk"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "tfc:dirty_jute_net": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool used for olive oil straining"
+        },
+        "material_family": {
+          "value": "jute",
+          "signal": "inferred",
+          "rationale": "made from jute fibers"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept at base for oil processing"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food processing"
+        },
+        "primary_uses": {
+          "values": [
+            "straining olive oil"
+          ],
+          "signal": "inferred",
+          "rationale": "only recipe use"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "one net needed"
+        }
+      }
+    },
+    "tfc:drying_bricks/loam": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "unfired brick waiting for smelting"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "inferred",
+          "rationale": "made from mud"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried during brick production"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "precursor to building bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into fired bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed but mainly smelted"
+        }
+      }
+    },
+    "tfc:drying_bricks/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "unfired brick"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "inferred",
+          "rationale": "mud brick"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only during brickmaking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material precursor"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable"
+        }
+      }
+    },
+    "tfc:drying_bricks/silt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "unfired brick"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "inferred",
+          "rationale": "mud brick"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "brickmaking process"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building precursor"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable"
+        }
+      }
+    },
+    "tfc:drying_bricks/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "unfired brick"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "inferred",
+          "rationale": "mud brick"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only during brickmaking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building precursor"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable"
+        }
+      }
+    },
+    "tfc:empty_jar": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "container for food preservation"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass jar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when collecting fruit"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "preserving food"
+        },
+        "primary_uses": {
+          "values": [
+            "preserving food",
+            "making jam"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "jar storage section"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Empty Jar' + tag tfc:unsealed_jars",
+          "rationale": "empty jar waiting to be filled"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "kept in moderate stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "filled with food and sealed"
+        }
+      }
+    },
+    "tfc:empty_jar_with_lid": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "jar ready for sealing"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass jar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in preserving"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "food preservation"
+        },
+        "primary_uses": {
+          "values": [
+            "preserving food with seal"
+          ],
+          "signal": "inferred",
+          "rationale": "lid allows sealing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/jars"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:jars",
+          "rationale": "jar storage section"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Empty Jar With Lid' + tag tfc:unsealed_jars",
+          "rationale": "empty with lid"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "moderate stacks"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:preserve"
+          ],
+          "signal": "inferred",
+          "rationale": "filled and sealed"
+        }
+      }
+    },
+    "tfc:farmland/loam": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block used for planting crops"
+        },
+        "material_family": {
+          "value": "soil",
+          "signal": "inferred",
+          "rationale": "farmed soil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up farm"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for crop growing"
+        },
+        "primary_uses": {
+          "values": [
+            "planting and growing crops"
+          ],
+          "signal": "inferred",
+          "rationale": "primary function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "similar storage to dirt"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for farming"
+        }
+      }
+    },
+    "tfc:farmland/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "farmland block"
+        },
+        "material_family": {
+          "value": "soil",
+          "signal": "inferred",
+          "rationale": "sandy soil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for farming"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "crop growing"
+        },
+        "primary_uses": {
+          "values": [
+            "planting and growing crops"
+          ],
+          "signal": "inferred",
+          "rationale": "main use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "dirt-like storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "tfc:farmland/silt": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "farmland block"
+        },
+        "material_family": {
+          "value": "soil",
+          "signal": "inferred",
+          "rationale": "silt soil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "farming trips"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "crop growing"
+        },
+        "primary_uses": {
+          "values": [
+            "planting and growing crops"
+          ],
+          "signal": "inferred",
+          "rationale": "main use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "dirt-like"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "tfc:farmland/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "farmland block"
+        },
+        "material_family": {
+          "value": "soil",
+          "signal": "inferred",
+          "rationale": "silty loam soil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "farming preparation"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "crop growing"
+        },
+        "primary_uses": {
+          "values": [
+            "planting and growing crops"
+          ],
+          "signal": "inferred",
+          "rationale": "main use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "dirt-like storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "tfc:fire_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as insulation in heat structures"
+        },
+        "material_family": {
+          "value": "fire_clay",
+          "signal": "inferred",
+          "rationale": "made from fire clay"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building furnaces"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction of heat structures"
+        },
+        "primary_uses": {
+          "values": [
+            "building blast furnaces",
+            "building bloomeries",
+            "building ovens"
+          ],
+          "signal": "inferred",
+          "rationale": "insulation blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick storage section"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "tfc:fire_clay": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw material for heat-resistant items"
+        },
+        "material_family": {
+          "value": "fire_clay",
+          "signal": "inferred",
+          "rationale": "fire clay material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept at base for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make fire bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fire bricks",
+            "crafting crucibles"
+          ],
+          "signal": "inferred",
+          "rationale": "key uses"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:craft"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting recipes"
+        }
+      }
+    },
+    "tfc:fire_clay_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed fire clay for storage"
+        },
+        "material_family": {
+          "value": "fire_clay",
+          "signal": "inferred",
+          "rationale": "fire clay block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored at base"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting fire bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of fire clay",
+            "crafting fire bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "storage and crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "compressed material block"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable"
+        }
+      }
+    },
+    "tfc:firepit": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "workstation for cooking and heating"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone and wood construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up camp"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking and heating"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking food",
+            "heating items for melting"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "tfc:firestarter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "hand tool for starting fires"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "made from sticks"
+        },
+        "tier": {
+          "value": "wooden",
+          "signal": "inferred",
+          "rationale": "basic durability tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needing fire"
+        },
+        "primary_uses": {
+          "values": [
+            "lighting firepits",
+            "starting campfires"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "used to ignite"
+        }
+      }
+    },
+    "tfc:food/baked_potato": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "food item"
+        },
+        "material_family": {
+          "value": "potato",
+          "signal": "inferred",
+          "rationale": "vegetable food"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple food carried for eating"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "pattern",
+          "evidence": "display name 'Baked'",
+          "rationale": "cooked state"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for nutrition",
+            "ingredient in recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "consumption and cooking"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        }
+      }
+    },
+    "tfc:food/banana": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "food"
+        },
+        "material_family": {
+          "value": "banana",
+          "signal": "inferred",
+          "rationale": "fruit"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "can be used in recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit food"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for nutrition",
+            "ingredient in recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "direct consumption and cooking"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten"
+        }
+      }
+    },
+    "tfc:food/barley": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "food"
+        },
+        "material_family": {
+          "value": "barley",
+          "signal": "inferred",
+          "rationale": "grain"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "grain food"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "edible directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "raw grain"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for nutrition",
+            "processing into dough"
+          ],
+          "signal": "inferred",
+          "rationale": "direct and crafted uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "crop storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten"
+        }
+      }
+    },
+    "tfc:food/barley_bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "food"
+        },
+        "material_family": {
+          "value": "barley",
+          "signal": "inferred",
+          "rationale": "barley bread"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple food carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food"
+        },
+        "food_category": {
+          "values": [
+            "slot:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "bread category"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "baked"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for nutrition",
+            "making sandwiches"
+          ],
+          "signal": "inferred",
+          "rationale": "direct and recipe use"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten"
+        }
+      }
+    },
+    "tfc:food/barley_bread_jam_sandwich": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "food"
+        },
+        "material_family": {
+          "value": "mixed",
+          "signal": "inferred",
+          "rationale": "bread and jam"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "prepared meal carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "sandwich meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "assembled from cooked bread"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as a meal"
+          ],
+          "signal": "inferred",
+          "rationale": "direct consumption"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten"
+        }
+      }
+    },
+    "tfc:food/barley_bread_sandwich": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "food"
+        },
+        "material_family": {
+          "value": "mixed",
+          "signal": "inferred",
+          "rationale": "bread with fillings"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "prepared meal"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "sandwich"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "assembled"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as a meal"
+          ],
+          "signal": "inferred",
+          "rationale": "direct consumption"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten"
+        }
+      }
+    },
+    "tfc:food/barley_dough": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "food item (dough)"
+        },
+        "material_family": {
+          "value": "barley",
+          "signal": "inferred",
+          "rationale": "barley dough"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during baking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "baking ingredient"
+        },
+        "food_category": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "dough category"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make bread"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "raw dough"
+        },
+        "primary_uses": {
+          "values": [
+            "baking into bread",
+            "making flatbreads"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into baked goods"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten but mainly used in recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

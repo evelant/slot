@@ -1,0 +1,1371 @@
+{
+  "items": {
+    "afc:wood/planks/mahogany_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log fence is a structural building block"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "rationale": "id contains mahogany"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "enclosing areas and animal pens"
+          ],
+          "signal": "inferred",
+          "rationale": "fence for boundaries"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/mahogany_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Weaving station, opens UI"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "rationale": "id contains mahogany"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving cloth and paper"
+          ],
+          "signal": "inferred",
+          "rationale": "loom recipe usage"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "loom block is the station"
+        },
+        "workflow": {
+          "values": [
+            "tfc:weaving"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "part of weaving workflow"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/mahogany_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wooden pressure plate, redstone trigger"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "rationale": "id contains mahogany"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used as redstone sensor"
+        },
+        "primary_uses": {
+          "values": [
+            "wooden redstone sensor"
+          ],
+          "signal": "inferred",
+          "rationale": "pressure plate function"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/mahogany_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden slab for building"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "rationale": "id contains mahogany"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "creating stairs and decorative builds"
+          ],
+          "signal": "inferred",
+          "rationale": "slab building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/mahogany_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden stairs for building"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "rationale": "id contains mahogany"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building vertical transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/mahogany_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Tool storage block with UI"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "rationale": "id contains mahogany"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "primary_uses": {
+          "values": [
+            "storing tools for quick access"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack function"
+        },
+        "used_at": {
+          "values": [
+            "tfc:tool_rack"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:tool_racks",
+          "rationale": "tool rack block is the station"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/mahogany_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden trapdoor, part of building envelope"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "rationale": "id contains mahogany"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "creating hatches and hidden passages"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/mahogany_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station, opens UI"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "rationale": "id contains mahogany"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "workbench function"
+        },
+        "used_at": {
+          "values": [
+            "tfc:workbench"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:workbenches",
+          "rationale": "workbench block is the station"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Teak planks, primary building material"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for crafting and building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building and crafting base material"
+          ],
+          "signal": "inferred",
+          "rationale": "planks are a fundamental material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "lumber group for planks"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf for enchanting and decoration"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting and decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "bookshelf function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "furniture category"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wooden button, redstone trigger"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used as redstone trigger"
+        },
+        "primary_uses": {
+          "values": [
+            "wooden redstone trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "button function"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden door, part of building envelope"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "entrance and exit"
+          ],
+          "signal": "inferred",
+          "rationale": "door function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden fence, structural block"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "enclosing areas and animal pens"
+          ],
+          "signal": "inferred",
+          "rationale": "fence function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden fence gate, structural opening"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "access through fences"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gate function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log fence, structural building block"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "enclosing areas and animal pens"
+          ],
+          "signal": "inferred",
+          "rationale": "fence function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Weaving station, opens UI"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving cloth and paper"
+          ],
+          "signal": "inferred",
+          "rationale": "loom recipe usage"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "loom block is the station"
+        },
+        "workflow": {
+          "values": [
+            "tfc:weaving"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "part of weaving workflow"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wooden pressure plate, redstone sensor"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used as redstone sensor"
+        },
+        "primary_uses": {
+          "values": [
+            "wooden redstone sensor"
+          ],
+          "signal": "inferred",
+          "rationale": "pressure plate function"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden slab for building"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "creating stairs and decorative builds"
+          ],
+          "signal": "inferred",
+          "rationale": "slab building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden stairs for building"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building vertical transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Tool storage block with UI"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "primary_uses": {
+          "values": [
+            "storing tools for quick access"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack function"
+        },
+        "used_at": {
+          "values": [
+            "tfc:tool_rack"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:tool_racks",
+          "rationale": "tool rack block is the station"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden trapdoor, part of building envelope"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "creating hatches and hidden passages"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building component group"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/teak_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station, opens UI"
+        },
+        "material_family": {
+          "value": "wood_teak",
+          "signal": "pattern",
+          "rationale": "id contains teak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "workbench function"
+        },
+        "used_at": {
+          "values": [
+            "tfc:workbench"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:workbenches",
+          "rationale": "workbench block is the station"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/tualang": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Tualang planks, primary building material"
+        },
+        "material_family": {
+          "value": "wood_tualang",
+          "signal": "pattern",
+          "rationale": "id contains tualang"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often carried for crafting and building"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building and crafting base material"
+          ],
+          "signal": "inferred",
+          "rationale": "planks are a fundamental material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "lumber group for planks"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/tualang_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf for enchanting and decoration"
+        },
+        "material_family": {
+          "value": "wood_tualang",
+          "signal": "pattern",
+          "rationale": "id contains tualang"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting and decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "bookshelf function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "furniture category"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    },
+    "afc:wood/planks/tualang_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wooden button, redstone trigger"
+        },
+        "material_family": {
+          "value": "wood_tualang",
+          "signal": "pattern",
+          "rationale": "id contains tualang"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used as redstone trigger"
+        },
+        "primary_uses": {
+          "values": [
+            "wooden redstone trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "button function"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

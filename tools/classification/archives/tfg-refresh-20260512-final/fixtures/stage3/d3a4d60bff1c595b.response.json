@@ -1,0 +1,1291 @@
+{
+  "items": {
+    "beneath:blackstone_pebble": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Loose rock used for knapping and crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into tool heads",
+            "crafting blackstone bricks",
+            "making support beams"
+          ],
+          "signal": "inferred",
+          "rationale": "Tags and recipe consumption indicate these uses."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and stored for batch crafting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common drop from blackstone pebble blocks."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "evidence": "loot_source_examples indicate Beneath dimension.",
+          "rationale": "Found in the Beneath (nether-like dimension)."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "rationale": "Stage2 from id prefix."
+        },
+        "used_at": {
+          "values": [
+            "tfc:knapping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rock knapping recipes."
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:rock_knapping#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to rock knapping workflow."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Common material mined in quantity."
+        }
+      }
+    },
+    "beneath:burpflower": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block that transforms other blocks when activated."
+        },
+        "primary_uses": {
+          "values": [
+            "transforming nether bricks into hellbricks",
+            "creating cursecoal piles",
+            "adding decay to soul farmland"
+          ],
+          "signal": "inferred",
+          "evidence": "Guide page describes transformations.",
+          "rationale": "Main function is block conversion."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and rarely moved."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Found only in Beneath, not abundant."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in the Beneath dimension."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath-specific unique block."
+        },
+        "used_at": {
+          "values": [
+            "tfc:burpflowers"
+          ],
+          "signal": "named",
+          "evidence": "Guide page uses 'Burpflowers'.",
+          "rationale": "Listed as used_at station."
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant-like block with magical transformation."
+        }
+      }
+    },
+    "beneath:cobblerack": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Cobble block used for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures in the Beneath",
+            "crafting stairs/slabs/walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Similar to cobblestone usage."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and used for building projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block in the Beneath."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Naturally generated in the Beneath."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath building material."
+        }
+      }
+    },
+    "beneath:crackrack": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw stone used as ingredient for processing."
+        },
+        "primary_uses": {
+          "values": [
+            "stonecutting into slabs/stairs/walls",
+            "milling into dust",
+            "polishing into decorative stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe consumption shows these outputs."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and processed in batches."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone in the Beneath."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Generated in the Beneath dimension."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining with pickaxe."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/stonecutting",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in stonecutter and polishing recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Igneous extrusive rock type."
+        }
+      }
+    },
+    "beneath:crackrack_rock": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "guess",
+          "rationale": "Loose rock drop with no known use; players collect as decorative item."
+        },
+        "primary_uses": {
+          "values": [
+            "collection",
+            "decoration"
+          ],
+          "signal": "guess",
+          "rationale": "No recipes, just a dropped item."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "guess",
+          "rationale": "Picked up once and stored or discarded."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common drop from crackrack."
+        }
+      }
+    },
+    "beneath:crimson_straw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for thatch and nests."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting crimson thatch",
+            "firepit kindling",
+            "pit kiln straw"
+          ],
+          "signal": "inferred",
+          "rationale": "Tags and recipes indicate these uses."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for crafting runs."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common plant material in Beneath."
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "pattern",
+          "rationale": "Stage2 from id prefix."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath-specific plant product."
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Tag tfc:firepit_kindling makes it fuel."
+        }
+      }
+    },
+    "beneath:crimson_thatch": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative thatch block used in construction."
+        },
+        "primary_uses": {
+          "values": [
+            "building roofs and walls",
+            "plant-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Block placed as building material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common craftable block."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot source from block in Beneath.",
+          "rationale": "Found in Beneath dimension."
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "pattern",
+          "rationale": "Stage2 from id prefix."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as building material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath building material."
+        },
+        "is_fuel": {
+          "value": false,
+          "signal": "pattern",
+          "rationale": "Nether wood non-flammable."
+        }
+      }
+    },
+    "beneath:cursecoal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "High-grade coal ore used as fuel."
+        },
+        "primary_uses": {
+          "values": [
+            "high-temperature fuel for blast furnace",
+            "forge fuel",
+            "milling into dust",
+            "syngas production"
+          ],
+          "signal": "inferred",
+          "rationale": "Tags and recipes show these uses."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when smelting or forging."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special coal from Beneath ore."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from ore blocks in Beneath.",
+          "rationale": "Mined in the Beneath."
+        },
+        "form": {
+          "value": "raw",
+          "signal": "pattern",
+          "rationale": "Stage2 from forge:raw_materials tag."
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "Tags tfc:blast_furnace_fuel, tfc:forge_fuel",
+          "rationale": "Tagged as fuel."
+        }
+      }
+    },
+    "beneath:cursed_hide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Leather-like material used for netherite armor/tools."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting netherite armor and tool upgrades",
+            "lavaproof equipment"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe consumption for netherite items."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used for a few upgrades."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special hide from Beneath."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "Hide material."
+        }
+      }
+    },
+    "beneath:food/button": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible mushroom with nutrition."
+        },
+        "primary_uses": {
+          "values": [
+            "eating for hunger",
+            "cooking ingredient for meals"
+          ],
+          "signal": "inferred",
+          "rationale": "Food component and recipe ingredient."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Foraged and carried as food stock."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common mushroom in Beneath."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from mushroom block.",
+          "rationale": "Harvested in Beneath."
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged as vegetable."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eat and cooking ingredient."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Fresh raw mushroom."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "Mushroom vegetable."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Perishable food item."
+        }
+      }
+    },
+    "beneath:food/chantrelle": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible mushroom."
+        },
+        "primary_uses": {
+          "values": [
+            "eating",
+            "cooking ingredient"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ]
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ]
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ]
+        }
+      }
+    },
+    "beneath:food/death_cap": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Poisonous mushroom used only as cooking ingredient."
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient for meals",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes despite poison."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Foraged and stored for cooking."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common poisonous mushroom."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvested in Beneath."
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged as vegetable."
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking, not eaten raw."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw mushroom."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "Mushroom vegetable."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Perishable ingredient."
+        }
+      }
+    },
+    "beneath:food/destroying_angels": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Poisonous mushroom used as ingredient."
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "compost"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ]
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ]
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ]
+        }
+      }
+    },
+    "beneath:food/fools_funnel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Poisonous mushroom used as ingredient."
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "compost",
+            "latex production"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ]
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ]
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ]
+        }
+      }
+    },
+    "beneath:food/oyster": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible mushroom."
+        },
+        "primary_uses": {
+          "values": [
+            "eating",
+            "cooking ingredient"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ]
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ]
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ]
+        }
+      }
+    },
+    "beneath:food/parasol": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible mushroom."
+        },
+        "primary_uses": {
+          "values": [
+            "eating",
+            "cooking ingredient"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ]
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ]
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ]
+        }
+      }
+    },
+    "beneath:food/portobello": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible mushroom."
+        },
+        "primary_uses": {
+          "values": [
+            "eating",
+            "cooking ingredient"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ]
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ]
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ]
+        }
+      }
+    },
+    "beneath:food/shittake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible mushroom."
+        },
+        "primary_uses": {
+          "values": [
+            "eating",
+            "cooking ingredient"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ]
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ]
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ]
+        }
+      }
+    },
+    "beneath:food/sulfur_tuft": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Poisonous mushroom used as ingredient."
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "compost"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ]
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ]
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ]
+        }
+      }
+    },
+    "beneath:ghost_pepper": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible crop with fire resistance effect."
+        },
+        "primary_uses": {
+          "values": [
+            "eating for hunger",
+            "cooking ingredient",
+            "fire resistance potion ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Tags and recipes show uses."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested and stored."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crop in Beneath."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from crop block.",
+          "rationale": "Grown in the Beneath."
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged as vegetable."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eat, cooking, and potion ingredient."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Fresh vegetable."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvested crop."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "Perishable food."
+        }
+      }
+    },
+    "beneath:gleamflower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Plant that emits light, grown and harvested."
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting for night vision ingredients",
+            "latex production",
+            "light source decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Tags and recipes show uses."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested when needed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crop in Beneath."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "evidence": "Loot from crop block and plant block.",
+          "rationale": "Grows in Beneath."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Grown as a crop."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Crop plant."
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "Component light_emission: 7",
+          "rationale": "Stage2 detected light emission."
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "Glowing flower."
+        }
+      }
+    },
+    "beneath:fungal_cobblerack": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fungal variant of cobblerack, used as building material."
+        },
+        "primary_uses": {
+          "values": [
+            "building with fungal texture"
+          ]
+        },
+        "carry_frequency": {
+          "value": "occasional"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ]
+        }
+      }
+    },
+    "beneath:glowstone_spike": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light-emitting spike used for decoration and lighting."
+        },
+        "primary_uses": {
+          "values": [
+            "light source in caves",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Emits light and is placeable."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for lighting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common in Beneath."
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in Beneath."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source block."
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "Component light_emission: 15",
+          "rationale": "Stage2 detected."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to light up areas."
+        }
+      }
+    },
+    "beneath:gold_chunk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small gold piece, likely used as resource."
+        },
+        "primary_uses": {
+          "values": [
+            "collecting gold"
+          ]
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "rarity": {
+          "value": "uncommon"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ore_pieces"
+          ]
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ]
+        }
+      }
+    },
+    "beneath:haunted_spike": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Spike block used for decoration."
+        },
+        "primary_uses": {
+          "values": [
+            "decoration"
+          ]
+        },
+        "carry_frequency": {
+          "value": "rare"
+        },
+        "rarity": {
+          "value": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ]
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "beneath:cobblerack",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "nether",
+      "rationale": "Has loot source from block in Beneath, so naturally occurring.",
+      "confidence": 0.8
+    },
+    {
+      "item": "beneath:crimson_straw",
+      "facet": "is_fuel",
+      "current": false,
+      "suggested": true,
+      "rationale": "Tag tfc:firepit_kindling makes it fuel for firepit.",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": [],
+  "schema_proposals": [],
+  "vocabulary_proposals": []
+}

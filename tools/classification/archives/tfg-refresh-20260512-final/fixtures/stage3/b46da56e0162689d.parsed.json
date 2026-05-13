@@ -1,0 +1,1603 @@
+{
+  "items": {
+    "gtceu:glacio_stone_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain salt"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_saltpeter_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain saltpeter"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain sapphire"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into gem materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_scheelite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain scheelite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into tungsten materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_silver_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain silver"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into silver"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_soapstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain soapstone"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_sodalite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain sodalite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into dye and materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_spessartine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain spessartine"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into gem materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_sphalerite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain sphalerite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into zinc"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_spodumene_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain spodumene"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into lithium"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_stibnite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain stibnite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into antimony"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_sulfur_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain sulfur"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into sulfur"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_talc_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain talc"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_tantalite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain tantalite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into tantalum"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_tarkianite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain tarkianite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into rhenium"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_tetrahedrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain tetrahedrite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into copper, antimony"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_thorium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain thorium"
+        },
+        "primary_uses": {
+          "values": [
+            "milling into crushed ore",
+            "processing into nuclear fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "only greate:milling consumption",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_tin_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain tin"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into tin"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain topaz"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into gem materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain phosphate"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into phosphorus"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain trona"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into soda ash"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain tungstate"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into tungsten"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain uranium"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into nuclear fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain vanadium magnetite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into vanadium and iron"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    },
+    "gtceu:glacio_stone_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "ore block mined for material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when mining glacio for materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain wulfenite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "milling into crushed ore",
+            "processing into molybdenum and lead"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ore processing chain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "ore in unprocessed ores group"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption examples",
+          "rationale": "input to smelting/blasting/milling"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in list",
+          "rationale": "used at furnace, blast furnace, mill"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

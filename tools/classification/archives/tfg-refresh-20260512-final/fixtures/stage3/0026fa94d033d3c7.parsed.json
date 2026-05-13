@@ -1,0 +1,742 @@
+{
+  "items": {
+    "tfg:ozone_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket with gas used for fluid transport and processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting ozone gas",
+            "used in industrial chemical processes"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid container for a gaseous material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical not carried daily"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Not a common fluid like water"
+        }
+      }
+    },
+    "tfg:p_toluenesulfonic_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of acid used for chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting p-toluenesulfonic acid",
+            "used in chemical synthesis"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid container for an acidic chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical not carried daily"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Not a common fluid like water"
+        }
+      }
+    },
+    "tfg:paracetamol_pill": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible item that provides an antidote effect"
+        },
+        "primary_uses": {
+          "values": [
+            "curing poison",
+            "carrying as antidote"
+          ],
+          "signal": "inferred",
+          "rationale": "Medicine item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory for emergency"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted in batches"
+        }
+      }
+    },
+    "tfg:paraffin_wax": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting candles and treated lumber",
+            "making pills and other wax products"
+          ],
+          "signal": "inferred",
+          "rationale": "Widespread crafting material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried during crafting sessions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        }
+      }
+    },
+    "tfg:pastoral_engine": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed machine for automatic animal handling"
+        },
+        "primary_uses": {
+          "values": [
+            "automatic milking and shearing",
+            "animal husbandry automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes auto-milking/shearing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted machine"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Automates animal farming tasks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "Animal products and supplies group"
+        }
+      }
+    },
+    "tfg:peanut_product": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Food item that restores hunger"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as snack",
+            "ingredient in sandwiches and soups"
+          ],
+          "signal": "inferred",
+          "rationale": "Food and cooking ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common food carried for hunger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crop product"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Legumes are vegetables"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used in meals"
+        }
+      }
+    },
+    "tfg:peanut_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Seeds used for planting crops"
+        },
+        "primary_uses": {
+          "values": [
+            "planting to grow peanuts",
+            "chicken and quail feed",
+            "small fishing bait"
+          ],
+          "signal": "inferred",
+          "rationale": "Plantable seed and animal feed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during planting season"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common seed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "Seed storage group"
+        }
+      }
+    },
+    "tfg:peanut_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild crop plant found in the world"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting for peanuts"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of peanut seeds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when foraging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wild plant"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Wild crop found on surface"
+        }
+      }
+    },
+    "tfg:pelitic_hornfels": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone block used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with metamorphic stone",
+            "crafting decorative blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Stone building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in bulk, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rock type"
+        }
+      }
+    },
+    "tfg:permafrost_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Support beam used for mine stabilization"
+        },
+        "primary_uses": {
+          "values": [
+            "preventing cave-ins",
+            "mining support structures"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        }
+      }
+    },
+    "tfg:phantom_silk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "High-quality cloth material used in many crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting sails, sleeping bags, backpacks",
+            "sewing clothing and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Versatile cloth material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting ingredient"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Phantom-derived, not trivial"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "Cloth and textiles group"
+        }
+      }
+    },
+    "tfg:phantom_thread": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Thread material used in crafting and sewing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting string-based items",
+            "sewing and weaving"
+          ],
+          "signal": "inferred",
+          "rationale": "String material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting ingredient"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Phantom-derived, not trivial"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "Cloth and textiles group"
+        }
+      }
+    },
+    "tfg:phenolic_resin_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of liquid resin for industrial use"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting phenolic resin",
+            "used in chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid container for a chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Not a common fluid"
+        }
+      }
+    },
+    "tfg:phonolite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Support beam from igneous extrusive stone"
+        },
+        "primary_uses": {
+          "values": [
+            "mining support",
+            "preventing collapses"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        }
+      }
+    },
+    "tfg:photo_cell_t1": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component used in crafting solar panels"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting solar panels",
+            "energy generation component"
+          ],
+          "signal": "inferred",
+          "rationale": "Electronic component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Tiered component, not trivial"
+        }
+      }
+    },
+    "tfg:phyllite_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for thallium (lorandite)",
+            "smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried from mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore type"
+        }
+      }
+    },
+    "tfg:phyllite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Support beam from metamorphic stone"
+        },
+        "primary_uses": {
+          "values": [
+            "mining support",
+            "crafting support beams"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone variant"
+        }
+      }
+    },
+    "tfg:pickaxe_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Mold used in extruder for metal shaping"
+        },
+        "primary_uses": {
+          "values": [
+            "shaping pickaxe heads in extruder",
+            "metal forming"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial mold"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored at base, not carried often"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Specialized tool"
+        },
+        "container_state": {
+          "values": [
+            "slot:reusable_mold"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:extruder_molds",
+          "rationale": "Mold that is reused for extrusion"
+        }
+      }
+    },
+    "tfg:piglin_disguise": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Item to disguise player for piglin trading"
+        },
+        "primary_uses": {
+          "values": [
+            "disguising as piglin for safe trading",
+            "avoiding piglin aggression"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip explains piglin disguise"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when visiting nether"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted item"
+        }
+      }
+    },
+    "tfg:pile/black_sand": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Sand pile mined from world"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting black sand for building or processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:pile/brown_sand": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Sand pile from world"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting brown sand for building or processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:pile/green_sand": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Sand pile from world"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting green sand for building or processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:pile/hematitic_sand": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Red sand pile from world"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting hematitic sand for building or processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:pile/hematitic_sand_covering": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Red sand covering variant"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting hematitic sand"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:pile/mars_sand": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Mars sand pile from alien world"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting argillite sand for building or processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common on Mars"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

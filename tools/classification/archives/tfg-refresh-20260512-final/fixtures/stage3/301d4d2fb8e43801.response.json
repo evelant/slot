@@ -1,0 +1,1021 @@
+{
+  "items": {
+    "gtceu:exquisite_rock_salt_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Player treats exquisite gems as crafting materials, not display pieces."
+        },
+        "material_family": {
+          "value": "rock_salt",
+          "signal": "pattern",
+          "evidence": "id suffix _rock_salt",
+          "rationale": "Gem type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Component states common rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during gem processing, not everyday."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into smaller gems",
+            "material for crafting and trims"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in greate:cutting and as trim material."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Exquisite gems belong in gem storage."
+        }
+      }
+    },
+    "gtceu:exquisite_ruby_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite gems are crafting stocks."
+        },
+        "material_family": {
+          "value": "ruby",
+          "signal": "pattern",
+          "evidence": "id suffix _ruby",
+          "rationale": "Gem type from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used occasionally in processing."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into flawless gems",
+            "component for fluix crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe uses: cutting and mixing for fluix."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem storage group."
+        }
+      }
+    },
+    "gtceu:exquisite_rutile_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material."
+        },
+        "material_family": {
+          "value": "rutile",
+          "signal": "pattern",
+          "evidence": "id suffix _rutile",
+          "rationale": "Gem type."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional processing."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into flawless gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:exquisite_salt_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Salt crystals are crafting materials."
+        },
+        "material_family": {
+          "value": "salt",
+          "signal": "pattern",
+          "evidence": "id suffix _salt",
+          "rationale": "Material from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional use."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into smaller gems",
+            "material for salt processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Cutting and vibrating recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:exquisite_sapphire_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material."
+        },
+        "material_family": {
+          "value": "sapphire",
+          "signal": "pattern",
+          "evidence": "id suffix _sapphire",
+          "rationale": "Gem type."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional processing."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into flawless gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Cutting recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:exquisite_sodalite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material."
+        },
+        "material_family": {
+          "value": "sodalite",
+          "signal": "pattern",
+          "evidence": "id suffix _sodalite",
+          "rationale": "Gem type."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional use."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into flawless gems",
+            "source of aluminium silicate"
+          ],
+          "signal": "inferred",
+          "rationale": "Cutting and melting tip."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:exquisite_spessartine_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material."
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "id suffix _spessartine",
+          "rationale": "Gem type."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional processing."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into flawless gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Cutting recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:exquisite_tetrafluoroberyllate_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Rare material used in crafting."
+        },
+        "material_family": {
+          "value": "tetrafluoroberyllate",
+          "signal": "pattern",
+          "evidence": "id suffix _tetrafluoroberyllate",
+          "rationale": "Material from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Very niche gem, rarely carried."
+        },
+        "primary_uses": {
+          "values": [
+            "used in diamond wand crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Only known recipe is for construction wand."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:exquisite_topaz_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material."
+        },
+        "material_family": {
+          "value": "topaz",
+          "signal": "pattern",
+          "evidence": "id suffix _topaz",
+          "rationale": "Gem type."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional use."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into flawless gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Cutting recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:exquisite_uvarovite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material."
+        },
+        "material_family": {
+          "value": "uvarovite",
+          "signal": "pattern",
+          "evidence": "id suffix _uvarovite",
+          "rationale": "Gem type."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional processing."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into flawless gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Cutting recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:exquisite_yellow_garnet_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material."
+        },
+        "material_family": {
+          "value": "yellow_garnet",
+          "signal": "pattern",
+          "evidence": "id suffix _yellow_garnet",
+          "rationale": "Gem type."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional use."
+        },
+        "primary_uses": {
+          "values": [
+            "cut into flawless gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Cutting recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems",
+          "rationale": "Gem group."
+        }
+      }
+    },
+    "gtceu:extreme_combustion_engine": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for power generation."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power setup."
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "named",
+          "evidence": "tooltip mentions EU/t production",
+          "rationale": "Player uses it to generate power."
+        },
+        "primary_uses": {
+          "values": [
+            "generates 8192 EU/t from fuel",
+            "boost to 32768 EU/t with liquid oxygen"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and function."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'combustion_engine' and belongs to GTCEu power gen",
+          "rationale": "It is a GTCEu generator machine."
+        }
+      }
+    },
+    "gtceu:extreme_engine_intake_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural casing for multiblock engine."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building engine multiblock."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of power generation multiblock construction."
+        },
+        "primary_uses": {
+          "values": [
+            "build extreme engine intake structure"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as block to form the multiblock."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing used in GTCEu multiblock."
+        }
+      }
+    },
+    "gtceu:facade_cover": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "named",
+          "evidence": "tooltip: 'Decorative Outfit Cover.'",
+          "rationale": "Player uses it to hide cables aesthetically."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building and hiding wiring."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "named",
+          "evidence": "tooltip says 'Decorative Outfit Cover.'",
+          "rationale": "Used to decorate and cover cables."
+        },
+        "primary_uses": {
+          "values": [
+            "hide cables and pipes with any block texture"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted with iron plate and any block."
+        }
+      }
+    },
+    "gtceu:face_mask": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "evidence": "component equippable slot=head, tag curios:face",
+          "rationale": "Worn on face slot, provides armor."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when expecting hazardous atmospheres."
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Protects in dangerous environments."
+        },
+        "primary_uses": {
+          "values": [
+            "protects from inhalation hazards",
+            "provides +1 armor on head"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip and equipment."
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:oxygen_supply"
+          ],
+          "signal": "inferred",
+          "rationale": "Protects from inhalation, like oxygen supply."
+        },
+        "protection_context": {
+          "values": [
+            "slot:poison"
+          ],
+          "signal": "inferred",
+          "rationale": "Inhalation protection is akin to poison/chemical protection."
+        }
+      }
+    },
+    "gtceu:fermented_biomass_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as tool for fluid transport."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when handling biomass fluid."
+        },
+        "primary_uses": {
+          "values": [
+            "transport and pour fermented biomass"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket utility."
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds 1000mB of fluid."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill",
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "Player fills and empties bucket."
+        }
+      }
+    },
+    "gtceu:ferrite_mixture_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust used in material processing."
+        },
+        "material_family": {
+          "value": "ferrite_mixture",
+          "signal": "pattern",
+          "evidence": "id suffix _ferrite_mixture and tag forge:dusts",
+          "rationale": "Material from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during chemical processing."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ferrite components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in shaped recipes for ferrite parts."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust belongs with pure dusts."
+        }
+      }
+    },
+    "gtceu:ferrosilite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust used in material processing."
+        },
+        "material_family": {
+          "value": "ferrosilite",
+          "signal": "pattern",
+          "evidence": "id suffix and tag forge:dusts",
+          "rationale": "Material from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during chemical processing."
+        },
+        "primary_uses": {
+          "values": [
+            "material for ferrosilite glass or ceramic"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in shaping recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust category."
+        }
+      }
+    },
+    "gtceu:fertilizer": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to fertilize crops, a farming tool."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during farming runs."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Players use fertilizer on crops."
+        },
+        "primary_uses": {
+          "values": [
+            "fertilize crops with NPK nutrients"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows N,P,K percentages."
+        }
+      }
+    },
+    "gtceu:fiber_reinforced_circuit_board": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting circuits."
+        },
+        "primary_uses": {
+          "values": [
+            "basic circuit board for electronic components"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'An Extreme Board' - used in advanced circuits."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit boards belong with circuits."
+        }
+      }
+    },
+    "gtceu:fiber_reinforced_printed_circuit_board": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component, more advanced than basic board."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting advanced circuits."
+        },
+        "primary_uses": {
+          "values": [
+            "advanced printed circuit board for electronics"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'A More Advanced Circuit Board'."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit boards belong with circuits."
+        }
+      }
+    },
+    "gtceu:filter_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural casing for filter multiblock."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building filter structure."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid filter automation multiblock."
+        },
+        "primary_uses": {
+          "values": [
+            "build filter multiblock structure"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed to form the casing."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing for GTCEu multiblock."
+        }
+      }
+    },
+    "gtceu:fine_aluminium_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined wire material for crafting."
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "evidence": "id suffix _aluminium and tag forge:fine_wires",
+          "rationale": "Material from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting electrical components."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fine wire for circuits and coils"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in wire recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal form (wire) fits refined ores group."
+        }
+      }
+    },
+    "gtceu:fine_americium_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined wire material for crafting."
+        },
+        "material_family": {
+          "value": "americium",
+          "signal": "pattern",
+          "evidence": "id suffix _americium and tag forge:fine_wires",
+          "rationale": "Material from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Late-game radioactive material, rarely carried."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced americium components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fine wire recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal form."
+        }
+      }
+    },
+    "gtceu:fine_annealed_copper_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined wire material for crafting."
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "id suffix and tag forge:fine_wires",
+          "rationale": "Material from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "Component rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Common wire, carried when crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "crafting annealed copper wire for circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in coil and cable recipes."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal form."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

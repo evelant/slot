@@ -1,0 +1,1403 @@
+{
+  "items": {
+    "gtceu:enriched_naquadah_trinium_europium_duranide_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "storage block of refined alloy, compact material"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "exact material from id and tooltip"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "inferred",
+          "evidence": "tooltip UV Superconductor",
+          "rationale": "high-end superconductor tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "complex late-game alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing, mostly stored"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by compacting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of superconductor alloy",
+            "source for plates and wires"
+          ],
+          "signal": "inferred",
+          "rationale": "used as bulk material for further processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, used as compact storage"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool like bucket-of-X"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "fluid contained"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "rare high-temperature alloy fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when processing liquid"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport of high-temperature alloy",
+            "input for casting or mixing"
+          ],
+          "signal": "inferred",
+          "rationale": "used to move molten metal between machines"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "bucket form",
+          "rationale": "filled bucket of liquid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "can be stored in fluid cells via bucket"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed energy transport cable, not a material"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "superconductor material"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "named",
+          "evidence": "tooltip UV Superconductor",
+          "rationale": "UV superconductor cable"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "late-game component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy lines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from single wires"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport component"
+        },
+        "primary_uses": {
+          "values": [
+            "ultra-high voltage energy transport",
+            "superconductor cable for UV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "main use is power transmission"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "wire form and energy stats",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component storage bucket"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form of a material"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "same material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust processing stage"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "inferred",
+          "rationale": "part of same material family"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "premium dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mixing/compacting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by milling other forms"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "input for mixing and compacting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for mixing or compacting",
+            "component in high-end recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make ingots/blocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal sheet used as component"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "same material"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in fine wire crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by rolling plate"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "input for wire/coil recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fine wires",
+            "component in advanced circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "thin foil for delicate parts"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-capacity energy cable"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "superconductor material"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "named",
+          "evidence": "tooltip UV Superconductor",
+          "rationale": "UV tier superconductor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "bulk cable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "very large cable, placed once"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from smaller wires"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport backbone"
+        },
+        "primary_uses": {
+          "values": [
+            "very high amperage energy transport",
+            "superconductor busbar"
+          ],
+          "signal": "inferred",
+          "rationale": "256A capacity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form of a material"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "same material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot stage"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting components"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "refined material, likely crafted"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "base form for processing into plates/wires"
+        },
+        "primary_uses": {
+          "values": [
+            "base form for plates, wires, and components",
+            "material for high-end machines"
+          ],
+          "signal": "inferred",
+          "rationale": "primary material shape"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "pileable ingots group"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "same material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget stage"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "tiny piece of rare alloy"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "small denomination, rarely carried"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from ingot splitting"
+        },
+        "primary_uses": {
+          "values": [
+            "small amount for precise crafting",
+            "component in recipes requiring tiny quantities"
+          ],
+          "signal": "inferred",
+          "rationale": "used for fine adjustments"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nuggets storage group"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "8x energy cable"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "superconductor material"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "named",
+          "evidence": "tooltip UV Superconductor",
+          "rationale": "UV tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "bulk cable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "large cable, placed once"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from smaller wires"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "high amperage energy transport",
+            "superconductor cable for UV setups"
+          ],
+          "signal": "inferred",
+          "rationale": "128A capacity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "GTCEu cable"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV component"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "same material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate stage"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced plate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by cutting block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "input for double plates, foils, etc."
+        },
+        "primary_uses": {
+          "values": [
+            "component for advanced casings and machinery",
+            "crafting double plates and foils"
+          ],
+          "signal": "inferred",
+          "rationale": "flat form for assembly"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "pileable sheets group"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "4x energy cable"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "superconductor material"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "named",
+          "evidence": "tooltip UV Superconductor",
+          "rationale": "UV tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "medium cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for medium-scale wiring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from single wires"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "medium amperage energy transport",
+            "superconductor cable"
+          ],
+          "signal": "inferred",
+          "rationale": "64A capacity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "GTCEu cable"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV component"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_trinium_europium_duranide_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "basic energy cable"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_trinium_europium_duranide",
+          "signal": "named",
+          "rationale": "superconductor material"
+        },
+        "tier": {
+          "value": "uv_superconductor",
+          "signal": "named",
+          "evidence": "tooltip UV Superconductor",
+          "rationale": "UV tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "single wire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring tasks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from single wire recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        },
+        "primary_uses": {
+          "values": [
+            "basic superconductor cable",
+            "crafting into larger wires"
+          ],
+          "signal": "inferred",
+          "rationale": "base wire unit"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "GTCEu cable"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV component"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_waste_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of waste fluid"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_waste",
+          "signal": "named",
+          "rationale": "waste product"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "byproduct from naquadah processing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when disposing or reprocessing"
+        },
+        "primary_uses": {
+          "values": [
+            "byproduct fluid from naquadah processing",
+            "disposal or reprocessing feedstock"
+          ],
+          "signal": "inferred",
+          "rationale": "waste to be handled"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "filled bucket"
+        }
+      }
+    },
+    "gtceu:enriched_uranium_hexafluoride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of gaseous chemical"
+        },
+        "material_family": {
+          "value": "enriched_uranium_hexafluoride",
+          "signal": "named",
+          "rationale": "chemical fluid"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "hazardous nuclear material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried due to hazard"
+        },
+        "primary_uses": {
+          "values": [
+            "feedstock for uranium enrichment",
+            "hazardous gaseous material for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in nuclear fuel chain"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "filled bucket"
+        }
+      }
+    },
+    "gtceu:epichlorohydrin_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of chemical liquid"
+        },
+        "material_family": {
+          "value": "epichlorohydrin",
+          "signal": "named",
+          "rationale": "chemical"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "chemical intermediate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when mixing epoxy"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical intermediate for epoxy production",
+            "hazardous liquid for chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in organic chemistry chain"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "filled bucket"
+        }
+      }
+    },
+    "gtceu:epoxy_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "storage block of epoxy"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "named",
+          "rationale": "epoxy material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing epoxy"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by compacting ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of epoxy",
+            "source for epoxy plates and components"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk material for further processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, compact form"
+        }
+      }
+    },
+    "gtceu:epoxy_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of liquid epoxy"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "named",
+          "rationale": "liquid epoxy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when casting or mixing"
+        },
+        "primary_uses": {
+          "values": [
+            "liquid epoxy for casting or mixing",
+            "crafting epoxy circuit boards"
+          ],
+          "signal": "inferred",
+          "rationale": "used in circuit board production"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "filled bucket"
+        }
+      }
+    },
+    "gtceu:epoxy_circuit_board": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for circuit boards"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "named",
+          "rationale": "epoxy base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic board"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "base for etching circuits",
+            "component for advanced circuit boards"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in circuit production"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuits storage group"
+        }
+      }
+    },
+    "gtceu:epoxy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "named",
+          "rationale": "epoxy material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when making epoxy ingots"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by milling"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "input for curving/extrusion recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for making epoxy ingots",
+            "component in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used to form solid epoxy"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "gtceu:epoxy_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "named",
+          "rationale": "epoxy"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common synthetic"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "extruded from dust"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "base for blocks and plates"
+        },
+        "primary_uses": {
+          "values": [
+            "basic form for epoxy blocks and plates",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "primary solid form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16"
+        }
+      }
+    },
+    "gtceu:epoxy_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "named",
+          "rationale": "epoxy"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "small chip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "tiny denomination"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "likely from ingot splitting"
+        },
+        "primary_uses": {
+          "values": [
+            "small piece for precise crafting",
+            "tiny amount for recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used in small quantities"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "gtceu:epoxy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "named",
+          "rationale": "epoxy"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate stage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common sheet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for circuit board making"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "cut from block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "input for circuit board crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for circuit boards and casings",
+            "flat epoxy piece"
+          ],
+          "signal": "inferred",
+          "rationale": "used in assembly"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16"
+        }
+      }
+    },
+    "gtceu:epoxy_printed_circuit_board": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "advanced circuit component"
+        },
+        "material_family": {
+          "value": "epoxy",
+          "signal": "named",
+          "rationale": "epoxy material with circuitry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "advanced but not rare"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for higher tier circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced circuit board for high-tier machines",
+            "component for GregTech circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "key component in electronics"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuits storage group"
+        }
+      }
+    },
+    "gtceu:ethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of gaseous fuel"
+        },
+        "material_family": {
+          "value": "ethane",
+          "signal": "named",
+          "rationale": "chemical gas"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common gas"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only for fuel or processing"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel gas for combustion",
+            "chemical feedstock for processes"
+          ],
+          "signal": "inferred",
+          "rationale": "used as energy source or reactant"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "filled bucket"
+        }
+      }
+    },
+    "gtceu:ethanol_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of liquid chemical"
+        },
+        "material_family": {
+          "value": "ethanol",
+          "signal": "named",
+          "rationale": "alcohol"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common biofuel"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "dangerous drink, carried as fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "biofuel for generators",
+            "chemical solvent and feedstock"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fuel or in recipes"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "filled bucket"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

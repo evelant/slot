@@ -1,0 +1,742 @@
+{
+  "items": {
+    "tfg:beaker": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable glass container used in many crafting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "storing and transferring fluids",
+            "crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid container used in dozens of shapeless recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept for fluid handling, not everyday carry"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "evidence": "tag tfc:glass_bottles",
+          "rationale": "Glass container"
+        }
+      }
+    },
+    "tfg:beans_product": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "component minecraft:food",
+          "rationale": "Edible food item"
+        },
+        "primary_uses": {
+          "values": [
+            "eating as food",
+            "cooking ingredient for meals",
+            "animal feed"
+          ],
+          "signal": "inferred",
+          "rationale": "Food, used in sandwiches, burgers, and animal feed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common food carried for hunger"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "Tagged as vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used in meals"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Generic food grouping fits"
+        }
+      }
+    },
+    "tfg:beans_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "evidence": "form seed + tag tfc:seeds",
+          "rationale": "Seed for planting"
+        },
+        "primary_uses": {
+          "values": [
+            "planting to grow beans",
+            "bait for fishing",
+            "crafting seed oil"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted, fished, or pressed for oil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during farming runs"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for planting crops"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:seeds",
+          "rationale": "Seed group"
+        }
+      }
+    },
+    "tfg:beans_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "evidence": "tag tfc:wild_crops",
+          "rationale": "Wild plant block"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting bean seeds",
+            "decorative wild plant"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvested for seeds, placed as decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected rarely from worldgen"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Wild plant stored with other plants"
+        }
+      }
+    },
+    "tfg:bell_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable mold for casting bells"
+        },
+        "primary_uses": {
+          "values": [
+            "casting bells",
+            "metal molding"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in artisan table to cast bells"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in inventory during metalworking"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has production recipe",
+          "rationale": "Crafted at artisan table"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:molds",
+          "rationale": "Mold storage group"
+        }
+      }
+    },
+    "tfg:beryllium_sandy": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted block likely used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "crafting heat battery frames"
+          ],
+          "signal": "inferred",
+          "rationale": "Block crafted and used as building material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and not carried often"
+        }
+      }
+    },
+    "tfg:beryllium_sandy_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Component for heat battery multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading heat battery storage",
+            "multiblock component"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Can be placed inside a Heat Battery",
+          "rationale": "Used as internal upgrade for heat battery"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when building heat battery"
+        }
+      }
+    },
+    "tfg:better_space_suit_fabric": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Fabric used for crafting space suits"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting space suits"
+          ],
+          "signal": "inferred",
+          "rationale": "Name and context indicate space suit component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only needed when making space suits"
+        }
+      }
+    },
+    "tfg:bi_pb_sn_cd_in_tl_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "Compressed storage block of alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of alloy",
+            "crafting into components"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores alloy and is used in crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept in base storage, not carried"
+        }
+      }
+    },
+    "tfg:bi_pb_sn_cd_in_tl_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket for transporting molten alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten alloy",
+            "pouring into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holds liquid alloy for casting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during metal processing"
+        }
+      }
+    },
+    "tfg:bi_pb_sn_cd_in_tl_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form of alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "crafting alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted to ingot or used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing"
+        }
+      }
+    },
+    "tfg:bi_pb_sn_cd_in_tl_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "Ingot of alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting components",
+            "compact metal storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting and stored as ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Pileable ingot group"
+        }
+      }
+    },
+    "tfg:bi_pb_sn_cd_in_tl_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Nugget of alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into ingots",
+            "small alloy pieces"
+          ],
+          "signal": "inferred",
+          "rationale": "Combined into ingots or used in small amounts"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried in small quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag balm:nuggets",
+          "rationale": "Nugget storage group"
+        }
+      }
+    },
+    "tfg:big_volcano_smoke_emitter": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Worldgen structure block, not survival obtainable"
+        },
+        "primary_uses": {
+          "values": [
+            "world decoration",
+            "smoke effects"
+          ],
+          "signal": "inferred",
+          "rationale": "Emits smoke, used for volcano visual"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not carried in survival"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Hidden from recipe viewers, creative tab"
+        }
+      }
+    },
+    "tfg:bioreactor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "named",
+          "evidence": "tooltip: combines ingredients to produce synthetic biological products",
+          "rationale": "Multiblock workstation with UI"
+        },
+        "primary_uses": {
+          "values": [
+            "producing biological materials from organic and inorganic inputs"
+          ],
+          "signal": "named",
+          "evidence": "tooltip text",
+          "rationale": "Process inputs into biological products"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in base, not carried"
+        }
+      }
+    },
+    "tfg:black_sand_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore block to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for thallium",
+            "processing into dusts or ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and smelted or macerated"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected during mining runs"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ores_and_minerals"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore storage group"
+        }
+      }
+    },
+    "tfg:black_steel_plated_airplane_propeller": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "tag immersive_aircraft:upgrades",
+          "rationale": "Aircraft upgrade item"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading aircraft for less air friction"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: -20% air friction",
+          "rationale": "Applied to aircraft to reduce drag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when upgrading aircraft"
+        }
+      }
+    },
+    "tfg:blue_alloy_desh_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined material foil for advanced crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced space components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in high-tier recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried, stored in base"
+        }
+      }
+    },
+    "tfg:booster_t3_bucket": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "NYI placeholder item, not obtainable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "placeholder fluid",
+            "NYI item"
+          ],
+          "signal": "named",
+          "evidence": "display_name: NYI Bucket",
+          "rationale": "Not yet implemented"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not used in normal play"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "NYI and no recipes"
+        }
+      }
+    },
+    "tfg:boric_acid_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical ingredient",
+            "crafting boron compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored for processing"
+        }
+      }
+    },
+    "tfg:boron_10_hydroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "nuclear material",
+            "crafting boron compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in nuclear recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored for processing"
+        }
+      }
+    },
+    "tfg:boron_carbide_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "Storage block for boron carbide"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of boron carbide",
+            "crafting into plates and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for storage and further crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept in base, not carried"
+        }
+      }
+    },
+    "tfg:boron_carbide_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/butchery_knives",
+          "rationale": "Tool for butchering animals"
+        },
+        "primary_uses": {
+          "values": [
+            "butchering animals for more meat",
+            "combat"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Butchers animals for more meat",
+          "rationale": "Used as butchery knife and weapon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when hunting or butchering"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Deals slashing damage"
+        },
+        "material_family": {
+          "value": "boron_carbide",
+          "signal": "pattern",
+          "evidence": "id includes boron_carbide",
+          "rationale": "Made of boron carbide"
+        }
+      }
+    },
+    "tfg:boron_carbide_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting butchery knife"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting butchery knife"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in knife assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored until used in crafting"
+        }
+      }
+    },
+    "tfg:boron_carbide_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting buzzsaw machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting buzzsaws",
+            "sawing blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as saw blade in machines"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored until used"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "tfg:beaker",
+      "facet": "organization_group",
+      "label": "Lab Equipment",
+      "proposed_id": "pack:tfg/lab_equipment",
+      "rationale": "Beaker belongs with other lab containers and equipment",
+      "evidence": "tag tfg:lab_equipment_containers"
+    },
+    {
+      "item": "tfg:beryllium_sandy_frame",
+      "facet": "organization_group",
+      "label": "Heat Battery Components",
+      "proposed_id": "pack:tfg/heat_battery_components",
+      "rationale": "Frame is used inside heat batteries, fits with other heat battery parts",
+      "evidence": "tooltip: Can be placed inside a Heat Battery"
+    },
+    {
+      "item": "tfg:better_space_suit_fabric",
+      "facet": "organization_group",
+      "label": "Space Suit Components",
+      "proposed_id": "pack:tfg/space_suit_components",
+      "rationale": "Fabric used for space suit crafting",
+      "evidence": "display_name includes 'Space Suit Fabric'"
+    },
+    {
+      "item": "tfg:boric_acid_dust",
+      "facet": "organization_group",
+      "label": "Chemicals",
+      "proposed_id": "pack:tfg/chemicals",
+      "rationale": "Chemical dust, fits with other chemical compounds",
+      "evidence": "chemical formula in tooltip"
+    },
+    {
+      "item": "tfg:boron_10_hydroxide_dust",
+      "facet": "organization_group",
+      "label": "Chemicals",
+      "proposed_id": "pack:tfg/chemicals",
+      "rationale": "Chemical dust, fits with other chemical compounds",
+      "evidence": "chemical formula in tooltip"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

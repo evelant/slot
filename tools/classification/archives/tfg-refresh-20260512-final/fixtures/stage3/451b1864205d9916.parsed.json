@@ -1,0 +1,1277 @@
+{
+  "items": {
+    "vintageimprovements:bronze_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal spring used in machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as crafting component for contraptions"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when assembling machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common rarity item"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "evidence": "id prefix bronze",
+          "rationale": "Item name implies bronze material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Mod-specific storage bucket for VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated contraption building"
+        }
+      }
+    },
+    "vintageimprovements:bronze_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal wire used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "wiring machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting component for electrical or mechanical connections"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "evidence": "id prefix bronze",
+          "rationale": "Bronze material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod-specific group"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated systems"
+        }
+      }
+    },
+    "vintageimprovements:calorite_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined metal rod, crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building advanced machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "pattern",
+          "evidence": "id prefix calorite",
+          "rationale": "Calorite material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix rod",
+          "rationale": "Rod form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI storage group"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for automation"
+        }
+      }
+    },
+    "vintageimprovements:calorite_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal spring, crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "Spring used in contraption assembly"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for advanced crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "pattern",
+          "evidence": "id prefix calorite",
+          "rationale": "Calorite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod group"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation"
+        }
+      }
+    },
+    "vintageimprovements:calorite_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal wire, crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "wiring machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in electrical/mechanical recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for late-game builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "pattern",
+          "evidence": "id prefix calorite",
+          "rationale": "Calorite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation component"
+        }
+      }
+    },
+    "vintageimprovements:cast_iron_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal rod, crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "cast_iron",
+          "signal": "pattern",
+          "evidence": "id prefix cast_iron",
+          "rationale": "Cast iron material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix rod",
+          "rationale": "Rod form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod-specific group"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for automation"
+        }
+      }
+    },
+    "vintageimprovements:cast_iron_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal plate, crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly used in crafting, often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "cast_iron",
+          "signal": "pattern",
+          "evidence": "id prefix cast_iron",
+          "rationale": "Cast iron"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Plate form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Sheet piles storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk as common material"
+        }
+      }
+    },
+    "vintageimprovements:cast_iron_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal spring, crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "Spring used in contraptions"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when assembling machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "cast_iron",
+          "signal": "pattern",
+          "evidence": "id prefix cast_iron",
+          "rationale": "Cast iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod group"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automation"
+        }
+      }
+    },
+    "vintageimprovements:cast_iron_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal wire, crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "wiring machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "cast_iron",
+          "signal": "pattern",
+          "evidence": "id prefix cast_iron",
+          "rationale": "Cast iron"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation component"
+        }
+      }
+    },
+    "vintageimprovements:centrifuge": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Processing machine, part of a contraption line"
+        },
+        "primary_uses": {
+          "values": [
+            "spinning materials",
+            "processing items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to separate materials in automation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building processing lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Made of metal, but not primary; likely iron-based"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "Crafted via mechanical crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod-specific block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated processing"
+        }
+      }
+    },
+    "vintageimprovements:cobalt_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal rod, crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in alloy recipes and machine parts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for high-tier builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "pattern",
+          "evidence": "id prefix cobalt",
+          "rationale": "Cobalt material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix rod",
+          "rationale": "Rod form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation component"
+        }
+      }
+    },
+    "vintageimprovements:cobalt_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal plate, crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common intermediate, often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "pattern",
+          "evidence": "id prefix cobalt",
+          "rationale": "Cobalt"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Plate form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Sheet piles"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation crafting"
+        }
+      }
+    },
+    "vintageimprovements:cobalt_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal spring, crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "Spring used in contraption assembly"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for advanced machine building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "pattern",
+          "evidence": "id prefix cobalt",
+          "rationale": "Cobalt"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation part"
+        }
+      }
+    },
+    "vintageimprovements:cobalt_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal wire, crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "wiring machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in electrical/mechanical recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "cobalt",
+          "signal": "pattern",
+          "evidence": "id prefix cobalt",
+          "rationale": "Cobalt"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation component"
+        }
+      }
+    },
+    "vintageimprovements:concave_curving_head": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine attachment for curving press"
+        },
+        "primary_uses": {
+          "values": [
+            "curving press attachment",
+            "producing cone shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "Installed in curving press to shape metal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized tool, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Durable head, likely steel or similar"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of metal forming automation"
+        },
+        "used_at": {
+          "values": [
+            "vintageimprovements:curving"
+          ],
+          "signal": "inferred",
+          "rationale": "Installed in curving press"
+        }
+      }
+    },
+    "vintageimprovements:constantan_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal rod, crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "constantan",
+          "signal": "pattern",
+          "evidence": "id prefix constantan",
+          "rationale": "Constantan alloy"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix rod",
+          "rationale": "Rod form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation component"
+        }
+      }
+    },
+    "vintageimprovements:constantan_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal sheet, crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting plates"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for specific builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "constantan",
+          "signal": "pattern",
+          "evidence": "id prefix constantan",
+          "rationale": "Constantan"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation"
+        }
+      }
+    },
+    "vintageimprovements:constantan_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal spring, crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "Spring used in contraptions"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for advanced builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "constantan",
+          "signal": "pattern",
+          "evidence": "id prefix constantan",
+          "rationale": "Constantan"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation part"
+        }
+      }
+    },
+    "vintageimprovements:constantan_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal wire, crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "wiring machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in electrical/mechanical recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "constantan",
+          "signal": "pattern",
+          "evidence": "id prefix constantan",
+          "rationale": "Constantan"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation component"
+        }
+      }
+    },
+    "vintageimprovements:convex_curving_head": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine attachment for curving press"
+        },
+        "primary_uses": {
+          "values": [
+            "curving press attachment",
+            "producing bucket shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "Installed in curving press for shaping"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Durable head, likely steel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of metal forming automation"
+        },
+        "used_at": {
+          "values": [
+            "vintageimprovements:curving"
+          ],
+          "signal": "inferred",
+          "rationale": "Installed in curving press"
+        }
+      }
+    },
+    "vintageimprovements:copper_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal spring, crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "Spring used in contraption assembly"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix copper",
+          "rationale": "Copper material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation component"
+        }
+      }
+    },
+    "vintageimprovements:copper_sulfate": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used as fertilizer, like bone meal"
+        },
+        "primary_uses": {
+          "values": [
+            "fertilizer for crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Acts as bone meal on plants"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix copper",
+          "rationale": "Copper-based compound"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod item"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for fertilizing crops"
+        }
+      }
+    },
+    "vintageimprovements:curving_press": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Processing machine, part of contraption line"
+        },
+        "primary_uses": {
+          "values": [
+            "bending metal",
+            "shaping components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to curve metal strips into shapes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up production line"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Constructed from metal parts"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "Crafted via shaped recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI machine block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated processing"
+        }
+      }
+    },
+    "vintageimprovements:desh_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal rod, crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for space-tier builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "evidence": "id prefix desh",
+          "rationale": "Desh material from Ad Astra"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix rod",
+          "rationale": "Rod form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Space automation component"
+        }
+      }
+    },
+    "vintageimprovements:desh_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal spring, crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "Spring used in high-end contraptions"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for advanced builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity",
+          "rationale": "Common"
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "evidence": "id prefix desh",
+          "rationale": "Desh material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI items"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation component"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

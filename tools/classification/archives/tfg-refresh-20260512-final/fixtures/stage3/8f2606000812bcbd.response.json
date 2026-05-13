@@ -1,0 +1,903 @@
+{
+  "items": {
+    "createdeco:blue_placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed as labeled sign for decoration, not structural"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id prefix 'blue'",
+          "rationale": "dye color in item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decorating projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction for signage"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling areas",
+            "decorative signage"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable sign for labeling"
+        }
+      }
+    },
+    "createdeco:blue_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest-like container for storing items"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id prefix 'blue'",
+          "rationale": "dye color in item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried to place for storage"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing stored items"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items",
+            "base organization"
+          ],
+          "signal": "inferred",
+          "rationale": "player places and fills with items"
+        }
+      }
+    },
+    "createdeco:blue_zinc_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placeable light source for decoration and illumination"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id prefix 'blue'",
+          "rationale": "dye color in item id"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id contains 'zinc'",
+          "rationale": "lamp is made of zinc"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and forgotten, not frequently carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for lighting in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "lighting",
+            "decorative accent"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when placed"
+        }
+      }
+    },
+    "createdeco:brass_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "metal bars used as window or fence"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "material is brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction as decorative barrier"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative barriers",
+            "window bars"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable metal bars"
+        }
+      }
+    },
+    "createdeco:brass_bars_overlay": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "variant of brass bars for decoration"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "material is brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative barriers",
+            "window bars"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable metal bars"
+        }
+      }
+    },
+    "createdeco:brass_catwalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable walkway platform"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "material is brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building infrastructure"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing walkways"
+        },
+        "primary_uses": {
+          "values": [
+            "building catwalks",
+            "access platforms"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable catwalk block"
+        }
+      }
+    },
+    "createdeco:brass_catwalk_railing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "railing for catwalks"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "material is brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for railings in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building railings",
+            "safety barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable railing block"
+        }
+      }
+    },
+    "createdeco:brass_catwalk_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair variant of catwalk for vertical access"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "material is brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for stairs in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building catwalk stairs",
+            "vertical access"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable stair block"
+        }
+      }
+    },
+    "createdeco:brass_coin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for coinstack, not placed individually"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "coin is made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "pocketed for use as currency or decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted into placeable coin stacks for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting coinstacks",
+            "decorative currency"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make coinstack blocks"
+        }
+      }
+    },
+    "createdeco:brass_coinstack": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placeable stack of coins for decoration"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "coins are brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decorating"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decorative block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative block",
+            "wealth display"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decoration"
+        }
+      }
+    },
+    "createdeco:brass_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "part of building envelope, acts as entrance"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "door made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building entrances"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances",
+            "access control"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable door block"
+        }
+      }
+    },
+    "createdeco:brass_facade": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed on blocks to hide cables/pipes"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "facade made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decorating machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to cover up technical blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "hiding cables",
+            "decorative cover"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable facade block"
+        }
+      }
+    },
+    "createdeco:brass_hull": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural block for train bodies"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "hull made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for train construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building train structures"
+        },
+        "primary_uses": {
+          "values": [
+            "building train hulls",
+            "train construction"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable train hull block"
+        }
+      }
+    },
+    "createdeco:brass_mesh_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "mesh fence used as barrier"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "fence made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building fencing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for fences in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building fences",
+            "enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable fence block"
+        }
+      }
+    },
+    "createdeco:brass_sheet_metal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative wall block"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "sheet metal made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building industrial style"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for walls in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "industrial decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable sheet metal block"
+        }
+      }
+    },
+    "createdeco:brass_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural support beam"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "support made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for structural building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for support beams in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "inferred",
+          "rationale": "players store support beams together"
+        },
+        "primary_uses": {
+          "values": [
+            "building supports",
+            "structural beams"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable support beam"
+        }
+      }
+    },
+    "createdeco:brass_support_wedge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wedge variant of support beam"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "support wedge made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for angled supports"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "inferred",
+          "rationale": "grouped with other support beams"
+        },
+        "primary_uses": {
+          "values": [
+            "building angled supports",
+            "decorative wedges"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable support wedge"
+        }
+      }
+    },
+    "createdeco:brass_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "part of building openings"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "trapdoor made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for openings in floors/ceilings"
+        },
+        "primary_uses": {
+          "values": [
+            "building trapdoors",
+            "floor access"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable trapdoor block"
+        }
+      }
+    },
+    "createdeco:brass_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block window for decoration"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "window frame made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for windows in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows",
+            "letting in light"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable window block"
+        }
+      }
+    },
+    "createdeco:brass_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "thin window pane"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id prefix 'brass'",
+          "rationale": "pane frame made of brass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for windows"
+        },
+        "primary_uses": {
+          "values": [
+            "building window panes",
+            "decorative glass"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable window pane"
+        }
+      }
+    },
+    "createdeco:brown_placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative sign for labeling"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id prefix 'brown'",
+          "rationale": "dye color in item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decorating projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for signage in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling areas",
+            "decorative signage"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable sign block"
+        }
+      }
+    },
+    "createdeco:brown_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest-like container for items"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id prefix 'brown'",
+          "rationale": "dye color in item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried to place as storage"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing items"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items",
+            "base organization"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable storage container"
+        }
+      }
+    },
+    "createdeco:copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "metal bars for decoration"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix 'copper'",
+          "rationale": "material is copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for barriers/windows"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative barriers",
+            "window bars"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable copper bars"
+        }
+      }
+    },
+    "createdeco:copper_bars_overlay": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "variant of copper bars"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix 'copper'",
+          "rationale": "material is copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for barriers"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative barriers",
+            "window bars"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable copper bars overlay"
+        }
+      }
+    },
+    "createdeco:copper_catwalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "walkway platform"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id prefix 'copper'",
+          "rationale": "material is copper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for walkways"
+        },
+        "primary_uses": {
+          "values": [
+            "building catwalks",
+            "access platforms"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable copper catwalk"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

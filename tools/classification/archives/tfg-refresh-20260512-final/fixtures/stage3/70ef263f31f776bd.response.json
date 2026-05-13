@@ -1,0 +1,1401 @@
+{
+  "items": {
+    "gtceu:raw_powellite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore that is smelted into metal; player puts in crafting stash"
+        },
+        "material_family": {
+          "value": "powellite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Mineral name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining; stored otherwise"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for smelting, blasting, and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input role in furnace workflows"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace stations"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into powellite ingot",
+            "Crush for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing paths"
+        }
+      }
+    },
+    "gtceu:raw_powellite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw ore for storage, not a container"
+        },
+        "material_family": {
+          "value": "powellite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name from display"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage; not typically carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block awaiting processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw powellite",
+            "Break down into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_pyrite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore for smelting; crafting stash"
+        },
+        "material_family": {
+          "value": "pyrite",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining; stored otherwise"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed ore piece"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace stations"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into cast iron",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing paths"
+        }
+      }
+    },
+    "gtceu:raw_pyrite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw ore"
+        },
+        "material_family": {
+          "value": "pyrite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage; not carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw pyrite",
+            "Break into raw pyrite"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_pyrochlore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore for smelting"
+        },
+        "material_family": {
+          "value": "pyrochlore",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace stations"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into pyrochlore ingot",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_pyrochlore_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw ore"
+        },
+        "material_family": {
+          "value": "pyrochlore",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw pyrochlore",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_pyrolusite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore for smelting"
+        },
+        "material_family": {
+          "value": "pyrolusite",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace stations"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into pyrolusite ingot",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_pyrolusite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw ore"
+        },
+        "material_family": {
+          "value": "pyrolusite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw pyrolusite",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_pyrope": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw gem ore"
+        },
+        "material_family": {
+          "value": "pyrope",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed gem ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces, mill, and polishing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace and polishing station"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into pyrope ingot",
+            "Polish into gem",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing paths"
+        }
+      }
+    },
+    "gtceu:raw_pyrope_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw gem ore"
+        },
+        "material_family": {
+          "value": "pyrope",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw gem ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw pyrope",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_quartzite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw quartz ore"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed quartz ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces, mill, and polishing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace and polishing station"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into quartzize ingot",
+            "Polish into gem",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_quartzite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw quartz ore"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw quartzite",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_realgar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw gem ore"
+        },
+        "material_family": {
+          "value": "realgar",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed gem ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces, mill, and polishing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace and polishing station"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into realgar ingot",
+            "Polish into gem",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_realgar_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw gem ore"
+        },
+        "material_family": {
+          "value": "realgar",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw realgar",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_red_garnet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw gem ore"
+        },
+        "material_family": {
+          "value": "red_garnet",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed gem ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces, mill, and polishing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace and polishing station"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into red garnet ingot",
+            "Polish into gem",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_red_garnet_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw gem ore"
+        },
+        "material_family": {
+          "value": "red_garnet",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw red garnet",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_redstone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw redstone ore for processing"
+        },
+        "material_family": {
+          "value": "redstone",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed redstone ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces and mill"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace stations"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into redstone",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_redstone_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw redstone ore"
+        },
+        "material_family": {
+          "value": "redstone",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw redstone",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_rock_salt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw salt ore"
+        },
+        "material_family": {
+          "value": "rock_salt",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name (sylvite)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed rock salt"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces, mill, and polishing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace and polishing station"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into rock salt ingot",
+            "Polish into gem",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_rock_salt_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw salt ore"
+        },
+        "material_family": {
+          "value": "rock_salt",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw rock salt",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_ruby": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw gem ore"
+        },
+        "material_family": {
+          "value": "ruby",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Gem name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed gem ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces, mill, and polishing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace and polishing station"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into ruby ingot",
+            "Polish into gem",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_ruby_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw gem ore"
+        },
+        "material_family": {
+          "value": "ruby",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Gem name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw ruby",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_salt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw halite ore"
+        },
+        "material_family": {
+          "value": "salt",
+          "signal": "pattern",
+          "evidence": "id",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried while mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed salt ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples",
+          "rationale": "Input for furnaces, mill, and polishing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to smelting"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "create:sandpaper_polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in furnace and polishing station"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into salt ingot",
+            "Polish into gem",
+            "Crush for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary processing"
+        }
+      }
+    },
+    "gtceu:raw_salt_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted raw salt ore"
+        },
+        "material_family": {
+          "value": "salt",
+          "signal": "pattern",
+          "evidence": "display_name",
+          "rationale": "Mineral name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed for storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of raw salt",
+            "Break into raw ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "gtceu:raw_rubber_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processed dust for rubber production"
+        },
+        "material_family": {
+          "value": "rubber",
+          "signal": "pattern",
+          "evidence": "id and display",
+          "rationale": "Rubber material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "evidence": "component_highlights.minecraft:rarity",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing rubber"
+        },
+        "workflow": {
+          "values": [
+            "greate:mixing",
+            "vintageimprovements:pressurizing"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_ingredient_examples and recipe_output_examples",
+          "rationale": "Input for mixing and output from pressurizing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:mixing#input",
+            "vintageimprovements:pressurizing#output"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to mixing and output from pressurizing"
+        },
+        "primary_uses": {
+          "values": [
+            "Make construction foam",
+            "Process into rubber ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary downstream uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:raw_pyrite_block",
+      "facet": "required_tool_tier",
+      "value": "wood",
+      "rationale": "Has forge:needs_wood_tool tag"
+    },
+    {
+      "item": "gtceu:raw_quartzite_block",
+      "facet": "required_tool_tier",
+      "value": "wood",
+      "rationale": "Has forge:needs_wood_tool tag"
+    },
+    {
+      "item": "gtceu:raw_rock_salt_block",
+      "facet": "required_tool_tier",
+      "value": "wood",
+      "rationale": "Has forge:needs_wood_tool tag"
+    },
+    {
+      "item": "gtceu:raw_salt_block",
+      "facet": "required_tool_tier",
+      "value": "wood",
+      "rationale": "Has forge:needs_wood_tool tag"
+    }
+  ]
+}

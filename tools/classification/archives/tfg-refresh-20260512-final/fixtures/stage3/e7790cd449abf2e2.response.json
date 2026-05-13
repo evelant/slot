@@ -1,0 +1,992 @@
+{
+  "items": {
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as part of a building roof structure."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Attic Roof'",
+          "rationale": "Wood species from display name."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in batches for building projects."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function of roof blocks."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted building block."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as part of a roof."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Lower Base Roof'",
+          "rationale": "Wood species from display name."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roof shape block."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_planks_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as roof."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Planks Attic Roof'",
+          "rationale": "Wood species from display name."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roof block."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_planks_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as roof part."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Planks Lower Base Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_planks_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as roof."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Planks Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Main roof block."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_planks_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as steep roof."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Planks Steep Base Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep roof variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_planks_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as top roof."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Planks Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Top roof component."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_planks_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as roof part."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Planks Lower Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper lower roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_planks_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as steep top roof."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Planks Steep Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep top roof variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Base roof block."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Main roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Steep roof block."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Steep Base Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep roof variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Top roof block."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Top roof component."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Upper lower roof block."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Lower Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper lower shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Upper steep roof block."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "named",
+          "evidence": "display name 'Sequoia Steep Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper steep roof."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Attic roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Attic Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Lower roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Lower Base Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_planks_attic_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Attic roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Planks Attic Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_planks_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Lower roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Planks Lower Base Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_planks_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Base roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Planks Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Main roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_planks_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Steep roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Planks Steep Base Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep roof variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_planks_top_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Top roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Planks Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Top roof component."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_planks_upper_lower_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Upper lower roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Planks Lower Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_planks_upper_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Upper steep roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Planks Steep Top Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Upper steep roof."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Base roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Main roof shape."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    },
+    "mcw_tfc_aio:roofs/spruce_roofs/spruce_steep_roof": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Steep roof block."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "named",
+          "evidence": "display name 'Spruce Steep Base Roof'",
+          "rationale": "Wood species."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "primary_uses": {
+          "values": [
+            "Building roof structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Steep roof variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "mcw_tfc_aio:roofs/sequoia_roofs/sequoia_attic_roof",
+      "facet": "organization_group",
+      "label": "Roof Blocks",
+      "proposed_id": "pack:tfg/roofs",
+      "rationale": "Common storage section for all roof block variants.",
+      "evidence": "Multiple roof block items from same mod."
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

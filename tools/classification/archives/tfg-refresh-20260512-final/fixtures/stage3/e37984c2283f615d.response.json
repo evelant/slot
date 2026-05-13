@@ -1,0 +1,1638 @@
+{
+  "items": {
+    "greate:stainless_steel_encased_fan": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Create air flow block, part of kinetic contraption"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix stainless_steel",
+          "rationale": "material from id and tooltip Fe₆CrMnNi"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated contraptions"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present, loot from self",
+          "rationale": "shaped recipe, no external loot"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated air processing",
+            "Item/entity manipulation via air current"
+          ],
+          "signal": "inferred",
+          "rationale": "fan pushes/pulls items and entities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod items, plausible storage together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Greate kinetic system"
+        }
+      }
+    },
+    "greate:stainless_steel_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "power transmission block"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id and tooltip"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as part of contraption"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic power routing"
+        },
+        "primary_uses": {
+          "values": [
+            "Redirect kinetic power",
+            "Change rotation direction"
+          ],
+          "signal": "inferred",
+          "rationale": "gearbox function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        }
+      }
+    },
+    "greate:stainless_steel_mechanical_mixer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing block, part of contraption"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated mixing"
+        },
+        "used_at": {
+          "values": [
+            "create:mixing"
+          ],
+          "signal": "inferred",
+          "rationale": "the mixer itself is the mixing station"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe, self loot",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated mixing of ingredients",
+            "Blending items and fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical mixer function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine in Greate"
+        }
+      }
+    },
+    "greate:stainless_steel_mechanical_press": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing block"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated pressing"
+        },
+        "used_at": {
+          "values": [
+            "create:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "the press is the pressing station"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated pressing of items",
+            "Produce plates and sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical press function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "greate:stainless_steel_mechanical_pump": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport block"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as part of fluid system"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated fluid movement"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Move fluids through pipes",
+            "Create fluid pressure"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical pump function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport component"
+        }
+      }
+    },
+    "greate:stainless_steel_mechanical_saw": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing block"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated cutting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "self loot, crafted",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated cutting of blocks",
+            "Produce planks and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical saw function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "greate:stainless_steel_millstone": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "grinding block"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed grinding station"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated milling/grinding"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Grind items into dusts",
+            "Process ores and crops"
+          ],
+          "signal": "inferred",
+          "rationale": "millstone function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "greate:stainless_steel_shaft": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic power transmission"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for contraption building"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers rotational power"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit kinetic power between components",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "shaft function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        }
+      }
+    },
+    "greate:stainless_steel_vertical_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "power transmission"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed part"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "redirects rotational power"
+        },
+        "primary_uses": {
+          "values": [
+            "Redirect kinetic power vertically",
+            "Change rotation axis"
+          ],
+          "signal": "inferred",
+          "rationale": "vertical gearbox function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        }
+      }
+    },
+    "greate:steel_cogwheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic power transmission"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix steel",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building contraptions"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers rotational power between parallel shafts"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer rotation between parallel shafts",
+            "Change speed ratio"
+          ],
+          "signal": "inferred",
+          "rationale": "cogwheel function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        }
+      }
+    },
+    "greate:steel_crushing_wheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix steel",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as part of crusher pair"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated crushing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "mechanical crafting recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Crush ores and items into dusts",
+            "Automated ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "crushing wheel function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "greate:steel_encased_fan": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "air flow block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "moves items/entities via air"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Push/pull items and entities",
+            "Create air flow for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "encased fan function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        }
+      }
+    },
+    "greate:steel_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "power transmission"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed contraption part"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic power routing"
+        },
+        "primary_uses": {
+          "values": [
+            "Redirect kinetic power",
+            "Change rotation axis"
+          ],
+          "signal": "inferred",
+          "rationale": "gearbox function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        }
+      }
+    },
+    "greate:steel_mechanical_mixer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated mixing"
+        },
+        "used_at": {
+          "values": [
+            "create:mixing"
+          ],
+          "signal": "inferred",
+          "rationale": "the mixer is the mixing station"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated mixing of ingredients",
+            "Blend items and fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical mixer function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "greate:steel_mechanical_press": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated pressing"
+        },
+        "used_at": {
+          "values": [
+            "create:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "the press is the pressing station"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated pressing of items",
+            "Produce plates and sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical press function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "greate:steel_mechanical_pump": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "fluid transport block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as part of fluid system"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "moves fluids automatically"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Move fluids through pipes",
+            "Create fluid pressure"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical pump function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport component"
+        }
+      }
+    },
+    "greate:steel_mechanical_saw": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "processing block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated cutting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated cutting of blocks",
+            "Produce planks and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical saw function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "greate:steel_millstone": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "grinding block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed grinding station"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated milling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe",
+          "rationale": "only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Grind items into dusts",
+            "Process ores and crops"
+          ],
+          "signal": "inferred",
+          "rationale": "millstone function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "processing machine"
+        }
+      }
+    },
+    "greate:steel_shaft": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic power transmission"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for contraption building"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers rotational power"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit kinetic power between components",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "shaft function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        }
+      }
+    },
+    "greate:steel_vertical_gearbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "power transmission"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier from material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed part"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "redirects rotational power"
+        },
+        "primary_uses": {
+          "values": [
+            "Redirect kinetic power vertically",
+            "Change rotation axis"
+          ],
+          "signal": "inferred",
+          "rationale": "vertical gearbox function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic component"
+        }
+      }
+    },
+    "greate:stone_belt_connector": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "belt component for kinetic transport"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "named",
+          "evidence": "display name 'Leather Mechanical Belt'",
+          "rationale": "tooltip says Leather"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized part, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers items between belts"
+        },
+        "primary_uses": {
+          "values": [
+            "Create belt conveyors for items",
+            "Connect shafts for item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "belt connector function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "logistics component"
+        }
+      }
+    },
+    "greate:styrene_butadiene_rubber_belt_connector": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "belt component, higher tier"
+        },
+        "material_family": {
+          "value": "rubber",
+          "signal": "named",
+          "evidence": "display name 'Styrene Butadiene Rubber'",
+          "rationale": "material from tooltip"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized part"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport on belts"
+        },
+        "primary_uses": {
+          "values": [
+            "Create long belt lines for item transport",
+            "Connect high-tier shafts"
+          ],
+          "signal": "inferred",
+          "rationale": "belt connector function"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "greate:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "logistics component"
+        }
+      }
+    },
+    "greate:tiny_andesite_alloy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny dust, crafting component"
+        },
+        "material_family": {
+          "value": "andesite_alloy",
+          "signal": "pattern",
+          "evidence": "id suffix andesite_alloy",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting material, may be carried in stacks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting Greate components"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for Greate machines",
+            "Smelted into alloy"
+          ],
+          "signal": "inferred",
+          "rationale": "tiny dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod dust, stored with mod items"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust, form=dust",
+          "rationale": "stage from id"
+        }
+      }
+    },
+    "greate:tiny_chromatic_compound_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny dust, crafting component"
+        },
+        "material_family": {
+          "value": "chromatic_compound",
+          "signal": "pattern",
+          "evidence": "id suffix chromatic_compound",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for refined radiance",
+            "Intermediate material"
+          ],
+          "signal": "inferred",
+          "rationale": "tiny dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust, form=dust",
+          "rationale": "stage from id"
+        }
+      }
+    },
+    "greate:tiny_refined_radiance_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny dust, advanced material"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "evidence": "id suffix refined_radiance",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rare material, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-end Greate crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting refined radiance blocks",
+            "Advanced component material"
+          ],
+          "signal": "inferred",
+          "rationale": "tiny dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/greate_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Greate mod dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust, form=dust",
+          "rationale": "stage from id"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

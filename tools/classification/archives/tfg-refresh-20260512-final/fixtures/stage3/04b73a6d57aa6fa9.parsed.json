@@ -1,0 +1,1125 @@
+{
+  "items": {
+    "morered:hexidecrubrometer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone logic device placed in world"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone logic component"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and mod context"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation; broken from placed blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in redstone circuit building"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of MoreRed's network component set"
+        }
+      }
+    },
+    "morered:latch": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone latch block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone state storage"
+          ],
+          "signal": "inferred",
+          "rationale": "latch stores redstone signal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone logic element"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network component"
+        }
+      }
+    },
+    "morered:light_blue_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "colored redstone cable"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "rationale": "color in display name and tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "colored redstone signal transport"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from bundled cable"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable subsystem"
+        }
+      }
+    },
+    "morered:light_gray_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "colored redstone cable"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "rationale": "color in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "colored redstone signal transport"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from bundled cable"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable subsystem"
+        }
+      }
+    },
+    "morered:lime_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "colored redstone cable"
+        },
+        "dye_color": {
+          "value": "lime",
+          "signal": "named",
+          "rationale": "color in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "colored redstone signal transport"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from bundled cable"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable subsystem"
+        }
+      }
+    },
+    "morered:magenta_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "colored redstone cable"
+        },
+        "dye_color": {
+          "value": "magenta",
+          "signal": "named",
+          "rationale": "color in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "colored redstone signal transport"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from bundled cable"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable subsystem"
+        }
+      }
+    },
+    "morered:multiplexer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone multiplexer block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "multiplex redstone signals"
+          ],
+          "signal": "inferred",
+          "rationale": "multiplexer device"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone logic element"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network component"
+        }
+      }
+    },
+    "morered:nand_2_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone gate block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "2-input NAND logic gate"
+          ],
+          "signal": "inferred",
+          "rationale": "gate name"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone logic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network component"
+        }
+      }
+    },
+    "morered:nand_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone gate block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "NAND logic gate"
+          ],
+          "signal": "inferred",
+          "rationale": "gate name"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone logic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network component"
+        }
+      }
+    },
+    "morered:nor_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone gate block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "NOR logic gate"
+          ],
+          "signal": "inferred",
+          "rationale": "gate name"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone logic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network component"
+        }
+      }
+    },
+    "morered:not_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone gate block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "NOT logic gate (inverter)"
+          ],
+          "signal": "inferred",
+          "rationale": "gate name"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone logic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network component"
+        }
+      }
+    },
+    "morered:or_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone gate block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "OR logic gate"
+          ],
+          "signal": "inferred",
+          "rationale": "gate name"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone logic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network component"
+        }
+      }
+    },
+    "morered:orange_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "colored redstone cable"
+        },
+        "dye_color": {
+          "value": "orange",
+          "signal": "named",
+          "rationale": "color in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "colored redstone signal transport"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from bundled cable"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable subsystem"
+        }
+      }
+    },
+    "morered:pink_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "colored redstone cable"
+        },
+        "dye_color": {
+          "value": "pink",
+          "signal": "named",
+          "rationale": "color in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "colored redstone signal transport"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from bundled cable"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable subsystem"
+        }
+      }
+    },
+    "morered:pulse_gate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone pulse gate block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "pulse redstone signal"
+          ],
+          "signal": "inferred",
+          "rationale": "pulse gate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone logic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network component"
+        }
+      }
+    },
+    "morered:purple_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "colored redstone cable"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "color in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "colored redstone signal transport"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from bundled cable"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable subsystem"
+        }
+      }
+    },
+    "morered:red_alloy_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ingot",
+          "rationale": "crafting material for red alloy items"
+        },
+        "material_family": {
+          "value": "red_alloy",
+          "signal": "pattern",
+          "evidence": "id contains red_alloy",
+          "rationale": "material is red alloy"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stackable material used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting red alloy wires and components"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for more red items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, tagged hidden from recipe viewers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity component"
+        }
+      }
+    },
+    "morered:red_alloy_wire": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone wire block"
+        },
+        "material_family": {
+          "value": "red_alloy",
+          "signal": "pattern",
+          "evidence": "id contains red_alloy",
+          "rationale": "made of red alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone wiring projects"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal conduction"
+          ],
+          "signal": "inferred",
+          "rationale": "wire used to connect components"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from spool or recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "basic network cable"
+        }
+      }
+    },
+    "morered:red_network_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "colored redstone cable"
+        },
+        "dye_color": {
+          "value": "red",
+          "signal": "named",
+          "rationale": "color in display name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "colored redstone signal transport"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted from bundled cable"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable subsystem"
+        }
+      }
+    },
+    "morered:redwire_post": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redwire post for vertical wiring"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical redstone wiring and signal relay"
+          ],
+          "signal": "inferred",
+          "rationale": "redwire post"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "crafted only"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of redwire post system"
+        }
+      }
+    },
+    "morered:redwire_post_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redwire post plate for wiring"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical redstone wiring base"
+          ],
+          "signal": "inferred",
+          "rationale": "post plate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "redwire post variant"
+        }
+      }
+    },
+    "morered:redwire_post_relay_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redwire post relay plate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "signal relay on vertical wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "relay plate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone wiring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "redwire post variant"
+        }
+      }
+    },
+    "morered:redwire_spool": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for placing red alloy wire, has durability"
+        },
+        "material_family": {
+          "value": "red_alloy",
+          "signal": "pattern",
+          "evidence": "id contains redwire",
+          "rationale": "made of red alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when doing redstone wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "place red alloy wire"
+          ],
+          "signal": "inferred",
+          "rationale": "spool with durability for placing wire"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted recipe present"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "places wire blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used for redstone wiring"
+        }
+      }
+    },
+    "morered:soldering_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "workstation for crafting redstone components"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once as a crafting station"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting redstone gates and components"
+          ],
+          "signal": "inferred",
+          "rationale": "soldering table workstation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "used_at": {
+          "values": [
+            "morered:soldering_table"
+          ],
+          "signal": "inferred",
+          "rationale": "itself as the station"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building redstone components"
+        }
+      }
+    },
+    "morered:stone_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "stone plate used as base for gates and posts"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "named",
+          "evidence": "display name contains stone",
+          "rationale": "made of stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "base for redstone components"
+          ],
+          "signal": "inferred",
+          "rationale": "plate used in gate recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "part of redstone construction"
+        },
+        "mod_subsystem": {
+          "values": [
+            "morered:network"
+          ],
+          "signal": "inferred",
+          "rationale": "basic component of network blocks"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

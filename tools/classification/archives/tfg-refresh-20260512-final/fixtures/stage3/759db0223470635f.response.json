@@ -1,0 +1,1833 @@
+{
+  "items": {
+    "tfc_gourmet:kvass_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable beverage with buff effect"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for hydration and haste buff"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows drink effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Drink carried for trips, not daily staple"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of beverage preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources, crafted via mod recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other foods and drinks"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'State: Liquid'",
+          "rationale": "Clearly a drink item"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holding liquid beverage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "Player drinks the beverage"
+        }
+      }
+    },
+    "tfc_gourmet:lemonade_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable beverage with haste buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for hydration and haste buff"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows drink effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Drink carried for trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of beverage preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'State: Liquid'",
+          "rationale": "Clearly a drink item"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holding liquid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "Player drinks the beverage"
+        }
+      }
+    },
+    "tfc_gourmet:nalivka_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Alcoholic drink with haste buff"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink for hydration and haste buff"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows drink effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Drink carried for trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of beverage preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "named",
+          "evidence": "Tooltip 'State: Liquid'",
+          "rationale": "Clearly a drink item"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holding liquid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "Player drinks the beverage"
+        }
+      }
+    },
+    "tfc_gourmet:ox_milk_bucket": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ingredient for cheese making, not directly consumed"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting cheese curds and brinza"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in curd/cheese recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when preparing dairy products"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in dairy processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "Milk is an animal product"
+        },
+        "used_at": {
+          "values": [
+            "tfc:barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in barrel for curding cheese"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holding liquid milk"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to fill barrels or crafting"
+        }
+      }
+    },
+    "tfc_gourmet:lavash_wrap": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible food item"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Staple food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Prepared food"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources, crafted via heating"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "Flatbread wrap, similar to bread"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Made via heating recipe"
+        }
+      }
+    },
+    "tfc_gourmet:lent_soup": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible soup"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Soup preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A prepared soup meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in pot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_soup"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:bowl_pot",
+          "rationale": "Soup made in pot"
+        }
+      }
+    },
+    "tfc_gourmet:mamaliga": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible cornmeal dish"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked dish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "Corn-based grain dish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in pot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:bowl_pot",
+          "rationale": "Made in pot"
+        }
+      }
+    },
+    "tfc_gourmet:margarita_pizza": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible pizza"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared meal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Pizza baking"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A complete meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked in oven"
+        },
+        "workflow": {
+          "values": [
+            "tfc:ovens"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:oven",
+          "rationale": "Baked in oven"
+        }
+      }
+    },
+    "tfc_gourmet:minestrone": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible soup"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Soup preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A prepared soup meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in pot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_soup"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:bowl_pot",
+          "rationale": "Soup made in pot"
+        }
+      }
+    },
+    "tfc_gourmet:neapolitano_pizza": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible pizza"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared meal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Pizza baking"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A complete meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked in oven"
+        },
+        "workflow": {
+          "values": [
+            "tfc:ovens"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:oven",
+          "rationale": "Baked in oven"
+        }
+      }
+    },
+    "tfc_gourmet:okroshka": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible cold soup"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Soup preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A prepared cold soup"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked ingredients"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_soup"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:bowl_pot",
+          "rationale": "Soup made in pot"
+        }
+      }
+    },
+    "tfc_gourmet:oladyi": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible pancakes"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Pan-frying"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "Batter-based bread-like food"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked via heating"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type tfc:heating",
+          "rationale": "Heated to cook"
+        }
+      }
+    },
+    "tfc_gourmet:ox_brinza_slice": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible cheese slice"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating as snack",
+            "Ingredient in sandwiches"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible and used in recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common food ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking and eaten"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From crafted cheese wheel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:cheese"
+          ],
+          "signal": "named",
+          "evidence": "Tags: tfc:foods/dairy",
+          "rationale": "Clearly cheese"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used in sandwiches"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Aged and processed cheese"
+        }
+      }
+    },
+    "tfc_gourmet:ox_brinza_wheel": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable block for cheese aging and slicing"
+        },
+        "primary_uses": {
+          "values": [
+            "Aging into mature cheese",
+            "Source of cheese slices"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed then interacted to produce slices"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed block, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of cheese making process"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From barrel sealed recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other cheese items"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred",
+          "rationale": "Aged in cellar for preservation"
+        },
+        "workflow": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred",
+          "rationale": "Aging process uses cellar"
+        }
+      }
+    },
+    "tfc_gourmet:ox_curd": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible curd, also ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating as snack",
+            "Ingredient in cheese making and sandwiches"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible and used in recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common food ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Dairy processing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From barrel sealed recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with dairy foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:dairy"
+          ],
+          "signal": "named",
+          "evidence": "Tags: tfc:foods/dairy",
+          "rationale": "Dairy product"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used in sandwiches"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Curdled from milk, processed"
+        }
+      }
+    },
+    "tfc_gourmet:pasta_carbonara": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible pasta dish"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared meal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Pasta preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A complete pasta meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in pot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:bowl_pot",
+          "rationale": "Made in pot"
+        }
+      }
+    },
+    "tfc_gourmet:pasta_with_adjika": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible pasta dish"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared meal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Pasta preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A complete pasta meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in pot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type tfc:advanced_shapeless_crafting",
+          "rationale": "Crafted, likely mixed"
+        }
+      }
+    },
+    "tfc_gourmet:pea_soup": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible soup"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Soup preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A prepared soup meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in pot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_soup"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:bowl_pot",
+          "rationale": "Soup made in pot"
+        }
+      }
+    },
+    "tfc_gourmet:pelmeni": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible dumplings"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Dumpling preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A complete dumpling meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in vat"
+        },
+        "workflow": {
+          "values": [
+            "firmalife:vat"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:vat",
+          "rationale": "Made in vat"
+        }
+      }
+    },
+    "tfc_gourmet:pepperoni_pizza": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible pizza with meat"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared meal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Pizza baking"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A complete meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked in oven"
+        },
+        "workflow": {
+          "values": [
+            "tfc:ovens"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:oven",
+          "rationale": "Baked in oven"
+        }
+      }
+    },
+    "tfc_gourmet:pho": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible noodle soup"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common prepared food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Soup preparation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A prepared soup meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in pot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_soup"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:bowl_pot",
+          "rationale": "Soup made in pot"
+        }
+      }
+    },
+    "tfc_gourmet:placinda": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible flatbread pastry"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common baked good"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Baking"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "Flatbread similar to bread"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked in oven"
+        },
+        "workflow": {
+          "values": [
+            "tfc:ovens"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:oven",
+          "rationale": "Baked in oven"
+        }
+      }
+    },
+    "tfc_gourmet:plant_mix": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible vegetable mix"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating raw",
+            "Ingredient in pizza"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component and used as ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common food ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with food items"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "A mix of vegetables"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or used as pizza topping"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Not cooked"
+        }
+      }
+    },
+    "tfc_gourmet:porridge": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible porridge"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common breakfast food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking grains"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "Grain-based porridge"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked in pot"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type firmalife:bowl_pot",
+          "rationale": "Made in pot"
+        }
+      }
+    },
+    "tfc_gourmet:porridge_with_fruits": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible fruit porridge"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "Has food component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted food"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Combining grains and fruits"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with foods"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "A prepared fruit porridge meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

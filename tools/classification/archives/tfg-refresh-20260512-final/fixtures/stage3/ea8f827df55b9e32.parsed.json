@@ -1,0 +1,1510 @@
+{
+  "items": {
+    "gtceu:moon_deepslate_tin_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined and smelted into tin"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tin for crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted into tin ingot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for topaz"
+        },
+        "primary_uses": {
+          "values": [
+            "source of topaz gem"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for topaz"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for tricalcium phosphate"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tricalcium phosphate"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemical processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for trona"
+        },
+        "primary_uses": {
+          "values": [
+            "source of trona (soda ash)"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for soda production"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for tungsten"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tungsten"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for tungsten processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for uranium"
+        },
+        "primary_uses": {
+          "values": [
+            "source of uranium"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for nuclear fuel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for vanadium and iron"
+        },
+        "primary_uses": {
+          "values": [
+            "source of vanadium and iron"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for alloy metals"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for lead and molybdenum"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lead and molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for yellow garnet"
+        },
+        "primary_uses": {
+          "values": [
+            "source of yellow garnet gem"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gem crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for iron"
+        },
+        "primary_uses": {
+          "values": [
+            "source of iron"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for iron ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for zeolite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of zeolite"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemical processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "moon norite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_dust_harvester": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "machine with GUI for automated dust harvesting"
+        },
+        "primary_uses": {
+          "values": [
+            "harvests regolith dust passively"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Harvests infinite Regolith Dust",
+          "rationale": "tooltip states function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, collected periodically"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated resource production"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "requires moon dimension access"
+        }
+      }
+    },
+    "gtceu:moon_stone_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for almandine"
+        },
+        "primary_uses": {
+          "values": [
+            "source of almandine garnet"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gem"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for aluminium"
+        },
+        "primary_uses": {
+          "values": [
+            "source of aluminium"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for aluminium processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to milling"
+        }
+      }
+    },
+    "gtceu:moon_stone_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for alunite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of aluminium and potassium"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for chemicals"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for amethyst"
+        },
+        "primary_uses": {
+          "values": [
+            "source of amethyst"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gem"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for apatite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of phosphorus"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for fertilizer"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for titanium and iron"
+        },
+        "primary_uses": {
+          "values": [
+            "source of titanium and iron"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for metal production"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for asbestos"
+        },
+        "primary_uses": {
+          "values": [
+            "source of asbestos fibers"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for insulation materials"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for barite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of barium"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for barium compounds"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for mineral sand"
+        },
+        "primary_uses": {
+          "values": [
+            "source of various minerals"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for mixed mineral content"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for rare earths"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cerium and other rare earths"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for rare earth elements"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for aluminium"
+        },
+        "primary_uses": {
+          "values": [
+            "source of aluminium"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for aluminium production"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for bentonite clay"
+        },
+        "primary_uses": {
+          "values": [
+            "source of bentonite clay"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for clay"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    },
+    "gtceu:moon_stone_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore mined for beryllium"
+        },
+        "primary_uses": {
+          "values": [
+            "source of beryllium"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for beryllium processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during moon mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "in-game rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from moon surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "inferred",
+          "rationale": "moon anorthosite rock group"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in examples",
+          "rationale": "smelted or milled for processing"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption_by_type",
+          "rationale": "input to smelting, milling, blasting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

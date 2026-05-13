@@ -1,0 +1,214 @@
+{
+  "items": {
+    "species:springling_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "evidence": "spawn egg id pattern + is_creative_only: true",
+          "rationale": "creative-only spawn egg"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning springling mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg function"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only true",
+          "rationale": "creative only, never in survival inventory"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "is_creative_only: true",
+          "rationale": "only obtainable via creative menu"
+        }
+      }
+    },
+    "tfg:alpha_keratin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "stackable crafting component with no other use"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "unknown recipe, likely TFG ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche mod material, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity: common",
+          "rationale": "component rarity"
+        }
+      }
+    },
+    "tfg:alumina_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dust form of a processed material"
+        },
+        "material_family": {
+          "value": "alumina",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/alumina",
+          "rationale": "tag identifies material"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for aluminium production",
+            "dust crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in dust assembly and milling recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate dust, often stacked"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common rarity",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by milling and assembly recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "fits pure dust storage section"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust stage in material processing"
+        }
+      }
+    },
+    "tfg:alumina_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "plate form of a processed material"
+        },
+        "material_family": {
+          "value": "alumina",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/alumina",
+          "rationale": "tag identifies material"
+        },
+        "primary_uses": {
+          "values": [
+            "milling into alumina dust",
+            "plate crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed by milling and used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used in batches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common rarity",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "matches pileable sheets storage group"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate stage in material processing"
+        }
+      }
+    },
+    "tfg:aluminium_harvest_basket": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag tfg:harvester, stack size 1",
+          "rationale": "harvesting tool for crops"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "named",
+          "evidence": "display name 'Aluminium Harvest Basket'",
+          "rationale": "material indicated by name"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting crops"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:harvester",
+          "rationale": "tag indicates harvesting tool use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "brought on farming runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common rarity",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tool used in crop harvesting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

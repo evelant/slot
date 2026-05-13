@@ -1,0 +1,572 @@
+{
+  "items": {
+    "railways:gray_hazard_stripes_chevron_on_black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette block placed for looks, in decorative tab"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal + id pattern",
+          "rationale": "item belongs to locometal family"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "id prefix gray_",
+          "rationale": "named gray in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity=common",
+          "rationale": "rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block used for railway aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "railway themed decoration",
+            "palette block for train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decorative train details"
+        }
+      }
+    },
+    "railways:gray_hazard_stripes_chevron_on_white": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette block placed for looks"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "locometal family"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "prefix gray_",
+          "rationale": "gray variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative use"
+        },
+        "primary_uses": {
+          "values": [
+            "railway themed decoration",
+            "palette block for train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        }
+      }
+    },
+    "railways:gray_hazard_stripes_diagonal_on_black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "palette block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "rationale": "locometal"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "rationale": "gray"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative"
+        },
+        "primary_uses": {
+          "values": [
+            "railway themed decoration",
+            "palette block for train builds"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        }
+      }
+    },
+    "railways:gray_hazard_stripes_diagonal_on_white": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "railway themed decoration",
+          "palette block for train builds"
+        ]
+      }
+    },
+    "railways:gray_hinged_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door is a structural opening, not a workstation"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal",
+          "rationale": "locometal material"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "prefix gray_",
+          "rationale": "gray variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building component"
+        },
+        "primary_uses": {
+          "values": [
+            "entrance for train builds",
+            "decorative door for locomotives"
+          ],
+          "signal": "inferred",
+          "rationale": "door for train structures"
+        }
+      }
+    },
+    "railways:gray_incomplete_conductor_cap": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component, no final use"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred",
+          "rationale": "likely locometal as it's part of conductor cap"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "rationale": "id includes gray"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only in inventory during assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate in conductor cap assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sequenced assembly"
+        }
+      }
+    },
+    "railways:gray_iron_wrapped_locometal": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative block for train builds",
+          "palette block"
+        ]
+      }
+    },
+    "railways:gray_iron_wrapped_locometal_boiler": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative boiler block for trains",
+          "palette block"
+        ]
+      }
+    },
+    "railways:gray_iron_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative smokebox block for trains"
+        ]
+      }
+    },
+    "railways:gray_locometal_boiler": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative boiler block for trains"
+        ]
+      }
+    },
+    "railways:gray_locometal_end_ladder": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:building"
+        ],
+        "primary_uses": [
+          "climbing access on locomotives",
+          "decorative ladder for trains"
+        ]
+      }
+    },
+    "railways:gray_locometal_flywheel": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative flywheel block for trains"
+        ]
+      }
+    },
+    "railways:gray_locometal_pillar": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative pillar for train builds"
+        ]
+      }
+    },
+    "railways:gray_locometal_rung_ladder": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:building"
+        ],
+        "primary_uses": [
+          "climbing access on locomotives",
+          "decorative ladder"
+        ]
+      }
+    },
+    "railways:gray_locometal_smokebox": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative smokebox block for trains"
+        ]
+      }
+    },
+    "railways:gray_locometal_trapdoor": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:building"
+        ],
+        "primary_uses": [
+          "access hatch for train structures"
+        ]
+      }
+    },
+    "railways:gray_locometal_vent": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative vent block for trains"
+        ]
+      }
+    },
+    "railways:gray_paint_pitcher": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for applying paint, carried for painting"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "name gray paint pitcher",
+          "rationale": "contains gray paint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when painting, not always carried"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to apply color to blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "apply paint to locometal blocks",
+            "recolor train components"
+          ]
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "one tool used repeatedly"
+        }
+      }
+    },
+    "railways:gray_plated_locometal": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative plated block for trains"
+        ]
+      }
+    },
+    "railways:gray_riveted_locometal": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative riveted block for trains"
+        ]
+      }
+    },
+    "railways:gray_round_pane_locometal_window": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:building"
+        ],
+        "primary_uses": [
+          "window for locomotive builds",
+          "decorative window pane"
+        ]
+      }
+    },
+    "railways:gray_single_pane_locometal_window": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:building"
+        ],
+        "primary_uses": [
+          "window for locomotive builds"
+        ]
+      }
+    },
+    "railways:gray_slashed_locometal": {
+      "facets": {
+        "role": "decorative_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:decorating"
+        ],
+        "primary_uses": [
+          "decorative slashed block for trains"
+        ]
+      }
+    },
+    "railways:gray_sliding_locometal_door": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:building"
+        ],
+        "primary_uses": [
+          "sliding door for train builds"
+        ]
+      }
+    },
+    "railways:gray_two_pane_locometal_window": {
+      "facets": {
+        "role": "building_block",
+        "material_family": "locometal",
+        "dye_color": "gray",
+        "rarity": "common",
+        "carry_frequency": "occasional",
+        "activity": [
+          "slot:building"
+        ],
+        "primary_uses": [
+          "window for locomotive builds"
+        ]
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "railways:gray_hazard_stripes_chevron_on_black",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Players store all locometal palette blocks together; tag tfg:locometal_blocks confirms the group.",
+      "evidence": "tag tfg:locometal_blocks on all locometal items"
+    }
+  ],
+  "schema_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

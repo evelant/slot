@@ -1,0 +1,843 @@
+{
+  "items": {
+    "tfg:used_foil_pack": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Empty container recycled into clean foil pack via recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Leftover after eating space food; not commonly carried"
+        },
+        "primary_uses": {
+          "values": [
+            "recycle into clean foil pack",
+            "discard or reuse"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted into clean foil pack via multiple methods"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "pattern",
+          "evidence": "Empty from consuming food",
+          "rationale": "Empty foil pack after removing food"
+        }
+      }
+    },
+    "tfg:uv_aqueous_accumulator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Single-block GT machine with UI for fluid/energy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and used as a machine in base"
+        },
+        "primary_uses": {
+          "values": [
+            "store and regulate fluids for GT machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Named accumulator, fluid handling machine"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid accumulation supports automation and power"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "UV tier machine part",
+          "rationale": "UV voltage components storage group"
+        }
+      }
+    },
+    "tfg:uv_food_oven": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT single-block machine for cooking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as a machine in base"
+        },
+        "primary_uses": {
+          "values": [
+            "cook and process food at UV tier"
+          ],
+          "signal": "inferred",
+          "rationale": "Food oven name and context"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Oven for food processing"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "UV tier machine",
+          "rationale": "UV voltage components storage group"
+        }
+      }
+    },
+    "tfg:uv_food_processor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT single-block machine for food processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as a machine in base"
+        },
+        "primary_uses": {
+          "values": [
+            "process food items at UV tier"
+          ],
+          "signal": "inferred",
+          "rationale": "Food processor name"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Food processing activity"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "UV tier machine",
+          "rationale": "UV voltage components storage group"
+        }
+      }
+    },
+    "tfg:uv_gas_pressurizer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT single-block machine for pressurizing gases"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as a machine in base"
+        },
+        "primary_uses": {
+          "values": [
+            "pressurize gases for GT processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Gas pressurizer name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of gas handling automation"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "UV tier machine",
+          "rationale": "UV voltage components storage group"
+        }
+      }
+    },
+    "tfg:uv_led": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Electronic component crafted into UV light sources"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafted and used in various recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft UV light sources and bioreactors"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient in blacklight and bioreactor"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "pattern",
+          "evidence": "Used in circuit-like components",
+          "rationale": "Electronic component grouped with circuits"
+        }
+      }
+    },
+    "tfg:uv_railgun_item_loader_in": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch for item input, no single-block UI"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "provide item input for UV railgun multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Item input bus for railgun"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "evidence": "Item input for multiblocks",
+          "rationale": "GT hatch subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "UV tier multiblock part",
+          "rationale": "UV voltage components storage group"
+        }
+      }
+    },
+    "tfg:uv_railgun_item_loader_out": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch for item output"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "provide item output for UV railgun multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Item output bus for railgun"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "evidence": "Item output for multiblocks",
+          "rationale": "GT hatch subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "UV tier multiblock part",
+          "rationale": "UV voltage components storage group"
+        }
+      }
+    },
+    "tfg:uv_smr_fluid_import_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch for fluid input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "provide fluid input for Small Modular Turbine"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid input hatch for SMT"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "evidence": "Fluid Input for Multiblocks",
+          "rationale": "GT hatch subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "UV tier multiblock part",
+          "rationale": "UV voltage components storage group"
+        }
+      }
+    },
+    "tfg:uv_universal_circuit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag gtceu:circuits",
+          "rationale": "Standard GT circuit component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in many UV machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft UV-tier machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient in 46 shaped recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "pattern",
+          "evidence": "gtceu:circuits tag",
+          "rationale": "Circuit component"
+        }
+      }
+    },
+    "tfg:venus_stone_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Ore block mined for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and transported for smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for thallium and arsenic",
+            "process into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelts to ingot, contains TlAsS2"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined ore"
+        },
+        "origin": {
+          "values": [
+            "ad_astra:venus"
+          ],
+          "signal": "inferred",
+          "rationale": "Venus stone ore, from Venus dimension"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:venus"
+          ],
+          "signal": "pattern",
+          "evidence": "Venus stone in id",
+          "rationale": "Dimension gate for Venus"
+        }
+      }
+    },
+    "tfg:vial": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Small fluid container used for precise transfer"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for lab tasks"
+        },
+        "primary_uses": {
+          "values": [
+            "transfer small amounts of fluids",
+            "craft barometer and drink modifiers"
+          ],
+          "signal": "inferred",
+          "rationale": "16mB capacity, used in several recipes"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:fluid_item_ingredient_empty_containers tag",
+          "rationale": "Empty fluid container"
+        }
+      }
+    },
+    "tfg:vintage_beer_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Absorption buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Niche buff item, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Absorption III buff"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows Absorption III"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "Alcoholic beverage bucket"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed for potion effect"
+        }
+      }
+    },
+    "tfg:vintage_cider_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Speed buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Speed II buff"
+          ],
+          "signal": "inferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfg:vintage_corn_whiskey_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Haste buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Haste II buff"
+          ],
+          "signal": "inferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfg:vintage_mead_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Regeneration buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Regeneration II buff"
+          ],
+          "signal": "inferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfg:vintage_rum_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Speed buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Speed III buff"
+          ],
+          "signal": "inferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfg:vintage_rye_whiskey_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Haste buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Haste II buff"
+          ],
+          "signal": "inferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfg:vintage_sake_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Resistance buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Resistance II buff"
+          ],
+          "signal": "inferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfg:vintage_vodka_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Resistance buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Resistance III buff"
+          ],
+          "signal": "inferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfg:vintage_whiskey_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drink for Haste buff"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for Haste III buff"
+          ],
+          "signal": "inferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfg:vitrified_pearl": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for GT machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in HV sensor/emitter recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft HV emitters, sensors, field generators"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient in multiple GT recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in circuit-like components"
+        }
+      }
+    },
+    "tfg:vitrified_pearl_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Standard dust form"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate processing component"
+        },
+        "primary_uses": {
+          "values": [
+            "craft vitrified pearls",
+            "GT component ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Milled from vitrified pearl, used in other recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Dust form of material"
+        }
+      }
+    },
+    "tfg:volcanic_ash": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Loose terrain block like sand, not used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly collected; no known use"
+        },
+        "primary_uses": {
+          "values": [
+            "fill or cover surfaces with ash"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block with no crafting use"
+        }
+      }
+    },
+    "tfg:vulcanized_latex_bucket": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate fluid for rubber production"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for vat processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into sticky resin for rubber"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide page mentions vat/pot treatment"
+        },
+        "workflow": {
+          "values": [
+            "tfc:barrels"
+          ],
+          "signal": "pattern",
+          "evidence": "Guide page: treat in vat or pot",
+          "rationale": "Latex processing in barrel/vat"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:barrels#input"
+          ],
+          "signal": "inferred",
+          "evidence": "Guide page describes treating latex",
+          "rationale": "Input to barrel processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket containing vulcanized latex fluid"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,332 @@
+{
+  "values": [
+    {
+      "id": "slot:fruit",
+      "label": "Fruit",
+      "state": "accepted",
+      "description": "Fruit items from fruit trees and bushes, used in jams, preserves, and as food.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/fruits",
+          "confidence": 0.75
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/fruit_trees",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:meat",
+      "label": "Meat",
+      "state": "accepted",
+      "description": "Raw and cooked meat from animals and fish, used for protein and cooking.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/meats",
+          "confidence": 0.75
+        },
+        {
+          "kind": "advancement",
+          "id": "firmalife:story/bacon",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:egg",
+      "label": "Egg",
+      "state": "accepted",
+      "description": "Eggs from birds and creatures, used in cooking and baking.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:eggs",
+          "confidence": 0.75
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/animal_husbandry",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:preserve",
+      "label": "Preserve",
+      "state": "accepted",
+      "description": "Jams, jellies, and other preserved fruit products.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/preserves",
+          "confidence": 0.75
+        },
+        {
+          "kind": "runtime_item",
+          "id": "tfc:jar/banana_unsealed",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:cheese",
+      "label": "Cheese",
+      "state": "accepted",
+      "description": "Cheese wheels and curds, made from milk, used as food and ingredient.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/cheeses",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "firmalife:cheese_wheels",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:vegetable",
+      "label": "Vegetable",
+      "state": "accepted",
+      "description": "Vegetables, mushrooms, and similar produce, used in cooking.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/vegetables",
+          "confidence": 0.75
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/crops",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:fish",
+      "label": "Fish",
+      "state": "accepted",
+      "description": "Fish and shellfish, raw or cooked, including roe.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/raw_fish",
+          "confidence": 0.75
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:world/all_fish",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:bread",
+      "label": "Bread",
+      "state": "accepted",
+      "description": "Baked bread loaves and slices, made from grain dough.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/breads",
+          "confidence": 0.75
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:world/bread",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:dairy",
+      "label": "Dairy",
+      "state": "accepted",
+      "description": "Milk, cream, and other dairy-based foods.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/dairy",
+          "confidence": 0.75
+        },
+        {
+          "kind": "advancement",
+          "id": "ad_astra:moon_cheese",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:grain",
+      "label": "Grain",
+      "state": "accepted",
+      "description": "Unprocessed grain kernels (barley, wheat, rice, etc.), used for flour and brewing.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/grains",
+          "confidence": 0.75
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/bread",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:dough",
+      "label": "Dough",
+      "state": "accepted",
+      "description": "Uncooked dough made from flour and water, used to bake bread or flatbread.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/dough",
+          "confidence": 0.75
+        },
+        {
+          "kind": "runtime_item",
+          "id": "tfc:food/barley_dough",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:bowl",
+      "label": "Bowl",
+      "state": "accepted",
+      "description": "Bowls used for soups, salads, and as containers, including ceramic and wooden variants.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:bowls",
+          "confidence": 0.75
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/bowls",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:spice",
+      "label": "Spice",
+      "state": "accepted",
+      "description": "Herbs and spices (basil, cumin, vanilla, etc.) used to flavor food.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/spices",
+          "confidence": 0.75
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/herbs_and_spices",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:flour",
+      "label": "Flour",
+      "state": "accepted",
+      "description": "Ground flour from grains, used to make dough.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/flour",
+          "confidence": 0.75
+        },
+        {
+          "kind": "runtime_item",
+          "id": "tfc:food/barley_flour",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:sweetener",
+      "label": "Sweetener",
+      "state": "accepted",
+      "description": "Sweeteners like honey, tree sugar, and syrup.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:sweetener",
+          "confidence": 0.75
+        },
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/queststfc_tips",
+          "confidence": 0.3
+        }
+      ]
+    },
+    {
+      "id": "slot:drink",
+      "label": "Drink",
+      "state": "accepted",
+      "description": "Beverages such as milk, water, and potions.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create:deployable_drink",
+          "confidence": 0.75
+        },
+        {
+          "kind": "runtime_item",
+          "id": "minecraft:milk_bucket",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "slot:fat_oil",
+      "label": "Fat Oil",
+      "state": "review",
+      "description": "Fats and oils used in cooking; no pack-specific evidence found.",
+      "confidence": 0.5,
+      "evidence": []
+    },
+    {
+      "id": "slot:prepared_meal",
+      "label": "Prepared Meal",
+      "state": "review",
+      "description": "Combined or prepared meals such as sandwiches, salads, soups; no pack-specific evidence found.",
+      "confidence": 0.5,
+      "evidence": []
+    },
+    {
+      "id": "slot:sauce",
+      "label": "Sauce",
+      "state": "review",
+      "description": "Sauces like salsa, tomato sauce, etc.; no pack-specific evidence found.",
+      "confidence": 0.5,
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,2304 @@
+{
+  "items": {
+    "gtceu:conglomerate_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into ingots; crafting stash."
+        },
+        "material_family": {
+          "value": "cobaltite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/cobaltite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining; processed soon after."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into cobaltite ingot",
+            "Milled into crushed ore",
+            "Source of cobaltite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into ingots; crafting stash."
+        },
+        "material_family": {
+          "value": "cooperite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/cooperite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining; processed soon after."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into cooperite ingot",
+            "Milled into crushed ore",
+            "Source of cooperite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into copper ingot."
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/copper",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common mining haul."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into copper ingot",
+            "Milled into crushed ore",
+            "Source of copper"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into desh material."
+        },
+        "material_family": {
+          "value": "desh",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/desh",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining; processed soon."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant space ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Milled into crushed desh",
+            "Processed into desh ingot",
+            "Source of desh"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe greate:milling",
+          "rationale": "Processing chain for space metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "Milled in millstone."
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type",
+          "rationale": "Part of milling process."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into diamonds."
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/diamond",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into diamond",
+            "Milled into crushed diamond",
+            "Source of diamonds"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for gem."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into diatomite products."
+        },
+        "material_family": {
+          "value": "diatomite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/diatomite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into diatomite ingot",
+            "Milled into crushed ore",
+            "Source of diatomite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_electrotine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into electrotine."
+        },
+        "material_family": {
+          "value": "electrotine",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/electrotine",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into electrotine ingot",
+            "Milled into crushed ore",
+            "Source of electrotine"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into emeralds."
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/emerald",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into emerald",
+            "Milled into crushed emerald",
+            "Source of emeralds"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for gem."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_fullers_earth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into fuller's earth products."
+        },
+        "material_family": {
+          "value": "fullers_earth",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/fullers_earth",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into fuller's earth",
+            "Milled into crushed ore",
+            "Source of fuller's earth"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_galena_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into galena ingot."
+        },
+        "material_family": {
+          "value": "galena",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/galena",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into galena ingot",
+            "Milled into crushed ore",
+            "Source of galena"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_garnet_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into garnet sand products."
+        },
+        "material_family": {
+          "value": "garnet_sand",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/garnet_sand",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into garnet sand ingot",
+            "Milled into crushed ore",
+            "Source of garnet sand"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_garnierite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into garnierite ingot."
+        },
+        "material_family": {
+          "value": "garnierite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/garnierite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into garnierite ingot",
+            "Milled into crushed ore",
+            "Source of garnierite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_glauconite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into glauconite sand."
+        },
+        "material_family": {
+          "value": "glauconite_sand",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/glauconite_sand",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into glauconite sand",
+            "Milled into crushed ore",
+            "Source of glauconite sand"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_goethite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into goethite ingot."
+        },
+        "material_family": {
+          "value": "goethite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/goethite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into goethite ingot",
+            "Milled into crushed ore",
+            "Source of goethite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into gold."
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/gold",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into gold ingot",
+            "Milled into crushed ore",
+            "Source of gold"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_granitic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into mineral sand."
+        },
+        "material_family": {
+          "value": "granitic_mineral_sand",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/granitic_mineral_sand",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into granitic mineral sand",
+            "Milled into crushed ore",
+            "Source of mineral sand"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_graphite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into graphite."
+        },
+        "material_family": {
+          "value": "graphite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/graphite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into graphite ingot",
+            "Milled into crushed ore",
+            "Source of graphite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_green_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into green sapphire."
+        },
+        "material_family": {
+          "value": "green_sapphire",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/green_sapphire",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into green sapphire",
+            "Milled into crushed ore",
+            "Source of green sapphire"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for gem."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into grossular."
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/grossular",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into grossular ingot",
+            "Milled into crushed ore",
+            "Source of grossular"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into gypsum."
+        },
+        "material_family": {
+          "value": "gypsum",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/gypsum",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into gypsum ingot",
+            "Milled into crushed ore",
+            "Source of gypsum"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into hematite ingot."
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/hematite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into hematite ingot",
+            "Milled into crushed ore",
+            "Source of hematite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into ilmenite ingot."
+        },
+        "material_family": {
+          "value": "ilmenite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/ilmenite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into ilmenite ingot",
+            "Milled into crushed ore",
+            "Source of ilmenite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into iron."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/iron",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into iron ingot",
+            "Milled into crushed ore",
+            "Source of iron"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for metal."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into kyanite."
+        },
+        "material_family": {
+          "value": "kyanite",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/kyanite",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into kyanite ingot",
+            "Milled into crushed ore",
+            "Source of kyanite"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    },
+    "gtceu:conglomerate_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mined and processed into lapis lazuli."
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "evidence": "id suffix + tag forge:ores/lapis",
+          "rationale": "Material from ore id."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried while mining."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Underground ore."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/conglomerate",
+          "rationale": "Found in overworld caves."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined as raw resource."
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into lapis lazuli",
+            "Milled into crushed lapis",
+            "Source of lapis"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/milling/smelting",
+          "rationale": "Processing chain for dye/material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting/blasting/greate:milling",
+          "rationale": "Furnace, blast furnace, mill."
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "Part of smelting/blasting/milling processes."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1905 @@
+{
+  "items": {
+    "gtceu:gabbro_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_bismuth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_blue_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_borax_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_bornite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_calcite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_cassiterite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_cassiterite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_certus_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_chalcocite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_chalcopyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_chromite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_cinnabar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into coal",
+            "blasting for coal"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce coal via smelting and blasting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples (no milling)",
+          "rationale": "processed via smelting and blasting only"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and blasting"
+        }
+      }
+    },
+    "gtceu:gabbro_cobalt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "milling into crushed ore for desh processing"
+          ],
+          "signal": "inferred",
+          "rationale": "only milling recipe available"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples (only milling)",
+          "rationale": "processed via milling only"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to milling"
+        }
+      }
+    },
+    "gtceu:gabbro_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    },
+    "gtceu:gabbro_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "forge:ores tag + mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes produce ingot and crushed ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried from mining trips to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common rarity component"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/gabbro",
+          "rationale": "underground gabbro ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from gabbro stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe examples",
+          "rationale": "processed via smelting and milling"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting and milling"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1172 @@
+{
+  "items": {
+    "gtceu:kanthal_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block for HV network"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/kanthal",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "HV tier from tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated power networks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT cable network"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV-tier component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer HV EU power between machines",
+            "Build energy networks"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from tooltip and block function"
+        }
+      }
+    },
+    "gtceu:kanthal_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "refined metal plate material"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/kanthal",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "rationale": "kanthal is HV material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common industrial material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal plate fits here"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft HV components",
+            "Make wires and other parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GT recipes"
+        }
+      }
+    },
+    "gtceu:kanthal_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block for HV network"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables/kanthal",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "HV tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable network component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV-tier cable"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer HV EU power",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "function as cable"
+        }
+      }
+    },
+    "gtceu:kanthal_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block for HV network"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/kanthal",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "HV tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire network component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV-tier wire"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer HV EU power",
+            "Build wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "function as wire"
+        }
+      }
+    },
+    "gtceu:kanthal_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "metal rod material"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/kanthal",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "rationale": "kanthal is HV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common industrial material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal rod fits here"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft tools and machines",
+            "Make springs and structures"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GT recipes"
+        }
+      }
+    },
+    "gtceu:kanthal_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block for HV network"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables/kanthal",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "HV tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable network component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV-tier cable"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer HV EU power",
+            "Connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "function as cable"
+        }
+      }
+    },
+    "gtceu:kanthal_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block for HV network"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/kanthal",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "HV tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire network component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV-tier wire"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer HV EU power",
+            "Build wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "function as wire"
+        }
+      }
+    },
+    "gtceu:kanthal_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:springs",
+          "rationale": "metal spring material"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "tag forge:springs/kanthal",
+          "rationale": "material from tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "rationale": "kanthal is HV"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common industrial material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal spring"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft machines and mechanisms",
+            "Energy storage components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT recipes"
+        }
+      }
+    },
+    "gtceu:krypton_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for krypton gas"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in specific processing setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds krypton fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport krypton gas",
+            "Fluid handling"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket utility"
+        }
+      }
+    },
+    "gtceu:kyanite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "processed dust material"
+        },
+        "material_family": {
+          "value": "kyanite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/kyanite",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate processing material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust belongs in refined ores"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into kyanite ingot",
+            "Craft advanced materials"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting and crafting"
+        }
+      }
+    },
+    "gtceu:kyanite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface ore indicator block"
+        },
+        "material_family": {
+          "value": "kyanite",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/kyanite",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface rock"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for ore prospecting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns on surface"
+        },
+        "primary_uses": {
+          "values": [
+            "Find kyanite ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "indicator function"
+        }
+      }
+    },
+    "gtceu:kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block to be processed"
+        },
+        "material_family": {
+          "value": "kyanite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/kyanite",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined in bulk and carried for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for kyanite"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into kyanite",
+            "Process into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        }
+      }
+    },
+    "gtceu:lactose_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "chemical dust material"
+        },
+        "material_family": {
+          "value": "lactose",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/lactose",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for tablets"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft medicine tablets",
+            "Chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixer recipes"
+        }
+      }
+    },
+    "gtceu:laminated_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural block used in machine casings"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "made from glass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting block"
+        },
+        "primary_uses": {
+          "values": [
+            "Build machine hulls",
+            "Decorative transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GT machines"
+        }
+      }
+    },
+    "gtceu:lanthanum_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier for liquid lanthanum"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in specific processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds lanthanum fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport liquid lanthanum",
+            "Fluid handling"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket utility"
+        }
+      }
+    },
+    "gtceu:lanthanum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "metal dust material"
+        },
+        "material_family": {
+          "value": "lanthanum",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/lanthanum",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust belongs in refined ores"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lanthanum",
+            "Craft alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting and crafting"
+        }
+      }
+    },
+    "gtceu:lapis_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface bud ore indicator"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "evidence": "tag forge:bud_indicators/lapis",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface rock"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for ore prospecting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns on surface"
+        },
+        "primary_uses": {
+          "values": [
+            "Find lapis ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "indicator function"
+        }
+      }
+    },
+    "gtceu:lapis_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "processed dust material"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/lapis",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "dust belongs in refined ores"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft lapotron components",
+            "Dyeing",
+            "Gem cutting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        }
+      }
+    },
+    "gtceu:lapis_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface ore indicator block"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/lapis",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface rock"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for ore prospecting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns on surface"
+        },
+        "primary_uses": {
+          "values": [
+            "Find lapis ore deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "indicator function"
+        }
+      }
+    },
+    "gtceu:lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block to be processed"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/lapis",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined in bulk and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lapis"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore before processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine for lapis gems",
+            "Process into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        }
+      }
+    },
+    "gtceu:lapis_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "refined plate material"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/lapis",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common plate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal plate"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft components",
+            "Make machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT recipes"
+        }
+      }
+    },
+    "gtceu:lapis_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod material"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/lapis",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined rod"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft tools",
+            "Make structures"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        }
+      }
+    },
+    "gtceu:lapotron_crystal": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "rechargeable EV battery"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "inferred",
+          "evidence": "tooltip Tier EV",
+          "rationale": "Extreme Voltage from tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for powering machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common battery"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT battery system"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV-tier component"
+        },
+        "primary_uses": {
+          "values": [
+            "Power EV machines",
+            "Portable energy storage"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says Reusable Battery"
+        }
+      }
+    },
+    "gtceu:lapotron_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust material for lapotron"
+        },
+        "material_family": {
+          "value": "lapotron",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/lapotron",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft lapotron crystals",
+            "Advanced battery components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing"
+        }
+      }
+    },
+    "gtceu:lapotron_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "gem material"
+        },
+        "material_family": {
+          "value": "lapotron",
+          "signal": "pattern",
+          "evidence": "tag forge:gems/lapotron",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common gem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gemstone storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft batteries",
+            "Energy components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in lapotron crystal"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "gtceu:laminated_glass",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "block",
+      "rationale": "Laminated glass is a full block, not a pane",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": [],
+  "vocabulary_proposals": [],
+  "schema_proposals": []
+}

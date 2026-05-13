@@ -1,0 +1,1147 @@
+{
+  "items": {
+    "gtceu:grossular_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting material, stored with gems"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "rationale": "id and tag forge:gems/grossular"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting material for tools and components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pressing, cutting, polishing recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore material"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted from grossular ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gemstone, stored in gem section"
+        }
+      }
+    },
+    "gtceu:grossular_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock, prospecting hint"
+        },
+        "primary_uses": {
+          "values": [
+            "prospecting indicator for grossular ore"
+          ],
+          "signal": "inferred",
+          "rationale": "marks ore below"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface rock"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:surface_rocks"
+        }
+      }
+    },
+    "gtceu:grossular_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for machinery"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "rationale": "id and tag forge:lenses/grossular"
+        },
+        "primary_uses": {
+          "values": [
+            "component for optical machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "lens used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting when needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        }
+      }
+    },
+    "gtceu:grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore, smelted into gem"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "rationale": "ore id grossular_ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into grossular gems"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for smelting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ores and ore_in_ground/stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore, stored with unprocessed ores"
+        }
+      }
+    },
+    "gtceu:grossular_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed metal form"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "rationale": "tag forge:plates/grossular"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for advanced machines"
+          ],
+          "signal": "inferred",
+          "rationale": "plate used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed metal form"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:plates"
+        }
+      }
+    },
+    "gtceu:gypsum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined dust, used in concrete"
+        },
+        "material_family": {
+          "value": "gypsum",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts/gypsum"
+        },
+        "primary_uses": {
+          "values": [
+            "used in concrete and fertilizer production"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes for concrete and fertilizer"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting when needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore dust"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted from gypsum ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "pure dust after processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:gypsum_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock, prospecting hint"
+        },
+        "primary_uses": {
+          "values": [
+            "prospecting indicator for gypsum ore"
+          ],
+          "signal": "inferred",
+          "rationale": "marks ore below"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface rock"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:surface_rocks"
+        }
+      }
+    },
+    "gtceu:gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore, smelted into dust"
+        },
+        "material_family": {
+          "value": "gypsum",
+          "signal": "pattern",
+          "rationale": "ore id gypsum_ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into gypsum dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for smelting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ores and ore_in_ground/stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:hardwood_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "wood dust, used in composites"
+        },
+        "material_family": {
+          "value": "hardwood",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts/hardwood"
+        },
+        "primary_uses": {
+          "values": [
+            "used in chipboard composite and fertilizer"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes for chipboard and fertilizer"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "easily produced from wood"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "milled from wooden items"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood product"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:hastelloy_c_276_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage of ingots"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "rationale": "tag forge:storage_blocks/hastelloy_c_276"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of hastelloy C-276"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "not carried often, stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "compacted from ingots"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block family"
+        }
+      }
+    },
+    "gtceu:hastelloy_c_276_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier, bucket tool"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid hastelloy C-276"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of molten metal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "contains molten metal"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid item"
+        }
+      }
+    },
+    "gtceu:hastelloy_c_276_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed powder form"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts/hastelloy_c_276"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for producing hastelloy alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form of alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "pure alloy dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:hastelloy_c_276_frame": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural component for multiblocks"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "rationale": "tag forge:frames/hastelloy_c_276"
+        },
+        "primary_uses": {
+          "values": [
+            "structural component for multiblock machines"
+          ],
+          "signal": "inferred",
+          "rationale": "frame block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "shaped recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "inferred",
+          "rationale": "frame storage bucket"
+        }
+      }
+    },
+    "gtceu:hastelloy_c_276_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "base cast metal form"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "rationale": "tag forge:ingots/hastelloy_c_276"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting material for high-end alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "ingot used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material, often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common alloy ingot"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from alloying"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingots"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ingots"
+        }
+      }
+    },
+    "gtceu:hastelloy_c_276_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets/hastelloy_c_276"
+        },
+        "primary_uses": {
+          "values": [
+            "smallest unit of hastelloy alloy"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in small amounts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets"
+        }
+      }
+    },
+    "gtceu:hastelloy_c_276_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "flat metal form"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "rationale": "tag forge:plates/hastelloy_c_276"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced component for machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "plate used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable sheet"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:plates"
+        }
+      }
+    },
+    "gtceu:hastelloy_c_276_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "long metal form"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "rationale": "tag forge:rods/hastelloy_c_276"
+        },
+        "primary_uses": {
+          "values": [
+            "used in tool handles and machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "rod used in many crafts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed metal form"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:rods"
+        }
+      }
+    },
+    "gtceu:hastelloy_x_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage of ingots"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "rationale": "tag forge:storage_blocks/hastelloy_x"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of hastelloy X"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "compacted from ingots"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block family"
+        }
+      }
+    },
+    "gtceu:hastelloy_x_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid carrier"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid hastelloy X"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of molten metal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid container"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "contains molten metal"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:hastelloy_x_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed powder"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts/hastelloy_x"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for producing hastelloy alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "pure dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        }
+      }
+    },
+    "gtceu:hastelloy_x_frame": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural component"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "rationale": "tag forge:frames/hastelloy_x"
+        },
+        "primary_uses": {
+          "values": [
+            "structural component for multiblock machines"
+          ],
+          "signal": "inferred",
+          "rationale": "frame block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "shaped recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "inferred",
+          "rationale": "frame bucket"
+        }
+      }
+    },
+    "gtceu:hastelloy_x_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "base metal form"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "rationale": "tag forge:ingots/hastelloy_x"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting material for high-end alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "ingot used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "alloyed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingots"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:ingots"
+        }
+      }
+    },
+    "gtceu:hastelloy_x_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets/hastelloy_x"
+        },
+        "primary_uses": {
+          "values": [
+            "smallest unit of hastelloy X"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in small amounts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets"
+        }
+      }
+    },
+    "gtceu:hastelloy_x_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "flat metal form"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "rationale": "tag forge:plates/hastelloy_x"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced component for machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "plate used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable sheet"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:plates"
+        }
+      }
+    },
+    "gtceu:hastelloy_x_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "long metal form"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "rationale": "tag forge:rods/hastelloy_x"
+        },
+        "primary_uses": {
+          "values": [
+            "used in tool handles and machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "rod used in many crafts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed metal form"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:rods"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:hastelloy_c_276_block",
+      "facet": "form",
+      "value": "storage_block",
+      "rationale": "block form for compact storage, tag forge:storage_blocks"
+    },
+    {
+      "item": "gtceu:hastelloy_x_block",
+      "facet": "form",
+      "value": "storage_block",
+      "rationale": "block form for compact storage, tag forge:storage_blocks"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

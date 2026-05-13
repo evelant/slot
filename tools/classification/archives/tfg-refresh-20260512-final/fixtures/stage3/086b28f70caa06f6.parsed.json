@@ -1,0 +1,1471 @@
+{
+  "items": {
+    "gtceu:slate_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into topaz",
+            "process into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this to extract topaz"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for metal extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into tricalcium phosphate",
+            "fertilizer ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "source of phosphate"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_trona_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into soda ash",
+            "glassmaking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "source of trona"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into tungsten",
+            "refractory material source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of tungstate"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into uranium",
+            "radioactive fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of uraninite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into vanadium",
+            "iron and vanadium source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of vanadium magnetite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into lead and molybdenum",
+            "source of wulfenite"
+          ],
+          "signal": "inferred",
+          "rationale": "source of wulfenite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into garnet",
+            "abrasive material source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of yellow garnet"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into iron",
+            "yellow limonite source"
+          ],
+          "signal": "inferred",
+          "rationale": "source of yellow limonite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slate_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag + form=ore",
+          "rationale": "ore material for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "process into zeolite",
+            "catalyst ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "source of zeolite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mining loot brought to base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/slate",
+          "rationale": "underground slate ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for material extraction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "id ends _ore",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "gtceu:slicing_blades": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "pattern",
+          "evidence": "creative_tab decoration",
+          "rationale": "placed decorative block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative cutting blade block"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "decorative block rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "evidence": "creative_tab decoration",
+          "rationale": "decorative block"
+        }
+      }
+    },
+    "gtceu:small_activated_carbon_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting activated carbon filter",
+            "ingredient in recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "input for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_agar_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "culturing medium ingredient",
+            "crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "input for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_almandine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting almandine gem",
+            "abrasive ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "input for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_aluminium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into aluminium",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "input for smelting and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_aluminium_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "machine component used as crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "component in machines",
+            "crafting recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used to assemble tools and machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of machine crafting"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "aluminium gear typical MV component"
+        }
+      }
+    },
+    "gtceu:small_aluminium_silicate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient in ceramics",
+            "crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "input for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_aluminium_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "machine component used as crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "component in machines",
+            "crafting recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mechanical devices"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of machine crafting"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "aluminium spring typical MV component"
+        }
+      }
+    },
+    "gtceu:small_aluminium_sulfite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical ingredient",
+            "crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "input for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_alunite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "source of aluminium",
+            "crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "input for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_americium_241_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "radioactive fuel ingredient",
+            "advanced crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "input for nuclear processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_americium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "radioactive fuel ingredient",
+            "advanced crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "input for nuclear processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_amethyst_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting amethyst",
+            "dye ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "input for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_ammonium_chloride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag + form=dust",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "fertilizer ingredient",
+            "chemical reagent"
+          ],
+          "signal": "inferred",
+          "rationale": "input for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes exist",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "pure dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:small_andesite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=dust + creative_tab material_item",
+          "rationale": "dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "stone dust in recipes",
+            "building material ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "input for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for crafting needs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine processes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "form=dust",
+          "rationale": "dust material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form=dust",
+          "rationale": "dust stage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

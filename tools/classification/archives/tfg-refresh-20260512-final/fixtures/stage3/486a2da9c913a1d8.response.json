@@ -1,0 +1,1764 @@
+{
+  "items": {
+    "gtceu:raw_fullers_earth": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "fullers_earth",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/fullers_earth",
+          "rationale": "raw material of fullers earth"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_fullers_earth_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "fullers_earth",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/fullers_earth",
+          "rationale": "raw material of fullers earth"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_galena": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "galena",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/galena",
+          "rationale": "raw material of galena"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lead ingots",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_galena_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "galena",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/galena",
+          "rationale": "raw material of galena"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_garnet_sand": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "garnet_sand",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/garnet_sand",
+          "rationale": "raw material of garnet sand"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into garnet materials",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_garnet_sand_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "garnet_sand",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/garnet_sand",
+          "rationale": "raw material of garnet sand"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_garnierite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "garnierite",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/garnierite",
+          "rationale": "raw material of garnierite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_gasoline_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport and use as fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needed for fuel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting raw gasoline",
+            "fuel for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container used in GTCEu machines"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid, stored in standard inventory"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket",
+          "rationale": "bucket of fluid"
+        }
+      }
+    },
+    "gtceu:raw_glauconite_sand": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "glauconite_sand",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/glauconite_sand",
+          "rationale": "raw material of glauconite sand"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into potassium-based materials",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_glauconite_sand_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "glauconite_sand",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/glauconite_sand",
+          "rationale": "raw material of glauconite sand"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_goethite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "goethite",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/goethite",
+          "rationale": "raw material of goethite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into cast iron",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_goethite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "goethite",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/goethite",
+          "rationale": "raw material of goethite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_granitic_mineral_sand": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "granitic_mineral_sand",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/granitic_mineral_sand",
+          "rationale": "raw material of granitic mineral sand"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into cast iron and mica",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_granitic_mineral_sand_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "granitic_mineral_sand",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/granitic_mineral_sand",
+          "rationale": "raw material of granitic mineral sand"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_graphite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "graphite",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/graphite",
+          "rationale": "raw material of graphite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into graphite ingots",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_graphite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "graphite",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/graphite",
+          "rationale": "raw material of graphite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_green_sapphire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed gem ore for polishing"
+        },
+        "material_family": {
+          "value": "green_sapphire",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/green_sapphire",
+          "rationale": "raw material of green sapphire"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into green sapphire gems",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: sandpaper polishing, milling",
+          "rationale": "raw gem processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_green_sapphire_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw gem ore block"
+        },
+        "material_family": {
+          "value": "green_sapphire",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/green_sapphire",
+          "rationale": "raw material of green sapphire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw gem storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw gem ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_grossular": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed gem ore for polishing"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/grossular",
+          "rationale": "raw material of grossular"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "polished into grossular gems",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: sandpaper polishing, milling",
+          "rationale": "raw gem processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_grossular_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw gem ore block"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/grossular",
+          "rationale": "raw material of grossular"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw gem storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw gem ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_growth_medium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for transport and use in farming"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needed for growth medium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting growth medium",
+            "used in crop production"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid container used in farming"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid, stored in standard inventory"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "evidence": "form bucket",
+          "rationale": "bucket of fluid"
+        }
+      }
+    },
+    "gtceu:raw_gypsum": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "gypsum",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/gypsum",
+          "rationale": "raw material of gypsum"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into alabaster bricks",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling, alabaster brick",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_gypsum_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "gypsum",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/gypsum",
+          "rationale": "raw material of gypsum"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_hematite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks raw",
+          "rationale": "compact raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks/hematite",
+          "rationale": "raw material of hematite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stack size 16, used for storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "compact raw ore storage",
+            "unpacked into raw materials"
+          ],
+          "signal": "inferred",
+          "rationale": "block form of raw ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:raw_ore_blocks",
+          "rationale": "raw ore block storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "gtceu:raw_ilmenite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials",
+          "rationale": "unprocessed ore for smelting"
+        },
+        "material_family": {
+          "value": "ilmenite",
+          "signal": "pattern",
+          "evidence": "tag forge:raw_materials/ilmenite",
+          "rationale": "raw material of ilmenite"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks after mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into titanium byproducts",
+            "crushed for dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: blasting, smelting, milling",
+          "rationale": "raw material processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting",
+          "rationale": "smelted in furnace/blast furnace"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption",
+          "rationale": "input to smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form raw + tag forge:raw_materials",
+          "rationale": "raw ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:raw_materials tag",
+          "rationale": "raw ore storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

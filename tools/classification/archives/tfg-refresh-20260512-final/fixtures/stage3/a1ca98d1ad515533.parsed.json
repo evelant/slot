@@ -1,0 +1,1166 @@
+{
+  "items": {
+    "gtceu:rubber_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket for liquid rubber transport and placement"
+        },
+        "primary_uses": {
+          "values": [
+            "carry and place liquid rubber",
+            "input for rubber processing"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket used to move/stored rubber fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized fluid carrier, rarely in hotbar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material item"
+        }
+      }
+    },
+    "gtceu:rubber_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "button used as redstone trigger"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone pulse generator",
+            "building control"
+          ],
+          "signal": "inferred",
+          "rationale": "standard button behavior"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during builds, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building component"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        }
+      }
+    },
+    "gtceu:rubber_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "boat with chest for water transport and storage"
+        },
+        "primary_uses": {
+          "values": [
+            "water transport with inventory",
+            "item hauling across water"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat functions as mobile storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific water trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common transport item"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "provides water travel"
+        }
+      }
+    },
+    "gtceu:rubber_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door used as building entryway"
+        },
+        "primary_uses": {
+          "values": [
+            "building entryways",
+            "barrier in structures"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door placement"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of wooden/rubber building set"
+        }
+      }
+    },
+    "gtceu:rubber_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "rubber dust is a refined crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into rubber ingots",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into ingots or used directly"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate material in automated lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form of rubber"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable bulk material"
+        }
+      }
+    },
+    "gtceu:rubber_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence is a structural building block"
+        },
+        "primary_uses": {
+          "values": [
+            "enclosing areas",
+            "building boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence placement"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of wood set"
+        }
+      }
+    },
+    "gtceu:rubber_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate is a structural opening"
+        },
+        "primary_uses": {
+          "values": [
+            "passable fence opening",
+            "building access"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence gate function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed with fences"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of wood set"
+        }
+      }
+    },
+    "gtceu:rubber_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:foils",
+          "rationale": "thin rubber sheet as crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "cable insulation",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in various recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate in automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable in large quantities"
+        }
+      }
+    },
+    "gtceu:rubber_gloves": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "tag forge:armors, forge:armors/chestplates",
+          "rationale": "protective gloves worn in chest slot"
+        },
+        "primary_uses": {
+          "values": [
+            "protect hands from chemicals",
+            "PPE for fluid handling"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip mentions skin contact protection"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized protective gear"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "protection_context": {
+          "values": [
+            "slot:poison"
+          ],
+          "signal": "inferred",
+          "evidence": "tooltip Protects from: Skin contact",
+          "rationale": "protection from hazardous fluids"
+        }
+      }
+    },
+    "gtceu:rubber_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hanging sign for decoration and text"
+        },
+        "primary_uses": {
+          "values": [
+            "display text on walls",
+            "decorative labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "sign function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative item"
+        }
+      }
+    },
+    "gtceu:rubber_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form of refined rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rubber components",
+            "smelted from rubber dust"
+          ],
+          "signal": "inferred",
+          "rationale": "base material for many rubber items"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common stack in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "pileable ingot storage group"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine crafting"
+        }
+      }
+    },
+    "gtceu:rubber_leaves": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "leaf block from rubber tree, used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building decoration",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves are decorative or organic waste"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during tree farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in builds"
+        }
+      }
+    },
+    "gtceu:rubber_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log from rubber tree, used in construction and fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "fuel for firepit",
+            "charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "standard log functionality"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common resource gathered in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tree block"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building and as fuel"
+        }
+      }
+    },
+    "gtceu:rubber_mallet": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/mallets",
+          "rationale": "crafting mallet used to operate machines"
+        },
+        "primary_uses": {
+          "values": [
+            "start/stop GT machines",
+            "crafting tool"
+          ],
+          "signal": "inferred",
+          "rationale": "soft mallet for machine interaction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried by players working with machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "artisan table tool group"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "used to configure machines"
+        }
+      }
+    },
+    "gtceu:rubber_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form of rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rubber parts",
+            "smelting component"
+          ],
+          "signal": "inferred",
+          "rationale": "small unit of rubber"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in processing lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget storage group"
+        }
+      }
+    },
+    "gtceu:rubber_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks from rubber wood, primary building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building floors and walls",
+            "crafting wooden items"
+          ],
+          "signal": "inferred",
+          "rationale": "standard plank usage"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "core building material"
+        }
+      }
+    },
+    "gtceu:rubber_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates, forge:sheets",
+          "rationale": "rubber sheet as crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cables and conveyors",
+            "component in machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate in automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "pileable sheet"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rubber_plates"
+          ],
+          "signal": "inferred",
+          "evidence": "tag tfg:rubber_plates",
+          "rationale": "rubber plates storage group"
+        }
+      }
+    },
+    "gtceu:rubber_plunger": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "plunger used to drain fluids from machines"
+        },
+        "primary_uses": {
+          "values": [
+            "remove fluids from GT machines",
+            "maintenance tool"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Removes Fluids from Machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized maintenance tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:empty"
+          ],
+          "signal": "inferred",
+          "rationale": "drains fluids"
+        }
+      }
+    },
+    "gtceu:rubber_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plate for redstone triggers"
+        },
+        "primary_uses": {
+          "values": [
+            "detect entity on surface",
+            "redstone input"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pressure plate behavior"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        }
+      }
+    },
+    "gtceu:rubber_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small rubber ring used as component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pumps and seals",
+            "mechanical component"
+          ],
+          "signal": "inferred",
+          "rationale": "used as part of machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate part"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:rubber_rings"
+          ],
+          "signal": "inferred",
+          "evidence": "tag tfg:rubber_rings",
+          "rationale": "rubber rings group"
+        }
+      }
+    },
+    "gtceu:rubber_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rubber rod as crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tool handles",
+            "structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "used as stick substitute"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in tool crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable"
+        }
+      }
+    },
+    "gtceu:rubber_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "sapling to grow rubber trees"
+        },
+        "primary_uses": {
+          "values": [
+            "grow rubber trees",
+            "farming for rubber wood"
+          ],
+          "signal": "inferred",
+          "rationale": "plant to get wood and latex"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during tree farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common plant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "inferred",
+          "rationale": "sapling storage group"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planting trees"
+        }
+      }
+    },
+    "gtceu:rubber_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "sign for text display and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "display text",
+            "decorative labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "sign function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative item"
+        }
+      }
+    },
+    "gtceu:rubber_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab for building steps and details"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs and slabs",
+            "detailed construction"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab placement"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of wood set"
+        }
+      }
+    },
+    "gtceu:rubber_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs for building elevation changes"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs and elevation",
+            "decorative transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs placement"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of wood set"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:rubber_bucket",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "item is made of rubber"
+    },
+    {
+      "item": "gtceu:rubber_button",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "button is made from rubber wood planks"
+    },
+    {
+      "item": "gtceu:rubber_chest_boat",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "boat is crafted from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_door",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "door is made from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_dust",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "chemical formula C5H8 indicates rubber"
+    },
+    {
+      "item": "gtceu:rubber_fence",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "fence from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_fence_gate",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "gate from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_foil",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "thin rubber sheet"
+    },
+    {
+      "item": "gtceu:rubber_gloves",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "gloves made of rubber"
+    },
+    {
+      "item": "gtceu:rubber_hanging_sign",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "hanging sign from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_ingot",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "rubber ingot"
+    },
+    {
+      "item": "gtceu:rubber_leaves",
+      "facet": "material_family",
+      "value": "rubber_leaves",
+      "rationale": "leaves of the rubber tree"
+    },
+    {
+      "item": "gtceu:rubber_log",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "log from rubber tree"
+    },
+    {
+      "item": "gtceu:rubber_mallet",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "mallet head made of rubber"
+    },
+    {
+      "item": "gtceu:rubber_nugget",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "small rubber piece"
+    },
+    {
+      "item": "gtceu:rubber_planks",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "planks from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_plate",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "rubber sheet"
+    },
+    {
+      "item": "gtceu:rubber_plunger",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "plunger made of rubber"
+    },
+    {
+      "item": "gtceu:rubber_pressure_plate",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "pressure plate from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_ring",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "rubber ring"
+    },
+    {
+      "item": "gtceu:rubber_rod",
+      "facet": "material_family",
+      "value": "rubber",
+      "rationale": "rubber rod"
+    },
+    {
+      "item": "gtceu:rubber_sapling",
+      "facet": "material_family",
+      "value": "rubber_sapling",
+      "rationale": "sapling of rubber tree"
+    },
+    {
+      "item": "gtceu:rubber_sign",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "sign from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_slab",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "slab from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_stairs",
+      "facet": "material_family",
+      "value": "wood_rubber",
+      "rationale": "stairs from rubber wood"
+    },
+    {
+      "item": "gtceu:rubber_log",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "log is a fuel source in firepit"
+    },
+    {
+      "item": "gtceu:rubber_planks",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "planks can be burned as fuel"
+    },
+    {
+      "item": "gtceu:rubber_slab",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "slab can be used as fuel"
+    },
+    {
+      "item": "gtceu:rubber_stairs",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "stairs can be used as fuel"
+    },
+    {
+      "item": "gtceu:rubber_sapling",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "sapling can be burned"
+    },
+    {
+      "item": "gtceu:rubber_fence",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "wooden fence can be fuel"
+    },
+    {
+      "item": "gtceu:rubber_fence_gate",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "wooden gate can be fuel"
+    },
+    {
+      "item": "gtceu:rubber_door",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "wooden door can be fuel"
+    },
+    {
+      "item": "gtceu:rubber_sign",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "wooden sign can be fuel"
+    },
+    {
+      "item": "gtceu:rubber_hanging_sign",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "wooden hanging sign can be fuel"
+    }
+  ]
+}

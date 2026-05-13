@@ -1,0 +1,1549 @@
+{
+  "items": {
+    "minecraft:medium_amethyst_bud": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "growing crystal found in geodes, not a crafted material"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "inferred",
+          "rationale": "crystal material family from amethyst geode"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only found in geodes, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for amethyst shards"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "geode spawn location",
+          "rationale": "found in amethyst geodes in caves"
+        },
+        "primary_uses": {
+          "values": [
+            "source of amethyst shards",
+            "decorative light source"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for shards or placed for light"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed as a block"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "named",
+          "evidence": "component light_emission=2",
+          "rationale": "emits light when placed"
+        }
+      }
+    },
+    "minecraft:melon": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "growing crop block, harvested for slices"
+        },
+        "material_family": {
+          "value": "melon",
+          "signal": "pattern",
+          "rationale": "id based on melon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming, then places or breaks"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested from melon plants"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "grown on farmland in overworld"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "melon is a harvested crop"
+        },
+        "primary_uses": {
+          "values": [
+            "source of melon slices",
+            "decorative block"
+          ],
+          "signal": "inferred",
+          "rationale": "broken for slices or placed as decoration"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed as a block"
+        }
+      }
+    },
+    "minecraft:melon_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seeds for planting"
+        },
+        "material_family": {
+          "value": "melon",
+          "signal": "inferred",
+          "rationale": "source plant family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common farming item players keep in inventory"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planted to grow melons"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "found in chests or from melon slices"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "pattern",
+          "evidence": "form=seed from stage2",
+          "rationale": "seed storage group"
+        },
+        "primary_uses": {
+          "values": [
+            "plant to grow melons"
+          ],
+          "signal": "inferred",
+          "rationale": "used in farming"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "planted on farmland"
+        }
+      }
+    },
+    "minecraft:melon_slice": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "component minecraft:food present",
+          "rationale": "edible food item"
+        },
+        "material_family": {
+          "value": "melon",
+          "signal": "inferred",
+          "rationale": "made from melon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "not a staple food, but kept when farming"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested from melon plants on surface"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit food item"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly for hunger"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "uncooked fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit category for storage"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for hunger",
+            "craft glistening melon"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as food or used in brewing"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "right-click to eat"
+        }
+      }
+    },
+    "minecraft:milk_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "drunk to remove effects, also used in recipes"
+        },
+        "material_family": {
+          "value": "milk",
+          "signal": "pattern",
+          "rationale": "dairy product in bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for emergencies or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many food recipes"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "obtained from cows on surface"
+        },
+        "food_category": {
+          "values": [
+            "slot:dairy"
+          ],
+          "signal": "inferred",
+          "rationale": "milk is a dairy product"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "drunk to clear status effects"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket filled with fluid milk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "dairy product from animal husbandry"
+        },
+        "primary_uses": {
+          "values": [
+            "drink to clear effects",
+            "crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed or used in recipes"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "right-click to drink"
+        }
+      }
+    },
+    "minecraft:minecart": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "rides on rails for moving player/items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building rail networks"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for rail transport"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "minecart storage section"
+        },
+        "primary_uses": {
+          "values": [
+            "ride on rails",
+            "craft other minecarts",
+            "automation contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "core of rail transport and crafting ingredient"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on rails"
+        }
+      }
+    },
+    "minecraft:miner_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology collectible, part of a set"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "found occasionally in trail ruins"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "excavated via archaeology"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "inferred",
+          "rationale": "found in trail ruins"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "old pottery shard"
+        },
+        "primary_uses": {
+          "values": [
+            "craft decorated pot",
+            "archaeology collection"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting or displayed as find"
+        }
+      }
+    },
+    "minecraft:mojang_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "rare banner pattern collectible"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic rarity in component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rare pattern, kept for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "applied to banners for decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe from tfc:sewing",
+          "rationale": "obtained via sewing recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate banners",
+            "collect rare pattern"
+          ],
+          "signal": "inferred",
+          "rationale": "used in loom to apply pattern"
+        }
+      }
+    },
+    "minecraft:mooshroom_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg collectible, creative only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "obtainable only in creative, not carried in survival"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only",
+          "rationale": "spawn egg id pattern"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "spawn egg not in survival",
+          "rationale": "only in creative tab"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn mooshroom in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "used to spawn entity"
+        }
+      }
+    },
+    "minecraft:moss_block": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "natural block from lush caves, used decoratively"
+        },
+        "material_family": {
+          "value": "moss",
+          "signal": "inferred",
+          "rationale": "moss material family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gathered for decoration or mossy recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decorative building block"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "found in lush caves"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-like block stored with plants"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "composting",
+            "mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "placed, composted, or used in mossy variants"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:moss_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin moss placed for decoration, like carpet"
+        },
+        "material_family": {
+          "value": "moss",
+          "signal": "inferred",
+          "rationale": "moss material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "occasionally carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decorative carpet"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found in lush caves, or crafted from moss"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-type decorative block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flooring/wall cover",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "placed decoratively or composted"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mossy_cobblestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural building block, variant of cobblestone"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone based cobblestone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing structures"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "found in dungeons/caves or crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cobblestone"
+          ],
+          "signal": "inferred",
+          "rationale": "cobblestone storage group"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "crafting stone items",
+            "mossy building material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in builds and recipes"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mossy_cobblestone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of mossy cobblestone"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "derived from mossy cobblestone found in caves"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_slabs",
+          "rationale": "rock slab storage group"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "pathways",
+            "stairs alternatives"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as thin step"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mossy_cobblestone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of mossy cobblestone"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "derived from mossy cobblestone found in caves"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_stairs",
+          "rationale": "rock stairs storage"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "vertical transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "used for stairs"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mossy_cobblestone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant of mossy cobblestone"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "derived from mossy cobblestone found in caves"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:rock_walls",
+          "rationale": "rock wall storage"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "enclosures",
+            "fencing"
+          ],
+          "signal": "inferred",
+          "rationale": "used for walls"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mossy_stone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of mossy stone bricks"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone based brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from mixing/deploying",
+          "rationale": "crafted from stone bricks and moss"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "brick slab storage"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "flooring"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as slab"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mossy_stone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of mossy stone bricks"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone based brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "crafted from mossy stone bricks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_stairs",
+          "rationale": "brick stairs storage"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "vertical movement"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as stairs"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mossy_stone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant of mossy stone bricks"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone based brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "crafted from mossy stone bricks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "brick wall storage"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as wall"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mossy_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone brick variant"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone based brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes from mixing/deploying",
+          "rationale": "crafted from stone bricks and moss"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block storage group"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "mossy stone construction"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building block"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mourner_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology collectible"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "found occasionally in archaeology"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "excavated from trail ruins"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "inferred",
+          "rationale": "found in trail ruins"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "old pottery shard"
+        },
+        "primary_uses": {
+          "values": [
+            "craft decorated pot",
+            "archaeology collection"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting or displayed as find"
+        }
+      }
+    },
+    "minecraft:mud": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw material for crafting mud bricks and clay"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "inferred",
+          "rationale": "mud material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gathered when needed for crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as material for building blocks"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in swamp biomes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "dirt-like block stored with soil"
+        },
+        "primary_uses": {
+          "values": [
+            "craft mud bricks",
+            "make clay",
+            "decorative terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and as building material"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mud_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant of mud bricks"
+        },
+        "material_family": {
+          "value": "mud_brick",
+          "signal": "inferred",
+          "rationale": "mud brick material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from mud bricks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block storage group, includes variants"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "flooring"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as slab"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mud_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant of mud bricks"
+        },
+        "material_family": {
+          "value": "mud_brick",
+          "signal": "inferred",
+          "rationale": "mud brick material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from mud bricks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block storage group"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "vertical movement"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as stairs"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mud_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall variant of mud bricks"
+        },
+        "material_family": {
+          "value": "mud_brick",
+          "signal": "inferred",
+          "rationale": "mud brick material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from mud bricks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block storage group"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as wall"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    },
+    "minecraft:mud_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "crafted building block from mud"
+        },
+        "material_family": {
+          "value": "mud_brick",
+          "signal": "inferred",
+          "rationale": "mud brick material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from mud and wheat"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block storage group"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "mud brick construction"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building block"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "minecraft:medium_amethyst_bud",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "amethyst buds require pickaxe to drop, a known vanilla mechanic"
+    },
+    {
+      "item": "minecraft:mud_bricks",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "mud bricks are mined with pickaxe in vanilla, player expects it"
+    },
+    {
+      "item": "minecraft:mud_brick_slab",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "same material as mud bricks"
+    },
+    {
+      "item": "minecraft:mud_brick_stairs",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "same material as mud bricks"
+    },
+    {
+      "item": "minecraft:mud_brick_wall",
+      "facet": "required_tool",
+      "value": "pickaxe",
+      "rationale": "same material as mud bricks"
+    }
+  ]
+}

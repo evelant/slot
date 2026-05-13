@@ -1,0 +1,1538 @@
+{
+  "items": {
+    "everycomp:c/ad_astra/aeronos_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane is a structural building element"
+        },
+        "material_family": {
+          "value": "ad_astra:aeronos",
+          "signal": "pattern",
+          "evidence": "Wood Type: ad_astra:aeronos",
+          "rationale": "Item is made of aeronos wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Window panes contain glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried during projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "One of many wood-type window variants"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Only output recipes, no loot",
+          "rationale": "Obtained solely via crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window in walls",
+            "Letting light through while blocking view"
+          ],
+          "signal": "inferred",
+          "rationale": "Function as decorative transparent barrier"
+        }
+      }
+    },
+    "everycomp:c/ad_astra/glacian_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window is a structural building element"
+        },
+        "material_family": {
+          "value": "ad_astra:glacian",
+          "signal": "pattern",
+          "evidence": "Wood Type: ad_astra:glacian",
+          "rationale": "Made of glacian wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Windows contain glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried during projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant window type"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Only output recipes",
+          "rationale": "Crafted only"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window in walls",
+            "Letting light through while blocking view"
+          ],
+          "signal": "inferred",
+          "rationale": "Function as decorative transparent barrier"
+        }
+      }
+    },
+    "everycomp:c/ad_astra/glacian_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane is structural"
+        },
+        "material_family": {
+          "value": "ad_astra:glacian",
+          "signal": "pattern",
+          "evidence": "Wood Type: ad_astra:glacian",
+          "rationale": "Made of glacian wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Window panes contain glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building element"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane in walls",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent barrier"
+        }
+      }
+    },
+    "everycomp:c/ad_astra/strophar_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window is structural"
+        },
+        "material_family": {
+          "value": "ad_astra:strophar",
+          "signal": "pattern",
+          "evidence": "Wood Type: ad_astra:strophar",
+          "rationale": "Made of strophar wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Windows contain glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window in walls",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent structural element"
+        }
+      }
+    },
+    "everycomp:c/ad_astra/strophar_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "ad_astra:strophar",
+          "signal": "pattern",
+          "evidence": "Wood Type: ad_astra:strophar",
+          "rationale": "Made of strophar"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/baobab_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:baobab",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:baobab",
+          "rationale": "Baobab wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood type variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window in walls",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent structural element"
+        }
+      }
+    },
+    "everycomp:c/afc/baobab_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:baobab",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:baobab",
+          "rationale": "Baobab"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/cypress_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:cypress",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:cypress",
+          "rationale": "Cypress wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/cypress_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:cypress",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:cypress",
+          "rationale": "Cypress"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/eucalyptus_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:eucalyptus",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:eucalyptus",
+          "rationale": "Eucalyptus wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/eucalyptus_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:eucalyptus",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:eucalyptus",
+          "rationale": "Eucalyptus"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/fig_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:fig",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:fig",
+          "rationale": "Fig wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/fig_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:fig",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:fig",
+          "rationale": "Fig"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/hevea_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:hevea",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:hevea",
+          "rationale": "Hevea wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/hevea_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:hevea",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:hevea",
+          "rationale": "Hevea"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/ipe_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:ipe",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:ipe",
+          "rationale": "Ipe wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/ipe_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:ipe",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:ipe",
+          "rationale": "Ipe"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/ironwood_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:ironwood",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:ironwood",
+          "rationale": "Ironwood wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/ironwood_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:ironwood",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:ironwood",
+          "rationale": "Ironwood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/mahogany_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:mahogany",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:mahogany",
+          "rationale": "Mahogany wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/mahogany_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:mahogany",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:mahogany",
+          "rationale": "Mahogany"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/teak_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:teak",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:teak",
+          "rationale": "Teak wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/teak_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:teak",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:teak",
+          "rationale": "Teak"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    },
+    "everycomp:c/afc/tualang_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window"
+        },
+        "material_family": {
+          "value": "afc:tualang",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:tualang",
+          "rationale": "Tualang wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent element"
+        }
+      }
+    },
+    "everycomp:c/afc/tualang_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "material_family": {
+          "value": "afc:tualang",
+          "signal": "pattern",
+          "evidence": "Wood Type: afc:tualang",
+          "rationale": "Tualang"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing as window pane",
+            "Letting light through"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

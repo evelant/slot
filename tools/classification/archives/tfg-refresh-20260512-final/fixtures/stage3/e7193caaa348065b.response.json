@@ -1,0 +1,1059 @@
+{
+  "items": {
+    "tfc:wood/fallen_leaves/willow": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Fallen leaves gathered for compost and fuel"
+        },
+        "material_family": {
+          "value": "leaf_willow",
+          "signal": "inferred",
+          "rationale": "Willow tree leaf debris"
+        },
+        "primary_uses": {
+          "values": [
+            "Fuel for firepit",
+            "Compost ingredient",
+            "Mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Tags indicate compost and fuel use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when gathering leaf litter"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in compost and mossy recipes"
+        },
+        "environment_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged as firepit_fuel and kindling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Fallen leaves store with organic plant items"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Commonly found under trees"
+        }
+      }
+    },
+    "tfc:wood/gear_box/acacia": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/ash": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/aspen": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "evidence": "id contains aspen",
+          "rationale": "Aspen wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/birch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "evidence": "id contains birch",
+          "rationale": "Birch wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/blackwood": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_blackwood",
+          "signal": "pattern",
+          "evidence": "id contains blackwood",
+          "rationale": "Blackwood wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/chestnut": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "Douglas fir wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/hickory": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "evidence": "id contains hickory",
+          "rationale": "Hickory wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/kapok": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "evidence": "id contains kapok",
+          "rationale": "Kapok wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/mangrove": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "evidence": "id contains mangrove",
+          "rationale": "Mangrove wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/maple": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "evidence": "id contains maple",
+          "rationale": "Maple wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/oak": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "pattern",
+          "evidence": "id contains oak",
+          "rationale": "Oak wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/palm": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Palm wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/pine": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_pine",
+          "signal": "pattern",
+          "evidence": "id contains pine",
+          "rationale": "Pine wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/rosewood": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_rosewood",
+          "signal": "pattern",
+          "evidence": "id contains rosewood",
+          "rationale": "Rosewood wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/sequoia": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_sequoia",
+          "signal": "pattern",
+          "evidence": "id contains sequoia",
+          "rationale": "Sequoia wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/spruce": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "id contains spruce",
+          "rationale": "Spruce wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/sycamore": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_sycamore",
+          "signal": "pattern",
+          "evidence": "id contains sycamore",
+          "rationale": "Sycamore wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_white_cedar",
+          "signal": "pattern",
+          "evidence": "id contains white_cedar",
+          "rationale": "White cedar wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/gear_box/willow": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Transmits rotational power in TFC machinery"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "evidence": "id contains willow",
+          "rationale": "Willow wood construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "Core component of TFC power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left in machinery"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated mechanical systems"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "Belongs to TFC mechanical power system"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/bismuth_bronze/acacia": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign used for decoration and text"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood sign board"
+        },
+        "material_secondary": {
+          "values": [
+            "metal_bismuth_bronze"
+          ],
+          "signal": "inferred",
+          "rationale": "Bismuth bronze chain"
+        },
+        "primary_uses": {
+          "values": [
+            "Display player-written text",
+            "Decorative signage"
+          ],
+          "signal": "inferred",
+          "rationale": "Hanging sign use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed during building as decoration"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/bismuth_bronze/ash": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign used for decoration and text"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood sign board"
+        },
+        "material_secondary": {
+          "values": [
+            "metal_bismuth_bronze"
+          ],
+          "signal": "inferred",
+          "rationale": "Bismuth bronze chain"
+        },
+        "primary_uses": {
+          "values": [
+            "Display player-written text",
+            "Decorative signage"
+          ],
+          "signal": "inferred",
+          "rationale": "Hanging sign use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed during building as decoration"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/bismuth_bronze/aspen": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign used for decoration and text"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "evidence": "id contains aspen",
+          "rationale": "Aspen wood sign board"
+        },
+        "material_secondary": {
+          "values": [
+            "metal_bismuth_bronze"
+          ],
+          "signal": "inferred",
+          "rationale": "Bismuth bronze chain"
+        },
+        "primary_uses": {
+          "values": [
+            "Display player-written text",
+            "Decorative signage"
+          ],
+          "signal": "inferred",
+          "rationale": "Hanging sign use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed during building as decoration"
+        }
+      }
+    },
+    "tfc:wood/hanging_sign/bismuth_bronze/birch": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Hanging sign used for decoration and text"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "evidence": "id contains birch",
+          "rationale": "Birch wood sign board"
+        },
+        "material_secondary": {
+          "values": [
+            "metal_bismuth_bronze"
+          ],
+          "signal": "inferred",
+          "rationale": "Bismuth bronze chain"
+        },
+        "primary_uses": {
+          "values": [
+            "Display player-written text",
+            "Decorative signage"
+          ],
+          "signal": "inferred",
+          "rationale": "Hanging sign use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not routinely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed during building as decoration"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "tfc:wood/fallen_leaves/willow",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Fallen leaves also drop from leaf blocks; not solely crafted",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": [],
+  "vocabulary_proposals": [],
+  "schema_proposals": []
+}

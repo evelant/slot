@@ -1,0 +1,1281 @@
+{
+  "items": {
+    "ae2:purple_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cable is a network component, not a building block or material."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cables are built from certus quartz components."
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "Display name 'Purple ME Smart Cable'",
+          "rationale": "Color is explicitly in the name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Component indicates common rarity."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players carry cables in bulk when building AE networks."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Cables are used for data/logistics and are part of AE2 storage."
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME network devices",
+            "Transport data and energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function of AE2 cables."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables are stored with other AE2 components."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag ae2:smart_cable",
+          "rationale": "Item is a member of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:purple_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Dense cable is a network component."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cables use certus quartz."
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "Display name contains 'Purple'",
+          "rationale": "Color is in the display name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Dense cables are used for main trunks, less frequently carried."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 network and storage."
+        },
+        "primary_uses": {
+          "values": [
+            "Connect main ME network trunks",
+            "High-capacity data transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Dense cables handle large data throughput."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable group."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag ae2:smart_dense_cable",
+          "rationale": "Dense variant of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:quantum_entangled_singularity": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for quantum bridge, not a collectible."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires charged certus and special crafting."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only crafted when needed for quantum bridge, rarely carried."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to expand AE2 storage network."
+        },
+        "primary_uses": {
+          "values": [
+            "Craft quantum bridge components"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole purpose is to be crafted into quantum ring/link."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with AE2 crafting materials."
+        }
+      }
+    },
+    "ae2:quantum_link": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of quantum multiblock, not a standalone functional block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "Composed of certus quartz and AE2 components."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires singularity and advanced components."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per quantum bridge, rarely in inventory."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Enables long-range ME network bridging."
+        },
+        "primary_uses": {
+          "values": [
+            "Connect two ME networks across distances"
+          ],
+          "signal": "inferred",
+          "rationale": "Core of quantum bridge."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 multiblock component."
+        }
+      }
+    },
+    "ae2:quantum_ring": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Part of quantum multiblock, not a standalone functional block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "Composed of certus quartz and AE2 components."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires advanced crafting."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per quantum bridge."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of quantum bridge for network bridging."
+        },
+        "primary_uses": {
+          "values": [
+            "Form quantum ring multiblock with quantum link"
+          ],
+          "signal": "inferred",
+          "rationale": "Required for quantum bridge."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 multiblock component."
+        }
+      }
+    },
+    "ae2:quartz_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted certus quartz, used in crafting and storage."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving bulk certus storage."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used both as compact storage and as building material."
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage for certus quartz",
+            "Crafting AE2 components",
+            "Decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiple uses in storage and building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 materials."
+        }
+      }
+    },
+    "ae2:quartz_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant used in construction."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with certus quartz."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz structures",
+            "Create flooring or steps"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical slab use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant used in construction."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with certus quartz."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz structures",
+            "Create staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical stair use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant used in construction."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building walls."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz walls",
+            "Create boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical wall use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick block used in construction."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with certus quartz bricks."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz structures",
+            "Create decorative brick patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical brick use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_cluster": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative light-emitting cluster, not a structural block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component light_emission 5",
+          "rationale": "Emits light per component."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when decorating with light clusters."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decorative lighting."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative lighting",
+            "Add ambient glow to builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source and decoration."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 items."
+        }
+      }
+    },
+    "ae2:quartz_fiber": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for AE2 cables."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting cables."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting AE2 network components."
+        },
+        "primary_uses": {
+          "values": [
+            "Craft ME cables and glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Essential component for AE2 cabling."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 crafting materials."
+        }
+      }
+    },
+    "ae2:quartz_fixture": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light fixture placed for illumination, not for crafting."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component light_emission 15",
+          "rationale": "Emits bright light."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when installing lighting."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a light source."
+        },
+        "primary_uses": {
+          "values": [
+            "Provide bright light",
+            "Decorative wall lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "High light output, decorative."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "Light-emitting fixture grouped with other lamps."
+        }
+      }
+    },
+    "ae2:quartz_glass": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Primary use is as a crafting ingredient for cells, not decoration."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting cell housings."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft AE2 storage cells."
+        },
+        "primary_uses": {
+          "values": [
+            "Craft ME cell housings",
+            "Build AE2 glass walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Both crafting and building uses."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 crafting materials."
+        }
+      }
+    },
+    "ae2:quartz_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar used in construction."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with certus quartz."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz structures",
+            "Create pillar columns"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical pillar use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_pillar_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of pillar block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz structures",
+            "Create slab floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical slab use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_pillar_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of pillar block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz structures",
+            "Create staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical stair use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_pillar_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant of pillar block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building walls."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical wall use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab of certus quartz block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz structures",
+            "Create slab floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical slab use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs of certus quartz block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz structures",
+            "Create staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical stair use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:quartz_vibrant_glass": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Primary use is as crafting ingredient for mega cells."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component light_emission 15",
+          "rationale": "Emits bright light."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting mega storage cells."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft large AE2 storage cells."
+        },
+        "primary_uses": {
+          "values": [
+            "Craft mega cell housings",
+            "Used as decorative light-emitting glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Both crafting and decorative uses."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 crafting materials."
+        }
+      }
+    },
+    "ae2:quartz_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall of certus quartz block."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "evidence": "id starts with quartz_",
+          "rationale": "Material family from id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building walls."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Build certus quartz walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical wall use."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other AE2 building blocks."
+        }
+      }
+    },
+    "ae2:red_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cable is a network component."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cables use certus quartz."
+        },
+        "dye_color": {
+          "value": "red",
+          "signal": "named",
+          "evidence": "Display name 'Red ME Covered Cable'",
+          "rationale": "Color in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common cable carried in bulk."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 network infrastructure."
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME devices",
+            "Transport data"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables group."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag ae2:covered_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:red_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Dense cable is a network component."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cables use certus quartz."
+        },
+        "dye_color": {
+          "value": "red",
+          "signal": "named",
+          "evidence": "Display name contains 'Red'",
+          "rationale": "Color in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Dense cables used for main trunks, less frequent."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 network infrastructure."
+        },
+        "primary_uses": {
+          "values": [
+            "Connect main ME trunks",
+            "High-capacity data transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Dense function."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables group."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag ae2:covered_dense_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    },
+    "ae2:red_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Glass cable is a network component."
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cables use certus quartz."
+        },
+        "dye_color": {
+          "value": "red",
+          "signal": "named",
+          "evidence": "Display name 'Red ME Glass Cable'",
+          "rationale": "Color in name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "Common from component."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Most common cable, carried in bulk."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics",
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 network infrastructure."
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME devices",
+            "Basic data transport"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables group."
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag ae2:glass_cable",
+          "rationale": "Part of AE2 cable subsystem."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

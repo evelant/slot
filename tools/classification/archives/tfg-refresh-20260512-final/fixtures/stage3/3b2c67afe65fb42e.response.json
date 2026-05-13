@@ -1,0 +1,1320 @@
+{
+  "items": {
+    "gtceu:hv_item_collector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone machine that collects items, has a UI"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting dropped items"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Collects Items around itself"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated item collection"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_item_magnet": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Wearable item that attracts items"
+        },
+        "primary_uses": {
+          "values": [
+            "attracting nearby items while worn"
+          ],
+          "signal": "inferred",
+          "rationale": "Magnetic field effect"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Worn in curio slot, always useful"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "4 shaped recipes",
+          "rationale": "Only produced via crafting"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier tool"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "pattern",
+          "rationale": "Item name implies HV tier"
+        }
+      }
+    },
+    "gtceu:hv_item_passthrough_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock part for item passthrough"
+        },
+        "primary_uses": {
+          "values": [
+            "item passthrough in multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Multiblock Sharing Enabled"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock hatch component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier multiblock part"
+        }
+      }
+    },
+    "gtceu:hv_laser_engraver": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone processing machine"
+        },
+        "primary_uses": {
+          "values": [
+            "laser engraving items"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Don't look directly at the Laser"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated processing"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_lathe": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone processing machine"
+        },
+        "primary_uses": {
+          "values": [
+            "producing rods efficiently"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Produces Rods more efficiently"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated rod production"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_lithium_battery": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable energy source for tools"
+        },
+        "primary_uses": {
+          "values": [
+            "powering HV electric tools and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Reusable battery, used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried to recharge tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "0 production recipes but crafted? Actually no production recipes? Wait, recipe_output_count 0. But it is used as ingredient in many. It might be obtained from other means? But likely crafted. However, no positive production recipe. Omit origin.",
+          "rationale": "No positive production recipe evidence"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier battery"
+        },
+        "container_state": {
+          "values": [
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores EU energy"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries/hv",
+          "rationale": "Battery subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier power component"
+        }
+      }
+    },
+    "gtceu:hv_macerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone crushing machine"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing ores with byproducts"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Shredding your Ores with Byproducts"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated ore processing"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafted block used as ingredient for hulls"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine hulls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many hull recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin confirmed",
+          "rationale": "Only produced via crafting"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier material"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier component"
+        }
+      }
+    },
+    "gtceu:hv_machine_hull": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafted block used as ingredient for all HV machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting all HV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in 69+ recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted in bulk"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "Core HV component"
+        }
+      }
+    },
+    "gtceu:hv_miner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone mining machine"
+        },
+        "primary_uses": {
+          "values": [
+            "automated mining of ores below"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Mines ores below the Miner"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated mining"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_mixer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone mixing machine"
+        },
+        "primary_uses": {
+          "values": [
+            "mixing fluids and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Will it Blend?"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated mixing"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_muffler_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock exhaust part"
+        },
+        "primary_uses": {
+          "values": [
+            "recovering waste from multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Recovers waste from machines"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV part"
+        }
+      }
+    },
+    "gtceu:hv_ore_washer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone washing machine"
+        },
+        "primary_uses": {
+          "values": [
+            "washing crushed ores for byproducts"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Getting more Byproducts from your Ores"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated ore washing"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_output_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock item output bus"
+        },
+        "primary_uses": {
+          "values": [
+            "item output for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Item Output for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier bus"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV part"
+        }
+      }
+    },
+    "gtceu:hv_output_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock fluid output hatch"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid output for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Fluid Output for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV part"
+        }
+      }
+    },
+    "gtceu:hv_packer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone packing machine"
+        },
+        "primary_uses": {
+          "values": [
+            "packing and unpacking items"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Puts things into and Grabs things out of Boxes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated packing"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_polarizer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone polarizing machine"
+        },
+        "primary_uses": {
+          "values": [
+            "magnetizing items"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Bipolarising your Magnets"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated magnetization"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_power_unit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for electric tools"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HV electric tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many tool recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "4 shaped recipes",
+          "rationale": "Only produced via crafting"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier"
+        },
+        "container_state": {
+          "values": [
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores EU energy for tools"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Power source subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV component"
+        }
+      }
+    },
+    "gtceu:hv_pump": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone fluid pumping machine"
+        },
+        "primary_uses": {
+          "values": [
+            "pumping large amounts of fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: The best way to empty Oceans!"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated fluid movement"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_robot_arm": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component and cover"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machines and used as cover for item transfer"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine recipes and as cover"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be used as a cover"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV component"
+        }
+      }
+    },
+    "gtceu:hv_rock_crusher": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone crushing machine"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing rocks using water and lava"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Place Water and Lava horizontally adjacent"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated rock crushing"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_rotor_holder": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for rotors"
+        },
+        "primary_uses": {
+          "values": [
+            "holding rotors in multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of rotor assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV part"
+        }
+      }
+    },
+    "gtceu:hv_scanner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone scanning machine"
+        },
+        "primary_uses": {
+          "values": [
+            "scanning materials and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Scans Materials and other things"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated scanning"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    },
+    "gtceu:hv_sensor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component and cover"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machines and used as cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be used as a cover"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV component"
+        }
+      }
+    },
+    "gtceu:hv_sifter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Standalone sifting machine"
+        },
+        "primary_uses": {
+          "values": [
+            "sifting materials for small items"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Stay calm and keep sifting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped recipe",
+          "rationale": "Only produced via crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated sifting"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV tier machine"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

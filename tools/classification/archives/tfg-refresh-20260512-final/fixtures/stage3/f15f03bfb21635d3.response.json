@@ -1,0 +1,994 @@
+{
+  "items": {
+    "tfc:metal/double_ingot/gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id suffix gold"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/nickel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "rationale": "id suffix nickel"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "id suffix red_steel"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        },
+        "progression_stage": {
+          "values": ["tfc:red_steel"],
+          "signal": "pattern",
+          "rationale": "red steel is a progression tier"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/rose_gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "rose_gold",
+          "signal": "pattern",
+          "rationale": "id suffix rose_gold"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "silver",
+          "signal": "pattern",
+          "rationale": "id suffix silver"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id suffix steel"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        },
+        "progression_stage": {
+          "values": ["tfc:steel"],
+          "signal": "pattern",
+          "rationale": "steel is a progression tier"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/sterling_silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "rationale": "id suffix sterling_silver"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/tin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "rationale": "id suffix tin"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "id suffix wrought_iron"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        },
+        "progression_stage": {
+          "values": ["tfc:wrought_iron"],
+          "signal": "pattern",
+          "rationale": "wrought iron is a progression tier"
+        }
+      }
+    },
+    "tfc:metal/double_ingot/zinc": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "id suffix zinc"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_ingot"],
+          "signal": "pattern",
+          "rationale": "id ends double_ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_ingots"],
+          "signal": "pattern",
+          "rationale": "pileable double ingot"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/bismuth": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "rationale": "id suffix bismuth"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id suffix bismuth_bronze"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "id suffix black_bronze"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/black_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "id suffix black_steel"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        },
+        "progression_stage": {
+          "values": ["tfc:black_steel"],
+          "signal": "pattern",
+          "rationale": "black steel is a progression tier"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "id suffix blue_steel"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        },
+        "progression_stage": {
+          "values": ["tfc:blue_steel"],
+          "signal": "pattern",
+          "rationale": "blue steel is a progression tier"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/brass": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "rationale": "id suffix brass"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "id suffix bronze"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        },
+        "progression_stage": {
+          "values": ["tfc:bronze"],
+          "signal": "pattern",
+          "rationale": "bronze is a progression tier"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/cast_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "cast_iron",
+          "signal": "pattern",
+          "rationale": "id suffix cast_iron"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/copper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id suffix copper"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id suffix gold"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/nickel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "rationale": "id suffix nickel"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "id suffix red_steel"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        },
+        "progression_stage": {
+          "values": ["tfc:red_steel"],
+          "signal": "pattern",
+          "rationale": "red steel is a progression tier"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/rose_gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "rose_gold",
+          "signal": "pattern",
+          "rationale": "id suffix rose_gold"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "silver",
+          "signal": "pattern",
+          "rationale": "id suffix silver"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metalworking crafting component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id suffix steel"
+        },
+        "material_process_stage": {
+          "values": ["slot:double_sheet"],
+          "signal": "pattern",
+          "rationale": "id ends double_sheet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smithing"
+        },
+        "primary_uses": {
+          "values": ["Crafting component for anvil recipes"],
+          "signal": "inferred",
+          "rationale": "used in TFC metalworking"
+        },
+        "organization_group": {
+          "values": ["pack:tfg/pileable_sheets"],
+          "signal": "pattern",
+          "rationale": "pileable double sheet"
+        },
+        "progression_stage": {
+          "values": ["tfc:steel"],
+          "signal": "pattern",
+          "rationale": "steel is a progression tier"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}
+```

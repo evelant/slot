@@ -1,0 +1,854 @@
+{
+  "items": {
+    "framedblocks:framed_double_threeway_corner_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative structural block for building, not a workstation or mechanism."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative corner building for structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build complex shapes in walls and roofs."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building, not carried regularly."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common material, easily crafted in bulk."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin rule from loot tables",
+          "rationale": "Only obtained via crafting; no worldgen or loot."
+        }
+      }
+    },
+    "framedblocks:framed_elevated_double_slope_edge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sloped edge block for decorative building."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative sloped edges for roofs and stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to create rounded or sloped transitions."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during construction, not everyday carry."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Commonly crafted."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_elevated_double_slope_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant for building."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative sloped slabs for floors and ceilings"
+          ],
+          "signal": "inferred",
+          "rationale": "Adds sloped slab geometry."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signa21ion": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_elevated_slope_edge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slope edge block."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative slope edges"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of slope family."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_elevated_slope_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slope slab."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative sloped slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Building detail."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during building."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_ext_corner_slope_panel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Extended corner slope panel for building."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative corner slopes"
+          ],
+          "signal": "inferred",
+          "rationale": "Complex shape."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building supply."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted only; no loot tag."
+        }
+      }
+    },
+    "framedblocks:framed_ext_double_corner_slope_panel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Double extended corner slope panel."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative double corner slopes"
+          ],
+          "signal": "inferred",
+          "rationale": "Complex geometry."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_ext_inner_corner_slope_panel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Inner corner slope panel."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative inner corner slopes"
+          ],
+          "signal": "inferred",
+          "rationale": "Building detail."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_ext_inner_double_corner_slope_panel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Inner double corner slope panel."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative inner double corner slopes"
+          ],
+          "signal": "inferred",
+          "rationale": "Complex inner corner."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_extended_double_slope_panel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Extended double slope panel."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative extended double slope panels"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_extended_slope_panel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Extended slope panel."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative extended slope panels"
+          ],
+          "signal": "inferred",
+          "rationale": "Building detail."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fancy_activator_rail": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative rail block for building, not transport (no minecart interaction)."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative rail for aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a cosmetic rail, not for actual transport."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during building projects."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fancy_activator_rail_slope": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sloped decorative rail."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative sloped rail for builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fancy_detector_rail": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative detector rail."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative detector rail for builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fancy_detector_rail_slope": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sloped decorative detector rail."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative sloped detector rail"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic building piece."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fancy_powered_rail": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative powered rail."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative powered rail for builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fancy_powered_rail_slope": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sloped decorative powered rail."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative sloped powered rail"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fancy_rail": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative rail block."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative rail for aesthetic tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used purely for decoration, not transport."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fancy_rail_slope": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sloped decorative rail."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative sloped rail"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence block for building enclosures."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative fences for structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building component, not functional mob barrier in same sense."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during building."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence gate for building openings."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative fence gates for access"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fence family for building."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional carry."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_flat_double_slope_panel_corner": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flat double slope panel corner for building."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flat double slope corners"
+          ],
+          "signal": "inferred",
+          "rationale": "Building detail."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_flat_double_slope_slab_corner": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flat double slope slab corner."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flat double slope slab corners"
+          ],
+          "signal": "inferred",
+          "rationale": "Building detail."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_flat_elev_double_slope_slab_corner": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flat elevated double slope slab corner."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative elevated double slope slab corners"
+          ],
+          "signal": "inferred",
+          "rationale": "Complex building corner."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    },
+    "framedblocks:framed_flat_elev_inner_double_slope_slab_corner": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Flat elevated inner double slope slab corner."
+        },
+        "primary_uses": {
+          "values": [
+            "decorative elevated inner double slope slab corners"
+          ],
+          "signal": "inferred",
+          "rationale": "Interior corner detail."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional."
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2",
+          "rationale": "Crafted only."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

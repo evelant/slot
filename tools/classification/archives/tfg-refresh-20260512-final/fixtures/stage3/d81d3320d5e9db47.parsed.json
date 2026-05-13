@@ -1,0 +1,1034 @@
+{
+  "items": {
+    "sns:straw_basket": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable inventory like a cheap vessel"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and carry small items",
+            "Primitive inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and guide describe container use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needed for extra slots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easy to make from straw"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for portable storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sacks N Such item group"
+        }
+      }
+    },
+    "sns:unfinished_leather_sack": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component for leather sacks"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft into leather sack or ore sack"
+          ],
+          "signal": "inferred",
+          "rationale": "only recipe uses are crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept briefly while crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "pattern",
+          "rationale": "id contains 'leather'"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft storage containers"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sacks N Such item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_alchemy_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto potion use"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-use potions and effect foods",
+            "Filter effects"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Automatically uses potions..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade item"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_compacting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto compacting"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-compact items into blocks",
+            "2x2 and 3x3 recipes"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Compacts items..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_deposit_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto depositing"
+        },
+        "primary_uses": {
+          "values": [
+            "Deposit items into chests",
+            "Filter options"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Deposits items from backpack..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_feeding_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto feeding"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-feed player from backpack",
+            "Configurable timing"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Feeds player with food..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_filter_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for filtering"
+        },
+        "primary_uses": {
+          "values": [
+            "Filter items in/out of backpack",
+            "Advanced filtering"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Filters items piped in and/or out..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_jukebox_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for portable jukebox"
+        },
+        "primary_uses": {
+          "values": [
+            "Play music discs from backpack",
+            "More playback options"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Portable Jukebox..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_magnet_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for magnet pickup"
+        },
+        "primary_uses": {
+          "values": [
+            "Magnet items into backpack",
+            "Greater range and filters"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Magnets items into backpack..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_pickup_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto pickup"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-pickup items into backpack",
+            "Filter options"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Makes backpack pickup items..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_pump_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for fluid pumping"
+        },
+        "primary_uses": {
+          "values": [
+            "Pump fluids between tank and world",
+            "Fluid filter"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Pumps Fluids between Tank upgrade..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_refill_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto refill"
+        },
+        "primary_uses": {
+          "values": [
+            "Refill hotbar stacks from backpack",
+            "Target slot selection"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Keeps refilling stack..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_restock_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto restock"
+        },
+        "primary_uses": {
+          "values": [
+            "Restock backpack from chests",
+            "Filter options"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Restocks backpack from sneak right clicked inventory..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_tool_swapper_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto tool swap"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-swap effective tool",
+            "Filter and wrench support"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Automatically swaps item in player's hand..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_void_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto void"
+        },
+        "primary_uses": {
+          "values": [
+            "Void unwanted items",
+            "Filter options"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Voids items selected in filter..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:alchemy_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto potion use"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-use potions and effect foods"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Automatically uses potions..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:anvil_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for anvil access"
+        },
+        "primary_uses": {
+          "values": [
+            "Use anvil inside backpack",
+            "Repair and rename items"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Anvil in an upgrade tab..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:auto_blasting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto blasting"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-blast ores in backpack",
+            "Auto push/pull"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Blasting ores and metal stuff..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:auto_smelting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-smelt ores in backpack",
+            "Auto push/pull"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Smelting in an upgrade tab..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:auto_smoking_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for auto smoking"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-smoke food in backpack",
+            "Auto push/pull"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Smoking food in an upgrade tab..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:backpack": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "wearable inventory container"
+        },
+        "primary_uses": {
+          "values": [
+            "Carry items on the go",
+            "Expand personal inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "backpack is a portable chest"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players wear backpack at all times"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable early game"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage container"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:battery_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for energy storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Add energy storage to backpack",
+            "Power devices"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Replaces part of backpack's inventory with energy storage..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:blasting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for manual blasting"
+        },
+        "primary_uses": {
+          "values": [
+            "Blast ores inside backpack"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Blasting ores and metal stuff..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:compacting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to backpack for compacting"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact items into 2x2 blocks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Compacts items into their compressed variants..."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base or backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enhances backpack functionality"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    },
+    "sophisticatedbackpacks:copper_backpack": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "wearable inventory container"
+        },
+        "primary_uses": {
+          "values": [
+            "Carry items on the go",
+            "Expand personal inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "backpack is a portable chest"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn when available, but less common than basic backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common loot and craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage container"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sophisticatedbackpacks_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Sophisticated Backpacks item group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

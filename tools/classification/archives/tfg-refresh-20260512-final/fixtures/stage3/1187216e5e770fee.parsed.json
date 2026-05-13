@@ -1,0 +1,1340 @@
+{
+  "items": {
+    "tfc:plant/tropical_milkweed": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "A wild flower plant placed for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common flower in world"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected and stored for decoration/dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to decorate gardens and flower pots"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a block in the world"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating gardens and paths",
+            "crafting red dye",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical uses for small flowers"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "named",
+          "evidence": "creative_tab tfc:flora",
+          "rationale": "Grouped with other plants"
+        }
+      }
+    },
+    "tfc:plant/tulip_orange": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild flower, placed for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common tulip variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected on exploration, then stored"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for gardens and dye making"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating gardens",
+            "crafting orange dye",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical uses for orange tulip"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "named",
+          "evidence": "creative_tab tfc:flora",
+          "rationale": "Stored with other plants"
+        }
+      }
+    },
+    "tfc:plant/tulip_pink": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild flower for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common pink tulip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Gathered when found, rarely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetics or milled for dye"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating gardens",
+            "crafting pink dye",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Flower uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "named",
+          "evidence": "creative_tab tfc:flora",
+          "rationale": "Stored with other plants"
+        }
+      }
+    },
+    "tfc:plant/tulip_red": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild red tulip for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common flower"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected on trips, stored at base"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in gardens or for red dye"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating gardens",
+            "crafting red dye",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Flower uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "named",
+          "evidence": "creative_tab tfc:flora",
+          "rationale": "Stored with plants"
+        }
+      }
+    },
+    "tfc:plant/tulip_white": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "White tulip, wild flower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Picked when found, stored for later"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in decoration and white dye"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating gardens",
+            "crafting white dye",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Flower uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "named",
+          "evidence": "creative_tab tfc:flora",
+          "rationale": "Stored with other plants"
+        }
+      }
+    },
+    "tfc:plant/turtle_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Aquatic grass, placed in water"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common water plant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected from ocean, stored for aquariums"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for underwater decoration"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed underwater as block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating aquariums and ponds",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Aquatic plant uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with other plants"
+        }
+      }
+    },
+    "tfc:plant/vriesea": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Tropical flower for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common plant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected and stored"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetics"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating gardens",
+            "crafting red dye",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Flower uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "named",
+          "evidence": "creative_tab tfc:flora",
+          "rationale": "Stored with plants"
+        }
+      }
+    },
+    "tfc:plant/water_canna": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Aquatic flowering plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common water plant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected from water, stored for later use"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aquatic decoration and dye"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in water as block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating ponds",
+            "crafting orange dye",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Aquatic flower uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with other plants"
+        }
+      }
+    },
+    "tfc:plant/water_lily": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Water lily, floating aquatic flower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common water plant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for garden ponds"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for decoration"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block on water"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating water gardens",
+            "crafting white dye",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Water lily uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with plants"
+        }
+      }
+    },
+    "tfc:plant/water_taro": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Aquatic plant, placed in water"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common water plant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected, stored for decoration or composting"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in aquatic decoration"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating ponds and streams"
+          ],
+          "signal": "inferred",
+          "rationale": "Aquatic plant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with plants"
+        }
+      }
+    },
+    "tfc:plant/white_cedar_krummholz": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Krummholz is a stunted tree, natural plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common alpine plant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected from mountains, stored for landscaping"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decorative landscaping"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating alpine gardens",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Krummholz uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with plants"
+        }
+      }
+    },
+    "tfc:plant/winged_kelp": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Kelp, aquatic plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common ocean plant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested from ocean, stored for use"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for decoration or processed into soda"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed underwater as block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating underwater",
+            "smelting into soda ash",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Kelp uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with plants"
+        }
+      }
+    },
+    "tfc:plant/wintergreen_berry_bush": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Berry bush, wild fruit plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common bush"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Transported for planting in farm"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted to grow berries for food"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed and harvested for berries"
+        },
+        "primary_uses": {
+          "values": [
+            "growing wintergreen berries",
+            "landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Berry bush uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with plants, also wild fruits"
+        }
+      }
+    },
+    "tfc:plant/yucca": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Desert plant, decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common plant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected from desert, stored"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for decoration or milled for dye"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating arid gardens",
+            "crafting light gray dye"
+          ],
+          "signal": "inferred",
+          "rationale": "Yucca uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "named",
+          "evidence": "creative_tab tfc:flora",
+          "rationale": "Stored with other plants"
+        }
+      }
+    },
+    "tfc:pot": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed on firepit to cook soups and stews"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "Made from fired clay"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up cooking station"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "named",
+          "evidence": "document_context mentions cooking",
+          "rationale": "Used for cooking soups and stews"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "named",
+          "evidence": "document_context field_guide pot entry",
+          "rationale": "Pot workflow for cooking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "named",
+          "evidence": "used_at vocabulary includes tfc:pot",
+          "rationale": "The pot is itself the station"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed on firepit"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking soups and stews",
+            "making jam"
+          ],
+          "signal": "inferred",
+          "rationale": "Pot cooking uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooking_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Cookware item"
+        }
+      }
+    },
+    "tfc:poured_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Glass block used for windows and decoration"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "evidence": "name contains glass",
+          "rationale": "Glass material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Building material, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction of windows"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows and glass panes",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass block uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass item group"
+        }
+      }
+    },
+    "tfc:powder/amethyst": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground gem powder, crafting ingredient"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "evidence": "name contains amethyst",
+          "rationale": "Amethyst powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for glassworking and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in glassmaking for decoration"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as glass coloring additive"
+        },
+        "primary_uses": {
+          "values": [
+            "glass coloring additive",
+            "crafting gem saw"
+          ],
+          "signal": "inferred",
+          "rationale": "Amethyst powder uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem-derived material"
+        }
+      }
+    },
+    "tfc:powder/bismuthinite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground bismuth ore powder, dye ingredient"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "evidence": "name bismuthinite",
+          "rationale": "Bismuth powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for dye making"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to make green dye"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for green dye"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting green dye",
+            "glass coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "Bismuthinite powder uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "Dye material"
+        }
+      }
+    },
+    "tfc:powder/cassiterite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground cassiterite, tin ore powder"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "name cassiterite is tin ore",
+          "rationale": "Cassiterite = tin ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for dye and glass"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for gray dye and glass"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for gray dye"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting gray dye",
+            "glassworking",
+            "smelted into tin"
+          ],
+          "signal": "inferred",
+          "rationale": "Cassiterite powder uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "Dye material"
+        }
+      }
+    },
+    "tfc:powder/charcoal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground charcoal, crafting ingredient"
+        },
+        "material_family": {
+          "value": "carbon",
+          "signal": "inferred",
+          "rationale": "Charcoal is carbon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for dye and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for black dye and ink"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for black dye"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black dye",
+            "making gunpowder",
+            "ink"
+          ],
+          "signal": "inferred",
+          "rationale": "Charcoal powder uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "Dye material"
+        }
+      }
+    },
+    "tfc:powder/coke": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground coke, industrial carbon powder"
+        },
+        "material_family": {
+          "value": "carbon",
+          "signal": "inferred",
+          "rationale": "Coke is processed carbon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for dye and industrial use"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for black dye and ink"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for black dye"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black dye",
+            "industrial carbon source"
+          ],
+          "signal": "inferred",
+          "rationale": "Coke powder uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "Dye material"
+        }
+      }
+    },
+    "tfc:powder/diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground diamond powder, crafting ingredient"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "evidence": "name contains diamond",
+          "rationale": "Diamond powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for glassworking and gem saw"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in glassworking for decoration"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as glass additive"
+        },
+        "primary_uses": {
+          "values": [
+            "glass coloring additive",
+            "crafting gem saw"
+          ],
+          "signal": "inferred",
+          "rationale": "Diamond powder uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem-derived material"
+        }
+      }
+    },
+    "tfc:powder/emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground emerald powder, crafting ingredient"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "name contains emerald",
+          "rationale": "Emerald powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for glassworking and gem saw"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in glassworking for decoration"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as glass additive"
+        },
+        "primary_uses": {
+          "values": [
+            "glass coloring additive",
+            "crafting gem saw"
+          ],
+          "signal": "inferred",
+          "rationale": "Emerald powder uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem-derived material"
+        }
+      }
+    },
+    "tfc:powder/flux": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Flux powder, used in smelting and welding"
+        },
+        "material_family": {
+          "value": "calcium_carbonate",
+          "signal": "inferred",
+          "rationale": "Flux is ground limestone etc."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when smelting or welding"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in metal processing: smelting and welding"
+        },
+        "workflow": {
+          "values": [
+            "tfc:blast_furnace",
+            "tfc:welding"
+          ],
+          "signal": "named",
+          "evidence": "document_context mentions blast furnace and welding",
+          "rationale": "Flux is catalyst in blast furnace and used in welding"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed as catalyst in processing"
+        },
+        "primary_uses": {
+          "values": [
+            "welding aid",
+            "blast furnace catalyst"
+          ],
+          "signal": "inferred",
+          "rationale": "Flux uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed mineral product"
+        }
+      }
+    },
+    "tfc:powder/garnierite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ground garnierite, nickel ore powder"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "garnierite is nickel ore",
+          "rationale": "Garnierite = nickel ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common powder"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for dye and glass"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for brown dye and glass"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for brown dye"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting brown dye",
+            "glassworking",
+            "smelted into nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "Garnierite powder uses"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "Dye material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

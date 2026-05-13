@@ -1,0 +1,1130 @@
+{
+  "items": {
+    "createdeco:umber_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block used for building structures"
+        },
+        "material_family": {
+          "value": "umber_brick",
+          "signal": "inferred",
+          "rationale": "Brick material from name and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component from stage2"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and rarely carried afterward"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative walls",
+            "Stonecutting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is construction; also used in stonecutter"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:brick_walls"
+        }
+      }
+    },
+    "createdeco:umber_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full brick block used for building"
+        },
+        "material_family": {
+          "value": "umber_brick",
+          "signal": "inferred",
+          "rationale": "Brick material from name and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with decorative bricks",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls, slabs, etc."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:brick_index and stone_bricks"
+        }
+      }
+    },
+    "createdeco:verdant_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab block used for building"
+        },
+        "material_family": {
+          "value": "verdant_brick",
+          "signal": "inferred",
+          "rationale": "Brick material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs and flooring",
+            "Stonecutting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and as recipe base"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:brick_slabs"
+        }
+      }
+    },
+    "createdeco:verdant_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair block used for building"
+        },
+        "material_family": {
+          "value": "verdant_brick",
+          "signal": "inferred",
+          "rationale": "Brick material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Stonecutting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/stairs"
+          ],
+          "signal": "pattern",
+          "rationale": "General stairs group"
+        }
+      }
+    },
+    "createdeco:verdant_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall block used for building"
+        },
+        "material_family": {
+          "value": "verdant_brick",
+          "signal": "inferred",
+          "rationale": "Brick material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative walls",
+            "Stonecutting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for boundaries and decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:brick_walls"
+        }
+      }
+    },
+    "createdeco:verdant_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full brick block used for building"
+        },
+        "material_family": {
+          "value": "verdant_brick",
+          "signal": "inferred",
+          "rationale": "Brick material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with decorative bricks",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls, slabs, etc."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfg:brick_index and stone_bricks"
+        }
+      }
+    },
+    "createdeco:white_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Container block that opens inventory"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Shipping container construction material"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "rationale": "Name indicates white color"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items",
+            "Decorative storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a chest-like container"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for organizing items"
+        }
+      }
+    },
+    "createdeco:yellow_andesite_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light fixture placed for ambiance"
+        },
+        "material_family": {
+          "value": "tin_alloy",
+          "signal": "pattern",
+          "rationale": "Display name 'Tin Alloy Cage Lamp'"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "Name prefix yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as lighting, not moved"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Suffix _lamp indicates light emission"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting decoration",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides light and is crafted"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "rationale": "Common lamp storage group"
+        }
+      }
+    },
+    "createdeco:yellow_brass_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light fixture placed for ambiance"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "rationale": "Brass material from name"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "Name prefix yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as lighting"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Suffix _lamp"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting decoration",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source and craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "rationale": "Lamp storage group"
+        }
+      }
+    },
+    "createdeco:yellow_copper_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light fixture placed for ambiance"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "Copper material from name"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "Name prefix yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as lighting"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Suffix _lamp"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting decoration",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source and craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "rationale": "Lamp storage group"
+        }
+      }
+    },
+    "createdeco:yellow_industrial_iron_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light fixture placed for ambiance"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Display name 'Steel Cage Lamp'"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "Name prefix yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as lighting"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Suffix _lamp"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting decoration",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source and craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "rationale": "Lamp storage group"
+        }
+      }
+    },
+    "createdeco:yellow_iron_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light fixture placed for ambiance"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "Display name 'Wrought Iron Cage Lamp'"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "Name prefix yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as lighting"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Suffix _lamp"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting decoration",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source and craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "rationale": "Lamp storage group"
+        }
+      }
+    },
+    "createdeco:yellow_zinc_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Light fixture placed for ambiance"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "Name prefix yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as lighting"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "Suffix _lamp"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting decoration",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source and craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative lighting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "rationale": "Lamp storage group"
+        }
+      }
+    },
+    "createdeco:yellow_placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placard used for labeling and decoration"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "Name prefix yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not moved often"
+        },
+        "primary_uses": {
+          "values": [
+            "Labeling and decorating",
+            "Crafting into other colors"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for signage and dye recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative signage"
+        }
+      }
+    },
+    "createdeco:yellow_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Container block that opens inventory"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "Shipping container construction material"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "Name prefix yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for storage, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items",
+            "Decorative storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a chest-like container"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for organizing items"
+        }
+      }
+    },
+    "createdeco:zinc_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Metal bars used as fence-like structure"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in construction, but can be carried in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative barriers",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for windows, cages, and as component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural building component"
+        }
+      }
+    },
+    "createdeco:zinc_bars_overlay": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Metal bars overlay variant"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Similar to bars"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative barriers",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for overlays and as component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    },
+    "createdeco:zinc_catwalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Catwalk platform for walking"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in construction, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building catwalks and platforms",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walkways and as component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural building component"
+        }
+      }
+    },
+    "createdeco:zinc_catwalk_railing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Railing for catwalks"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed with catwalks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building catwalk railings",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for safety barriers"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    },
+    "createdeco:zinc_catwalk_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs for catwalks"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed with catwalks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building catwalk stairs",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for elevation on catwalks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    },
+    "createdeco:zinc_coin": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible coin used as currency"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored as currency, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Currency and trading",
+            "Crafting coin stacks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in economic system and compacting"
+        }
+      }
+    },
+    "createdeco:zinc_coinstack": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Stack of coins for storage"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stored as bulk currency"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing coins compactly",
+            "Decrafting into coins"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to condense zinc coins"
+        }
+      }
+    },
+    "createdeco:zinc_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door block used for entrances"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as entrance, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "Building entrances",
+            "Crafting locked door"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a door and to craft locked variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    },
+    "createdeco:zinc_facade": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative siding block"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as siding, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative facades",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for covering walls and as component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    },
+    "createdeco:zinc_hull": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Train hull block for building train bodies"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "rationale": "Zinc material from name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed on trains, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Building train hulls",
+            "Decorative panels"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for train construction and decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "createdeco:zinc_bars_overlay",
+      "facet": "form",
+      "value": "bars",
+      "rationale": "Clear bars variant, missing from stage2"
+    }
+  ]
+}

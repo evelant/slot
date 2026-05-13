@@ -1,0 +1,1066 @@
+{
+  "items": {
+    "gtceu:small_andradite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Dust is a refined crafting intermediate; players store it with materials."
+        },
+        "material_family": {
+          "value": "andradite",
+          "signal": "pattern",
+          "evidence": "id suffix _andradite_dust",
+          "rationale": "Derived from the material identifier."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common processed material, no special rarity."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing materials, not everyday."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Stage is dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting intermediate for alloys and recipes",
+            "Milled from gems or ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in many crafting and processing recipes."
+        }
+      }
+    },
+    "gtceu:small_annealed_copper_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern as other dusts."
+        },
+        "material_family": {
+          "value": "annealed_copper",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Derived from material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common processed dust."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during material processing."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting intermediate for recipes",
+            "Milled from copper items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in various crafting and milling."
+        }
+      }
+    },
+    "gtceu:small_antimony_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "antimony",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component",
+            "Processed from ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes."
+        }
+      }
+    },
+    "gtceu:small_antimony_trifluoride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "antimony_trifluoride",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ingredient",
+            "Chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in specialized recipes."
+        }
+      }
+    },
+    "gtceu:small_antimony_trioxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "antimony_trioxide",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical ingredient",
+            "Processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes."
+        }
+      }
+    },
+    "gtceu:small_apatite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Phosphorus source",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical and material processing."
+        }
+      }
+    },
+    "gtceu:small_armalcolite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Gem dust",
+            "Crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "Milled from armalcolite gems."
+        }
+      }
+    },
+    "gtceu:small_arsenic_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "arsenic",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Toxic element",
+            "Alloy component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in specialized alloys."
+        }
+      }
+    },
+    "gtceu:small_arsenic_trioxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "arsenic_trioxide",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical precursor",
+            "Processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical recipes."
+        }
+      }
+    },
+    "gtceu:small_asbestos_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "asbestos",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Hazardous material",
+            "Insulation component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in specialized recipes."
+        }
+      }
+    },
+    "gtceu:small_ash_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "ash",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Fertilizer component",
+            "Potash source"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical processing."
+        }
+      }
+    },
+    "gtceu:small_asurine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "asurine",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Mineral dust",
+            "Crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "Milled from asurine ore."
+        }
+      }
+    },
+    "gtceu:small_barite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "barite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Barium source",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical processing."
+        }
+      }
+    },
+    "gtceu:small_barium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "barium",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Metal dust",
+            "Alloy component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in alloys and processing."
+        }
+      }
+    },
+    "gtceu:small_barium_sulfide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "barium_sulfide",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical precursor",
+            "Processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical recipes."
+        }
+      }
+    },
+    "gtceu:small_basalt_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "stage2 form from id, hidden from recipe viewers",
+          "rationale": "Stone dust, a crafting material."
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material from basalt."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not carried often, used in bulk processing."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Stone dust",
+            "Crafting filler"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in some recipes."
+        }
+      }
+    },
+    "gtceu:small_basaltic_mineral_sand_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "basaltic_mineral_sand",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Iron source (cast iron)",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Melts into cast iron."
+        }
+      }
+    },
+    "gtceu:small_bastnasite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "bastnasite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Rare earth source",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains cerium."
+        }
+      }
+    },
+    "gtceu:small_battery_alloy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "battery_alloy",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Battery component",
+            "Alloy dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for battery crafting."
+        }
+      }
+    },
+    "gtceu:small_bauxite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "bauxite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Aluminum source",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed into aluminum."
+        }
+      }
+    },
+    "gtceu:small_bauxite_slag_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "bauxite_slag",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate byproduct."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Slag byproduct",
+            "Building material component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in some recipes."
+        }
+      }
+    },
+    "gtceu:small_bentonite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "bentonite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Clay substitute",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in pottery and recipes."
+        }
+      }
+    },
+    "gtceu:small_beryllium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "beryllium",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Light metal dust",
+            "Alloy component"
+          ],
+          "signal": "inferred",
+          "rationale": "Hazardous but used in advanced alloys."
+        }
+      }
+    },
+    "gtceu:small_biotite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "biotite",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Mineral dust",
+            "Potassium source"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical processing."
+        }
+      }
+    },
+    "gtceu:small_biphenyl_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:small_dusts tag",
+          "rationale": "Same pattern."
+        },
+        "material_family": {
+          "value": "biphenyl",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "Material name."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Intermediate material."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "form from id",
+          "rationale": "Dust form."
+        },
+        "primary_uses": {
+          "values": [
+            "Organic compound",
+            "Chemical intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical processing."
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:small_andradite_dust",
+      "facet": "organization_group",
+      "label": "Small Dusts",
+      "proposed_id": "pack:tfg/small_dusts",
+      "rationale": "No existing group covers small dust piles; a dedicated small_dusts bucket is useful for player storage.",
+      "evidence": "Multiple small dust items in output, forge:small_dusts tag"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

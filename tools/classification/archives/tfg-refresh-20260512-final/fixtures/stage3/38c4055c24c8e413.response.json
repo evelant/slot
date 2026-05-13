@@ -1,0 +1,978 @@
+{
+  "items": {
+    "betterend:flavolite_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone pillar placed as structure"
+        },
+        "material_family": {
+          "value": "flavolite",
+          "signal": "pattern",
+          "evidence": "id prefix flavolite_",
+          "rationale": "stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block",
+            "stonecutting material"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration and as stonecut source"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone variant"
+        }
+      }
+    },
+    "betterend:flavolite_polished": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone used for building"
+        },
+        "material_family": {
+          "value": "flavolite",
+          "signal": "pattern",
+          "evidence": "id prefix flavolite_",
+          "rationale": "same stone as flavolite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block",
+            "chisel and polish recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration and chisel recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone variant"
+        }
+      }
+    },
+    "betterend:flavolite_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "tiled stone used for decoration"
+        },
+        "material_family": {
+          "value": "flavolite",
+          "signal": "pattern",
+          "evidence": "id prefix flavolite_",
+          "rationale": "same stone as flavolite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block",
+            "stonecutting output"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration and as stonecut result"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as part of builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone variant"
+        }
+      }
+    },
+    "betterend:fracturn": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "decorative plant block placed in world"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration in End biomes"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative plant"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End plant, not abundant everywhere"
+        }
+      }
+    },
+    "betterend:glacian_hymenophore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "decorative plant block from glacier biomes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration in glacier biome"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "biome-specific plant"
+        }
+      }
+    },
+    "betterend:globulagus": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "ground cover plant used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected when needed for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:hydralux_large": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "decorative plant from Venus"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration on Venus"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative plant"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Venus plant, not common"
+        }
+      }
+    },
+    "betterend:hydralux_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "sapling, planted to grow hydralux"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for planting"
+        },
+        "primary_uses": {
+          "values": [
+            "growing hydralux plants"
+          ],
+          "signal": "inferred",
+          "rationale": "planted to produce Hydralux"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planting and growing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found on Venus, not everywhere"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "pattern",
+          "evidence": "form sapling",
+          "rationale": "saplings grouped together"
+        }
+      }
+    },
+    "betterend:hydralux_small": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "small decorative plant from Venus"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration on Venus"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Venus plant"
+        }
+      }
+    },
+    "betterend:hydrothermal_vent": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "stone-like block used for decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration in End caves"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End structure block"
+        }
+      }
+    },
+    "betterend:inflexia": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant block from Moon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration on the Moon"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative plant"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Moon plant"
+        }
+      }
+    },
+    "betterend:jungle_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "grass block, natural decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration in jungle biome"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative grass"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for looks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common in jungle biomes"
+        }
+      }
+    },
+    "betterend:lacugrove": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "algae plant used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:lacugrove_bark": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "raw stone block used for building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "stonecutting"
+          ],
+          "signal": "inferred",
+          "rationale": "raw stone for construction and stonecutting"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        }
+      }
+    },
+    "betterend:lamellarium": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Mars plant used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:lanceleaf": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Mars plant used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:lanceleaf_small": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Mars plant used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:large_amaranita_mushroom": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "large mushroom used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:lucernia_bark": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "raw stone block used for building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material carried during construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "facades"
+          ],
+          "signal": "inferred",
+          "rationale": "raw stone for construction and facade covers"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        }
+      }
+    },
+    "betterend:lucernia_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "leaves used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:lucernia_leaves_fallen": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "fallen leaves used as fuel and compost"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for firepit",
+            "compost material",
+            "kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fuel and kindling per tags"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel for cooking and compost"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:lucernia_outer_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "leaves used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:lutebus": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Mars plant used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:orango": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Mars plant used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    },
+    "betterend:purple_polypore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "mushroom used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for compost/moss"
+        },
+        "primary_uses": {
+          "values": [
+            "composting material",
+            "mossy brick ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in compost and mossy brick recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in composting and mossy crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on Mars"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item stored with other plants"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "betterend:jungle_grass",
+      "facet": "material_family",
+      "current": "wood_jungle",
+      "suggested": null,
+      "rationale": "Not wood; it's a grass/plant block, not a wood product",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": [
+    {
+      "item": "betterend:lucernia_leaves_fallen",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "Has tfc:firepit_fuel tag, used as fuel"
+    }
+  ],
+  "vocabulary_proposals": [],
+  "schema_proposals": []
+}

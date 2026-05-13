@@ -1,0 +1,236 @@
+{
+  "items": {
+    "tfg:aminopropyl_chlorosilane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket for carrying specific chemical fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting aminopropyl chlorosilane fluid",
+            "P2P fluid tunnel attunement"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport and AE2 attunement use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity in tooltip"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket contains a chemical fluid"
+        }
+      }
+    },
+    "tfg:ammonia_borane_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust used in crafting recipes"
+        },
+        "material_family": {
+          "value": "ammonia_borane",
+          "signal": "pattern",
+          "evidence": "forge:dusts/ammonia_borane tag",
+          "rationale": "chemical compound family"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ammonia borane components",
+            "milling into finer dust"
+          ],
+          "signal": "inferred",
+          "rationale": "used in shaped recipes and milling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate used in batch processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust form of material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced by milling and crafting"
+        }
+      }
+    },
+    "tfg:ammonia_borane_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "plate used as intermediate crafting material"
+        },
+        "material_family": {
+          "value": "ammonia_borane",
+          "signal": "pattern",
+          "evidence": "forge:plates/ammonia_borane tag",
+          "rationale": "chemical compound family"
+        },
+        "primary_uses": {
+          "values": [
+            "milling into ammonia borane dust",
+            "component in further crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed by milling and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate used in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "value": "slot:plate",
+          "signal": "pattern",
+          "evidence": "forge:plates tag",
+          "rationale": "plate form of material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "has production recipes (tag implies)"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:pileable_sheets tag",
+          "rationale": "sheet that can be piled"
+        }
+      }
+    },
+    "tfg:ammonium_tungstate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "chemical dust, likely used in processing"
+        },
+        "material_family": {
+          "value": "ammonium_tungstate",
+          "signal": "pattern",
+          "evidence": "forge:dusts/ammonium_tungstate tag",
+          "rationale": "chemical compound family"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipe data but classified as chemical dust"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "unknown usage, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust form of material"
+        }
+      }
+    },
+    "tfg:andesite_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined and processed for thallium"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "forge:ores/lorandite tag",
+          "rationale": "mineral family"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting and milling to extract thallium",
+            "source of lorandite mineral"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in furnace and millstone"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "ore block, stored in bulk not carried daily"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ore of a less common mineral"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes using these stations",
+          "rationale": "processed in furnace and millstone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore form"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

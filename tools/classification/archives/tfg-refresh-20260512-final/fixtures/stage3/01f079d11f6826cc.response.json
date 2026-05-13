@@ -1,0 +1,1158 @@
+{
+  "items": {
+    "mcw_tfc_aio:bridges/brick_bridges/brick_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as structural bridge support, part of building"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains brick_bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in construction, not carried everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "building bridges for crossing gaps",
+            "support pillar for bridge structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as pier component of a bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building bridge structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of the bridges family from Macaw's"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/brick_bridges/brick_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair-shaped bridge component, placed as building"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id contains brick_bridges"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "construction block, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from brick"
+        },
+        "primary_uses": {
+          "values": [
+            "building bridge stair access",
+            "decorative path transition"
+          ],
+          "signal": "inferred",
+          "rationale": "stair variant of bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in stair construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges family"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/chestnut_bridges/chestnut_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden bridge support pillar"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "rationale": "named chestnut wooden bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from chestnut wood"
+        },
+        "primary_uses": {
+          "values": [
+            "support pillar for wooden bridge",
+            "building bridge infrastructure"
+          ],
+          "signal": "inferred",
+          "rationale": "pier component of chestnut bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridge family"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/chestnut_bridges/chestnut_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log bridge span, placed as path"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "rationale": "chestnut log bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "construction block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from chestnut"
+        },
+        "primary_uses": {
+          "values": [
+            "spanning gaps with log bridge",
+            "decorative walkway"
+          ],
+          "signal": "inferred",
+          "rationale": "main middle section of bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building bridge"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges group"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/chestnut_bridges/chestnut_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair variant of log bridge"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "rationale": "chestnut log stair"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "construction block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from chestnut"
+        },
+        "primary_uses": {
+          "values": [
+            "bridge stair access",
+            "elevation change on bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "stair piece for bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in stair building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/chestnut_bridges/chestnut_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rail bridge for minecart tracks"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "rationale": "chestnut rail bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from chestnut"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting minecart rails over gaps",
+            "rail bridge construction"
+          ],
+          "signal": "inferred",
+          "rationale": "rail-specific bridge variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building rail networks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/chestnut_bridges/chestnut_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope bridge stair"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "rationale": "rope chestnut bridge stair"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from chestnut and rope"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge stair access",
+            "decorative bridge variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stair for rope bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in bridge building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/chestnut_bridges/rope_chestnut_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope bridge span"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "rationale": "rope chestnut bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from chestnut and rope"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge crossing",
+            "decorative pedestrian bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "main span of rope bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building rope bridge"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/douglas_fir_bridges/douglas_fir_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden bridge pier"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "rationale": "douglas_fir bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from douglas_fir"
+        },
+        "primary_uses": {
+          "values": [
+            "support pillar for douglas_fir bridge",
+            "building bridge structure"
+          ],
+          "signal": "inferred",
+          "rationale": "pier component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/douglas_fir_bridges/douglas_fir_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log bridge span"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "rationale": "douglas_fir log bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from douglas_fir"
+        },
+        "primary_uses": {
+          "values": [
+            "spanning gaps with log bridge",
+            "wooden walkway"
+          ],
+          "signal": "inferred",
+          "rationale": "main middle section"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building bridge"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/douglas_fir_bridges/douglas_fir_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log bridge stair"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "rationale": "douglas_fir log stair"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from douglas_fir"
+        },
+        "primary_uses": {
+          "values": [
+            "bridge stair access",
+            "elevation change on bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "stair variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in stair building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/douglas_fir_bridges/douglas_fir_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rail bridge for minecart tracks"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "rationale": "douglas_fir rail bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from douglas_fir"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting rails over gaps",
+            "rail bridge construction"
+          ],
+          "signal": "inferred",
+          "rationale": "rail variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building rail infrastructure"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/douglas_fir_bridges/douglas_fir_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope bridge stair"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "rationale": "douglas_fir rope stair"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from douglas_fir and rope"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge stair access",
+            "decorative bridge stair"
+          ],
+          "signal": "inferred",
+          "rationale": "stair for rope bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in bridge building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/douglas_fir_bridges/rope_douglas_fir_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope bridge span"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "rationale": "rope douglas_fir bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from douglas_fir and rope"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge crossing",
+            "decorative pedestrian walkway"
+          ],
+          "signal": "inferred",
+          "rationale": "main rope bridge span"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building rope bridge"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/hickory_bridges/hickory_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden bridge pier"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "rationale": "hickory bridge pier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from hickory"
+        },
+        "primary_uses": {
+          "values": [
+            "support pillar for hickory bridge",
+            "building bridge structure"
+          ],
+          "signal": "inferred",
+          "rationale": "pier component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/hickory_bridges/hickory_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log bridge span"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "rationale": "hickory log bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from hickory"
+        },
+        "primary_uses": {
+          "values": [
+            "spanning gaps with log bridge",
+            "wooden walkway"
+          ],
+          "signal": "inferred",
+          "rationale": "main middle section"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building bridge"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/hickory_bridges/hickory_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log bridge stair"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "rationale": "hickory log stair"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from hickory"
+        },
+        "primary_uses": {
+          "values": [
+            "bridge stair access",
+            "elevation change on bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "stair variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in stair building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/hickory_bridges/hickory_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rail bridge for minecart tracks"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "rationale": "hickory rail bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from hickory"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting rails over gaps",
+            "rail bridge construction"
+          ],
+          "signal": "inferred",
+          "rationale": "rail variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building rail infrastructure"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/hickory_bridges/hickory_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope bridge stair"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "rationale": "hickory rope stair"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from hickory and rope"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge stair access",
+            "decorative bridge stair"
+          ],
+          "signal": "inferred",
+          "rationale": "stair for rope bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in bridge building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/hickory_bridges/rope_hickory_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rope bridge span"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "rationale": "rope hickory bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from hickory and rope"
+        },
+        "primary_uses": {
+          "values": [
+            "rope bridge crossing",
+            "decorative pedestrian walkway"
+          ],
+          "signal": "inferred",
+          "rationale": "main rope bridge span"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building rope bridge"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/iron_bridges/iron_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "iron bridge span, placed as pathway"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "construction block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from iron"
+        },
+        "primary_uses": {
+          "values": [
+            "metal bridge crossing",
+            "decorative industrial bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "main iron bridge block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building metal bridge"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/iron_bridges/iron_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "iron bridge support pillar"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron bridge pier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from iron"
+        },
+        "primary_uses": {
+          "values": [
+            "support pillar for iron bridge",
+            "industrial bridge structure"
+          ],
+          "signal": "inferred",
+          "rationale": "pier component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/iron_bridges/iron_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "iron bridge stair"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron bridge stair"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from iron"
+        },
+        "primary_uses": {
+          "values": [
+            "bridge stair access",
+            "metal stair for elevation change"
+          ],
+          "signal": "inferred",
+          "rationale": "stair variant of iron bridge"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in stair building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/kapok_bridges/kapok_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden bridge pier"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "rationale": "kapok bridge pier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from kapok"
+        },
+        "primary_uses": {
+          "values": [
+            "support pillar for kapok bridge",
+            "building bridge structure"
+          ],
+          "signal": "inferred",
+          "rationale": "pier component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/kapok_bridges/kapok_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log bridge span"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "rationale": "kapok log bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from kapok"
+        },
+        "primary_uses": {
+          "values": [
+            "spanning gaps with log bridge",
+            "wooden walkway"
+          ],
+          "signal": "inferred",
+          "rationale": "main middle section"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building bridge"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "part of bridges"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

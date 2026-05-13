@@ -1,0 +1,1440 @@
+{
+  "items": {
+    "everycomp:c/domum_ornamentum/cactus_extra_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wood-framed glass pane placed as building structure"
+        },
+        "material_family": {
+          "value": "cactus_extra",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: domum_ornamentum:cactus_extra'",
+          "rationale": "Wood type from item id and tooltip"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains glass panes, tagged forge:glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity per component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building block in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent wall decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary function as architectural window"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production crafting_shaped recipe",
+          "rationale": "No loot sources, only crafted"
+        }
+      }
+    },
+    "everycomp:c/domum_ornamentum/cactus_extra_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wood-framed glass pane, building material"
+        },
+        "material_family": {
+          "value": "cactus_extra",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: domum_ornamentum:cactus_extra'",
+          "rationale": "Wood type from item id and tooltip"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains glass, tagged forge:glass_panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for building, not everyday carry"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Transparent dividing walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as thin window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources, crafted from window block"
+        }
+      }
+    },
+    "everycomp:c/domum_ornamentum/cactus_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Green cactus wood-framed window block"
+        },
+        "material_family": {
+          "value": "cactus",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: domum_ornamentum:cactus'",
+          "rationale": "Cactus wood from tooltip"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes, tagged forge:glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent wall element"
+          ],
+          "signal": "inferred",
+          "rationale": "Architectural window"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production crafting_shaped recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/domum_ornamentum/cactus_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Green cactus wood window pane"
+        },
+        "material_family": {
+          "value": "cactus",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: domum_ornamentum:cactus'",
+          "rationale": "Cactus wood from tooltip"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes, tagged forge:glass_panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Transparent partitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/gtceu/rubber_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rubber wood-framed window, building block"
+        },
+        "material_family": {
+          "value": "rubber",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: gtceu:rubber'",
+          "rationale": "Rubber wood type from tooltip"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes, impermeable tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material, occasional carry"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent building element"
+          ],
+          "signal": "inferred",
+          "rationale": "Architectural window"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production crafting_shaped recipe",
+          "rationale": "No loot sources, only crafted"
+        }
+      }
+    },
+    "everycomp:c/gtceu/rubber_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rubber wood window pane, building material"
+        },
+        "material_family": {
+          "value": "rubber",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: gtceu:rubber'",
+          "rationale": "Rubber wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction use"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Transparent dividers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production crafting_shaped recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/acacia_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Acacia wood-framed window, building block"
+        },
+        "material_family": {
+          "value": "acacia",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:acacia'",
+          "rationale": "Acacia wood type"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes, tagged forge:glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent wall openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production crafting_shaped recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/acacia_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Acacia wood window pane"
+        },
+        "material_family": {
+          "value": "acacia",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:acacia'",
+          "rationale": "Acacia wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes, tagged forge:glass_panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction use"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/ash_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Ash wood-framed window"
+        },
+        "material_family": {
+          "value": "ash",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:ash'",
+          "rationale": "Ash wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/ash_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Ash wood window pane"
+        },
+        "material_family": {
+          "value": "ash",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:ash'",
+          "rationale": "Ash wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Transparent partitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/aspen_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Aspen wood-framed window"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:aspen'",
+          "rationale": "Aspen wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/aspen_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Aspen wood window pane"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:aspen'",
+          "rationale": "Aspen wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/birch_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Birch wood-framed window"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:birch'",
+          "rationale": "Birch wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/birch_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Birch wood window pane"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:birch'",
+          "rationale": "Birch wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/blackwood_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Blackwood wood-framed window"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:blackwood'",
+          "rationale": "Blackwood wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/blackwood_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Blackwood wood window pane"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:blackwood'",
+          "rationale": "Blackwood wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/chestnut_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Chestnut wood-framed window"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:chestnut'",
+          "rationale": "Chestnut wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/chestnut_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Chestnut wood window pane"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:chestnut'",
+          "rationale": "Chestnut wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/douglas_fir_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Douglas fir wood-framed window"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:douglas_fir'",
+          "rationale": "Douglas fir wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/douglas_fir_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Douglas fir wood window pane"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:douglas_fir'",
+          "rationale": "Douglas fir wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/hickory_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Hickory wood-framed window"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:hickory'",
+          "rationale": "Hickory wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/hickory_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Hickory wood window pane"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:hickory'",
+          "rationale": "Hickory wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/kapok_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Kapok wood-framed window"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:kapok'",
+          "rationale": "Kapok wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/kapok_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Kapok wood window pane"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:kapok'",
+          "rationale": "Kapok wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/mangrove_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mangrove wood-framed window"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:mangrove'",
+          "rationale": "Mangrove wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building windows",
+            "Transparent walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Window block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "No loot sources"
+        }
+      }
+    },
+    "everycomp:c/tfc/mangrove_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mangrove wood window pane"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "pattern",
+          "evidence": "tooltip 'Wood Type: tfc:mangrove'",
+          "rationale": "Mangrove wood"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building window panes",
+            "Thin transparent barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "Window pane"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "No loot sources"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,196 @@
+{
+  "items": {
+    "species:logo": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "No survival method, no creative tab, logo item"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "Stage 2 rarity from epic component"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Never carried in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "Logo item, no gameplay use"
+          ],
+          "signal": "inferred",
+          "rationale": "Only used as mod logo"
+        }
+      }
+    },
+    "species:mammutilation_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collectible sets"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Stage 2 rarity from component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried if actively spawning mobs"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning mammutilation mob"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct use of spawn egg"
+        }
+      }
+    },
+    "species:music_disc_dial": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Music discs are collectibles"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "Stage 2 rarity from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has shapeless crafting output",
+          "rationale": "Only recipe production evidence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to play in jukebox occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "Playing music in jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole use of music disc"
+        },
+        "storage_categories": {
+          "values": [
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in jukebox slot"
+        }
+      }
+    },
+    "species:music_disc_lapidarian": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Music discs are collectibles"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "Stage 2 rarity from component"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site",
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from archaeology + shapeless recipe",
+          "rationale": "Obtainable via archaeology and crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to play in jukebox occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "Playing music in jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole use of music disc"
+        },
+        "storage_categories": {
+          "values": [
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in jukebox slot"
+        }
+      }
+    },
+    "species:music_disk_spawner": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Music discs are collectibles"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "Stage 2 rarity from component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has shapeless crafting output",
+          "rationale": "Only recipe production evidence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to play in jukebox occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "Playing music in jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "Sole use of music disc"
+        },
+        "storage_categories": {
+          "values": [
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in jukebox slot"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "species:logo",
+      "facet": "is_creative_only",
+      "value": true,
+      "rationale": "No survival method, no creative tab, admin-only"
+    }
+  ]
+}

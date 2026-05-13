@@ -1,0 +1,2180 @@
+{
+  "items": {
+    "gtceu:yellow_sand_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_bismuth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_blue_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_borax_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_bornite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_calcite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_cassiterite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_cassiterite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_certus_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_chalcocite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_chalcopyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_chromite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_cinnabar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in (no milling)",
+          "rationale": "consumed in furnaces"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_cobalt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_cooperite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_desh_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and processes these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and milled for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in (only milling)",
+          "rationale": "consumed in mill"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "milling recipe",
+          "rationale": "input for milling"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in milling",
+          "rationale": "input for milling workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    },
+    "gtceu:yellow_sand_diatomite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore block mined and processed into materials"
+        },
+        "primary_uses": {
+          "values": [
+            "processed for metals and materials",
+            "mined for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines and smelts these ores"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried frequently while mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "mined and smelted for resources"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/yellow_sand",
+          "rationale": "generates in yellow sand on overworld surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag and raw ore form",
+          "rationale": "player stores raw ore blocks here"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe processing_in",
+          "rationale": "consumed in furnaces and mills"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "input for smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in smelting",
+          "rationale": "input for smelting workflow"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore from stage2",
+          "rationale": "raw ore material stage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

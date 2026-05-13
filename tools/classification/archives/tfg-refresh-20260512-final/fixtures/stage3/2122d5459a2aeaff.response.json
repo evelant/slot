@@ -1,0 +1,1082 @@
+{
+  "items": {
+    "gtmutils:hv_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:hv_components"
+          ],
+          "signal": "pattern",
+          "rationale": "HV tier machine part stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage tier progression gate"
+        }
+      }
+    },
+    "gtmutils:iv_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:iv_components"
+          ],
+          "signal": "pattern",
+          "rationale": "IV tier machine part stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:luv_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "pattern",
+          "rationale": "LuV tier machine part stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:luv_power_unit": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable energy storage carried for powering tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable energy storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows stored EU and tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried to recharge tools on the go"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to automate tool charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:luv_components"
+          ],
+          "signal": "pattern",
+          "rationale": "LuV tier energy storage stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Large battery subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:lv_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:lv_components"
+          ],
+          "signal": "pattern",
+          "rationale": "LV tier machine part stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:me_enlarged_stocking_input_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component that stocks items from AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "Stocking items for GT multiblocks from ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes item input and ME retrieval"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock input"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-interfacing component stored with AE2 items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct ME network storage interaction"
+        }
+      }
+    },
+    "gtmutils:me_enlarged_stocking_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component that stocks fluids from AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "Stocking fluids for GT multiblocks from ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes fluid input and ME retrieval"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock fluid input"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-interfacing component stored with AE2 items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct ME network storage interaction"
+        }
+      }
+    },
+    "gtmutils:me_enlarged_tag_stocking_input_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for tag-based item stocking from AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "Tag-based item stocking for GT multiblocks from ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes tag-based stocking"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock input"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-interfacing component stored with AE2 items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct ME network storage interaction"
+        }
+      }
+    },
+    "gtmutils:me_enlarged_tag_stocking_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for tag-based fluid stocking from AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "Tag-based fluid stocking for GT multiblocks from ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes tag-based stocking"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock fluid input"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-interfacing component stored with AE2 items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct ME network storage interaction"
+        }
+      }
+    },
+    "gtmutils:me_tag_stocking_input_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for tag-based item stocking from AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "Tag-based item stocking for GT multiblocks from ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes tag-based stocking"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock input"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-interfacing component stored with AE2 items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct ME network storage interaction"
+        }
+      }
+    },
+    "gtmutils:me_tag_stocking_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for tag-based fluid stocking from AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "Tag-based fluid stocking for GT multiblocks from ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes tag-based stocking"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock fluid input"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-interfacing component stored with AE2 items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct ME network storage interaction"
+        }
+      }
+    },
+    "gtmutils:mv_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "pattern",
+          "rationale": "MV tier machine part stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:omnibreaker": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Handheld mining tool with energy and insta-mine"
+        },
+        "primary_uses": {
+          "values": [
+            "Instant-mining any block"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says 'insta-mine ANYTHING'"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Primary tool, always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for mining"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "named",
+          "evidence": "Tooltip says 'Tier §dLuV'",
+          "rationale": "Display name and tooltip state LuV tier"
+        }
+      }
+    },
+    "gtmutils:pterb_machine": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed block for wireless energy transfer, no UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Wireless power transfer between energy networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes wireless energy bridging"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy transfer subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:quantum_coolant_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of coolant used to refill PTERB machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Coolant for the PTERB wireless transformer"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says needed for PTERB function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up or maintaining PTERB"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in maintaining wireless power network"
+        }
+      }
+    },
+    "gtmutils:sterile_cleaning_maintenance_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for automatic maintenance"
+        },
+        "primary_uses": {
+          "values": [
+            "Automatic cleaning maintenance for GT multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes cleaning multiblocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed as part of multiblock, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated multiblock maintenance"
+        }
+      }
+    },
+    "gtmutils:uhv_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:ulv_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:uv_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:uv_components"
+          ],
+          "signal": "pattern",
+          "rationale": "UV tier machine part stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:zpm_auto_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine with UI for charging items"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging items automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "pattern",
+          "rationale": "ZPM tier machine part stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "pattern",
+          "rationale": "Charger subsystem in GT"
+        }
+      }
+    },
+    "gtmutils:zpm_power_unit": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable energy storage carried for powering tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable energy storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows stored EU and tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried to recharge tools on the go"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to automate tool charging"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:zpm_components"
+          ],
+          "signal": "pattern",
+          "rationale": "ZPM tier energy storage stored with voltage components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Large battery subsystem in GT"
+        }
+      }
+    },
+    "guideme:guide": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Reference book players collect and read"
+        },
+        "primary_uses": {
+          "values": [
+            "Reading pack documentation and recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide book for the modpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept handy but not always in hotbar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        }
+      }
+    },
+    "hangglider:glider_framework": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for hang glider"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting the hang glider"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in shaped recipe for hang glider"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept when building the glider"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        }
+      }
+    },
+    "hangglider:glider_wing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for hang glider"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting the hang glider"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in shaped recipe for hang glider"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept when building the glider"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        }
+      }
+    },
+    "hangglider:hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wearable glider for flying/gliding, not armor"
+        },
+        "primary_uses": {
+          "values": [
+            "Gliding and slow falling when in the air"
+          ],
+          "signal": "inferred",
+          "rationale": "Hang glider mechanics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when exploring or flying"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "Component states common"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration",
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for traveling and exploring"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

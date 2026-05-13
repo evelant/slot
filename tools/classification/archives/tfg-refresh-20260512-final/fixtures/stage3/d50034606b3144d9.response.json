@@ -1,0 +1,971 @@
+{
+  "items": {
+    "gtceu:yttrium_barium_cuprate_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cable placed for UV energy transport network"
+        },
+        "material_family": {
+          "value": "yttrium_barium_cuprate",
+          "signal": "pattern",
+          "evidence": "id pattern yttrium_barium_cuprate",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when wiring machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Connecting UV machines",
+            "Energy transport cables"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is energy transfer"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "component rarity field"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu cable subsystem"
+        }
+      }
+    },
+    "gtceu:yttrium_barium_cuprate_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:rods tag",
+          "rationale": "rod used for crafting components"
+        },
+        "material_family": {
+          "value": "yttrium_barium_cuprate",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in batches for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced components",
+            "Making bolts and screws"
+          ],
+          "signal": "inferred",
+          "rationale": "common crafting intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:yttrium_barium_cuprate_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:screws tag",
+          "rationale": "screw for assembling machines"
+        },
+        "material_family": {
+          "value": "yttrium_barium_cuprate",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for machine assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Assembling machine parts",
+            "Fastening components"
+          ],
+          "signal": "inferred",
+          "rationale": "fastener component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:yttrium_barium_cuprate_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "cable placed for energy transport"
+        },
+        "material_family": {
+          "value": "yttrium_barium_cuprate",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when wiring machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Connecting UV machines",
+            "Energy transport cables"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is energy transfer"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu cable subsystem"
+        }
+      }
+    },
+    "gtceu:yttrium_barium_cuprate_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "wire placed for energy transport"
+        },
+        "material_family": {
+          "value": "yttrium_barium_cuprate",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when wiring machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Connecting UV machines",
+            "Energy transport wires"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is energy transfer"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu cable subsystem"
+        }
+      }
+    },
+    "gtceu:yttrium_barium_cuprate_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:springs tag",
+          "rationale": "spring used in machines"
+        },
+        "material_family": {
+          "value": "yttrium_barium_cuprate",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for mechanical assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mechanical components",
+            "Providing tension"
+          ],
+          "signal": "inferred",
+          "rationale": "spring in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:yttrium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block, not a container"
+        },
+        "material_family": {
+          "value": "yttrium",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact yttrium storage",
+            "Crafting yttrium parts"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block and ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:yttrium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten metal for transport/casting"
+        },
+        "material_family": {
+          "value": "yttrium",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "fluid material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when processing molten metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting molten yttrium",
+            "Casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds molten yttrium fluid"
+        }
+      }
+    },
+    "gtceu:yttrium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust used in blending and smelting"
+        },
+        "material_family": {
+          "value": "yttrium",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for alloy mixing"
+        },
+        "primary_uses": {
+          "values": [
+            "Mixing alloys",
+            "Smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "common dust processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:yttrium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "ingot for crafting"
+        },
+        "material_family": {
+          "value": "yttrium",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in stacks for smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting yttrium components",
+            "Storing yttrium metal"
+          ],
+          "signal": "inferred",
+          "rationale": "basic metal form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:yttrium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "nugget for fine crafting"
+        },
+        "material_family": {
+          "value": "yttrium",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "small denom, carried rarely"
+        },
+        "primary_uses": {
+          "values": [
+            "Precise alloying",
+            "Minor repairs"
+          ],
+          "signal": "inferred",
+          "rationale": "small metal units"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zeolite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust for processing into ingots"
+        },
+        "material_family": {
+          "value": "zeolite",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smelting zeolite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into zeolite ingots",
+            "Chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zeolite_indicator": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "surface rock collected as ore indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up while prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Finding zeolite ore deposits",
+            "Decorative surface rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "prospecting aid and collectible"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block for smelting"
+        },
+        "material_family": {
+          "value": "zeolite",
+          "signal": "named",
+          "evidence": "stage2 material_family",
+          "rationale": "ore material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining zeolite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into zeolite ingots",
+            "Crushing for dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zero_point_module": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "portable high-capacity energy storage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when needing big power"
+        },
+        "primary_uses": {
+          "values": [
+            "Powering high-tier machines",
+            "Portable energy buffer"
+          ],
+          "signal": "inferred",
+          "rationale": "energy storage item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu battery subsystem"
+        },
+        "container_state": {
+          "values": [
+            "slot:energy_container"
+          ],
+          "signal": "inferred",
+          "rationale": "stores EU energy"
+        }
+      }
+    },
+    "gtceu:zeron_100_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block"
+        },
+        "material_family": {
+          "value": "zeron_100",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact zeron-100 storage",
+            "Crafting zeron-100 parts"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block and ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zeron_100_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten zeron-100"
+        },
+        "material_family": {
+          "value": "zeron_100",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "fluid material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting molten zeron-100",
+            "Casting into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds molten zeron-100"
+        }
+      }
+    },
+    "gtceu:zeron_100_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust for alloying"
+        },
+        "material_family": {
+          "value": "zeron_100",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for mixing"
+        },
+        "primary_uses": {
+          "values": [
+            "Mixing zeron-100 alloys",
+            "Smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "dust processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zeron_100_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "ingot for crafting"
+        },
+        "material_family": {
+          "value": "zeron_100",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting zeron-100 components",
+            "Storing zeron-100"
+          ],
+          "signal": "inferred",
+          "rationale": "basic metal form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zeron_100_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "nugget for fine crafting"
+        },
+        "material_family": {
+          "value": "zeron_100",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "small denom, carried rarely"
+        },
+        "primary_uses": {
+          "values": [
+            "Fine zeron-100 crafting",
+            "Alloy additions"
+          ],
+          "signal": "inferred",
+          "rationale": "small metal units"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zeron_100_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:plates tag",
+          "rationale": "plate for machine casings"
+        },
+        "material_family": {
+          "value": "zeron_100",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for machine building"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machine casings",
+            "Advanced smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "common plate use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zinc_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:bolts tag",
+          "rationale": "bolt for assembling machines"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for machine assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Fastening machine parts",
+            "Assembling components"
+          ],
+          "signal": "inferred",
+          "rationale": "fastener component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zinc_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten zinc"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "fluid material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting molten zinc",
+            "Casting zinc parts"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds molten zinc"
+        }
+      }
+    },
+    "gtceu:zinc_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate smithing form"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stack size 4, carried when smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "Smithing into plates",
+            "Welding"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    },
+    "gtceu:zinc_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust for alloying"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id pattern",
+          "rationale": "material from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for brass mixing"
+        },
+        "primary_uses": {
+          "values": [
+            "Mixing brass and alloys",
+            "Smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "common dust use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "component rarity field"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:yttrium_barium_cuprate_quadruple_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "tag forge:quadruple_wires indicates wire form"
+    },
+    {
+      "item": "gtceu:yttrium_barium_cuprate_single_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "tag forge:single_cables indicates cable form"
+    },
+    {
+      "item": "gtceu:yttrium_barium_cuprate_single_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "tag forge:single_wires indicates wire form"
+    },
+    {
+      "item": "gtceu:yttrium_barium_cuprate_screw",
+      "facet": "form",
+      "value": "screw",
+      "rationale": "tag forge:screws indicates screw form"
+    },
+    {
+      "item": "gtceu:yttrium_barium_cuprate_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "tag forge:springs indicates spring form"
+    },
+    {
+      "item": "gtceu:zinc_bolt",
+      "facet": "form",
+      "value": "bolt",
+      "rationale": "tag forge:bolts indicates bolt form"
+    },
+    {
+      "item": "gtceu:yttrium_barium_cuprate_quadruple_wire",
+      "facet": "required_tool",
+      "value": "wire_cutter",
+      "rationale": "block tag forge:mineable/wire_cutter"
+    },
+    {
+      "item": "gtceu:yttrium_barium_cuprate_single_cable",
+      "facet": "required_tool",
+      "value": "wire_cutter",
+      "rationale": "block tag forge:mineable/wire_cutter"
+    },
+    {
+      "item": "gtceu:yttrium_barium_cuprate_single_wire",
+      "facet": "required_tool",
+      "value": "wire_cutter",
+      "rationale": "block tag forge:mineable/wire_cutter"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

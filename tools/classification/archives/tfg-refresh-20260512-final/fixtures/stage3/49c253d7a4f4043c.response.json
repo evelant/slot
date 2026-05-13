@@ -1,0 +1,1447 @@
+{
+  "items": {
+    "tfg:food/freeze_dried/pineapple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable food item, player eats for hunger."
+        },
+        "primary_uses": {
+          "values": [
+            "Lightweight space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged space_food, freeze-dried fruit."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried on space trips, not daily."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common rarity from component."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried process."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Tagged space food, goes with space rations."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/plum": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable food."
+        },
+        "primary_uses": {
+          "values": [
+            "Lightweight space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged space_food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Dried fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food storage."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/popped_chorus_fruit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack from End fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food, popped chorus."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Fruit derivative."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/pumpkin_chunks": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack from pumpkin"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged space_food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Pumpkin chunks, vegetable."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/raspberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Berry fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/red_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Dried apple."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/red_grapes": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Grapes fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/shadow_berry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Berry fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/snowberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Berry fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/strawberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Berry fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/white_grapes": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Grapes fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/freeze_dried/wintergreen_berry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Eatable."
+        },
+        "primary_uses": {
+          "values": [
+            "Space snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Berry fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dried"
+          ],
+          "signal": "inferred",
+          "rationale": "Freeze-dried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/hamburger": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Prepared meal, eaten."
+        },
+        "primary_uses": {
+          "values": [
+            "Hearty prepared meal"
+          ],
+          "signal": "inferred",
+          "rationale": "High nutrition sandwich."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Eaten when available, not daily carry."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "Crafted via advanced shaped."
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked sandwich."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "General food storage."
+        }
+      }
+    },
+    "tfg:food/ice_soup": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible food with effect."
+        },
+        "primary_uses": {
+          "values": [
+            "Cooling soup with temperature effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides strong cooling."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Situational use in hot biomes."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Soup, prepared meal."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed directly."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "General foods."
+        }
+      }
+    },
+    "tfg:food/lavacado": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible fruit."
+        },
+        "primary_uses": {
+          "values": [
+            "Versatile cooking ingredient and snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes, also eaten raw."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested from trees, carried when needed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Avocado-like fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking and eaten raw."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw fruit."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "Fruit storage."
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredient in many cooking recipes."
+        }
+      }
+    },
+    "tfg:food/magmango": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible fruit."
+        },
+        "primary_uses": {
+          "values": [
+            "Versatile fruit for cooking and eating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes and eaten raw."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested from trees."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Mango-like fruit."
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient and direct food."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw fruit."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "Fruit storage."
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking."
+        }
+      }
+    },
+    "tfg:food/meal_bag": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Portable meal."
+        },
+        "primary_uses": {
+          "values": [
+            "Portable meal for space travel"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged space_food, high nutrition."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Space food."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Prepared meal bag."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/space_food"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:space_food",
+          "rationale": "Space food."
+        }
+      }
+    },
+    "tfg:food/oatmeal": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Prepared food."
+        },
+        "primary_uses": {
+          "values": [
+            "Warm grain breakfast"
+          ],
+          "signal": "inferred",
+          "rationale": "High saturation meal."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Eaten when available."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked oatmeal."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "General foods."
+        }
+      }
+    },
+    "tfg:food/popcorn": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Snack food."
+        },
+        "primary_uses": {
+          "values": [
+            "Light snack"
+          ],
+          "signal": "inferred",
+          "rationale": "Low nutrition snack."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Occasional snack."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Prepared snack."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct eating."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "General foods."
+        }
+      }
+    },
+    "tfg:food/poutine": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Prepared meal."
+        },
+        "primary_uses": {
+          "values": [
+            "Warming comfort food"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides warming effect."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Eaten when available."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked dish."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "General foods."
+        }
+      }
+    },
+    "tfg:food/raw_beer_battered_cheese_curds": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible food item."
+        },
+        "primary_uses": {
+          "values": [
+            "Raw cheese snack for cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be eaten or used in poutine?"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate ingredient, not commonly carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:cheese"
+          ],
+          "signal": "inferred",
+          "rationale": "Cheese curds."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible raw, may be used in recipes."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw food."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "General foods."
+        }
+      }
+    },
+    "tfg:food/raw_birt": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Raw meat, edible."
+        },
+        "primary_uses": {
+          "values": [
+            "Raw meat for cooking with 'Birt'd' effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes, also edible with unique effect."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mob drop, not normally carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meat."
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient and edible (with effect)."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meat."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meat storage."
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking recipes."
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in soups and stews."
+        }
+      }
+    },
+    "tfg:food/raw_bison_meat": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Raw meat."
+        },
+        "primary_uses": {
+          "values": [
+            "Raw meat for cooking and burgers"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mob drop, not commonly carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meat."
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient, but also edible with hunger."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meat storage."
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking."
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in soups."
+        }
+      }
+    },
+    "tfg:food/raw_burger_patty": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Processed raw meat."
+        },
+        "primary_uses": {
+          "values": [
+            "Intermediate for hamburgers"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted into hamburger."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate item, not carried often."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "Crafted from meat."
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Meat patty."
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes, edible raw."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw patty."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meat category."
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking."
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in pot recipes."
+        }
+      }
+    },
+    "tfg:food/raw_crawlermari": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Raw meat."
+        },
+        "primary_uses": {
+          "values": [
+            "Exotic raw meat for cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in takoyaki and other recipes."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mob drop, not carried often."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity:common",
+          "rationale": "Common."
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meat."
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient and edible."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meat storage."
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking."
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in soups and takoyaki."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

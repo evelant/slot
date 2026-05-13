@@ -1,0 +1,1268 @@
+{
+  "items": {
+    "gtceu:steel_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires",
+          "rationale": "energy cable for power networks"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name and tags"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT power cabling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common GT component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "energy cable subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shapeless outputs",
+          "rationale": "only from crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "carries EV tier energy"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows EV voltage"
+        }
+      }
+    },
+    "gtceu:steel_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "suffix _pickaxe",
+          "rationale": "standard mining tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel pickaxe"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is mining"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential mining tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe exists",
+          "rationale": "crafted on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe function"
+        }
+      }
+    },
+    "gtceu:steel_pickaxe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:pickaxe_heads",
+          "rationale": "crafting component for pickaxe"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft mining tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable component, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe output",
+          "rationale": "produced by smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel pickaxe"
+          ],
+          "signal": "inferred",
+          "rationale": "component for tool"
+        }
+      }
+    },
+    "gtceu:steel_pipe_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pipe enclosure block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in fluid transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building piping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe system component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "only from crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "enclosing steel pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for pipe network"
+        }
+      }
+    },
+    "gtceu:steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "refined metal sheet"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name and tag"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for many machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes (anvil, hammer)",
+          "rationale": "produced via smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "widely used intermediate"
+        }
+      }
+    },
+    "gtceu:steel_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables",
+          "rationale": "energy cable block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "transmits EV energy at 8 amps"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip specs"
+        }
+      }
+    },
+    "gtceu:steel_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_fluid_pipes",
+          "rationale": "fluid transport block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for fluid networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "crafted from plates"
+        },
+        "primary_uses": {
+          "values": [
+            "transports fluids at 200 mB/t"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip transfer rate"
+        }
+      }
+    },
+    "gtceu:steel_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires",
+          "rationale": "energy wire block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "power transmission"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable/wire subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shapeless outputs",
+          "rationale": "produced by combining wires"
+        },
+        "primary_uses": {
+          "values": [
+            "carries EV energy at 8 amps"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip specs"
+        }
+      }
+    },
+    "gtceu:steel_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rings",
+          "rationale": "small machine component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable, moderate use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe output",
+          "rationale": "produced by smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting chainsaws and turbines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        }
+      }
+    },
+    "gtceu:steel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "common metal rod"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for tools and machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "very common crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil and cutting recipes",
+          "rationale": "produced via smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machine frames"
+          ],
+          "signal": "inferred",
+          "rationale": "widely used intermediate"
+        }
+      }
+    },
+    "gtceu:steel_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rotors",
+          "rationale": "machine component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pumps and turbines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common part"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "produced by assembling"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pumps and fans"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        }
+      }
+    },
+    "gtceu:steel_saw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/saws",
+          "rationale": "crafting saw tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to cut blocks in recipes"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential crafting tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "stored with other artisan tools"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "crafted on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting lumber and glass"
+          ],
+          "signal": "inferred",
+          "rationale": "saw function"
+        }
+      }
+    },
+    "gtceu:steel_saw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:saw_heads",
+          "rationale": "saw component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft saw"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe output",
+          "rationale": "produced by smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel saw"
+          ],
+          "signal": "inferred",
+          "rationale": "component for tool"
+        }
+      }
+    },
+    "gtceu:steel_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "small fastener"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine covers"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable, moderate use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fastener"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil and lathe recipes",
+          "rationale": "produced via smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pumps and power units"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        }
+      }
+    },
+    "gtceu:steel_screwdriver": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/screwdrivers",
+          "rationale": "configuration tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "adjusting GT covers and machines"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential for machine setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "stored with artisan tools"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "crafted on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "adjusting machine covers"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says adjusts covers"
+        }
+      }
+    },
+    "gtceu:steel_screwdriver_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screwdriver_tips",
+          "rationale": "screwdriver component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft screwdriver"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe output",
+          "rationale": "produced by smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel screwdriver"
+          ],
+          "signal": "inferred",
+          "rationale": "component for tool"
+        }
+      }
+    },
+    "gtceu:steel_scythe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/scythes",
+          "rationale": "farming/combat tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvesting and tilling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized farming tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "crafted on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting crops in area"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says Harvester"
+        }
+      }
+    },
+    "gtceu:steel_scythe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:scythe_heads",
+          "rationale": "scythe component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft farming tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe output",
+          "rationale": "produced by smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel scythe"
+          ],
+          "signal": "inferred",
+          "rationale": "component for tool"
+        }
+      }
+    },
+    "gtceu:steel_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:shovels",
+          "rationale": "digging tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel tool"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging dirt and gravel"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential tool for terrain"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "crafted on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt, gravel, snow"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel function"
+        }
+      }
+    },
+    "gtceu:steel_shovel_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:shovel_heads",
+          "rationale": "shovel component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft digging tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe output",
+          "rationale": "produced by smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "component for tool"
+        }
+      }
+    },
+    "gtceu:steel_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables",
+          "rationale": "basic energy cable"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "power transmission"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "transmits EV energy at 2 amps"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip specs"
+        }
+      }
+    },
+    "gtceu:steel_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires",
+          "rationale": "basic energy wire"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "power transmission"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable/wire subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "produced by pressing"
+        },
+        "primary_uses": {
+          "values": [
+            "carries EV energy at 2 amps"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip specs"
+        }
+      }
+    },
+    "gtceu:steel_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag forge:small_fluid_pipes",
+          "rationale": "small fluid pipe"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for plumbing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "crafted from plates"
+        },
+        "primary_uses": {
+          "values": [
+            "transports fluids in tight spaces"
+          ],
+          "signal": "inferred",
+          "rationale": "small pipe size"
+        }
+      }
+    },
+    "gtceu:steel_spade": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/spades",
+          "rationale": "large-area digging tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel tool"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digging large areas"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized digging tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "crafted on anvil"
+        },
+        "primary_uses": {
+          "values": [
+            "digging 3x3 area of dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says 3x3x1 area"
+        }
+      }
+    },
+    "gtceu:steel_spade_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:spade_heads",
+          "rationale": "spade component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "steel in name"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft digging tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stackable component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "anvil recipe output",
+          "rationale": "produced by smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel spade"
+          ],
+          "signal": "inferred",
+          "rationale": "component for tool"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

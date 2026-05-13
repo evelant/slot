@@ -1,0 +1,999 @@
+{
+  "items": {
+    "gtceu:ender_fluid_link_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GT cover for wireless fluid transport, attaches to machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Wireless fluid transport via cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states wireless fluid transport as cover"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized cover not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Component data shows common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for fluid logistics automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT cover system"
+        }
+      }
+    },
+    "gtceu:ender_item_link_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GT cover for wireless item transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Wireless item transport via cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Similar to fluid link; item transport"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized cover"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity in data"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item logistics automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "inferred",
+          "rationale": "GT cover subsystem"
+        }
+      }
+    },
+    "gtceu:ender_pearl_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed ender pearl, not a container"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact ender pearl storage",
+            "Craft plates and facades"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for storage and crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Bulk storage item, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "ender_pearl",
+          "signal": "pattern",
+          "rationale": "Tag forge:storage_blocks/ender_pearl"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Compact storage of material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Vanilla-style storage block"
+        }
+      }
+    },
+    "gtceu:ender_pearl_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined plate material"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft wireless boosters and shields",
+            "Further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe examples show use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "ender_pearl",
+          "signal": "pattern",
+          "rationale": "Tag forge:plates/ender_pearl"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Processed material"
+        }
+      }
+    },
+    "gtceu:ender_redstone_link_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GT cover for wireless redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Wireless redstone control via cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Redstone transmission cover"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized cover"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Redstone signal covers"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "inferred",
+          "rationale": "GT cover subsystem"
+        }
+      }
+    },
+    "gtceu:endstone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust from endstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "General crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "endstone",
+          "signal": "inferred",
+          "rationale": "Material origin"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust"
+        }
+      }
+    },
+    "gtceu:energium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate dust for lapotron"
+        },
+        "primary_uses": {
+          "values": [
+            "Used in lapotron dust recipe"
+          ],
+          "signal": "inferred",
+          "rationale": "Mixing recipe consumption"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "energium",
+          "signal": "inferred",
+          "rationale": "Compound name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed dust"
+        }
+      }
+    },
+    "gtceu:energy_cluster": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "UV rechargeable battery component"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity UV battery",
+            "Power GT machines and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip reusable battery, UV tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "High-tier battery, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag gtceu:batteries"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV voltage tier components"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores energy for powering machines"
+        }
+      }
+    },
+    "gtceu:energy_crystal": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "HV rechargeable battery component"
+        },
+        "primary_uses": {
+          "values": [
+            "HV battery for tools and machines",
+            "Reusable energy source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip reusable battery, HV tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mid-tier battery carried for charging tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag gtceu:batteries/hv"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV voltage tier components"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores energy for powering machines"
+        }
+      }
+    },
+    "gtceu:energy_detector_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GT cover that outputs energy as redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Detect energy level via cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: gives energy amount as redstone"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized cover"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Outputs redstone signal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "inferred",
+          "rationale": "GT cover subsystem"
+        }
+      }
+    },
+    "gtceu:energy_module": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ZPM rechargeable battery component"
+        },
+        "primary_uses": {
+          "values": [
+            "ZPM battery for high-tier machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip reusable battery, ZPM tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "High-tier battery, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag gtceu:batteries/zpm"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM voltage tier components"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores energy for powering machines"
+        }
+      }
+    },
+    "gtceu:engine_intake_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural block for engine multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Build GT engine multiblocks",
+            "Decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing block in engine structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building multiblocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT multiblock system"
+        }
+      }
+    },
+    "gtceu:engraved_crystal_chip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate circuit component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft advanced circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: needed for circuits"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized component, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit component"
+        }
+      }
+    },
+    "gtceu:engraved_lapotron_crystal_chip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate lapotron circuit component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft advanced lapotron circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Similar to engraved crystal chip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "lapotron",
+          "signal": "inferred",
+          "rationale": "Based on name"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Circuit component"
+        }
+      }
+    },
+    "gtceu:enriched_bacterial_sludge_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used as tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport enriched bacterial sludge",
+            "Used in GT processes"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized fluid, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "bacterial_sludge",
+          "signal": "inferred",
+          "rationale": "Material name"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed enriched naquadah, not container"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact enriched naquadah storage",
+            "Craft plates and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block for late-game material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Late-game bulk item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "pattern",
+          "rationale": "Tag forge:storage_blocks/enriched_naquadah"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Material storage block"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport molten enriched naquadah",
+            "Used in advanced alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "High-temperature fluid transport"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized fluid bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "inferred",
+          "rationale": "Material name"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of enriched naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "Alloying input",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing and dust assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts/enriched_naquadah"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Processed material dust"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Thin foil form of enriched naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "Used in advanced component crafting",
+            "Rolling process"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe usage: rolling and crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "pattern",
+          "rationale": "Tag forge:foils/enriched_naquadah"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed material foil"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ingot form of enriched naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "Basic component for advanced crafting",
+            "Smelted into plates and rods"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many rolling/cutting recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Late-game material ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "pattern",
+          "rationale": "Tag forge:ingots/enriched_naquadah"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Processed material ingot"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Nugget form of enriched naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "Small amount for precise crafting",
+            "Radiation source"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows radiation effect"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Small piece, rarely carried in stacks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "pattern",
+          "rationale": "Tag forge:nuggets/enriched_naquadah"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "rationale": "Nugget storage group"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Plate form of enriched naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "Advanced component crafting",
+            "Used in machine casing"
+          ],
+          "signal": "inferred",
+          "rationale": "Cut from blocks, rolled from ingots"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate plate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "pattern",
+          "rationale": "Tag forge:plates/enriched_naquadah"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Processed material plate"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Rod form of enriched naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "Tool handle crafting (many recipes)",
+            "Structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many tool crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate rod"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "pattern",
+          "rationale": "Tag forge:rods/enriched_naquadah"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Processed material rod"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_solution_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of naquadah solution"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport enriched naquadah solution",
+            "Used in chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport, likely used in GT processes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized fluid bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah",
+          "signal": "inferred",
+          "rationale": "Material name"
+        }
+      }
+    },
+    "gtceu:enriched_naquadah_sulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust of naquadah sulfate"
+        },
+        "primary_uses": {
+          "values": [
+            "Intermediate for naquadah processing",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dust processing chain"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Intermediate dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "enriched_naquadah_sulfate",
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts/enriched_naquadah_sulfate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Processed material dust"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:enriched_naquadah_foil",
+      "facet": "form",
+      "value": "foil",
+      "rationale": "Stage2 missing form; tag forge:foils confirms foil shape."
+    }
+  ]
+}

@@ -1,0 +1,1615 @@
+{
+  "items": {
+    "gtceu:refined_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts and ingots"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs; constant ore hauling in GTCEu"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Smelted into metal ingots",
+            "Source of molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain for this ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts and ingots"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs; constant ore hauling in GTCEu"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Smelted into metal ingots",
+            "Source of molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain for this ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of rare earths/monazite"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of naquadah"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of neodymium"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of quartz/nether quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts/ingots"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Smelted into nickel ingots",
+            "Source of nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of oil sands (hydrocarbons)"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of olivine (gem)"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of opal (gem)"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of palladium"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts/ingots"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Smelted into nickel ingots",
+            "Source of nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of uranium/pitchblende"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts/ingots"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Smelted into platinum ingots",
+            "Source of platinum"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of caesium/pollucite"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of molybdenum/powellite"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_pyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts/ingots"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Smelted into cast iron ingots",
+            "Source of iron/pyrite"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_pyrochlore_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of niobium/pyrochlore"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_pyrolusite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts/ingots"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Smelted into manganese ingots",
+            "Source of manganese/pyrolusite"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_pyrope_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of pyrope (garnet)"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_quartzite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of quartz/quartzite"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_realgar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of arsenic/realgar"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_red_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into dusts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of red garnet (gem)"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into redstone dust"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into redstone dust via milling/pressing",
+            "Source of redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    },
+    "gtceu:refined_rock_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block mined for processing into salt dust"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity common",
+          "rationale": "Standard ore rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Ground into dust via milling/pressing",
+            "Source of rock salt/sylvite"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore is obtained by mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined ore blocks stored before processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore form awaiting processing"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits in any normal chest slot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks and stored"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

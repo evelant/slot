@@ -1,0 +1,908 @@
+{
+  "items": {
+    "tfg:tiny_zirconium_diboride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny dust used as material ingredient"
+        },
+        "material_family": {
+          "value": "zirconium_diboride",
+          "signal": "inferred",
+          "rationale": "compound name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting ingredient, not daily carry"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for zirconium diboride"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "id and tag"
+        }
+      }
+    },
+    "tfg:tiny_zirconium_tetrachloride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny dust used as material ingredient"
+        },
+        "material_family": {
+          "value": "zirconium_tetrachloride",
+          "signal": "inferred",
+          "rationale": "compound name in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting ingredient, not daily carry"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for zirconium tetrachloride"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "id and tag"
+        }
+      }
+    },
+    "tfg:titanium_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as a durable construction block"
+        },
+        "material_family": {
+          "value": "titanium_concrete",
+          "signal": "inferred",
+          "rationale": "id and tag tfg:titanium_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during construction, not carried daily"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with reinforced concrete",
+            "Crafting decorative concrete variants",
+            "Use as machine facade"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes include polishing, stonecutting, facades"
+        }
+      }
+    },
+    "tfg:titanium_concrete_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick variant of concrete block"
+        },
+        "material_family": {
+          "value": "titanium_concrete",
+          "signal": "inferred",
+          "rationale": "sibling of titanium_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building",
+            "Plated block crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many plated block recipes and stonecutting"
+        }
+      }
+    },
+    "tfg:titanium_concrete_bricks_small": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "small brick variant of concrete block"
+        },
+        "material_family": {
+          "value": "titanium_concrete",
+          "signal": "inferred",
+          "rationale": "sibling of titanium_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building",
+            "Stonecutting from concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecutting recipes"
+        }
+      }
+    },
+    "tfg:titanium_concrete_bricks_square": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "square brick variant of concrete block"
+        },
+        "material_family": {
+          "value": "titanium_concrete",
+          "signal": "inferred",
+          "rationale": "sibling of titanium_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building",
+            "Stonecutting from concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecutting recipes"
+        }
+      }
+    },
+    "tfg:titanium_concrete_tile": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "tile variant of concrete block"
+        },
+        "material_family": {
+          "value": "titanium_concrete",
+          "signal": "inferred",
+          "rationale": "sibling of titanium_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building",
+            "Chiseled from bricks",
+            "Stonecutting"
+          ],
+          "signal": "inferred",
+          "rationale": "chisel and stonecutting recipes"
+        }
+      }
+    },
+    "tfg:titanium_concrete_tile_small": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "small tile variant of concrete block"
+        },
+        "material_family": {
+          "value": "titanium_concrete",
+          "signal": "inferred",
+          "rationale": "sibling of titanium_concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decorative variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building",
+            "Stonecutting from concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecutting recipes"
+        }
+      }
+    },
+    "tfg:titanium_exhaust_vent": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "machine component for exhaust, no UI"
+        },
+        "material_family": {
+          "value": "titanium",
+          "signal": "inferred",
+          "rationale": "id prefix titanium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common machine part"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in a multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Part of multiblock exhaust system"
+          ],
+          "signal": "inferred",
+          "rationale": "name and block context"
+        }
+      }
+    },
+    "tfg:titanium_hull_reinforcement": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "tag immersive_aircraft:upgrades",
+          "rationale": "aircraft durability upgrade"
+        },
+        "material_family": {
+          "value": "titanium",
+          "signal": "inferred",
+          "rationale": "id prefix titanium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable upgrade"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only when upgrading aircraft"
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade aircraft durability by 200%"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip text"
+        }
+      }
+    },
+    "tfg:titanium_landing_gear": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "tag immersive_aircraft:upgrades",
+          "rationale": "aircraft takeoff speed upgrade"
+        },
+        "material_family": {
+          "value": "titanium",
+          "signal": "inferred",
+          "rationale": "id prefix titanium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable upgrade"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only when upgrading aircraft"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase aircraft takeoff speed by 110%"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip text"
+        }
+      }
+    },
+    "tfg:titanium_plated_airplane_propeller": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "tag immersive_aircraft:upgrades",
+          "rationale": "aircraft air friction upgrade"
+        },
+        "material_family": {
+          "value": "titanium",
+          "signal": "inferred",
+          "rationale": "id prefix titanium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable upgrade"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only when upgrading aircraft"
+        },
+        "primary_uses": {
+          "values": [
+            "Reduce air friction by 100% for aircraft"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip text"
+        }
+      }
+    },
+    "tfg:tmos_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container used as tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving liquids"
+        },
+        "primary_uses": {
+          "values": [
+            "Contain and transport tetramethoxysilane"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and fluid state"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _bucket",
+          "rationale": "filled bucket container"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid container"
+        }
+      }
+    },
+    "tfg:tpaoh_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container used as tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving liquids"
+        },
+        "primary_uses": {
+          "values": [
+            "Contain and transport tetrapropylammonium hydroxide"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and fluid state"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _bucket",
+          "rationale": "filled bucket container"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid container"
+        }
+      }
+    },
+    "tfg:trichlorosilane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container used as tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving liquids"
+        },
+        "primary_uses": {
+          "values": [
+            "Contain and transport trichlorosilane"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and fluid state"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _bucket",
+          "rationale": "filled bucket container"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid container"
+        }
+      }
+    },
+    "tfg:trideuteroiodomethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container used as tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving liquids"
+        },
+        "primary_uses": {
+          "values": [
+            "Contain and transport trideuteroiodomethane"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and fluid state"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _bucket",
+          "rationale": "filled bucket container"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid container"
+        }
+      }
+    },
+    "tfg:triglyceride_oil_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container used as tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving liquids"
+        },
+        "primary_uses": {
+          "values": [
+            "Contain and transport triglyceride oil"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and fluid state"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _bucket",
+          "rationale": "filled bucket container"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid container"
+        }
+      }
+    },
+    "tfg:trimethyl_borate_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid container used as tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving liquids"
+        },
+        "primary_uses": {
+          "values": [
+            "Contain and transport trimethyl borate"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and fluid state"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _bucket",
+          "rationale": "filled bucket container"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid container"
+        }
+      }
+    },
+    "tfg:trace_catalyst_salt_e_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust used as catalyst ingredient"
+        },
+        "material_family": {
+          "value": "trace_catalyst_salt_e",
+          "signal": "inferred",
+          "rationale": "id and tag forge:dusts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Catalyst component in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "name and recipe context"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "tfg:trachyte_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as support beam in mining tunnels"
+        },
+        "material_family": {
+          "value": "trachyte",
+          "signal": "inferred",
+          "rationale": "id prefix trachyte"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when mining"
+        },
+        "primary_uses": {
+          "values": [
+            "Support cave walls, prevent collapse"
+          ],
+          "signal": "inferred",
+          "rationale": "tfc support beam functionality"
+        }
+      }
+    },
+    "tfg:trapdoor_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable tool for casting trapdoors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted mold"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only when casting"
+        },
+        "primary_uses": {
+          "values": [
+            "Cast trapdoors from molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "name and casting mold tag"
+        },
+        "container_state": {
+          "values": [
+            "slot:reusable_mold"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:casting_molds",
+          "rationale": "casting mold tag"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:casting_molds",
+          "rationale": "mold storage bucket"
+        }
+      }
+    },
+    "tfg:travertine_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as support beam in mining tunnels"
+        },
+        "material_family": {
+          "value": "travertine",
+          "signal": "inferred",
+          "rationale": "id prefix travertine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when mining"
+        },
+        "primary_uses": {
+          "values": [
+            "Support cave walls, prevent collapse"
+          ],
+          "signal": "inferred",
+          "rationale": "tfc support beam functionality"
+        }
+      }
+    },
+    "tfg:treated_chipboard_composite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processing material used in mixing"
+        },
+        "material_family": {
+          "value": "chipboard_composite",
+          "signal": "inferred",
+          "rationale": "name from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted composite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Advanced crafting component for treated wood products"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing recipes for glues, resins"
+        }
+      }
+    },
+    "tfg:trowel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "guide page 'Trowel'",
+          "rationale": "tool for placing random blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "Place random blocks from hotbar",
+            "Works with Roads and Roofs filler items"
+          ],
+          "signal": "inferred",
+          "rationale": "guide page description"
+        }
+      }
+    },
+    "tfg:tuff_gravel": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "loose gravel found in world and used in crafting"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "inferred",
+          "rationale": "id prefix and block tags"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant world block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of tuff gravel for concrete mixing",
+            "Crafting aggregate",
+            "Landslide blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "many concrete powder recipes and landslide behavior"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gravel"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:gravel",
+          "rationale": "gravel storage bucket"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "tfg:tuff_gravel",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": [
+        "overworld_surface",
+        "crafted_only"
+      ],
+      "rationale": "Has a loot source (block drop) and landslide production, so not solely crafted.",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": []
+}

@@ -1,0 +1,2223 @@
+{
+  "items": {
+    "gtceu:tuff_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into neodymium"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this to get neodymium material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into nether quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for nether quartz"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for nickel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into oilsands"
+          ],
+          "signal": "inferred",
+          "rationale": "player processes this ore for oilsands"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into olivine"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for olivine"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into opal"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for opal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into palladium"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this for palladium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into pentlandite"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for nickel/iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into pitchblende"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for radioactive material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into platinum"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for platinum"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into pollucite"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for pollucite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into powellite"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for molybdenum"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_pyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into pyrite"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for sulfur/iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_pyrochlore_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into pyrochlore"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for niobium"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_pyrolusite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into pyrolusite"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for manganese"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_pyrope_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into pyrope"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for garnet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_quartzite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for quartz"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_realgar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into realgar"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for arsenic"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_red_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into red garnet"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for garnet"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into redstone material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for redstone dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_rock_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into rock salt"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for salt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_ruby_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ruby"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for ruby gem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into salt"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for halite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_saltpeter_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into saltpeter"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for saltpeter"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    },
+    "gtceu:tuff_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "ore block mined and processed into material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into sapphire"
+          ],
+          "signal": "inferred",
+          "rationale": "player smelts this ore for sapphire gem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "standard ore rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/tuff tag",
+          "rationale": "mined from tuff in caves"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines this ore"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting and blasting recipes present",
+          "rationale": "ore is smelted or blasted"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes consume this as input",
+          "rationale": "ore is input to smelting/blasting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore from the earth"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "unsmelted ore block stored with other raw ores"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "can be placed in chests"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "gtceu:tuff_neodymium_ore",
+      "facet": "material_family",
+      "current": "tuff_neodymium",
+      "suggested": "neodymium",
+      "rationale": "ore block's material is neodymium, not tuff_neodymium",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_nether_quartz_ore",
+      "facet": "material_family",
+      "current": "tuff_nether_quartz",
+      "suggested": "nether_quartz",
+      "rationale": "ore block's material is nether quartz",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_nickel_ore",
+      "facet": "material_family",
+      "current": "tuff_nickel",
+      "suggested": "nickel",
+      "rationale": "ore block's material is nickel",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_oilsands_ore",
+      "facet": "material_family",
+      "current": "tuff_oilsands",
+      "suggested": "oilsands",
+      "rationale": "ore block's material is oilsands",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_olivine_ore",
+      "facet": "material_family",
+      "current": "tuff_olivine",
+      "suggested": "olivine",
+      "rationale": "ore block's material is olivine",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_opal_ore",
+      "facet": "material_family",
+      "current": "tuff_opal",
+      "suggested": "opal",
+      "rationale": "ore block's material is opal",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_palladium_ore",
+      "facet": "material_family",
+      "current": "tuff_palladium",
+      "suggested": "palladium",
+      "rationale": "ore block's material is palladium",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_pentlandite_ore",
+      "facet": "material_family",
+      "current": "tuff_pentlandite",
+      "suggested": "pentlandite",
+      "rationale": "ore block's material is pentlandite",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_pitchblende_ore",
+      "facet": "material_family",
+      "current": "tuff_pitchblende",
+      "suggested": "pitchblende",
+      "rationale": "ore block's material is pitchblende",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_platinum_ore",
+      "facet": "material_family",
+      "current": "tuff_platinum",
+      "suggested": "platinum",
+      "rationale": "ore block's material is platinum",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_pollucite_ore",
+      "facet": "material_family",
+      "current": "tuff_pollucite",
+      "suggested": "pollucite",
+      "rationale": "ore block's material is pollucite",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_powellite_ore",
+      "facet": "material_family",
+      "current": "tuff_powellite",
+      "suggested": "powellite",
+      "rationale": "ore block's material is powellite",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_pyrite_ore",
+      "facet": "material_family",
+      "current": "tuff_pyrite",
+      "suggested": "pyrite",
+      "rationale": "ore block's material is pyrite",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_pyrochlore_ore",
+      "facet": "material_family",
+      "current": "tuff_pyrochlore",
+      "suggested": "pyrochlore",
+      "rationale": "ore block's material is pyrochlore",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_pyrolusite_ore",
+      "facet": "material_family",
+      "current": "tuff_pyrolusite",
+      "suggested": "pyrolusite",
+      "rationale": "ore block's material is pyrolusite",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_pyrope_ore",
+      "facet": "material_family",
+      "current": "tuff_pyrope",
+      "suggested": "pyrope",
+      "rationale": "ore block's material is pyrope",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_quartzite_ore",
+      "facet": "material_family",
+      "current": "tuff_quartzite",
+      "suggested": "quartzite",
+      "rationale": "ore block's material is quartzite",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_realgar_ore",
+      "facet": "material_family",
+      "current": "tuff_realgar",
+      "suggested": "realgar",
+      "rationale": "ore block's material is realgar",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_red_garnet_ore",
+      "facet": "material_family",
+      "current": "tuff_red_garnet",
+      "suggested": "red_garnet",
+      "rationale": "ore block's material is red garnet",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_redstone_ore",
+      "facet": "material_family",
+      "current": "tuff_redstone",
+      "suggested": "redstone",
+      "rationale": "ore block's material is redstone",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_rock_salt_ore",
+      "facet": "material_family",
+      "current": "tuff_rock_salt",
+      "suggested": "rock_salt",
+      "rationale": "ore block's material is rock salt",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_ruby_ore",
+      "facet": "material_family",
+      "current": "tuff_ruby",
+      "suggested": "ruby",
+      "rationale": "ore block's material is ruby",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_salt_ore",
+      "facet": "material_family",
+      "current": "tuff_salt",
+      "suggested": "salt",
+      "rationale": "ore block's material is salt",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_saltpeter_ore",
+      "facet": "material_family",
+      "current": "tuff_saltpeter",
+      "suggested": "saltpeter",
+      "rationale": "ore block's material is saltpeter",
+      "confidence": 1
+    },
+    {
+      "item": "gtceu:tuff_sapphire_ore",
+      "facet": "material_family",
+      "current": "tuff_sapphire",
+      "suggested": "sapphire",
+      "rationale": "ore block's material is sapphire",
+      "confidence": 1
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "fill_ins": []
+}

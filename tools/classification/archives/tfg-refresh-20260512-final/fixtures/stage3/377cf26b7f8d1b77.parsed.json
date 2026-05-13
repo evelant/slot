@@ -1,0 +1,1690 @@
+{
+  "items": {
+    "railways:track_create_andesite_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed as part of train railway network"
+        },
+        "primary_uses": {
+          "values": [
+            "Build narrow train railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses these to create train routes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building rail lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of train movement infrastructure"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id contains andesite"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "rails are part of Steam 'n' Rails trains"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other rail transport equipment"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only obtained via crafting/assembly"
+        }
+      }
+    },
+    "railways:track_create_andesite_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed as train track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build wide train railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of train infrastructure"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id contains andesite"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod trains"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with minecart/rail items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted via assembly"
+        }
+      }
+    },
+    "railways:track_crimson": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed train track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build crimson train railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of train movement"
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "pattern",
+          "evidence": "id contains crimson"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "rails from Steam 'n' Rails"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other rail items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted via assembly"
+        }
+      }
+    },
+    "railways:track_crimson_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow train track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build narrow crimson train railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train infrastructure"
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "pattern",
+          "evidence": "id contains crimson"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with rail equipment"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        }
+      }
+    },
+    "railways:track_crimson_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide train track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build wide crimson train railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train infrastructure"
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "pattern",
+          "evidence": "id contains crimson"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with rail equipment"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted"
+        }
+      }
+    },
+    "railways:track_dark_oak": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed train track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build dark oak train railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train infrastructure"
+        },
+        "material_family": {
+          "value": "wood_dark_oak",
+          "signal": "pattern",
+          "evidence": "id contains dark_oak"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with rail items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtainable via conversion or loot, but not natural"
+        }
+      }
+    },
+    "railways:track_dark_oak_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow dark oak track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build narrow dark oak railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train infrastructure"
+        },
+        "material_family": {
+          "value": "wood_dark_oak",
+          "signal": "pattern",
+          "evidence": "id contains dark_oak"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with rail items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtainable via conversion"
+        }
+      }
+    },
+    "railways:track_dark_oak_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide dark oak track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build wide dark oak railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train infrastructure"
+        },
+        "material_family": {
+          "value": "wood_dark_oak",
+          "signal": "pattern",
+          "evidence": "id contains dark_oak"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with rail items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtainable"
+        }
+      }
+    },
+    "railways:track_ender": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "End-themed train track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build ender train railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train infrastructure"
+        },
+        "material_family": {
+          "value": "ender",
+          "signal": "pattern",
+          "evidence": "id contains ender"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other rail tracks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No natural generation"
+        }
+      }
+    },
+    "railways:track_ender_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow ender track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build narrow ender railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train infrastructure"
+        },
+        "material_family": {
+          "value": "ender",
+          "signal": "pattern",
+          "evidence": "id contains ender"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with rail items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Not naturally occurring"
+        }
+      }
+    },
+    "railways:track_ender_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide ender track"
+        },
+        "primary_uses": {
+          "values": [
+            "Build wide ender railways",
+            "Transport trains"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Train infrastructure"
+        },
+        "material_family": {
+          "value": "ender",
+          "signal": "pattern",
+          "evidence": "id contains ender"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "pattern",
+          "evidence": "railways mod"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with rail items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Not naturally generated"
+        }
+      }
+    },
+    "railways:track_incomplete_acacia": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component for tracks"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft baobab train tracks via sequenced assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly to produce completed track"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used at assembly line, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated crafting workflow"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "part of Create's assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in sequenced assembly line"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly recipes"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of train track production chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only obtained through assembly process"
+        }
+      }
+    },
+    "railways:track_incomplete_acacia_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate narrow track component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft narrow baobab tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only from assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_acacia_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate wide track component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft wide baobab tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Only from assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_bamboo": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate bamboo track component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft bamboo train tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "evidence": "id contains bamboo"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_bamboo_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate narrow bamboo component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft narrow bamboo tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "evidence": "id contains bamboo"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_bamboo_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate wide bamboo component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft wide bamboo tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "evidence": "id contains bamboo"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_birch": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate eucalyptus track component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft eucalyptus train tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "evidence": "id contains birch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_birch_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate narrow eucalyptus component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft narrow eucalyptus tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "evidence": "id contains birch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_birch_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate wide eucalyptus component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft wide eucalyptus tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "evidence": "id contains birch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_blackstone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate pyroxenite track component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft pyroxenite train tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "evidence": "id contains blackstone"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_blackstone_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate narrow pyroxenite component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft narrow pyroxenite tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "evidence": "id contains blackstone"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_blackstone_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate wide pyroxenite component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft wide pyroxenite tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "evidence": "id contains blackstone"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_cherry": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate fig track component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft fig train tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "wood_cherry",
+          "signal": "pattern",
+          "evidence": "id contains cherry"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    },
+    "railways:track_incomplete_cherry_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate narrow fig component"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft narrow fig tracks via assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only at assembly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated crafting"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "assembly process"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "processed in assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "evidence": "input to assembly"
+        },
+        "material_family": {
+          "value": "wood_cherry",
+          "signal": "pattern",
+          "evidence": "id contains cherry"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Train track chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "From assembly"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

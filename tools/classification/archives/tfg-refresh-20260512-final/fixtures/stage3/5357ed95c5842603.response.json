@@ -1,0 +1,1001 @@
+{
+  "items": {
+    "ad_astra:steel_plating": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Steel plating is a decorative building block"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as part of builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with steel plating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative building block"
+        }
+      }
+    },
+    "ad_astra:steel_plating_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Button used for redstone"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based button"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Redstone component, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides redstone signal"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal input"
+          ],
+          "signal": "inferred",
+          "rationale": "Button for redstone circuits"
+        }
+      }
+    },
+    "ad_astra:steel_plating_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Pressure plate for redstone"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based plate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Redstone component, placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Detects entities with redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "detect entities with redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Pressure plate for redstone"
+        }
+      }
+    },
+    "ad_astra:steel_plating_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of steel plating"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with steel slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        }
+      }
+    },
+    "ad_astra:steel_plating_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant of steel plating"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with steel stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs for building"
+        }
+      }
+    },
+    "ad_astra:steel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _rod",
+          "rationale": "Crafting material rod"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based rod"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Rod for crafting"
+        }
+      }
+    },
+    "ad_astra:steel_sliding_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door used in base construction"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based door"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from steel"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Door for base building"
+        },
+        "primary_uses": {
+          "values": [
+            "seal oxygen in airlocks",
+            "build airtight doors"
+          ],
+          "signal": "inferred",
+          "rationale": "Sliding door with oxygen seal"
+        }
+      }
+    },
+    "ad_astra:steel_tank": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid container tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based tank"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when transporting fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common utility item"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores and transports fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "store and transport fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid storage container"
+        }
+      }
+    },
+    "ad_astra:steel_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Trapdoor for base building"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Steel-based trapdoor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with steel trapdoors"
+          ],
+          "signal": "inferred",
+          "rationale": "Trapdoor for building"
+        }
+      }
+    },
+    "ad_astra:stripped_glacian_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log used for building and fuel"
+        },
+        "material_family": {
+          "value": "wood_glacian",
+          "signal": "pattern",
+          "evidence": "id prefix glacian",
+          "rationale": "Glacian wood log"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wood from Glacian trees"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and as fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "building with glacian wood",
+            "fuel for firepit"
+          ],
+          "signal": "inferred",
+          "rationale": "Stripped log for construction and fuel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/hardwood"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:hardwood",
+          "rationale": "Hardwood storage section"
+        }
+      }
+    },
+    "ad_astra:strophar_cap": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Natural mushroom block from Mars"
+        },
+        "material_family": {
+          "value": "strophar",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Strophar mushroom material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested and placed as decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common on Mars"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decorative building material"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building material from Mars"
+          ],
+          "signal": "inferred",
+          "rationale": "Mushroom cap for building"
+        }
+      }
+    },
+    "ad_astra:strophar_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door for base building"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood door"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with strophar doors"
+          ],
+          "signal": "inferred",
+          "rationale": "Strophar door for building"
+        }
+      }
+    },
+    "ad_astra:strophar_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence for base building"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood fence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with strophar fences"
+          ],
+          "signal": "inferred",
+          "rationale": "Strophar fence for building"
+        }
+      }
+    },
+    "ad_astra:strophar_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence gate for base building"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood gate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with strophar fence gates"
+          ],
+          "signal": "inferred",
+          "rationale": "Strophar fence gate for building"
+        }
+      }
+    },
+    "ad_astra:strophar_ladder": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Ladder carried for climbing"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood ladder"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for traversal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted item"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for climbing in caves and builds"
+        },
+        "primary_uses": {
+          "values": [
+            "climbing and traversal"
+          ],
+          "signal": "inferred",
+          "rationale": "Ladder for vertical movement"
+        }
+      }
+    },
+    "ad_astra:strophar_mushroom": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Small mushroom plant from Mars"
+        },
+        "material_family": {
+          "value": "strophar",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "Strophar mushroom"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested and placed as decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common on Mars"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decorative flora"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flora from Mars"
+          ],
+          "signal": "inferred",
+          "rationale": "Small mushroom for decoration"
+        }
+      }
+    },
+    "ad_astra:strophar_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Planks for base building"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood planks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with strophar planks"
+          ],
+          "signal": "inferred",
+          "rationale": "Strophar planks for building"
+        }
+      }
+    },
+    "ad_astra:strophar_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab for base building"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with strophar slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Strophar slab for building"
+        }
+      }
+    },
+    "ad_astra:strophar_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs for base building"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with strophar stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Strophar stairs for building"
+        }
+      }
+    },
+    "ad_astra:strophar_stem": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log for building and fuel"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood stem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common from Mars mushrooms"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and as fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "building with strophar stems",
+            "fuel for firepit"
+          ],
+          "signal": "inferred",
+          "rationale": "Log for construction and fuel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/softwood"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:softwood",
+          "rationale": "Softwood storage section"
+        }
+      }
+    },
+    "ad_astra:strophar_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Trapdoor for base building"
+        },
+        "material_family": {
+          "value": "wood_strophar",
+          "signal": "pattern",
+          "evidence": "id prefix strophar",
+          "rationale": "Strophar wood trapdoor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building with strophar trapdoors"
+          ],
+          "signal": "inferred",
+          "rationale": "Strophar trapdoor for building"
+        }
+      }
+    },
+    "ad_astra:sulfur_creeper_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collected as novelty"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common spawn egg"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to spawn mobs for display"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning sulfur creepers"
+          ],
+          "signal": "inferred",
+          "rationale": "Spawn egg for creeper"
+        }
+      }
+    },
+    "ad_astra:ti_69": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Handheld environmental info device"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable item"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Shows local oxygen, temp, gravity"
+        },
+        "primary_uses": {
+          "values": [
+            "view local environmental information"
+          ],
+          "signal": "inferred",
+          "rationale": "Environmental scanner"
+        }
+      }
+    },
+    "ad_astra:tier_1_rocket": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Vehicle for space travel"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept at launch pad, not in inventory"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires significant resources to craft"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to travel to moon"
+        },
+        "primary_uses": {
+          "values": [
+            "travel to the moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Tier 1 rocket for moon travel"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "named",
+          "evidence": "advancement and guide",
+          "rationale": "Part of Ad Astra rocket system"
+        }
+      }
+    },
+    "ad_astra:tier_1_rover": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Ground vehicle for planet surface"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept at base, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires resources to craft"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ground transport"
+        },
+        "primary_uses": {
+          "values": [
+            "ground transport on planets"
+          ],
+          "signal": "inferred",
+          "rationale": "Rover for surface exploration"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "ad_astra:steel_plating",
+      "facet": "form",
+      "value": "whole_block",
+      "rationale": "Cube all model indicates full block"
+    },
+    {
+      "item": "ad_astra:strophar_cap",
+      "facet": "form",
+      "value": "whole_block",
+      "rationale": "Cube all model indicates full block"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

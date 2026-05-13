@@ -1,0 +1,1144 @@
+{
+  "items": {
+    "tfg:double_mo_50_re_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate metal plate used in crafting machines"
+        },
+        "material_family": {
+          "value": "mo_50_re",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/mo_50_re",
+          "rationale": "Alloy name from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_sheets/mo_50_re",
+          "rationale": "Double plate/sheet form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting high-tier machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special alloy, not everyday but not extremely rare"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-tier machine parts",
+            "Compacting into components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in Greate and GTCE recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal product stored with processed ores"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation machinery crafting"
+        }
+      }
+    },
+    "tfg:double_mo_si_b_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate metal plate"
+        },
+        "material_family": {
+          "value": "mo_si_b",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/mo_si_b",
+          "rationale": "Alloy name from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_sheets/mo_si_b",
+          "rationale": "Double sheet form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting high-tier machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting turbine blades",
+            "Advanced machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in turbine blade recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal product"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation machinery"
+        }
+      }
+    },
+    "tfg:double_rene_41_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate metal plate"
+        },
+        "material_family": {
+          "value": "rene_41",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/rene_41",
+          "rationale": "Alloy name from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_sheets/rene_41",
+          "rationale": "Double sheet form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting high-tier parts"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-end machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal product"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation"
+        }
+      }
+    },
+    "tfg:double_tungsten_bismuth_oxide_composite_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate metal plate"
+        },
+        "material_family": {
+          "value": "tungsten_bismuth_oxide_composite",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/tungsten_bismuth_oxide_composite",
+          "rationale": "Composite name from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_sheets/tungsten_bismuth_oxide_composite",
+          "rationale": "Double sheet form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting advanced machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special composite"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting turbine blades",
+            "Advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in turbine blade recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal product"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation"
+        }
+      }
+    },
+    "tfg:double_zirconium_diboride_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate metal plate"
+        },
+        "material_family": {
+          "value": "zirconium_diboride",
+          "signal": "pattern",
+          "evidence": "tag forge:double_plates/zirconium_diboride",
+          "rationale": "Material from tag"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_sheets/zirconium_diboride",
+          "rationale": "Double sheet form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting advanced machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting high-temperature components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal product"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation"
+        }
+      }
+    },
+    "tfg:dripstone_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block, mined and smelted for metal"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/lorandite",
+          "rationale": "Ore type from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during mining trips"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special ore, not overly common"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting for thallium/arsenic",
+            "Processing into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted to ingot, milled to crushed ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore storage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from underground"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type smelting",
+          "rationale": "Smelted into ingot"
+        }
+      }
+    },
+    "tfg:dry_ice": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Solid coolant used in fission reactor processing"
+        },
+        "material_family": {
+          "value": "dry_ice",
+          "signal": "inferred",
+          "rationale": "Solid carbon dioxide"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when working on reactor or making ice slush"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly produced resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Cooling fission reactor",
+            "Making ice slush",
+            "Regolith slurry suspension"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip and recipes show uses"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as coolant in reactor"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed material, stored with other inputs"
+        }
+      }
+    },
+    "tfg:drying_bricks/alfisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unfired mud brick, intermediate for fired brick"
+        },
+        "material_family": {
+          "value": "alfisol",
+          "signal": "pattern",
+          "evidence": "Id path includes alfisol",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when collecting for brick production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dirt derivative"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into fired bricks",
+            "Building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelts to brick, also placeable"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type smelting",
+          "rationale": "Smelted into brick"
+        }
+      }
+    },
+    "tfg:drying_bricks/mollisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unfired mud brick"
+        },
+        "material_family": {
+          "value": "mollisol",
+          "signal": "pattern",
+          "evidence": "Id path includes mollisol",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when collecting for brick production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dirt derivative"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into fired bricks",
+            "Building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelts to brick"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type smelting",
+          "rationale": "Smelted into brick"
+        }
+      }
+    },
+    "tfg:drying_bricks/oxisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unfired mud brick"
+        },
+        "material_family": {
+          "value": "oxisol",
+          "signal": "pattern",
+          "evidence": "Id path includes oxisol",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when collecting for brick production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dirt derivative"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into fired bricks",
+            "Building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelts to brick"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type smelting",
+          "rationale": "Smelted into brick"
+        }
+      }
+    },
+    "tfg:drying_bricks/podzol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unfired mud brick"
+        },
+        "material_family": {
+          "value": "podzol",
+          "signal": "pattern",
+          "evidence": "Id path includes podzol",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when collecting for brick production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dirt derivative"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into fired bricks",
+            "Building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelts to brick"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipe type smelting",
+          "rationale": "Smelted into brick"
+        }
+      }
+    },
+    "tfg:duff/alfisol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Dirt block used for ground/landscaping"
+        },
+        "material_family": {
+          "value": "alfisol",
+          "signal": "pattern",
+          "evidence": "Id path includes alfisol",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when landscaping or farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ground block"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming soil",
+            "Making daub",
+            "Composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in various recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt family storage"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as farming soil"
+        }
+      }
+    },
+    "tfg:duff/loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Dirt block"
+        },
+        "material_family": {
+          "value": "loam",
+          "signal": "pattern",
+          "evidence": "Id path includes loam",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when landscaping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming soil",
+            "Making daub",
+            "Composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt family"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming soil"
+        }
+      }
+    },
+    "tfg:duff/mollisol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Dirt block"
+        },
+        "material_family": {
+          "value": "mollisol",
+          "signal": "pattern",
+          "evidence": "Id path includes mollisol",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when landscaping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming soil",
+            "Making daub",
+            "Composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt family"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming soil"
+        }
+      }
+    },
+    "tfg:duff/oxisol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Dirt block"
+        },
+        "material_family": {
+          "value": "oxisol",
+          "signal": "pattern",
+          "evidence": "Id path includes oxisol",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when landscaping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming soil",
+            "Making daub",
+            "Composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt family"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming soil"
+        }
+      }
+    },
+    "tfg:duff/podzol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Dirt block"
+        },
+        "material_family": {
+          "value": "podzol",
+          "signal": "pattern",
+          "evidence": "Id path includes podzol",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when landscaping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming soil",
+            "Making daub",
+            "Composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt family"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming soil"
+        }
+      }
+    },
+    "tfg:duff/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Dirt block"
+        },
+        "material_family": {
+          "value": "sandy_loam",
+          "signal": "pattern",
+          "evidence": "Id path includes sandy_loam",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when landscaping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming soil",
+            "Making daub",
+            "Composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt family"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming soil"
+        }
+      }
+    },
+    "tfg:duff/silt": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Dirt block"
+        },
+        "material_family": {
+          "value": "silt",
+          "signal": "pattern",
+          "evidence": "Id path includes silt",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when landscaping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming soil",
+            "Making daub",
+            "Composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt family"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming soil"
+        }
+      }
+    },
+    "tfg:duff/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Dirt block"
+        },
+        "material_family": {
+          "value": "silty_loam",
+          "signal": "pattern",
+          "evidence": "Id path includes silty_loam",
+          "rationale": "Soil type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when landscaping"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming soil",
+            "Making daub",
+            "Composting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt family"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming soil"
+        }
+      }
+    },
+    "tfg:dusty_raw_lorandite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw material dust, preliminary processing stage"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusty_raw_materials/lorandite",
+          "rationale": "Ore mineral"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Low quantity, specialized processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Not common raw material"
+        },
+        "primary_uses": {
+          "values": [
+            "Further processing into dusts",
+            "Ore byproduct"
+          ],
+          "signal": "inferred",
+          "rationale": "Dusty raw material, likely intermediate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed ore material"
+        }
+      }
+    },
+    "tfg:egh_planter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Planter block for automated planting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for farming setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated planting",
+            "Crop farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Block used for planting"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming automation"
+        }
+      }
+    },
+    "tfg:electric_greenhouse": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock machine for automated crop growth"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as a multiblock"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires moderate progression"
+        },
+        "primary_uses": {
+          "values": [
+            "Year-round crop farming",
+            "Fertilizer enhancement"
+          ],
+          "signal": "inferred",
+          "rationale": "Lore describes function"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming automation"
+        }
+      }
+    },
+    "tfg:electromagnetic_accelerator": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine casing component for multiblock"
+        },
+        "material_family": {
+          "value": "electromagnetic_accelerator",
+          "signal": "inferred",
+          "rationale": "Specialized casing material"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "minecraft:light_emission=15",
+          "rationale": "Stage2 confirmed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Part of multiblock construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted block"
+        },
+        "primary_uses": {
+          "values": [
+            "Part of accelerator multiblock",
+            "Provides light"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing block with light"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in advanced machinery"
+        }
+      }
+    },
+    "tfg:elite_power_thruster": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "guess",
+          "rationale": "Hidden item, likely decorative/dummy"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "guess",
+          "rationale": "No practical use"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "guess",
+          "rationale": "Hidden from recipe viewers"
+        },
+        "primary_uses": {
+          "values": [
+            "Display",
+            "Unknown"
+          ],
+          "signal": "guess",
+          "rationale": "No recipes, possibly trophy"
+        }
+      }
+    },
+    "tfg:empty_dna_syringe": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool for collecting DNA samples"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized tool, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Collecting DNA from creatures"
+          ],
+          "signal": "inferred",
+          "rationale": "Empty syringe for dna extraction"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in animal breeding/genetics"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

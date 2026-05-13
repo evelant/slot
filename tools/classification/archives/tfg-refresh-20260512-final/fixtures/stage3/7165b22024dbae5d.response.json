@@ -1,0 +1,822 @@
+{
+  "items": {
+    "gtceu:styrene_butadiene_rubber_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for pumps and digger helmets"
+        },
+        "material_family": {
+          "value": "styrene_butadiene_rubber",
+          "signal": "named",
+          "evidence": "id and display name",
+          "rationale": "Rubber compound from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stocked for frequent crafting use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting rubber seals and pumps",
+            "Component for digger helmets"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input in pump and helmet recipes"
+        }
+      }
+    },
+    "gtceu:styrene_butadiene_rubber_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for tool handles and machinery"
+        },
+        "material_family": {
+          "value": "styrene_butadiene_rubber",
+          "signal": "named",
+          "evidence": "id and display name",
+          "rationale": "Rubber compound from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stocked for crafting axes, hoes, etc."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting tool handles (axes, hoes, etc.)",
+            "Component for machinery and plungers"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as handle in many tool recipes"
+        }
+      }
+    },
+    "gtceu:sugar_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed sugar block, used as ingredient"
+        },
+        "material_family": {
+          "value": "sugar",
+          "signal": "named",
+          "evidence": "display name 'Block of Sugar'",
+          "rationale": "Sugar material from name"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Block, not often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Sugar is a cooking ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of sugar",
+            "Crafting ingredient for sugar products"
+          ],
+          "signal": "inferred",
+          "rationale": "Compact form of sugar used in recipes"
+        }
+      }
+    },
+    "gtceu:sugar_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "Gem form of sugar, crafting ingredient"
+        },
+        "material_family": {
+          "value": "sugar",
+          "signal": "named",
+          "evidence": "display name 'Sugar Cube'",
+          "rationale": "Sugar material from name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in recipes, kept in stash"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Sugar is used in cooking"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting sugar blocks and other items"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem form used to craft sugar block and more"
+        }
+      }
+    },
+    "gtceu:sulfur_dioxide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting chemical gas"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting sulfur dioxide for chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for gas"
+        }
+      }
+    },
+    "gtceu:sulfur_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form of sulfur, crafting ingredient"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "named",
+          "evidence": "display name 'Sulfur Dust'",
+          "rationale": "Sulfur material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in many recipes, kept in stash"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gunpowder and sulfuric acid",
+            "Chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredient for gunpowder and acid"
+        }
+      }
+    },
+    "gtceu:sulfur_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating sulfur ore"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "named",
+          "evidence": "display name 'Sulfur Surface Rock'",
+          "rationale": "Sulfur material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked up occasionally during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates sulfur ore deposit below"
+          ],
+          "signal": "inferred",
+          "rationale": "Marker for underground ore"
+        }
+      }
+    },
+    "gtceu:sulfur_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore to be smelted"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "named",
+          "evidence": "id sulfur_ore",
+          "rationale": "Sulfur material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for sulfur"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into sulfur for chemical production"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of sulfur"
+        }
+      }
+    },
+    "gtceu:sulfur_trioxide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting chemical gas"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting sulfur trioxide for sulfuric acid production"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for gas"
+        }
+      }
+    },
+    "gtceu:sulfuric_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting acid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting sulfuric acid for ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for acid"
+        }
+      }
+    },
+    "gtceu:sulfuric_copper_solution_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting chemical solution"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting sulfuric copper solution for copper extraction"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for solution"
+        }
+      }
+    },
+    "gtceu:sulfuric_gas_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting chemical gas"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting sulfuric gas for chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for gas"
+        }
+      }
+    },
+    "gtceu:sulfuric_heavy_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting heavy fuel"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized fuel bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting heavy oil residue for fuel processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for fuel"
+        }
+      }
+    },
+    "gtceu:sulfuric_light_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting light fuel"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized fuel bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting light oil residue for fuel processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for fuel"
+        }
+      }
+    },
+    "gtceu:sulfuric_naphtha_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting naphtha"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting naphtha for fuel processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for naphtha"
+        }
+      }
+    },
+    "gtceu:sulfuric_nickel_solution_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for transporting chemical solution"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting nickel solution for nickel extraction"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for solution"
+        }
+      }
+    },
+    "gtceu:superconducting_coil": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Coil block for multiblock machines, no UI"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in specialized high-tier builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Coil used as component in multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Construct high-tier multiblock machines (e.g., fusion)"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of advanced multiblocks"
+        }
+      }
+    },
+    "gtceu:sus_record": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible music disc with lore"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Stored for collection or jukebox"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Play music in a jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "Music disc function"
+        }
+      }
+    },
+    "gtceu:talc_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form of talc, crafting ingredient"
+        },
+        "material_family": {
+          "value": "talc",
+          "signal": "named",
+          "evidence": "display name 'Talc'",
+          "rationale": "Talc material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in ceramic recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting talc-based ceramics and industrial items"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredient for talc products"
+        }
+      }
+    },
+    "gtceu:talc_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating talc ore"
+        },
+        "material_family": {
+          "value": "talc",
+          "signal": "named",
+          "evidence": "display name 'Talc Surface Rock'",
+          "rationale": "Talc material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked up occasionally during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates talc ore deposit below"
+          ],
+          "signal": "inferred",
+          "rationale": "Marker for underground ore"
+        }
+      }
+    },
+    "gtceu:talc_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore to be smelted"
+        },
+        "material_family": {
+          "value": "talc",
+          "signal": "named",
+          "evidence": "id talc_ore",
+          "rationale": "Talc material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for talc"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into talc for industrial use"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of talc"
+        }
+      }
+    },
+    "gtceu:tantalite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Dust form of tantalite, crafting ingredient"
+        },
+        "material_family": {
+          "value": "tantalite",
+          "signal": "named",
+          "evidence": "display name 'Tantalite Dust'",
+          "rationale": "Tantalite material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in advanced alloy recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Refined into tantalum for electronics and alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "Key step for tantalum production"
+        }
+      }
+    },
+    "gtceu:tantalite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating tantalite ore"
+        },
+        "material_family": {
+          "value": "tantalite",
+          "signal": "named",
+          "evidence": "display name 'Tantalite Surface Rock'",
+          "rationale": "Tantalite material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked up occasionally during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates tantalite ore deposit below"
+          ],
+          "signal": "inferred",
+          "rationale": "Marker for underground ore"
+        }
+      }
+    },
+    "gtceu:tantalite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore to be smelted"
+        },
+        "material_family": {
+          "value": "tantalite",
+          "signal": "named",
+          "evidence": "id tantalite_ore",
+          "rationale": "Tantalite material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for tantalite"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into tantalum for advanced electronics"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of tantalite"
+        }
+      }
+    },
+    "gtceu:tantalum_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "Compact storage block of tantalum"
+        },
+        "material_family": {
+          "value": "tantalum",
+          "signal": "named",
+          "evidence": "display name 'Block of Tantalum'",
+          "rationale": "Tantalum material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Block, not often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "Common rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of tantalum",
+            "Crafting advanced machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for compact storage and crafting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

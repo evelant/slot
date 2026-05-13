@@ -1,0 +1,1190 @@
+{
+  "items": {
+    "gtceu:electrum_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable placed in world"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/electrum",
+          "rationale": "id and material tag"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage 512 (HV)",
+          "rationale": "HV voltage tier for electrum cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in bulk for power line building"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit energy at HV",
+            "Conduct up to 8 amps",
+            "Build power networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable used in GT energy system"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated power systems"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "named",
+          "evidence": "tag and tooltip indicate cable part of GT energy net",
+          "rationale": "Part of GT energy transport subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stacks of 32 carried for builds"
+        }
+      }
+    },
+    "gtceu:electrum_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:rings tag + crafting component",
+          "rationale": "Small crafting component"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/electrum",
+          "rationale": "electrum material tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft components like digger helmets",
+            "Used in various tools and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient in many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined electrum part"
+        }
+      }
+    },
+    "gtceu:electrum_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "Crafting rod"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/electrum",
+          "rationale": "electrum rod"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Material kept in storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft tools and machine parts",
+            "Cut into bolts and screws"
+          ],
+          "signal": "inferred",
+          "rationale": "Widely used in tool and machine recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal rod"
+        }
+      }
+    },
+    "gtceu:electrum_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "Small crafting screw"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/electrum",
+          "rationale": "electrum screw"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft tools and mechanical parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in numerous crafting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined electrum part"
+        }
+      }
+    },
+    "gtceu:electrum_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Insulated cable for energy transport"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables/electrum",
+          "rationale": "electrum cable"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage 512 (HV)",
+          "rationale": "HV voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in bulk for cabling"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit energy at HV",
+            "Conduct up to 2 amps",
+            "Build power networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable function"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "named",
+          "evidence": "cable tag and tooltip",
+          "rationale": "GT energy transport part"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stacks of 64 for building"
+        }
+      }
+    },
+    "gtceu:electrum_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Bare wire for energy transport"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/electrum",
+          "rationale": "electrum wire"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "inferred",
+          "evidence": "tooltip Max Voltage 512 (HV)",
+          "rationale": "HV voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit energy at HV",
+            "Convert to cables via insulation",
+            "Build power infrastructure"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire role"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "named",
+          "evidence": "wire tag and tooltip",
+          "rationale": "GT energy subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stacks of 64"
+        }
+      }
+    },
+    "gtceu:electrum_small_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Item transport pipe placed as block"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "tag forge:small_item_pipes/electrum",
+          "rationale": "electrum pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for logistics builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items at 1 stack/s",
+            "Build item logistics network",
+            "Configure priority"
+          ],
+          "signal": "inferred",
+          "rationale": "Pipe function from tooltip"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item transport"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "pipe tag and tooltip",
+          "rationale": "GT pipe subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stacks of 64"
+        }
+      }
+    },
+    "gtceu:electrum_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Restrictive item pipe for prioritization"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "evidence": "tag forge:small_restrictive_pipes/electrum",
+          "rationale": "electrum restrictive pipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "Restrictive item transport",
+            "High priority routing",
+            "Build advanced logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Pipe with priority setting"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item transport"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "pipe tag",
+          "rationale": "GT pipe subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stacks of 64"
+        }
+      }
+    },
+    "gtceu:emerald_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed to indicate emerald ore presence"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "tag forge:bud_indicators/emerald",
+          "rationale": "emerald indicator"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Mark emerald ore locations",
+            "Assist in mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore indicator function"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Prospecting activity"
+        }
+      }
+    },
+    "gtceu:emerald_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "Processed dust"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/emerald",
+          "rationale": "emerald dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft emerald plates and lenses",
+            "Used in advanced recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined emerald dust"
+        }
+      }
+    },
+    "gtceu:emerald_indicator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Surface rock marking emerald ore"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/emerald",
+          "rationale": "emerald surface rock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicate emerald ore underground",
+            "Mining reference"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore indicator"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Prospecting"
+        }
+      }
+    },
+    "gtceu:emerald_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:lenses",
+          "rationale": "Crafting component lens"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "tag forge:lenses/emerald",
+          "rationale": "emerald lens"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored with optical parts"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft optical devices",
+            "Used in cultivation monitor"
+          ],
+          "signal": "inferred",
+          "rationale": "Lens component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "Lens is a glass product"
+        }
+      }
+    },
+    "gtceu:emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore block for smelting"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/emerald",
+          "rationale": "emerald ore"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Moderate rarity ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into emerald gems",
+            "Process into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for material"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Smelted in furnace"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed in furnace"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore"
+        }
+      }
+    },
+    "gtceu:emerald_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "Processed plate"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/emerald",
+          "rationale": "emerald plate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft filters and components",
+            "Used in precision devices"
+          ],
+          "signal": "inferred",
+          "rationale": "Plate as crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined emerald plate"
+        }
+      }
+    },
+    "gtceu:emerald_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "Rod form"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/emerald",
+          "rationale": "emerald rod"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft tools and machine parts",
+            "Used in various recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Rod as component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined emerald rod"
+        }
+      }
+    },
+    "gtceu:empty_mold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Base raw plate for crafting molds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored with crafting supplies"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft specific molds",
+            "Create extrusion shapes"
+          ],
+          "signal": "inferred",
+          "evidence": "tooltip: Raw Plate to make Molds and Extrude Shapes",
+          "rationale": "Mold base material"
+        }
+      }
+    },
+    "gtceu:empty_spray_can": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable painting tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept for painting tasks"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint blocks with color",
+            "Fill with colored spray"
+          ],
+          "signal": "inferred",
+          "rationale": "Spray can function"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Empty, can be filled"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "Fill with paint"
+        }
+      }
+    },
+    "gtceu:empty_tier_i_battery": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for power substation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building substation"
+        },
+        "primary_uses": {
+          "values": [
+            "Fill space in power substation",
+            "Upgrade to capacitor"
+          ],
+          "signal": "inferred",
+          "rationale": "Empty battery block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT energy storage subsystem"
+        }
+      }
+    },
+    "gtceu:empty_tier_ii_battery": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for power substation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "When building substation"
+        },
+        "primary_uses": {
+          "values": [
+            "Fill space in power substation",
+            "Upgrade to capacitor"
+          ],
+          "signal": "inferred",
+          "rationale": "Empty battery block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT energy storage"
+        }
+      }
+    },
+    "gtceu:empty_tier_iii_battery": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placeable block for power substation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "When building substation"
+        },
+        "primary_uses": {
+          "values": [
+            "Fill space in power substation",
+            "Upgrade to capacitor"
+          ],
+          "signal": "inferred",
+          "rationale": "Empty battery block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of GT energy storage"
+        }
+      }
+    },
+    "gtceu:empty_wooden_form": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for brick shapes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored with construction materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Shape bricks",
+            "Craft building materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in shaped recipes"
+        }
+      }
+    },
+    "gtceu:ender_air_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid container used in machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when needed for reactors"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ender air",
+            "Use in nuclear reactors"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket of gaseous fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Filled with fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        }
+      }
+    },
+    "gtceu:ender_eye_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block of ender eye material"
+        },
+        "material_family": {
+          "value": "ender_eye",
+          "signal": "inferred",
+          "evidence": "id and chemical formula",
+          "rationale": "Ender eye material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Somewhat rare material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept in storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of ender eye",
+            "Craft ender eye components"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block"
+        }
+      }
+    },
+    "gtceu:ender_eye_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _dust",
+          "rationale": "Dust form"
+        },
+        "material_family": {
+          "value": "ender_eye",
+          "signal": "inferred",
+          "rationale": "Ender eye material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft ender eye components",
+            "Used in advanced recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust is intermediate"
+        }
+      }
+    },
+    "gtceu:ender_eye_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processed plate form"
+        },
+        "material_family": {
+          "value": "ender_eye",
+          "signal": "inferred",
+          "rationale": "Ender eye material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Material storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft advanced components",
+            "Used in machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "Plate as component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:electrum_quadruple_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "id and tag forge:quadruple_wires indicate wire form"
+    },
+    {
+      "item": "gtceu:electrum_single_cable",
+      "facet": "form",
+      "value": "cable",
+      "rationale": "id suffix _single_cable and tag forge:single_cables"
+    },
+    {
+      "item": "gtceu:electrum_single_wire",
+      "facet": "form",
+      "value": "wire",
+      "rationale": "id and tag forge:single_wires"
+    },
+    {
+      "item": "gtceu:electrum_small_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "id ends _small_item_pipe"
+    },
+    {
+      "item": "gtceu:electrum_small_restrictive_item_pipe",
+      "facet": "form",
+      "value": "pipe",
+      "rationale": "id ends _small_restrictive_item_pipe"
+    },
+    {
+      "item": "gtceu:emerald_dust",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "stage2 already has form=dust, but included for completeness"
+    },
+    {
+      "item": "gtceu:emerald_ore",
+      "facet": "form",
+      "value": "stone",
+      "rationale": "stage2 already has form=ore"
+    },
+    {
+      "item": "gtceu:emerald_plate",
+      "facet": "form",
+      "value": "plate",
+      "rationale": "stage2 already has form=plate"
+    },
+    {
+      "item": "gtceu:emerald_rod",
+      "facet": "form",
+      "value": "rod",
+      "rationale": "stage2 already has form=rod"
+    },
+    {
+      "item": "gtceu:ender_eye_dust",
+      "facet": "form",
+      "value": "dust",
+      "rationale": "id ends _dust"
+    },
+    {
+      "item": "gtceu:ender_eye_plate",
+      "facet": "form",
+      "value": "plate",
+      "rationale": "id ends _plate"
+    }
+  ]
+}

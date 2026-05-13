@@ -1,0 +1,1594 @@
+{
+  "items": {
+    "gtceu:double_kanthal_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id + forge:double_plates tag",
+          "rationale": "refined metal plate, crafting stock"
+        },
+        "material_family": {
+          "value": "kanthal",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "kanthal alloy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity=common",
+          "rationale": "game metadata"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material, not daily carry"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GTCE machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "shaped into components"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets tag",
+          "rationale": "double sheet form"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption",
+          "rationale": "input to mill"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in milling",
+          "rationale": "milling input"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "common intermediate stored in stacks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:compacting recipe",
+          "rationale": "no loot, only compacting"
+        }
+      }
+    },
+    "gtceu:double_lead_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "refined metal plate"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "evidence": "id suffix",
+          "rationale": "lead"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component",
+          "rationale": "game metadata"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "shaped into components"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:double_sheets tag",
+          "rationale": "double sheet"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_consumption",
+          "rationale": "input to mill"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in milling",
+          "rationale": "milling input"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "greate:compacting recipe",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "gtceu:double_magnalium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "magnalium",
+          "signal": "pattern",
+          "evidence": "id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_magnesium_diboride_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "magnesium_diboride",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_magnetic_iron_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "magnetic_iron",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_magnetic_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "magnetic_steel",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_manganese_phosphide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "manganese_phosphide",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_manganese_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "manganese",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_maraging_steel_300_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "maraging_steel_300",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_mercury_barium_calcium_cuprate_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "mercury_barium_calcium_cuprate",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_molybdenum_disilicide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "molybdenum_disilicide",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_molybdenum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_naquadah_alloy_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_naquadah_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_naquadria_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadria",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_neodymium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "neodymium",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_neutronium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "neutronium",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_nichrome_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "nichrome",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_nickel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_niobium_nitride_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "niobium_nitride",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_niobium_titanium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "niobium_titanium",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_osmiridium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "osmiridium",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_osmium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "osmium",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_ostrum_iodide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "ostrum_iodide",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:double_ostrum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCE machine parts"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,830 @@
+{
+  "items": {
+    "wan_ancient_beasts:red_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Armor for charger mob, player equips it"
+        },
+        "primary_uses": {
+          "values": [
+            "Equip on charger"
+          ],
+          "signal": "inferred",
+          "rationale": "Used on charger entity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used when riding charger"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Has barrel dyeing recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:red_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Glider for flight, no protection"
+        },
+        "primary_uses": {
+          "values": [
+            "Glide through air"
+          ],
+          "signal": "inferred",
+          "rationale": "Used like elytra"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Taken on exploration trips"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:reinforced_shield": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "Shield used in combat"
+        },
+        "primary_uses": {
+          "values": [
+            "Block attacks"
+          ],
+          "signal": "inferred",
+          "rationale": "Defensive tool"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Commonly carried in offhand"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Has shaped recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:shrieking_horn": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Horn for sound effects"
+        },
+        "primary_uses": {
+          "values": [
+            "Blow horn to shriek"
+          ],
+          "signal": "inferred",
+          "rationale": "Makes sound"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Novelty item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:snatcher_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible ancient egg from archaeology"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect ancient eggs"
+          ],
+          "signal": "inferred",
+          "rationale": "Found via archaeology"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept as collectible"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "loot from archaeology tables",
+          "rationale": "Loot from archaeology"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:snatcher_skull": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable skull for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with skull"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Decorative item"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "loot from archaeology",
+          "rationale": "Loot from archaeology"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:snatcher_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn snatcher mob"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in creative"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Creative-only item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:sniff_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "minecraft:trim_templates tag",
+          "rationale": "Smithing template for armor trim"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply Sniff armor trim"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in smithing table"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept for specific trim"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site",
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Loot from digsites and crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:sniffer_skull": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable skull for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with skull"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Decorative item"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "loot from archaeology",
+          "rationale": "Loot from archaeology"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:soarer_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible ancient egg from archaeology"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect ancient eggs"
+          ],
+          "signal": "inferred",
+          "rationale": "Found via archaeology"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept as collectible"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "loot from archaeology",
+          "rationale": "Loot from archaeology"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:soarer_skull": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable skull for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate with skull"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Decorative item"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "loot from archaeology",
+          "rationale": "Loot from archaeology"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:soarer_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn egg collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn soarer mob"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in creative"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Creative-only item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:spectral_horn": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Horn for sound effects"
+        },
+        "primary_uses": {
+          "values": [
+            "Blow horn for spectral effect"
+          ],
+          "signal": "inferred",
+          "rationale": "Makes sound"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Novelty item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:spike_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "minecraft:trim_templates tag",
+          "rationale": "Smithing template for armor trim"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply Spike armor trim"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in smithing table"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept for specific trim"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site",
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Loot from digsites and crafted"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:spike_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible pottery sherd pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect spike sherd"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decorated pot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collectible item"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "loot from archaeology",
+          "rationale": "Loot from archaeology"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:steal_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible pottery sherd pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect steal sherd"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decorated pot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collectible item"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "loot from archaeology",
+          "rationale": "Loot from archaeology"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:straw_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Block used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Build with straw"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:straw_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of straw block"
+        },
+        "primary_uses": {
+          "values": [
+            "Build slabs with straw"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:straw_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant of straw block"
+        },
+        "primary_uses": {
+          "values": [
+            "Build stairs with straw"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:stripped_ginkgo_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stripped log for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft ginkgo planks and lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking material"
+        },
+        "material_family": {
+          "value": "ginkgo",
+          "signal": "pattern",
+          "evidence": "id contains ginkgo",
+          "rationale": "Ginkgo wood family"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Wood used in crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced by polishing log"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/stripped_logs"
+          ],
+          "signal": "pattern",
+          "rationale": "Storage for stripped wood"
+        }
+      }
+    },
+    "wan_ancient_beasts:stripped_ginkgo_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stripped wood for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft ginkgo planks and lumber"
+          ],
+          "signal": "inferred",
+          "rationale": "Woodworking material"
+        },
+        "material_family": {
+          "value": "ginkgo",
+          "signal": "pattern",
+          "evidence": "id contains ginkgo",
+          "rationale": "Ginkgo wood family"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Wood used in crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced by polishing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/stripped_logs"
+          ],
+          "signal": "pattern",
+          "rationale": "Storage for stripped wood"
+        }
+      }
+    },
+    "wan_ancient_beasts:stripped_petrified_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone-like log block"
+        },
+        "primary_uses": {
+          "values": [
+            "Build with petrified wood"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:stripped_petrified_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative stone-like wood block"
+        },
+        "primary_uses": {
+          "values": [
+            "Build with petrified wood"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:stroll_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible pottery sherd pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect stroll sherd"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decorated pot"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collectible item"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "loot from archaeology",
+          "rationale": "Loot from archaeology"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wan_ancient_beasts_items"
+          ],
+          "signal": "pattern",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "wan_ancient_beasts:sundew": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Plant block placed in world"
+        },
+        "primary_uses": {
+          "values": [
+            "Grow sundew for decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative plant"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Gathered occasionally"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "Plant storage group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

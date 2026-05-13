@@ -1,0 +1,1113 @@
+{
+  "items": {
+    "gtceu:tungsten_carbide_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for fluid transport networks"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried often"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material, not common"
+        },
+        "primary_uses": {
+          "values": [
+            "transport high-temperature fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate and temp limit"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used in fluid logistics networks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "forge:fluid_pipes tag and tooltip",
+          "rationale": "part of GTCE pipe system"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:ingots"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "tier": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "material tier for tools/weapons"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried to machines for processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy, not easily obtained"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tool heads and machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many shaped recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines like rolling mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "player stores with other pileable ingots"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "used for cutting and crafting, not primary weapon"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "tier": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "tool material tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "often used for crafting and cleaning"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-durability advanced tool"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting items in crafting",
+            "cleaning moss with deployer"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows crafting uses and deployer recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used extensively in deployer automation"
+        },
+        "used_at": {
+          "values": [
+            "create:deploying"
+          ],
+          "signal": "pattern",
+          "evidence": "many deploying recipes",
+          "rationale": "primary automation station for knife usage"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for tool crafting"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed when crafting knife"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tungsten carbide knife"
+          ],
+          "signal": "inferred",
+          "rationale": "only used in knife assembly"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated crafting"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for fluid transport"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transport high-temperature fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate and temp limit"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "forge:fluid_pipes tag",
+          "rationale": "GTCE pipe system"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for fluid transport"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transport fluids in multiple channels"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows channels and transfer rate"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "forge:fluid_pipes tag",
+          "rationale": "GTCE pipe system"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for fluid transport"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transport high-temperature fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate and temp limit"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "forge:fluid_pipes tag",
+          "rationale": "GTCE pipe system"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:nuggets"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "tier": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "small amounts carried for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingots from nuggets",
+            "small repairs"
+          ],
+          "signal": "inferred",
+          "rationale": "common nugget uses"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "named",
+          "evidence": "forge:nuggets tag",
+          "rationale": "player stores nuggets together"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:plates"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "tier": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced alloy"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many shaped recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "player stores with other pileable sheets"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for fluid transport"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transport fluids in multiple channels"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows channels and transfer rate"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "forge:fluid_pipes tag",
+          "rationale": "GTCE pipe system"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:rods"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "tier": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting ingredient"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and screws"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many tool recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small crafting component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "small parts carried for assembly"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in shaped recipes for tools and gadgets"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_screwdriver_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for tool"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed when crafting screwdriver"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting EV screwdriver"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated crafting"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_scythe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "farming tool with combat use"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "tier": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "tool material tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "often carried for farming and combat"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-durability advanced tool"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting crops",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows harvester and attack stats"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is crop harvesting"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_scythe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for scythe"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed when crafting scythe"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tungsten carbide scythe"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated crafting"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for fluid transport"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transport high-temperature fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate and temp limit"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "forge:fluid_pipes tag",
+          "rationale": "GTCE pipe system"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "primary use is combat"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "tier": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "weapon material tier"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common combat item"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-durability advanced weapon"
+        },
+        "primary_uses": {
+          "values": [
+            "combat",
+            "dealing slashing damage"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows attack damage and slashing type"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for combat"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_sword_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for sword"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed when crafting sword"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tungsten carbide sword"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated crafting"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for fluid transport"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transport high-temperature fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows transfer rate and temp limit"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "named",
+          "evidence": "forge:fluid_pipes tag",
+          "rationale": "GTCE pipe system"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_wire_cutter_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for tool"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed when crafting wire cutter"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting EV wire cutter"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated crafting"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_wrench_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for tool"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed when crafting wrench"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting EV wrench"
+          ],
+          "signal": "inferred",
+          "rationale": "single use in recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated crafting"
+        }
+      }
+    },
+    "gtceu:tungsten_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for energy transport"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material cable"
+        },
+        "primary_uses": {
+          "values": [
+            "transfer high-voltage energy"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows max voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "named",
+          "evidence": "forge:cable tags and voltage info",
+          "rationale": "GTCE cable system"
+        }
+      }
+    },
+    "gtceu:tungsten_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed component for energy transport"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material wire"
+        },
+        "primary_uses": {
+          "values": [
+            "transfer high-voltage energy"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows max voltage and amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "named",
+          "evidence": "forge:wire tags and voltage info",
+          "rationale": "GTCE cable system"
+        }
+      }
+    },
+    "gtceu:tungsten_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag forge:dusts"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "tier": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "material tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for alloying"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alloys and tungsten carbide"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in mixing machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "players store dusts with small dusts"
+        }
+      }
+    },
+    "gtceu:tungsten_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal sheet for components"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "rationale": "item id suffix"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting delicate components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in shaped recipes for sensors, etc."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in machines"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

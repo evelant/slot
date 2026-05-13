@@ -1,0 +1,1256 @@
+{
+  "items": {
+    "gtceu:venus_stone_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block mined for processing into materials"
+        },
+        "material_family": {
+          "value": "stone_yellow_garnet",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from ore id",
+          "rationale": "ore of yellow garnet"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from Venus stone for material processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for yellow garnet material",
+            "smelted into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore for smelting/milling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried from mining trips, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:venus_stone_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block for limonite material"
+        },
+        "material_family": {
+          "value": "stone_yellow_limonite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from ore id",
+          "rationale": "ore of yellow limonite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for limonite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for limonite material",
+            "smelted into iron products"
+          ],
+          "signal": "inferred",
+          "rationale": "iron-bearing ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried from mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore for processing"
+        }
+      }
+    },
+    "gtceu:venus_stone_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block for zeolite material"
+        },
+        "material_family": {
+          "value": "stone_zeolite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family from ore id",
+          "rationale": "ore of zeolite"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for zeolite processing"
+        },
+        "primary_uses": {
+          "values": [
+            "mined for zeolite material",
+            "processed into dusts or chemicals"
+          ],
+          "signal": "inferred",
+          "rationale": "mineral ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried from mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore for processing"
+        }
+      }
+    },
+    "gtceu:veridium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed dust form of veridium"
+        },
+        "material_family": {
+          "value": "veridium",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/veridium",
+          "rationale": "dust of veridium material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "processed into other forms"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed material dust"
+        }
+      }
+    },
+    "gtceu:vibration_safe_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "casing block used in machine construction"
+        },
+        "primary_uses": {
+          "values": [
+            "machine casing",
+            "structural component for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for GT machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common casing"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of machine automation"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "component for EV tier machines"
+        }
+      }
+    },
+    "gtceu:vinyl_acetate_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket containing fluid used in processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket with vinyl acetate fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical reactions"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried, specific use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:vinyl_chloride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of hazardous gas used in processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket with vinyl chloride gas"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "chemical processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical reactions"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried, hazardous"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:vitrified_asbestos_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten vitrified asbestos"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket with molten fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "solidification into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "molten material for casting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specific use, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "material processing"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:vitrified_asbestos_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form of vitrified asbestos"
+        },
+        "material_family": {
+          "value": "vitrified_asbestos",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/vitrified_asbestos",
+          "rationale": "dust material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in insulation crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "insulation material",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "used for insulation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:void_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "warning sign block for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "factory aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "used as warning sign in builds"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decoration"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "warning sign variant"
+        }
+      }
+    },
+    "gtceu:watertight_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "casing block for machine housing"
+        },
+        "primary_uses": {
+          "values": [
+            "machine casing",
+            "structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for watertight machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common casing"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of machine automation"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "component for EV tier machines"
+        }
+      }
+    },
+    "gtceu:watertight_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "storage block for watertight steel, compact material"
+        },
+        "material_family": {
+          "value": "watertight_steel",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/watertight_steel",
+          "rationale": "block of watertight steel"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage",
+            "crafting material for plates"
+          ],
+          "signal": "inferred",
+          "rationale": "used as material source"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "bulk storage, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common material block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into plates and components"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "compact storage for watertight steel"
+        }
+      }
+    },
+    "gtceu:watertight_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten watertight steel"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket with molten metal"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "casting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "molten metal for casting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specific use, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "metal casting process"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:watertight_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form of watertight steel"
+        },
+        "material_family": {
+          "value": "watertight_steel",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/watertight_steel",
+          "rationale": "dust material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and mixing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "mixing into alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed dust"
+        }
+      }
+    },
+    "gtceu:watertight_steel_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "frame block for machine construction"
+        },
+        "material_family": {
+          "value": "watertight_steel",
+          "signal": "pattern",
+          "evidence": "tag forge:frames/watertight_steel",
+          "rationale": "frame of watertight steel"
+        },
+        "primary_uses": {
+          "values": [
+            "machine frame",
+            "structural component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT machine frames"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common frame"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of machine automation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "inferred",
+          "rationale": "machine frame component"
+        }
+      }
+    },
+    "gtceu:watertight_steel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingot form of watertight steel"
+        },
+        "material_family": {
+          "value": "watertight_steel",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/watertight_steel",
+          "rationale": "ingot material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "rolled into plates",
+            "made into tools"
+          ],
+          "signal": "inferred",
+          "rationale": "basic material form"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common ingot"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable ingot for storage"
+        }
+      }
+    },
+    "gtceu:watertight_steel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "nugget form of watertight steel"
+        },
+        "material_family": {
+          "value": "watertight_steel",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/watertight_steel",
+          "rationale": "nugget material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and alloying"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "alloying ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "small unit of material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specific use, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common nugget"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget storage"
+        }
+      }
+    },
+    "gtceu:watertight_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "plate form of watertight steel"
+        },
+        "material_family": {
+          "value": "watertight_steel",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/watertight_steel",
+          "rationale": "plate material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and pressing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "used in casings and machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common plate"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "sheet/plate storage"
+        }
+      }
+    },
+    "gtceu:watertight_steel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "rod form of watertight steel"
+        },
+        "material_family": {
+          "value": "watertight_steel",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/watertight_steel",
+          "rationale": "rod material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tool crafting and machinery"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "tool handles",
+            "machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "basic material form"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material for tool crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common rod"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wooden"
+          ],
+          "signal": "inferred",
+          "rationale": "rod storage (non-wooden but similar)"
+        }
+      }
+    },
+    "gtceu:wax_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten wax"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket with molten wax"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport",
+            "casting into wax forms"
+          ],
+          "signal": "inferred",
+          "rationale": "used in processing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specific use, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "material processing"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:wax_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form of wax"
+        },
+        "material_family": {
+          "value": "wax",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/wax",
+          "rationale": "wax dust"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "waterproofing",
+            "pill making"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in various recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:wax_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "nugget form of wax"
+        },
+        "material_family": {
+          "value": "wax",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/wax",
+          "rationale": "wax nugget"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "small wax unit"
+          ],
+          "signal": "inferred",
+          "rationale": "small material unit"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common nugget"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget storage"
+        }
+      }
+    },
+    "gtceu:wetware_circuit_board": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "circuit board component for high-tier circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for wetware circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "base board for processors"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized component, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common board"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in circuit assembly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit component storage"
+        }
+      }
+    },
+    "gtceu:wetware_printed_circuit_board": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "printed circuit board for wetware circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for advanced processors"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate circuit board"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component common rarity",
+          "rationale": "common board"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in circuit assembly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit component storage"
+        }
+      }
+    },
+    "gtceu:wetware_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "LuV-tier circuit component"
+        },
+        "tier": {
+          "value": "luv",
+          "signal": "named",
+          "evidence": "tooltip 'LuV-Tier Circuit'",
+          "rationale": "circuit tier as named"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for LuV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "advanced component, not everyday"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "higher tier circuit, less common"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine automation"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:luv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV voltage tier component"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "inferred",
+          "rationale": "LuV tier circuit, advanced stage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "gtceu:veridium_dust",
+      "facet": "material_process_stage",
+      "label": "Dust",
+      "proposed_id": "slot:dust",
+      "rationale": "missing from vocabulary but fits slot:dust pattern",
+      "evidence": "tag forge:dusts"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

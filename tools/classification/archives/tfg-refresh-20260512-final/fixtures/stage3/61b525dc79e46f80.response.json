@@ -1,0 +1,992 @@
+{
+  "items": {
+    "minecraft:andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Common stone used for building and crafting variants"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id minecraft:andesite",
+          "rationale": "Rock type from id"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common stone found everywhere"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, placed not kept"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Andesite is an extrusive igneous rock"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone",
+            "crafting slabs stairs walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses for construction and decoration"
+        }
+      }
+    },
+    "minecraft:andesite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone slab, a building component"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id prefix andesite_",
+          "rationale": "Derived from andesite"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building, placed often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Rock slab category"
+        },
+        "primary_uses": {
+          "values": [
+            "building floors and stairs",
+            "crafting decorative paths"
+          ],
+          "signal": "inferred",
+          "rationale": "Common building element"
+        }
+      }
+    },
+    "minecraft:andesite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone stairs, building component"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id prefix andesite_",
+          "rationale": "Derived from andesite"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building elevation changes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Rock stairs category"
+        },
+        "primary_uses": {
+          "values": [
+            "building staircases",
+            "decorative elevation changes"
+          ],
+          "signal": "inferred",
+          "rationale": "Common building element"
+        }
+      }
+    },
+    "minecraft:andesite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone wall, building component"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id prefix andesite_",
+          "rationale": "Derived from andesite"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building walls and fences"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Rock wall category"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls",
+            "creating boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "Common building element"
+        }
+      }
+    },
+    "minecraft:angler_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible pottery pattern from archaeology"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained from brushing suspicious sand/gravel"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Not abundant, found in specific structures"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept for crafting decorated pots or collecting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "collecting patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is as a decorative craft ingredient"
+        }
+      }
+    },
+    "minecraft:anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation for repairing/renaming items"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Crafted from iron blocks, appears iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable with iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not usually carried"
+        },
+        "primary_uses": {
+          "values": [
+            "repairing items",
+            "combining enchantments",
+            "renaming items"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of the anvil"
+        }
+      }
+    },
+    "minecraft:apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "minecraft:food component",
+          "rationale": "Edible food item"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common from oak trees and loot"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Staple food, often carried for hunger"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "named",
+          "evidence": "display_name and common sense",
+          "rationale": "Apple is a fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly for hunger restoration"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten raw, no cooking needed"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for hunger",
+            "crafting golden apples"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:archer_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible pottery pattern from archaeology"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained from brushing suspicious sand/gravel"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Not abundant, found in specific structures"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept for crafting decorated pots or collecting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "collecting patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is as a decorative craft ingredient"
+        }
+      }
+    },
+    "minecraft:armor_stand": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Used for displaying armor, a decoration"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Crafted from sticks and slabs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily craftable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not typically carried"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decorating with armor"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying armor sets",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses"
+        }
+      }
+    },
+    "minecraft:arms_up_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible pottery pattern from archaeology"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained from brushing suspicious sand/gravel"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Not abundant, found in specific structures"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept for crafting decorated pots or collecting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "collecting patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is as a decorative craft ingredient"
+        }
+      }
+    },
+    "minecraft:arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "pattern",
+          "evidence": "tag minecraft:arrows",
+          "rationale": "Projectile used with bows"
+        },
+        "form": {
+          "value": "projectile",
+          "signal": "pattern",
+          "evidence": "stage2 form",
+          "rationale": "Projectile shape"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily craftable in large quantities"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Bow users carry stacks of arrows"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for ranged combat"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat",
+            "applying status effects via tipped arrows"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses"
+        }
+      }
+    },
+    "minecraft:axolotl_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to capture and transport axolotls"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Contains an axolotl and water"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable with bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used occasionally for mob transport"
+        },
+        "origin": {
+          "values": [
+            "fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Axolotl captured from water"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting axolotls",
+            "catching aquatic mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:axolotl_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collectibles in creative"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 rule",
+          "rationale": "Spawn egg id pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common in creative inventory"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Only used in creative mode for spawning"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning axolotls in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use"
+        }
+      }
+    },
+    "minecraft:azalea": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Living plant block, part of flora"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Found in lush caves and forests"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked for decoration or replanting"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composter input",
+            "obtaining azalea leaves"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:azalea_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Part of a tree, natural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common from azalea trees"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected for decoration or compost"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "composter input",
+            "obtaining sticks or saplings"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:azure_bluet": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Small flower, natural plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common in plains and flower forests"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked for decoration or dye"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "dye ingredient (light gray)",
+            "composter input"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:baked_potato": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "minecraft:food component",
+          "rationale": "Cooked food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily obtained by baking potatoes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Good early-mid game food, often carried"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Potato is a vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly for hunger"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked in furnace"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for hunger restoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use"
+        }
+      }
+    },
+    "minecraft:bamboo": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Grows as plant, harvested for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common in jungles, farmable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested for crafting, but not always carried"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Grown and harvested for material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo is a plant resource"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting bamboo items",
+            "fuel",
+            "scaffolding"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:bamboo_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid block used for building"
+        },
+        "material_family": {
+          "value": "wood_bamboo",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "Bamboo wood family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from bamboo"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo wood product"
+        },
+        "primary_uses": {
+          "values": [
+            "building with bamboo",
+            "crafting bamboo planks"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:bamboo_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Button is a redstone trigger"
+        },
+        "material_family": {
+          "value": "wood_bamboo",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "Bamboo wood family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in redstone builds, carried as needed"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for redstone wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone circuits",
+            "opening doors remotely"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:bamboo_chest_raft": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Boat that moves player and items on water"
+        },
+        "material_family": {
+          "value": "wood_bamboo",
+          "signal": "inferred",
+          "rationale": "Bamboo material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used for specific water transport tasks"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for travel"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting items and player over water"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use"
+        }
+      }
+    },
+    "minecraft:bamboo_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door is a structural building element"
+        },
+        "material_family": {
+          "value": "wood_bamboo",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "Bamboo wood family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building entrances"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances",
+            "automated doors with redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:bamboo_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence is a building element"
+        },
+        "material_family": {
+          "value": "wood_bamboo",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "Bamboo wood family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building enclosures"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building fences and enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use"
+        }
+      }
+    },
+    "minecraft:bamboo_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence gate is a building element"
+        },
+        "material_family": {
+          "value": "wood_bamboo",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "Bamboo wood family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building gates"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building gates for fences",
+            "animal pen access"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    },
+    "minecraft:bamboo_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Signs are decorative, can be hung"
+        },
+        "material_family": {
+          "value": "wood_bamboo",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "Bamboo wood family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used for labeling and decoration, placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration and labeling"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling areas",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

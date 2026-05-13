@@ -1,0 +1,724 @@
+{
+  "values": [
+    {
+      "id": "beneath:warped/barrel",
+      "label": "Warped Barrel",
+      "state": "rejected",
+      "description": "Not a player workflow; wood variant of barrel block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "beneath:crafting/wood/warped_barrel",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "beneath:warped/loom",
+      "label": "Warped Loom",
+      "state": "rejected",
+      "description": "Not a distinct workflow; material variant of loom.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "beneath:crafting/wood/warped_loom",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:artificial/intelligence",
+      "label": "Artificial Intelligence",
+      "state": "rejected",
+      "description": "Advancement title for Deployer; not a reusable process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:deployer",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:brass/block/from/compacting",
+      "label": "Brass Block From Compacting",
+      "state": "rejected",
+      "description": "Single recipe, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/materials/brass_block_from_compacting",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:deployer",
+      "label": "Deployer",
+      "state": "accepted",
+      "description": "Player-facing process for deploying/using items.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/kinetics/deployer",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:mechanical/press",
+      "label": "Mechanical Press",
+      "state": "accepted",
+      "description": "Player-facing process for pressing/compacting items.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/kinetics/mechanical_press",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "firmalife:hydrophobic",
+      "label": "Hydrophobic",
+      "state": "rejected",
+      "description": "Advancement title for drying mat; not a process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "firmalife:story/dry",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/applied_energistics_2",
+      "label": "applied_energistics_2",
+      "state": "rejected",
+      "description": "Quest chapter name, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/applied_energistics_2",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/as/you/begin/your/journey/the/first/thing/you_ll/notice/is/a/completely/changed/world/you/can/no/longer/break/trees/with/your/fists/but/fret/not/for/any/caveman/is/not/a/real/caveman/without/his/stone/tools",
+      "label": "As you begin your journey, the first thing you'll notice is a completely changed world. You can no longer break trees with your fists, but fret not, for any caveman is not a real caveman without his stone tools!",
+      "state": "rejected",
+      "description": "One-off tutorial quest text, not a reusable workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/questsstoneage",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/before/landing/on/mars/there/are/a/few/important/things/to/keep/in/mind",
+      "label": "Before landing on Mars, there are a few important things to keep in mind.",
+      "state": "rejected",
+      "description": "Quest tip text, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/mars",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/chemical_elements",
+      "label": "chemical_elements",
+      "state": "rejected",
+      "description": "Quest chapter, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/chemical_elements",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "wan_ancient_beasts:cooked/toxlacanth/from/campfire/cooking",
+      "label": "Cooked Toxlacanth From Campfire Cooking",
+      "state": "rejected",
+      "description": "Specific food recipe, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "wan_ancient_beasts:recipes/food/cooked_toxlacanth_from_campfire_cooking",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:dropping/the/anvil",
+      "label": "Dropping the Anvil",
+      "state": "rejected",
+      "description": "Advancement title for creating an anvil; not a process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/metal_anvil",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:blast/off",
+      "label": "Blast off!",
+      "state": "rejected",
+      "description": "Advancement title for blast furnace; not a process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/blast_furnace",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:ironworks",
+      "label": "Ironworks",
+      "state": "accepted",
+      "description": "Player-facing process for iron production via bloomery.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/bloomery",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:the/grind",
+      "label": "The Grind",
+      "state": "rejected",
+      "description": "Advancement title for quern; not a process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/quern",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "firmalife:palm/stomping/barrel",
+      "label": "Palm Stomping Barrel",
+      "state": "rejected",
+      "description": "Not a distinct workflow; wood variant.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "firmalife:crafting/wood/palm_stomping_barrel",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "createdeco:cracked/red/bricks/from/bricks/smelting",
+      "label": "Cracked Red Bricks From Bricks Smelting",
+      "state": "rejected",
+      "description": "Single recipe, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "createdeco:recipes/building_blocks/cracked_red_bricks_from_bricks_smelting",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "firmalife:bread/machine",
+      "label": "Bread Machine",
+      "state": "accepted",
+      "description": "Player-facing process for baking/oven use.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "firmalife:story/oven",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "beneath:warped/workbench",
+      "label": "Warped Workbench",
+      "state": "rejected",
+      "description": "Not a distinct workflow; material variant of workbench.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "beneath:crafting/wood/warped_workbench",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "firmalife:climate/control",
+      "label": "Climate Control",
+      "state": "accepted",
+      "description": "Player-facing process for managing greenhouse/cellar climate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "firmalife:story/climate_station",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:your/turn/now",
+      "label": "Your Turn Now",
+      "state": "rejected",
+      "description": "Advancement title for lathe; not a process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "vintageimprovements:lathe",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "sns:food/on/the/go",
+      "label": "Food on the go",
+      "state": "rejected",
+      "description": "Advancement for lunchbox item; not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "sns:tfc/story/lunchbox",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:cracked/moon/stone/bricks/from/smelting/moon/stone/bricks",
+      "label": "Cracked Moon Stone Bricks From Smelting Moon Stone Bricks",
+      "state": "rejected",
+      "description": "Single recipe, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:recipes/misc/smelting/cracked_moon_stone_bricks_from_smelting_moon_stone_bricks",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "species:tough/love",
+      "label": "Tough Love",
+      "state": "rejected",
+      "description": "Advancement for hatching egg; one-off task.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "species:species/v1/hatch_wraptor",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "sophisticatedbackpacks:advanced/compacting/upgrade",
+      "label": "Advanced Compacting Upgrade",
+      "state": "rejected",
+      "description": "Item upgrade, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "sophisticatedbackpacks:recipes/misc/advanced_compacting_upgrade",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "sophisticatedbackpacks:auto/blasting/upgrade/from/auto/smelting/upgrade",
+      "label": "Auto Blasting Upgrade From Auto Smelting Upgrade",
+      "state": "rejected",
+      "description": "Recipe conversion, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "sophisticatedbackpacks:recipes/misc/auto_blasting_upgrade_from_auto_smelting_upgrade",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "sophisticatedbackpacks:auto/smoking/upgrade/from/auto/smelting/upgrade",
+      "label": "Auto Smoking Upgrade From Auto Smelting Upgrade",
+      "state": "rejected",
+      "description": "Recipe conversion, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "sophisticatedbackpacks:recipes/misc/auto_smoking_upgrade_from_auto_smelting_upgrade",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfcgroomer:copper/grooming/station",
+      "label": "Copper Grooming Station",
+      "state": "accepted",
+      "description": "Player-facing station for animal grooming.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfcgroomer:recipes/misc/copper_grooming_station",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:air/tight",
+      "label": "Air Tight",
+      "state": "rejected",
+      "description": "Advancement title for compressor; not a process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "vintageimprovements:compressor",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "wan_ancient_beasts:cooked/ancient/meat/from/campfire/cooking",
+      "label": "Cooked Ancient Meat From Campfire Cooking",
+      "state": "rejected",
+      "description": "Specific food recipe, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "wan_ancient_beasts:recipes/food/cooked_ancient_meat_from_campfire_cooking",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "alekiships:rowboat",
+      "label": "Rowboat",
+      "state": "rejected",
+      "description": "One-off boat construction project, not a reusable process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "alekiships:rowboat/en_us/categories/blueprint",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "alekiships:sloop",
+      "label": "Sloop",
+      "state": "rejected",
+      "description": "One-off boat construction project, not a reusable process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "alekiships:sloop/en_us/categories/blueprint",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:rocket/science",
+      "label": "Rocket Science",
+      "state": "accepted",
+      "description": "Player-facing process for rocket construction.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:rocket_science",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:smart/blasting",
+      "label": "Smart Blasting",
+      "state": "rejected",
+      "description": "Advancement title for Etrionic Blast Furnace; not a process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:smart_blasting",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:tier/value_1/rocket/from/nasa/workbench",
+      "label": "Tier 1 Rocket From Nasa Workbench",
+      "state": "rejected",
+      "description": "Single recipe, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:recipes/nasa_workbench/nasa_workbench/tier_1_rocket_from_nasa_workbench",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "alekiships:lost/at/sea",
+      "label": "Lost at Sea",
+      "state": "rejected",
+      "description": "Silly advancement for riding barrel; not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "alekiships:ride_barrel",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "description:wooden/door/value_1",
+      "label": "Wooden doors allow you to block monsters from entering your building. Testing sentences.",
+      "state": "rejected",
+      "description": "Recipe category description, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "description:wooden.door.1",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "lootr:barrel/booty",
+      "label": "Barrel Booty",
+      "state": "rejected",
+      "description": "Advancement for opening loot barrel; not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "lootr:1barrel",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "sophisticatedbackpacks:auto/smelting/upgrade",
+      "label": "Auto Smelting Upgrade",
+      "state": "rejected",
+      "description": "Item upgrade, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "sophisticatedbackpacks:recipes/misc/auto_smelting_upgrade",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfcgroomer:bismuth/bronze/grooming/station",
+      "label": "Bismuth Bronze Grooming Station",
+      "state": "accepted",
+      "description": "Player-facing station for animal grooming.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfcgroomer:recipes/misc/bismuth_bronze_grooming_station",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfcgroomer:black/bronze/grooming/station",
+      "label": "Black Bronze Grooming Station",
+      "state": "accepted",
+      "description": "Player-facing station for animal grooming.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfcgroomer:recipes/misc/black_bronze_grooming_station",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:bender/rodriguez",
+      "label": "Bender Rodriguez",
+      "state": "rejected",
+      "description": "Advancement title for curving press; not a process id.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "vintageimprovements:curving",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:card/punch",
+      "label": "Card Punch",
+      "state": "rejected",
+      "description": "Advancement for recipe card item; not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "vintageimprovements:recipe_card",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ali:archaeology_loot",
+      "label": "Archaeology Loot",
+      "state": "rejected",
+      "description": "Recipe category, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:archaeology_loot",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ali:block_loot",
+      "label": "Block Drops",
+      "state": "rejected",
+      "description": "Recipe category, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:block_loot",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ali:cat_morning_gift",
+      "label": "Cat Morning Gift",
+      "state": "rejected",
+      "description": "Recipe category, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:cat_morning_gift",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "cloth-config:testing",
+      "label": "Config Demo",
+      "state": "rejected",
+      "description": "Config category, not a workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "cloth-config:testing",
+          "confidence": 0.65
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,960 @@
+{
+  "items": {
+    "beneath:wood/water_wheel/warped": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Water wheel generates rotational power in contraptions"
+        },
+        "primary_uses": {
+          "values": [
+            "Generate rotational power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed to power Create-style machinery"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and forgotten, rarely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses it to generate power"
+        }
+      }
+    },
+    "beneath:wood/wood/crimson": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log used for building and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building and construction",
+            "Crafting lumber and planks",
+            "Fuel for firepit"
+          ],
+          "signal": "inferred",
+          "rationale": "Common uses of logs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or fueling"
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "inferred",
+          "rationale": "Nether fungal wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Organic fungal wood"
+        }
+      }
+    },
+    "beneath:wood/wood/warped": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log used for building and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building and construction",
+            "Crafting lumber and planks",
+            "Fuel for firepit"
+          ],
+          "signal": "inferred",
+          "rationale": "Common uses of logs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or fueling"
+        },
+        "material_family": {
+          "value": "wood_warped",
+          "signal": "inferred",
+          "rationale": "Nether fungal wood variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Organic fungal wood"
+        }
+      }
+    },
+    "betterend:aeridium": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Decorative plant found in nature"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Composting",
+            "Mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decor and mossy recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed for building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Non-food plant item"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Grass/plant"
+        }
+      }
+    },
+    "betterend:amber_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Decorative plant found in nature"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Composting",
+            "Mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decor and mossy recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Non-food plant item"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Grass/plant"
+        }
+      }
+    },
+    "betterend:amber_root_product": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible grain-like food"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating",
+            "Animal feed",
+            "Compost",
+            "Cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition, feed, and compost"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Food item, not staple"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged tfc:foods/grains"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Uncooked grain"
+        }
+      }
+    },
+    "betterend:amber_root_seeds": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Seeds are farming supplies"
+        },
+        "primary_uses": {
+          "values": [
+            "Planting to grow crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for farming"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "Seed storage group"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in farming"
+        }
+      }
+    },
+    "betterend:amber_root_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild crop plant in nature"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting for seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of seeds"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Wild crop group"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural plant"
+        }
+      }
+    },
+    "betterend:aurant_polypore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Mushroom found in nature"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Composting",
+            "Mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mossy recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Non-food plant-like"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Fungal"
+        }
+      }
+    },
+    "betterend:blooming_cooksonia": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Decorative plant, tagged unused"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Primarily decorative"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely collected"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Small plant"
+        }
+      }
+    },
+    "betterend:blossom_berry_product": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating",
+            "Animal feed",
+            "Juicing",
+            "Cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition and processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Food item, not staple"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged tfc:foods/fruits"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Uncooked fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "Fruit storage group"
+        }
+      }
+    },
+    "betterend:blossom_berry_seeds": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Seeds are farming supplies"
+        },
+        "primary_uses": {
+          "values": [
+            "Planting to grow berries"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for farming"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "Seed storage group"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in farming"
+        }
+      }
+    },
+    "betterend:blossom_berry_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild crop plant in nature"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting for seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of seeds"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Wild crop group"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural plant"
+        }
+      }
+    },
+    "betterend:bolux_mushroom_cooked": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked edible mushroom"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating",
+            "Cooking ingredient",
+            "Compost"
+          ],
+          "signal": "inferred",
+          "rationale": "Nutrition and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Food item"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged tfc:foods/vegetables"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or in recipes"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked variant"
+        }
+      }
+    },
+    "betterend:bolux_mushroom_product": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible mushroom (raw with debuffs)"
+        },
+        "primary_uses": {
+          "values": [
+            "Cooking ingredient",
+            "Compost"
+          ],
+          "signal": "inferred",
+          "rationale": "Typically cooked, not eaten raw"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested for cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged tfc:foods/vegetables"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as cooking ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Uncooked"
+        }
+      }
+    },
+    "betterend:bolux_mushroom_seeds": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Spores for planting"
+        },
+        "primary_uses": {
+          "values": [
+            "Planting to grow mushrooms"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for farming"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "Seed storage group"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in farming"
+        }
+      }
+    },
+    "betterend:bolux_mushroom_wild": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild colony in nature"
+        },
+        "primary_uses": {
+          "values": [
+            "Harvesting for spores"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of seeds"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wild_crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Wild crop group"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Mushroom colony"
+        }
+      }
+    },
+    "betterend:brimstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building and construction",
+            "Crafting facades"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and as material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "inferred",
+          "rationale": "From block tag"
+        }
+      }
+    },
+    "betterend:bulb_moss": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Decorative moss found in nature"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Composting",
+            "Mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mossy recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Non-food plant"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Moss"
+        }
+      }
+    },
+    "betterend:bushy_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Grass block in nature"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Composting",
+            "Mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decor and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Non-food plant"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Grass"
+        }
+      }
+    },
+    "betterend:cave_bush": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Cave bush decorative plant"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decor and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Non-food plant"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Cave bush"
+        }
+      }
+    },
+    "betterend:cave_bush_fallen": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Fallen leaves in caves"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Compost",
+            "Firepit kindling"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as fuel and decor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly collected"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Fallen leaves"
+        }
+      }
+    },
+    "betterend:cave_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Cave grass decorative plant"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Mossy stone crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decor and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected when needed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/inedible_plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Non-food plant"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Cave grass"
+        }
+      }
+    },
+    "betterend:cave_pumpkin": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible pumpkin crop"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating",
+            "Light source",
+            "Crafting chunks"
+          ],
+          "signal": "inferred",
+          "rationale": "Food and light"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested for food"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Usually processed into chunks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Plant"
+        }
+      }
+    },
+    "betterend:cave_pumpkin_chunks": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Processed fruit chunks"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating",
+            "Cooking ingredient",
+            "Compost"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible and for recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Food item"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged tfc:foods/fruits"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly or in recipes"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Chunks are raw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "Fruit storage group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "betterend:cave_bush_fallen",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "Tooltip shows burn time at Hot"
+    }
+  ]
+}

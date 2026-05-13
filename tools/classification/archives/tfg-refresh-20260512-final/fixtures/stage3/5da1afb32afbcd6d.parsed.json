@@ -1,0 +1,1381 @@
+{
+  "items": {
+    "gtceu:rich_raw_cobaltite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unsmelted ore piece, stored as crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity",
+          "rationale": "common component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Brought back from mining trips frequently"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into refined metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed to extract metal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from ore veins"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Unprocessed ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stackable ore stored in bulk"
+        }
+      }
+    },
+    "gtceu:rich_raw_cooperite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unsmelted ore piece"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Brought back from mining"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into refined metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed to extract metal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_desh": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into desh"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "polished into gem",
+            "smelted into diamond"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem ore with polishing recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_diatomite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into diatomite"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_electrotine": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into electrotine"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "polished into gem",
+            "smelted into emerald"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_fullers_earth": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into fuller's earth"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_galena": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into lead"
+          ],
+          "signal": "inferred",
+          "rationale": "Lead ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_garnet_sand": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into garnet sand"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_glauconite_sand": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into glauconite sand"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_goethite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into cast iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Iron ore variant"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_granitic_mineral_sand": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into cast iron"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_graphite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into graphite"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_green_sapphire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "polished into gem",
+            "smelted into green sapphire"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_grossular": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "polished into gem",
+            "smelted into grossular"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_gypsum": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into gypsum",
+            "crafted into alabaster bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Also used for alabaster brick crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_ilmenite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into ilmenite"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into cast iron"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_kyanite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into aluminium silicate"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_lapis": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "polished into gem",
+            "smelted into lapis"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_lazurite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "polished into gem",
+            "smelted into lazurite"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_lead": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into lead"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_lepidolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into lepidolite"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:rich_raw_lithium": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "milled/pressed into crushed ore",
+            "smelted into lithium"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:rich_raw_cobaltite",
+      "facet": "material_family",
+      "value": "cobaltite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_cooperite",
+      "facet": "material_family",
+      "value": "cooperite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_desh",
+      "facet": "material_family",
+      "value": "desh",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_diamond",
+      "facet": "material_family",
+      "value": "diamond",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_diatomite",
+      "facet": "material_family",
+      "value": "diatomite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_electrotine",
+      "facet": "material_family",
+      "value": "electrotine",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_emerald",
+      "facet": "material_family",
+      "value": "emerald",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_fullers_earth",
+      "facet": "material_family",
+      "value": "fullers_earth",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_galena",
+      "facet": "material_family",
+      "value": "galena",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_garnet_sand",
+      "facet": "material_family",
+      "value": "garnet_sand",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_glauconite_sand",
+      "facet": "material_family",
+      "value": "glauconite_sand",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_goethite",
+      "facet": "material_family",
+      "value": "goethite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_granitic_mineral_sand",
+      "facet": "material_family",
+      "value": "granitic_mineral_sand",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_graphite",
+      "facet": "material_family",
+      "value": "graphite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_green_sapphire",
+      "facet": "material_family",
+      "value": "green_sapphire",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_grossular",
+      "facet": "material_family",
+      "value": "grossular",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_gypsum",
+      "facet": "material_family",
+      "value": "gypsum",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_ilmenite",
+      "facet": "material_family",
+      "value": "ilmenite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_iron",
+      "facet": "material_family",
+      "value": "iron",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_kyanite",
+      "facet": "material_family",
+      "value": "kyanite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_lapis",
+      "facet": "material_family",
+      "value": "lapis",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_lazurite",
+      "facet": "material_family",
+      "value": "lazurite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_lead",
+      "facet": "material_family",
+      "value": "lead",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_lepidolite",
+      "facet": "material_family",
+      "value": "lepidolite",
+      "rationale": "From item id suffix"
+    },
+    {
+      "item": "gtceu:rich_raw_lithium",
+      "facet": "material_family",
+      "value": "lithium",
+      "rationale": "From item id suffix"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

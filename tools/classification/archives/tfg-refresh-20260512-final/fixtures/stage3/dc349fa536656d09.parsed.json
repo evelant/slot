@@ -1,0 +1,1151 @@
+{
+  "items": {
+    "gtceu:black_steel_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "hoe is a farming tool, not a weapon"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix black_steel",
+          "rationale": "named material in id"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier alloy, player perceives as uncommon"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "farming tool kept handy for tilling"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is tilling farmland"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil for farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says tills ground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "classed as artisan tool"
+        }
+      }
+    },
+    "gtceu:black_steel_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for a tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material from id"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate metal component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when crafting a hoe"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting hoes"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is hoe assembly"
+        }
+      }
+    },
+    "gtceu:black_steel_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "used for cutting/crafting, not primary combat"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier alloy tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used in many crafting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting items",
+            "crafting food and materials"
+          ],
+          "signal": "inferred",
+          "rationale": "used in numerous shapeless/deployer recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "classed as artisan tool"
+        }
+      }
+    },
+    "gtceu:black_steel_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for knife"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting knife"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting knives"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is knife assembly"
+        }
+      }
+    },
+    "gtceu:black_steel_mining_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "mining tool for large area excavation"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier tool"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential mining tool carried always"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mines large areas"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone/ores in 3x3 area",
+            "placing torches"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states area mining and torch placing"
+        }
+      }
+    },
+    "gtceu:black_steel_mining_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for mining hammer"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting hammer"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mining hammers"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is hammer assembly"
+        }
+      }
+    },
+    "gtceu:black_steel_mortar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting tool for grinding"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many grinding recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "grinds grains, spices, and gems"
+        },
+        "primary_uses": {
+          "values": [
+            "grinding gems to dust",
+            "grinding grains to flour"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe evidence: gem dust, flour, salt"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "classed as artisan crafting tool"
+        }
+      }
+    },
+    "gtceu:black_steel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "small metal piece used in crafting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in inventory for crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "form is nugget"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black steel components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil and milling recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "vocabulary item pack:tfg/nuggets applies",
+          "rationale": "nuggets storage group"
+        }
+      }
+    },
+    "gtceu:black_steel_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block, part of power network"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV-tier cable, not common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transports energy for machines"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting energy between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage and amperage ratings"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables",
+          "rationale": "part of GTCEu cable energy network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage tier components"
+        }
+      }
+    },
+    "gtceu:black_steel_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport wire"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV-tier wire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transports energy"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting energy between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage and amperage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire for energy network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage tier components"
+        }
+      }
+    },
+    "gtceu:black_steel_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "primary mining tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier pickaxe"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential mining tool"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mines stone and ores"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows mining speed and harvest level"
+        }
+      }
+    },
+    "gtceu:black_steel_pickaxe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for pickaxe"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting pickaxe"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pickaxes"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is pickaxe assembly"
+        }
+      }
+    },
+    "gtceu:black_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "refined metal form used in crafting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate metal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used in many machine recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "form is plate"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machines and advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "sheets stored together"
+        }
+      }
+    },
+    "gtceu:black_steel_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport cable"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV-tier cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transports energy"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting energy between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage and amperage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables",
+          "rationale": "part of GTCEu cable network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage tier"
+        }
+      }
+    },
+    "gtceu:black_steel_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport wire"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV-tier wire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building energy lines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transports energy"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting energy between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows voltage and amperage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire for energy network"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage tier"
+        }
+      }
+    },
+    "gtceu:black_steel_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rings",
+          "rationale": "small component used in crafting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in inventory for specific crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rotors, gliders, and machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many shaped recipes"
+        }
+      }
+    },
+    "gtceu:black_steel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "shaped metal for crafting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used in many recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "form is rod"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools, frames, and machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in hundreds of recipes"
+        }
+      }
+    },
+    "gtceu:black_steel_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for aircraft and machines"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific aircraft/propeller recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting propellers and aircraft components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in immersive aircraft recipes"
+        }
+      }
+    },
+    "gtceu:black_steel_saw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "cutting tool for crafting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier saw"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many cutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting lumber",
+            "crafting planks and supports"
+          ],
+          "signal": "inferred",
+          "rationale": "over 700 recipes use saw"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools not present but inferred from similar tools",
+          "rationale": "artisan crafting tool"
+        }
+      }
+    },
+    "gtceu:black_steel_saw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for saw"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting saw"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting saws"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is saw assembly"
+        }
+      }
+    },
+    "gtceu:black_steel_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "tiny component used in machine crafting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting rotors, gliders, and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in shaped recipes"
+        }
+      }
+    },
+    "gtceu:black_steel_screwdriver": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "tool for adjusting machines and crafting"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier screwdriver"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "constantly used to configure machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to adjust covers and machines"
+        },
+        "primary_uses": {
+          "values": [
+            "adjusting machine covers",
+            "crafting various items"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says adjusts covers and machines; used in many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "classed as artisan tool"
+        }
+      }
+    },
+    "gtceu:black_steel_screwdriver_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for screwdriver"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting screwdriver"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting screwdrivers"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is screwdriver assembly"
+        }
+      }
+    },
+    "gtceu:black_steel_scythe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "farming tool for harvesting and tilling"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier scythe"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "farming tool kept handy"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvests crops and tills ground"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting crops in large area",
+            "tilling soil"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says harvester and farmer"
+        }
+      }
+    },
+    "gtceu:black_steel_scythe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for scythe"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id prefix",
+          "rationale": "tier material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting scythe"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting scythes"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is scythe assembly"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1091 @@
+{
+  "items": {
+    "deafission:redstone_port": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock component with redstone control, no UI"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone control for fission reactor",
+            "multiblock port component"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip mentions wrench mode change"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction, placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component common"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "fission reactor component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Dea's Fission multiblock system"
+        }
+      }
+    },
+    "diggerhelmet:auto_drink_modifier": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "semantic_text: Automatically drinks water... installed in Digger Helmet",
+          "rationale": "helmet upgrade module"
+        },
+        "primary_uses": {
+          "values": [
+            "auto drink water while mining"
+          ],
+          "signal": "named",
+          "rationale": "tooltip describes function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried until installed, then left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet mod used for mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet modifier item"
+        }
+      }
+    },
+    "diggerhelmet:bismuth_bronze_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "id ends _helmet, equippable head",
+          "rationale": "worn as helmet armor"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet mod gives light and armor"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn constantly when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component common"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id contains bismuth_bronze",
+          "rationale": "material tier in TFC"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id prefix bismuth_bronze",
+          "rationale": "helmet material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet used for mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet items together"
+        }
+      }
+    },
+    "diggerhelmet:black_bronze_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet armor"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "helmet material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:black_steel_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn when mining"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = rare",
+          "rationale": "component rare"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "helmet material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:blue_steel_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn when mining"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic mapped to unique"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "helmet material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_bismuth_bronze_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet still armor piece"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: This helmet is broken and doesn't work",
+          "rationale": "held for repair"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only kept until repaired"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "material from id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_black_bronze_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_black_steel_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_blue_steel_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_bronze_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_copper_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken generic helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_red_steel_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_steel_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:broken_wrought_iron_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "broken helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "awaiting repair",
+            "broken mining helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for repair"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:bronze_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "helmet material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:candleslime_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "rationale": "spawn egg collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn candle slime mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet mod item"
+        }
+      }
+    },
+    "diggerhelmet:copper_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "helmet material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "base digger helmet"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:eternal_candle": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "light source carried for caving"
+        },
+        "primary_uses": {
+          "values": [
+            "eternal light source",
+            "cave lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: mysterious source of eternal flame"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when exploring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "light source for mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet mod item"
+        }
+      }
+    },
+    "diggerhelmet:mining_speed_modifier": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "tooltip: increases mining speed when installed in Digger Helmet",
+          "rationale": "helmet upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "boost mining speed in helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip describes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried until installed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining speed boost"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet modifier"
+        }
+      }
+    },
+    "diggerhelmet:red_steel_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn when mining"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic mapped to unique"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "helmet material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    },
+    "diggerhelmet:silk_lining": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "tooltip: install in Digger Helmet for cooling",
+          "rationale": "helmet upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "cooling and insulation in helmet"
+          ],
+          "signal": "named",
+          "rationale": "tooltip describes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried until installed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mining helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet modifier"
+        }
+      }
+    },
+    "diggerhelmet:steel_digger_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet"
+        },
+        "primary_uses": {
+          "values": [
+            "mining helmet with light",
+            "head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn when mining"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "component uncommon"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "material tier"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "helmet material"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diggerhelmet_items"
+          ],
+          "signal": "inferred",
+          "rationale": "digger helmet group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

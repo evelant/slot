@@ -1,0 +1,944 @@
+{
+  "items": {
+    "minecraft:dead_tube_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for decoration, not living."
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration for ocean builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative block."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits decorative blocks group."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration."
+        }
+      }
+    },
+    "minecraft:debug_stick": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only",
+          "rationale": "Creative-only debugging item."
+        },
+        "primary_uses": {
+          "values": [
+            "Debugging block states",
+            "Mapmaking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used by mapmakers and devs."
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not obtained in survival."
+        }
+      }
+    },
+    "minecraft:decorated_pot": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative block with no UI."
+        },
+        "primary_uses": {
+          "values": [
+            "Displaying as pottery decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for looks."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block group."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration."
+        }
+      }
+    },
+    "minecraft:deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Primary stone building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Building stone structures",
+            "Stonecutting base"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as building material and crafting input."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "pattern",
+          "evidence": "matching id and tags",
+          "rationale": "Part of deepslate stone family."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building."
+        }
+      }
+    },
+    "minecraft:deepslate_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted building block for floors."
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative floors",
+            "Stonecutting variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Deepslate brick variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        }
+      }
+    },
+    "minecraft:deepslate_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted building block for stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Stonecutting variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Deepslate brick variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        }
+      }
+    },
+    "minecraft:deepslate_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted building block for walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls",
+            "Stonecutting variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Deepslate brick variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        }
+      }
+    },
+    "minecraft:deepslate_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls and floors",
+            "Stonecutting source"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Deepslate brick variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        }
+      }
+    },
+    "minecraft:deepslate_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore block mined for coal."
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for coal",
+            "Source of fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary source of coal."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried often."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 form=ore",
+          "rationale": "Unprocessed ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining."
+        }
+      }
+    },
+    "minecraft:deepslate_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore block mined for copper."
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for copper"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of copper."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried often."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 form=ore",
+          "rationale": "Unprocessed ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining."
+        }
+      }
+    },
+    "minecraft:deepslate_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore block mined for diamond."
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for diamonds"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of diamonds."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried often."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 form=ore",
+          "rationale": "Unprocessed ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining."
+        }
+      }
+    },
+    "minecraft:deepslate_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore block mined for emerald."
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for emeralds"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of emeralds."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried often."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 form=ore",
+          "rationale": "Unprocessed ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining."
+        }
+      }
+    },
+    "minecraft:deepslate_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore block mined for gold."
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for gold"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of gold."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried often."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 form=ore",
+          "rationale": "Unprocessed ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining."
+        }
+      }
+    },
+    "minecraft:deepslate_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore block mined for iron."
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of iron."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried often."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 form=ore",
+          "rationale": "Unprocessed ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining."
+        }
+      }
+    },
+    "minecraft:deepslate_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore block mined for lapis lazuli."
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for lapis lazuli"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of lapis."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried often."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 form=ore",
+          "rationale": "Unprocessed ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining."
+        }
+      }
+    },
+    "minecraft:deepslate_redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Ore block mined for redstone."
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Source of redstone."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried often."
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 form=ore",
+          "rationale": "Unprocessed ore block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Obtained by mining."
+        }
+      }
+    },
+    "minecraft:deepslate_tile_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted building block for floors."
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative floors",
+            "Stonecutting variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Deepslate tile variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        }
+      }
+    },
+    "minecraft:deepslate_tile_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted building block for stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Stonecutting variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Deepslate tile variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        }
+      }
+    },
+    "minecraft:deepslate_tile_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted building block for walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls",
+            "Stonecutting variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Deepslate tile variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        }
+      }
+    },
+    "minecraft:deepslate_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Crafted building block."
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls and floors",
+            "Stonecutting source"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Deepslate tile variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block."
+        }
+      }
+    },
+    "minecraft:detector_rail": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Part of the rail transport system."
+        },
+        "primary_uses": {
+          "values": [
+            "Detecting minecarts",
+            "Triggering redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in rail redstone circuits."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried for rail building, not everyday."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of minecart system."
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for transportation infrastructure."
+        }
+      }
+    },
+    "minecraft:diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "Gem material for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting top-tier tools and armor",
+            "Beacon payment"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for high-end gear."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting or repairs."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:gems/diamond",
+          "rationale": "Valued gem material."
+        }
+      }
+    },
+    "minecraft:diamond_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id suffix _axe",
+          "rationale": "Axe tool."
+        },
+        "primary_uses": {
+          "values": [
+            "Chopping wood",
+            "Dealing damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool and weapon."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential tool carried always."
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a weapon."
+        }
+      }
+    },
+    "minecraft:diamond_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed material block, not a container."
+        },
+        "primary_uses": {
+          "values": [
+            "Compact diamond storage",
+            "Beacon base",
+            "Decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and construction."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Usually stored in base."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks",
+          "rationale": "Block form for compact storage."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction."
+        }
+      }
+    },
+    "minecraft:diamond_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "id suffix _boots",
+          "rationale": "Foot armor."
+        },
+        "primary_uses": {
+          "values": [
+            "Foot protection",
+            "Fall damage reduction"
+          ],
+          "signal": "inferred",
+          "rationale": "Worn for defense."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Worn constantly when exploring."
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in combat for protection."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

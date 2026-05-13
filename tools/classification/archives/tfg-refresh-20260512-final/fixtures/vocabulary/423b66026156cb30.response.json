@@ -1,0 +1,868 @@
+{
+  "values": [
+    {
+      "id": "create:using/empty/blaze/burners",
+      "label": "Using Empty Blaze Burners",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/empty_blaze_burner",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:using/mechanical/belts",
+      "label": "Using Mechanical Belts",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/belt_connector",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:using/redstone/links",
+      "label": "Using Redstone Links",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/redstone_link",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:using/train/schedules",
+      "label": "Using Train Schedules",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/train_schedule",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:valid/orientations/for/mechanical/belts",
+      "label": "Valid Orientations for Mechanical Belts",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/belt_directions",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:fluid/transportation/using/mechanical/pumps",
+      "label": "Fluid Transportation using Mechanical Pumps",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/mechanical_pump_flow",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:using/mechanical/belts",
+      "label": "Using Mechanical Belts",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/belt_connector",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:valid/orientations/for/mechanical/belts",
+      "label": "Valid Orientations for Mechanical Belts",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/belt_directions",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "railways:using/a/coupler",
+      "label": "Using a Coupler",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "railways:ponder/train_coupler",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:processing/items/and/fluids/in/the/centrifuge",
+      "label": "Processing Items & Fluids in the Centrifuge",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/centrifuge",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:processing/items/with/the/laser",
+      "label": "Processing Items with the Laser",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/laser",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:composter",
+      "label": "Composter",
+      "state": "accepted",
+      "description": "Player-facing process for creating fertilizer using a composter.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/composter",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:irrigation",
+      "label": "Irrigation",
+      "state": "accepted",
+      "description": "Player-facing process for setting up sprinklers and pipes to water crops.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/irrigation",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:beneath/crops",
+      "label": "Beneath Crops",
+      "state": "rejected",
+      "description": "Guide topic about crops in the Beneath dimension, not a reusable process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/beneath_crops",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:fire/clay",
+      "label": "Fire Clay",
+      "state": "rejected",
+      "description": "Guide topic about a material, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/fire_clay",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:food/and/water",
+      "label": "Food and Water",
+      "state": "rejected",
+      "description": "General survival mechanics guide, not a specific reusable process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/food_and_water",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:greenhouse",
+      "label": "Greenhouse",
+      "state": "accepted",
+      "description": "Player-facing multiblock process for growing crops year-round.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/greenhouse",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:preservation",
+      "label": "Preservation",
+      "state": "accepted",
+      "description": "Player-facing process for preserving food using vessels, salting, vinegar, etc.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/decay",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:venus/vein/index",
+      "label": "Venus Vein Index",
+      "state": "rejected",
+      "description": "Ore vein index reference, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/venus_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create_hypertube:creating/a/hypertube",
+      "label": "Creating a Hypertube",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_hypertube:ponder/simple_tube",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:connecting/gauges/to/other/blocks",
+      "label": "Connecting Gauges to other Blocks",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/factory_gauge_links",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:controlling/rotational/speed/using/sequenced/gearshifts",
+      "label": "Controlling Rotational Speed using Sequenced Gearshifts",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/sequenced_gearshift",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:controlling/signals/using/pulse/extenders",
+      "label": "Controlling signals using Pulse Extenders",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/pulse_extender",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:creating/and/unwrapping/packages",
+      "label": "Creating and unwrapping packages",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/packager",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:direction/of/transfer",
+      "label": "Direction of Transfer",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/funnel_direction",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:draining/and/filling/fluid/containers",
+      "label": "Draining and Filling fluid containers",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fluid_pipe_interaction",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:emptying/fluid/containers/using/item/drains",
+      "label": "Emptying Fluid Containers using Item Drains",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/item_drain",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:fill/and/drain/level/of/hose/pulleys",
+      "label": "Fill and Drain level of Hose Pulleys",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/hose_pulley_level",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:filling/terrain/with/the/roller",
+      "label": "Filling terrain with the Roller",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_roller_fill",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:generating/rotational/force/using/large/water/wheels",
+      "label": "Generating Rotational Force using Large Water Wheels",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/large_water_wheel",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:placing/train/signals",
+      "label": "Placing Train Signals",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/train_signal_placement",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:processing/items/in/the/millstone",
+      "label": "Processing Items in the Millstone",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/millstone",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:processing/items/on/the/mechanical/saw",
+      "label": "Processing Items on the Mechanical Saw",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_saw_processing",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:redstone/output/of/the/pulse/timer",
+      "label": "Redstone output of the Pulse Timer",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/pulse_timer",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:relaying/rotational/force/using/chain/conveyors",
+      "label": "Relaying rotational force using Chain Conveyors",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/chain_conveyor",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:splitting/item/stacks/using/weighted/ejectors",
+      "label": "Splitting item stacks using Weighted Ejectors",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/weighted_ejector_tunnel",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:storing/fluids/in/fluid/tanks",
+      "label": "Storing Fluids in Fluid Tanks",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fluid_tank_storage",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:throughput/of/mechanical/pumps",
+      "label": "Throughput of Mechanical Pumps",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_pump_speed",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:traversing/unloaded/chunks",
+      "label": "Traversing unloaded Chunks",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/track_chunks",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:processing/items/in/the/millstone",
+      "label": "Processing Items in the Millstone",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/millstone",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:processing/items/on/the/mechanical/saw",
+      "label": "Processing Items on the Mechanical Saw",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/mechanical_saw_processing",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:throughput/of/mechanical/pumps",
+      "label": "Throughput of Mechanical Pumps",
+      "state": "rejected",
+      "description": "Tutorial guide step, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/mechanical_pump_speed",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:beekeeping",
+      "label": "Beekeeping",
+      "state": "accepted",
+      "description": "Player-facing process for maintaining bee hives and producing honey and beeswax.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/beekeeping",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:bread",
+      "label": "Bread",
+      "state": "accepted",
+      "description": "Player-facing process for making bread from dough using yeast and baking.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/bread",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:oven/appliances",
+      "label": "Oven Appliances",
+      "state": "accepted",
+      "description": "Player-facing process for using oven attachments like hopper, ashtray, vat, jarring station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/oven_appliances",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:pits/of/fire",
+      "label": "Pits of Fire",
+      "state": "accepted",
+      "description": "Player-facing process for creating and using firepits, grills, and pots.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/firepit",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "buildinggadgets2:copy/paste/gadget",
+      "label": "Copy Paste Gadget",
+      "state": "rejected",
+      "description": "Guide for a specific tool item, not a reusable player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "buildinggadgets2:buildinggadgets2book/en_us/entries/copypaste",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:advanced/materials",
+      "label": "Advanced Materials",
+      "state": "rejected",
+      "description": "Guide topic about building materials, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/advanced_building_materials",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

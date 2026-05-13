@@ -1,0 +1,1017 @@
+{
+  "items": {
+    "gtceu:ethenone_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool for chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying and pouring ethenone fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket form, used in GTCEu chemistry"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when running chemical recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable fluid"
+        }
+      }
+    },
+    "gtceu:ethyl_tertbutyl_ether_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying ethyl tertbutyl ether"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket form for chemical fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in organic chemistry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable fluid"
+        }
+      }
+    },
+    "gtceu:ethylbenzene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying ethylbenzene"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for hazardous chemical"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable fluid"
+        }
+      }
+    },
+    "gtceu:ethylene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool for gaseous chemical"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying ethylene gas"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket form for gaseous fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in petrochemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable fluid"
+        }
+      }
+    },
+    "gtceu:europium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed storage form of europium metal"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of europium",
+            "crafting input for plates and wires"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block used as material source"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in chests, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier material, not early game"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "display name 'Block of Europium'",
+          "rationale": "europium material family"
+        }
+      }
+    },
+    "gtceu:europium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket for molten europium"
+        },
+        "primary_uses": {
+          "values": [
+            "carrying molten europium for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-temperature metal processing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when handling molten metal"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier metal fluid"
+        }
+      }
+    },
+    "gtceu:europium_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport component, part of power network"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UHV energy with 4 amp capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "cable for energy distribution"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks for wiring projects"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV tier component"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium based cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:double_cables",
+          "rationale": "GTCEu energy cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated energy networks"
+        }
+      }
+    },
+    "gtceu:europium_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport component"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UHV energy with 4 amp capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "wire for energy distribution"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common building material for energy networks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV tier"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:double_wires",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport in automated systems"
+        }
+      }
+    },
+    "gtceu:europium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "fine powder form of europium"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for alloys and mixtures",
+            "further processing into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in mixing and smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in batch crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier material"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "display name 'Europium Dust'",
+          "rationale": "europium dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/europium",
+          "rationale": "pure dusts storage group"
+        }
+      }
+    },
+    "gtceu:europium_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin sheet of europium"
+        },
+        "primary_uses": {
+          "values": [
+            "fine crafting component for sensors or capacitors"
+          ],
+          "signal": "inferred",
+          "rationale": "foil used in precision components"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific recipes"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier material"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "display name 'Europium Foil'",
+          "rationale": "europium foil"
+        }
+      }
+    },
+    "gtceu:europium_frame": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural block for machine casings"
+        },
+        "primary_uses": {
+          "values": [
+            "structural component for GTCEu machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "frame used in multiblock construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier frame"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "display name 'Europium Frame'",
+          "rationale": "europium frame"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:frames",
+          "rationale": "frames storage group"
+        }
+      }
+    },
+    "gtceu:europium_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-amp energy cable"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UHV energy with 32 amp capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "hex cable for high current"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in UHV power distribution"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV component"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:hex_cables",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of automated energy grid"
+        }
+      }
+    },
+    "gtceu:europium_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-amp energy wire"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UHV energy with 32 amp capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "hex wire for high current"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in UHV energy networks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV component"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:hex_wires",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        }
+      }
+    },
+    "gtceu:europium_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-capacity fluid transport pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting large volumes of fluid (7200 mB/t)"
+          ],
+          "signal": "inferred",
+          "rationale": "huge pipe for bulk fluid logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building fluid systems"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV tier pipe"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:huge_fluid_pipes",
+          "rationale": "GTCEu fluid pipe subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics component"
+        }
+      }
+    },
+    "gtceu:europium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "metal ingot, basic material form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting plates, wires, and other components",
+            "alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "primary material for europium parts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting runs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier ingot"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "display name 'Europium Ingot'",
+          "rationale": "europium ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "ingot storage group"
+        }
+      }
+    },
+    "gtceu:europium_large_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "large fluid transport pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting large fluid volumes (3600 mB/t)"
+          ],
+          "signal": "inferred",
+          "rationale": "large pipe for fluid logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in fluid system construction"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV tier pipe"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:large_fluid_pipes",
+          "rationale": "GTCEu pipe subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        }
+      }
+    },
+    "gtceu:europium_nonuple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multi-channel fluid pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "simultaneous multi-fluid transport (9 channels)"
+          ],
+          "signal": "inferred",
+          "rationale": "nonuple pipe for multiple fluids"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in complex fluid networks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV tier pipe"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:nonuple_fluid_pipes",
+          "rationale": "GTCEu pipe subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics with channel separation"
+        }
+      }
+    },
+    "gtceu:europium_normal_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "standard fluid transport pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "basic fluid transport (1800 mB/t)"
+          ],
+          "signal": "inferred",
+          "rationale": "normal pipe for fluid logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "basic pipe for setups"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV tier pipe"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:normal_fluid_pipes",
+          "rationale": "GTCEu pipe subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        }
+      }
+    },
+    "gtceu:europium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small piece of europium metal"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting smaller components",
+            "used in alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget for fine adjustments"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific recipes"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier nugget"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "display name 'Europium Nugget'",
+          "rationale": "europium nugget"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget storage group"
+        }
+      }
+    },
+    "gtceu:europium_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "medium-amp energy cable"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UHV energy with 16 amp capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "octal cable for moderate current"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in UHV power distribution"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV component"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:octal_cables",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        }
+      }
+    },
+    "gtceu:europium_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "medium-amp energy wire"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UHV energy with 16 amp capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "octal wire for moderate current"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in UHV networks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV component"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:octal_wires",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        }
+      }
+    },
+    "gtceu:europium_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "flat sheet of europium metal"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting casings, circuits, and machinery components"
+          ],
+          "signal": "inferred",
+          "rationale": "plate used in many GT recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting sessions"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier plate"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "display name 'Europium Plate'",
+          "rationale": "europium plate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "sheet storage group"
+        }
+      }
+    },
+    "gtceu:europium_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "low-amp energy cable"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UHV energy with 8 amp capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "quadruple cable for lower current"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in UHV wiring"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV component"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:quadruple_cables",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        }
+      }
+    },
+    "gtceu:europium_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multi-channel fluid pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "multi-fluid transport (4 channels)"
+          ],
+          "signal": "inferred",
+          "rationale": "quadruple pipe for multiple fluids"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in complex fluid networks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV tier pipe"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium pipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:quadruple_fluid_pipes",
+          "rationale": "GTCEu pipe subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics with channels"
+        }
+      }
+    },
+    "gtceu:europium_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "low-amp energy wire"
+        },
+        "primary_uses": {
+          "values": [
+            "transmitting UHV energy with 8 amp capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "quadruple wire for lower current"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in UHV networks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "UHV component"
+        },
+        "material_family": {
+          "value": "europium",
+          "signal": "named",
+          "evidence": "tooltip 'Eu'",
+          "rationale": "europium wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tags forge:quadruple_wires",
+          "rationale": "GTCEu cable subsystem"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "energy transport"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

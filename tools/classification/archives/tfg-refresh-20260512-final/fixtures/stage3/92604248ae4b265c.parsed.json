@@ -1,0 +1,1182 @@
+{
+  "items": {
+    "minecraft:spectral_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "rationale": "ammo fired from bows; applies glowing to targets"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat ammo",
+            "applies glowing effect"
+          ],
+          "signal": "inferred",
+          "rationale": "spectral arrows are combat ammo"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "arrows are always carried by archers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ranged combat"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe production 1",
+          "rationale": "has a crafting recipe"
+        }
+      }
+    },
+    "minecraft:spider_eye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "brewing ingredient and crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing poison potions",
+            "crafting fermented spider eye"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use in brewing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when brewing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:brewing"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in greate:brewing",
+          "rationale": "used in brewing recipes"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for potions"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mob drop"
+        },
+        "used_at": {
+          "values": [
+            "greate:brewing"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in greate:brewing",
+          "rationale": "used as input in brewing machine"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "dropped by spiders"
+        }
+      }
+    },
+    "minecraft:spider_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "collectible spawn egg, not used in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning spiders for farms or decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "creates spider entity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in creative or for specific setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 is_creative_only",
+          "rationale": "not obtainable in survival"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "right-click to spawn mob"
+        }
+      }
+    },
+    "minecraft:spire_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "smithing template applied at smithing table"
+        },
+        "primary_uses": {
+          "values": [
+            "applying spire armor trim"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smithing table for armor trim"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for specific armor upgrades, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trim is decorative"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smithing_trim"
+          ],
+          "signal": "named",
+          "evidence": "document_context? actually not, but logically belongs",
+          "rationale": "used in the smithing trim workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smithing_trim#input"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed as input for trims"
+        }
+      }
+    },
+    "minecraft:splash_potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "thrown to apply status effects"
+        },
+        "primary_uses": {
+          "values": [
+            "throwing to apply area effects"
+          ],
+          "signal": "inferred",
+          "rationale": "splash potion use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when preparing for combat or brewing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:combat",
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat and created via brewing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds potion effect fluid"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe production",
+          "rationale": "crafted from water bottle and gunpowder"
+        }
+      }
+    },
+    "minecraft:sponge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed to absorb water; a utility block"
+        },
+        "primary_uses": {
+          "values": [
+            "absorbing water blocks",
+            "drying out via smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "main function is water removal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried for underwater building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in underwater construction"
+        },
+        "origin": {
+          "values": [
+            "ocean_monument"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin ocean_monument",
+          "rationale": "found in ocean monuments"
+        }
+      }
+    },
+    "minecraft:spore_blossom": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "cave plant, part of nature"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative cave plant",
+            "latex source via vacuumizing"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration and latex production"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected for specific purposes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decoration"
+        },
+        "used_at": {
+          "values": [
+            "vintageimprovements:vacuumizing"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in vintageimprovements:vacuumizing",
+          "rationale": "processed in vacuum chamber"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found in lush caves"
+        }
+      }
+    },
+    "minecraft:spruce_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "used for water travel"
+        },
+        "primary_uses": {
+          "values": [
+            "water transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "float on water and carry player"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when near water"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "transport activity"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "made of spruce wood"
+        }
+      }
+    },
+    "minecraft:spruce_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone signal when pressed"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal activation"
+          ],
+          "signal": "inferred",
+          "rationale": "acts as a momentary switch"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during redstone building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone component"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "made of spruce wood"
+        }
+      }
+    },
+    "minecraft:spruce_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "boat with storage, used for water transport"
+        },
+        "primary_uses": {
+          "values": [
+            "water transportation with storage"
+          ],
+          "signal": "inferred",
+          "rationale": "can carry items while sailing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when exploring water"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "transport"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        }
+      }
+    },
+    "minecraft:spruce_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural door for buildings"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "passable barrier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "part of wood building materials"
+        }
+      }
+    },
+    "minecraft:spruce_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural fence for boundaries"
+        },
+        "primary_uses": {
+          "values": [
+            "boundary fences"
+          ],
+          "signal": "inferred",
+          "rationale": "used to separate areas"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building component"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building material"
+        }
+      }
+    },
+    "minecraft:spruce_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "functional opening in fence line"
+        },
+        "primary_uses": {
+          "values": [
+            "fence openings"
+          ],
+          "signal": "inferred",
+          "rationale": "allows passage through fence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building material"
+        }
+      }
+    },
+    "minecraft:spruce_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative sign for labeling"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative labeling"
+          ],
+          "signal": "inferred",
+          "rationale": "write text on hanging sign"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when building decorations"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative use"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood decorative item"
+        }
+      }
+    },
+    "minecraft:spruce_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "part of tree; used for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decorative foliage or compost"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only collected when building with nature"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for natural decoration"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce tree leaves"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "grown on spruce trees"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item"
+        }
+      }
+    },
+    "minecraft:spruce_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "primary building material and fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction and as fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "log storage"
+        }
+      }
+    },
+    "minecraft:spruce_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "core wood building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building constructions",
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile building and crafting"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "very commonly carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking material"
+        }
+      }
+    },
+    "minecraft:spruce_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "activates redstone when stepped on"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone floor activation"
+          ],
+          "signal": "inferred",
+          "rationale": "step-on switch"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone component"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        }
+      }
+    },
+    "minecraft:spruce_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "planted to grow trees"
+        },
+        "primary_uses": {
+          "values": [
+            "growing spruce trees"
+          ],
+          "signal": "inferred",
+          "rationale": "sprouts into tree"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for tree farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tree farming"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce tree"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "natural drop from trees"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "inferred",
+          "rationale": "sapling storage"
+        }
+      }
+    },
+    "minecraft:spruce_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "sign for labeling and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "sign labeling",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "write text and decorate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when building signage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative sign"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood decorating item"
+        }
+      }
+    },
+    "minecraft:spruce_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "half-block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used for stairs and detailing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building material"
+        }
+      }
+    },
+    "minecraft:spruce_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "used for elevation changes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building material"
+        }
+      }
+    },
+    "minecraft:spruce_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "floor access panel"
+        },
+        "primary_uses": {
+          "values": [
+            "floor access panels"
+          ],
+          "signal": "inferred",
+          "rationale": "horizontal door"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building component"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood building material"
+        }
+      }
+    },
+    "minecraft:spruce_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "all-bark log variant for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction and as fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "material_family": {
+          "value": "wood_spruce",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "spruce wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "log variant"
+        }
+      }
+    },
+    "minecraft:spyglass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld zoom tool for scouting"
+        },
+        "primary_uses": {
+          "values": [
+            "scouting distant locations"
+          ],
+          "signal": "inferred",
+          "rationale": "zoom in to see far away"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when exploring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "helps with exploration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe production",
+          "rationale": "crafted from copper and amethyst"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

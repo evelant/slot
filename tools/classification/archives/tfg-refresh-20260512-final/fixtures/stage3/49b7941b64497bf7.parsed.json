@@ -1,0 +1,1421 @@
+{
+  "items": {
+    "tfc:wood/chest_minecart/blackwood": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Minecart with chest for item transport on rails."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for moving items but not carried daily."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity:common",
+          "rationale": "Vanilla common rarity."
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "evidence": "item id suffix blackwood",
+          "rationale": "Wood type in id."
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "evidence": "Guide mentions iron/steel for minecart crafting",
+          "rationale": "Contains metal parts."
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Acts as a chest minecart."
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is rail transport."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag",
+          "rationale": "Minecart storage group."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Players keep just one or a few."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed on rails."
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/chestnut": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Minecart with chest for item transport."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not carried daily."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "rarity common component"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/hickory": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/kapok": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/mangrove": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/maple": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "maple",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/oak": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "oak",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/palm": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/pine": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "pine",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/rosewood": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/sequoia": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/spruce": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/sycamore": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/chest_minecart/willow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "pattern"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport items on rails",
+            "Move heavy blocks"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:minecarts tag"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/clutch/acacia": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Wooden clutch for TFC mechanical power transmission."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried daily."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common wood item."
+        },
+        "material_family": {
+          "value": "acacia",
+          "signal": "pattern",
+          "evidence": "item id suffix acacia",
+          "rationale": "Wood type from id."
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred",
+          "rationale": "Clutch function in TFC."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of mechanical automation."
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC mechanical power component."
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Few needed per setup."
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world."
+        }
+      }
+    },
+    "tfc:wood/clutch/ash": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "ash",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/clutch/aspen": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/clutch/birch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/clutch/blackwood": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/clutch/chestnut": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/clutch/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/clutch/hickory": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/clutch/kapok": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit mechanical power",
+            "Engage/disengage rotation"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,2001 @@
+{
+  "items": {
+    "gtceu:cupronickel_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal sheet used in crafting components"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/cupronickel",
+          "rationale": "material tag on item"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "evidence": "cable tooltip MV voltage",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material in MV tier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting fine wires and cables"
+          ],
+          "signal": "inferred",
+          "rationale": "foil is intermediate for wire"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        }
+      }
+    },
+    "gtceu:cupronickel_hex_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV voltage",
+          "rationale": "explicit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "cable carries EU"
+        },
+        "workflow": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type create:filling",
+          "rationale": "insulating cables"
+        },
+        "workflow_role": {
+          "values": [
+            "create:filling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used in filling recipes",
+          "rationale": "cable is input to insulation"
+        },
+        "used_at": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "output from filling recipes",
+          "rationale": "station for insulating"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block, fill with rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "High-amperage power cable",
+            "Connecting MV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "typical use in energy network"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_cables",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:cupronickel_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV voltage",
+          "rationale": "explicit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "wire carries EU"
+        },
+        "workflow": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type create:filling",
+          "rationale": "insulating wires"
+        },
+        "workflow_role": {
+          "values": [
+            "create:filling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used in filling recipes",
+          "rationale": "wire is input to insulation"
+        },
+        "used_at": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "output from filling recipes",
+          "rationale": "station for insulating"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block, fill with rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "Bare high-amperage wire",
+            "Making cables"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate for cables"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:hex_wires",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:cupronickel_huge_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:huge_item_pipes/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for pipe network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe transfers items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "High-throughput item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers 4 stacks/s"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:huge_item_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:cupronickel_huge_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:huge_restrictive_pipes/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for pipe network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe transfers items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "High-throughput item pipe with priority"
+          ],
+          "signal": "inferred",
+          "rationale": "high priority for routing"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:huge_restrictive_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:cupronickel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "standard ingot material"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "used in MV recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "base crafting material, often carried"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted from dust, no loot"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "standard ingot stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, but used in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Base MV alloy ingredient",
+            "Crafting all cupronickel components"
+          ],
+          "signal": "inferred",
+          "rationale": "fundamental material for MV tier"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        }
+      }
+    },
+    "gtceu:cupronickel_large_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:large_item_pipes/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for pipe network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe transfers items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "Medium-throughput item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers 2 stacks/s"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:large_item_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:cupronickel_large_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:large_restrictive_pipes/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for pipe network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe transfers items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "Medium-throughput item pipe with priority"
+          ],
+          "signal": "inferred",
+          "rationale": "high priority for routing"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:large_restrictive_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:cupronickel_normal_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:normal_item_pipes/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for pipe network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe transfers items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "Standard item transport pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "basic pipe for item logistics"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:normal_item_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:cupronickel_normal_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:normal_restrictive_pipes/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for pipe network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe transfers items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "Standard restrictive item pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe with high priority for routing"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:normal_restrictive_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:cupronickel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "standard nugget material"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many small crafts"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Tiny metal bits for fine crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "nuggets used in precise recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "specific nuggets storage bucket"
+        }
+      }
+    },
+    "gtceu:cupronickel_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV voltage",
+          "rationale": "explicit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "cable carries EU"
+        },
+        "workflow": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type create:filling",
+          "rationale": "insulating cables"
+        },
+        "workflow_role": {
+          "values": [
+            "create:filling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used in filling recipes",
+          "rationale": "cable is input to insulation"
+        },
+        "used_at": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "output from filling recipes",
+          "rationale": "station for insulating"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block, fill with rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "Mid-amperage power cable",
+            "Connecting MV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "8 amp capacity"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:cupronickel_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV voltage",
+          "rationale": "explicit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "wire carries EU"
+        },
+        "workflow": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type create:filling",
+          "rationale": "insulating wires"
+        },
+        "workflow_role": {
+          "values": [
+            "create:filling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used in filling recipes",
+          "rationale": "wire is input to insulation"
+        },
+        "used_at": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "output from filling recipes",
+          "rationale": "station for insulating"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block, fill with rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "Bare mid-amperage wire",
+            "Making cables"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate for cables"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:cupronickel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "standard plate material"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:plates/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material in MV machines"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, used in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting casings and mechanisms",
+            "Rolled from ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "common intermediate component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        }
+      }
+    },
+    "gtceu:cupronickel_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV voltage",
+          "rationale": "explicit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "cable carries EU"
+        },
+        "workflow": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type create:filling",
+          "rationale": "insulating cables"
+        },
+        "workflow_role": {
+          "values": [
+            "create:filling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used in filling recipes",
+          "rationale": "cable is input to insulation"
+        },
+        "used_at": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "output from filling recipes",
+          "rationale": "station for insulating"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block, fill with rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "Lower-amperage power cable",
+            "Connecting MV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "4 amp capacity"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:cupronickel_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV voltage",
+          "rationale": "explicit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "wire carries EU"
+        },
+        "workflow": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type create:filling",
+          "rationale": "insulating wires"
+        },
+        "workflow_role": {
+          "values": [
+            "create:filling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used in filling recipes",
+          "rationale": "wire is input to insulation"
+        },
+        "used_at": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "output from filling recipes",
+          "rationale": "station for insulating"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block, fill with rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "Bare lower-amperage wire",
+            "Making cables"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate for cables"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:cupronickel_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rings",
+          "rationale": "component material"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many machine recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Component for machines and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted into many items"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        }
+      }
+    },
+    "gtceu:cupronickel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "standard rod material"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common material in MV tier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 32, used in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Shafts, tool handles, and bolts"
+          ],
+          "signal": "inferred",
+          "rationale": "common machine component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        }
+      }
+    },
+    "gtceu:cupronickel_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:screws",
+          "rationale": "component material"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:screws/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common small component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 64, used in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Fasteners for machine assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted into machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        }
+      }
+    },
+    "gtceu:cupronickel_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV voltage",
+          "rationale": "explicit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "cable carries EU"
+        },
+        "workflow": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type create:filling",
+          "rationale": "insulating cables"
+        },
+        "workflow_role": {
+          "values": [
+            "create:filling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used in filling recipes",
+          "rationale": "cable is input to insulation"
+        },
+        "used_at": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "output from filling recipes",
+          "rationale": "station for insulating"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block, fill with rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "Single-amp power cable",
+            "Basic wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "smallest cable for MV"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:cupronickel_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "named",
+          "evidence": "tooltip MV voltage",
+          "rationale": "explicit voltage tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Max Voltage",
+          "rationale": "wire carries EU"
+        },
+        "workflow": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type create:filling",
+          "rationale": "insulating wires"
+        },
+        "workflow_role": {
+          "values": [
+            "create:filling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "used in filling recipes",
+          "rationale": "wire is input to insulation"
+        },
+        "used_at": {
+          "values": [
+            "create:filling"
+          ],
+          "signal": "pattern",
+          "evidence": "output from filling recipes",
+          "rationale": "station for insulating"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block, fill with rubber"
+        },
+        "primary_uses": {
+          "values": [
+            "Bare single wire",
+            "Making single cable"
+          ],
+          "signal": "inferred",
+          "rationale": "basic wire for cable crafting"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires",
+          "rationale": "part of GT cable system"
+        }
+      }
+    },
+    "gtceu:cupronickel_small_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:small_item_pipes/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for pipe network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe transfers items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "Small item transport pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "32 items/s transfer"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_item_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:cupronickel_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for item transport"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:small_restrictive_pipes/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for pipe network building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "evidence": "tooltip Transfer Rate",
+          "rationale": "pipe transfers items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "Small restrictive item pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "32 items/s with high priority"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_restrictive_pipes",
+          "rationale": "part of GT pipe system"
+        }
+      }
+    },
+    "gtceu:cupronickel_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:springs",
+          "rationale": "component material"
+        },
+        "material_family": {
+          "value": "cupronickel",
+          "signal": "pattern",
+          "evidence": "tag forge:springs/cupronickel",
+          "rationale": "material family tag"
+        },
+        "tier": {
+          "value": "mv",
+          "signal": "inferred",
+          "rationale": "same material tier as ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stack of 16, used in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "Mechanical springs for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "component in GT machines"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:mv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "MV tier component group"
+        }
+      }
+    },
+    "gtceu:cyan_borderless_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "named",
+          "evidence": "creative tab gtceu:decoration",
+          "rationale": "placed as decorative lighting"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "named",
+          "evidence": "item name cyan",
+          "rationale": "explicit color in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component value"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "suffix _lamp",
+          "rationale": "lamp block emits light"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "decorative block, placed once"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "likely crafted from materials"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "named",
+          "evidence": "cyan dye color",
+          "rationale": "colored variant"
+        },
+        "primary_uses": {
+          "values": [
+            "Colored lighting for decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative light source"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

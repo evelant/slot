@@ -1,0 +1,1918 @@
+{
+  "items": {
+    "railways:track_incomplete_tfc_sequoia_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component for tracks"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly to make finished tracks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, only used in crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity from component"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "inferred",
+          "rationale": "Wood type from item id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build railway infrastructure"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:incomplete_tracks + recipe output type",
+          "rationale": "Input to sequenced assembly for finished tracks"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item is used in sequenced assembly crafting"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Incomplete track is input to make full track"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1, used in small quantities"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport component, stored with minecart equipment"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of the railways train track system"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_sequoia_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_spruce": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_spruce_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_spruce_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_sycamore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_sycamore_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_sycamore_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_white_cedar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_white_cedar_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_white_cedar_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_willow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_willow_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tfc_willow_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tieless": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tieless_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_tieless_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_warped": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_warped_narrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_incomplete_warped_wide": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in sequenced assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Stack size 1, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to sequenced assembly"
+        },
+        "used_at": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Item used in sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input for track crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Track component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railways train subsystem"
+        }
+      }
+    },
+    "railways:track_jungle": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed block forming railway infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Building railway lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block placed for train movement"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks when building railways"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe output examples",
+          "rationale": "Produced via sequenced assembly"
+        },
+        "material_family": {
+          "value": "teak",
+          "signal": "inferred",
+          "rationale": "Display name 'Teak Train Track'"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for railway transport"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Produced by sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#output"
+          ],
+          "signal": "pattern",
+          "rationale": "Output of sequenced assembly process"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport block, stored with minecart equipment"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of the railways train track system"
+        }
+      }
+    },
+    "railways:track_jungle_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed railway block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building railway lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for rail building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Sequenced assembly output"
+        },
+        "material_family": {
+          "value": "teak",
+          "signal": "inferred",
+          "rationale": "Display name 'Teak'"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Railway infrastructure"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Produced by sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#output"
+          ],
+          "signal": "pattern",
+          "rationale": "Output of assembly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railway train system"
+        }
+      }
+    },
+    "railways:track_jungle_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed railway block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building railway lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for rail building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Sequenced assembly output"
+        },
+        "material_family": {
+          "value": "teak",
+          "signal": "inferred",
+          "rationale": "Display name 'Teak'"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Railway infrastructure"
+        },
+        "workflow": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "signal": "pattern",
+          "rationale": "Produced by sequenced assembly"
+        },
+        "workflow_role": {
+          "values": [
+            "create:sequenced_assembly#output"
+          ],
+          "signal": "pattern",
+          "rationale": "Output of assembly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railway train system"
+        }
+      }
+    },
+    "railways:track_mangrove": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed railway block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building railway lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for rail building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "inferred",
+          "rationale": "Wood type from id and display name"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Railway infrastructure"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railway train system"
+        }
+      }
+    },
+    "railways:track_mangrove_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Placed railway block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building railway lines"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "inferred",
+          "rationale": "Wood type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Railway infrastructure"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "Rail transport block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of railway train system"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

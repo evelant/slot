@@ -1,0 +1,1700 @@
+{
+  "items": {
+    "tfc:ore/poor_garnierite/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block, mined for processing"
+        },
+        "material_family": {
+          "value": "garnierite",
+          "signal": "inferred",
+          "rationale": "ore mineral, not the rock"
+        },
+        "material_secondary": {
+          "values": [
+            "shale"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "minecraft rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form, not normally carried"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC ore generation underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "garnierite is a nickel ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_garnierite/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "garnierite",
+          "signal": "inferred",
+          "rationale": "ore mineral, not the rock"
+        },
+        "material_secondary": {
+          "values": [
+            "slate"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "minecraft rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form, not normally carried"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC ore generation underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "garnierite is a nickel ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore piece, smelted into iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "minecraft rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common inventory item during mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "20 loot sources from ore blocks underground"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "pattern",
+          "rationale": "id contains hematite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes: smelting, milling, pressing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ore_pieces"
+          ],
+          "signal": "inferred",
+          "rationale": "unprocessed ore piece storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace, milled in millstone"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral, not rock"
+        },
+        "material_secondary": {
+          "values": [
+            "andesite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "minecraft rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form, not normally carried"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC ore generation underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "hematite is an iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/basalt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "basalt"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/chalk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "chalk"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/chert": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "chert"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/claystone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "claystone"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "conglomerate"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/dacite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "dacite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/diorite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "diorite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/dolomite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "dolomite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/gabbro": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "gabbro"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/gneiss": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "gneiss"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/granite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "granite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/limestone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "limestone"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/marble": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "marble"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/phyllite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "phyllite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/quartzite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "quartzite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "rhyolite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/schist": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "schist"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "shale"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_hematite/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "slate"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    },
+    "tfc:ore/poor_limonite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore piece, smelted into iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common inventory item"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "20 loot sources underground"
+        },
+        "material_family": {
+          "value": "limonite",
+          "signal": "pattern",
+          "rationale": "id contains limonite"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes: smelting, milling, pressing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ore_pieces"
+          ],
+          "signal": "inferred",
+          "rationale": "unprocessed ore piece storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling",
+            "greate:pressing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in these processes"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace, milled in millstone"
+        }
+      }
+    },
+    "tfc:ore/poor_limonite/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "material_family": {
+          "value": "limonite",
+          "signal": "inferred",
+          "rationale": "ore mineral"
+        },
+        "material_secondary": {
+          "values": [
+            "andesite"
+          ],
+          "signal": "pattern",
+          "rationale": "rock type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "block form"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "limonite is an iron ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "tfc:ore/poor_garnierite/shale",
+      "facet": "material_family",
+      "current": "shale",
+      "suggested": "garnierite",
+      "rationale": "ore mineral, not the rock",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_garnierite/slate",
+      "facet": "material_family",
+      "current": "slate",
+      "suggested": "garnierite",
+      "rationale": "ore mineral, not the rock",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/andesite",
+      "facet": "material_family",
+      "current": "andesite",
+      "suggested": "hematite",
+      "rationale": "ore mineral, not the rock",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/basalt",
+      "facet": "material_family",
+      "current": "basalt",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/chalk",
+      "facet": "material_family",
+      "current": "chalk",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/chert",
+      "facet": "material_family",
+      "current": "chert",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/claystone",
+      "facet": "material_family",
+      "current": "claystone",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/conglomerate",
+      "facet": "material_family",
+      "current": "conglomerate",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/dacite",
+      "facet": "material_family",
+      "current": "dacite",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/diorite",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/dolomite",
+      "facet": "material_family",
+      "current": "dolomite",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/gabbro",
+      "facet": "material_family",
+      "current": "gabbro",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/gneiss",
+      "facet": "material_family",
+      "current": "gneiss",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/granite",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/limestone",
+      "facet": "material_family",
+      "current": "limestone",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/marble",
+      "facet": "material_family",
+      "current": "marble",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/phyllite",
+      "facet": "material_family",
+      "current": "phyllite",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/quartzite",
+      "facet": "material_family",
+      "current": "quartzite",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/rhyolite",
+      "facet": "material_family",
+      "current": "rhyolite",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/schist",
+      "facet": "material_family",
+      "current": "schist",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/shale",
+      "facet": "material_family",
+      "current": "shale",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_hematite/slate",
+      "facet": "material_family",
+      "current": "slate",
+      "suggested": "hematite",
+      "rationale": "ore mineral",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:ore/poor_limonite/andesite",
+      "facet": "material_family",
+      "current": "andesite",
+      "suggested": "limonite",
+      "rationale": "ore mineral, not rock",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": [
+    {
+      "item": "tfc:ore/poor_garnierite/shale",
+      "facet": "material_secondary",
+      "value": [
+        "shale"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_garnierite/slate",
+      "facet": "material_secondary",
+      "value": [
+        "slate"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/andesite",
+      "facet": "material_secondary",
+      "value": [
+        "andesite"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/basalt",
+      "facet": "material_secondary",
+      "value": [
+        "basalt"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/chalk",
+      "facet": "material_secondary",
+      "value": [
+        "chalk"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/chert",
+      "facet": "material_secondary",
+      "value": [
+        "chert"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/claystone",
+      "facet": "material_secondary",
+      "value": [
+        "claystone"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/conglomerate",
+      "facet": "material_secondary",
+      "value": [
+        "conglomerate"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/dacite",
+      "facet": "material_secondary",
+      "value": [
+        "dacite"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/diorite",
+      "facet": "material_secondary",
+      "value": [
+        "diorite"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/dolomite",
+      "facet": "material_secondary",
+      "value": [
+        "dolomite"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/gabbro",
+      "facet": "material_secondary",
+      "value": [
+        "gabbro"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/gneiss",
+      "facet": "material_secondary",
+      "value": [
+        "gneiss"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/granite",
+      "facet": "material_secondary",
+      "value": [
+        "granite"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/limestone",
+      "facet": "material_secondary",
+      "value": [
+        "limestone"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/marble",
+      "facet": "material_secondary",
+      "value": [
+        "marble"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/phyllite",
+      "facet": "material_secondary",
+      "value": [
+        "phyllite"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/quartzite",
+      "facet": "material_secondary",
+      "value": [
+        "quartzite"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/rhyolite",
+      "facet": "material_secondary",
+      "value": [
+        "rhyolite"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/schist",
+      "facet": "material_secondary",
+      "value": [
+        "schist"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/shale",
+      "facet": "material_secondary",
+      "value": [
+        "shale"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_hematite/slate",
+      "facet": "material_secondary",
+      "value": [
+        "slate"
+      ],
+      "rationale": "rock type from id"
+    },
+    {
+      "item": "tfc:ore/poor_limonite/andesite",
+      "facet": "material_secondary",
+      "value": [
+        "andesite"
+      ],
+      "rationale": "rock type from id"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": []
+}

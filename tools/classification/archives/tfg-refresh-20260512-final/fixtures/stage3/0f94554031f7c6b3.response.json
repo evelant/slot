@@ -1,0 +1,996 @@
+{
+  "items": {
+    "gtceu:cobaltite_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Surface rock indicating underground ore, stored with ores"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Players store with other unprocessed ore indicators"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to locate ore deposits for mining"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked up while prospecting, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "prospecting for cobaltite ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Visual indicator for underground ore"
+        }
+      }
+    },
+    "gtceu:cobaltite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw ore, smelted into cobaltite"
+        },
+        "material_family": {
+          "value": "cobaltite",
+          "signal": "pattern",
+          "evidence": "ore id pattern",
+          "rationale": "Stage2 derived from ore id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Players store raw ores together"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from the ground"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and then processed, not carried after"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into cobaltite ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing recipes produce ingot"
+        }
+      }
+    },
+    "gtceu:cocoa_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Cooking ingredient, not eaten directly"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Food-related material, stored with other foods"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in food recipes like chocolate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when cooking, not daily essential"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient for chocolate and drinks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing and cooking recipes"
+        }
+      }
+    },
+    "gtceu:coke_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compacted coke, used as fuel or storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed fuel material, stored with refined resources"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "High-efficiency fuel for blast furnaces and power"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as fuel source, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "compact fuel for blast furnace",
+            "building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as fuel and also as facade/decorative block"
+        }
+      }
+    },
+    "gtceu:coke_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Fuel dust, used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed fuel material"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as fuel component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting fuel items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel ingredient",
+            "crafting coke oven bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in crafting and as dust fuel"
+        }
+      }
+    },
+    "gtceu:coke_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Solid fuel item, like coal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined fuel, stored with ores and materials"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary fuel for blast furnace and forge"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players carry coke for fueling smelting operations"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for blast furnace and forge",
+            "crafting coke block"
+          ],
+          "signal": "inferred",
+          "rationale": "Main fuel source for high-temperature smelting"
+        }
+      }
+    },
+    "gtceu:coke_oven": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Multiblock machine with UI for processing coal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/firepit_fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Fuel production machine, stored with fuel items"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Produces coke fuel from coal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once as a permanent machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "converting coal into coke"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing station for fuel upgrade"
+        }
+      }
+    },
+    "gtceu:coke_oven_brick": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting component for brick blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick item, stored with other bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or crafting bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting coke oven bricks block"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for making the brick block"
+        }
+      }
+    },
+    "gtceu:coke_oven_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable brick block for structures and machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block, stored with other brick blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build coke oven and decorative structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during construction, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "building coke oven",
+            "general construction and decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Multipurpose brick block"
+        }
+      }
+    },
+    "gtceu:coke_oven_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock component for automation access"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "pattern",
+          "evidence": "part of coke oven multiblock",
+          "rationale": "Hatch is a dedicated multiblock part"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Enables automated input/output for coke oven"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per multiblock machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "automated access for coke oven"
+          ],
+          "signal": "inferred",
+          "rationale": "Allows pipes and automation to connect"
+        }
+      }
+    },
+    "gtceu:collagen_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processed material for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust material, stored with other refined materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mixing gelatin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient for gelatin mixture"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing recipes"
+        }
+      }
+    },
+    "gtceu:compressed_clay": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate clay item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unfired_pottery"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay material, stored with unfired pottery"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when making bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting compressed coke clay"
+          ],
+          "signal": "inferred",
+          "rationale": "Step in making coke oven bricks"
+        }
+      }
+    },
+    "gtceu:compressed_coke_clay": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate for brick making"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unfired_pottery"
+          ],
+          "signal": "inferred",
+          "rationale": "Unfired brick material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried before smelting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into coke oven brick"
+          ],
+          "signal": "inferred",
+          "rationale": "Precursor to fired brick"
+        }
+      }
+    },
+    "gtceu:compressed_fireclay": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate fireclay item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unfired_pottery"
+          ],
+          "signal": "inferred",
+          "rationale": "Unfired clay product"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when crafting high-temp bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "used to make fireclay items"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for high-temperature ceramics"
+        }
+      }
+    },
+    "gtceu:computation_receiver_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock data input hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "pattern",
+          "evidence": "part of multiblock system",
+          "rationale": "Hatch is a multiblock component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles data input for computation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "computation data input for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states purpose"
+        }
+      }
+    },
+    "gtceu:computation_transmitter_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock data output hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "pattern",
+          "evidence": "part of multiblock system",
+          "rationale": "Hatch is a multiblock component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles data output for computation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "computation data output for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states purpose"
+        }
+      }
+    },
+    "gtceu:computer_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural block for computer multiblock"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to build computer structure"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only during construction of computer multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "building computer multiblock casing"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of computer structure"
+        }
+      }
+    },
+    "gtceu:computer_heat_vent": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural component for computer multiblock"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as wall block in computer"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "building computer heat vent structure"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of computer multiblock"
+        }
+      }
+    },
+    "gtceu:computer_monitor_cover": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Cover item that displays data on machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for monitoring machine data"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up monitoring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying data as cover on machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says displays data as cover"
+        }
+      }
+    },
+    "gtceu:concentrated_bromine_solution_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of chemical fluid, tool for transport"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holding fluid"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in chemical processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when transporting chemical fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting concentrated bromine solution"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid bucket for crafting"
+        }
+      }
+    },
+    "gtceu:concrete_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of liquid concrete, used for construction"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holding fluid"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to pour concrete roads"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during road building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "pouring concrete roads and structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide page mentions concrete road construction"
+        }
+      }
+    },
+    "gtceu:concrete_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw dust used to make concrete fluid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed construction material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when preparing concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "mixing into liquid concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to produce concrete fluid"
+        }
+      }
+    },
+    "gtceu:configurable_maintenance_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock maintenance access hatch"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "pattern",
+          "evidence": "part of multiblock system",
+          "rationale": "Hatch is multiblock component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides maintenance access"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once per machine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "configurable maintenance access for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip mentions maintenance access"
+        }
+      }
+    },
+    "gtceu:conglomerate_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block, smelted into almandine"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "ore id pattern",
+          "rationale": "Stage2 derived from ore id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore, stored with other ores"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from underground"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and processed, not carried long"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into almandine product"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipes produce ingot from ore"
+        }
+      }
+    },
+    "gtceu:conglomerate_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ore block, processed into aluminum"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "evidence": "ore id pattern",
+          "rationale": "Stage2 derived from ore id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore, stored with other ores"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from underground"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "Component sets common"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into aluminum"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipes produce crushed ore"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

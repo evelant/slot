@@ -1,0 +1,559 @@
+{
+  "items": {
+    "sophisticatedbackpacks:crafting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Applied to backpack to add crafting table UI"
+        },
+        "primary_uses": [
+          {
+            "value": "Portable crafting table in backpack",
+            "signal": "inferred",
+            "rationale": "Tooltip says crafting table in upgrade tab"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:deposit_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for depositing items"
+        },
+        "primary_uses": [
+          {
+            "value": "Deposit backpack items into chests",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:diamond_backpack": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "Wearable backpack that opens inventory GUI"
+        },
+        "primary_uses": [
+          {
+            "value": "Expandable portable storage",
+            "signal": "inferred",
+            "rationale": "Tiered backpack for carrying items"
+          }
+        ],
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Players wear backpack constantly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:everlasting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade making it indestructible"
+        },
+        "primary_uses": [
+          {
+            "value": "Make backpack indestructible",
+            "signal": "inferred",
+            "rationale": "Tooltip says backpack becomes indestructible"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Applied once, not carried"
+        }
+      }
+    },
+    "sophisticatedbackpacks:feeding_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for auto-feeding"
+        },
+        "primary_uses": [
+          {
+            "value": "Auto-feed player from backpack",
+            "signal": "inferred",
+            "rationale": "Tooltip says feeds player with food from backpack"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:filter_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for item filtering"
+        },
+        "primary_uses": [
+          {
+            "value": "Filter items piped in/out of backpack",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:gold_backpack": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "Wearable backpack that opens inventory GUI"
+        },
+        "primary_uses": [
+          {
+            "value": "Expandable portable storage",
+            "signal": "inferred",
+            "rationale": "Tiered backpack for carrying items"
+          }
+        ],
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Players wear backpack constantly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:inception_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade allowing nested backpacks"
+        },
+        "primary_uses": [
+          {
+            "value": "Allow backpacks inside backpack",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Applied once, not carried"
+        }
+      }
+    },
+    "sophisticatedbackpacks:infinity_upgrade": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Admin-only item, makes items infinite"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "No recipe, no loot, admin-only via tooltip"
+        },
+        "primary_uses": [
+          {
+            "value": "Make backpack items infinite",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not obtainable in survival"
+        }
+      }
+    },
+    "sophisticatedbackpacks:iron_backpack": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "Wearable backpack that opens inventory GUI"
+        },
+        "primary_uses": [
+          {
+            "value": "Expandable portable storage",
+            "signal": "inferred",
+            "rationale": "Tiered backpack for carrying items"
+          }
+        ],
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Players wear backpack constantly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:jukebox_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for portable jukebox"
+        },
+        "primary_uses": [
+          {
+            "value": "Play music discs from backpack",
+            "signal": "inferred",
+            "rationale": "Tooltip says Portable Jukebox"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:magnet_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for magnet pickup"
+        },
+        "primary_uses": [
+          {
+            "value": "Magnetize items into backpack at range",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:netherite_backpack": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "Wearable backpack that opens inventory GUI"
+        },
+        "primary_uses": [
+          {
+            "value": "Expandable portable storage",
+            "signal": "inferred",
+            "rationale": "Tiered backpack for carrying items"
+          }
+        ],
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Players wear backpack constantly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:pickup_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for auto-pickup"
+        },
+        "primary_uses": [
+          {
+            "value": "Auto-pickup items into backpack",
+            "signal": "inferred",
+            "rationale": "Tooltip says makes backpack pickup items"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:pump_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for fluid pumping"
+        },
+        "primary_uses": [
+          {
+            "value": "Pump fluids between tank upgrade and blocks",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, niche use"
+        }
+      }
+    },
+    "sophisticatedbackpacks:refill_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for refilling stacks"
+        },
+        "primary_uses": [
+          {
+            "value": "Auto-refill selected stack from backpack",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:restock_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for restocking"
+        },
+        "primary_uses": [
+          {
+            "value": "Restock backpack from chest inventory",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    },
+    "sophisticatedbackpacks:smelting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for portable smelting"
+        },
+        "primary_uses": [
+          {
+            "value": "Smelting in backpack upgrade tab",
+            "signal": "inferred",
+            "rationale": "Tooltip says Smelting in an upgrade tab"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Installed, possible unobtainable"
+        }
+      }
+    },
+    "sophisticatedbackpacks:smithing_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for portable smithing table"
+        },
+        "primary_uses": [
+          {
+            "value": "Smithing table in backpack upgrade tab",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Installed, possible unobtainable"
+        }
+      }
+    },
+    "sophisticatedbackpacks:smoking_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade for portable smoking"
+        },
+        "primary_uses": [
+          {
+            "value": "Smoking food in backpack upgrade tab",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Installed, possible unobtainable"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_downgrade_tier_1": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade reducing stack capacity"
+        },
+        "primary_uses": [
+          {
+            "value": "Reduce stack capacity by 8x",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Applied once, not carried"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_downgrade_tier_2": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade reducing stack capacity"
+        },
+        "primary_uses": [
+          {
+            "value": "Reduce stack capacity by 16x",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Applied once, not carried"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_downgrade_tier_3": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade reducing stack capacity"
+        },
+        "primary_uses": [
+          {
+            "value": "Reduce stack capacity by 32x",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Applied once, not carried"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_omega_tier": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade maximizing stack capacity"
+        },
+        "primary_uses": [
+          {
+            "value": "Maximize stack capacity (x33M)",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Applied once, not carried"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_starter_tier": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Backpack upgrade increasing stack capacity slightly"
+        },
+        "primary_uses": [
+          {
+            "value": "Increase stack capacity by 1.5x",
+            "signal": "inferred",
+            "rationale": "Tooltip description"
+          }
+        ],
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Installed in backpack, not carried directly"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "sophisticatedbackpacks:crafting_upgrade",
+      "facet": "organization_group",
+      "label": "Sophisticated Backpacks Items",
+      "proposed_id": "pack:tfg/sophisticatedbackpacks_items",
+      "rationale": "All Sophisticated Backpacks items are stored together by players",
+      "evidence": "Mod name in tooltip and creative tab"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "sophisticatedbackpacks:netherite_backpack",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": [
+        "end_city",
+        "crafted"
+      ],
+      "rationale": "Has loot source from end city treasure and block drop",
+      "confidence": 0.8
+    }
+  ],
+  "fill_ins": [],
+  "schema_proposals": []
+}

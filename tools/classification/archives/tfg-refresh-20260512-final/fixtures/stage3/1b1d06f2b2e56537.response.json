@@ -1,0 +1,922 @@
+{
+  "items": {
+    "tfg:clean_malachite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_monazite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_olivine_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_opal_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_powder_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts, crafting ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in intermediate processing, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Material processing",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in gregtech recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed in automated machines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Clean powder belongs with pure dusts"
+        }
+      }
+    },
+    "tfg:clean_pyrope_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_realgar_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_red_garnet_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_rock_salt_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_ruby_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_sapphire_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_sodalite_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_spessartine_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_topaz_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:clean_yellow_garnet_slurry_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used to carry and pour processing slurry"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during ore processing runs"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport ore processing slurry"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to move fluids in mineral processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of ore processing workflow"
+        }
+      }
+    },
+    "tfg:coarse_dirt/alfisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable soil block, used for terrain and farming"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "Tag minecraft:dirt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or farming, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Building soil blocks",
+            "Farming and landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover and for crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted on or used on farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dirt storage group"
+        }
+      }
+    },
+    "tfg:coarse_dirt/loam": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable soil block, used for terrain and farming"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "Tag minecraft:dirt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or farming, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Building soil blocks",
+            "Farming and landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover and for crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted on or used on farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dirt storage group"
+        }
+      }
+    },
+    "tfg:coarse_dirt/mollisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable soil block, used for terrain and farming"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "Tag minecraft:dirt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or farming, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Building soil blocks",
+            "Farming and landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover and for crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted on or used on farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dirt storage group"
+        }
+      }
+    },
+    "tfg:coarse_dirt/oxisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable soil block, used for terrain and farming"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "Tag minecraft:dirt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or farming, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Building soil blocks",
+            "Farming and landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover and for crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted on or used on farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dirt storage group"
+        }
+      }
+    },
+    "tfg:coarse_dirt/podzol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable soil block, used for terrain and farming"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "Tag minecraft:dirt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or farming, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Building soil blocks",
+            "Farming and landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover and for crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted on or used on farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dirt storage group"
+        }
+      }
+    },
+    "tfg:coarse_dirt/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable soil block, used for terrain and farming"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "Tag minecraft:dirt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or farming, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Building soil blocks",
+            "Farming and landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover and for crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted on or used on farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dirt storage group"
+        }
+      }
+    },
+    "tfg:coarse_dirt/silt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable soil block, used for terrain and farming"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "Tag minecraft:dirt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or farming, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Building soil blocks",
+            "Farming and landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover and for crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted on or used on farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dirt storage group"
+        }
+      }
+    },
+    "tfg:coarse_dirt/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placeable soil block, used for terrain and farming"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "Tag minecraft:dirt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or farming, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Building soil blocks",
+            "Farming and landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ground cover and for crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted on or used on farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of dirt storage group"
+        }
+      }
+    },
+    "tfg:cobalt_brass_wheel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Mechanical component used in Create contraptions"
+        },
+        "material_family": {
+          "value": "cobalt_brass",
+          "signal": "pattern",
+          "rationale": "Name includes material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when building specific machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Mechanical component for Create",
+            "Crafting plows"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mechanical crafting recipe for plows"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of Create automation system"
+        },
+        "workflow": {
+          "values": [
+            "create:mechanical_crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted and used in mechanical crafter"
+        },
+        "workflow_role": {
+          "values": [
+            "create:mechanical_crafting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to mechanical crafting recipes"
+        },
+        "used_at": {
+          "values": [
+            "create:mechanical_crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at the mechanical crafter"
+        }
+      }
+    },
+    "tfg:color_photographic_developer_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used for photographic film developing"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Standard bucket material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used when developing photos"
+        },
+        "primary_uses": {
+          "values": [
+            "Developing photographic film"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in film developing process"
+        },
+        "workflow": {
+          "values": [
+            "exposure:film_developing"
+          ],
+          "signal": "inferred",
+          "rationale": "Key fluid in developing film"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

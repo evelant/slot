@@ -1,0 +1,1084 @@
+{
+  "items": {
+    "minecraft:sweet_berries": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "creative_tab: food_and_drinks, component food",
+          "rationale": "eaten as food, player carries as snack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity",
+          "rationale": "common item"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried as quick food source"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested from bushes, farming activity"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found growing on bushes in overworld"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "berry fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten raw"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "not cooked"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "directly consumed"
+        },
+        "primary_uses": {
+          "values": [
+            "Eaten for hunger restoration",
+            "Harvested from sweet berry bushes"
+          ],
+          "signal": "inferred",
+          "rationale": "food and foraging"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "grouped with other fruit items"
+        }
+      }
+    },
+    "minecraft:tadpole_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for catching and transporting tadpoles"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "bucket made of iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only carried when transporting tadpoles"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to move tadpoles for frog farming"
+        },
+        "primary_uses": {
+          "values": [
+            "Capture and move tadpoles",
+            "Breed frogs"
+          ],
+          "signal": "inferred",
+          "rationale": "animal transport"
+        }
+      }
+    },
+    "minecraft:tadpole_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, part of collectible set"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "evidence": "stage2 is_creative_only rule",
+          "rationale": "spawn egg pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn tadpoles in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "creative spawning tool"
+        }
+      }
+    },
+    "minecraft:tall_grass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant block used for decoration or natural look"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for landscaping"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decorative plant"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "found in overworld"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative block in gardens",
+            "Natural terrain filler"
+          ],
+          "signal": "inferred",
+          "rationale": "landscaping"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant category"
+        }
+      }
+    },
+    "minecraft:target": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "block that emits redstone signal when hit"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone component"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone target for archery",
+            "Redstone signal source"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone interaction"
+        }
+      }
+    },
+    "minecraft:terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block used for construction"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "named",
+          "evidence": "id suffix",
+          "rationale": "terracotta material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building material"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "found in overworld"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "undyed terracotta"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Crafting colored terracotta",
+            "Stonecutting into decorative blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction and crafting"
+        }
+      }
+    },
+    "minecraft:tide_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "consumed in smithing table to apply armor trim"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept as one-off template, not frequently carried"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "applies cosmetic armor trim"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply Tide armor trim to armor"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing table upgrade"
+        }
+      }
+    },
+    "minecraft:tinted_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass block used in construction, blocks light"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "named",
+          "evidence": "id suffix _glass, tag forge:glass",
+          "rationale": "glass material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with light-blocking glass",
+            "Crafting windows"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glass_products"
+          ],
+          "signal": "inferred",
+          "rationale": "glass product group"
+        }
+      }
+    },
+    "minecraft:tipped_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "pattern",
+          "evidence": "id suffix _arrow, tag minecraft:arrows",
+          "rationale": "projectile for bows"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried by ranged combat players"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        },
+        "combat_bonus": {
+          "values": [
+            "inflicts_poison"
+          ],
+          "signal": "named",
+          "evidence": "display_name Arrow of Poison",
+          "rationale": "poison effect"
+        },
+        "primary_uses": {
+          "values": [
+            "Ranged combat with status effects"
+          ],
+          "signal": "inferred",
+          "rationale": "ammunition"
+        }
+      }
+    },
+    "minecraft:tnt": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "explosive block used for blasting and traps"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for mining or traps"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for mining and as weapon"
+        },
+        "primary_uses": {
+          "values": [
+            "Blasting for mining",
+            "Explosive traps and combat"
+          ],
+          "signal": "inferred",
+          "rationale": "explosive utility"
+        }
+      }
+    },
+    "minecraft:tnt_minecart": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "evidence": "id suffix _minecart",
+          "rationale": "minecart vehicle"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "minecart is made of iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for railway setups"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation",
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "minecart transport and explosive"
+        },
+        "primary_uses": {
+          "values": [
+            "Explosive minecart for railways"
+          ],
+          "signal": "inferred",
+          "rationale": "transport and demolition"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/minecarts"
+          ],
+          "signal": "inferred",
+          "rationale": "minecart group"
+        }
+      }
+    },
+    "minecraft:torch": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "carried and placed for lighting, inventory-side"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "evidence": "component light_emission 14",
+          "rationale": "emits light when placed"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential for caving, always carried in stacks"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for lighting in mines"
+        },
+        "primary_uses": {
+          "values": [
+            "Lighting caves and structures",
+            "Crafting lanterns"
+          ],
+          "signal": "inferred",
+          "rationale": "light source"
+        }
+      }
+    },
+    "minecraft:torchflower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant block placed as decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decoration or dye"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative flower"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural flower"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative flower block",
+            "Dye ingredient (orange)"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration and dye"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant category"
+        }
+      }
+    },
+    "minecraft:torchflower_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seeds planted to grow torchflowers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried by farmers for planting"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for planting"
+        },
+        "primary_uses": {
+          "values": [
+            "Planting torchflowers",
+            "Breeding sniffers"
+          ],
+          "signal": "inferred",
+          "rationale": "farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed group"
+        }
+      }
+    },
+    "minecraft:totem_of_undying": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "held item that saves from death"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept as emergency, not daily carry"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat to prevent death"
+        },
+        "primary_uses": {
+          "values": [
+            "Save from death upon fatal damage"
+          ],
+          "signal": "inferred",
+          "rationale": "survival item"
+        }
+      }
+    },
+    "minecraft:trader_llama_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "evidence": "stage2 is_creative_only rule",
+          "rationale": "spawn egg pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn trader llamas in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tool"
+        }
+      }
+    },
+    "minecraft:trapped_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "container that opens to store items"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "wooden chest"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for storage setup"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management",
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "storage with redstone signal"
+        },
+        "primary_uses": {
+          "values": [
+            "Item storage with redstone output",
+            "Trapped chest mechanics"
+          ],
+          "signal": "inferred",
+          "rationale": "container"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "chest group"
+        }
+      }
+    },
+    "minecraft:trident": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "melee and thrown weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for combat, especially underwater"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use in combat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin",
+          "rationale": "dropped by drowneds"
+        },
+        "primary_uses": {
+          "values": [
+            "Melee and ranged underwater combat",
+            "Thrown weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "combat"
+        }
+      }
+    },
+    "minecraft:tripwire_hook": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone mechanism for tripwire"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "crafted from iron ingot"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried by redstone engineers"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone tripwire circuits",
+            "Trapped chest crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone component"
+        }
+      }
+    },
+    "minecraft:tropical_fish": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "food item that can be eaten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried as food source"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "food item"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "inferred",
+          "rationale": "fish type"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "raw fish"
+        },
+        "primary_uses": {
+          "values": [
+            "Eaten for minimal hunger",
+            "Feed to cats"
+          ],
+          "signal": "inferred",
+          "rationale": "food and pet treat"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/meat_food"
+          ],
+          "signal": "inferred",
+          "rationale": "meat food group"
+        }
+      }
+    },
+    "minecraft:tropical_fish_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for transporting tropical fish"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "bucket made of iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for aquarium decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place fish in decorative aquariums"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport and place tropical fish",
+            "Aquarium decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "fish transport"
+        }
+      }
+    },
+    "minecraft:tropical_fish_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "evidence": "stage2 is_creative_only rule",
+          "rationale": "spawn egg pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn tropical fish in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tool"
+        }
+      }
+    },
+    "minecraft:tube_coral": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "underwater coral plant for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for aquariums"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative underwater block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative coral in aquariums",
+            "Reef building"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        }
+      }
+    },
+    "minecraft:tube_coral_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid coral block used in construction"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "coral material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with coral blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "construction"
+        }
+      }
+    },
+    "minecraft:tube_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "coral fan decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative coral fan"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative coral fan for aquariums"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

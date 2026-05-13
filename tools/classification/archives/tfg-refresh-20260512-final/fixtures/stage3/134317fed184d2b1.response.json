@@ -1,0 +1,1110 @@
+{
+  "items": {
+    "createdeco:iron_mesh_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence used as building boundary, not decorative."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "Display name 'Wrought Iron Mesh Fence'",
+          "rationale": "Made from wrought iron."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed then left, not carried daily."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity from component."
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences and enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses it to fence areas."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary activity is building."
+        }
+      }
+    },
+    "createdeco:iron_sheet_metal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Metal sheet block used as building material."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "Display name 'Wrought Iron Sheet Metal'",
+          "rationale": "Made from wrought iron."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed and left, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Building with sheet metal",
+            "Industrial construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for walls, floors, industrial builds."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity."
+        }
+      }
+    },
+    "createdeco:iron_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Support beam is structural building block."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "Display name 'Wrought Iron Support'",
+          "rationale": "Made from wrought iron."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed then left."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Structural support in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as support beam."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity."
+        }
+      }
+    },
+    "createdeco:iron_support_wedge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wedge variant of support beam, used in building."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "Display name 'Wrought Iron Support Wedge'",
+          "rationale": "Made from wrought iron."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed then left."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Structural wedge supports in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as sloped support."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity."
+        }
+      }
+    },
+    "createdeco:iron_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window block is part of building structure."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "Display name 'Wrought Iron Window'",
+          "rationale": "Made from wrought iron."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed then left."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Placing windows in walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as transparent building element."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity."
+        }
+      }
+    },
+    "createdeco:iron_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Window pane is building block for windows."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "Display name 'Wrought Iron Window Pane'",
+          "rationale": "Made from wrought iron."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed then left."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Window panes for buildings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as thin window element."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity."
+        }
+      }
+    },
+    "createdeco:light_blue_placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placard is used as decorative sign."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "Part of metal placard set from Create Deco",
+          "rationale": "Base material is metal."
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "evidence": "id prefix light_blue",
+          "rationale": "Color from item name."
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed variant of placard."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decoration, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Labeling and decorating with signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to label areas decoratively."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative placement activity."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Placards are decorative items grouped with other decor."
+        }
+      }
+    },
+    "createdeco:light_blue_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Shipping container opens for item storage."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "Metal container from Create Deco",
+          "rationale": "Made from metal."
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "named",
+          "evidence": "id prefix light_blue",
+          "rationale": "Color from item name."
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed variant of container."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as permanent storage, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in decorative containers"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional storage block."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage container grouped with chests."
+        }
+      }
+    },
+    "createdeco:light_gray_placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placard is decorative sign."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Metal placard base."
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "evidence": "id prefix light_gray",
+          "rationale": "Color from item name."
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed variant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed, not carried."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Labeling and decorating signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative labeling."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative placement."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Grouped with decorative items."
+        }
+      }
+    },
+    "createdeco:light_gray_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Storage container."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Metal container."
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "named",
+          "evidence": "id prefix light_gray",
+          "rationale": "Color from id."
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed variant."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed storage."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in decorative containers"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional storage."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage container group."
+        }
+      }
+    },
+    "createdeco:lime_placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative sign."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Metal placard."
+        },
+        "dye_color": {
+          "value": "lime",
+          "signal": "named",
+          "evidence": "id prefix lime",
+          "rationale": "Color from id."
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed decoration."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Labeling and decorating signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative labeling."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative group."
+        }
+      }
+    },
+    "createdeco:lime_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Storage container."
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Metal container."
+        },
+        "dye_color": {
+          "value": "lime",
+          "signal": "named",
+          "evidence": "id prefix lime",
+          "rationale": "Color."
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed storage."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in decorative containers"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage group."
+        }
+      }
+    },
+    "createdeco:locked_andesite_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door is structural building element."
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "inferred",
+          "evidence": "Display name 'Locked Tin Alloy Door'",
+          "rationale": "Display says tin alloy."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed then left."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building secure doors"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as locked door in builds."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building activity."
+        }
+      }
+    },
+    "createdeco:locked_brass_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door is structural."
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "inferred",
+          "evidence": "Display name 'Locked Brass Door'",
+          "rationale": "Brass material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building doors"
+          ],
+          "signal": "inferred",
+          "rationale": "Door usage."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:locked_copper_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door is structural."
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "evidence": "Display name 'Locked Copper Door'",
+          "rationale": "Copper material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building doors"
+          ],
+          "signal": "inferred",
+          "rationale": "Door usage."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:locked_industrial_iron_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door is structural."
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "evidence": "Display name 'Locked Steel Door'",
+          "rationale": "Steel material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building industrial doors"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial door usage."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:locked_zinc_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door is structural."
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "inferred",
+          "evidence": "Display name 'Locked Zinc Door'",
+          "rationale": "Zinc material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building doors"
+          ],
+          "signal": "inferred",
+          "rationale": "Door usage."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:long_blue_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick slab is building block."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "Brick material derived from stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed building block."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building with brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as slab variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:long_blue_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick stairs."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "Brick material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:long_blue_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick wall."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "Brick material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:long_blue_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick block for building."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "Brick material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed building block."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative brick variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of brick family storage."
+        }
+      }
+    },
+    "createdeco:long_dean_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Dean brick slab."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "Brick material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dean brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab usage."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:long_dean_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Dean brick stairs."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "Brick material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building dean brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs usage."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:long_dean_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Dean brick wall."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "Brick material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building dean brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall usage."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        }
+      }
+    },
+    "createdeco:long_dean_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Dean brick blocks."
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "Brick material."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "Common."
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative dean brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative brick variant."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of brick family storage."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

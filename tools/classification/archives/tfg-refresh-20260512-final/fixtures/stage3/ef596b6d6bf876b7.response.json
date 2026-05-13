@@ -1,0 +1,1270 @@
+{
+  "items": {
+    "tfg:terrafirmaguard_pa6": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingredient used as coolant in fission reactor"
+        },
+        "primary_uses": {
+          "values": [
+            "coolant for fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states fission reactor coolant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up reactor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in fission power gen"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fission subsystem"
+        }
+      }
+    },
+    "tfg:tetrafluoroethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket tool for carrying fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "transport tetrafluoroethane fluid for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common from component"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled fluid bucket"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        }
+      }
+    },
+    "tfg:tetrafluoroethane_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "chemical dust as crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate chemical for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "dust used in chemistry"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when processing chemicals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "full dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed chemical dust"
+        }
+      }
+    },
+    "tfg:tetrafluoroethane_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "gem used as crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "source of tetrafluoroethane dust via grinding"
+          ],
+          "signal": "inferred",
+          "rationale": "quern recipe produces dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:gems",
+          "rationale": "gem material"
+        }
+      }
+    },
+    "tfg:thallium_sulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "chemical dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "hazardous chemical intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "full dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed chemical dust"
+        }
+      }
+    },
+    "tfg:thermally_conductive_fluid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket for fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transport thermally conductive fluid for heat transfer"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip describes heat transfer fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up cooling systems"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled fluid bucket"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        }
+      }
+    },
+    "tfg:thionyl_chloride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket for fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transport thionyl chloride for chemical processes"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket usage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when moving chemicals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled fluid bucket"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        }
+      }
+    },
+    "tfg:thorium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "fuel rod consumed in fission reactor"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for fission reactor to generate power"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows heat/durability for reactor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when loading reactor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "stage2 rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel for power gen"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fuel in reactor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "fission fuel rod"
+        }
+      }
+    },
+    "tfg:ticl4_doped_supercritical_co2_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket for fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transport TiCl4-doped supercritical CO2 for chemical processes"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when handling fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled fluid bucket"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        }
+      }
+    },
+    "tfg:tier_1_double_rocket": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "rocket for space travel"
+        },
+        "primary_uses": {
+          "values": [
+            "fly to moon with fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 1 rocket for first space trip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when going to space"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "used for space exploration"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:your/first/rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 1 rocket gate"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:launch"
+          ],
+          "signal": "inferred",
+          "rationale": "rocket launches"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "rocket subsystem"
+        }
+      }
+    },
+    "tfg:tier_2_double_rocket": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "rocket for space travel"
+        },
+        "primary_uses": {
+          "values": [
+            "fly to mars with fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 2 rocket for Mars"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when going to space"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "space exploration"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:tier_2_rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 2 rocket gate"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:launch"
+          ],
+          "signal": "inferred",
+          "rationale": "rocket launches"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "rocket subsystem"
+        }
+      }
+    },
+    "tfg:tier_3_double_rocket": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "rocket for space travel"
+        },
+        "primary_uses": {
+          "values": [
+            "fly to venus/mercury with fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 3 rocket for Venus/Mercury"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when going to space"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "space exploration"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:tier_3_rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 3 rocket gate"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:launch"
+          ],
+          "signal": "inferred",
+          "rationale": "rocket launches"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "rocket subsystem"
+        }
+      }
+    },
+    "tfg:tier_4_double_rocket": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "rocket for space travel"
+        },
+        "primary_uses": {
+          "values": [
+            "fly to proxima centauri with fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 4 rocket for final destination"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when going to space"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "space exploration"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:tier_4_rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 4 rocket gate"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:launch"
+          ],
+          "signal": "inferred",
+          "rationale": "rocket launches"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "rocket subsystem"
+        }
+      }
+    },
+    "tfg:tin_chloride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "chemical dust material"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical intermediate for tin processing"
+          ],
+          "signal": "inferred",
+          "rationale": "tin chloride used in chemistry"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when processing chemicals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "full dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed chemical dust"
+        }
+      }
+    },
+    "tfg:tiny_14_sorbitan_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for organic chemistry"
+          ],
+          "signal": "inferred",
+          "rationale": "1,4-sorbitan is an organic compound"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_aes_mix_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "alkaline earth silicate mixture for ceramic/glass"
+          ],
+          "signal": "inferred",
+          "rationale": "mixture typical for glass/ceramics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_alumina_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "source of alumina for aluminum production"
+          ],
+          "signal": "inferred",
+          "rationale": "alumina is aluminum oxide raw material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_aluminium_hydroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for alumina production"
+          ],
+          "signal": "inferred",
+          "rationale": "aluminium hydroxide is precursor to alumina"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_aluminium_sulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical intermediate for aluminum processing"
+          ],
+          "signal": "inferred",
+          "rationale": "aluminium sulfate used in water treatment and paper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_ammonia_borane_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "hydrogen storage compound for fuel cells"
+          ],
+          "signal": "inferred",
+          "rationale": "ammonia borane is a hydrogen storage material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_ammonium_tungstate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for tungsten processing"
+          ],
+          "signal": "inferred",
+          "rationale": "ammonium tungstate is a tungsten compound"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_apt_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for tungsten metal production"
+          ],
+          "signal": "inferred",
+          "rationale": "APT is key tungsten intermediate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_bakelite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "raw material for bakelite plastic production"
+          ],
+          "signal": "inferred",
+          "rationale": "bakelite pulp is precursor to plastic"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_bi_pb_sn_cd_in_tl_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny hazardous dust"
+        },
+        "primary_uses": {
+          "values": [
+            "low-melting alloy component for specialized solders"
+          ],
+          "signal": "inferred",
+          "rationale": "BiPbSnCdInTl is a low-melting alloy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    },
+    "tfg:tiny_boric_acid_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "neutron absorber for nuclear applications"
+          ],
+          "signal": "inferred",
+          "rationale": "boric acid used in nuclear reactors"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "tfg:terrafirmaguard_pa6",
+      "facet": "organization_group",
+      "label": "Nuclear Materials",
+      "proposed_id": "pack:tfg/nuclear_materials",
+      "rationale": "Both the PA6 coolant and thorium fuel rod are fission-related materials that lack a dedicated storage group; a nuclear materials group would unify them.",
+      "evidence": "tfg:fission_coolant tag and deafission:fuels tag"
+    },
+    {
+      "item": "tfg:thorium_rod",
+      "facet": "organization_group",
+      "label": "Nuclear Materials",
+      "proposed_id": "pack:tfg/nuclear_materials",
+      "rationale": "Shared group with PA6 for fission fuel and coolant.",
+      "evidence": "deafission:fuels tag"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

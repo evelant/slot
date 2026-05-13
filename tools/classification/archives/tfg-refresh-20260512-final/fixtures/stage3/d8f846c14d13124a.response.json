@@ -1,0 +1,1043 @@
+{
+  "items": {
+    "beneath:hellbricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable brick block used for Hellforge construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building Hellforge",
+            "decorative brickwork"
+          ],
+          "signal": "inferred",
+          "rationale": "guide page mentions Hellforge construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from soot or wood ash"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as structural building material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block, stored with other bricks"
+        }
+      }
+    },
+    "beneath:juicer": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld device to squeeze mushrooms/fruit into water"
+        },
+        "primary_uses": {
+          "values": [
+            "squeeze mushrooms into water",
+            "drinking vessel"
+          ],
+          "signal": "inferred",
+          "rationale": "guide describes water production and drinking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept handy when exploring Beneath"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable via shaped recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "processes food items into water"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooking_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "cookware/utensil for food prep"
+        }
+      }
+    },
+    "beneath:lost_page": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "collectible fragment of knowledge for altar sacrifices"
+        },
+        "primary_uses": {
+          "values": [
+            "offer at Ancient Altar",
+            "collect for rituals"
+          ],
+          "signal": "inferred",
+          "rationale": "guide describes use at ancient altars"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for specific altar use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stackable, found in structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath mod collectible"
+        }
+      }
+    },
+    "beneath:nether_pebble": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "loose pebble block found in nether, decorative ground cover"
+        },
+        "primary_uses": {
+          "values": [
+            "ground cover",
+            "decorative pebble"
+          ],
+          "signal": "inferred",
+          "rationale": "small stone block from nether surface"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not frequently carried, often left in place"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common in nether"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_count 2, id nether_pebble",
+          "rationale": "found naturally in Beneath dimension"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "small natural rock block"
+        }
+      }
+    },
+    "beneath:ore/blackstone_sylvite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block to be mined and processed for sylvite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of sylvite",
+            "mining for fertilizer"
+          ],
+          "signal": "inferred",
+          "rationale": "sylvite ore is a mineral"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires underground mining in Beneath"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "found in Beneath (nether-like dimension)"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "beneath:ore/nether_cursecoal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block for cursecoal/anthracite"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cursecoal",
+            "fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "ore yields coal-like fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined for processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found in deep metamorphic rock"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath dimension ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "beneath:ore/nether_pyrite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block for pyrite/sulfur"
+        },
+        "primary_uses": {
+          "values": [
+            "source of pyrite",
+            "sulfur production"
+          ],
+          "signal": "inferred",
+          "rationale": "pyrite is a mineral for sulfur"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined for processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found in nether"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath dimension"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "beneath:ore/normal_nether_gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block for gold"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold",
+            "mining for precious metal"
+          ],
+          "signal": "inferred",
+          "rationale": "nether gold ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined for processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "common in Beneath"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath dimension"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "beneath:ore/poor_nether_gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "low-grade gold ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold (low grade)",
+            "mining for gold"
+          ],
+          "signal": "inferred",
+          "rationale": "poor variant of nether gold ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "poor ore is more common"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath dimension"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/poor_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "low-grade raw ore"
+        }
+      }
+    },
+    "beneath:ore/rich_nether_gold": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "high-grade gold ore"
+        },
+        "primary_uses": {
+          "values": [
+            "source of gold (high grade)",
+            "mining for rich gold"
+          ],
+          "signal": "inferred",
+          "rationale": "rich variant of nether gold ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined for processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "rich ore is rarer"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath dimension"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "high-grade raw ore"
+        }
+      }
+    },
+    "beneath:ore/slimed_netherrack": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ore block that drops raw slime"
+        },
+        "primary_uses": {
+          "values": [
+            "source of raw slime",
+            "mining for slime"
+          ],
+          "signal": "inferred",
+          "rationale": "slimed netherrack yields slime"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined for processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found in Beneath"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath dimension"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "beneath:pure_death": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "stackable essence used at Ancient Altar"
+        },
+        "primary_uses": {
+          "values": [
+            "use at Ancient Altar",
+            "crafting pure essences"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Beneath altar system"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for altar rituals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stackable, no recipes visible"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath mod ritual component"
+        }
+      }
+    },
+    "beneath:pure_decay": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "stackable essence for altar"
+        },
+        "primary_uses": {
+          "values": [
+            "use at Ancient Altar",
+            "crafting pure essences"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Beneath altar system"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for altar rituals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stackable, no recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath mod ritual component"
+        }
+      }
+    },
+    "beneath:pure_destruction": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "stackable essence for altar"
+        },
+        "primary_uses": {
+          "values": [
+            "use at Ancient Altar",
+            "crafting pure essences"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Beneath altar system"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for altar rituals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stackable, no recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath mod ritual component"
+        }
+      }
+    },
+    "beneath:pure_flame": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "stackable essence for altar"
+        },
+        "primary_uses": {
+          "values": [
+            "use at Ancient Altar",
+            "crafting pure essences"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Beneath altar system"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for altar rituals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stackable, no recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath mod ritual component"
+        }
+      }
+    },
+    "beneath:pure_sorrow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "stackable essence for altar"
+        },
+        "primary_uses": {
+          "values": [
+            "use at Ancient Altar",
+            "crafting pure essences"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Beneath altar system"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept for altar rituals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stackable, no recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath mod ritual component"
+        }
+      }
+    },
+    "beneath:raw_slime": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw drop from slimed netherrack, used in slime crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting slime balls",
+            "source of slime"
+          ],
+          "signal": "inferred",
+          "rationale": "raw slime is a crafting ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "drops from common ore"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from slimed netherrack",
+          "rationale": "drops from Beneath ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath raw material"
+        }
+      }
+    },
+    "beneath:seeds/crimson_roots": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seeds for planting crimson roots crop"
+        },
+        "primary_uses": {
+          "values": [
+            "plant to grow crimson roots",
+            "farming in Beneath"
+          ],
+          "signal": "inferred",
+          "rationale": "crop seeds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "harvestable from crops"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planting and harvesting crop"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed item"
+        }
+      }
+    },
+    "beneath:seeds/ghost_pepper": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seeds for ghost pepper crop"
+        },
+        "primary_uses": {
+          "values": [
+            "plant to grow ghost peppers",
+            "farming spice crop"
+          ],
+          "signal": "inferred",
+          "rationale": "crop seeds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "harvestable"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planting and harvesting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed item"
+        }
+      }
+    },
+    "beneath:seeds/gleamflower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seeds for gleamflower crop"
+        },
+        "primary_uses": {
+          "values": [
+            "plant to grow gleamflowers",
+            "farming decorative crop"
+          ],
+          "signal": "inferred",
+          "rationale": "crop seeds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "harvestable"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planting and harvesting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed item"
+        }
+      }
+    },
+    "beneath:seeds/nether_wart": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seeds for nether wart crop"
+        },
+        "primary_uses": {
+          "values": [
+            "plant to grow nether wart",
+            "farming brewing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "crop seeds for nether wart"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "harvestable"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planting and harvesting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed item"
+        }
+      }
+    },
+    "beneath:seeds/warped_roots": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seeds for warped roots crop"
+        },
+        "primary_uses": {
+          "values": [
+            "plant to grow warped roots",
+            "farming in Beneath"
+          ],
+          "signal": "inferred",
+          "rationale": "crop seeds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "harvestable"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planting and harvesting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "inferred",
+          "rationale": "seed item"
+        }
+      }
+    },
+    "beneath:soul_clay": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw clay source mined from soul sand valleys"
+        },
+        "primary_uses": {
+          "values": [
+            "source of regular clay",
+            "mining for pottery"
+          ],
+          "signal": "inferred",
+          "rationale": "guide says source of regular clay"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "found naturally in nether"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "pattern",
+          "evidence": "guide mentions soul sand valleys",
+          "rationale": "found in nether biome"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with shovel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "earthly raw material"
+        }
+      }
+    },
+    "beneath:soul_farmland": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "farmland block for growing Beneath crops"
+        },
+        "primary_uses": {
+          "values": [
+            "grow Beneath crops",
+            "farming base"
+          ],
+          "signal": "inferred",
+          "rationale": "tilled soil for planting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for farm setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "can be created by tilling soul clay"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for crop growth"
+        }
+      }
+    },
+    "beneath:spawn_egg/red_elk": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg for Red Elk mob, collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn a Red Elk",
+            "collecting mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when spawning"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "creative tab item"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn eggs are usually creative only"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/beneath_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Beneath mod item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

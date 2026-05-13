@@ -1,0 +1,1766 @@
+{
+  "items": {
+    "tfc:ore/borax/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of borax",
+            "processed into glaze/food"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for borax material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not carried constantly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found underground in TFC"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by the player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk, stored in piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage before processing"
+        }
+      }
+    },
+    "tfc:ore/borax/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "source of borax",
+            "processed into glaze/food"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for borax material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found underground in TFC"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by the player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore stage"
+        }
+      }
+    },
+    "tfc:ore/cinnabar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "drop item from cinnabar ore, used for red dye"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during mining, stored after"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found underground in TFC"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining cinnabar ore blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "can stack to 64, stored in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mineral stage"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/basalt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/chalk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/chert": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/claystone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/dacite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/diorite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/dolomite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/gabbro": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/gneiss": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/granite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/limestone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/marble": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/phyllite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/quartzite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/schist": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/shale": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cinnabar/slate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cinnabar ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cinnabar",
+            "red dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cinnabar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "tfc:ore/cryolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "drop item from cryolite ore, used for dye"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cryolite",
+            "blue dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cryolite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected during mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found underground in TFC"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by mining cryolite ore blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore item"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64, stored in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mineral stage"
+        }
+      }
+    },
+    "tfc:ore/cryolite/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw cryolite ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "source of cryolite",
+            "blue dye",
+            "processed in quern"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for cryolite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground TFC ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined by player"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "tfc:ore/borax/shale",
+      "facet": "material_family",
+      "current": "shale",
+      "suggested": "borax",
+      "rationale": "player thinks of this as borax ore, not shale",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/borax/slate",
+      "facet": "material_family",
+      "current": "slate",
+      "suggested": "borax",
+      "rationale": "player thinks of this as borax ore",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/andesite",
+      "facet": "material_family",
+      "current": "andesite",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar, not host rock",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/basalt",
+      "facet": "material_family",
+      "current": "basalt",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/chalk",
+      "facet": "material_family",
+      "current": "chalk",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/chert",
+      "facet": "material_family",
+      "current": "chert",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/claystone",
+      "facet": "material_family",
+      "current": "claystone",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/conglomerate",
+      "facet": "material_family",
+      "current": "conglomerate",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/dacite",
+      "facet": "material_family",
+      "current": "dacite",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/diorite",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/dolomite",
+      "facet": "material_family",
+      "current": "dolomite",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/gabbro",
+      "facet": "material_family",
+      "current": "gabbro",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/gneiss",
+      "facet": "material_family",
+      "current": "gneiss",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/granite",
+      "facet": "material_family",
+      "current": "granite",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/limestone",
+      "facet": "material_family",
+      "current": "limestone",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/marble",
+      "facet": "material_family",
+      "current": "marble",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/phyllite",
+      "facet": "material_family",
+      "current": "phyllite",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/quartzite",
+      "facet": "material_family",
+      "current": "quartzite",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/rhyolite",
+      "facet": "material_family",
+      "current": "rhyolite",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/schist",
+      "facet": "material_family",
+      "current": "schist",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/shale",
+      "facet": "material_family",
+      "current": "shale",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cinnabar/slate",
+      "facet": "material_family",
+      "current": "slate",
+      "suggested": "cinnabar",
+      "rationale": "ore is cinnabar",
+      "confidence": 0.8
+    },
+    {
+      "item": "tfc:ore/cryolite/andesite",
+      "facet": "material_family",
+      "current": "andesite",
+      "suggested": "cryolite",
+      "rationale": "ore is cryolite, not host rock",
+      "confidence": 0.8
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "fill_ins": []
+}

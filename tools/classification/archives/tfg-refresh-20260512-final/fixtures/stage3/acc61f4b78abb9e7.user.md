@@ -1,0 +1,3272 @@
+# Items to classify
+{
+  "items": [
+    {
+      "id": "gtceu:marble_fullers_earth_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Fuller's Earth Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/fullers_earth",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_fullers_earth_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_fullers_earth_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_fullers_earth_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_fullers_earth_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/fullers_earth",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Mg₂Si₄O₁₄H₄(H₂O)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "fullers_earth",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_fullers_earth_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_galena_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Galena Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/galena",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_galena_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_galena_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_galena_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_galena_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/galena",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "PbS"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "galena",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_galena_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_garnet_sand_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Garnet Sand Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/garnet_sand",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_garnet_sand_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_garnet_sand_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_garnet_sand_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_garnet_sand_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/garnet_sand",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "(Al₂Fe₃Si₃O₁₂)(Ca₃Fe₂Si₃O₁₂)(Ca₃Al₂Si₃O₁₂)(Al₂Mg₃Si₃O₁₂)(Al₂Mn₃Si₃O₁₂)(Ca₃Cr₂Si₃O₁₂)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "garnet_sand",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_garnet_sand_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_garnierite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Garnierite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/garnierite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_garnierite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_garnierite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_garnierite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_garnierite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/garnierite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "NiO"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "garnierite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_garnierite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_glauconite_sand_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Glauconite Sand Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/glauconite_sand",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_glauconite_sand_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_glauconite_sand_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_glauconite_sand_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_glauconite_sand_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/glauconite_sand",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "KMg₂Al₂Si₃O₁₂H₂(H₂O)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "glauconite_sand",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_glauconite_sand_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_goethite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Goethite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/goethite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_goethite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_goethite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_goethite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_goethite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/goethite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "FeHO₂"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "goethite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_goethite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_gold_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Gold Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/gold",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_gold_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_gold_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_gold_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_gold_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/gold",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Au"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_gold_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_granitic_mineral_sand_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Granitic Mineral Sand Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/granitic_mineral_sand",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_granitic_mineral_sand_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_granitic_mineral_sand_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_granitic_mineral_sand_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_granitic_mineral_sand_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/granitic_mineral_sand",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "(Fe₃O₄)((SiO₂)₄(KMg₃Al₃F₂Si₃O₁₀))"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "granitic_mineral_sand",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_granitic_mineral_sand_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_graphite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Graphite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/graphite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_graphite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_graphite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_graphite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_graphite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/graphite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "C"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "graphite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_graphite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_green_sapphire_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Green Sapphire Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/green_sapphire",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_green_sapphire_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_green_sapphire_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_green_sapphire_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_green_sapphire_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/green_sapphire",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Al₂O₃"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "green_sapphire",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_green_sapphire_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_grossular_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Grossular Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/grossular",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_grossular_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_grossular_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_grossular_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_grossular_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/grossular",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Ca₃Al₂Si₃O₁₂"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "grossular",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_grossular_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_gypsum_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Gypsum Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/gypsum",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_gypsum_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_gypsum_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_gypsum_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_gypsum_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/gypsum",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "CaS(H₂O)₂O₄"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "gypsum",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_gypsum_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_hematite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Hematite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/hematite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_hematite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_hematite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_hematite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_hematite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/hematite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Fe₂O₃"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "hematite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_hematite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_ilmenite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Ilmenite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/ilmenite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_ilmenite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_ilmenite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_ilmenite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_ilmenite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/ilmenite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "FeTiO₃"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "ilmenite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_ilmenite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_iron_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Iron Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/iron",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_iron_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_iron_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_iron_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_iron_ore",
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Fe"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_iron_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_kyanite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Kyanite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/kyanite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_kyanite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_kyanite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_kyanite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_kyanite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/kyanite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Al₂SiO₅"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "kyanite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_kyanite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_lapis_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Lapis Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/lapis",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_lapis_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_lapis_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_lapis_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_lapis_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/lapis",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "(Al₆Si₆Ca₈Na₈)₁₂(Al₃Si₃Na₄Cl)₂(FeS₂)(CaCO₃)"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "lapis",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_lapis_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_lazurite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Lazurite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/lazurite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_lazurite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_lazurite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_lazurite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_lazurite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/lazurite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Al₆Si₆Ca₈Na₈"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_lazurite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_lead_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Lead Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/lead",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_lead_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_lead_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_lead_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_lead_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/lead",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Pb"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "lead",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_lead_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_lepidolite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Lepidolite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/lepidolite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_lepidolite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_lepidolite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_lepidolite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_lepidolite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/lepidolite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "KLi₃Al₄F₂O₁₀"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "lepidolite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_lepidolite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_lignite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Lignite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/lignite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [],
+      "recipe_consumption_by_type": {},
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 0,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_lignite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/lignite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "C"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "lignite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_lignite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_lithium_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Lithium Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/lithium",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_lithium_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_lithium_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_lithium_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_lithium_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/lithium",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Li"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "lithium",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_lithium_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_magnesite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Magnesite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/magnesite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_magnesite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_magnesite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_magnesite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_magnesite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/magnesite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "MgCO₃"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "magnesite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_magnesite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_magnetite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Magnetite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/magnetite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_magnetite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_magnetite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_magnetite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_magnetite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/magnetite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Fe₃O₄"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "magnetite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_magnetite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "gtceu:marble_malachite_ore",
+      "namespace": "gtceu",
+      "display_name": "Marble Malachite Ore",
+      "minecraft_tags_direct": [],
+      "minecraft_tags_inherited": [],
+      "minecraft_tags_resolved": [
+        "balm:ores",
+        "c:hidden_from_recipe_viewers",
+        "forge:ores",
+        "forge:ores/malachite",
+        "forge:ores_in_ground/marble"
+      ],
+      "minecraft_tag_membership": "resolved_runtime",
+      "processing_in": [
+        "blasting",
+        "greate:milling",
+        "smelting"
+      ],
+      "recipe_consumption_by_type": {
+        "blasting": 1,
+        "greate:milling": 1,
+        "smelting": 1
+      },
+      "recipe_production_by_type": {},
+      "recipe_ingredient_count": 3,
+      "recipe_output_count": 0,
+      "recipe_ingredient_examples": [
+        "greate:milling/integration/gtceu/macerator/macerate_marble_malachite_ore_to_crushed_ore",
+        "gtceu:blasting/smelt_marble_malachite_ore_to_ingot",
+        "gtceu:smelting/smelt_marble_malachite_ore_to_ingot"
+      ],
+      "recipe_output_examples": [],
+      "model_parents": [],
+      "creative_tabs": [
+        "gtceu:material_block"
+      ],
+      "loot_source_count": 0,
+      "loot_source_examples": [],
+      "block_context": {
+        "block_id": "gtceu:marble_malachite_ore",
+        "block_tags": [
+          "c:hidden_from_recipe_viewers",
+          "cucumber:mineable/paxel",
+          "diggerhelmet:mineable_with_speed_booster",
+          "endermanoverhaul:cave_enderman_holdable",
+          "forge:ores",
+          "forge:ores/malachite",
+          "forge:ores_in_ground/marble",
+          "minecraft:mineable/pickaxe",
+          "species:cliff_hanger_spawnable_on",
+          "species:limpet_spawnable_on",
+          "tfc:can_collapse",
+          "tfc:can_start_collapse",
+          "tfc:can_trigger_collapse",
+          "tfc:monster_spawns_on",
+          "tfc:powderkeg_breaking_blocks",
+          "tfc:prospectable"
+        ],
+        "requires_correct_tool": true
+      },
+      "lore": [],
+      "semantic_text": [
+        {
+          "source": "runtime-tooltip",
+          "text": "Cu₂CH₂O₅"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "⚖ Light ⇲ Small"
+        },
+        {
+          "source": "runtime-tooltip",
+          "text": "GregTech"
+        }
+      ],
+      "component_highlights": {
+        "minecraft:max_stack_size": 32,
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "gtceu",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "malachite",
+          "confidence": 1,
+          "source": "rule:material_family_from_ore_id",
+          "rationale": "ore id marble_malachite_ore"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_common_tag",
+          "rationale": "tag forge:ores"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "greate:milling",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    }
+  ]
+}
+# Final response checklist
+- Respond with one strict JSON object matching the expected output shape above. No markdown, no prose, no comments.
+- Include every item id from `items` exactly once. If output gets long, shorten rationales instead of dropping items.
+- `schema_proposals`, `vocabulary_proposals`, `corrections`, and `fill_ins` are top-level arrays only. Never put them inside `<item_id>.facets`; every key inside `facets` must be a real facet id.
+- Use `ambiguous: true` only for single-value enum/free_text facets. Never put `ambiguous` on multi-value facets such as `origin`, `activity`, `organization_group`, or `mod_subsystem`.
+- Pick `role` from the player's storage-home mental model, not from recipe participation. Machine parts, machine components, hulls, casings, pumps, presses, pipes, cables, and placed processing parts are mechanisms or functional blocks, not generic materials, even when they are ingredients.
+- Keep high-value inventory semantics first: `role`, `primary_uses`, `carry_frequency`, and `rarity` should be present unless the item data is genuinely unusable.
+- Do not re-emit `stage2_facets` in `facets`. Use `corrections` only for clearly wrong stage-2 values; use `fill_ins` only for missing deterministic facets and only with values allowed by the schema.
+- Vocabulary-backed facets may use only ids listed for that exact facet in `Pack facet vocabulary`. If that facet has no section, or no listed id fits, omit the facet and add `vocabulary_proposals` when a useful missing value is clear. Copy accepted ids exactly as printed; do not rewrite slashes, underscores, namespace, or pack prefix.
+- Do not move ids across vocabulary-backed facets. A good `mod_subsystem` id such as `modid:kinetics` is not an `organization_group` unless that exact id is listed under `organization_group`; use the subsystem facet, omit the organization group, or add a vocabulary proposal for the missing storage bucket.
+- For `organization_group`, use an accepted storage-bucket id when one clearly matches the item's manual storage family. Do not omit an obvious bucket such as molds, unprocessed ores, seeds, logs, cloth, or voltage components just because `role`, `form`, or `material_family` is already present.
+- Emit `mod_subsystem` only when the item itself belongs to a listed subsystem. Never assign it just because the item is consumed or produced by a subsystem recipe.
+- Optional low-evidence facets are better omitted than guessed.

@@ -1,0 +1,1298 @@
+{
+  "items": {
+    "tfc:wood/lumber/willow": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Processed wood material, player keeps in crafting stash"
+        },
+        "material_family": {
+          "value": "wood_willow",
+          "signal": "pattern",
+          "evidence": "id contains willow",
+          "rationale": "Willow-specific lumber"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material carried for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to obtain wood product"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wood components",
+            "building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes for roofs, furniture, etc."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Player stores lumber with woodworking materials"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:planks",
+          "rationale": "Planks are a core building block"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood planks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in bulk for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant from acacia logs"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as building material and crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other wood products"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed as decor and enchanting setup"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood bookshelf"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in builds, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating",
+            "enchanting setup"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetics and to boost enchantments"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in enchanting room and decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with furniture items"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:buttons",
+          "rationale": "Wooden button used for redstone"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood button"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when building redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted easily"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signaling",
+            "temporary switches"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to emit redstone pulse"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of redstone builds"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:doors",
+          "rationale": "Door is a building element for passage"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood door"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building entrances"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances",
+            "decorative openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as door in structures"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:fences",
+          "rationale": "Fence is a building block for enclosures"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood fence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building fences"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building enclosures",
+            "animal pens"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to create boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence gate is a structural opening"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood fence gate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fence builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks and sticks"
+        },
+        "primary_uses": {
+          "values": [
+            "building fence openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to allow passage through fences"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log fence variant, same use as fence"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood log fence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from logs"
+        },
+        "primary_uses": {
+          "values": [
+            "building enclosures",
+            "rustic decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative fence variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation for weaving cloth and paper"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood loom"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving cloth",
+            "producing paper"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at the loom station"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "The loom block itself is the station"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:wooden_pressure_plates",
+          "rationale": "Wooden pressure plate is a redstone input"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood pressure plate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried when building redstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone input from entities"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to detect entity presence"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of redstone builds"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slab is a building block for half-height surfaces"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building steps and flooring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building steps",
+            "decorative flooring",
+            "roofing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction for various details"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs are building blocks for vertical transitions"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "decorative elevation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to connect floor levels"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable block for storing and displaying tools"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood tool rack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for tool storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks and lumber"
+        },
+        "primary_uses": {
+          "values": [
+            "storing tools",
+            "organizing workshop"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to keep tools accessible"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Helps organize inventory in base"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:trapdoors",
+          "rationale": "Trapdoor is a building block for floor/ceiling openings"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood trapdoor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building openings"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building floor hatches",
+            "ceiling access openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a horizontal door"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/acacia_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation for crafting items in TFC"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "Acacia wood workbench"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting items",
+            "base workstation"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary crafting station"
+        }
+      }
+    },
+    "tfc:wood/planks/ash": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:planks",
+          "rationale": "Planks are core building blocks"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood planks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant from ash logs"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other wood products"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed as decor and enchanting setup"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood bookshelf"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating",
+            "enchanting setup"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetics and enchantments"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating",
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in enchanting room and decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:buttons",
+          "rationale": "Wooden button for redstone"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood button"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted easily"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signaling",
+            "temporary switches"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to emit redstone pulse"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of redstone builds"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:doors",
+          "rationale": "Door is a building element"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood door"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building entrances"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances",
+            "decorative openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as door in structures"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:fences",
+          "rationale": "Fence is a building block"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood fence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building fences"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building enclosures",
+            "animal pens"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for boundaries"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fence gate is a structural opening"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood fence gate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fence builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building fence openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to allow passage through fences"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log fence variant, same use as fence"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood log fence"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from logs"
+        },
+        "primary_uses": {
+          "values": [
+            "building enclosures",
+            "rustic decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative fence variant"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation for weaving cloth and paper"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood loom"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving cloth",
+            "producing paper"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at the loom station"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:looms",
+          "rationale": "The loom block itself is the station"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:wooden_pressure_plates",
+          "rationale": "Wooden pressure plate is a redstone input"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood pressure plate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried when building redstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone input from entities"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to detect entity presence"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of redstone builds"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slab is a building block"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building steps"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building steps",
+            "decorative flooring",
+            "roofing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction for details"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Stairs are building blocks"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "decorative elevation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to connect floor levels"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable block for storing and displaying tools"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood tool rack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once for tool storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "storing tools",
+            "organizing workshop"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to keep tools accessible"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Helps organize inventory"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:trapdoors",
+          "rationale": "Trapdoor is a building block"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood trapdoor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building openings"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "building floor hatches",
+            "ceiling access openings"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a horizontal door"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with wood building components"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation for crafting items in TFC"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "Ash wood workbench"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting items",
+            "base workstation"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary crafting station"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

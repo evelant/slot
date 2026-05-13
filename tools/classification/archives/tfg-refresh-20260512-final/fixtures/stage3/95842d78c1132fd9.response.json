@@ -1,0 +1,1068 @@
+{
+  "items": {
+    "minecraft:pufferfish_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Mob spawn eggs collected as creative-only set"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning pufferfish in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "Spawn egg verb: place to spawn mob"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only item, rarely in survival inventories"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "Unobtainable in normal survival"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 is_creative_only rule",
+          "rationale": "Hardcoded creative-only spawn egg"
+        }
+      }
+    },
+    "minecraft:pumpkin": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Grown crop, placed as organic farming yield"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting jack o'lanterns",
+            "crafting pumpkin pie"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredients for food and decor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested and stored, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly found and farmed"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Grown via seeds and harvested"
+        }
+      }
+    },
+    "minecraft:pumpkin_pie": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible food item"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for hunger restoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Direct consumption"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Good food source, often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily crafted"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked in an oven"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Full prepared meal"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Eaten directly"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Baked in oven"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "firmalife:oven output recipe",
+          "rationale": "Produced by oven workflow"
+        },
+        "workflow": {
+          "values": [
+            "firmalife:oven"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_examples includes firmalife:oven/pumpkin_pie",
+          "rationale": "Cooked in the oven"
+        },
+        "used_at": {
+          "values": [
+            "firmalife:oven"
+          ],
+          "signal": "pattern",
+          "rationale": "Item is output of oven"
+        },
+        "workflow_role": {
+          "values": [
+            "firmalife:oven#output"
+          ],
+          "signal": "pattern",
+          "rationale": "Baked product from the oven"
+        }
+      }
+    },
+    "minecraft:pumpkin_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Plantable seed for farming"
+        },
+        "primary_uses": {
+          "values": [
+            "planting to grow pumpkins"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming verb"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during farming runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common farming item"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to plant crops"
+        }
+      }
+    },
+    "minecraft:purple_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed for display and heraldry"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying patterns",
+            "decorating bases"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative wall hanging"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall decoration item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits decorative storage bucket"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "evidence": "id prefix + tag tfc:colored_banner",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_bed": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Bedroom furniture, placed as decor"
+        },
+        "primary_uses": {
+          "values": [
+            "sleeping through night",
+            "setting spawn point"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional bed verb"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "One per base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily crafted"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture placed for aesthetics"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Bed fits furniture bucket"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shapeless recipe examples",
+          "rationale": "Crafted from white bed and dye"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative lighting placed for atmosphere"
+        },
+        "primary_uses": {
+          "values": [
+            "providing light",
+            "decorating rooms"
+          ],
+          "signal": "inferred",
+          "rationale": "Light source and decor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative light"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      },
+      "fill_ins": []
+    },
+    "minecraft:purple_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Floor covering for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "floor decoration",
+            "dampening vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed on floors for style and sound dampening"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as floor decoration"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid block used for structure"
+        },
+        "primary_uses": {
+          "values": [
+            "building sturdy structures",
+            "decorative walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Common building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily crafted from concrete powder"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block for structures"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate material to make concrete"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting concrete blocks",
+            "building with concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed to become concrete or used in recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks when building with concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Step in building process"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "coloring blocks and items",
+            "crafting colored variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes to dye items"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when needed, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily crafted from flowers"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decorative dyeing"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "The dye color itself"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "Fits dyes storage bucket"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "multiple crafting/quern recipes",
+          "rationale": "Crafted from other dyes or flowers"
+        }
+      }
+    },
+    "minecraft:purple_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Glazed decorative block with pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building with glossy pattern"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetic effect"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from terracotta"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "Portable storage that holds items"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "transporting inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "Carried to expand inventory on the go"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried by players for extra storage"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires shulker shells from End cities"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to organize and move items"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from shulker box and dye"
+        }
+      }
+    },
+    "minecraft:purple_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Glass block used for windows and builds"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative windows",
+            "building with colored glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block for structures"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Thinner glass pane used in windows"
+        },
+        "primary_uses": {
+          "values": [
+            "windows",
+            "glass partitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as window or divider"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid building block"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for structure and further crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purple_wool": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Colored wool used for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "crafting beds and carpets"
+          ],
+          "signal": "inferred",
+          "rationale": "Build aesthetic and crafting input"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and from sheep"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration and weaving"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "named",
+          "rationale": "Dyed variant"
+        }
+      }
+    },
+    "minecraft:purpur_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "End-themed building block"
+        },
+        "primary_uses": {
+          "values": [
+            "building in End theme",
+            "crafting purpur variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative and structural in End builds"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried; End-specific"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Found only in End cities"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building material"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "Naturally generates in End cities"
+        }
+      }
+    },
+    "minecraft:purpur_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar variant"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative pillars",
+            "End-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for columns and decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End-specific block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in End cities"
+        }
+      }
+    },
+    "minecraft:purpur_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of purpur block"
+        },
+        "primary_uses": {
+          "values": [
+            "slabs for building",
+            "End-themed half blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for stepped building"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End-specific block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in End cities"
+        }
+      }
+    },
+    "minecraft:purpur_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of purpur block"
+        },
+        "primary_uses": {
+          "values": [
+            "stairs for building",
+            "End-themed stepped blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for vertical transitions"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not commonly carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End-specific block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in End cities"
+        }
+      }
+    },
+    "minecraft:quartz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used in redstone and building recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting redstone components",
+            "crafting decorative blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Key ingredient for comparators, observers, quartz blocks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried for redstone projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant in Nether"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in Nether and used in redstone circuits"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from nether quartz ore in the Nether"
+        }
+      }
+    },
+    "minecraft:quartz_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid building material made from quartz"
+        },
+        "primary_uses": {
+          "values": [
+            "building with quartz",
+            "crafting quartz variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative and structural use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from abundant quartz gems"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "compacting recipe produces quartz_block",
+          "rationale": "Crafted from quartz gems"
+        }
+      }
+    },
+    "minecraft:quartz_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative brick variant of quartz"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative brickwork",
+            "End-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for patterned walls"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from quartz block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    },
+    "minecraft:quartz_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar variant"
+        },
+        "primary_uses": {
+          "values": [
+            "pillars for building",
+            "decorative columns"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for vertical decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from quartz block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "minecraft:purple_candle",
+      "facet": "emits_light",
+      "value": true,
+      "rationale": "Candle emits light when lit; stage2 rule missed it"
+    }
+  ]
+}

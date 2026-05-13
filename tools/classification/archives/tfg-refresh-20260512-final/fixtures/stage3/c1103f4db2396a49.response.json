@@ -1,0 +1,1053 @@
+{
+  "items": {
+    "gtceu:hot_debrominated_brine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of hot fluid used for transport and processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transport hot debrominated brine",
+            "input for chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling and processing input"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "players carry buckets when needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _bucket implies filled state",
+          "rationale": "filled fluid bucket"
+        }
+      }
+    },
+    "gtceu:hot_desh_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular desh ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_enriched_naquadah_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular enriched naquadah ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_enriched_naquadah_trinium_europium_duranide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_europium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular europium ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_hastelloy_c_276_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular hastelloy c-276 ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_hastelloy_x_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular hastelloy x ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_hsse_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular hss-e ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_hssg_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular hss-g ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_hsss_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular hss-s ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_incoloy_ma_956_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular incoloy ma-956 ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_indium_tin_barium_titanium_cuprate_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_iridium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular iridium ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_kanthal_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular kanthal ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_magnesium_diboride_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular magnesium diboride ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_maraging_steel_300_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular maraging steel 300 ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_mercury_barium_calcium_cuprate_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_molybdenum_disilicide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular molybdenum disilicide ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_naquadah_alloy_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular naquadah alloy ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_naquadah_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular naquadah ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_naquadria_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular naquadria ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_nichrome_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular nichrome ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_niobium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular niobium ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_niobium_nitride_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular niobium nitride ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    },
+    "gtceu:hot_niobium_titanium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends _ingot + forge:hot_ingots tag",
+          "rationale": "intermediate metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "cool into regular niobium titanium ingot",
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "processing intermediate for materials"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity field"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output including ingots"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:hot_desh_ingot",
+      "facet": "material_family",
+      "value": "desh",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_enriched_naquadah_ingot",
+      "facet": "material_family",
+      "value": "enriched_naquadah",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_enriched_naquadah_trinium_europium_duranide_ingot",
+      "facet": "material_family",
+      "value": "enriched_naquadah_trinium_europium_duranide",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_europium_ingot",
+      "facet": "material_family",
+      "value": "europium",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_hastelloy_c_276_ingot",
+      "facet": "material_family",
+      "value": "hastelloy_c_276",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_hastelloy_x_ingot",
+      "facet": "material_family",
+      "value": "hastelloy_x",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_hsse_ingot",
+      "facet": "material_family",
+      "value": "hsse",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_hssg_ingot",
+      "facet": "material_family",
+      "value": "hssg",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_hsss_ingot",
+      "facet": "material_family",
+      "value": "hsss",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_incoloy_ma_956_ingot",
+      "facet": "material_family",
+      "value": "incoloy_ma_956",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_indium_tin_barium_titanium_cuprate_ingot",
+      "facet": "material_family",
+      "value": "indium_tin_barium_titanium_cuprate",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_iridium_ingot",
+      "facet": "material_family",
+      "value": "iridium",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_kanthal_ingot",
+      "facet": "material_family",
+      "value": "kanthal",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_magnesium_diboride_ingot",
+      "facet": "material_family",
+      "value": "magnesium_diboride",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_maraging_steel_300_ingot",
+      "facet": "material_family",
+      "value": "maraging_steel_300",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_mercury_barium_calcium_cuprate_ingot",
+      "facet": "material_family",
+      "value": "mercury_barium_calcium_cuprate",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_molybdenum_disilicide_ingot",
+      "facet": "material_family",
+      "value": "molybdenum_disilicide",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_naquadah_alloy_ingot",
+      "facet": "material_family",
+      "value": "naquadah_alloy",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_naquadah_ingot",
+      "facet": "material_family",
+      "value": "naquadah",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_naquadria_ingot",
+      "facet": "material_family",
+      "value": "naquadria",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_nichrome_ingot",
+      "facet": "material_family",
+      "value": "nichrome",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_niobium_ingot",
+      "facet": "material_family",
+      "value": "niobium",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_niobium_nitride_ingot",
+      "facet": "material_family",
+      "value": "niobium_nitride",
+      "rationale": "id pattern hot_<material>_ingot"
+    },
+    {
+      "item": "gtceu:hot_niobium_titanium_ingot",
+      "facet": "material_family",
+      "value": "niobium_titanium",
+      "rationale": "id pattern hot_<material>_ingot"
+    }
+  ]
+}

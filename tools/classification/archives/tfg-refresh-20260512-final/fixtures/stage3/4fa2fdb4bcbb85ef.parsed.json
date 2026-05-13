@@ -1,0 +1,1143 @@
+{
+  "items": {
+    "create:small_deepslate_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone brick wall used for building enclosures"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "evidence": "id contains deepslate and tag create:stone_types/deepslate",
+          "rationale": "Block made of deepslate/migmatite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block carried for projects, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "common rarity",
+          "rationale": "Commonly crafted from stone"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative stone brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as structure walls"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other deepslate building variants"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant of deepslate"
+        }
+      }
+    },
+    "create:small_deepslate_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone bricks used for building"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "evidence": "id and tag create:stone_types/deepslate",
+          "rationale": "Deepslate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common stone block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as structural blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of deepslate brick family"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_diorite_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Diorite brick slab used for building"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id and tag create:stone_types/diorite",
+          "rationale": "Diorite stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material, occasional carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common stone"
+        },
+        "primary_uses": {
+          "values": [
+            "Building steps and half-slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as slab in structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with diorite items"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant of diorite"
+        }
+      }
+    },
+    "create:small_diorite_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Diorite brick stairs"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "rationale": "Diorite stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "Diorite stone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_diorite_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Diorite brick wall"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "rationale": "Diorite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "Diorite group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_diorite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Diorite bricks"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "rationale": "Diorite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Full blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "inferred",
+          "rationale": "Diorite stone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_dripstone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Travertine brick slab"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "pattern",
+          "evidence": "id and tag create:stone_types/dripstone",
+          "rationale": "Dripstone/travertine"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Dripstone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_dripstone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Travertine brick stairs"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "pattern",
+          "rationale": "Dripstone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Dripstone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_dripstone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Travertine brick wall"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "pattern",
+          "rationale": "Dripstone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Dripstone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_dripstone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Travertine bricks"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "pattern",
+          "rationale": "Dripstone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Full blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Dripstone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_granite_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Chert brick slab"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "display name Chert, tags tfg:stone_types/chert",
+          "rationale": "Chert (granite in id, chert in pack)"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "inferred",
+          "rationale": "Chert stone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_granite_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Chert brick stairs"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "rationale": "Chert"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "inferred",
+          "rationale": "Chert group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_granite_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Chert brick wall"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "rationale": "Chert"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "inferred",
+          "rationale": "Chert group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_granite_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Chert bricks"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "rationale": "Chert"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Full blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "inferred",
+          "rationale": "Chert group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_limestone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Limestone brick slab"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "evidence": "display name and tag",
+          "rationale": "Limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/limestone"
+          ],
+          "signal": "inferred",
+          "rationale": "Limestone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_limestone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Limestone brick stairs"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/limestone"
+          ],
+          "signal": "inferred",
+          "rationale": "Limestone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_limestone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Limestone brick wall"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/limestone"
+          ],
+          "signal": "inferred",
+          "rationale": "Limestone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_limestone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Limestone bricks"
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "rationale": "Limestone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Full blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/limestone"
+          ],
+          "signal": "inferred",
+          "rationale": "Limestone group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_ochrum_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Ochrum brick slab"
+        },
+        "material_family": {
+          "value": "ochrum",
+          "signal": "pattern",
+          "evidence": "id and tag create:stone_types/ochrum",
+          "rationale": "Ochrum stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "No specific ochrum group, fits decorative"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_ochrum_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Ochrum brick stairs"
+        },
+        "material_family": {
+          "value": "ochrum",
+          "signal": "pattern",
+          "rationale": "Ochrum"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "No specific group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_ochrum_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Ochrum brick wall"
+        },
+        "material_family": {
+          "value": "ochrum",
+          "signal": "pattern",
+          "rationale": "Ochrum"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "No specific group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_ochrum_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Ochrum bricks"
+        },
+        "material_family": {
+          "value": "ochrum",
+          "signal": "pattern",
+          "rationale": "Ochrum"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Full blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "No specific group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_rose_quartz_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rose quartz tile block, building material"
+        },
+        "material_family": {
+          "value": "rose_quartz",
+          "signal": "pattern",
+          "evidence": "id and name",
+          "rationale": "Rose quartz"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tiles for decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "No specific group for rose quartz"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Variant of quartz tile"
+        }
+      }
+    },
+    "create:small_scorchia_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Scorchia brick slab"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id and tag create:stone_types/scorchia",
+          "rationale": "Scorchia stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "No specific scorchia group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    },
+    "create:small_scorchia_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Scorchia brick stairs"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "rationale": "Scorchia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "Common"
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "No specific group"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Small brick variant"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1255 @@
+{
+  "items": {
+    "gtceu:black_bronze_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placeable fluid transport component, part of logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids",
+            "connecting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "core function of fluid pipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in batches for plumbing projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material, stackable"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name includes black bronze"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in fluid logistics setups"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:small_fluid_pipes tag",
+          "rationale": "part of GTCEu fluid pipe system"
+        }
+      }
+    },
+    "gtceu:black_bronze_spade": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name spade",
+          "rationale": "player uses as digging tool"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt and sand",
+            "creating grass paths",
+            "mining 3x3 area"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows landscaper and area mining"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential mining tool, always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name specifies material"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "inferred",
+          "rationale": "tool material tier"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for excavation"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "stored with artisan tools"
+        }
+      }
+    },
+    "gtceu:black_bronze_spade_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tool head used for crafting spade"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black bronze spade"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is crafting input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when preparing to craft"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting component"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name specifies material"
+        }
+      }
+    },
+    "gtceu:black_bronze_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "named",
+          "evidence": "display name sword, tag minecraft:swords",
+          "rationale": "melee weapon"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is dealing damage"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "combat weapon, often carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name specifies material"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "inferred",
+          "rationale": "tool material tier"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for fighting"
+        }
+      }
+    },
+    "gtceu:black_bronze_sword_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tool head used for crafting sword"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black bronze sword"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is crafting input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when preparing to craft"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting component"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name specifies material"
+        }
+      }
+    },
+    "gtceu:black_bronze_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "tiny fluid transport component"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids",
+            "connecting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "core function of fluid pipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in batches for plumbing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name includes black bronze"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in fluid logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:tiny_fluid_pipes tag",
+          "rationale": "part of GTCEu fluid pipe system"
+        }
+      }
+    },
+    "gtceu:black_bronze_wire_cutter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "used for cutting wires in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting wires",
+            "crafting GT components"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows 235 crafting uses"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential crafting tool, often kept in hotbar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name specifies material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated crafting setups"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "stored with artisan tools"
+        }
+      }
+    },
+    "gtceu:black_bronze_wire_cutter_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tool head for crafting wire cutter"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black bronze wire cutter"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is crafting input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when preparing to craft"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name specifies material"
+        }
+      }
+    },
+    "gtceu:black_bronze_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "used for dismantling and configuring machines"
+        },
+        "primary_uses": {
+          "values": [
+            "dismantling machines",
+            "rotating blocks",
+            "configuring pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip mentions mechanic and configuration mode"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential tool for tech players, kept handy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name specifies material"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in tech automation builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "stored with artisan tools"
+        }
+      }
+    },
+    "gtceu:black_bronze_wrench_tip": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting wrench"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black bronze wrench"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is crafting input"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when preparing to craft"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "named",
+          "evidence": "item id",
+          "rationale": "name specifies material"
+        }
+      }
+    },
+    "gtceu:black_dye_spray_can": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for painting blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "painting blocks black"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: 'Can paint things in Black'"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when decorating or recoloring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decorative coloring"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display name Black",
+          "rationale": "spray can color is black"
+        }
+      }
+    },
+    "gtceu:black_glass_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for lenses"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in various GT recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when needed for specific craft"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "lens made of glass"
+        }
+      }
+    },
+    "gtceu:black_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placeable light source for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "providing light",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when placed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building lighting setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decoration block"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display name Black Lamp",
+          "rationale": "lamp is black colored"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 from suffix _lamp",
+          "rationale": "lamp emits light"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in builds for illumination"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:lamps",
+          "rationale": "belongs with other lamps"
+        }
+      }
+    },
+    "gtceu:black_large_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative block used for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating buildings",
+            "creating walls"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a block in builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decoration block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "evidence": "creative tab decoration",
+          "rationale": "stored with other decorative blocks"
+        }
+      }
+    },
+    "gtceu:black_metal_sheet": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative block for construction"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating buildings",
+            "creating walls"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common decoration block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "evidence": "creative tab decoration",
+          "rationale": "stored with other decorative blocks"
+        }
+      }
+    },
+    "gtceu:black_sand_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for almandine",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk, stored before processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore in black sand"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined as part of mining activity"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand, likely surface deposits"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore stored with other unprocessed ores"
+        }
+      }
+    },
+    "gtceu:black_sand_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for aluminium",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to milling (no smelting recipe shown)"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:black_sand_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for alunite",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:black_sand_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for amethyst",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:black_sand_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for apatite",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:black_sand_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for armalcolite",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:black_sand_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for asbestos",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "asbestos",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:black_sand_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for barite",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "barite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:black_sand_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for basaltic mineral sand",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "basaltic_mineral_sand",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:black_sand_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining for bastnasite",
+            "processing into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "bastnasite",
+          "signal": "pattern",
+          "evidence": "stage2 material_family",
+          "rationale": "ore type from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in black sand"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ore is input to smelting and milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1195 @@
+{
+  "items": {
+    "tfc:alabaster/raw/white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid stone block used for building"
+        },
+        "material_family": {
+          "value": "alabaster",
+          "signal": "pattern",
+          "rationale": "name contains alabaster"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "rationale": "display name includes White"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building material"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "tfc:alabaster/raw/yellow": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid stone block for building"
+        },
+        "material_family": {
+          "value": "alabaster",
+          "signal": "pattern",
+          "rationale": "name contains alabaster"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "display name includes Yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building material"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building"
+        }
+      }
+    },
+    "tfc:alabaster_brick": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "brick item used to craft blocks"
+        },
+        "material_family": {
+          "value": "alabaster",
+          "signal": "pattern",
+          "rationale": "name contains alabaster"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when crafting bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting alabaster brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for alabaster bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "material for building blocks"
+        }
+      }
+    },
+    "tfc:barrel_rack": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "furniture block for displaying barrels"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "likely wooden rack"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "holds barrels on rack"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        }
+      }
+    },
+    "tfc:bellows": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "device used to increase fire temperature"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "wooden frame"
+        },
+        "material_secondary": {
+          "values": [
+            "leather"
+          ],
+          "signal": "inferred",
+          "rationale": "leather bellows part"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted workstation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used periodically when smithing"
+        },
+        "primary_uses": {
+          "values": [
+            "increasing fire temperature for forging"
+          ],
+          "signal": "inferred",
+          "rationale": "pumps air into forge/firepit"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in heating process"
+        },
+        "workflow": {
+          "values": [
+            "tfc:bellows"
+          ],
+          "signal": "named",
+          "evidence": "guide_page mentions bellows as device for airflow",
+          "rationale": "document_context references bellows workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:bellows"
+          ],
+          "signal": "pattern",
+          "rationale": "bellows itself is the used block"
+        }
+      }
+    },
+    "tfc:black_poured_glass": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "colored glass pane for decoration"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "name includes glass"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "display name includes Black"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted glass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building windows"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative window glass"
+          ],
+          "signal": "inferred",
+          "rationale": "used as stained glass pane"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative glass"
+        }
+      }
+    },
+    "tfc:black_windmill_blade": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component for windmill contraption"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "likely wool blades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building windmill"
+        },
+        "primary_uses": {
+          "values": [
+            "building windmill for mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "part of windmill multiblock"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "rationale": "windmill blade is part of TFC power system"
+        }
+      }
+    },
+    "tfc:blank_disc": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "guess",
+          "rationale": "no recipes, likely unused collectible"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common but obscure"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not used in gameplay"
+        },
+        "primary_uses": {
+          "values": [
+            "unknown/obsolete"
+          ],
+          "signal": "guess",
+          "rationale": "hidden from recipes, no known use"
+        }
+      }
+    },
+    "tfc:blast_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock controller for steel production"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "crafted from wrought iron plates"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced crafted workstation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and used occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "producing steel from iron"
+          ],
+          "signal": "inferred",
+          "rationale": "blast furnace recipe for steel"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated smelting process"
+        },
+        "workflow": {
+          "values": [
+            "tfc:blast_furnace"
+          ],
+          "signal": "named",
+          "evidence": "guide_page describes blast furnace process",
+          "rationale": "document context specifies blast furnace workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:blast_furnace"
+          ],
+          "signal": "pattern",
+          "rationale": "block itself is the used station"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:blast_furnace"
+          ],
+          "signal": "named",
+          "evidence": "advancement and guide",
+          "rationale": "blast furnace is a major progression gate"
+        }
+      }
+    },
+    "tfc:bloom": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate iron product for smithing"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "inferred",
+          "rationale": "bloom is impure iron"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "part of iron tier progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires bloomery process"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried to anvil for working"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into wrought iron on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "bloom is worked into wrought iron"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "part of iron processing chain"
+        },
+        "workflow": {
+          "values": [
+            "tfc:bloomery#output"
+          ],
+          "signal": "pattern",
+          "rationale": "bloom is output of bloomery"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:bloomery#output"
+          ],
+          "signal": "pattern",
+          "rationale": "bloom is the output of bloomery workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "bloom is worked on anvil"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:bloom"
+          ],
+          "signal": "named",
+          "rationale": "item name is bloom"
+        }
+      }
+    },
+    "tfc:bloomery": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock device for smelting iron"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "inferred",
+          "rationale": "crafted from bronze double plates"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "early game milestone"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, used periodically"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting iron ore into blooms"
+          ],
+          "signal": "inferred",
+          "rationale": "bloomery recipe produces blooms"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting process"
+        },
+        "workflow": {
+          "values": [
+            "tfc:bloomery"
+          ],
+          "signal": "named",
+          "evidence": "guide_page describes bloomery process",
+          "rationale": "document context specifies bloomery workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:bloomery"
+          ],
+          "signal": "pattern",
+          "rationale": "block itself is the used station"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:bloomery"
+          ],
+          "signal": "named",
+          "evidence": "advancement",
+          "rationale": "bloomery is a key progression gate"
+        }
+      }
+    },
+    "tfc:blowpipe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld glassworking tool"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "blowpipe made of glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when doing glassworking"
+        },
+        "primary_uses": {
+          "values": [
+            "glassblowing to create glass items"
+          ],
+          "signal": "inferred",
+          "rationale": "used in glassworking recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "glassworking is decorative crafting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "primary tool for glassworking"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:blowpipe_with_glass": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "blowpipe with molten glass attached, used in glassworking"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass on blowpipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "intermediate tool state"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "held while glassworking"
+        },
+        "primary_uses": {
+          "values": [
+            "shaping glass on a blowpipe"
+          ],
+          "signal": "inferred",
+          "rationale": "used in glassworking recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "glassworking activity"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "part of glassworking workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "used at glassworking station"
+        }
+      }
+    },
+    "tfc:blubber": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "animal fat used as cooking ingredient"
+        },
+        "material_family": {
+          "value": "animal_fat",
+          "signal": "inferred",
+          "rationale": "blubber is fat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mob drop"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected when hunting"
+        },
+        "primary_uses": {
+          "values": [
+            "rendering into cooking oil or tallow"
+          ],
+          "signal": "inferred",
+          "rationale": "fat used in cooking recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food preparation"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from dolphin, manatee, orca",
+          "rationale": "dropped by aquatic mobs"
+        },
+        "food_category": {
+          "values": [
+            "slot:fat_oil"
+          ],
+          "signal": "inferred",
+          "rationale": "source of fat"
+        }
+      }
+    },
+    "tfc:blue_poured_glass": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "colored glass pane for decoration"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "name includes glass"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "display name includes Blue"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted glass"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building windows"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative window glass"
+          ],
+          "signal": "inferred",
+          "rationale": "used as stained glass pane"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative glass"
+        }
+      }
+    },
+    "tfc:blue_windmill_blade": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component for windmill contraption"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "likely wool blades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building windmill"
+        },
+        "primary_uses": {
+          "values": [
+            "building windmill for mechanical power"
+          ],
+          "signal": "inferred",
+          "rationale": "part of windmill multiblock"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "pattern",
+          "rationale": "windmill blade is part of TFC power system"
+        }
+      }
+    },
+    "tfc:bone_needle": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "sewing needle with durability"
+        },
+        "material_family": {
+          "value": "bone",
+          "signal": "pattern",
+          "rationale": "name contains bone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when doing sewing"
+        },
+        "primary_uses": {
+          "values": [
+            "sewing cloth and leather"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sewing recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "textile crafting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:sewing"
+          ],
+          "signal": "pattern",
+          "rationale": "sewing needle used in sewing workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:sewing/table"
+          ],
+          "signal": "inferred",
+          "rationale": "used at sewing table"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/weaving_cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "part of textile tools"
+        }
+      }
+    },
+    "tfc:brass_bell": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placeable bell used as decoration"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "rationale": "name contains brass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and forgotten"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative bell"
+          ],
+          "signal": "inferred",
+          "rationale": "makes sound when interacted"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block"
+        }
+      }
+    },
+    "tfc:brass_mechanisms": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for machinery"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "rationale": "name contains brass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mechanical devices"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced crafting recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component for automation"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:industrialized"
+          ],
+          "signal": "named",
+          "evidence": "advancement mentions Mechanical Age",
+          "rationale": "brass mechanisms mark mechanical age"
+        }
+      }
+    },
+    "tfc:brick/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "stone brick item used to craft blocks"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "rationale": "name contains andesite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when crafting bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting andesite brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for andesite bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "material for building blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:igneous_extrusive_items"
+        }
+      }
+    },
+    "tfc:brick/basalt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "stone brick item used to craft blocks"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "rationale": "name contains basalt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when crafting bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting basalt brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for basalt bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "material for building blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/basalt"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:igneous_extrusive_items and name basalt"
+        }
+      }
+    },
+    "tfc:brick/chalk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "stone brick item used to craft blocks"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "rationale": "name contains chalk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when crafting bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting chalk brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for chalk bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "material for building blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chalk"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:sedimentary_items and name chalk"
+        }
+      }
+    },
+    "tfc:brick/chert": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "stone brick item used to craft blocks"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "rationale": "name contains chert"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when crafting bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting chert brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for chert bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "material for building blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:sedimentary_items and name chert"
+        }
+      }
+    },
+    "tfc:brick/claystone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "stone brick item used to craft blocks"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "rationale": "name contains claystone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when crafting bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting claystone brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for claystone bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "material for building blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/claystone"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:sedimentary_items and name claystone"
+        }
+      }
+    },
+    "tfc:brick/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "stone brick item used to craft blocks"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "rationale": "name contains conglomerate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when crafting bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting conglomerate brick blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes for conglomerate bricks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "material for building blocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/conglomerate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag tfc:sedimentary_items and name conglomerate"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

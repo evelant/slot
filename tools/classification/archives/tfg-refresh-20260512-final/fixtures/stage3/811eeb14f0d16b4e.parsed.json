@@ -1,0 +1,1401 @@
+{
+  "items": {
+    "tfc:rock/mossy_cobble/phyllite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble is a structural building block"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with phyllite stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted from loose rocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Metamorphic stone group"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/phyllite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble slab is a structural building block"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with phyllite stone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as slab building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_slabs",
+          "rationale": "Metamorphic stone and slab section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/phyllite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble stairs are a structural building block"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with phyllite stone stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as stair building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_stairs",
+          "rationale": "Metamorphic stone and stairs section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/phyllite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble wall is a structural building block"
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with phyllite stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as wall building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_walls",
+          "rationale": "Metamorphic stone and walls section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/quartzite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble is a structural building block"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with quartzite stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted from loose rocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Metamorphic stone group"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/quartzite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble slab is a structural building block"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with quartzite stone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as slab building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_slabs",
+          "rationale": "Metamorphic stone and slab section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/quartzite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble stairs are a structural building block"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with quartzite stone stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as stair building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_stairs",
+          "rationale": "Metamorphic stone and stairs section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/quartzite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble wall is a structural building block"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with quartzite stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as wall building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_walls",
+          "rationale": "Metamorphic stone and walls section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble is a structural building block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with rhyolite stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted from loose rocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Igneous extrusive stone group"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/rhyolite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble slab is a structural building block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with rhyolite stone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as slab building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items",
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:igneous_extrusive_items and tfg:rock_slabs",
+          "rationale": "Igneous extrusive stone and slab section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/rhyolite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble stairs are a structural building block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with rhyolite stone stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as stair building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items",
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:igneous_extrusive_items and tfg:rock_stairs",
+          "rationale": "Igneous extrusive stone and stairs section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/rhyolite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble wall is a structural building block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with rhyolite stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as wall building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items",
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:igneous_extrusive_items and tfg:rock_walls",
+          "rationale": "Igneous extrusive stone and walls section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/schist": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble is a structural building block"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with schist stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted from loose rocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Metamorphic stone group"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/schist_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble slab is a structural building block"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with schist stone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as slab building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_slabs",
+          "rationale": "Metamorphic stone and slab section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/schist_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble stairs are a structural building block"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with schist stone stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as stair building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_stairs",
+          "rationale": "Metamorphic stone and stairs section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/schist_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble wall is a structural building block"
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with schist stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as wall building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_walls",
+          "rationale": "Metamorphic stone and walls section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/shale": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble is a structural building block"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with shale stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted from loose rocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "Sedimentary stone group"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/shale_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble slab is a structural building block"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with shale stone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as slab building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items",
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:sedimentary_items and tfg:rock_slabs",
+          "rationale": "Sedimentary stone and slab section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/shale_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble stairs are a structural building block"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with shale stone stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as stair building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items",
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:sedimentary_items and tfg:rock_stairs",
+          "rationale": "Sedimentary stone and stairs section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/shale_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble wall is a structural building block"
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with shale stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as wall building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items",
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:sedimentary_items and tfg:rock_walls",
+          "rationale": "Sedimentary stone and walls section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/slate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble is a structural building block"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with slate stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted from loose rocks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Metamorphic stone group"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/slate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble slab is a structural building block"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with slate stone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as slab building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_slabs",
+          "rationale": "Metamorphic stone and slab section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/slate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble stairs are a structural building block"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with slate stone stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as stair building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_stairs",
+          "rationale": "Metamorphic stone and stairs section"
+        }
+      }
+    },
+    "tfc:rock/mossy_cobble/slate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Mossy cobble wall is a structural building block"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building material carried for projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with slate stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as wall building block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Crafted via stonecutting or chisel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:metamorphic_items and tfg:rock_walls",
+          "rationale": "Metamorphic stone and walls section"
+        }
+      }
+    },
+    "tfc:rock/mossy_loose/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Loose rock used for crafting cobble and road materials, not placed as structure"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "rationale": "Stone type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting or road building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft building materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting cobblestone and road materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is as crafting ingredient"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Obtained from mossy cobble blocks via landslide"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:loose_rocks and rnr:loose_rock_items",
+          "rationale": "Loose rock in dirt and rocks section"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

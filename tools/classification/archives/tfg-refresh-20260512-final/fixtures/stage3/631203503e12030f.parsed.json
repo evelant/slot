@@ -1,0 +1,1337 @@
+{
+  "items": {
+    "gtceu:uranium_rhodium_dinaquadide_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Superconductor wire for power transport"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "named",
+          "evidence": "tooltip ZPM Superconductor",
+          "rationale": "Tooltip states ZPM tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy network power cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports EU with 0 loss"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "ZPM tier superconductor"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM voltage component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Wires are cable subsystem"
+        }
+      }
+    },
+    "gtceu:uranium_rhodium_dinaquadide_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Superconductor wire for power transport"
+        },
+        "material_family": {
+          "value": "uranium_rhodium_dinaquadide",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "tier": {
+          "value": "zpm",
+          "signal": "named",
+          "evidence": "tooltip ZPM Superconductor",
+          "rationale": "Tooltip states ZPM tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy network power cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports EU with 0 loss"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "ZPM tier superconductor"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:zpm_components"
+          ],
+          "signal": "inferred",
+          "rationale": "ZPM voltage component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Wires are cable subsystem"
+        }
+      }
+    },
+    "gtceu:uranium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Crafting rod material"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "rationale": "id contains uranium"
+        },
+        "activity": {
+          "values": [],
+          "signal": "inferred",
+          "rationale": "No specific player activity"
+        },
+        "primary_uses": {
+          "values": [
+            "Component for tools and machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many tool recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting stock used often"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Uranium intermediate material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal rod"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Compressed storage block"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for compact storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of uranium triplatinum"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingots compressed"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only moved when building storage"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier material block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined metal block"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of molten metal"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport molten uranium triplatinum"
+          ],
+          "signal": "inferred",
+          "rationale": "Carries fluid for casting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in fluid logistics"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Molten alloy bucket"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holds fluid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid form of refined material"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Superconductor wire for power transport"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "named",
+          "evidence": "tooltip EV Superconductor",
+          "rationale": "Tooltip states EV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy network power cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports EU with 0 loss"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier superconductor"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Wires are cable subsystem"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form of a material"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [],
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for alloys and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Common material in inventory"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined material dust"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Foil form of a material"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [],
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for wires and circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in fine wire and circuit recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Material kept for crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier foil"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined material foil"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_hex_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Superconductor wire for power transport"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "named",
+          "evidence": "tooltip EV Superconductor",
+          "rationale": "Tooltip states EV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy network power cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports EU with 0 loss"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier superconductor"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Wires are cable subsystem"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ingot form of a material"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [],
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for advanced items"
+          ],
+          "signal": "inferred",
+          "rationale": "Base form for plates, wires, etc."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Common crafting material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier ingot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined material ingot"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Nugget form of a material"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [],
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for smaller items"
+          ],
+          "signal": "inferred",
+          "rationale": "1/9 of ingot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Small material pieces"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier nugget"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined material nugget"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Superconductor wire for power transport"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "named",
+          "evidence": "tooltip EV Superconductor",
+          "rationale": "Tooltip states EV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy network power cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports EU with 0 loss"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier superconductor"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Wires are cable subsystem"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Plate form of a material"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [],
+          "signal": "inferred",
+          "rationale": "Crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for machinery and wires"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Common material in inventory"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier plate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Refined material plate"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Superconductor wire for power transport"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "named",
+          "evidence": "tooltip EV Superconductor",
+          "rationale": "Tooltip states EV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy network power cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports EU with 0 loss"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier superconductor"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Wires are cable subsystem"
+        }
+      }
+    },
+    "gtceu:uranium_triplatinum_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Superconductor wire for power transport"
+        },
+        "material_family": {
+          "value": "uranium_triplatinum",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "named",
+          "evidence": "tooltip EV Superconductor",
+          "rationale": "Tooltip states EV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Energy network power cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Transports EU with 0 loss"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier superconductor"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "EV voltage component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "rationale": "Wires are cable subsystem"
+        }
+      }
+    },
+    "gtceu:uranium_waste_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of nuclear waste"
+        },
+        "material_family": {
+          "value": "uranium_waste",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Waste fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport nuclear waste for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Carries waste fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used only in waste handling"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Waste product"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holds fluid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Waste is a fluid material"
+        }
+      }
+    },
+    "gtceu:uu_matter_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of UU-Matter"
+        },
+        "material_family": {
+          "value": "uu_matter",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in matter replication"
+        },
+        "primary_uses": {
+          "values": [
+            "Replicate materials in mass fabricator"
+          ],
+          "signal": "inferred",
+          "rationale": "Key UU-Matter fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when using mass fab"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rare endgame fluid"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Bucket holds fluid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Special material fluid"
+        }
+      }
+    },
+    "gtceu:uv_1024a_laser_source_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine part for laser power transmission"
+        },
+        "material_family": {
+          "value": "uv_machine",
+          "signal": "inferred",
+          "rationale": "UV tier machine casing"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "named",
+          "evidence": "tooltip UV",
+          "rationale": "Tooltip states UV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit power over distance via laser"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser source hatch"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building UV setups"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:uv_1024a_laser_target_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine part for receiving laser power"
+        },
+        "material_family": {
+          "value": "uv_machine",
+          "signal": "inferred",
+          "rationale": "UV tier machine casing"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "named",
+          "evidence": "tooltip UV",
+          "rationale": "Tooltip states UV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser power reception"
+        },
+        "primary_uses": {
+          "values": [
+            "Receive power over distance via laser"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser target hatch"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building UV setups"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:uv_16a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine for EU/FE conversion"
+        },
+        "material_family": {
+          "value": "uv_machine",
+          "signal": "inferred",
+          "rationale": "UV tier machine casing"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "named",
+          "evidence": "tooltip UV",
+          "rationale": "Tooltip states UV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy conversion"
+        },
+        "primary_uses": {
+          "values": [
+            "Convert between EU and FE power"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy converter description"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building power setups"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy subsystem"
+        }
+      }
+    },
+    "gtceu:uv_1a_energy_converter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine for EU/FE conversion"
+        },
+        "material_family": {
+          "value": "uv_machine",
+          "signal": "inferred",
+          "rationale": "UV tier machine casing"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "named",
+          "evidence": "tooltip UV",
+          "rationale": "Tooltip states UV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy conversion"
+        },
+        "primary_uses": {
+          "values": [
+            "Convert between EU and FE power"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy converter description"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building power setups"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy subsystem"
+        }
+      }
+    },
+    "gtceu:uv_256a_laser_source_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine part for laser power transmission"
+        },
+        "material_family": {
+          "value": "uv_machine",
+          "signal": "inferred",
+          "rationale": "UV tier machine casing"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "named",
+          "evidence": "tooltip UV",
+          "rationale": "Tooltip states UV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit power over distance via laser"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser source hatch"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building UV setups"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:uv_256a_laser_target_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine part for receiving laser power"
+        },
+        "material_family": {
+          "value": "uv_machine",
+          "signal": "inferred",
+          "rationale": "UV tier machine casing"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "named",
+          "evidence": "tooltip UV",
+          "rationale": "Tooltip states UV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser power reception"
+        },
+        "primary_uses": {
+          "values": [
+            "Receive power over distance via laser"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser target hatch"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building UV setups"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:uv_4096a_laser_source_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine part for laser power transmission"
+        },
+        "material_family": {
+          "value": "uv_machine",
+          "signal": "inferred",
+          "rationale": "UV tier machine casing"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "named",
+          "evidence": "tooltip UV",
+          "rationale": "Tooltip states UV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit power over distance via laser"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser source hatch"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building UV setups"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    },
+    "gtceu:uv_4096a_laser_target_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine part for receiving laser power"
+        },
+        "material_family": {
+          "value": "uv_machine",
+          "signal": "inferred",
+          "rationale": "UV tier machine casing"
+        },
+        "tier": {
+          "value": "uv",
+          "signal": "named",
+          "evidence": "tooltip UV",
+          "rationale": "Tooltip states UV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser power reception"
+        },
+        "primary_uses": {
+          "values": [
+            "Receive power over distance via laser"
+          ],
+          "signal": "inferred",
+          "rationale": "Laser target hatch"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building UV setups"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:uv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "UV tier component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "pattern",
+          "rationale": "Hatch subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

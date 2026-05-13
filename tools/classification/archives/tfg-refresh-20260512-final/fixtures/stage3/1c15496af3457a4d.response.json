@@ -1,0 +1,976 @@
+{
+  "items": {
+    "gtceu:oil_medium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool for raw oil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport raw oil",
+            "Fuel for generators"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling and burning"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:oilsands_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate processing dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during refining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed dust with ores"
+        },
+        "primary_uses": {
+          "values": [
+            "Process into oil",
+            "Intermediate refining"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted or centrifuged"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:oilsands_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up while prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Marks oil sands deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "worldgen indicator"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried while mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into oilsands",
+            "Milled into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed gem block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gem family"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact olivine storage",
+            "Cut into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block and crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface bud indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up while prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates olivine deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "worldgen indicator"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ground mineral dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Grind into powder",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gemstone item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gem family"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft gem items",
+            "Compress into block"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up while prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates olivine deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "worldgen indicator"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "machine component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "spare part"
+        },
+        "primary_uses": {
+          "values": [
+            "Machine component lens"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried while mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into olivine",
+            "Mill into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "pressed plate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component",
+            "Building material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:olivine_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "shaped rod"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed material"
+        },
+        "primary_uses": {
+          "values": [
+            "Component for tools",
+            "Crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opal_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed gem block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored, not carried"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gem family"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact opal storage",
+            "Cut into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block and crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opal_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface bud indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up while prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates opal deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "worldgen indicator"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opal_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ground mineral dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Grind into powder",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opal_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gemstone item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gem family"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft gem items",
+            "Compress into block"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opal_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicator"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up while prospecting"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicates opal deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "worldgen indicator"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried while mining"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into opal",
+            "Mill into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opal_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "pressed plate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed material"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component",
+            "Building material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opal_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "shaped rod"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed material"
+        },
+        "primary_uses": {
+          "values": [
+            "Component for tools",
+            "Crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:opv_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock casing component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Build OpV multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "machine structure component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:orange_borderless_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "colored lamp block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed and left"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "lamp family"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide orange light",
+            "Decor"
+          ],
+          "signal": "inferred",
+          "rationale": "light source and decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "id suffix _lamp",
+          "rationale": "lamp block"
+        }
+      }
+    },
+    "gtceu:orange_dye_spray_can": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "painting tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "occasional use"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint blocks orange"
+          ],
+          "signal": "inferred",
+          "rationale": "recoloring tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    },
+    "gtceu:orange_glass_lens": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component lens"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "spare part"
+        },
+        "primary_uses": {
+          "values": [
+            "Machine colored lens"
+          ],
+          "signal": "inferred",
+          "rationale": "machine component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:oilsands_dust",
+      "facet": "material_family",
+      "value": "oilsands",
+      "rationale": "obvious from id and processed ore"
+    },
+    {
+      "item": "gtceu:olivine_block",
+      "facet": "material_family",
+      "value": "olivine",
+      "rationale": "obvious from id and gem type"
+    },
+    {
+      "item": "gtceu:olivine_block",
+      "facet": "form",
+      "value": "storage_block",
+      "rationale": "tag forge:storage_blocks"
+    },
+    {
+      "item": "gtceu:olivine_dust",
+      "facet": "material_family",
+      "value": "olivine",
+      "rationale": "obvious from id"
+    },
+    {
+      "item": "gtceu:olivine_gem",
+      "facet": "material_family",
+      "value": "olivine",
+      "rationale": "obvious from id and gem tag"
+    },
+    {
+      "item": "gtceu:olivine_plate",
+      "facet": "material_family",
+      "value": "olivine",
+      "rationale": "obvious from id"
+    },
+    {
+      "item": "gtceu:olivine_rod",
+      "facet": "material_family",
+      "value": "olivine",
+      "rationale": "obvious from id"
+    },
+    {
+      "item": "gtceu:opal_block",
+      "facet": "material_family",
+      "value": "opal",
+      "rationale": "obvious from id and gem type"
+    },
+    {
+      "item": "gtceu:opal_block",
+      "facet": "form",
+      "value": "storage_block",
+      "rationale": "tag forge:storage_blocks"
+    },
+    {
+      "item": "gtceu:opal_dust",
+      "facet": "material_family",
+      "value": "opal",
+      "rationale": "obvious from id"
+    },
+    {
+      "item": "gtceu:opal_gem",
+      "facet": "material_family",
+      "value": "opal",
+      "rationale": "obvious from id and gem tag"
+    },
+    {
+      "item": "gtceu:opal_plate",
+      "facet": "material_family",
+      "value": "opal",
+      "rationale": "obvious from id"
+    },
+    {
+      "item": "gtceu:opal_rod",
+      "facet": "material_family",
+      "value": "opal",
+      "rationale": "obvious from id"
+    }
+  ]
+}

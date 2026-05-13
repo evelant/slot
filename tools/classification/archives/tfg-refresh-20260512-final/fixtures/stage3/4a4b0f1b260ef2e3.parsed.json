@@ -1,0 +1,988 @@
+{
+  "items": {
+    "wan_ancient_beasts:ginkgo_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:wooden_pressure_plates",
+          "rationale": "wooden pressure plate acts as redstone trigger"
+        },
+        "primary_uses": {
+          "values": [
+            "emitting redstone signal when stepped on"
+          ],
+          "signal": "inferred",
+          "rationale": "pressure plate use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "material_family": {
+          "value": "ginkgo_wood",
+          "signal": "pattern",
+          "evidence": "id prefix ginkgo",
+          "rationale": "from ginkgo trees"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:wooden_pressure_plates",
+          "rationale": "redstone component activity"
+        }
+      }
+    },
+    "wan_ancient_beasts:ginkgo_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:signs",
+          "rationale": "sign is decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "placing signs with text"
+          ],
+          "signal": "inferred",
+          "rationale": "sign use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "material_family": {
+          "value": "ginkgo_wood",
+          "signal": "pattern",
+          "rationale": "from ginkgo trees"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "signs part of building/decorating"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "ginkgo wood items grouped with woodworking"
+        }
+      }
+    },
+    "wan_ancient_beasts:ginkgo_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "slab is building block"
+        },
+        "primary_uses": {
+          "values": [
+            "building floors and roofs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "material_family": {
+          "value": "ginkgo_wood",
+          "signal": "pattern",
+          "rationale": "from ginkgo trees"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "slab used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "ginkgo wood items grouped with woodworking"
+        }
+      }
+    },
+    "wan_ancient_beasts:ginkgo_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "stairs are building block"
+        },
+        "primary_uses": {
+          "values": [
+            "building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "material_family": {
+          "value": "ginkgo_wood",
+          "signal": "pattern",
+          "rationale": "from ginkgo trees"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "ginkgo wood items grouped with woodworking"
+        }
+      }
+    },
+    "wan_ancient_beasts:ginkgo_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:trapdoors",
+          "rationale": "trapdoor is building block"
+        },
+        "primary_uses": {
+          "values": [
+            "creating floor and ceiling hatches"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "material_family": {
+          "value": "ginkgo_wood",
+          "signal": "pattern",
+          "rationale": "from ginkgo trees"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "ginkgo wood items grouped with woodworking"
+        }
+      }
+    },
+    "wan_ancient_beasts:ginkgo_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:logs",
+          "rationale": "wood block used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building with ginkgo bark texture",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "building and fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building and fuel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "material_family": {
+          "value": "ginkgo_wood",
+          "signal": "pattern",
+          "rationale": "ginkgo wood itself"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "wood used for building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood items grouped with woodworking"
+        }
+      }
+    },
+    "wan_ancient_beasts:glider_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology collectible egg"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting and hatching glider"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeology find and mob source"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only collected from dig sites"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        }
+      }
+    },
+    "wan_ancient_beasts:glider_feather": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for arrows"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting arrow fletching"
+          ],
+          "signal": "inferred",
+          "evidence": "recipe tfc:kjs/damage/shapeless/glider_feather_fletching",
+          "rationale": "used in fletching recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for arrow crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "arrow making for combat"
+        }
+      }
+    },
+    "wan_ancient_beasts:glider_skull": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "decorative skull from archaeology"
+        },
+        "primary_uses": {
+          "values": [
+            "display decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as ornament"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "stack size 1, placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative archaeology item"
+        }
+      }
+    },
+    "wan_ancient_beasts:glider_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "evidence": "model item/template_spawn_egg",
+          "rationale": "spawn egg is collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning glider mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "spawn egg is creative only"
+        }
+      }
+    },
+    "wan_ancient_beasts:gray_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to charger mob for armor"
+        },
+        "primary_uses": {
+          "values": [
+            "equipping charger with armor"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only if owning a charger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "name contains gray",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor used in combat"
+        }
+      }
+    },
+    "wan_ancient_beasts:gray_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "glider for movement"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding through air"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider use"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary travel tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "evidence": "name contains gray",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "glider for travel"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider provides flight"
+        }
+      }
+    },
+    "wan_ancient_beasts:green_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to charger mob for armor"
+        },
+        "primary_uses": {
+          "values": [
+            "equipping charger with armor"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only if owning a charger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "evidence": "name contains green",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor used in combat"
+        }
+      }
+    },
+    "wan_ancient_beasts:green_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "glider for movement"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding through air"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider use"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary travel tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "evidence": "name contains green",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "glider for travel"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider provides flight"
+        }
+      }
+    },
+    "wan_ancient_beasts:hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "glider for movement"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding through air"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider use"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary travel tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "glider for travel"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider provides flight"
+        }
+      }
+    },
+    "wan_ancient_beasts:horns_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology sherd collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "sherd use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "archaeology find"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        }
+      }
+    },
+    "wan_ancient_beasts:jaw_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology sherd collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "sherd use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "archaeology find"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        }
+      }
+    },
+    "wan_ancient_beasts:light_blue_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to charger mob for armor"
+        },
+        "primary_uses": {
+          "values": [
+            "equipping charger with armor"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only if owning a charger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "pattern",
+          "evidence": "name contains light_blue",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor used in combat"
+        }
+      }
+    },
+    "wan_ancient_beasts:light_blue_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "glider for movement"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding through air"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider use"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary travel tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "pattern",
+          "evidence": "name contains light_blue",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "glider for travel"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider provides flight"
+        }
+      }
+    },
+    "wan_ancient_beasts:light_gray_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to charger mob for armor"
+        },
+        "primary_uses": {
+          "values": [
+            "equipping charger with armor"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only if owning a charger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "pattern",
+          "evidence": "name contains light_gray",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor used in combat"
+        }
+      }
+    },
+    "wan_ancient_beasts:light_gray_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "glider for movement"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding through air"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider use"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary travel tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "pattern",
+          "evidence": "name contains light_gray",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "glider for travel"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider provides flight"
+        }
+      }
+    },
+    "wan_ancient_beasts:lime_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to charger mob for armor"
+        },
+        "primary_uses": {
+          "values": [
+            "equipping charger with armor"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only if owning a charger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "lime",
+          "signal": "pattern",
+          "evidence": "name contains lime",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor used in combat"
+        }
+      }
+    },
+    "wan_ancient_beasts:lime_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "glider for movement"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding through air"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider use"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary travel tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "lime",
+          "signal": "pattern",
+          "evidence": "name contains lime",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "glider for travel"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:flight"
+          ],
+          "signal": "inferred",
+          "rationale": "hang glider provides flight"
+        }
+      }
+    },
+    "wan_ancient_beasts:loot_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology sherd collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "sherd use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "archaeology find"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        }
+      }
+    },
+    "wan_ancient_beasts:magenta_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to charger mob for armor"
+        },
+        "primary_uses": {
+          "values": [
+            "equipping charger with armor"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only if owning a charger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity"
+        },
+        "dye_color": {
+          "value": "magenta",
+          "signal": "pattern",
+          "evidence": "name contains magenta",
+          "rationale": "dye color from name"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "charger armor used in combat"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

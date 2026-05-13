@@ -1,0 +1,878 @@
+{
+  "values": [
+    {
+      "id": "tfc:getting/started/boats",
+      "label": "Getting Started: Boats",
+      "state": "rejected",
+      "description": "Guide topic about boats, not a player station or surface for item processing.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmaciv/watercraft",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:barrel_instant_fluid",
+      "label": "Barrel Instant Fluid",
+      "state": "accepted",
+      "description": "The barrel is a station for instant fluid mixing and processing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant_fluid",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:concrete/roads",
+      "label": "Concrete Roads",
+      "state": "rejected",
+      "description": "Guide about road construction, not a station for processing items.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/roadsandroofs/concrete_roads",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:primitive/alloys",
+      "label": "Primitive Alloys",
+      "state": "rejected",
+      "description": "Guide about alloying, not a specific station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/primitive_alloys",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:prospecting",
+      "label": "Prospecting",
+      "state": "rejected",
+      "description": "Activity of prospecting, not a station or surface.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/prospecting",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:rowboats",
+      "label": "Rowboats",
+      "state": "rejected",
+      "description": "Vehicle, not a station or surface for item processing.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmaciv/rowboat",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:tapping/index",
+      "label": "Tapping Index",
+      "state": "rejected",
+      "description": "Reference index, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/arborfirmacraft/tapping_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:addressing/a/stock/ticker/order",
+      "label": "Addressing a Stock ticker order",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/stock_ticker_address",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:attaching/blocks/using/radial/chassis",
+      "label": "Attaching blocks using Radial Chassis",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/radial_chassis",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:automatic/crafting/with/factory/gauges",
+      "label": "Automatic Crafting with Factory Gauges",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/factory_gauge_crafting",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:collision/prevention/with/signals",
+      "label": "Collision Prevention with Signals",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/train_signal_signaling",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:monitoring/with/the/threshold/switch",
+      "label": "Monitoring with the Threshold Switch",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/threshold_switch",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:processing/items/in/the/basin",
+      "label": "Processing Items in the Basin",
+      "state": "accepted",
+      "description": "The Basin is a station for holding and processing items and fluids.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/basin",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:routing/packages/with/an/address",
+      "label": "Routing packages with an address",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/packager_address",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:processing/items/with/the/helve/hammer",
+      "label": "Processing Items with the Helve Hammer",
+      "state": "accepted",
+      "description": "The Helve Hammer is a station for automated hammering recipes.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/helve_hammer",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "afc:tree_tapping",
+      "label": "Tree Tapping",
+      "state": "accepted",
+      "description": "Trees serve as a surface for tapping latex, sap, and other fluids.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "afc:tree_tapping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create_connected:relaying/rotational/force/using/a/kinetic/bridge",
+      "label": "Relaying rotational force using a Kinetic Bridge",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/kinetic_bridge",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:building/materials",
+      "label": "Building Materials",
+      "state": "rejected",
+      "description": "Guide about building blocks, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/building_materials",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:extraterrestrial/crops",
+      "label": "Extraterrestrial Crops",
+      "state": "rejected",
+      "description": "Guide about crops, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/space_crops",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:flora",
+      "label": "Flora",
+      "state": "rejected",
+      "description": "Guide about plants, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/flora",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:herbs/and/spices",
+      "label": "Herbs and Spices",
+      "state": "rejected",
+      "description": "Guide about herbs and spices, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/herbs_and_spices",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:attaching/blocks/using/linear/chassis",
+      "label": "Attaching blocks using Linear Chassis",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/linear_chassis_attachment",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:contraption/fluid/exchange",
+      "label": "Contraption Fluid Exchange",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/portable_fluid_interface",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:contraption/storage/exchange",
+      "label": "Contraption Storage Exchange",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/portable_storage_interface",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:controlling/trains",
+      "label": "Controlling Trains",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/train_controls",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:logistics/networks/and/the/stock/link",
+      "label": "Logistics Networks and the Stock Link",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/stock_link",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:merging/packages/from/a/request",
+      "label": "Merging packages from a request",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/repackager",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:placing/train/tracks",
+      "label": "Placing Train Tracks",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/track_placement",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:processing/items/using/encased/fans",
+      "label": "Processing Items using Encased Fans",
+      "state": "accepted",
+      "description": "Encased Fans are used for bulk processing such as smelting and washing.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fan_processing",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:setting/up/display/links",
+      "label": "Setting up Display Links",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/display_link",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:setting/up/mechanical/arms",
+      "label": "Setting up Mechanical Arms",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_arm",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:setting/up/mechanical/crafters",
+      "label": "Setting up Mechanical Crafters",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station name.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_crafter",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:using/brass/tunnels",
+      "label": "Using Brass Tunnels",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/brass_tunnel",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "createhorsepower:using/horse/crank",
+      "label": "Using Horse Crank",
+      "state": "rejected",
+      "description": "Horse crank is a power source, not a processing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "createhorsepower:ponder/horse_crank",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:processing/items/using/encased/fans",
+      "label": "Processing Items using Encased Fans",
+      "state": "review",
+      "description": "Ponder tutorial, but the encased fan is a station. Marked review due to duplicate with create version.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/fan_processing",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "railways:visualizing/signal/states/using/semaphores",
+      "label": "Visualizing Signal states using Semaphores",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "railways:ponder/train_semaphore",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:processing/items/with/the/lathe",
+      "label": "Processing Items with the Lathe",
+      "state": "accepted",
+      "description": "The Lathe is a station for processing items such as turning.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/lathe",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:support/beams/and/collapses",
+      "label": "Support Beams & Collapses",
+      "state": "rejected",
+      "description": "Guide about support beams, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/support_beams",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:mechanical_crafting",
+      "label": "Mechanical Crafting",
+      "state": "rejected",
+      "description": "Recipe type name, not a station; the station is the mechanical crafter.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mechanical_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:barrels",
+      "label": "Barrels",
+      "state": "accepted",
+      "description": "The Barrel is a station for mixing fluids and items, preserving, and dyeing.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/barrels",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:drink/effects",
+      "label": "Drink Effects",
+      "state": "rejected",
+      "description": "Guide about drink effects, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/drinks",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:ovens",
+      "label": "Ovens",
+      "state": "accepted",
+      "description": "The Oven is a station for baking and cooking food.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/ovens",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:planters",
+      "label": "Planters",
+      "state": "accepted",
+      "description": "Planters are stations for growing crops indoors.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/planters",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:clearing/and/paving/with/the/roller",
+      "label": "Clearing and Paving with the Roller",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_roller_pave",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:distribution/modes/of/the/mechanical/arm",
+      "label": "Distribution modes of the Mechanical Arm",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_arm_modes",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:generating/rotational/force/using/windmill/bearings",
+      "label": "Generating Rotational Force using Windmill Bearings",
+      "state": "rejected",
+      "description": "Ponder tutorial about power generation, not a processing station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/windmill_source",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:moving/fluids/using/copper/pipes",
+      "label": "Moving Fluids using Copper Pipes",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fluid_pipe_flow",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:redstone/control",
+      "label": "Redstone Control",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/display_link_redstone",
+          "confidence": 0.7
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/funnel_redstone",
+          "confidence": 0.7
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/portable_storage_interface_redstone",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

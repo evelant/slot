@@ -1,0 +1,1135 @@
+{
+  "items": {
+    "mcw_tfc_aio:bridges/kapok_bridges/kapok_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural bridge component, placed as building decoration"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "inferred",
+          "rationale": "Wood type from bridge variant; players associate with kapok wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity common",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building bridges, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building bridge structures over gaps"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a bridge piece"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin rule",
+          "rationale": "Crafted only in shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/kapok_bridges/kapok_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rail bridge is a structural bridge variant"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "inferred",
+          "rationale": "Wood type from bridge variant; players associate with kapok wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building rail-compatible bridge spans"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a rail bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only in shaped recipe"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/kapok_bridges/kapok_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge stair is a structural bridge variant"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "inferred",
+          "rationale": "Wood type from bridge variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building rope bridge stair sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge stair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/kapok_bridges/rope_kapok_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge is a structural bridge variant"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "inferred",
+          "rationale": "Wood type from bridge name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building rope bridge spans"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rope bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/mangrove_bridges/mangrove_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Bridge support pier, structural component"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "inferred",
+          "rationale": "Mangrove wood from bridge variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is bridge construction"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting bridge structures as piers"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge pier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/mangrove_bridges/mangrove_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge middle section, structural"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "inferred",
+          "rationale": "Mangrove wood from bridge variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is bridge construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building log bridge middle sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge middle"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/mangrove_bridges/mangrove_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge stair, structural component"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "inferred",
+          "rationale": "Mangrove wood from bridge variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is bridge construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building log bridge stair sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge stair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/mangrove_bridges/mangrove_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rail bridge, a bridge variant"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "inferred",
+          "rationale": "Mangrove wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building mangrove rail bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rail bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/mangrove_bridges/mangrove_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge stair, structural"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "inferred",
+          "rationale": "Mangrove wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building mangrove rope bridge stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rope bridge stair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/mangrove_bridges/rope_mangrove_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge, structural"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "inferred",
+          "rationale": "Mangrove wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building mangrove rope bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rope bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/maple_bridges/maple_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Bridge support pier"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "inferred",
+          "rationale": "Maple wood from bridge variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Bridge construction"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting bridge structures as piers"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge pier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/maple_bridges/maple_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge middle section"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "inferred",
+          "rationale": "Maple wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building maple log bridge middle sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge middle"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/maple_bridges/maple_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge stair"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "inferred",
+          "rationale": "Maple wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building maple log bridge stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge stair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/maple_bridges/maple_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rail bridge variant"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "inferred",
+          "rationale": "Maple wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building maple rail bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rail bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/maple_bridges/maple_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge stair"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "inferred",
+          "rationale": "Maple wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building maple rope bridge stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rope bridge stair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/maple_bridges/rope_maple_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "inferred",
+          "rationale": "Maple wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building maple rope bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rope bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/oak_bridges/oak_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Bridge support pier"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "Oak wood from bridge variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Bridge construction"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting oak bridge structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge pier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/oak_bridges/oak_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge middle section"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "Oak wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building oak log bridge middle sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge middle"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/oak_bridges/oak_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge stair"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "Oak wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building oak log bridge stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge stair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/oak_bridges/oak_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rail bridge variant"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "Oak wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building oak rail bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rail bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/oak_bridges/oak_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge stair"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "Oak wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building oak rope bridge stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rope bridge stair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/oak_bridges/rope_oak_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "Oak wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building oak rope bridges"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as rope bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/palm_bridges/palm_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Bridge support pier"
+        },
+        "material_family": {
+          "value": "wood_palm",
+          "signal": "inferred",
+          "rationale": "Palm wood from bridge variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Bridge construction"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting palm bridge structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge pier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/palm_bridges/palm_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge middle section"
+        },
+        "material_family": {
+          "value": "wood_palm",
+          "signal": "inferred",
+          "rationale": "Palm wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building palm log bridge middle sections"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge middle"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/palm_bridges/palm_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log bridge stair"
+        },
+        "material_family": {
+          "value": "wood_palm",
+          "signal": "inferred",
+          "rationale": "Palm wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Building bridges"
+        },
+        "primary_uses": {
+          "values": [
+            "building palm log bridge stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as bridge stair"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafted only"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

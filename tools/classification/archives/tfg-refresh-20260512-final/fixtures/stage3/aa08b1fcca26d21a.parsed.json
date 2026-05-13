@@ -1,0 +1,1140 @@
+{
+  "items": {
+    "tfc:wood/planks/kapok_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden trapdoor for building openings"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "rationale": "id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "building openings",
+            "access control"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door/trapdoor in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building part fits woodworking storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/kapok_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "crafting station with UI"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "rationale": "id contains kapok"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting station"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily used for crafting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "workbench is furniture-like functional block"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks used for building structures"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "universal crafting and building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "foundation for wood building and crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "core wood material for many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "planks are basic woodworking material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative book storage, no UI"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "enchanting library"
+          ],
+          "signal": "inferred",
+          "rationale": "placed near enchanting table for bonus"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "bookshelf is furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden button emits redstone signal"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal input"
+          ],
+          "signal": "inferred",
+          "rationale": "pressed to activate mechanisms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "small wood item stored with woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden door for building entrances"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrance"
+          ],
+          "signal": "inferred",
+          "rationale": "door as passable opening"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden door part of woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence for boundaries"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "boundary and enclosure"
+          ],
+          "signal": "inferred",
+          "rationale": "used to fence off areas"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "fence is a woodworking building part"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate as opening in fence"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used less often than fence"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "fence opening"
+          ],
+          "signal": "inferred",
+          "rationale": "allows passage through fence"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gate is a woodworking element"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log fence boundary"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "rustic fence"
+          ],
+          "signal": "inferred",
+          "rationale": "alternative fence style"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "log fence is woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "weaving station with UI"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stationary workstation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "used for weaving recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "loom is a functional furniture block"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses this block for weaving"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plate triggers redstone"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "weight-based redstone trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "activated by stepping or items"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden redstone component stored with wood"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab for building"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "half-block building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for detail and stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "slab is part of woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs for vertical access"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical access"
+          ],
+          "signal": "inferred",
+          "rationale": "used for climbing between levels"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs are woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "holds tools, interactive block"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "tool storage and display"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and shows tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rack is functional furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden trapdoor for building openings"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "hidden or overhead access"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor for floor/ceiling openings"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor is woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/mangrove_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "crafting station with UI"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "rationale": "id contains mangrove"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting station"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily used for crafting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "workbench is furniture-like"
+        }
+      }
+    },
+    "tfc:wood/planks/maple": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks used for building structures"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "universal crafting and building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "foundation for wood building and crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "core wood material for many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "planks are basic woodworking material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/maple_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative book storage, no UI"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "enchanting library"
+          ],
+          "signal": "inferred",
+          "rationale": "placed near enchanting table for bonus"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "bookshelf is furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        }
+      }
+    },
+    "tfc:wood/planks/maple_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden button emits redstone signal"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal input"
+          ],
+          "signal": "inferred",
+          "rationale": "pressed to activate mechanisms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "small wood item stored with woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        }
+      }
+    },
+    "tfc:wood/planks/maple_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden door for building entrances"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrance"
+          ],
+          "signal": "inferred",
+          "rationale": "door as passable opening"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden door part of woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/maple_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence for boundaries"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "boundary and enclosure"
+          ],
+          "signal": "inferred",
+          "rationale": "used to fence off areas"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "fence is a woodworking building part"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/maple_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate as opening in fence"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used less often than fence"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "fence opening"
+          ],
+          "signal": "inferred",
+          "rationale": "allows passage through fence"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gate is a woodworking element"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/maple_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log fence boundary"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "rustic fence"
+          ],
+          "signal": "inferred",
+          "rationale": "alternative fence style"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "log fence is woodworking"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "tfc:wood/planks/maple_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "weaving station with UI"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stationary workstation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "used for weaving recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "loom is a functional furniture block"
+        },
+        "used_at": {
+          "values": [
+            "tfc:loom"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses this block for weaving"
+        }
+      }
+    },
+    "tfc:wood/planks/maple_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plate triggers redstone"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "rationale": "id contains maple"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity=common",
+          "rationale": "common rarity component"
+        },
+        "primary_uses": {
+          "values": [
+            "weight-based redstone trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "activated by stepping or items"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden redstone component stored with wood"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

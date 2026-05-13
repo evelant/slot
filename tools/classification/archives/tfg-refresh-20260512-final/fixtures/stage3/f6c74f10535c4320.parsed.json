@@ -1,0 +1,1129 @@
+{
+  "items": {
+    "vintageimprovements:platinum_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "id suffix _spring/platinum",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "mechanical spring component for presses and lathes",
+          "signal": "inferred",
+          "rationale": "used in VI contraptions"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:platinum_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "forge:wires/platinum tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "conductive wire for mechanisms",
+          "signal": "inferred",
+          "rationale": "wire used in coiling/curving"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:pure_gold_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "pure_gold",
+          "signal": "pattern",
+          "evidence": "id suffix _rod",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal rod for machining",
+          "signal": "inferred",
+          "rationale": "VI rod component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id ends _rod",
+          "rationale": "rod form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:pure_gold_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "pure_gold",
+          "signal": "pattern",
+          "evidence": "id suffix _sheet",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal sheet for pressing",
+          "signal": "inferred",
+          "rationale": "VI sheet component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:sheet",
+          "signal": "pattern",
+          "evidence": "id ends _sheet",
+          "rationale": "sheet form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:pure_gold_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "pure_gold",
+          "signal": "pattern",
+          "evidence": "id suffix _spring",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "mechanical spring component",
+          "signal": "inferred",
+          "rationale": "spring used in presses"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:pure_gold_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "pure_gold",
+          "signal": "pattern",
+          "evidence": "forge:wires/pure_gold tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "conductive wire for mechanisms",
+          "signal": "inferred",
+          "rationale": "wire used in coiling/curving"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:queens_slime_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "queens_slime",
+          "signal": "pattern",
+          "evidence": "id suffix _rod",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal rod for machining",
+          "signal": "inferred",
+          "rationale": "VI rod component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id ends _rod",
+          "rationale": "rod form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:queens_slime_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "queens_slime",
+          "signal": "pattern",
+          "evidence": "id suffix _sheet",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal sheet for pressing",
+          "signal": "inferred",
+          "rationale": "VI sheet component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:sheet",
+          "signal": "pattern",
+          "evidence": "id ends _sheet",
+          "rationale": "sheet form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:queens_slime_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "queens_slime",
+          "signal": "pattern",
+          "evidence": "vintageimprovements:springs/queens_slime tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "mechanical spring component",
+          "signal": "inferred",
+          "rationale": "spring used in presses"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:queens_slime_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "queens_slime",
+          "signal": "pattern",
+          "evidence": "forge:wires/queens_slime tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "conductive wire for mechanisms",
+          "signal": "inferred",
+          "rationale": "wire used in coiling/curving"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:recipe_card": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "lathe automation item, not a material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up lathe"
+        },
+        "primary_uses": {
+          "value": "automate lathe recipes",
+          "signal": "named",
+          "evidence": "advancement: 'Card Punch'",
+          "rationale": "advancement description"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod item"
+        }
+      }
+    },
+    "vintageimprovements:redstone_module": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "module for redstone automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building automation"
+        },
+        "primary_uses": {
+          "value": "redstone control for machines",
+          "signal": "named",
+          "evidence": "advancement: 'Redstonofication'",
+          "rationale": "advancement description"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod item"
+        }
+      }
+    },
+    "vintageimprovements:refined_glowstone_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_glowstone",
+          "signal": "pattern",
+          "evidence": "id suffix _rod",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal rod for machining",
+          "signal": "inferred",
+          "rationale": "VI rod component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id ends _rod",
+          "rationale": "rod form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_glowstone_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_glowstone",
+          "signal": "pattern",
+          "evidence": "id suffix _sheet",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal sheet for pressing",
+          "signal": "inferred",
+          "rationale": "VI sheet component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:sheet",
+          "signal": "pattern",
+          "evidence": "id ends _sheet",
+          "rationale": "sheet form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_glowstone_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_glowstone",
+          "signal": "pattern",
+          "evidence": "vintageimprovements:springs/refined_glowstone tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "mechanical spring component",
+          "signal": "inferred",
+          "rationale": "spring used in presses"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_glowstone_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_glowstone",
+          "signal": "pattern",
+          "evidence": "forge:wires/refined_glowstone tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "conductive wire for mechanisms",
+          "signal": "inferred",
+          "rationale": "wire used in coiling/curving"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_obsidian_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_obsidian",
+          "signal": "pattern",
+          "evidence": "id suffix _rod",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal rod for machining",
+          "signal": "inferred",
+          "rationale": "VI rod component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id ends _rod",
+          "rationale": "rod form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_obsidian_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_obsidian",
+          "signal": "pattern",
+          "evidence": "id suffix _sheet",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal sheet for pressing",
+          "signal": "inferred",
+          "rationale": "VI sheet component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:sheet",
+          "signal": "pattern",
+          "evidence": "id ends _sheet",
+          "rationale": "sheet form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_obsidian_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_obsidian",
+          "signal": "pattern",
+          "evidence": "vintageimprovements:springs/refined_obsidian tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "mechanical spring component",
+          "signal": "inferred",
+          "rationale": "spring used in presses"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_obsidian_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_obsidian",
+          "signal": "pattern",
+          "evidence": "forge:wires/refined_obsidian tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "conductive wire for mechanisms",
+          "signal": "inferred",
+          "rationale": "wire used in coiling/curving"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_radiance_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "evidence": "id suffix _rod",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "advanced rod for high-end machining",
+          "signal": "inferred",
+          "rationale": "rare VI component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id ends _rod",
+          "rationale": "rod form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_radiance_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "evidence": "id suffix _sheet",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "advanced sheet for pressing",
+          "signal": "inferred",
+          "rationale": "rare VI component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:sheet",
+          "signal": "pattern",
+          "evidence": "id ends _sheet",
+          "rationale": "sheet form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_radiance_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "evidence": "vintageimprovements:springs/refined_radiance tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "advanced spring component",
+          "signal": "inferred",
+          "rationale": "rare VI component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:refined_radiance_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "refined_radiance",
+          "signal": "pattern",
+          "evidence": "forge:wires/refined_radiance tag",
+          "rationale": "material from id and tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "advanced conductive wire",
+          "signal": "inferred",
+          "rationale": "rare VI component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    },
+    "vintageimprovements:rhodium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component from VI mod"
+        },
+        "material_family": {
+          "value": "rhodium",
+          "signal": "pattern",
+          "evidence": "id suffix _rod",
+          "rationale": "material from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in VI machines, not everyday"
+        },
+        "primary_uses": {
+          "value": "metal rod for machining",
+          "signal": "inferred",
+          "rationale": "VI rod component"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "inferred",
+          "rationale": "stackable crafting material"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id ends _rod",
+          "rationale": "rod form stage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI mod items grouped together"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

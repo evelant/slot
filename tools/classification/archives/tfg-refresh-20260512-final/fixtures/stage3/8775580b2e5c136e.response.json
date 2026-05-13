@@ -1,0 +1,1797 @@
+{
+  "items": {
+    "gtceu:deepslate_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "player mines this for ore processing, not building"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for lepidolite ore processing",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk and stored, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining this ore"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate ore found in deep caves"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag + id pattern",
+          "rationale": "raw ore block belongs in unprocessed ores"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "form is ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large stacks"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types blasting, smelting, greate:milling",
+          "rationale": "processed at these stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "same recipes",
+          "rationale": "participates in these workflows"
+        }
+      }
+    },
+    "gtceu:deepslate_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "player mines this for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for lignite (coal) ore"
+          ],
+          "signal": "inferred",
+          "rationale": "lignite is a source of coal via processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate ore in deep caves"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "form is ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in stacks"
+        }
+      }
+    },
+    "gtceu:deepslate_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for lithium processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for lithium ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "standard processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores",
+          "rationale": "form ore"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in bulk"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "processing stations"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types",
+          "rationale": "workflows"
+        }
+      }
+    },
+    "gtceu:deepslate_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for magnesite"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for magnesite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for magnetite (iron source)"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for magnetite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for malachite (copper source)"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for malachite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for mica"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for mica ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for molybdenite"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for molybdenite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for molybdenum"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for molybdenum ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for monazite"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for monazite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for naquadah"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for naquadah ore",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "only milling recipe present"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "only greate:milling recipe",
+          "rationale": "processed at mill"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "milling workflow"
+        }
+      }
+    },
+    "gtceu:deepslate_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for neodymium"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for neodymium ore",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for nether quartz"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for nether quartz ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for nickel"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for nickel ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for oilsands"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for oilsands ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for olivine"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for olivine ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for opal"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for opal ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for palladium"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for palladium ore",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for pentlandite (nickel source)"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for pentlandite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for pitchblende (uranium source)"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for pitchblende ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for platinum"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for platinum ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for pollucite"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for pollucite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for powellite"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for powellite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_pyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for pyrite"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for pyrite ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    },
+    "gtceu:deepslate_pyrochlore_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mined for pyrochlore"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining for pyrochlore ore",
+            "Smelting into ingots",
+            "Milling into crushed ore"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/blasting",
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

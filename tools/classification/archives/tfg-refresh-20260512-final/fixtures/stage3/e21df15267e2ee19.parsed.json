@@ -1,0 +1,972 @@
+{
+  "items": {
+    "ad_astra:calorite_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative pillar used for base construction"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made of calorite from Ad Astra"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block in space mod"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building space bases"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building in space bases"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative pillar"
+        }
+      }
+    },
+    "ad_astra:calorite_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined metal plate used in crafting"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "pattern",
+          "rationale": "id and tags indicate calorite material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in stacks for crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "tag forge:plates indicates plate form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed metal output grouped with ores"
+        },
+        "primary_uses": [
+          "crafting advanced machines and blocks"
+        ],
+        "signal": "inferred",
+        "rationale": "used as component in crafting"
+      }
+    },
+    "ad_astra:calorite_plateblock": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block used for base construction"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made from calorite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building space bases"
+        },
+        "primary_uses": {
+          "values": [
+            "constructing space base walls"
+          ],
+          "signal": "inferred",
+          "rationale": "solid block for buildings"
+        }
+      }
+    },
+    "ad_astra:calorite_plating": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "plating block used for base construction"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made from calorite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building space bases"
+        },
+        "primary_uses": {
+          "values": [
+            "building space base interiors"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative plating"
+        }
+      }
+    },
+    "ad_astra:calorite_plating_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "button acts as redstone trigger"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made from calorite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common redstone component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used as redstone trigger"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone activation",
+            "decorative button"
+          ],
+          "signal": "inferred",
+          "rationale": "button for redstone circuits"
+        }
+      }
+    },
+    "ad_astra:calorite_plating_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plate acts as redstone trigger"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made from calorite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common redstone component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone builds"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used as redstone trigger"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone activation",
+            "decorative pressure plate"
+          ],
+          "signal": "inferred",
+          "rationale": "pressure plate for redstone"
+        }
+      }
+    },
+    "ad_astra:calorite_plating_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant for building"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made from calorite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building space base details"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction"
+        }
+      }
+    },
+    "ad_astra:calorite_plating_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant for building"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made from calorite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building space base stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for construction"
+        }
+      }
+    },
+    "ad_astra:calorite_sliding_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door used as base entrance"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made from calorite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common door"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for base construction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of base structure"
+        },
+        "primary_uses": {
+          "values": [
+            "base entrance",
+            "cleanroom door"
+          ],
+          "signal": "inferred",
+          "rationale": "sealing door for bases"
+        }
+      }
+    },
+    "ad_astra:calorite_tank": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting machines"
+        },
+        "material_family": {
+          "value": "calorite",
+          "signal": "inferred",
+          "rationale": "made from calorite"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced component, space progression"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when crafting specific items"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced space machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        }
+      }
+    },
+    "ad_astra:cheese": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "minecraft:food component present",
+          "rationale": "edible food item"
+        },
+        "food_category": {
+          "values": [
+            "slot:cheese"
+          ],
+          "signal": "named",
+          "evidence": "tags include firmalife:foods/cheeses and tfg:foods/cheeses",
+          "rationale": "tagged as cheese"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "directly edible food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtainable from mining and chests"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried as food supply in space"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food item grouped with other foods"
+        },
+        "primary_uses": {
+          "values": [
+            "eating directly",
+            "crafting cheese-based foods"
+          ],
+          "signal": "inferred",
+          "rationale": "consumable and ingredient"
+        }
+      }
+    },
+    "ad_astra:cheese_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "novelty block for decoration"
+        },
+        "material_family": {
+          "value": "cheese",
+          "signal": "inferred",
+          "rationale": "block of moon cheese"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "obtainable from moon cheese ore"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "novelty block, not commonly carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative cheese block",
+            "compact cheese storage"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block"
+        }
+      }
+    },
+    "ad_astra:chiseled_glacio_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chiseled stone bricks for building"
+        },
+        "material_family": {
+          "value": "glacio_stone",
+          "signal": "inferred",
+          "rationale": "made from glacio stone (phonolite)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone brick variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building on Glacio"
+        },
+        "primary_uses": {
+          "values": [
+            "building with phonolite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block"
+        }
+      }
+    },
+    "ad_astra:chiseled_glacio_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant for building"
+        },
+        "material_family": {
+          "value": "glacio_stone",
+          "signal": "inferred",
+          "rationale": "from glacio stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building details on Glacio bases"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction"
+        }
+      }
+    },
+    "ad_astra:chiseled_glacio_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant for building"
+        },
+        "material_family": {
+          "value": "glacio_stone",
+          "signal": "inferred",
+          "rationale": "from glacio stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs on Glacio bases"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for construction"
+        }
+      }
+    },
+    "ad_astra:chiseled_mars_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chiseled stone bricks for building"
+        },
+        "material_family": {
+          "value": "mars_stone",
+          "signal": "inferred",
+          "rationale": "made from mars stone (argillite)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone brick variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building on Mars"
+        },
+        "primary_uses": {
+          "values": [
+            "building with argillite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block"
+        }
+      }
+    },
+    "ad_astra:chiseled_mars_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant for building"
+        },
+        "material_family": {
+          "value": "mars_stone",
+          "signal": "inferred",
+          "rationale": "from mars stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building details on Mars bases"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction"
+        }
+      }
+    },
+    "ad_astra:chiseled_mars_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant for building"
+        },
+        "material_family": {
+          "value": "mars_stone",
+          "signal": "inferred",
+          "rationale": "from mars stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs on Mars bases"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for construction"
+        }
+      }
+    },
+    "ad_astra:chiseled_mercury_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chiseled stone bricks for building"
+        },
+        "material_family": {
+          "value": "mercury_stone",
+          "signal": "inferred",
+          "rationale": "made from mercury stone (komatiite)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone brick variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building on Mercury"
+        },
+        "primary_uses": {
+          "values": [
+            "building with komatiite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block"
+        }
+      }
+    },
+    "ad_astra:chiseled_mercury_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant for building"
+        },
+        "material_family": {
+          "value": "mercury_stone",
+          "signal": "inferred",
+          "rationale": "from mercury stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building details on Mercury bases"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction"
+        }
+      }
+    },
+    "ad_astra:chiseled_mercury_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant for building"
+        },
+        "material_family": {
+          "value": "mercury_stone",
+          "signal": "inferred",
+          "rationale": "from mercury stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs on Mercury bases"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for construction"
+        }
+      }
+    },
+    "ad_astra:chiseled_moon_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chiseled stone bricks for building"
+        },
+        "material_family": {
+          "value": "moon_stone",
+          "signal": "inferred",
+          "rationale": "made from moon stone (anorthosite)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone brick variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building on Moon"
+        },
+        "primary_uses": {
+          "values": [
+            "building with anorthosite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block"
+        }
+      }
+    },
+    "ad_astra:chiseled_moon_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant for building"
+        },
+        "material_family": {
+          "value": "moon_stone",
+          "signal": "inferred",
+          "rationale": "from moon stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building details on Moon bases"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction"
+        }
+      }
+    },
+    "ad_astra:chiseled_moon_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs variant for building"
+        },
+        "material_family": {
+          "value": "moon_stone",
+          "signal": "inferred",
+          "rationale": "from moon stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs on Moon bases"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for construction"
+        }
+      }
+    },
+    "ad_astra:chiseled_permafrost_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab variant for building"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "from permafrost brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building on cold planets"
+        },
+        "primary_uses": {
+          "values": [
+            "building details on cold planet bases"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

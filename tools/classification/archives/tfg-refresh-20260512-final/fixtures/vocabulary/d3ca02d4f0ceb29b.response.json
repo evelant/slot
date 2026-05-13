@@ -1,0 +1,749 @@
+{
+  "values": [
+    {
+      "id": "greate:milling",
+      "label": "Milling",
+      "state": "accepted",
+      "description": "Player-facing grinding process using a millstone.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:milling",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/smelting",
+      "label": "Smelting",
+      "state": "accepted",
+      "description": "Vanilla furnace smelting process, a fundamental player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smelting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/blasting",
+      "label": "Blasting",
+      "state": "accepted",
+      "description": "Vanilla blast furnace process for faster smelting.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "blasting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/stonecutting",
+      "label": "Stonecutting",
+      "state": "accepted",
+      "description": "Vanilla stonecutter process for block variants.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "stonecutting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "greate:cutting",
+      "label": "Cutting",
+      "state": "accepted",
+      "description": "Mechanical cutting process using a saw.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:cutting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:heating",
+      "label": "Heating",
+      "state": "accepted",
+      "description": "Heating items in a firepit, pit kiln, or forge to change state.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/heating",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:heating",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:chisel",
+      "label": "Chisel",
+      "state": "accepted",
+      "description": "Using a chisel to create slabs, stairs, and smooth variants.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/chisel",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:chisel",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:collapse",
+      "label": "Collapse",
+      "state": "rejected",
+      "description": "Environmental block collapse event, not a player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:collapse",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "greate:pressing",
+      "label": "Pressing",
+      "state": "accepted",
+      "description": "Mechanical pressing process using a press.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:pressing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "greate:splashing",
+      "label": "Splashing",
+      "state": "accepted",
+      "description": "Washing items with water from a fan.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:splashing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:landslide",
+      "label": "Landslide",
+      "state": "rejected",
+      "description": "Environmental landslide event, not a player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:landslide",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:anvil",
+      "label": "Anvil",
+      "state": "accepted",
+      "description": "Smithing on the anvil to forge metal items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:anvil",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:barrel_sealed",
+      "label": "Barrel Sealed",
+      "state": "accepted",
+      "description": "Sealed barrel process for fermenting, pickling, and other timed recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_sealed",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:damage_inputs_shapeless_crafting",
+      "label": "Damage Inputs Shapeless Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe mechanic for damageable inputs, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfg:item_repair",
+      "label": "Equipment Repair",
+      "state": "accepted",
+      "description": "Repairing equipment, typically on an anvil or similar station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:quern",
+      "label": "Quern",
+      "state": "accepted",
+      "description": "Grinding items with a hand-driven quern.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/quern",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/quern",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:quern",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "greate:compacting",
+      "label": "Compacting",
+      "state": "accepted",
+      "description": "Compressing items using a mechanical press.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:compacting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "greate:mixing",
+      "label": "Mixing",
+      "state": "accepted",
+      "description": "Mechanical mixing of ingredients.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:mixing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:barrel_instant",
+      "label": "Barrel Instant",
+      "state": "rejected",
+      "description": "Technical subtype of barrel recipe, not a distinct player process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:filling",
+      "label": "Filling",
+      "state": "accepted",
+      "description": "Filling items with fluids using a spout or deployer.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:filling",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "ae2:transform",
+      "label": "Transform",
+      "state": "review",
+      "description": "AE2 transformation process, but label is generic; needs confirmation.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2:transform",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "rnr:mattock",
+      "label": "Mattock",
+      "state": "rejected",
+      "description": "Tool name, not a process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:mattock",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:curving",
+      "label": "Curving",
+      "state": "accepted",
+      "description": "Bending metal strips into curves.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:curving",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:item_application",
+      "label": "Item Application",
+      "state": "accepted",
+      "description": "Applying an item to a block via right-click (deployer or hand).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:item_application",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:advanced_shapeless_crafting",
+      "label": "Advanced Shapeless Crafting",
+      "state": "rejected",
+      "description": "Implementation crafting variant, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "rnr:block_mod",
+      "label": "Block Mod",
+      "state": "rejected",
+      "description": "Vague recipe type for block modification, not a clear process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:block_mod",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:sandpaper_polishing",
+      "label": "Sandpaper Polishing",
+      "state": "accepted",
+      "description": "Polishing items with sandpaper.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sandpaper_polishing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:polishing",
+      "label": "Polishing",
+      "state": "accepted",
+      "description": "Polishing items using a polishing machine.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:polishing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:deploying",
+      "label": "Deploying",
+      "state": "accepted",
+      "description": "Depolying an item onto a block using a deployer.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:deploying",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:sequenced_assembly",
+      "label": "Sequenced Assembly",
+      "state": "accepted",
+      "description": "Multi-step assembly process using a series of machine actions.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sequenced_assembly",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "kubejs:shaped",
+      "label": "Shaped",
+      "state": "rejected",
+      "description": "Generic vanilla crafting variant, not a distinct process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shaped",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:centrifugation",
+      "label": "Centrifugation",
+      "state": "accepted",
+      "description": "Spinning items in a centrifuge.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:centrifugation",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:hammering",
+      "label": "Hammering",
+      "state": "accepted",
+      "description": "Hammering items on a press or anvil.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:hammering",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "createaddition:rolling",
+      "label": "Rolling",
+      "state": "accepted",
+      "description": "Rolling metal ingots into rods or wires.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "createaddition:rolling",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:casting",
+      "label": "Casting",
+      "state": "accepted",
+      "description": "Pouring molten metal into molds to create items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:casting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "framedblocks:frame",
+      "label": "Frame",
+      "state": "rejected",
+      "description": "Technical recipe type for framed block creation, not a player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "framedblocks:frame",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "greate:brewing",
+      "label": "Brewing",
+      "state": "accepted",
+      "description": "Brewing potions using a brewing stand or similar.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:brewing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:pot",
+      "label": "Pot",
+      "state": "accepted",
+      "description": "Cooking in a ceramic pot over a fire.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:advanced_shaped_crafting",
+      "label": "Advanced Shaped Crafting",
+      "state": "rejected",
+      "description": "Implementation crafting variant, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shaped_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:welding",
+      "label": "Welding",
+      "state": "accepted",
+      "description": "Welding two metal items together on an anvil.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:welding",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:damage_inputs_shaped_crafting",
+      "label": "Damage Inputs Shaped Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe mechanic for damageable inputs, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shaped_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:coiling",
+      "label": "Coiling",
+      "state": "accepted",
+      "description": "Coiling metal strips into springs or coils.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:coiling",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:knapping",
+      "label": "Knapping",
+      "state": "accepted",
+      "description": "Shaping stone or clay by knapping.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:knapping",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:vibrating",
+      "label": "Vibrating",
+      "state": "accepted",
+      "description": "Vibrating items on a vibratory table.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vibrating",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:glassworking",
+      "label": "Glassworking",
+      "state": "accepted",
+      "description": "Glassblowing and shaping glass with tools.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/glassworking",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:glassworking",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "kubejs:shapeless",
+      "label": "Shapeless",
+      "state": "rejected",
+      "description": "Generic vanilla crafting variant, not a distinct process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shapeless",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "domum_ornamentum:architects_cutter",
+      "label": "Architects Cutter",
+      "state": "accepted",
+      "description": "Using the Architect's Cutter workbench to create decorative blocks.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "domum_ornamentum:architects_cutter",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:vat",
+      "label": "Vat",
+      "state": "accepted",
+      "description": "Using a vat for large-scale fluid processing and aging.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:vat",
+          "confidence": 0.85
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1202 @@
+{
+  "items": {
+    "immersive_aircraft:sturdy_pipes": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "tooltip 'Aircraft Upgrade'",
+          "rationale": "Applied to aircraft for engine boost"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept for upgrading aircraft when needed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade aircraft for +10% engine power"
+          ],
+          "signal": "named",
+          "evidence": "tooltip '+10% engine power'",
+          "rationale": "Direct player-facing purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:tooling"
+          ],
+          "signal": "inferred",
+          "rationale": "One-off upgrade item, not bulk"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to enhance flight vehicle"
+        }
+      }
+    },
+    "immersive_aircraft:telescope": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Aircraft weapon component, not handheld"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only kept when building aircraft"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Equip on aircraft as weapon"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Aircraft Weapon'",
+          "rationale": "Purpose stated in tooltip"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only crafted"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Weapon system for aircraft"
+        }
+      }
+    },
+    "immersive_aircraft:warship": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Aircraft vehicle players fly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when using that specific aircraft"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn and fly heavily armed airship"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'A flying fortress'",
+          "rationale": "Description states purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 mechanical crafting recipe output",
+          "rationale": "Crafted in Mechanical Crafter"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to travel by air"
+        },
+        "mod_subsystem": {
+          "values": [
+            "immersive_aircraft:transport"
+          ],
+          "signal": "named",
+          "evidence": "tag immersive_aircraft:aircraft",
+          "rationale": "Part of Immersive Aircraft transport system"
+        }
+      }
+    },
+    "jumbofurnace:jumbo_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed as a multiblock furnace for mass smelting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when setting up smelting infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Mass smelt ores and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Purpose from name and mod context"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Furnace is used for cooking/smelting"
+        }
+      }
+    },
+    "jumbofurnace:jumbo_furnace_jei": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Dummy JEI display item, not survival-obtainable"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Never kept in survival inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "View Jumbo Furnace recipe in JEI"
+          ],
+          "signal": "inferred",
+          "rationale": "Display-only item for recipe viewing"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Not obtainable in survival"
+        }
+      }
+    },
+    "lootr:lootr_barrel": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Container that gives per-player loot on interact"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept when exploring structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Place and open for per-player loot"
+          ],
+          "signal": "named",
+          "evidence": "advancement 'Barrel Booty' description",
+          "rationale": "Advancement confirms purpose"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Mineable with axe, barrel shape"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Found and opened during exploration"
+        }
+      }
+    },
+    "lootr:lootr_chest": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Chest that gives per-player loot on interact"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept when exploring structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Place and open for per-player loot"
+          ],
+          "signal": "named",
+          "evidence": "advancement ''X' Marks the Spot' description",
+          "rationale": "Advancement confirms purpose"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Mineable with axe, chest shape"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Found and opened during exploration"
+        }
+      }
+    },
+    "lootr:lootr_inventory": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Loot container block, same family as lootr chests"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept when exploring structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Place and open for per-player loot"
+          ],
+          "signal": "inferred",
+          "rationale": "Same purpose as other lootr containers"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Found and opened during exploration"
+        }
+      }
+    },
+    "lootr:lootr_shulker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Shulker that gives per-player loot on interact"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept when exploring structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Place and open for per-player loot"
+          ],
+          "signal": "named",
+          "evidence": "advancement 'Bounty Box' description",
+          "rationale": "Advancement confirms purpose"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Found and opened during exploration"
+        }
+      }
+    },
+    "lootr:lootr_trapped_chest": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Trapped chest that gives per-player loot"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept when exploring structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Place and open for per-player loot (with redstone)"
+          ],
+          "signal": "inferred",
+          "rationale": "Trapped variant of loot chest"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Mineable with axe, chest shape"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Found and opened during exploration"
+        }
+      }
+    },
+    "lootr:trophy": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "signal": "named",
+          "evidence": "display name 'Centennial Trophy'",
+          "rationale": "Rare commemorative block for display"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Placed once and admired, not carried"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "pattern",
+          "evidence": "component rarity epic -> unique",
+          "rationale": "Epic rarity from component"
+        },
+        "primary_uses": {
+          "values": [
+            "Display as trophy for opening loot"
+          ],
+          "signal": "named",
+          "evidence": "advancement for opening loot",
+          "rationale": "Reward from Lootr advancement"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "component light_emission 15",
+          "rationale": "Emits maximum light when placed"
+        }
+      }
+    },
+    "man_of_many_planes:economy_plane": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Aircraft vehicle players fly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when using that specific plane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn and fly economy plane"
+          ],
+          "signal": "named",
+          "evidence": "description 'optimized for low fuel consumption'",
+          "rationale": "Description states purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 mechanical crafting recipe output",
+          "rationale": "Crafted in Mechanical Crafter"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for air travel"
+        }
+      }
+    },
+    "man_of_many_planes:scarlet_biplane": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Aircraft vehicle players fly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when using that specific plane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn and fly scarlet biplane"
+          ],
+          "signal": "named",
+          "evidence": "description 'navigate the skies with ease'",
+          "rationale": "Description states purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 mechanical crafting recipe output",
+          "rationale": "Crafted in Mechanical Crafter"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for air travel"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/acacia_bridges/acacia_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as part of bridge structure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build acacia bridge supports"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Acacia Bridge Support'",
+          "rationale": "Name indicates structural support function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "inferred",
+          "rationale": "Acacia wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction of bridges"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/acacia_bridges/acacia_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as middle section of bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build acacia log bridge"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Acacia Bridge'",
+          "rationale": "Name indicates bridge component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "inferred",
+          "rationale": "Acacia wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/acacia_bridges/acacia_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair component of log bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build acacia bridge stairs"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Acacia Bridge Stair'",
+          "rationale": "Name indicates stair function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "inferred",
+          "rationale": "Acacia wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/acacia_bridges/acacia_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Bridge with rail integration for minecarts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build acacia rail bridge for minecarts"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Acacia Rail Bridge'",
+          "rationale": "Name indicates rail bridge function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "inferred",
+          "rationale": "Acacia wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/acacia_bridges/acacia_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair component of rope bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build rope acacia bridge stairs"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Rope Acacia Bridge Stair'",
+          "rationale": "Name indicates stair function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "inferred",
+          "rationale": "Acacia wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/acacia_bridges/rope_acacia_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge block for crossing gaps"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build rope acacia bridge"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Rope Acacia Bridge'",
+          "rationale": "Name indicates bridge function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "inferred",
+          "rationale": "Acacia wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/ash_bridges/ash_bridge_pier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Support pier for ash bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build ash bridge supports"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Ash Bridge Support'",
+          "rationale": "Name indicates structural support"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "inferred",
+          "rationale": "Ash wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/ash_bridges/ash_log_bridge_middle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Middle section of ash log bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build ash log bridge"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Ash Bridge'",
+          "rationale": "Name indicates bridge component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "inferred",
+          "rationale": "Ash wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/ash_bridges/ash_log_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair component of ash log bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build ash bridge stairs"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Ash Bridge Stair'",
+          "rationale": "Name indicates stair function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "inferred",
+          "rationale": "Ash wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/ash_bridges/ash_rail_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rail bridge for ash wood"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build ash rail bridge for minecarts"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Ash Rail Bridge'",
+          "rationale": "Name indicates rail bridge"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "inferred",
+          "rationale": "Ash wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/ash_bridges/ash_rope_bridge_stair": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair component of ash rope bridge"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build rope ash bridge stairs"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Rope Ash Bridge Stair'",
+          "rationale": "Name indicates stair function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "inferred",
+          "rationale": "Ash wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    },
+    "mcw_tfc_aio:bridges/ash_bridges/rope_ash_bridge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Rope bridge block for ash wood"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building bridges"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Standard rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "Build rope ash bridge"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Rope Ash Bridge'",
+          "rationale": "Name indicates bridge function"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "1 shaped crafting recipe output",
+          "rationale": "Only obtained through crafting"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "inferred",
+          "rationale": "Ash wood construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bridges"
+          ],
+          "signal": "pattern",
+          "evidence": "tag mcw_tfc_aio:bridges",
+          "rationale": "Bridge-related blocks stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1298 @@
+{
+  "items": {
+    "gtceu:small_phosphorus_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "phosphorus",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/phosphorus",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full phosphorus dust",
+            "ingredient in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_phosphorus_pentoxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "phosphorus_pentoxide",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/phosphorus_pentoxide",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full phosphorus pentoxide dust",
+            "ingredient in chemical recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_pipe_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable tool for creating pipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when casting pipes"
+        },
+        "primary_uses": {
+          "values": [
+            "create small pipes via casting",
+            "reusable mold in casting process"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it at casting station"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production recipe at artisan table",
+          "rationale": "no natural source"
+        },
+        "container_state": {
+          "value": "slot:reusable_mold",
+          "signal": "named",
+          "evidence": "tag gtceu:casting_molds",
+          "rationale": "explicit tag for reusable molds"
+        }
+      }
+    },
+    "gtceu:small_pipe_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable tool for creating pipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when extruding pipes"
+        },
+        "primary_uses": {
+          "values": [
+            "create small pipes via extrusion",
+            "reusable mold in extruder"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it at extruding machine"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production recipe at artisan table",
+          "rationale": "no natural source"
+        },
+        "container_state": {
+          "value": "slot:reusable_mold",
+          "signal": "named",
+          "evidence": "tag gtceu:extruder_molds",
+          "rationale": "explicit tag for reusable molds"
+        }
+      }
+    },
+    "gtceu:small_pitchblende_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "pitchblende",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/pitchblende",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full pitchblende dust",
+            "ingredient in nuclear recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_platinum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/platinum",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full platinum dust",
+            "ingredient in precision crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_platinum_group_sludge_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "platinum_group_sludge",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/platinum_group_sludge",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full platinum group sludge",
+            "ingredient in precious metal processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_platinum_raw_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "platinum_raw",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/platinum_raw",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full raw platinum powder",
+            "intermediate in platinum refining"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_platinum_sludge_residue_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "platinum_sludge_residue",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/platinum_sludge_residue",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full platinum sludge residue",
+            "byproduct in platinum processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_platinum_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component, not placed"
+        },
+        "material_family": {
+          "value": "platinum",
+          "signal": "pattern",
+          "evidence": "tag forge:small_springs/platinum",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in many recipes but stored in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "used in many machine recipes",
+            "craft pressure plates and components"
+          ],
+          "signal": "inferred",
+          "rationale": "broad crafting utility"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by coiling recipe",
+          "rationale": "no natural source"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed component"
+        }
+      }
+    },
+    "gtceu:small_plutonium_241_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "plutonium_241",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/plutonium_241",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full plutonium 241 dust",
+            "ingredient in nuclear recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_plutonium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "plutonium",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/plutonium",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full plutonium dust",
+            "ingredient in nuclear recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_pollucite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "pollucite",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/pollucite",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full pollucite dust",
+            "source of caesium and aluminium"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_polybenzimidazole_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "polybenzimidazole",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/polybenzimidazole",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full polybenzimidazole pulp",
+            "polymer precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_polycaprolactam_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "polycaprolactam",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/polycaprolactam",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full polycaprolactam pulp",
+            "polymer precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_polydimethylsiloxane_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "polydimethylsiloxane",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/polydimethylsiloxane",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full polydimethylsiloxane dust",
+            "silicone polymer precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_polyethylene_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "polyethylene",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/polyethylene",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full polyethylene pulp",
+            "polymer precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_polyphenylene_sulfide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "polyphenylene_sulfide",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/polyphenylene_sulfide",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full polyphenylene sulfide pulp",
+            "polymer precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_polytetrafluoroethylene_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "polytetrafluoroethylene",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/polytetrafluoroethylene",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full polytetrafluoroethylene pulp",
+            "polymer precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_polyvinyl_butyral_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "polyvinyl_butyral",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/polyvinyl_butyral",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full polyvinyl butyral dust",
+            "polymer precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_polyvinyl_chloride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "polyvinyl_chloride",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/polyvinyl_chloride",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full polyvinyl chloride pulp",
+            "polymer precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_potash_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "potash",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/potash",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full potash dust",
+            "chemical ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_potassium_carbonate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "potassium_carbonate",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/potassium_carbonate",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full potassium carbonate dust",
+            "chemical ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_potassium_cyanide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "potassium_cyanide",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/potassium_cyanide",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full potassium cyanide dust",
+            "chemical ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    },
+    "gtceu:small_potassium_dichromate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust, crafting material"
+        },
+        "material_family": {
+          "value": "potassium_dichromate",
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts/potassium_dichromate",
+          "rationale": "material from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component:rarity=common",
+          "rationale": "vanilla common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "intermediate dust, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into full potassium dichromate dust",
+            "chemical ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as crafting material"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "evidence": "production by crafting from full dust",
+          "rationale": "no natural source"
+        },
+        "material_process_stage": {
+          "value": "slot:dust",
+          "signal": "inferred",
+          "rationale": "small dust is a dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral dust"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:small_platinum_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "id ends _spring"
+    },
+    {
+      "item": "gtceu:small_pipe_casting_mold",
+      "facet": "form",
+      "value": "mold",
+      "rationale": "id contains casting_mold"
+    },
+    {
+      "item": "gtceu:small_pipe_extruder_mold",
+      "facet": "form",
+      "value": "mold",
+      "rationale": "id contains extruder_mold"
+    }
+  ],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "schema_proposals": []
+}

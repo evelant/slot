@@ -1,0 +1,1958 @@
+{
+  "items": {
+    "gtceu:conglomerate_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lazurite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lead ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lepidolite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel ore for smelting",
+            "source of carbon"
+          ],
+          "signal": "inferred",
+          "rationale": "lignite is coal-like fuel, no recipes captured"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        }
+      }
+    },
+    "gtceu:conglomerate_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lithium ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into magnesite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into magnetite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into malachite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into mica ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into molybdenite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into molybdenum ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into monazite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed naquadah ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: greate:milling only",
+          "rationale": "processed into crushed form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "process that consumes this ore"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "station where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to milling"
+        }
+      }
+    },
+    "gtceu:conglomerate_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed neodymium ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: greate:milling only",
+          "rationale": "processed into crushed form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "process that consumes this ore"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "station where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to milling"
+        }
+      }
+    },
+    "gtceu:conglomerate_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into nether quartz",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into nickel ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into oil products",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into fluids or crushed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into olivine",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into opal gems",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed palladium ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: greate:milling only",
+          "rationale": "processed into crushed form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe type greate:milling",
+          "rationale": "process that consumes this ore"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "station where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to milling"
+        }
+      }
+    },
+    "gtceu:conglomerate_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into pentlandite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into uranium ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into platinum ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into pollucite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    },
+    "gtceu:conglomerate_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id ends 'ore' + tag forge:ores",
+          "rationale": "raw ore mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into powellite ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes: smelting, blasting, greate:milling",
+          "rationale": "processed into refined material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined during trips, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights minecraft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/conglomerate, tfc:can_collapse",
+          "rationale": "conglomerate stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block suitable for unprocessed storage"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe types smelting, blasting, greate:milling",
+          "rationale": "processes that consume this ore"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "pack:tfg/blasting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "stations where ore is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "pack:tfg/blasting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "ore is input to these processes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

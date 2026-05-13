@@ -1,0 +1,903 @@
+{
+  "items": {
+    "gtceu:ev_bedrock_ore_miner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv single-block machine with UI for drilling ore"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated mining machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining bedrock ore veins automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes drilling ore"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Premade machine placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier mid-lategame machine"
+        }
+      }
+    },
+    "gtceu:ev_bender": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv single-block bending machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated metal bending"
+        },
+        "primary_uses": {
+          "values": [
+            "Bending metal plates and rods"
+          ],
+          "signal": "inferred",
+          "rationale": "Machine name implies bending"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier machine"
+        }
+      }
+    },
+    "gtceu:ev_block_breaker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv single-block machine that mines blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated block breaking, mining activity"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining blocks in front automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Mines block on front face'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_brewery": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv potion brewing machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:brewing",
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Potion brewing, automated"
+        },
+        "primary_uses": {
+          "values": [
+            "Brewing potions automatically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Compact and efficient potion brewing'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_canner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv machine that fills/empties containers"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated container handling"
+        },
+        "primary_uses": {
+          "values": [
+            "Filling and emptying containers (cells, cans)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Puts things into and out of Containers'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_centrifuge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv centrifuging machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated molecular separation"
+        },
+        "primary_uses": {
+          "values": [
+            "Separating materials via centrifugation"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Molecular Separator'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv charger block with UI for recharging items"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Charging batteries and tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging up to 4 items simultaneously"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Item Slots: 4'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_chemical_bath": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv chemical bath machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated chemical ore processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Bathing ores in chemicals to separate them"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Bathing Ores in Chemicals'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_chemical_reactor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv chemical reactor with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated chemical reactions"
+        },
+        "primary_uses": {
+          "values": [
+            "Letting chemicals react with each other"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Letting Chemicals react'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_circuit_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv circuit assembly machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated circuit pick-n-place"
+        },
+        "primary_uses": {
+          "values": [
+            "Assembling circuits from components"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Pick-n-Place all over the place'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_compressor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv compressor machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated compression"
+        },
+        "primary_uses": {
+          "values": [
+            "Compressing items into denser forms"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Compress-O-Matic C77'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_conveyor_module": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Item component used in crafting, not a block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated item transport covers"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting EV-tier conveyor covers and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tagged as conveyor module, used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component, players keep stacks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted component, not rare"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "id prefix 'ev_' and tag 'gtceu:conveyor_modules'",
+          "rationale": "EV-tier component stored with other EV parts"
+        }
+      }
+    },
+    "gtceu:ev_cutter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv cutting machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated cutting"
+        },
+        "primary_uses": {
+          "values": [
+            "Cutting items into smaller shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Slice'N Dice'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_diode": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy network component, not a workstation"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Manages energy flow direction"
+        },
+        "primary_uses": {
+          "values": [
+            "Limiting energy flow direction and amperage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes diode functionality"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed component in energy network"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy flow management device"
+        }
+      }
+    },
+    "gtceu:ev_distillery": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv distillery machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated fluid distillation"
+        },
+        "primary_uses": {
+          "values": [
+            "Extracting parts from fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Extracting most relevant Parts of Fluids'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_electric_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv electric furnace with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting ores and items electrically"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Not like using a Commodore 64'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_electric_motor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Item component used in many recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated machinery crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting EV-tier machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in 26+ recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component, keep stack on hand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "id prefix 'ev_' and tag 'gtceu:electric_motors'",
+          "rationale": "EV-tier motor stored with other EV components"
+        }
+      }
+    },
+    "gtceu:ev_electric_piston": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Item component used in crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting EV-tier machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "id prefix 'ev_' and tag 'gtceu:electric_pistons'",
+          "rationale": "EV-tier piston stored with other EV components"
+        }
+      }
+    },
+    "gtceu:ev_electric_pump": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Item component used in crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated fluid handling"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting EV-tier fluid covers and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "id prefix 'ev_' and tag 'gtceu:electric_pumps'",
+          "rationale": "EV-tier pump stored with other EV components"
+        }
+      }
+    },
+    "gtceu:ev_electrolyzer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv electrolyzer machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated electrolysis"
+        },
+        "primary_uses": {
+          "values": [
+            "Electrolyzing molecules into components"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Electrolyzing Molecules'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_electromagnetic_separator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GTCEv electromagnetic separator machine with UI"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated magnetic ore separation"
+        },
+        "primary_uses": {
+          "values": [
+            "Separating magnetic ores from non-magnetic"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Separating the magnetic Ores from the rest'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        }
+      }
+    },
+    "gtceu:ev_emitter": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Item component used in crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting EV-tier machines and circuit assemblers"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as ingredient in several recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "gtceu:ev_components"
+          ],
+          "signal": "pattern",
+          "evidence": "id prefix 'ev_' and tag 'gtceu:emitters'",
+          "rationale": "EV-tier emitter stored with other EV components"
+        }
+      }
+    },
+    "gtceu:ev_energy_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock energy port, not a workstation"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock energy system"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing EV energy input to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Energy Input for Multiblocks'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock energy hatch"
+        }
+      }
+    },
+    "gtceu:ev_energy_input_hatch_16a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock energy port, higher amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock energy system"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing 16A EV energy input to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Multiple Ampere Energy Input for Multiblocks'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock energy hatch"
+        }
+      }
+    },
+    "gtceu:ev_energy_input_hatch_4a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock energy port, medium amperage"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of multiblock energy system"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing 4A EV energy input to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Multiple Ampere Energy Input for Multiblocks'"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "EV tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock energy hatch"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

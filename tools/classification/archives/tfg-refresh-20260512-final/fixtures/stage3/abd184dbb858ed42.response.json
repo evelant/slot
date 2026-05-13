@@ -1,0 +1,1082 @@
+{
+  "items": {
+    "gtceu:bismuth_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block, player stores with ingots"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "rationale": "id and tag forge:storage_blocks/bismuth"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity in tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "compact bismuth storage",
+            "cutting into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block and plate source"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 16, players store many"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "compressed form of ingot, treated as ingot storage"
+        }
+      }
+    },
+    "gtceu:bismuth_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts",
+          "rationale": "small crafting component"
+        },
+        "material_family": {
+          "value": "bismuth",
+          "signal": "pattern",
+          "rationale": "tag forge:bolts/bismuth"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in crafting, stored in chests"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting screws",
+            "crafting tongs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary recipes produce screws and tongs"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64, kept in bulk"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "suffix _axe, tags minecraft:axes",
+          "rationale": "a woodcutting tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "player carries axe everywhere for wood"
+        },
+        "primary_uses": {
+          "values": [
+            "chopping wood",
+            "felling trees",
+            "stripping logs"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip abilities and TFC tags"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_axe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:axe_heads",
+          "rationale": "crafting component for axe"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when crafting axes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting axes"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is axe assembly"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64, but not main bulk item"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/bismuth_bronze",
+          "rationale": "compressed metal block, not a container"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried frequently"
+        },
+        "primary_uses": {
+          "values": [
+            "storing bismuth bronze",
+            "cutting into plates"
+          ],
+          "signal": "inferred",
+          "rationale": "storage and plate source"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 16, bulk storage"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "compressed form of ingot"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/bismuth_bronze",
+          "rationale": "small crafting component"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in crafting machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting screws",
+            "machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in screw and tong recipes"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64, kept in bulk"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten metal, tool for fluid transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving molten metal"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten bismuth bronze",
+            "pouring into casts"
+          ],
+          "signal": "inferred",
+          "rationale": "typical use in casting workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "poured into casting table"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds molten metal"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 1, not stacked"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/butchery_knives",
+          "rationale": "specialized animal butchering tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when hunting/butchering"
+        },
+        "primary_uses": {
+          "values": [
+            "butchering animals",
+            "harvesting more meat"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip butcher ability"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:butchery_knife_heads",
+          "rationale": "crafting component for knife"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting butchery knives"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, component"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_crate": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "container with 54 slots, player opens to store items"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "inferred",
+          "rationale": "name implies material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items",
+            "bulk storage"
+          ],
+          "signal": "inferred",
+          "rationale": "high slot content"
+        },
+        "container_state": {
+          "values": [
+            "slot:accepts_contents"
+          ],
+          "signal": "inferred",
+          "rationale": "is a container"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:reserve"
+          ],
+          "signal": "inferred",
+          "rationale": "long-term base storage"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/crowbars",
+          "rationale": "multipurpose hand tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for rail/cover maintenance"
+        },
+        "primary_uses": {
+          "values": [
+            "rotating rails",
+            "dismounting covers"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip abilities"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:double_ingots",
+          "rationale": "intermediate metal form"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when welding"
+        },
+        "primary_uses": {
+          "values": [
+            "welding into sheets",
+            "anvil forging"
+          ],
+          "signal": "inferred",
+          "rationale": "used in welding recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:double_ingots",
+          "rationale": "exact stage match"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 4, not bulk"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_drum": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block fluid tank with UI"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "inferred",
+          "rationale": "name implies material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed in base, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "storing fluids",
+            "fluid transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid capacity 32,000 mB"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:tank"
+          ],
+          "signal": "inferred",
+          "rationale": "GT fluid tank block"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "stores fluids"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:reserve"
+          ],
+          "signal": "inferred",
+          "rationale": "long-term fluid storage"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "powdered metal form"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in mixing/smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "mixing alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show smelting and mixing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "exact stage match"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64, bulk material"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/files",
+          "rationale": "crafting file tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting parts",
+            "shaping metal"
+          ],
+          "signal": "inferred",
+          "rationale": "file is a crafting tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "group for crafting tools"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:file_heads",
+          "rationale": "component for file"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting files"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting files"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, component"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_frame": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural frame used in machine construction"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag forge:frames"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building machines"
+        },
+        "primary_uses": {
+          "values": [
+            "building machine frames",
+            "casing construction"
+          ],
+          "signal": "inferred",
+          "rationale": "frame block for machine hulls"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:frames",
+          "rationale": "frame group in vocabulary"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 32, accumulated in bulk"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/hammers",
+          "rationale": "hammer for crushing and crafting"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many crafting and mining"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing blocks",
+            "crafting parts",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: crushes blocks, used as pickaxe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "group for crafting tools"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hammer_heads",
+          "rationale": "component for hammer"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting hammers"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting hammers"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, component"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:hoes",
+          "rationale": "farming tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when farming"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe tills ground"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "primary farming tool"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hoe_heads",
+          "rationale": "component for hoe"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting hoes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting hoes"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, component"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_huge_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "pipe for fluid transport in contraptions"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag forge:huge_fluid_pipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building fluid systems"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids",
+            "plumbing"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid pipe role"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "GT pipe subsystem"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 16, players carry many for construction"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "standard metal ingot"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "tag forge:ingots/bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core material for many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools",
+            "crafting components",
+            "anvil smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "primary metal form for crafting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "exact stage match"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 16, accumulated in bulk"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/knives",
+          "rationale": "cutting and crafting tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id includes bismuth_bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting food",
+            "crafting items",
+            "weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "knife used for cutting in recipes and combat"
+        }
+      }
+    },
+    "gtceu:bismuth_bronze_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:knife_heads",
+          "rationale": "component for knife"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id and tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only when crafting knives"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting knives"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

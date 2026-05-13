@@ -1,0 +1,883 @@
+{
+  "items": {
+    "domum_ornamentum:yellow_brick_extra": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as a decorative brick block in structures"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "named",
+          "evidence": "display name 'Yellow Brick Extra'",
+          "rationale": "color prefix in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building blocks carried for construction projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "brick variant stored with other bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative walls and structures"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as a building block"
+        }
+      }
+    },
+    "domum_ornamentum:yellow_floating_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "carpet for floor decoration"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow_ + dye_color rule",
+          "rationale": "stage2 rule from id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "decorative block placed once and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decorating floors"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative carpet stored with other decor"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating floors"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as floor covering"
+        }
+      }
+    },
+    "endermanoverhaul:ancient_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "evidence": "tooltip 'Summons a friendly enderman to fight for you'",
+          "rationale": "direct-use summon item, not just ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational carry for emergency summon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot_source_examples contains entities/end_islands_enderman",
+          "rationale": "loot table source"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used to summon combat ally"
+        },
+        "primary_uses": {
+          "values": [
+            "summon a friendly enderman",
+            "crafting component for entangled singularity"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and recipe usage"
+        }
+      }
+    },
+    "endermanoverhaul:badlands_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning badlands enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:badlands_hood": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "evidence": "equippable slot chest, armor bonus, durability",
+          "rationale": "worn for protection and enderman avoidance"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when exploring badlands endermen areas"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot_source_examples entities/badlands_enderman",
+          "rationale": "loot table source"
+        },
+        "activity": {
+          "values": [
+            "slot:combat",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "provides armor and enderman protection"
+        },
+        "primary_uses": {
+          "values": [
+            "prevent enderman aggro",
+            "chest armor"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and equipment slot"
+        }
+      }
+    },
+    "endermanoverhaul:bubble_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "evidence": "tooltip 'Accurate Ender Pearl with no gravity'",
+          "rationale": "direct-use teleport item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for precise teleportation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot_source_examples entities/coral_enderman",
+          "rationale": "loot table source"
+        },
+        "activity": {
+          "values": [
+            "slot:combat",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "used for teleportation in combat or travel"
+        },
+        "primary_uses": {
+          "values": [
+            "accurate teleport with no gravity"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip description"
+        }
+      }
+    },
+    "endermanoverhaul:cave_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning cave enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:coral_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning coral enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:corrupted_blade": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "evidence": "attack damage +5, attack speed -2.4, durability",
+          "rationale": "melee weapon with teleport effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized weapon for situational use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat with random teleport on hit"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and attack stats"
+        }
+      }
+    },
+    "endermanoverhaul:corrupted_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "evidence": "tooltip 'Teleports targets to a random location'",
+          "rationale": "direct-use projectile for displacement"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational carry for combat disruption"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot_source_examples entities/end_enderman",
+          "rationale": "loot table source"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used to teleport enemies in combat"
+        },
+        "primary_uses": {
+          "values": [
+            "teleport enemies randomly",
+            "craft corrupted shields"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and recipe usage"
+        }
+      }
+    },
+    "endermanoverhaul:corrupted_shield": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "evidence": "shield with durability, enchantable, teleport effect",
+          "rationale": "defensive weapon used in off-hand"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when expecting combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "recipe_output_examples contains shaped recipes",
+          "rationale": "has production recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for blocking and counterattack"
+        },
+        "primary_uses": {
+          "values": [
+            "block attacks and teleport attackers"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and shield mechanics"
+        }
+      }
+    },
+    "endermanoverhaul:crimson_forest_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning crimson forest enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:crimson_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "evidence": "tooltip 'Applies Strength II when teleporting'",
+          "rationale": "direct-use buff item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for strength buff on teleport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot_source_examples entities/crimson_forest_enderman",
+          "rationale": "loot table source"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for buff in combat"
+        },
+        "primary_uses": {
+          "values": [
+            "gain Strength II on teleport",
+            "crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and recipe usage"
+        }
+      }
+    },
+    "endermanoverhaul:dark_oak_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning ashen enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:desert_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning lost enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:end_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning baritone choral enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:end_islands_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning soprano choral enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:enderman_tooth": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "evidence": "used in crafting corrupted shields and fearsome horn",
+          "rationale": "crafting ingredient with no direct use"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material carried in stacks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot_source_examples entities/end_enderman",
+          "rationale": "loot table source"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft combat equipment"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting corrupted shields and fearsome horn"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe ingredient examples"
+        }
+      }
+    },
+    "endermanoverhaul:flower_fields_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning floral enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:ice_spikes_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning ice spikes enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:icy_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "evidence": "tooltip 'Freezes nearby targets on hit'",
+          "rationale": "direct-use projectile with freeze effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational carry for crowd control"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot_source_examples entities/ice_spikes_enderman, snowy_enderman",
+          "rationale": "loot table source"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used to freeze enemies in combat"
+        },
+        "primary_uses": {
+          "values": [
+            "freeze enemies on hit"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip description"
+        }
+      }
+    },
+    "endermanoverhaul:mushroom_fields_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning mushroom enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:nether_wastes_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning fiery enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:savanna_enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg collected as set"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning sandy enderman in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "endermanoverhaul:savanna_hood": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "evidence": "equippable slot chest, armor bonus, durability",
+          "rationale": "worn for protection and enderman avoidance"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when exploring savanna endermen areas"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "component rarity"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot_source_examples entities/savanna_enderman",
+          "rationale": "loot table source"
+        },
+        "activity": {
+          "values": [
+            "slot:combat",
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "provides armor and enderman protection"
+        },
+        "primary_uses": {
+          "values": [
+            "prevent enderman aggro",
+            "chest armor"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and equipment slot"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

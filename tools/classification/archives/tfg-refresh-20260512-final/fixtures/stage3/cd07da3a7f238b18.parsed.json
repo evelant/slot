@@ -1,0 +1,1385 @@
+{
+  "items": {
+    "gtceu:nickel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "small metal piece used in crafting"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/nickel",
+          "rationale": "derived from nickel nugget tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common crafting material players carry in bulk"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GT components",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes as material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "multiple production recipes exist",
+          "rationale": "no loot, only crafting outputs"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "nugget form"
+        }
+      }
+    },
+    "gtceu:nickel_octal_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_cables/nickel",
+          "rationale": "cable material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building wiring setups"
+        },
+        "primary_uses": {
+          "values": [
+            "transport energy between machines",
+            "connect GT machines"
+          ],
+          "signal": "inferred",
+          "rationale": "primary function is power transmission"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "part of energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "named",
+          "evidence": "tooltip shows voltage/amperage",
+          "rationale": "GT energy cable subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "no loot, crafted from wire"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable block, stored in normal chests"
+        }
+      }
+    },
+    "gtceu:nickel_octal_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block for energy transport"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:octal_wires/nickel",
+          "rationale": "wire material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "transport energy",
+            "connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "same function as cable but without insulation"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of cable/wire subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "crafted from rod"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed into metal"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/nickel",
+          "rationale": "ore yields nickel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored, not always carried"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into nickel ingots",
+            "source of nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "primary source of nickel metal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained through mining"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "evidence": "forge:ores_in_ground/stone tag",
+          "rationale": "generated in stone underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block for processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted in furnace or blast furnace"
+        }
+      }
+    },
+    "gtceu:nickel_plasma_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport plasma fluid"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tooltip shows Ni",
+          "rationale": "plasma of nickel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized fluid, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "transport nickel plasma",
+            "input for plasma processing"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket filled with fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid in-world or in tank"
+        }
+      }
+    },
+    "gtceu:nickel_quadruple_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_cables/nickel",
+          "rationale": "cable material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common component",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "transport energy between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "power cable"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "crafted from wire"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:nickel_quadruple_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:quadruple_wires/nickel",
+          "rationale": "wire material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "transport energy",
+            "connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "power wire"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "crafted from rod"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:nickel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/nickel",
+          "rationale": "refined rod form"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/nickel",
+          "rationale": "nickel rod"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many tool and machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft tool handles",
+            "component for machines",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "common intermediate component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes (anvil, casting, cutting)",
+          "rationale": "no loot, crafted from ingot"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:rods tag",
+          "rationale": "rod form"
+        }
+      }
+    },
+    "gtceu:nickel_single_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:single_cables/nickel",
+          "rationale": "cable material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "transport energy between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "power cable"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "cable subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "crafted from wire"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:nickel_single_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport block"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:single_wires/nickel",
+          "rationale": "wire material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "transport energy",
+            "connect machines"
+          ],
+          "signal": "inferred",
+          "rationale": "power wire"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "energy logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "crafted from rod"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:nickel_small_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "item transport pipe"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:small_item_pipes/nickel",
+          "rationale": "pipe material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "transport items between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "item pipe"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe present",
+          "rationale": "no loot"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:nickel_small_restrictive_item_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "restrictive item pipe"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "pattern",
+          "evidence": "tag forge:small_restrictive_pipes/nickel",
+          "rationale": "pipe material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized pipe, occasional use"
+        },
+        "primary_uses": {
+          "values": [
+            "transport items with priority control"
+          ],
+          "signal": "inferred",
+          "rationale": "restrictive variant"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, crafted"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:nickel_zinc_ferrite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "storage block for compact material"
+        },
+        "material_family": {
+          "value": "nickel_zinc_ferrite",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/nickel_zinc_ferrite",
+          "rationale": "material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "bulk storage, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of nickel zinc ferrite",
+            "decoration? but mostly storage"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingot compact form"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "compacting recipe",
+          "rationale": "crafted from ingots"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block, stored in chests"
+        }
+      }
+    },
+    "gtceu:nickel_zinc_ferrite_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten material"
+        },
+        "material_family": {
+          "value": "nickel_zinc_ferrite",
+          "signal": "pattern",
+          "evidence": "tooltip shows formula",
+          "rationale": "fluid of that material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "molten fluid, used in casting"
+        },
+        "primary_uses": {
+          "values": [
+            "transport liquid nickel zinc ferrite",
+            "input for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:nickel_zinc_ferrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "powder form"
+        },
+        "material_family": {
+          "value": "nickel_zinc_ferrite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/nickel_zinc_ferrite",
+          "rationale": "dust material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "important intermediate for smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "mix with other dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "base material for ingot production"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "milling recipes produce dust",
+          "rationale": "no loot"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:nickel_zinc_ferrite_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "material_family": {
+          "value": "nickel_zinc_ferrite",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/nickel_zinc_ferrite",
+          "rationale": "ingot material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft components",
+            "alloy ingredient",
+            "craft into blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ingot usage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe from dust",
+          "rationale": "no loot"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "ingot form"
+        }
+      }
+    },
+    "gtceu:nickel_zinc_ferrite_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "material_family": {
+          "value": "nickel_zinc_ferrite",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets/nickel_zinc_ferrite",
+          "rationale": "nugget material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "small pieces used in many crafts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting components",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget uses"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "milling consumes nugget, but no production? Actually no production recipes? Wait, there are no recipe_output_examples. So it's not crafted? It might be obtained from blocks. But still, likely crafted. Since no loot, we assume crafted. But careful: no production recipes means it might be unobtainable? But it's in creative tab. I'll still crafted_only.",
+          "rationale": "no loot, probably obtainable from block or other recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "nugget form"
+        }
+      }
+    },
+    "gtceu:nickel_zinc_ferrite_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component used in crafting"
+        },
+        "material_family": {
+          "value": "nickel_zinc_ferrite",
+          "signal": "pattern",
+          "evidence": "tag forge:rings/nickel_zinc_ferrite",
+          "rationale": "ring material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "component for machines",
+            "crafting ring parts"
+          ],
+          "signal": "inferred",
+          "rationale": "cog/ring component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe produces ring",
+          "rationale": "crafted from ingot"
+        }
+      }
+    },
+    "gtceu:nickel_zinc_ferrite_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/nickel_zinc_ferrite",
+          "rationale": "rod form"
+        },
+        "material_family": {
+          "value": "nickel_zinc_ferrite",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/nickel_zinc_ferrite",
+          "rationale": "rod material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many tool and machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft tool handles",
+            "machine component",
+            "alloy ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "standard rod usage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe produces rod",
+          "rationale": "crafted from ingot"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:rods tag",
+          "rationale": "rod form"
+        }
+      }
+    },
+    "gtceu:nightvision_goggles": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "wearable on head, provides night vision"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "named",
+          "evidence": "tooltip 'Tier LV'",
+          "rationale": "LV tier tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "taken on cave runs"
+        },
+        "primary_uses": {
+          "values": [
+            "provide night vision",
+            "explore dark areas"
+          ],
+          "signal": "inferred",
+          "rationale": "primary function is vision"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "used for exploring caves"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:night_vision"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'NightVision'",
+          "rationale": "grants night vision"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:cave_run"
+          ],
+          "signal": "inferred",
+          "rationale": "taken on mining trips"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "worn on head"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shaped recipe produces goggles",
+          "rationale": "no loot"
+        }
+      }
+    },
+    "gtceu:niobium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "material_family": {
+          "value": "niobium",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/niobium",
+          "rationale": "block material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "bulk storage, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of niobium"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingot compact form"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "compacting recipe",
+          "rationale": "crafted from ingots"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    },
+    "gtceu:niobium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of molten metal"
+        },
+        "material_family": {
+          "value": "niobium",
+          "signal": "pattern",
+          "evidence": "tooltip 'Nb'",
+          "rationale": "fluid of niobium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "transport liquid niobium",
+            "input for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:niobium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "material_family": {
+          "value": "niobium",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/niobium",
+          "rationale": "dust material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in alloying"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into ingots",
+            "alloy ingredient for niobium titanium"
+          ],
+          "signal": "inferred",
+          "rationale": "dust uses"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "milling recipes produce dust",
+          "rationale": "no loot"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "dust form"
+        }
+      }
+    },
+    "gtceu:niobium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "material_family": {
+          "value": "niobium",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots/niobium",
+          "rationale": "ingot material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many advanced recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft components",
+            "alloy ingredient",
+            "craft into blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ingot"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, probably smelted from dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "ingot form"
+        }
+      }
+    },
+    "gtceu:niobium_nitride_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "storage block"
+        },
+        "material_family": {
+          "value": "niobium_nitride",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/niobium_nitride",
+          "rationale": "block material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "bulk storage"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of niobium nitride"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingot compact form"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "compacting recipe",
+          "rationale": "crafted from ingots"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,948 @@
+{
+  "values": [
+    {
+      "id": "pack:tfg/bismuth_bronze",
+      "label": "Bismuth Bronze",
+      "state": "accepted",
+      "description": "Storage for all Bismuth Bronze items: ingots, plates, tool heads, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/bismuth_bronze",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/bismuth_bronze",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/wrought_iron",
+      "label": "Wrought Iron",
+      "state": "accepted",
+      "description": "Storage for Wrought Iron items: ingots, plates, tool heads, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/wrought_iron",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/wrought_iron",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/greate_items",
+      "label": "Greate Items",
+      "state": "accepted",
+      "description": "Storage for items from the Greate mod (Create Gregified).",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "greate",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/hanging_signs",
+      "label": "Hanging Signs",
+      "state": "rejected",
+      "description": "Too specific; better grouped by material or not a primary storage section.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:hanging_signs",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/wan_ancient_beasts_items",
+      "label": "Wan Ancient Beasts Items",
+      "state": "accepted",
+      "description": "Storage for items from the Wan Ancient Beasts mod.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "wan_ancient_beasts",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/beneath_items",
+      "label": "Beneath Items",
+      "state": "accepted",
+      "description": "Storage for items from the Beneath addon for TFC.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "beneath",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/vintageimprovements_items",
+      "label": "Create: Vintage Improvements Items",
+      "state": "accepted",
+      "description": "Storage for items from the Vintage Improvements mod.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "vintageimprovements",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/hardwood",
+      "label": "Hardwood",
+      "state": "accepted",
+      "description": "Storage for all hardwood items: logs, planks, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:hardwood",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/firepit_fuel",
+      "label": "Firepit Fuel",
+      "state": "accepted",
+      "description": "Storage for items usable as fuel in a firepit.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:firepit_fuel",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/brass",
+      "label": "Brass",
+      "state": "accepted",
+      "description": "Storage for all Brass items: ingots, plates, pipes, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/brass",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/brass",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/rose_gold",
+      "label": "Rose Gold",
+      "state": "accepted",
+      "description": "Storage for all Rose Gold items: ingots, plates, pipes, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/rose_gold",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/rose_gold",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/doors",
+      "label": "Doors",
+      "state": "accepted",
+      "description": "Storage for all door items, regardless of material.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:doors",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/sterling_silver",
+      "label": "Sterling Silver",
+      "state": "accepted",
+      "description": "Storage for all Sterling Silver items: ingots, plates, pipes, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/sterling_silver",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/sterling_silver",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/metamorphic_items",
+      "label": "Metamorphic Items",
+      "state": "accepted",
+      "description": "Storage for metamorphic rock items: cobble, bricks, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:metamorphic_items",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/red_alloy",
+      "label": "Red Alloy",
+      "state": "accepted",
+      "description": "Storage for Red Alloy items: ingots, cables, wires, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/red_alloy",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:wires/red_alloy",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/cobalt_brass",
+      "label": "Cobalt Brass",
+      "state": "accepted",
+      "description": "Storage for Cobalt Brass items: ingots, plates, pipes, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/cobalt_brass",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/cobalt_brass",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/potin",
+      "label": "Potin",
+      "state": "accepted",
+      "description": "Storage for Potin items: ingots, plates, pipes, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/potin",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/potin",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/tin_alloy",
+      "label": "Tin Alloy",
+      "state": "accepted",
+      "description": "Storage for Tin Alloy items: ingots, plates, pipes, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/tin_alloy",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/tin_alloy",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/invar",
+      "label": "Invar",
+      "state": "accepted",
+      "description": "Storage for Invar items: ingots, plates, frames, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/invar",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/invar",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/igneous_intrusive_items",
+      "label": "Igneous Intrusive Items",
+      "state": "accepted",
+      "description": "Storage for igneous intrusive rock items: granite, diorite, gabbro.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:igneous_intrusive_items",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/fences",
+      "label": "Fences",
+      "state": "accepted",
+      "description": "Storage for all fence items, regardless of material.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:fences",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/weak_blue_steel",
+      "label": "Weak Blue Steel",
+      "state": "accepted",
+      "description": "Storage for Weak Blue Steel items: dust, ingot, nugget.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/weak_blue_steel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts/weak_blue_steel",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/weak_red_steel",
+      "label": "Weak Red Steel",
+      "state": "accepted",
+      "description": "Storage for Weak Red Steel items: dust, ingot, nugget.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/weak_red_steel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts/weak_red_steel",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/aluminium_silicate",
+      "label": "Aluminium Silicate",
+      "state": "accepted",
+      "description": "Storage for Aluminium Silicate items: dust, ingot, nugget.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/aluminium_silicate",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts/aluminium_silicate",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/stone_bricks",
+      "label": "Stone Bricks",
+      "state": "accepted",
+      "description": "Storage for all stone brick items, regardless of rock type.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:stone_bricks",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/stone",
+      "label": "Stone",
+      "state": "accepted",
+      "description": "Storage for general stone items: rocks, cobble, stone tools, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:stone",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/wooden",
+      "label": "Wooden",
+      "state": "accepted",
+      "description": "Storage for wooden items: chests, fence gates, rods.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:chests/wooden",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:rods/wooden",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/ags_modernmarkings_items",
+      "label": "AGS ModernMarkings Mod Items",
+      "state": "accepted",
+      "description": "Storage for items from the AGS ModernMarkings mod.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "ags_modernmarkings",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/plants",
+      "label": "Plants",
+      "state": "accepted",
+      "description": "Storage for all plant items: saplings, flowers, crops, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:plants",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/firmaciv_items",
+      "label": "Firma: Civilization Items",
+      "state": "accepted",
+      "description": "Storage for items from the Firma: Civilization mod.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "firmaciv",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/brick_stairs",
+      "label": "Brick Stairs",
+      "state": "rejected",
+      "description": "Too specific; better grouped under stone bricks or by material.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:brick_stairs",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/quartzite",
+      "label": "Quartzite",
+      "state": "accepted",
+      "description": "Storage for Quartzite rock and ore items.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:gems/quartzite",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:stone_types/quartzite",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/firepit_logs",
+      "label": "Firepit Logs",
+      "state": "accepted",
+      "description": "Storage for logs usable as fuel in a firepit.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:firepit_logs",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/log_pile_logs",
+      "label": "Log Pile Logs",
+      "state": "accepted",
+      "description": "Storage for logs suitable for log piles (fuel).",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:log_pile_logs",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/logs",
+      "label": "Logs",
+      "state": "accepted",
+      "description": "Storage for all logs.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:logs",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/oven_fuel",
+      "label": "Oven Fuel",
+      "state": "accepted",
+      "description": "Storage for fuel usable in Firmalife ovens.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:oven_fuel",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/pit_kiln_logs",
+      "label": "Pit Kiln Logs",
+      "state": "accepted",
+      "description": "Storage for logs usable as fuel in a pit kiln.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:pit_kiln_logs",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/smoking_fuel",
+      "label": "Smoking Fuel",
+      "state": "accepted",
+      "description": "Storage for fuel usable in Firmalife smokers.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:smoking_fuel",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/rods",
+      "label": "Rods",
+      "state": "rejected",
+      "description": "Component shape; too generic for a storage section; better grouped by material.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:rods",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/softwood",
+      "label": "Softwood",
+      "state": "accepted",
+      "description": "Storage for all softwood items: logs, planks, etc.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:softwood",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/pileable_ingots",
+      "label": "Pileable Ingots",
+      "state": "accepted",
+      "description": "Storage for ingots that can be stacked in piles (TFC mechanic).",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:pileable_ingots",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/pileable_sheets",
+      "label": "Pileable Sheets",
+      "state": "accepted",
+      "description": "Storage for sheets that can be stacked in piles (TFC mechanic).",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:pileable_sheets",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/plates",
+      "label": "Plates",
+      "state": "rejected",
+      "description": "Component shape; too generic for a storage section; better grouped by material.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:plates",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/domum_ornamentum_items",
+      "label": "Domum Ornamentum Items",
+      "state": "accepted",
+      "description": "Storage for items from the Domum Ornamentum mod.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "domum_ornamentum",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/tfc_gourmet_items",
+      "label": "TFC Gourmet Items",
+      "state": "accepted",
+      "description": "Storage for items from the TFC Gourmet mod.",
+      "aliases": [],
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "tfc_gourmet",
+          "confidence": 0.6
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/dog_food",
+      "label": "Dog Food",
+      "state": "rejected",
+      "description": "Too specific; not a major storage category.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:dog_food",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/brick",
+      "label": "Brick",
+      "state": "accepted",
+      "description": "Storage for brick items: dust, ingots, blocks.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/brick",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts/brick",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/logs_that_burn",
+      "label": "Logs That Burn",
+      "state": "rejected",
+      "description": "Redundant with 'logs'; not a distinct storage category.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:logs_that_burn",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

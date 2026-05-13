@@ -1,0 +1,1634 @@
+{
+  "items": {
+    "tfg:long_rene_41_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "metal rod intermediate for crafting"
+        },
+        "material_family": {
+          "value": "rene_41",
+          "signal": "pattern",
+          "evidence": "tag forge:rods/long/rene_41",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate used in further processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "component data"
+        },
+        "primary_uses": {
+          "values": [
+            "crafted into smaller rods or dust"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in cutting and milling recipes"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "form from tag forge:rods/long"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "produced in moderate batches, not bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed metal intermediate"
+        }
+      }
+    },
+    "tfg:loose/crackrack": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock collected for crafting"
+        },
+        "material_family": {
+          "value": "crackrack",
+          "signal": "pattern",
+          "evidence": "id suffix crackrack",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly picked up while exploring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock from surface"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into tools",
+            "crafting bricks and cobblestone",
+            "building material"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:loose_rocks",
+          "rationale": "surface loose rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "collected in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "igneous extrusive rock group"
+        }
+      }
+    },
+    "tfg:loose/deepslate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "evidence": "id deepslate",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/dripstone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "pattern",
+          "evidence": "id dripstone",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "flux for smelting",
+            "knapping",
+            "crafting bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "used as flux and building material"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dripstone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/flavolite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "flavolite",
+          "signal": "pattern",
+          "evidence": "id flavolite",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/flavolite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/glacio_stone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "glacio_stone",
+          "signal": "pattern",
+          "evidence": "id glacio_stone",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glacio_stone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/mars_stone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "mars_stone",
+          "signal": "pattern",
+          "evidence": "id mars_stone",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/mars_stone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/mercury_stone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "mercury_stone",
+          "signal": "pattern",
+          "evidence": "id mercury_stone",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/mercury_stone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/moon_deepslate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "moon_deepslate",
+          "signal": "pattern",
+          "evidence": "id moon_deepslate",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_deepslate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/moon_stone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "moon_stone",
+          "signal": "pattern",
+          "evidence": "id moon_stone",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/moon_stone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/permafrost": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "pattern",
+          "evidence": "id permafrost",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "generic rock storage group"
+        }
+      }
+    },
+    "tfg:loose/red_granite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "red_granite",
+          "signal": "pattern",
+          "evidence": "id red_granite",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/red_granite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/sandy_jadestone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "sandy_jadestone",
+          "signal": "pattern",
+          "evidence": "id sandy_jadestone",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sandy_jadestone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/scorchia": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "scorchia",
+          "signal": "pattern",
+          "evidence": "id scorchia",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "igneous extrusive rock group"
+        }
+      }
+    },
+    "tfg:loose/scoria": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "scoria",
+          "signal": "pattern",
+          "evidence": "id scoria",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "igneous extrusive rock group"
+        }
+      }
+    },
+    "tfg:loose/tuff": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "evidence": "id tuff",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tuff"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:loose/venus_stone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw rock for crafting"
+        },
+        "material_family": {
+          "value": "venus_stone",
+          "signal": "pattern",
+          "evidence": "id venus_stone",
+          "rationale": "rock type from id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common surface pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "gathering rock"
+        },
+        "primary_uses": {
+          "values": [
+            "knapping",
+            "crafting bricks and cobble",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in knapping and crafting"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:loose_rocks tag",
+          "rationale": "surface rock"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/venus_stone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "specific rock group"
+        }
+      }
+    },
+    "tfg:lorandite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "standard dust form"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/lorandite",
+          "rationale": "material from tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ore processing byproduct, often stacked"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component data"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lorandite ingots",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used to produce ingots via smelting/blasting"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "large quantities from ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "cleaned ore dust"
+        }
+      }
+    },
+    "tfg:lorandite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "worldgen surface rock indicating ore"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/lorandite",
+          "rationale": "ore material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only encountered during prospecting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "prospecting indicator"
+        },
+        "primary_uses": {
+          "values": [
+            "locating lorandite ore deposits",
+            "collecting for decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "surface ore marker"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "surface rock"
+        }
+      }
+    },
+    "tfg:lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block, mined and processed"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/lorandite",
+          "rationale": "ore material from tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining activity"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lorandite ingots",
+            "processing into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/stone",
+          "rationale": "underground ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "tfg:luck_salvo": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "eaten for buff effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for specific buffs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared in mixing bowl"
+        },
+        "primary_uses": {
+          "values": [
+            "consuming for Luck effect",
+            "as a medicine"
+          ],
+          "signal": "inferred",
+          "rationale": "auto_eat_blacklist and luck effect"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe firmalife:mixing_bowl",
+          "rationale": "only produced via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "edible item"
+        }
+      }
+    },
+    "tfg:lunar_chorus_flower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant block on moon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only available on moon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "grows on moon surface"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting chorus fruit",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "chorus plant part"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "moon variant of end chorus flower"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item group"
+        }
+      }
+    },
+    "tfg:lunar_chorus_plant": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant block on moon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only on moon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "part of chorus plant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with chorus",
+            "breaking for chorus fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "chorus structure block"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "moon chorus variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item group"
+        }
+      }
+    },
+    "tfg:lunar_roots": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant block on moon"
+        },
+        "material_family": {
+          "value": "lunar_roots",
+          "signal": "pattern",
+          "evidence": "id lunar_roots",
+          "rationale": "plant type"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "moon plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "moon plant"
+        },
+        "primary_uses": {
+          "values": [
+            "light source on moon",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light, decorative plant"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "moon flora"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item group"
+        }
+      }
+    },
+    "tfg:lunar_sprouts": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant block on moon"
+        },
+        "material_family": {
+          "value": "lunar_sprouts",
+          "signal": "pattern",
+          "evidence": "id lunar_sprouts",
+          "rationale": "plant type"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "moon plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component data"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "moon plant"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration on moon",
+            "harvesting for farming"
+          ],
+          "signal": "inferred",
+          "rationale": "grass-like plant"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "moon flora"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "tfg:long_rene_41_rod",
+      "facet": "material_family",
+      "value": "rene_41",
+      "rationale": "tag forge:rods/long/rene_41 clearly identifies the material"
+    },
+    {
+      "item": "tfg:loose/deepslate",
+      "facet": "material_family",
+      "value": "deepslate",
+      "rationale": "stage2 missed material_family for loose rocks; id identifies rock type"
+    },
+    {
+      "item": "tfg:loose/dripstone",
+      "facet": "material_family",
+      "value": "dripstone",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/flavolite",
+      "facet": "material_family",
+      "value": "flavolite",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/glacio_stone",
+      "facet": "material_family",
+      "value": "glacio_stone",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/mars_stone",
+      "facet": "material_family",
+      "value": "mars_stone",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/mercury_stone",
+      "facet": "material_family",
+      "value": "mercury_stone",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/moon_deepslate",
+      "facet": "material_family",
+      "value": "moon_deepslate",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/moon_stone",
+      "facet": "material_family",
+      "value": "moon_stone",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/permafrost",
+      "facet": "material_family",
+      "value": "permafrost",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/red_granite",
+      "facet": "material_family",
+      "value": "red_granite",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/sandy_jadestone",
+      "facet": "material_family",
+      "value": "sandy_jadestone",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/scorchia",
+      "facet": "material_family",
+      "value": "scorchia",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/scoria",
+      "facet": "material_family",
+      "value": "scoria",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/tuff",
+      "facet": "material_family",
+      "value": "tuff",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:loose/venus_stone",
+      "facet": "material_family",
+      "value": "venus_stone",
+      "rationale": "missing from stage2; id implies rock type"
+    },
+    {
+      "item": "tfg:lorandite_dust",
+      "facet": "material_family",
+      "value": "lorandite",
+      "rationale": "tag forge:dusts/lorandite indicates material"
+    },
+    {
+      "item": "tfg:lunar_roots",
+      "facet": "material_family",
+      "value": "lunar_roots",
+      "rationale": "missing from stage2; id implies plant type"
+    },
+    {
+      "item": "tfg:lunar_sprouts",
+      "facet": "material_family",
+      "value": "lunar_sprouts",
+      "rationale": "missing from stage2; id implies plant type"
+    }
+  ]
+}

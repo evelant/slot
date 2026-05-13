@@ -1,0 +1,1035 @@
+{
+  "items": {
+    "minecraft:lantern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Portable light source carried for exploration and building"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for lighting caves and bases"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for lighting during mining"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable light source",
+            "Cave and base lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "Common uses for lanterns"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        }
+      }
+    },
+    "minecraft:lapis_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed storage block of lapis, not a container"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried only when building with it"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative building block"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of lapis",
+            "Decorative building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses of lapis block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "pattern",
+          "rationale": "Material storage block grouped with other storage blocks"
+        }
+      }
+    },
+    "minecraft:lapis_lazuli": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Gem used in enchanting and crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried for enchanting"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as enchanting fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "Enchanting fuel",
+            "Crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of lapis lazuli"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "pattern",
+          "rationale": "Lapis is a gem and stored with gems"
+        }
+      }
+    },
+    "minecraft:lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ore block mined for material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried after mining before processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for lapis lazuli"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of lapis lazuli",
+            "Mined ore for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Main purpose of lapis ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "Raw ore block stored with unprocessed ores"
+        }
+      }
+    },
+    "minecraft:large_amethyst_bud": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Naturally growing crystal bud in geodes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected occasionally for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Amethyst source"
+          ],
+          "signal": "inferred",
+          "rationale": "Collected for looks and amethyst shards"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Found in geodes, somewhat rare"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural crystalline appearance"
+        },
+        "emits_light": {
+          "value": true,
+          "signal": "named",
+          "rationale": "Component minecraft:light_emission = 4"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Amethyst buds are decorative"
+        }
+      }
+    },
+    "minecraft:large_fern": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Tall plant found in nature, used for decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Seldom carried, mostly placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decoration in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Compost ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetics or composted"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "Green foliage color"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Found growing in swamps and forests"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/plants"
+          ],
+          "signal": "pattern",
+          "rationale": "Fern is a plant stored with plants"
+        }
+      }
+    },
+    "minecraft:lava_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket used as a tool for placing lava and fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for specific tasks like fuel or obsidian"
+        },
+        "primary_uses": {
+          "values": [
+            "Fuel source",
+            "Place lava",
+            "Obsidian crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Main practical uses of lava bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container",
+            "slot:fluid_container"
+          ],
+          "signal": "pattern",
+          "rationale": "Holds lava fluid"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Place lava or use as fuel"
+        }
+      }
+    },
+    "minecraft:lead": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool for leading animals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when handling animals"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used with farm animals"
+        },
+        "primary_uses": {
+          "values": [
+            "Lead animals",
+            "Control mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "Main functions of lead"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        }
+      }
+    },
+    "minecraft:leather": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Crafting ingredient for armor, books, etc."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Common material carried in bulk for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting armor and books"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "pattern",
+          "rationale": "Leather is an animal product stored with husbandry items"
+        }
+      }
+    },
+    "minecraft:leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable feet armor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not carried often; worn or stored"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat protection"
+        },
+        "primary_uses": {
+          "values": [
+            "Feet armor",
+            "Protection from damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Armor for feet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        }
+      }
+    },
+    "minecraft:leather_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable chest armor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not carried often; worn or stored"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat protection"
+        },
+        "primary_uses": {
+          "values": [
+            "Chest armor",
+            "Protection from damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Armor for chest"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        }
+      }
+    },
+    "minecraft:leather_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable head armor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not carried often; worn or stored"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat protection"
+        },
+        "primary_uses": {
+          "values": [
+            "Head armor",
+            "Protection from damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Armor for head"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        }
+      }
+    },
+    "minecraft:leather_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "Wearable leg armor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not carried often; worn or stored"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat protection"
+        },
+        "primary_uses": {
+          "values": [
+            "Leg armor",
+            "Protection from damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Armor for legs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        }
+      }
+    },
+    "minecraft:leather_horse_armor": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Horse equipment for riding, per disambiguation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Seldom carried; equipped on horse"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Enables horse transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Protect horse",
+            "Horse equipment"
+          ],
+          "signal": "inferred",
+          "rationale": "Armor for horse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "Horse equipment stored with animal husbandry"
+        }
+      }
+    },
+    "minecraft:lectern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation for reading books and redstone output"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as redstone comparator signal source"
+        },
+        "primary_uses": {
+          "values": [
+            "Hold books for reading",
+            "Redstone signal source"
+          ],
+          "signal": "inferred",
+          "rationale": "Main functions of lectern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open"
+          ],
+          "signal": "inferred",
+          "rationale": "Opens book GUI"
+        }
+      }
+    },
+    "minecraft:lever": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Redstone toggle switch"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building redstone contraptions"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone toggle switch",
+            "Signal source"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use as redstone component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        }
+      }
+    },
+    "minecraft:light": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Creative-only debug light block"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Only obtainable in creative mode"
+        },
+        "primary_uses": {
+          "values": [
+            "Invisible light source for builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Used by builders for lighting"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = epic"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "Stage2 rule: known creative-only item"
+        }
+      }
+    },
+    "minecraft:light_blue_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Banner used for decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when decorating"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decorative purposes"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Custom banner patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses of banner"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed banner"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "rationale": "Banners are decorative blocks"
+        }
+      }
+    },
+    "minecraft:light_blue_bed": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Bed treated as decor, per disambiguation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when placing a bed"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Bed is placed as decoration and for sleeping"
+        },
+        "primary_uses": {
+          "values": [
+            "Sleep through night",
+            "Decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Main functions of bed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed bed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "rationale": "Beds are decorative items"
+        }
+      }
+    },
+    "minecraft:light_blue_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Candle used for decoration and lighting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried when decorating"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration",
+            "Light source"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary uses of candle"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed candle"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "rationale": "Candles are decorative blocks"
+        }
+      }
+    },
+    "minecraft:light_blue_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Carpet used for floor decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building and decorating"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Floor decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use as decorative floor covering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed carpet"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "rationale": "Carpet is a decorative block"
+        }
+      }
+    },
+    "minecraft:light_blue_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid block used for construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Construction block"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use as a building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed concrete"
+        }
+      }
+    },
+    "minecraft:light_blue_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate ingredient, not placed as final block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to craft concrete blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to create concrete for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft concrete blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use as ingredient for concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed powder"
+        }
+      }
+    },
+    "minecraft:light_blue_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dye used as crafting ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Often carried for dyeing and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to dye items for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Dyeing items",
+            "Crafting colored blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Main uses of dye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "pattern",
+          "rationale": "Dye stored with other dyes"
+        }
+      }
+    },
+    "minecraft:light_blue_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid decorative block used in construction"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used sparingly for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a decorative building material"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Main use as a decorative block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component minecraft:rarity = common"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "glossy"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed and glossy finish"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "pattern",
+          "rationale": "Glazed terracotta is decorative"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

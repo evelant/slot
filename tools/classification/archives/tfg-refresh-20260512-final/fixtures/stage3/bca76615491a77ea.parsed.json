@@ -1,0 +1,1833 @@
+{
+  "items": {
+    "gtceu:tiny_garnet_sand_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "garnet_sand",
+          "signal": "pattern",
+          "evidence": "id suffix garnet_sand",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_garnierite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "garnierite",
+          "signal": "pattern",
+          "evidence": "id suffix garnierite",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_gelatin_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "gelatin",
+          "signal": "pattern",
+          "evidence": "id suffix gelatin",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_glass_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "evidence": "id suffix glass",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_glauconite_sand_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "glauconite_sand",
+          "signal": "pattern",
+          "evidence": "id suffix glauconite_sand",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_glowstone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "glowstone",
+          "signal": "pattern",
+          "evidence": "id suffix glowstone",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_goethite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "goethite",
+          "signal": "pattern",
+          "evidence": "id suffix goethite",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_gold_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "evidence": "id suffix gold",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_granite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "evidence": "id suffix granite",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_granite_red_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "granite_red",
+          "signal": "pattern",
+          "evidence": "id suffix granite_red",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_granitic_mineral_sand_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "granitic_mineral_sand",
+          "signal": "pattern",
+          "evidence": "id suffix granitic_mineral_sand",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_graphene_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "graphene",
+          "signal": "pattern",
+          "evidence": "id suffix graphene",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_graphite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "graphite",
+          "signal": "pattern",
+          "evidence": "id suffix graphite",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_green_sapphire_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "green_sapphire",
+          "signal": "pattern",
+          "evidence": "id suffix green_sapphire",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_grossular_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "evidence": "id suffix grossular",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_gunpowder_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "gunpowder",
+          "signal": "pattern",
+          "evidence": "id suffix gunpowder",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_gypsum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "gypsum",
+          "signal": "pattern",
+          "evidence": "id suffix gypsum",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_hardwood_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "hardwood",
+          "signal": "pattern",
+          "evidence": "id suffix hardwood",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_hastelloy_c_276_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "hastelloy_c_276",
+          "signal": "pattern",
+          "evidence": "id suffix hastelloy_c_276",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_hastelloy_x_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "hastelloy_x",
+          "signal": "pattern",
+          "evidence": "id suffix hastelloy_x",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_hematite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "pattern",
+          "evidence": "id suffix hematite",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_hsla_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "hsla_steel",
+          "signal": "pattern",
+          "evidence": "id suffix hsla_steel",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_hsse_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "hsse",
+          "signal": "pattern",
+          "evidence": "id suffix hsse",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_hssg_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "hssg",
+          "signal": "pattern",
+          "evidence": "id suffix hssg",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    },
+    "gtceu:tiny_hsss_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust + creative tab material_item",
+          "rationale": "crafting ingredient dust"
+        },
+        "material_family": {
+          "value": "hsss",
+          "signal": "pattern",
+          "evidence": "id suffix hsss",
+          "rationale": "derived from dust name"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:tiny_dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:tiny_dusts",
+          "rationale": "tiny dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/tiny_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "tiny dust storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in GT processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced materials",
+            "GT component processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT ingredient carried during automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component_highlights rarity",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes only",
+          "rationale": "no loot sources"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, used in bulk"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

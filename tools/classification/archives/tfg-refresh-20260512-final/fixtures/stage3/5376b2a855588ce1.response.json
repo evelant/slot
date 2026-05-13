@@ -1,0 +1,1422 @@
+{
+  "items": {
+    "tfc:rock/hardened/dolomite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/dolomite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dolomite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items and id",
+          "rationale": "Grouped with dolomite items."
+        }
+      }
+    },
+    "tfc:rock/hardened/gabbro": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/gabbro",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gabbro"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items and id",
+          "rationale": "Grouped with gabbro items."
+        }
+      }
+    },
+    "tfc:rock/hardened/gneiss": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/gneiss",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Grouped with metamorphic stones."
+        }
+      }
+    },
+    "tfc:rock/hardened/granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/granite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/granite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items and id",
+          "rationale": "Grouped with granite items."
+        }
+      }
+    },
+    "tfc:rock/hardened/limestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/limestone",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items",
+            "flux in smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds, crafted, and used as flux."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/limestone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items and id",
+          "rationale": "Grouped with limestone items."
+        }
+      }
+    },
+    "tfc:rock/hardened/marble": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "marble",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/marble",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Grouped with metamorphic stones."
+        }
+      }
+    },
+    "tfc:rock/hardened/phyllite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "phyllite",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/phyllite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Grouped with metamorphic stones."
+        }
+      }
+    },
+    "tfc:rock/hardened/quartzite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/quartzite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Grouped with metamorphic stones."
+        }
+      }
+    },
+    "tfc:rock/hardened/rhyolite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/rhyolite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Grouped with igneous extrusive stones."
+        }
+      }
+    },
+    "tfc:rock/hardened/schist": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "schist",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/schist",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Grouped with metamorphic stones."
+        }
+      }
+    },
+    "tfc:rock/hardened/shale": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "shale",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/shale",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "Grouped with sedimentary stones."
+        }
+      }
+    },
+    "tfc:rock/hardened/slate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as a solid rock block for construction."
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "evidence": "id rock/hardened/slate",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common overworld stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block, carried when building."
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:base_stone_overworld",
+          "rationale": "Underground overworld stone."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as construction material."
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting stone items"
+          ],
+          "signal": "inferred",
+          "rationale": "Builds walls, floors; crafted into bricks and tools."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Grouped with metamorphic stones."
+        }
+      }
+    },
+    "tfc:rock/loose/andesite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id rock/loose/andesite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Grouped with igneous extrusive rocks."
+        }
+      }
+    },
+    "tfc:rock/loose/basalt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "evidence": "id rock/loose/basalt",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/basalt"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items and id",
+          "rationale": "Grouped with basalt items."
+        }
+      }
+    },
+    "tfc:rock/loose/chalk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "evidence": "id rock/loose/chalk",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "flux in smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials, plus flux."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "Grouped with sedimentary rocks."
+        }
+      }
+    },
+    "tfc:rock/loose/chert": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id rock/loose/chert",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chert"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items and id",
+          "rationale": "Grouped with chert items."
+        }
+      }
+    },
+    "tfc:rock/loose/claystone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id rock/loose/claystone",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/claystone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items and id",
+          "rationale": "Grouped with claystone items."
+        }
+      }
+    },
+    "tfc:rock/loose/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id rock/loose/conglomerate",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/conglomerate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items and id",
+          "rationale": "Grouped with conglomerate items."
+        }
+      }
+    },
+    "tfc:rock/loose/dacite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id rock/loose/dacite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dacite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items and id",
+          "rationale": "Grouped with dacite items."
+        }
+      }
+    },
+    "tfc:rock/loose/diorite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id rock/loose/diorite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/diorite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items and id",
+          "rationale": "Grouped with diorite items."
+        }
+      }
+    },
+    "tfc:rock/loose/dolomite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id rock/loose/dolomite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "flux in smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials, plus flux."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dolomite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items and id",
+          "rationale": "Grouped with dolomite items."
+        }
+      }
+    },
+    "tfc:rock/loose/gabbro": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "gabbro",
+          "signal": "pattern",
+          "evidence": "id rock/loose/gabbro",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gabbro"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items and id",
+          "rationale": "Grouped with gabbro items."
+        }
+      }
+    },
+    "tfc:rock/loose/gneiss": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "gneiss",
+          "signal": "pattern",
+          "evidence": "id rock/loose/gneiss",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Grouped with metamorphic rocks."
+        }
+      }
+    },
+    "tfc:rock/loose/granite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "evidence": "id rock/loose/granite",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "road base"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/granite"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items and id",
+          "rationale": "Grouped with granite items."
+        }
+      }
+    },
+    "tfc:rock/loose/limestone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crafting material for knapping and building components."
+        },
+        "material_family": {
+          "value": "limestone",
+          "signal": "pattern",
+          "evidence": "id rock/loose/limestone",
+          "rationale": "Stone type from item id."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface rock."
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Picked up constantly during exploration."
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from surface blocks and tag minecraft:replaceable",
+          "rationale": "Found loose on ground."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Gathered while mining/exploring for crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "knapping into stone tools",
+            "making cobble/bricks",
+            "flux in smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting early tools and building materials, plus flux."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/limestone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items and id",
+          "rationale": "Grouped with limestone items."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,996 @@
+{
+  "items": {
+    "createdeco:andesite_catwalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural catwalk flooring placed as building component"
+        },
+        "primary_uses": {
+          "values": [
+            "catwalk flooring for industrial builds"
+          ],
+          "signal": "inferred",
+          "rationale": "player places catwalks as floor in factories"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in constructing structures"
+        }
+      }
+    },
+    "createdeco:andesite_catwalk_railing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "railing for catwalks and stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "railings for catwalks and stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "player places railings as safety barriers"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in constructing structures"
+        }
+      }
+    },
+    "createdeco:andesite_catwalk_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair variant of catwalk blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "stairs for catwalk access"
+          ],
+          "signal": "inferred",
+          "rationale": "player places stairs to navigate levels"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried in stacks during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in constructing structures"
+        }
+      }
+    },
+    "createdeco:andesite_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "metal door placed as building entrance"
+        },
+        "primary_uses": {
+          "values": [
+            "metal doors for industrial buildings"
+          ],
+          "signal": "inferred",
+          "rationale": "player places doors as openings"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "doors placed and left, not carried in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted door"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building entrance"
+        }
+      }
+    },
+    "createdeco:andesite_facade": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative wall covering placed on buildings"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall facades"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses facades to decorate walls"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in decoration projects, not bulk carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for both construction and decoration"
+        }
+      }
+    },
+    "createdeco:andesite_hull": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "train hull block used as building material"
+        },
+        "primary_uses": {
+          "values": [
+            "train hulls and industrial walls"
+          ],
+          "signal": "inferred",
+          "rationale": "player places hulls as structural blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in specific builds, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in constructing structures"
+        }
+      }
+    },
+    "createdeco:andesite_mesh_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "mesh fence placed as boundary"
+        },
+        "primary_uses": {
+          "values": [
+            "mesh fencing for enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "player places fences to define areas"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "fences used in large quantities, carried in stacks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted fence"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building boundary"
+        }
+      }
+    },
+    "createdeco:andesite_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate crafting component, not placed as block"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting deco blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses sheets to craft various building blocks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many recipes, carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to create building components"
+        }
+      }
+    },
+    "createdeco:andesite_sheet_metal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable sheet metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "sheet metal roofing and walls"
+          ],
+          "signal": "inferred",
+          "rationale": "player places sheet metal as building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in construction, not bulk carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building material"
+        }
+      }
+    },
+    "createdeco:andesite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "support beam placed in structures"
+        },
+        "primary_uses": {
+          "values": [
+            "support beams for structures"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses supports to add structural detail"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in specific builds, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as structural element"
+        }
+      }
+    },
+    "createdeco:andesite_support_wedge": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wedge shaped support placed in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "wedge supports for angled building"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses wedges for angled details"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in specific builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as structural element"
+        }
+      }
+    },
+    "createdeco:andesite_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor placed as floor hatch"
+        },
+        "primary_uses": {
+          "values": [
+            "trapdoors for floor hatches"
+          ],
+          "signal": "inferred",
+          "rationale": "player places trapdoors as openings"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and left, not bulk carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted trapdoor"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building opening"
+        }
+      }
+    },
+    "createdeco:andesite_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window block placed in walls"
+        },
+        "primary_uses": {
+          "values": [
+            "windows for industrial builds"
+          ],
+          "signal": "inferred",
+          "rationale": "player places windows as transparent walls"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in construction, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building element"
+        }
+      }
+    },
+    "createdeco:andesite_window_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window pane placed as thin barrier"
+        },
+        "primary_uses": {
+          "values": [
+            "window panes for glass-like barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses panes as transparent walls"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building element"
+        }
+      }
+    },
+    "createdeco:black_placard": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "wall sign placed for labels"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling areas with colored placards"
+          ],
+          "signal": "inferred",
+          "rationale": "player places placards to mark locations"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and left, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration and labeling"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "evidence": "name Black Placard",
+          "rationale": "name indicates black color variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/wall_markings"
+          ],
+          "signal": "inferred",
+          "rationale": "placards are wall mounted markings"
+        }
+      }
+    },
+    "createdeco:black_shipping_container": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest-like container for item storage"
+        },
+        "primary_uses": {
+          "values": [
+            "shipping container storage"
+          ],
+          "signal": "inferred",
+          "rationale": "player stores items in shipping container"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once as static storage, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common container block"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used for organizing items"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "evidence": "name Black Shipping Container",
+          "rationale": "name indicates black color variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "shipping container functions as chest"
+        }
+      }
+    },
+    "createdeco:blue_andesite_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "cage lamp placed for lighting decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "blue decorative lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "player places lamps to illuminate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted lamp"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for lighting and decoration"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "name Blue",
+          "rationale": "name indicates blue color"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id contains andesite",
+          "rationale": "id prefix andesite_"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "lamp belongs with other lamps"
+        }
+      }
+    },
+    "createdeco:blue_brass_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "cage lamp placed for lighting decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "blue brass decorative lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "player places lamps to illuminate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted lamp"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "name Blue",
+          "rationale": "name indicates blue color"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "id contains brass",
+          "rationale": "id suffix _brass_lamp"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "lamp belongs with other lamps"
+        }
+      }
+    },
+    "createdeco:blue_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blue brick slab placed in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building with blue brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses slabs as half-block building material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in large quantities during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "part of brick slab family",
+          "rationale": "group with other brick slabs"
+        }
+      }
+    },
+    "createdeco:blue_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blue brick stairs placed in builds"
+        },
+        "primary_uses": {
+          "values": [
+            "building with blue brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses stairs for elevation changes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in large quantities during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs belong with other stair blocks"
+        }
+      }
+    },
+    "createdeco:blue_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blue brick wall placed as boundary"
+        },
+        "primary_uses": {
+          "values": [
+            "building with blue brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses walls as fences"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in large quantities during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "part of brick wall family",
+          "rationale": "group with other brick walls"
+        }
+      }
+    },
+    "createdeco:blue_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blue brick placed as full block"
+        },
+        "primary_uses": {
+          "values": [
+            "building with blue bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses bricks as primary building material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in large quantities during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted building block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "part of brick family",
+          "rationale": "group with other bricks"
+        }
+      }
+    },
+    "createdeco:blue_copper_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "cage lamp placed for lighting decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "blue copper decorative lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "player places lamps to illuminate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted lamp"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "name Blue",
+          "rationale": "name indicates blue color"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "id suffix _copper_lamp"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "lamp belongs with other lamps"
+        }
+      }
+    },
+    "createdeco:blue_industrial_iron_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "cage lamp placed for lighting decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "blue steel decorative lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "player places lamps to illuminate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted lamp"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "name Blue",
+          "rationale": "name indicates blue color"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "evidence": "id contains iron",
+          "rationale": "id suffix _iron_lamp"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "lamp belongs with other lamps"
+        }
+      }
+    },
+    "createdeco:blue_iron_lamp": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "cage lamp placed for lighting decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "blue wrought iron decorative lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "player places lamps to illuminate"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted lamp"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for decoration"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "name Blue",
+          "rationale": "name indicates blue color"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "evidence": "id suffix _iron_lamp",
+          "rationale": "suffix indicates iron material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/lamps"
+          ],
+          "signal": "inferred",
+          "rationale": "lamp belongs with other lamps"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "createdeco:andesite_window",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "full (window block)",
+      "rationale": "Andesite window is a full cube block, not a thin pane; model_parent includes cube_column, tag impermeable indicates full block.",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": []
+}

@@ -1,0 +1,1058 @@
+{
+  "items": {
+    "ae2:blue_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_cable",
+          "rationale": "AE2 network cable, placed as part of a system"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id contains 'blue'",
+          "rationale": "explicitly colored cable"
+        },
+        "primary_uses": {
+          "values": [
+            "Connecting AE2 network components"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use in building ME networks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building AE2 networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:blue_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_dense_cable",
+          "rationale": "AE2 dense network cable"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id contains 'blue'",
+          "rationale": "explicitly colored cable"
+        },
+        "primary_uses": {
+          "values": [
+            "High-density AE2 network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "used for dense cable runs"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building larger networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_dense_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:blue_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:glass_cable",
+          "rationale": "AE2 glass cable"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id contains 'blue'",
+          "rationale": "explicitly colored cable"
+        },
+        "primary_uses": {
+          "values": [
+            "Transparent AE2 network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "used for visible cable runs"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:glass_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:blue_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to color cables via paint applicator"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id contains 'blue'",
+          "rationale": "explicitly colored paint ball"
+        },
+        "primary_uses": {
+          "values": [
+            "Coloring AE2 cables (glowing)"
+          ],
+          "signal": "inferred",
+          "rationale": "applies color with glow effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when recoloring networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 consumable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        }
+      }
+    },
+    "ae2:blue_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "tag ae2:paint_balls",
+          "rationale": "used to color cables"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id contains 'blue'",
+          "rationale": "explicitly colored paint ball"
+        },
+        "primary_uses": {
+          "values": [
+            "Coloring AE2 cables"
+          ],
+          "signal": "inferred",
+          "rationale": "applies color to network cables"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when recoloring networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 consumable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        }
+      }
+    },
+    "ae2:blue_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_cable",
+          "rationale": "AE2 smart cable"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id contains 'blue'",
+          "rationale": "explicitly colored cable"
+        },
+        "primary_uses": {
+          "values": [
+            "Smart AE2 network connections with channel display"
+          ],
+          "signal": "inferred",
+          "rationale": "used for networks requiring channel monitoring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building advanced networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:blue_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_dense_cable",
+          "rationale": "AE2 smart dense cable"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "evidence": "id contains 'blue'"
+        },
+        "primary_uses": {
+          "values": [
+            "High-density smart AE2 network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "used for dense networks with channel monitoring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building large networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_dense_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:brown_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_cable",
+          "rationale": "AE2 network cable"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id contains 'brown'"
+        },
+        "primary_uses": {
+          "values": [
+            "Connecting AE2 network components"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use in building ME networks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building AE2 networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:brown_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_dense_cable",
+          "rationale": "AE2 dense cable"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id contains 'brown'"
+        },
+        "primary_uses": {
+          "values": [
+            "High-density AE2 network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "used for dense cable runs"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building larger networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_dense_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:brown_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:glass_cable",
+          "rationale": "AE2 glass cable"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id contains 'brown'"
+        },
+        "primary_uses": {
+          "values": [
+            "Transparent AE2 network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "used for visible cable runs"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:glass_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:brown_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to color cables via paint applicator"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id contains 'brown'"
+        },
+        "primary_uses": {
+          "values": [
+            "Coloring AE2 cables (glowing)"
+          ],
+          "signal": "inferred",
+          "rationale": "applies color with glow effect"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when recoloring networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 consumable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        }
+      }
+    },
+    "ae2:brown_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "tag ae2:paint_balls",
+          "rationale": "used to color cables"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id contains 'brown'"
+        },
+        "primary_uses": {
+          "values": [
+            "Coloring AE2 cables"
+          ],
+          "signal": "inferred",
+          "rationale": "applies color to network cables"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when recoloring networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 consumable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        }
+      }
+    },
+    "ae2:brown_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_cable",
+          "rationale": "AE2 smart cable"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id contains 'brown'"
+        },
+        "primary_uses": {
+          "values": [
+            "Smart AE2 network connections with channel display"
+          ],
+          "signal": "inferred",
+          "rationale": "used for networks requiring channel monitoring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building advanced networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:brown_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_dense_cable",
+          "rationale": "AE2 smart dense cable"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "evidence": "id contains 'brown'"
+        },
+        "primary_uses": {
+          "values": [
+            "High-density smart AE2 network connections"
+          ],
+          "signal": "inferred",
+          "rationale": "used for dense networks with channel monitoring"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building large networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_dense_cable",
+          "rationale": "part of AE2 cable network"
+        }
+      }
+    },
+    "ae2:cable_anchor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "used to attach cables to walls"
+        },
+        "primary_uses": {
+          "values": [
+            "Securing cables to walls"
+          ],
+          "signal": "inferred",
+          "rationale": "allows cable placement on non-cable blocks"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only needed for specific placements"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        }
+      }
+    },
+    "ae2:cable_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "base block for AE2 network parts"
+        },
+        "primary_uses": {
+          "values": [
+            "Placing AE2 network components (interfaces, etc.)"
+          ],
+          "signal": "inferred",
+          "rationale": "foundation for network parts"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when building networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "part of AE2 network infrastructure"
+        }
+      }
+    },
+    "ae2:cable_energy_acceptor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "connects external power to AE2 network"
+        },
+        "primary_uses": {
+          "values": [
+            "Feeding external energy into ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "converts RF/FE to AE"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of AE2 energy subsystem"
+        }
+      }
+    },
+    "ae2:cable_interface": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "network component for item storage/request"
+        },
+        "primary_uses": {
+          "values": [
+            "Requesting items from ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "pushes/pulls items for machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as needed for automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "part of AE2 storage subsystem"
+        }
+      }
+    },
+    "ae2:cable_pattern_provider": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "network component for autocrafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Providing autocrafting patterns to machines"
+          ],
+          "signal": "inferred",
+          "rationale": "enables automated crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as needed for autocrafting setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "part of AE2 storage/autocrafting subsystem"
+        }
+      }
+    },
+    "ae2:calculation_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "used as crafting component for AE2 devices"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting AE2 components (buses, terminals, etc.)"
+          ],
+          "signal": "inferred",
+          "rationale": "key ingredient in many AE2 recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in inventory for crafting runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        }
+      }
+    },
+    "ae2:calculation_processor_press": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "evidence": "tag ae2:inscriber_presses",
+          "rationale": "press used in inscriber to make processors"
+        },
+        "primary_uses": {
+          "values": [
+            "Pressing calculation processors in Inscriber"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in inscriber as a mold"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only one needed per setup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "container_state": {
+          "values": [
+            "slot:reusable_mold"
+          ],
+          "signal": "inferred",
+          "rationale": "press is reusable in inscriber"
+        }
+      }
+    },
+    "ae2:capacity_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to buses to increase capacity"
+        },
+        "primary_uses": {
+          "values": [
+            "Increasing stack capacity of AE2 buses"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades import/export bus capacity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted and stored for bus upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common AE2 upgrade"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        }
+      }
+    },
+    "ae2:cell_component_16k": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component used to craft 16k storage cells"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting 16k ME storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "required for making storage cell of that tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for cell crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "part of AE2 cell component family"
+        }
+      }
+    },
+    "ae2:cell_component_1k": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component used to craft 1k storage cells"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting 1k ME storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "required for making base storage cell"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for cell crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "part of AE2 cell component family"
+        }
+      }
+    },
+    "ae2:cell_component_256k": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component used to craft 256k storage cells"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting 256k ME storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "required for making high-capacity cell"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept for cell crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "all AE2 items stored together"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:cell"
+          ],
+          "signal": "inferred",
+          "rationale": "part of AE2 cell component family"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

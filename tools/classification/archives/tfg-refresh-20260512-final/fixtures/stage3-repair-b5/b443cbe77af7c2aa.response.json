@@ -1,0 +1,57 @@
+{
+  "items": {
+    "tfg:armor_stand_arms": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Player places armor stand to display armor sets; home decor"
+        },
+        "primary_uses": {
+          "values": [
+            "Display armor and tools for decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as a mannequin to show off gear"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and left in base; not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Easy to craft, widely available"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting_shapeless recipe output",
+          "rationale": "No loot sources; only crafted from armor stand"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is decorating base with armor displays"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other furniture blocks like regular armor stands"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

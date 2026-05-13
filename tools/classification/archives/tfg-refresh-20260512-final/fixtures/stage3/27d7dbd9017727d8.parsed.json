@@ -1,0 +1,1015 @@
+{
+  "items": {
+    "ad_astra:ostrum_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Pipe for fluid transport in mechanical networks"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Made from ostrum metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport fluids in Ad Astra networks"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid pipe item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building piping systems"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component highlights rarity common",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport is logistics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:fluid"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of Ad Astra fluid transport subsystem"
+        }
+      }
+    },
+    "ad_astra:ostrum_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Ingot form, used in crafting"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern",
+          "evidence": "id and tags",
+          "rationale": "Ostrum metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ostrum tools, armor, machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary crafting material for Mars tier"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing or crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component highlights rarity common",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "Stored with ingots for compact storage"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:mars"
+          ],
+          "signal": "pattern",
+          "evidence": "guide page mentions Mars",
+          "rationale": "Ostrum is the key material from Mars progression"
+        }
+      }
+    },
+    "ad_astra:ostrum_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Nugget form, crafting component"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern",
+          "rationale": "Ostrum metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ostrum ingots or small recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Small denomination metal"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used less often than ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "Stored with nuggets"
+        }
+      }
+    },
+    "ad_astra:ostrum_panel": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative building block variant"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Ostrum metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building with ostrum blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block family"
+        }
+      }
+    },
+    "ad_astra:ostrum_pillar": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar variant"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Ostrum metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building with ostrum pillars"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block family"
+        }
+      }
+    },
+    "ad_astra:ostrum_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Plate form, used in crafting"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "pattern",
+          "rationale": "Ostrum metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced ostrum items",
+            "Making double plates and pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate plate material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_sheets",
+          "rationale": "Stored with sheets"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:mars"
+          ],
+          "signal": "inferred",
+          "rationale": "Ostrum plate is from Mars tier"
+        }
+      }
+    },
+    "ad_astra:ostrum_plateblock": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative block variant"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Ostrum metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building with ostrum plateblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block family"
+        }
+      }
+    },
+    "ad_astra:ostrum_plating": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative plating block"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Ostrum metal block"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative building with ostrum plating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for aesthetic construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block family"
+        }
+      }
+    },
+    "ad_astra:ostrum_plating_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "Button is a redstone trigger"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Made from ostrum plating"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone wiring and activation"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard button functionality"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building redstone circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "ad_astra:ostrum_plating_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "Pressure plate is a redstone component"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Made from ostrum plating"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone pressure activation"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard pressure plate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "ad_astra:ostrum_plating_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "Slab is a building block"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Made from ostrum plating"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with ostrum slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard slab functionality"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "ad_astra:ostrum_plating_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "Stairs are building blocks"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Made from ostrum plating"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with ostrum stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "ad_astra:ostrum_sliding_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door used as building envelope"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Made from ostrum"
+        },
+        "primary_uses": {
+          "values": [
+            "Airtight doors for space bases"
+          ],
+          "signal": "inferred",
+          "rationale": "Sliding door that seals oxygen"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "ad_astra:ostrum_tank": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Rocket component crafted into booster"
+        },
+        "material_family": {
+          "value": "ostrum",
+          "signal": "inferred",
+          "rationale": "Made from ostrum"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting ostrum rocket boosters"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of rocket construction"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when building rockets"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:tier_2_rocket"
+          ],
+          "signal": "inferred",
+          "rationale": "Ostrum tank used in tier 2 rocket"
+        }
+      }
+    },
+    "ad_astra:oxygen_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid bucket used to provide oxygen"
+        },
+        "primary_uses": {
+          "values": [
+            "Filling oxygen systems",
+            "Refilling space suit"
+          ],
+          "signal": "inferred",
+          "rationale": "Portable oxygen supply"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when exploring space"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for space exploration oxygen"
+        },
+        "workflow": {
+          "values": [
+            "ad_astra:oxygen"
+          ],
+          "signal": "pattern",
+          "evidence": "guide page mentions oxygen extraction",
+          "rationale": "Part of oxygen workflow"
+        },
+        "used_at": {
+          "values": [
+            "ad_astra:oxygen_loading"
+          ],
+          "signal": "pattern",
+          "evidence": "guide page mentions oxygen loader",
+          "rationale": "Used to fill oxygen into tanks/suit"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:oxygen"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of oxygen subsystem"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with breathable air"
+        }
+      }
+    },
+    "ad_astra:oxygen_distributor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine that distributes oxygen in sealed rooms"
+        },
+        "primary_uses": {
+          "values": [
+            "Supplying oxygen to sealed rooms"
+          ],
+          "signal": "inferred",
+          "rationale": "Creates breathable environments"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Oxygen distribution is logistics"
+        },
+        "workflow": {
+          "values": [
+            "ad_astra:oxygen"
+          ],
+          "signal": "pattern",
+          "evidence": "advancement 'Take a Deep Breath'",
+          "rationale": "Key part of oxygen workflow"
+        },
+        "used_at": {
+          "values": [
+            "ad_astra:oxygen/distributor"
+          ],
+          "signal": "pattern",
+          "evidence": "guide page reference",
+          "rationale": "The distributor block itself"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:oxygen"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of oxygen subsystem"
+        }
+      }
+    },
+    "ad_astra:oxygen_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component used to craft space suit"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting space suit"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of space suit recipe"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when crafting space suit"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        }
+      }
+    },
+    "ad_astra:oxygen_loader": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine that generates oxygen from water"
+        },
+        "primary_uses": {
+          "values": [
+            "Generating oxygen from water"
+          ],
+          "signal": "inferred",
+          "rationale": "Converts water to breathable air"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Oxygen generation is logistics"
+        },
+        "workflow": {
+          "values": [
+            "ad_astra:oxygen"
+          ],
+          "signal": "pattern",
+          "evidence": "guide page mentions oxygen loader",
+          "rationale": "Central to oxygen workflow"
+        },
+        "used_at": {
+          "values": [
+            "ad_astra:oxygen_loading"
+          ],
+          "signal": "pattern",
+          "rationale": "The loader station"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:oxygen"
+          ],
+          "signal": "pattern",
+          "rationale": "Part of oxygen subsystem"
+        }
+      }
+    },
+    "ad_astra:oxygen_sensor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block that detects oxygen presence"
+        },
+        "primary_uses": {
+          "values": [
+            "Detecting oxygen for redstone output"
+          ],
+          "signal": "inferred",
+          "rationale": "Environmental sensor"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "workflow": {
+          "values": [
+            "ad_astra:oxygen"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in oxygen management"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ad_astra:oxygen"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of oxygen subsystem"
+        }
+      }
+    },
+    "ad_astra:permafrost": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Natural stone block used for building"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "pattern",
+          "rationale": "Permafrost stone"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with permafrost",
+            "Crafting permafrost bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw stone material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when mining on Glacio"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/glacio_stone"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:stone_composition/ice",
+          "rationale": "Glacio stone storage group"
+        }
+      }
+    },
+    "ad_astra:permafrost_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "Slab variant"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "Made from permafrost bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with permafrost brick slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "ad_astra:permafrost_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "Stairs variant"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "Made from permafrost bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with permafrost brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Rock stair variant"
+        }
+      }
+    },
+    "ad_astra:permafrost_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "Wall variant"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "Made from permafrost bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with permafrost brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard wall"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    },
+    "ad_astra:permafrost_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "Brick block"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "Permafrost bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with permafrost bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:stone_bricks",
+          "rationale": "Brick storage group"
+        }
+      }
+    },
+    "ad_astra:permafrost_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative pillar variant"
+        },
+        "material_family": {
+          "value": "permafrost",
+          "signal": "inferred",
+          "rationale": "Permafrost stone"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with permafrost pillars"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic pillar"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity common"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block family"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

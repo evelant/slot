@@ -1,0 +1,1130 @@
+{
+  "items": {
+    "minecraft:pitcher_pod": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Seed planted to grow pitcher plants; stored with crops."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when planting, not everyday."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for planting crops."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "pattern",
+          "evidence": "Creative tab natural_blocks + tag crops",
+          "rationale": "Players store seeds together."
+        },
+        "primary_uses": {
+          "values": [
+            "Plant to grow pitcher plants"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use is planting."
+        }
+      }
+    },
+    "minecraft:player_head": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed as decoration, no UI or building use."
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "Data-driven rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for display."
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative display head"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is decoration."
+        }
+      }
+    },
+    "minecraft:plenty_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "named",
+          "evidence": "Disambiguation rule: pottery sherds are curiosity",
+          "rationale": "Collected archeology set, not crafting stock."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected occasionally during exploration."
+        },
+        "primary_uses": {
+          "values": [
+            "Combine to craft decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in pot crafting."
+        }
+      }
+    },
+    "minecraft:podzol": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Soil block, placed as terrain or for farming."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during terraforming."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for planting or terrain shaping."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "pattern",
+          "evidence": "Creative tab natural_blocks + dirt-like block",
+          "rationale": "Stored with dirt and soil blocks."
+        },
+        "primary_uses": {
+          "values": [
+            "Soil for planting",
+            "Terrain block"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main uses."
+        }
+      }
+    },
+    "minecraft:pointed_dripstone": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Cave stalactite, collected and used decoratively."
+        },
+        "material_family": {
+          "value": "dripstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family from id",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected occasionally during caving."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "primary_uses": {
+          "values": [
+            "Cave decoration",
+            "Craft dripstone blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Two main uses."
+        }
+      }
+    },
+    "minecraft:poisonous_potato": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible despite poison; player might eat in emergency."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Usually avoided, not carried often."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Can be eaten for food (risky)."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Uncooked potato."
+        },
+        "primary_uses": {
+          "values": [
+            "Risky food source",
+            "Compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible or compostable."
+        }
+      }
+    },
+    "minecraft:polar_bear_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "named",
+          "evidence": "Disambiguation rule: spawn eggs are curiosity",
+          "rationale": "Collected set, creative-only."
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "evidence": "Stage2 rule",
+          "rationale": "Spawn egg pattern."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Creative-only, rarely carried in survival."
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a polar bear"
+          ],
+          "signal": "inferred",
+          "rationale": "Single use."
+        }
+      }
+    },
+    "minecraft:polished_andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone block used for building."
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "evidence": "id prefix polished_andesite",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building projects."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfc:igneous_extrusive_items",
+          "rationale": "Stored with igneous extrusive blocks."
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is building."
+        }
+      }
+    },
+    "minecraft:polished_andesite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of building stone."
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items",
+            "pack:tfg/slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags and form",
+          "rationale": "Stored with andesite blocks or with slabs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building slab for floors/stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab use."
+        }
+      }
+    },
+    "minecraft:polished_andesite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant."
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items",
+            "pack:tfg/stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags and form",
+          "rationale": "Stored with andesite blocks or with stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair use."
+        }
+      }
+    },
+    "minecraft:polished_basalt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Polished stone block."
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "evidence": "id polished_basalt",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/basalt",
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags tfc:igneous_extrusive_items and tfg:stone_types/basalt",
+          "rationale": "Stored with basalt or igneous extrusive."
+        },
+        "primary_uses": {
+          "values": [
+            "Building with polished basalt"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Polished stone block."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "evidence": "id polished_blackstone",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "primary_uses": {
+          "values": [
+            "Building with polished pyroxenite"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick slab."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/slabs",
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags tfg:brick_slabs and form slab",
+          "rationale": "Stored with slabs or brick slabs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building brick slab"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick stairs."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "Form stairs",
+          "rationale": "Stored with stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building brick staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick wall."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/walls",
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags tfg:brick_walls and form wall",
+          "rationale": "Stored with walls or brick walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building brick wall"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick block."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags tfg:brick_index and forge:stone_bricks",
+          "rationale": "Stored with bricks."
+        },
+        "primary_uses": {
+          "values": [
+            "Building with pyroxenite bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Button is a redstone trigger, not building."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for redstone wiring."
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone signal trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "Button use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Pressure plate is a redstone switch."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for redstone wiring."
+        },
+        "primary_uses": {
+          "values": [
+            "Player-actuated redstone switch"
+          ],
+          "signal": "inferred",
+          "rationale": "Pressure plate use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab of polished stone."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_slabs",
+            "pack:tfg/slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags tfg:rock_slabs and form slab",
+          "rationale": "Stored with rock slabs or slabs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building slab"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs of polished stone."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs",
+            "pack:tfg/stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags tfg:rock_stairs and form stairs",
+          "rationale": "Stored with rock stairs or stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair use."
+        }
+      }
+    },
+    "minecraft:polished_blackstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall of polished stone."
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_walls",
+            "pack:tfg/walls"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags tfg:rock_walls and form wall",
+          "rationale": "Stored with rock walls or walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building wall"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall use."
+        }
+      }
+    },
+    "minecraft:polished_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Polished stone block."
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "evidence": "id polished_deepslate",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/deepslate",
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags tfg:stone_composition/metamorphic and create:stone_types/deepslate",
+          "rationale": "Stored with deepslate or metamorphic blocks."
+        },
+        "primary_uses": {
+          "values": [
+            "Building with polished migmatite"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use."
+        }
+      }
+    },
+    "minecraft:polished_deepslate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab of polished stone."
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_slabs",
+            "pack:tfg/slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags and form slab",
+          "rationale": "Stored with metamorphic blocks, rock slabs, or slabs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building slab"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab use."
+        }
+      }
+    },
+    "minecraft:polished_deepslate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs of polished stone."
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_stairs",
+            "pack:tfg/stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags and form stairs",
+          "rationale": "Stored with metamorphic blocks, rock stairs, or stairs."
+        },
+        "primary_uses": {
+          "values": [
+            "Building staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair use."
+        }
+      }
+    },
+    "minecraft:polished_deepslate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall of polished stone."
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "named",
+          "evidence": "Stage2 material_family",
+          "rationale": "Derived from id."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "Data-driven rarity."
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for construction."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items",
+            "pack:tfg/rock_walls",
+            "pack:tfg/walls"
+          ],
+          "signal": "pattern",
+          "evidence": "Tags and form wall",
+          "rationale": "Stored with metamorphic blocks, rock walls, or walls."
+        },
+        "primary_uses": {
+          "values": [
+            "Building wall"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall use."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "minecraft:polished_blackstone",
+      "facet": "organization_group",
+      "label": "Blackstone Blocks",
+      "proposed_id": "pack:tfg/blackstone",
+      "rationale": "Existing vocab has buckets for basalt, deepslate, etc. Missing bucket for blackstone-based blocks.",
+      "evidence": "Item is polished blackstone, part of blackstone family."
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1205 @@
+{
+  "items": {
+    "rnr:wood/shingles/hickory_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "evidence": "id contains hickory",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/ipe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_ipe",
+          "signal": "pattern",
+          "evidence": "id contains ipe",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Base roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot source, used in crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/ipe_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof slab used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_ipe",
+          "signal": "pattern",
+          "evidence": "id contains ipe",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for roof details"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/ipe_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_ipe",
+          "signal": "pattern",
+          "evidence": "id contains ipe",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/ironwood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_ironwood",
+          "signal": "pattern",
+          "evidence": "id contains ironwood",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Base roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot source, used in crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/ironwood_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof slab used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_ironwood",
+          "signal": "pattern",
+          "evidence": "id contains ironwood",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for roof details"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/ironwood_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_ironwood",
+          "signal": "pattern",
+          "evidence": "id contains ironwood",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/kapok": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "evidence": "id contains kapok",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Base roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples present",
+          "rationale": "Crafted, but has loot table"
+        }
+      }
+    },
+    "rnr:wood/shingles/kapok_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof slab used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "evidence": "id contains kapok",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for roof details"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/kapok_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "evidence": "id contains kapok",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/mahogany": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "evidence": "id contains mahogany",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Base roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot source, used in crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/mahogany_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof slab used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "evidence": "id contains mahogany",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for roof details"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/mahogany_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "evidence": "id contains mahogany",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/mangrove": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "evidence": "id contains mangrove",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Base roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples present",
+          "rationale": "Crafted, but has loot table"
+        }
+      }
+    },
+    "rnr:wood/shingles/mangrove_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof slab used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "evidence": "id contains mangrove",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for roof details"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/mangrove_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "evidence": "id contains mangrove",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/maple": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "evidence": "id contains maple",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Base roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples present",
+          "rationale": "Crafted, but has loot table"
+        }
+      }
+    },
+    "rnr:wood/shingles/maple_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof slab used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "evidence": "id contains maple",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for roof details"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/maple_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_maple",
+          "signal": "pattern",
+          "evidence": "id contains maple",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/oak": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "pattern",
+          "evidence": "id contains oak",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Base roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples present",
+          "rationale": "Crafted, but has loot table"
+        }
+      }
+    },
+    "rnr:wood/shingles/oak_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof slab used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "pattern",
+          "evidence": "id contains oak",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for roof details"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/oak_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "pattern",
+          "evidence": "id contains oak",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/palm": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof block used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Base roof block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "loot_source_examples present",
+          "rationale": "Crafted, but has loot table"
+        }
+      }
+    },
+    "rnr:wood/shingles/palm_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof slab used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant for roof details"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    },
+    "rnr:wood/shingles/palm_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Roof stairs used for building roofs"
+        },
+        "material_family": {
+          "value": "wood_palm",
+          "signal": "pattern",
+          "evidence": "id contains palm",
+          "rationale": "Wood type from item id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once during building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity common",
+          "rationale": "Common crafted block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for roof construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building shingled roof stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant for roof slopes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_production_by_type present",
+          "rationale": "Crafted via chisel and crafting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

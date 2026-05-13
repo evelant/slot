@@ -1,0 +1,1317 @@
+{
+  "items": {
+    "tfg:rod_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Mold used for casting metal rods"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "Fired clay mold"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "Component rarity",
+          "rationale": "Common rarity in component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting rods"
+        },
+        "primary_uses": [
+          "Cast metal rods",
+          "Used in filling recipes"
+        ],
+        "origin": {
+          "value": "crafted_only",
+          "signal": "named",
+          "evidence": "Smelting recipe",
+          "rationale": "Smelted from clay mold"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfcchannelcasting:accepted_in_mold_table",
+          "rationale": "Used in casting workflow"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Mold is placed as input for filling"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag defines mold table acceptance",
+          "rationale": "Used at casting table"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:fill"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed on casting table, filled with metal"
+        },
+        "container_state": {
+          "values": [
+            "slot:reusable_mold"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfc:fired_molds",
+          "rationale": "Fired mold that can be reused"
+        }
+      }
+    },
+    "tfg:rooted_dirt/alfisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Dirt block used for terrain and building"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "inferred",
+          "rationale": "Type of dirt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building/terraforming"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dirt",
+            "Soil for planting"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt block used in building and farming"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from world and crafted via mixing"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt block family"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        }
+      }
+    },
+    "tfg:rooted_dirt/mollisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Dirt block used for terrain and building"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "inferred",
+          "rationale": "Type of dirt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building/terraforming"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dirt",
+            "Soil for planting"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt block used in building and farming"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from world and crafted via mixing"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt block family"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        }
+      }
+    },
+    "tfg:rooted_dirt/oxisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Dirt block used for terrain and building"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "inferred",
+          "rationale": "Type of dirt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building/terraforming"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dirt",
+            "Soil for planting"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt block used in building and farming"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from world and crafted via mixing"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt block family"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        }
+      }
+    },
+    "tfg:rooted_dirt/podzol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Dirt block used for terrain and building"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "inferred",
+          "rationale": "Type of dirt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building/terraforming"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with dirt",
+            "Soil for planting"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt block used in building and farming"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from world and crafted via mixing"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and farming"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt block family"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        }
+      }
+    },
+    "tfg:rotten_voiding_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Machine cover component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for machine setups"
+        },
+        "primary_uses": {
+          "values": [
+            "Void rotten items on machines",
+            "Filter items"
+          ],
+          "signal": "inferred",
+          "rationale": "Cover that destroys rotten items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCE cover system"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Applied to machines"
+        }
+      }
+    },
+    "tfg:rough_endoplasmic_reticula": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Perishable food item with nutrition"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Expiring food, carried to eat soon"
+        },
+        "primary_uses": {
+          "values": [
+            "Eaten for nutrition",
+            "Might be used in cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Food item with expiry"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "Edible item"
+        }
+      }
+    },
+    "tfg:rough_silicon_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Dust form material"
+        },
+        "material_family": {
+          "value": "rough_silicon_carbide",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Rough silicon carbide material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during material processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into rough silicon carbide ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "Milling recipe",
+          "rationale": "Ingredient for ingot"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "pattern",
+          "evidence": "Produced by milling ingot",
+          "rationale": "No loot, crafted"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:dusts tag",
+          "rationale": "Dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Dusts held in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/impure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Impure dusts group"
+        }
+      }
+    },
+    "tfg:rough_silicon_carbide_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "Ingot form material"
+        },
+        "material_family": {
+          "value": "rough_silicon_carbide",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Rough silicon carbide material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during material processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Milled into rough silicon carbide dust",
+            "Used in advanced alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ingots tag",
+          "rationale": "Ingot form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingots held in bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:pileable_ingots tag",
+          "rationale": "Pileable ingots group"
+        }
+      }
+    },
+    "tfg:sample_rack": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Display rack for samples"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Display ore samples",
+            "Decorative storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Sample display block"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "pattern",
+          "evidence": "Crafting recipe",
+          "rationale": "Crafted shapeless"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as block"
+        }
+      }
+    },
+    "tfg:sand/fluorapatite/blue": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sand block used for building and crafting"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sand"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Blue colored sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Making concrete powder",
+            "Mixing mortar"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and crafting"
+        }
+      }
+    },
+    "tfg:sand/fluorapatite/brown": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sand block used for building and crafting"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sand"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Brown colored sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Making concrete powder",
+            "Mixing mortar"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and crafting"
+        }
+      }
+    },
+    "tfg:sand/fluorapatite/green": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sand block used for building and crafting"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sand"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Green colored sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Making concrete powder",
+            "Mixing mortar"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and crafting"
+        }
+      }
+    },
+    "tfg:sand/fluorapatite/orange": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sand block used for building and crafting"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sand"
+        },
+        "dye_color": {
+          "value": "orange",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Orange colored sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Making concrete powder",
+            "Mixing mortar"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and crafting"
+        }
+      }
+    },
+    "tfg:sand/fluorapatite/white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sand block used for building and crafting"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sand"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "White colored sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Making concrete powder",
+            "Mixing mortar"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and crafting"
+        }
+      }
+    },
+    "tfg:sand/fluorapatite/yellow": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sand block used for building and crafting"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sand"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Yellow colored sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building or crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Making concrete powder",
+            "Mixing mortar"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and crafting"
+        }
+      }
+    },
+    "tfg:sandstone/fluorapatite/blue": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Blue colored sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Decorative stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Sandstone block for construction"
+        }
+      }
+    },
+    "tfg:sandstone/fluorapatite/brown": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Brown colored sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Decorative stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Sandstone block for construction"
+        }
+      }
+    },
+    "tfg:sandstone/fluorapatite/green": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Green colored sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Decorative stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Sandstone block for construction"
+        }
+      }
+    },
+    "tfg:sandstone/fluorapatite/orange": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "orange",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Orange colored sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Decorative stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Sandstone block for construction"
+        }
+      }
+    },
+    "tfg:sandstone/fluorapatite/white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "White colored sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Decorative stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Sandstone block for construction"
+        }
+      }
+    },
+    "tfg:sandstone/fluorapatite/yellow": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Yellow colored sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Decorative stone"
+          ],
+          "signal": "inferred",
+          "rationale": "Sandstone block for construction"
+        }
+      }
+    },
+    "tfg:sandstone/raw/fluorapatite/blue": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Raw sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Blue colored raw sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Can be cut into sandstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw stone for construction"
+        }
+      }
+    },
+    "tfg:sandstone/raw/fluorapatite/brown": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Raw sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Brown colored raw sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Can be cut into sandstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw stone for construction"
+        }
+      }
+    },
+    "tfg:sandstone/raw/fluorapatite/green": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Raw sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Green colored raw sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Can be cut into sandstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw stone for construction"
+        }
+      }
+    },
+    "tfg:sandstone/raw/fluorapatite/orange": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Raw sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "orange",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Orange colored raw sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Can be cut into sandstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw stone for construction"
+        }
+      }
+    },
+    "tfg:sandstone/raw/fluorapatite/white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Raw sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "White colored raw sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Can be cut into sandstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw stone for construction"
+        }
+      }
+    },
+    "tfg:sandstone/raw/fluorapatite/yellow": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Raw sandstone building block"
+        },
+        "material_family": {
+          "value": "fluorapatite",
+          "signal": "named",
+          "evidence": "Display name",
+          "rationale": "Fluorapatite sandstone"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "named",
+          "evidence": "Item name",
+          "rationale": "Yellow colored raw sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building block",
+            "Can be cut into sandstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw stone for construction"
+        }
+      }
+    }
+  },
+  "corrections": [
+    {
+      "item": "tfg:rooted_dirt/alfisol",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": [
+        "overworld_surface",
+        "crafted_only"
+      ],
+      "rationale": "Item has block loot table, also craftable via mixing",
+      "confidence": 1
+    },
+    {
+      "item": "tfg:rooted_dirt/mollisol",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": [
+        "overworld_surface",
+        "crafted_only"
+      ],
+      "rationale": "Item has block loot table, also craftable via mixing",
+      "confidence": 1
+    },
+    {
+      "item": "tfg:rooted_dirt/oxisol",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": [
+        "overworld_surface",
+        "crafted_only"
+      ],
+      "rationale": "Item has block loot table, also craftable via mixing",
+      "confidence": 1
+    },
+    {
+      "item": "tfg:rooted_dirt/podzol",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": [
+        "overworld_surface",
+        "crafted_only"
+      ],
+      "rationale": "Item has block loot table, also craftable via mixing",
+      "confidence": 1
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "fill_ins": []
+}

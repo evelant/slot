@@ -1,0 +1,2151 @@
+{
+  "items": {
+    "tfc:food/onion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item, eaten or used in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.minecaft:rarity=common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming or cooking, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "tagged as vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "evidence": "not cooked",
+          "rationale": "raw food item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating",
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked in pot or on fire"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot and campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "common storage for vegetables"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten raw"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eaten raw",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for onion"
+        }
+      }
+    },
+    "tfc:food/orange": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when foraging or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "tagged as fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh and used in jam etc."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw fruit"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "inferred",
+          "rationale": "used in jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot for jam"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh"
+        },
+        "primary_uses": {
+          "values": [
+            "eaten fresh",
+            "used in jam",
+            "juicing"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit uses"
+        }
+      }
+    },
+    "tfc:food/peach": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when foraging or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "tagged as fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh and used in jam etc."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw fruit"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "inferred",
+          "rationale": "used in jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot for jam"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh"
+        },
+        "primary_uses": {
+          "values": [
+            "eaten fresh",
+            "used in jam",
+            "juicing"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit uses"
+        }
+      }
+    },
+    "tfc:food/peafowl": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried after hunting, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked before eating"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "tagged as meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw meat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "drops from peafowl entity"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked or smoked"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in various cooking stations"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking base",
+            "source of protein",
+            "can be salted"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for raw meat"
+        }
+      }
+    },
+    "tfc:food/pheasant": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried after hunting, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked before eating"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "tagged as meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw meat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "drops from pheasant entity"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked or smoked"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in various cooking stations"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking base",
+            "source of protein",
+            "can be salted"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for raw meat"
+        }
+      }
+    },
+    "tfc:food/plum": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when foraging or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "tagged as fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh and used in jam etc."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw fruit"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "inferred",
+          "rationale": "used in jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot for jam"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh"
+        },
+        "primary_uses": {
+          "values": [
+            "eaten fresh",
+            "used in jam",
+            "juicing"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit uses"
+        }
+      }
+    },
+    "tfc:food/pork": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried after hunting, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked before eating"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "tagged as meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw meat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "drops from boar and pig entities"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked or smoked"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in various cooking stations"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking base",
+            "source of protein",
+            "can be salted"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for raw pork"
+        }
+      }
+    },
+    "tfc:food/potato": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "tagged as vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw vegetable"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating",
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "boiled in pot or cooked"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot and campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "common vegetable storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten raw but usually cooked"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eaten raw",
+            "french fries base"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for potato"
+        }
+      }
+    },
+    "tfc:food/protein_salad": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "prepared food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "portable meal, often carried for expeditions"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking, eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared dish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural source, made from ingredients"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "primary_uses": {
+          "values": [
+            "ready meal",
+            "satiates hunger",
+            "nutritious"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for salad"
+        }
+      }
+    },
+    "tfc:food/protein_soup": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "prepared food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "portable meal with warmth buff"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking, eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared dish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat, provides warming effect"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "soup is cooked"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural source, made from ingredients"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "primary_uses": {
+          "values": [
+            "ready meal",
+            "provides warmth",
+            "satiates hunger"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for soup"
+        }
+      }
+    },
+    "tfc:food/pumpkin_chunks": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when harvesting or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit",
+            "slot:vegetable"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "tagged as fruit, but used like vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient",
+            "slot:meal_component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in recipes like pie, soup"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw chunks"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot",
+            "tfc:pot_jam"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot for soup or jam"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked in pot or on fire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged as fruit, stored with fruits"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten raw"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eaten raw",
+            "pie filling"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for pumpkin"
+        }
+      }
+    },
+    "tfc:food/quail": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried after hunting, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked before eating"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "tagged as meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw meat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "drops from quail entity"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked or smoked"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in various cooking stations"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking base",
+            "source of protein",
+            "can be salted"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for raw quail"
+        }
+      }
+    },
+    "tfc:food/rabbit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried after hunting, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked before eating"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "tagged as meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw meat"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "drops from rabbit entity"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked or smoked"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking",
+            "tfc:smoking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in various cooking stations"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking base",
+            "source of protein",
+            "can be salted"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for raw rabbit"
+        }
+      }
+    },
+    "tfc:food/rainbow_trout": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried after fishing, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked before eating"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:fishes",
+          "rationale": "tagged as fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw fish"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "drops from rainbow trout entity"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked before eating"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked in pot or on campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat/fish storage"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking base",
+            "source of protein",
+            "fishing harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for raw fish"
+        }
+      }
+    },
+    "tfc:food/raspberry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when foraging or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "tagged as fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh and used in jam etc."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw fruit"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "inferred",
+          "rationale": "used in jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot for jam"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh"
+        },
+        "primary_uses": {
+          "values": [
+            "eaten fresh",
+            "used in jam",
+            "juicing"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit uses"
+        }
+      }
+    },
+    "tfc:food/red_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when foraging or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "tagged as fruit"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh and used in jam etc."
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw fruit"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pot_jam"
+          ],
+          "signal": "inferred",
+          "rationale": "used in jam making"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot for jam"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten fresh"
+        },
+        "primary_uses": {
+          "values": [
+            "eaten fresh",
+            "used in jam",
+            "juicing"
+          ],
+          "signal": "inferred",
+          "rationale": "common fruit uses"
+        }
+      }
+    },
+    "tfc:food/red_bell_pepper": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming or cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "tagged as vegetable"
+        },
+        "food_use": {
+          "values": [
+            "slot:meal_component",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as ingredient in meals"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw vegetable"
+        },
+        "workflow": {
+          "values": [
+            "tfc:heating",
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "boiled in pot or cooked"
+        },
+        "used_at": {
+          "values": [
+            "tfc:pot",
+            "minecraft:campfire_cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in pot and campfire"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "common vegetable storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "can be eaten raw"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking ingredient",
+            "eaten raw",
+            "pizza topping"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for bell pepper"
+        }
+      }
+    },
+    "tfc:food/rice": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming, but not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking recipes"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/grains not present but it's a grain",
+          "rationale": "grain crop"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make flour, cooked as food"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw grain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested from crops, no natural worldgen"
+        },
+        "workflow": {
+          "values": [
+            "tfc:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "used in bread making (flour)"
+        },
+        "used_at": {
+          "values": [
+            "tfc:quern",
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "ground in quern or cooked in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into flour",
+            "cooked as grain",
+            "animal feed"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for rice"
+        }
+      }
+    },
+    "tfc:food/rice_bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "TFC food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple food, often carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "baked, used in sandwiches"
+        },
+        "food_category": {
+          "values": [
+            "slot:bread"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/breads",
+          "rationale": "tagged as bread"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly or used for sandwiches"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "pattern",
+          "rationale": "baked bread"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "baked from dough"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "primary_uses": {
+          "values": [
+            "sandwich base",
+            "eaten alone",
+            "source of grain"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for bread"
+        }
+      }
+    },
+    "tfc:food/rice_bread_jam_sandwich": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "prepared food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "portable meal"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking, eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared sandwich"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made from bread and jam"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "primary_uses": {
+          "values": [
+            "ready meal",
+            "portable food",
+            "sweet snack"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for jam sandwich"
+        }
+      }
+    },
+    "tfc:food/rice_bread_sandwich": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "prepared food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "portable meal"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "result of cooking, eaten directly"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared sandwich"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "ready to eat"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made from bread and fillings"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food storage"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:eat"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten directly"
+        },
+        "primary_uses": {
+          "values": [
+            "ready meal",
+            "portable food",
+            "savory sandwich"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for sandwich"
+        }
+      }
+    },
+    "tfc:food/rice_dough": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "intermediate food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in kitchen, not carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in baking"
+        },
+        "food_category": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/dough",
+          "rationale": "tagged as dough"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used to make bread"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/dough",
+          "rationale": "dough state"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made from flour and water"
+        },
+        "workflow": {
+          "values": [
+            "tfc:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in bread making"
+        },
+        "used_at": {
+          "values": [
+            "firmalife:mixing_bowl",
+            "firmalife:oven"
+          ],
+          "signal": "inferred",
+          "rationale": "mixed and baked"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food storage"
+        },
+        "primary_uses": {
+          "values": [
+            "bread making",
+            "needs baking",
+            "flatbread base"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for dough"
+        }
+      }
+    },
+    "tfc:food/rice_flour": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "intermediate food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in bulk, not carried"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in baking and dough"
+        },
+        "food_category": {
+          "values": [
+            "slot:flour"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/flour",
+          "rationale": "tagged as flour"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in dough and bread"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:flour"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/flour",
+          "rationale": "flour state"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "ground from grain"
+        },
+        "workflow": {
+          "values": [
+            "tfc:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "used in bread making"
+        },
+        "used_at": {
+          "values": [
+            "firmalife:mixing_bowl"
+          ],
+          "signal": "inferred",
+          "rationale": "mixed into dough"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food storage"
+        },
+        "primary_uses": {
+          "values": [
+            "makes dough",
+            "thickener",
+            "bread ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses for flour"
+        }
+      }
+    },
+    "tfc:food/rice_grain": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "unprocessed grain"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming, but not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking and milling"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "named",
+          "evidence": "tag tfc:foods/grains",
+          "rationale": "tagged as grain"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into flour or cooked as grain"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw grain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested from crops, no natural worldgen"
+        },
+        "workflow": {
+          "values": [
+            "tfc:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into flour for bread"
+        },
+        "used_at": {
+          "values": [
+            "tfc:quern",
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "ground in quern or cooked in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into flour",
+            "cooked as grain",
+            "animal feed"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for rice grain"
+        }
+      }
+    },
+    "tfc:food/rye": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "unprocessed grain"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when farming, but not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking and milling"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "grain crop"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "milled into flour or cooked"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "pattern",
+          "rationale": "raw grain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested from crops, no natural worldgen"
+        },
+        "workflow": {
+          "values": [
+            "tfc:bread"
+          ],
+          "signal": "inferred",
+          "rationale": "ground into flour for bread"
+        },
+        "used_at": {
+          "values": [
+            "tfc:quern",
+            "tfc:pot"
+          ],
+          "signal": "inferred",
+          "rationale": "ground in quern or cooked in pot"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested crop"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into flour",
+            "cooked as grain",
+            "animal feed"
+          ],
+          "signal": "inferred",
+          "rationale": "common uses for rye"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

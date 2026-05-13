@@ -1,0 +1,512 @@
+{
+  "values": [
+    {
+      "id": "sns:steel",
+      "label": "Black Steel",
+      "state": "rejected",
+      "description": "Material id from Sacks 'N Such, not a broad progression gate in this pack.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "sns:recipes/crafting/crafting/metal/horseshoes/black_steel",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/sns/horseshoes",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:lunarians",
+      "label": "Lunarians",
+      "state": "rejected",
+      "description": "Mob/villager type, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:oxygen",
+      "label": "Oxygen",
+      "state": "accepted",
+      "description": "Prerequisite for space survival; requires oxygen loader and space suit to survive on moon/planets.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_first_launch/oxygen",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:nether",
+      "label": "The Nether...?",
+      "state": "accepted",
+      "description": "The Beneath dimension, a mid-to-late primitive age gate with new resources.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/categories/beneath",
+          "confidence": 0.7
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/beneath",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "createaddition:generating/rotational/force/using/electric/motors",
+      "label": "Generating Rotational Force using Electric Motors",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:better/fuel",
+      "label": "Better Fuel",
+      "state": "rejected",
+      "description": "Specific fuel type (cryo fuel), not a broad gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:fuel",
+      "label": "Fuel",
+      "state": "rejected",
+      "description": "Resource prerequisite for rocket launch, but not a progression stage itself.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:jet/suit",
+      "label": "Jet Suit",
+      "state": "rejected",
+      "description": "Armor item, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:your/first/rocket",
+      "label": "Your First Rocket",
+      "state": "accepted",
+      "description": "Crafting a Tier 1 rocket unlocks travel to the Moon and space exploration.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_first_launch/your_first_rocket",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:crankshafts",
+      "label": "Crankshafts",
+      "state": "rejected",
+      "description": "Mechanical component, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfc:firepit/and/grill",
+      "label": "Firepit And Grill",
+      "state": "rejected",
+      "description": "Cooking station, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfc:stainless/steel",
+      "label": "Stainless Steel",
+      "state": "rejected",
+      "description": "Specific alloy for greenhouses, not a broad material gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfc:what/is/the/beneath",
+      "label": "What is the Beneath?",
+      "state": "rejected",
+      "description": "Guide entry explaining the Beneath; the dimension gate is covered by tfc:nether.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "pack:tfg/luv",
+      "label": "chemical_elements",
+      "state": "rejected",
+      "description": "Quest chapter, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "createaddition:generating/electric/energy/using/an/alternator",
+      "label": "Generating Electric energy using an Alternator",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "createaddition:using/computercraft/to/control/an/electric/motor",
+      "label": "Using ComputerCraft to control an Electric Motor",
+      "state": "rejected",
+      "description": "Ponder tutorial, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:steel",
+      "label": "Black Steel",
+      "state": "rejected",
+      "description": "Scraping knife blades, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "tfcgroomer:steel",
+      "label": "Black Steel Grooming Station",
+      "state": "rejected",
+      "description": "Animal grooming station, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:netherite/space/suit",
+      "label": "Netherite Space Suit",
+      "state": "rejected",
+      "description": "Armor item, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "pack:tfg/lv",
+      "label": "chemical_elements",
+      "state": "rejected",
+      "description": "Quest chapter, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "advancedperipherals:nether",
+      "label": "Overpowered automata core",
+      "state": "rejected",
+      "description": "Turtle upgrade, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "advancedperipherals:overpowered/automata/core",
+      "label": "Overpowered automata core",
+      "state": "rejected",
+      "description": "Turtle upgrade, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:bronze",
+      "label": "Bismuth Bronze",
+      "state": "rejected",
+      "description": "Scraping knife blades, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "tfcgroomer:bronze",
+      "label": "Bismuth Bronze Grooming Station",
+      "state": "rejected",
+      "description": "Animal grooming station, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:preparing/to/launch",
+      "label": "Preparing to Launch",
+      "state": "rejected",
+      "description": "Guide entry about launch preparation, not a gate itself.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:proxima/centauri",
+      "label": "Proxima Centauri",
+      "state": "accepted",
+      "description": "Final destination gate requiring Tier 4 rocket, unlocks new solar system.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_hot_planets/proxima_centauri",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:solar/panel",
+      "label": "Solar Panel",
+      "state": "rejected",
+      "description": "Machine block, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:venus/and/mercury",
+      "label": "Venus and Mercury",
+      "state": "accepted",
+      "description": "Hot planet destinations requiring Tier 3 rocket and netherite space suit.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/surviving_mars/venus_and_mercury",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:fishing/nets",
+      "label": "Fishing Nets",
+      "state": "rejected",
+      "description": "Tool, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfc:flux",
+      "label": "Flux",
+      "state": "rejected",
+      "description": "Material, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "tfc:what/lies/beneath",
+      "label": "What Lies Beneath",
+      "state": "rejected",
+      "description": "Guide entry about the Beneath; dimension gate covered by tfc:nether.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:tier_1_rocket",
+      "label": "Tier 1 Rocket From Nasa Workbench",
+      "state": "rejected",
+      "description": "Redundant with 'your/first/rocket'; recipe advancement, not a distinct gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:tier_2_rocket",
+      "label": "Tier 2 Rocket From Nasa Workbench",
+      "state": "accepted",
+      "description": "Gate to Mars travel; requires desh materials.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:tier_2_rocket",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/iv",
+      "label": "ev__extreme_voltage",
+      "state": "rejected",
+      "description": "Quest chapter, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "pack:tfg/moon",
+      "label": "applied_energistics_2",
+      "state": "rejected",
+      "description": "Quest chapter, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "pack:tfg/mv",
+      "label": "chemical_elements",
+      "state": "rejected",
+      "description": "Quest chapter, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "pack:tfg/space",
+      "label": "Technological Help",
+      "state": "rejected",
+      "description": "Quest chapter group, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "pack:tfg/zpm",
+      "label": "luv__ludicrous_voltage",
+      "state": "rejected",
+      "description": "Quest chapter, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "tfc:bloomery",
+      "label": "Bloomery",
+      "state": "accepted",
+      "description": "Iron age gate; smelts iron ore into wrought iron via blooms.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/bloomery",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:tier_3_rocket",
+      "label": "Tier 3 Rocket From Nasa Workbench",
+      "state": "accepted",
+      "description": "Gate to Venus and Mercury; requires ostrum materials.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:tier_3_rocket",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:tier_4_rocket",
+      "label": "Tier 4 Rocket From Nasa Workbench",
+      "state": "accepted",
+      "description": "Gate to Proxima Centauri system; requires calorite materials.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:tier_4_rocket",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "createaddition:electric",
+      "label": "Electric",
+      "state": "rejected",
+      "description": "Ponder tag category, not a progression stage.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:surviving/mars",
+      "label": "Surviving Mars",
+      "state": "rejected",
+      "description": "Guide category, not a progression stage itself.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:the/first/launch",
+      "label": "The First Launch",
+      "state": "rejected",
+      "description": "Guide category, not a progression stage itself.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:the/moon",
+      "label": "The Moon",
+      "state": "accepted",
+      "description": "First extraterrestrial destination; unlocks desh and space station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/categories/the_moon",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:astronaut",
+      "label": "Astronaut",
+      "state": "rejected",
+      "description": "Advancement title for creating space suit, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:baby_s/first/rocket",
+      "label": "Baby's First Rocket",
+      "state": "rejected",
+      "description": "Advancement title for tier 1 rocket, redundant with 'your/first/rocket'.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:doom/slayer",
+      "label": "Doom Slayer",
+      "state": "rejected",
+      "description": "Advancement title for netherite space suit, not a progression gate.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": []
+    }
+  ]
+}

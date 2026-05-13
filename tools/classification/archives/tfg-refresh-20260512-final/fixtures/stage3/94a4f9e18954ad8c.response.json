@@ -1,0 +1,1123 @@
+{
+  "items": {
+    "gtceu:hv_sodium_battery": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries",
+          "rationale": "HV battery used as crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "HV battery for machines and tools",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Power source and ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries/hv",
+          "rationale": "HV component storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:batteries",
+          "rationale": "Battery subsystem"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_solar_panel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Cover that generates power, not a full machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates HV power from sunlight as cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes power generation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Produces energy from sun"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Solar panel is a cover attachment"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_steam_turbine": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed machine that generates power, has UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Generates power from steam"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes energy output"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation machine"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam turbine is a generator"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_super_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Opened to store items, massive capacity"
+        },
+        "primary_uses": {
+          "values": [
+            "Massive item storage (16M items)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for bulk storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/chests"
+          ],
+          "signal": "inferred",
+          "rationale": "Chest item, fits with other chests"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_super_tank": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Placed tank that stores fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "Massive fluid storage (16M mB)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip states capacity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Bulk fluid storage"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_thermal_centrifuge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Processing machine with UI for ore separation"
+        },
+        "primary_uses": {
+          "values": [
+            "Separates ores more precisely"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing activity"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_transformer_16a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power network component, no UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Transforms voltage between tiers (HV to EV etc.)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes transform"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV energy component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy network"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_transformer_1a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power network component, no UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Transforms voltage between tiers (HV to EV etc.)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes transform"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV energy component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy network"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_transformer_2a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power network component, no UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Transforms voltage between tiers (HV to EV etc.)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes transform"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV energy component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy network"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_transformer_4a": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Power network component, no UI for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Transforms voltage between tiers (HV to EV etc.)"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes transform"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV energy component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy network"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_ultimet_buzzsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/saws",
+          "rationale": "Crafting saw tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting saw for many recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "High crafting uses tooltip"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for crafting jobs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "pattern",
+          "evidence": "suffix (HV)",
+          "rationale": "HV voltage tier tool"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "HV in name",
+          "rationale": "HV tier tool"
+        }
+      }
+    },
+    "gtceu:hv_ultimet_chainsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag tfc:axes",
+          "rationale": "Axe tool for tree felling"
+        },
+        "primary_uses": {
+          "values": [
+            "Tree felling (chainsaw)",
+            "Silk harvest packed ice"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows lumberjack ability"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for wood harvesting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "pattern",
+          "evidence": "suffix (HV)",
+          "rationale": "HV voltage tier tool"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "HV in name",
+          "rationale": "HV tier tool"
+        }
+      }
+    },
+    "gtceu:hv_ultimet_drill": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/drills",
+          "rationale": "Mining drill tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining with 5x5x3 area",
+            "Places torches"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows AOE and spelunker"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Primary mining tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "pattern",
+          "evidence": "suffix (HV)",
+          "rationale": "HV voltage tier tool"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for mining blocks"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "HV in name",
+          "rationale": "HV tier tool"
+        }
+      }
+    },
+    "gtceu:hv_ultimet_screwdriver": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/screwdrivers",
+          "rationale": "Screwdriver tool for configuration"
+        },
+        "primary_uses": {
+          "values": [
+            "Adjusts covers and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes function"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for machine maintenance"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "pattern",
+          "evidence": "suffix (HV)",
+          "rationale": "HV voltage tier tool"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "HV in name",
+          "rationale": "HV tier tool"
+        }
+      }
+    },
+    "gtceu:hv_ultimet_wire_cutter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/wire_cutters",
+          "rationale": "Wire cutting tool in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Cuts wires and fine wires in recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "High crafting uses"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "pattern",
+          "evidence": "suffix (HV)",
+          "rationale": "HV voltage tier tool"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "HV in name",
+          "rationale": "HV tier tool"
+        }
+      }
+    },
+    "gtceu:hv_ultimet_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/wrenches",
+          "rationale": "Wrench tool for dismantling and rotating"
+        },
+        "primary_uses": {
+          "values": [
+            "Dismantles machines",
+            "Rotates blocks",
+            "Configures fluid/item mode"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip lists features"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for machine work"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "pattern",
+          "evidence": "suffix (HV)",
+          "rationale": "HV voltage tier tool"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "HV in name",
+          "rationale": "HV tier tool"
+        }
+      }
+    },
+    "gtceu:hv_voltage_coil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Advanced coil used in machine recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for HV machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says Advanced Coil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in bulk, carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:hv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "HV component material"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_wiremill": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine with UI for producing wires"
+        },
+        "primary_uses": {
+          "values": [
+            "Produces wires efficiently"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes function"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed machine, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated wire production"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hv_world_accelerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine that accelerates tick speed of nearby blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Accelerates tile entities or random ticks in area"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip describes modes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Speeds up machine processing"
+        },
+        "progression_stage": {
+          "values": [
+            "pack:tfg/hv"
+          ],
+          "signal": "pattern",
+          "evidence": "hv in id",
+          "rationale": "HV tier"
+        }
+      }
+    },
+    "gtceu:hydro_cracked_butadiene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket carrying gaseous fluid for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Carries hydro-cracked butadiene"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Filled bucket"
+        }
+      }
+    },
+    "gtceu:hydro_cracked_butane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket carrying gaseous fluid for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Carries hydro-cracked butane"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Filled bucket"
+        }
+      }
+    },
+    "gtceu:hydro_cracked_butene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket carrying gaseous fluid for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Carries hydro-cracked butene"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Filled bucket"
+        }
+      }
+    },
+    "gtceu:hydro_cracked_ethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket carrying gaseous fluid for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Carries hydro-cracked ethane"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Filled bucket"
+        }
+      }
+    },
+    "gtceu:hydro_cracked_ethylene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket carrying gaseous fluid for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Carries hydro-cracked ethylene"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Filled bucket"
+        }
+      }
+    },
+    "gtceu:hydro_cracked_propane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket carrying gaseous fluid for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Carries hydro-cracked propane"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when moving fluids"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Common item"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds fluid"
+        },
+        "container_state": {
+          "values": [
+            "filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Filled bucket"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

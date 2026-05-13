@@ -1,0 +1,1311 @@
+{
+  "items": {
+    "tfc:food/wheat_bread_sandwich": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Prepared sandwich eaten for nutrition"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "pattern",
+          "evidence": "id contains wheat_bread",
+          "rationale": "Bread base from wheat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried as meal, not everyday staple"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "Common food item"
+        },
+        "primary_uses": [
+          "Eat for nutrition"
+        ],
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Prepared via cooking workflow"
+        },
+        "food_category": {
+          "values": [
+            "slot:prepared_meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Sandwich is a prepared meal"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Bread is cooked"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "General food storage section"
+        }
+      }
+    },
+    "tfc:food/wheat_dough": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible ingredient stage"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "pattern",
+          "evidence": "id contains wheat_dough",
+          "rationale": "Wheat-based dough"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored as ingredient, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "Common food ingredient"
+        },
+        "primary_uses": [
+          "Bake into bread",
+          "Eat raw"
+        ],
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in baking workflows"
+        },
+        "food_category": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "Uncooked dough category"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:dough"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw dough state"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored with other food ingredients"
+        }
+      }
+    },
+    "tfc:food/wheat_flour": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Refined ingredient used in baking"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "pattern",
+          "evidence": "id contains wheat_flour",
+          "rationale": "Wheat flour"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in bulk, not hotbar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "Common milled product"
+        },
+        "primary_uses": [
+          "Bread and dough making",
+          "Animal feed"
+        ],
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Milling and baking ingredient"
+        },
+        "food_category": {
+          "values": [
+            "slot:flour"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/flour",
+          "rationale": "Flour category"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:flour"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix flour",
+          "rationale": "Milled powder"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "Pantry ingredient alongside foods"
+        }
+      }
+    },
+    "tfc:food/wheat_grain": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Raw crop for processing"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "pattern",
+          "evidence": "id contains wheat_grain",
+          "rationale": "Wheat grain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored in bulk, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "Common crop"
+        },
+        "primary_uses": [
+          "Grind into flour",
+          "Feed animals"
+        ],
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvested and milled"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/grains",
+          "rationale": "Grain category"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Unmilled raw grain"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/crops"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvested crop storage"
+        }
+      }
+    },
+    "tfc:food/wintergreen_berry": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible berry"
+        },
+        "material_family": {
+          "value": "wintergreen",
+          "signal": "pattern",
+          "evidence": "id contains wintergreen_berry",
+          "rationale": "Wintergreen berry"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Picked and stored, not always carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "Common fruit"
+        },
+        "primary_uses": [
+          "Eat fresh",
+          "Cook into jam"
+        ],
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Foraged and cooked"
+        },
+        "food_category": {
+          "values": [
+            "slot:fruit"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/fruits",
+          "rationale": "Fruit category"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Fresh raw fruit"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/fruits"
+          ],
+          "signal": "inferred",
+          "rationale": "Fruit storage section"
+        }
+      }
+    },
+    "tfc:food/wolf": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Raw meat for cooking"
+        },
+        "material_family": {
+          "value": "wolf",
+          "signal": "pattern",
+          "evidence": "id suffix wolf",
+          "rationale": "Wolf meat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored after hunting, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "Common meat drop"
+        },
+        "primary_uses": [
+          "Cook and eat",
+          "Feed dogs"
+        ],
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking ingredient"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "Meat category"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Uncooked raw meat"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw meats storage"
+        }
+      }
+    },
+    "tfc:food/yellow_bell_pepper": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible vegetable"
+        },
+        "material_family": {
+          "value": "bell_pepper",
+          "signal": "pattern",
+          "evidence": "id contains yellow_bell_pepper",
+          "rationale": "Bell pepper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Harvested and stored in pantry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common",
+          "rationale": "Common crop"
+        },
+        "primary_uses": [
+          "Eat fresh",
+          "Use in sandwiches and soups"
+        ],
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvested and used in cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:vegetable"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/vegetables",
+          "rationale": "Vegetable category"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:raw"
+          ],
+          "signal": "inferred",
+          "rationale": "Fresh raw vegetable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "Vegetable storage section"
+        }
+      }
+    },
+    "tfc:gem/amethyst": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Cut gem used in crafting"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "evidence": "id suffix amethyst",
+          "rationale": "Amethyst gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Precious material not often carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Gem rarity from mining"
+        },
+        "primary_uses": [
+          "Glass coloring",
+          "Decorative crafting"
+        ],
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and used in decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in gem ore veins underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem/diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Top-tier crafting material"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "evidence": "id suffix diamond",
+          "rationale": "Diamond gem"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "inferred",
+          "rationale": "Diamond tool/armor tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Valuable material stored safely"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "High tier gem, rare underground"
+        },
+        "primary_uses": [
+          "Craft top-tier tools and armor",
+          "Anvil welding"
+        ],
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and used in high-end crafts"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in diamond ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem/emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem for trading and crafting"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "evidence": "id suffix emerald",
+          "rationale": "Emerald gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Precious, stored not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Moderate rarity gem"
+        },
+        "primary_uses": [
+          "Trade with villagers",
+          "Decorative blocks"
+        ],
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and traded or decorated"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in emerald ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem/lapis_lazuli": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used in enchanting and dye"
+        },
+        "material_family": {
+          "value": "lapis_lazuli",
+          "signal": "pattern",
+          "evidence": "id contains lapis_lazuli",
+          "rationale": "Lapis lazuli gem"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly carried for enchanting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Relatively common gem"
+        },
+        "primary_uses": [
+          "Enchant items at table",
+          "Create blue dye"
+        ],
+        "activity": {
+          "values": [
+            "slot:enchanting",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Enchanting and dye making"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in lapis ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem/opal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem for glass coloring and decor"
+        },
+        "material_family": {
+          "value": "opal",
+          "signal": "pattern",
+          "evidence": "id suffix opal",
+          "rationale": "Opal gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried, stored with gems"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Moderate gem rarity"
+        },
+        "primary_uses": [
+          "Glass coloring",
+          "Decorative"
+        ],
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and used in decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in opal ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem/pyrite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used in decoration"
+        },
+        "material_family": {
+          "value": "pyrite",
+          "signal": "pattern",
+          "evidence": "id suffix pyrite",
+          "rationale": "Pyrite gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Decorative mineral, stored"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Moderate rarity"
+        },
+        "primary_uses": [
+          "Decorative",
+          "Glass coloring"
+        ],
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and used decoratively"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in pyrite ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem/ruby": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "High-tier gem for advanced crafting"
+        },
+        "material_family": {
+          "value": "ruby",
+          "signal": "pattern",
+          "evidence": "id suffix ruby",
+          "rationale": "Ruby gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Valuable, stored securely"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "High-tier gem rarity"
+        },
+        "primary_uses": [
+          "Craft high-tier items",
+          "Glass coloring"
+        ],
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and used in high-end crafts"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in ruby ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem/sapphire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "High-tier gem for advanced crafting"
+        },
+        "material_family": {
+          "value": "sapphire",
+          "signal": "pattern",
+          "evidence": "id suffix sapphire",
+          "rationale": "Sapphire gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Valuable, stored securely"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "High-tier gem rarity"
+        },
+        "primary_uses": [
+          "Craft high-tier items",
+          "Glass coloring"
+        ],
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and used in high-end crafts"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in sapphire ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem/topaz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem for glass coloring and decor"
+        },
+        "material_family": {
+          "value": "topaz",
+          "signal": "pattern",
+          "evidence": "id suffix topaz",
+          "rationale": "Topaz gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried, stored with gems"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Moderate gem rarity"
+        },
+        "primary_uses": [
+          "Glass coloring",
+          "Decorative"
+        ],
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and used in decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in topaz ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem storage section"
+        }
+      }
+    },
+    "tfc:gem_saw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Handheld glassworking tool"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "inferred",
+          "evidence": "tooltip: melts into brass",
+          "rationale": "Made of brass"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized tool, not carried daily"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted intermediate tool"
+        },
+        "primary_uses": [
+          "Cut glass and gems in glassworking"
+        ],
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in glassworking/decorating"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary station for this tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "Artisan tool storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has crafting recipe",
+          "rationale": "Crafted from brass"
+        }
+      }
+    },
+    "tfc:glow_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "rationale": "Arrow used for ranged combat"
+        },
+        "material_family": {
+          "value": "glowstone",
+          "signal": "inferred",
+          "evidence": "recipe uses glowstone dust",
+          "rationale": "Glowstone-tipped arrow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried in quiver for special use"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted special arrow"
+        },
+        "primary_uses": [
+          "Mark enemies with glowing effect",
+          "Ranged combat"
+        ],
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in combat"
+        }
+      }
+    },
+    "tfc:glue": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Adhesive used in many recipes"
+        },
+        "material_family": {
+          "value": "glue",
+          "signal": "pattern",
+          "evidence": "id suffix glue",
+          "rationale": "Glue material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Commonly used in crafting, carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily produced"
+        },
+        "primary_uses": [
+          "Craft sticky pistons, kegs, furniture"
+        ],
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mechanical crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "multiple production recipes",
+          "rationale": "Produced from slime or magma cream"
+        }
+      }
+    },
+    "tfc:goat_horn": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting material from goats"
+        },
+        "material_family": {
+          "value": "bone_horn",
+          "signal": "inferred",
+          "rationale": "Horn material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected from hunts, stored"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Dropped by goats"
+        },
+        "primary_uses": [
+          "Knap into tool heads (hoe, shovel)"
+        ],
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "evidence": "loot from goat entity",
+          "rationale": "Dropped by goat mob"
+        }
+      }
+    },
+    "tfc:grass/loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Living terrain block"
+        },
+        "material_family": {
+          "value": "loam",
+          "signal": "pattern",
+          "evidence": "id suffix loam",
+          "rationale": "Loam soil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for building or farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface block"
+        },
+        "primary_uses": [
+          "Gather as dirt block",
+          "Plant crops on"
+        ],
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming surface and building material"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Grass block on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt/soil storage"
+        }
+      }
+    },
+    "tfc:grass/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Living terrain block"
+        },
+        "material_family": {
+          "value": "sandy_loam",
+          "signal": "pattern",
+          "evidence": "id contains sandy_loam",
+          "rationale": "Sandy loam soil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for building or farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface block"
+        },
+        "primary_uses": [
+          "Gather as dirt block",
+          "Plant crops on"
+        ],
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming surface and building material"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Grass block on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt/soil storage"
+        }
+      }
+    },
+    "tfc:grass/silt": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Living terrain block"
+        },
+        "material_family": {
+          "value": "silt",
+          "signal": "pattern",
+          "evidence": "id suffix silt",
+          "rationale": "Silt soil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for building or farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface block"
+        },
+        "primary_uses": [
+          "Gather as dirt block",
+          "Plant crops on"
+        ],
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming surface and building material"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Grass block on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt/soil storage"
+        }
+      }
+    },
+    "tfc:grass/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Living terrain block"
+        },
+        "material_family": {
+          "value": "silty_loam",
+          "signal": "pattern",
+          "evidence": "id contains silty_loam",
+          "rationale": "Silty loam soil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for building or farming"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common surface block"
+        },
+        "primary_uses": [
+          "Gather as dirt block",
+          "Plant crops on"
+        ],
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming surface and building material"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Grass block on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Dirt/soil storage"
+        }
+      }
+    },
+    "tfc:grass_path/loam": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as path for movement"
+        },
+        "material_family": {
+          "value": "loam",
+          "signal": "pattern",
+          "evidence": "id contains loam",
+          "rationale": "Loam-based path"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for path building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Commonly created from dirt"
+        },
+        "primary_uses": [
+          "Create paths for faster movement"
+        ],
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base building"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Created by trampling grass"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Path block for roads"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

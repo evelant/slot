@@ -1,0 +1,1338 @@
+{
+  "items": {
+    "gtceu:marble_tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into tungsten materials"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/marble",
+          "rationale": "found in marble underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:marble_uraninite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into uranium materials"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/marble",
+          "rationale": "found in marble underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:marble_vanadium_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into vanadium/magnetite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/marble",
+          "rationale": "found in marble underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:marble_windmill_a": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative brick variant placed for aesthetics"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative building block family"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "marble brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic block for structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building, not always in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted decorative block"
+        }
+      }
+    },
+    "gtceu:marble_windmill_b": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative brick variant placed for aesthetics"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative building block family"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "marble brick walls"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic block for structures"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building, not always in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted decorative block"
+        }
+      }
+    },
+    "gtceu:marble_wulfenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into wulfenite/molybdenum"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/marble",
+          "rationale": "found in marble underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:marble_yellow_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into garnet"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/marble",
+          "rationale": "found in marble underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:marble_yellow_limonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into limonite/iron"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/marble",
+          "rationale": "found in marble underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:marble_zeolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into zeolite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores_in_ground/marble",
+          "rationale": "found in marble underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into almandine"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into aluminium"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe greate:milling",
+          "rationale": "only milling recipe present"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into alunite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into amethyst"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_apatite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into apatite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_armalcolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into armalcolite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_asbestos_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into asbestos"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_barite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into barite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_basaltic_mineral_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into mineral sand"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_bastnasite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into bastnasite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_bauxite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into bauxite/aluminium"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_bentonite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into bentonite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_beryllium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into beryllium"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_bismuth_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into bismuth"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_blue_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into blue topaz"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "gtceu:mars_stone_borax_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "form=ore + forge:ores tag",
+          "rationale": "mined and processed into borax"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "form=ore",
+          "rationale": "raw ore block stage"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_ore_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block storage bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ingots",
+            "milled into crushed ore"
+          ],
+          "signal": "pattern",
+          "evidence": "recipes blasting/smelting/greate:milling",
+          "rationale": "processing into refined materials"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "common mining inventory item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "origin",
+      "value": "mars",
+      "rationale": "Mars dimension ores need origin mars for storage grouping"
+    }
+  ],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:marble_windmill_a",
+      "facet": "material_family",
+      "value": "marble",
+      "rationale": "block is made of marble, consistent with stone type"
+    },
+    {
+      "item": "gtceu:marble_windmill_b",
+      "facet": "material_family",
+      "value": "marble",
+      "rationale": "block is made of marble, consistent with stone type"
+    }
+  ]
+}

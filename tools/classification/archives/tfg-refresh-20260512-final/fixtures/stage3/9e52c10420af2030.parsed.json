@@ -1,0 +1,1174 @@
+{
+  "items": {
+    "railways:sea_green_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative train part placed as building block"
+        },
+        "primary_uses": {
+          "value": "train decoration and customization",
+          "signal": "inferred",
+          "rationale": "aesthetic component for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal and tfg:locometal_blocks",
+          "rationale": "part of locometal block family"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train building and decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with other locometal blocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "recipe production by create:item_application",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:semaphore": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "train signaling block, not a building block"
+        },
+        "primary_uses": {
+          "value": "train signaling and railway traffic control",
+          "signal": "inferred",
+          "rationale": "semaphore indicates track status"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed during rail network construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of railway system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:single_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative window block for train builds"
+        },
+        "primary_uses": {
+          "value": "decorative train window",
+          "signal": "inferred",
+          "rationale": "glass pane for locomotives"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building train facades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal and tfg:locometal_blocks",
+          "rationale": "part of locometal block family"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with other locometal blocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stonecutting production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative metal panel placed as building block"
+        },
+        "primary_uses": {
+          "value": "decorative train panels",
+          "signal": "inferred",
+          "rationale": "slashed pattern for train exteriors"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal and tfg:locometal_blocks",
+          "rationale": "part of locometal block family"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with other locometal blocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stonecutting production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:sliding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door placed as building element"
+        },
+        "primary_uses": {
+          "value": "train door and access panel",
+          "signal": "inferred",
+          "rationale": "functional door for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building train entrances"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "pattern",
+          "evidence": "tag railways:locometal and tfg:locometal_blocks",
+          "rationale": "part of locometal block family"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/locometal_blocks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:locometal_blocks",
+          "rationale": "stored with other locometal blocks"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "stonecutting production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:small_buffer": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative buffer placed on trains"
+        },
+        "primary_uses": {
+          "value": "train coupling decoration",
+          "signal": "inferred",
+          "rationale": "buffer detail for train ends"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shapeless production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_caboosestyle": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokestack placed on trains"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "caboose style smokestack for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building train details"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "default material for smokestacks"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative coalburner smokestack"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "coalburner style smokestack for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "default material, model name suggests steel"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_brass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brass coalburner smokestack"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "brass coalburner style smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "named",
+          "evidence": "display name includes 'Brass'",
+          "rationale": "brass body variant"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_brass_cap_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokestack with copper body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "brass capped copper coalburner smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "evidence": "display name 'Copper Coalburner Smokestack' implies copper body",
+          "rationale": "copper body with brass cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_brass_cap_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokestack with steel body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "brass capped steel coalburner smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "named",
+          "evidence": "display name 'Steel Coalburner Smokestack'",
+          "rationale": "steel body with brass cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative copper coalburner smokestack"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "copper coalburner style smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "evidence": "display name 'Copper'",
+          "rationale": "copper body variant"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_copper_cap_brass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokestack with brass body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "copper capped brass coalburner smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "named",
+          "evidence": "display name 'Brass Coalburner Smokestack'",
+          "rationale": "brass body with copper cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_copper_cap_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokestack with steel body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "copper capped steel coalburner smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "named",
+          "evidence": "display name 'Steel Coalburner Smokestack'",
+          "rationale": "steel body with copper cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_iron_cap_brass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokestack with brass body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "iron capped brass coalburner smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "named",
+          "evidence": "display name 'Brass Coalburner Smokestack'",
+          "rationale": "brass body with iron cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_iron_cap_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokestack with copper body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "iron capped copper coalburner smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "evidence": "display name 'Copper Coalburner Smokestack'",
+          "rationale": "copper body with iron cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_coalburner_iron_cap_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokestack with steel body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "iron capped steel coalburner smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "named",
+          "evidence": "display name 'Steel Coalburner Smokestack'",
+          "rationale": "steel body with iron cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_diesel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative radiator fan for diesel trains"
+        },
+        "primary_uses": {
+          "value": "train radiator fan decoration",
+          "signal": "inferred",
+          "rationale": "diesel style smokestack/radiator"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "likely steel like other smokestacks"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_long": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative double smokestack"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "double smokestack for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "inferred",
+          "rationale": "default material for smokestacks"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_long_brass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brass double smokestack"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "brass double smokestack for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "named",
+          "evidence": "display name 'Brass'",
+          "rationale": "brass body variant"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_long_brass_cap_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative double smokestack with copper body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "brass capped copper double smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "evidence": "display name 'Copper Double Smokestack'",
+          "rationale": "copper body with brass cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_long_brass_cap_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative double smokestack with steel body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "brass capped steel double smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "named",
+          "evidence": "display name 'Steel Double Smokestack'",
+          "rationale": "steel body with brass cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_long_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative copper double smokestack"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "copper double smokestack for trains"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "evidence": "display name 'Copper'",
+          "rationale": "copper body variant"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "crafting_shaped production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_long_copper_cap_brass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative double smokestack with brass body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "copper capped brass double smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "named",
+          "evidence": "display name 'Brass Double Smokestack'",
+          "rationale": "brass body with copper cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "railways:smokestack_long_copper_cap_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative double smokestack with steel body"
+        },
+        "primary_uses": {
+          "value": "train exhaust decoration",
+          "signal": "inferred",
+          "rationale": "copper capped steel double smokestack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during train building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity: common",
+          "rationale": "common rarity from component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "named",
+          "evidence": "display name 'Steel Double Smokestack'",
+          "rationale": "steel body with copper cap"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in train decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "evidence": "create:item_application production recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

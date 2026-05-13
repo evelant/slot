@@ -1,0 +1,900 @@
+{
+  "items": {
+    "gtceu:nano_processor_mainframe": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "circuit used as crafting component for LUV machines"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced circuit for crafting LUV-tier machines"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in many machine recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in component storage, not carried often"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "LuV-tier circuit, not common"
+        },
+        "organization_group": {
+          "values": [
+            "tfg:luv_components"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:circuits/luv",
+          "rationale": "high-tier circuit stored with LUV components"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "associated with as gadolinite? but circuit likely uses naquadah"
+        }
+      }
+    },
+    "gtceu:nano_saber": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "energy-powered melee weapon"
+        },
+        "primary_uses": {
+          "values": [
+            "high-damage melee combat with energy drain"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows attack damage and energy"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary weapon for combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity in component"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "tooltip Tier §6HV",
+          "rationale": "explicitly says HV tier"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe_output_count 1",
+          "rationale": "only production recipe present"
+        }
+      }
+    },
+    "gtceu:nanomuscle_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable feet armor"
+        },
+        "primary_uses": {
+          "values": [
+            "protect with NanoMuscle suit, nullify fall damage"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip mentions fall damage nullification"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn when adventuring, carried in inventory when exploring"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "uncommon rarity"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "tooltip Tier §6HV",
+          "rationale": "explicit HV tier"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:step_assist"
+          ],
+          "signal": "inferred",
+          "evidence": "tooltip metaarmor.message.step_assist.disabled",
+          "rationale": "provides step assist when enabled"
+        },
+        "protection_context": {
+          "values": [
+            "slot:fall",
+            "slot:cold"
+          ],
+          "signal": "inferred",
+          "rationale": "nullifies fall damage and provides insulation"
+        },
+        "material_family": {
+          "value": "nanomuscle",
+          "signal": "named",
+          "evidence": "display name 'NanoMuscle™ Suite Boots'",
+          "rationale": "suite material family"
+        }
+      }
+    },
+    "gtceu:nanomuscle_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable chest armor"
+        },
+        "primary_uses": {
+          "values": [
+            "high protection, temperature insulation from NanoMuscle suit"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows armor values and insulation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn during combat/exploration"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern",
+          "evidence": "component minecraft:rarity = uncommon"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named",
+          "evidence": "tooltip Tier §6HV"
+        },
+        "protection_context": {
+          "values": [
+            "slot:cold"
+          ],
+          "signal": "inferred",
+          "rationale": "provides insulation against cold"
+        },
+        "material_family": {
+          "value": "nanomuscle",
+          "signal": "named",
+          "evidence": "display name"
+        }
+      }
+    },
+    "gtceu:nanomuscle_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable head armor"
+        },
+        "primary_uses": {
+          "values": [
+            "protect head, provide night vision"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip mentions night vision"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn with full suit"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:night_vision"
+          ],
+          "signal": "inferred",
+          "evidence": "tooltip NightVision Off/On",
+          "rationale": "provides night vision toggle"
+        },
+        "protection_context": {
+          "values": [
+            "slot:cold"
+          ],
+          "signal": "inferred",
+          "rationale": "insulation from NanoMuscle"
+        },
+        "material_family": {
+          "value": "nanomuscle",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:nanomuscle_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "leg protection, speed boost from NanoMuscle suit"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says Provides Speed I"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "pattern"
+        },
+        "tier": {
+          "value": "hv",
+          "signal": "named"
+        },
+        "equipment_effect": {
+          "values": [
+            "slot:speed_boost"
+          ],
+          "signal": "inferred",
+          "evidence": "tooltip '§7Provides §9Speed I§7 when worn'"
+        },
+        "protection_context": {
+          "values": [
+            "slot:cold"
+          ],
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "nanomuscle",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naphtha_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of fluid for transport and use"
+        },
+        "primary_uses": {
+          "values": [
+            "transport naphtha fluid, used in processing"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket for industrial use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needed for machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "component rarity common"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holding liquid naphtha"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:naphthalene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "transport naphthalene fluid, used in synthesis"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical fluid bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_alloy": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "an alloy substance, used in advanced crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced material for high-tier components"
+          ],
+          "signal": "inferred",
+          "rationale": "alloy of naquadah, iridium, osmium, etc."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "high-tier material, not carried in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named",
+          "evidence": "id suffix and tooltip formula"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed block of naquadah alloy, used for storage or processing"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of naquadah alloy, source material for plates"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting input for cutting and milling"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "heavy block, placed in storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small fastener component, crafting stock"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for machines and tools"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in material storage, pulled out when crafting"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "transport liquid naquadah alloy for casting or processing"
+          ],
+          "signal": "inferred",
+          "rationale": "molten metal bucket at very high temperature"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "butchery knife for animal harvesting"
+        },
+        "primary_uses": {
+          "values": [
+            "butcher animals for extra meat"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says 'Butchers animals for more meat'"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used when farming or hunting animals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "tier": {
+          "value": "naquadah_alloy",
+          "signal": "inferred",
+          "rationale": "made from naquadah alloy, high tier"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used in animal husbandry/farming"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting butchery knife"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for butchery knife"
+          ],
+          "signal": "inferred",
+          "rationale": "used in shapeless crafting to make the knife"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "saw blade head for buzz saw tool"
+        },
+        "primary_uses": {
+          "values": [
+            "component for buzz saw",
+            "crafting material in cutter recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in crafting buzz saw or cutter machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_chainsaw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "component for chainsaw",
+            "crafting material in chainsaw recipe"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crowbar for removing covers and rotating rails"
+        },
+        "primary_uses": {
+          "values": [
+            "dismount covers",
+            "rotate rails"
+          ],
+          "signal": "inferred",
+          "evidence": "tooltip: Dismounts Covers, Railroad Engineer: Rotates Rails"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried when maintaining machines or rail systems"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "tier": {
+          "value": "naquadah_alloy",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport cable, part of power network"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV-tier energy at 4A"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip shows max voltage and amperage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when expanding power infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "pattern",
+          "evidence": "id contains 'cable' and tags forge:double_cables",
+          "rationale": "cable part of GTCE energy system"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "conducts electricity"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "energy transport wire, finer gauge cable"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit UV-tier energy at 4A with loss"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip similar to cable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "wire is part of the cable family"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_drill_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "drill head component for mining drill"
+        },
+        "primary_uses": {
+          "values": [
+            "component for crafting naquadah alloy drill"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in drill recipe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form of naquadah alloy, intermediate material"
+        },
+        "primary_uses": {
+          "values": [
+            "intermediate for smelting or mixing alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "produced by maceration and used in mixing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in bulk in material storage"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust stage"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "file used in crafting to shape components"
+        },
+        "primary_uses": {
+          "values": [
+            "shaping metal components, consumes durability"
+          ],
+          "signal": "inferred",
+          "rationale": "many crafting recipes use file as tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential crafting tool, carried when making many items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automating machine crafting"
+        },
+        "mod_subsystem": {
+          "values": [],
+          "signal": "inferred",
+          "rationale": "tool, not a subsystem item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "file is an artisan table tool"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "component for crafting file"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin foil of naquadah alloy, intermediate component"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced crafting component, rolled from plates"
+          ],
+          "signal": "inferred",
+          "rationale": "produced by rolling, used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        }
+      }
+    },
+    "gtceu:naquadah_alloy_frame": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural frame block used in machine casings"
+        },
+        "primary_uses": {
+          "values": [
+            "build machine casings and structures"
+          ],
+          "signal": "inferred",
+          "rationale": "frame used in machine hull crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when constructing machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern"
+        },
+        "material_family": {
+          "value": "naquadah_alloy",
+          "signal": "named"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:frames",
+          "rationale": "frames category"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

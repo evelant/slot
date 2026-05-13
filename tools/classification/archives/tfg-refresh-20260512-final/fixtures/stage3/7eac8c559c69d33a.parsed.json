@@ -1,0 +1,1330 @@
+{
+  "items": {
+    "tfc:ceramic/yellow_glazed_vessel": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed to hold fluids for alloying; opens UI"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "Fired glazed ceramic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "Rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for alloying sessions, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Hold molten metal for alloying",
+            "Store fluids"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid capacity tooltip indicates use"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Alloying is a cooking-like process"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to pour metal into molds"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Casting table work"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows fluid capacity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "Stack size 1, carries few"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot sources, produced by firing"
+        }
+      }
+    },
+    "tfc:ceramic/yellow_unfired_vessel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Pottery intermediate awaiting firing"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Unfired clay"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Rarity component common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only when making pottery"
+        },
+        "primary_uses": {
+          "values": [
+            "Fire into glazed vessel",
+            "Dye for colors"
+          ],
+          "signal": "inferred",
+          "rationale": "Firing and dyeing recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Pottery making via firing"
+        },
+        "workflow": {
+          "values": [
+            "tfc:pottery",
+            "tfc:clay_knapping"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag unfired_pottery and vessel"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unfired_pottery"
+          ],
+          "signal": "pattern",
+          "evidence": "Tag tfc:unfired_pottery",
+          "rationale": "Exact storage group for unfired pottery"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, crafted from clay knapping"
+        }
+      }
+    },
+    "tfc:ceramic_blowpipe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Glassblowing tool"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "Ceramic construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when doing glasswork"
+        },
+        "primary_uses": {
+          "values": [
+            "Glassblowing",
+            "Pick up molten glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement and glassworking context"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "named",
+          "evidence": "Advancement 'Make a blowpipe' linked to glassworking",
+          "rationale": "Core glassblowing tool"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Station for blowpipe use"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot, crafted from clay"
+        }
+      }
+    },
+    "tfc:ceramic_blowpipe_with_glass": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Intermediate step in glassblowing"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "Ceramic blowpipe"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Has glass blob"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Temporary item during glassworking"
+        },
+        "primary_uses": {
+          "values": [
+            "Shape glass into items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in glassworking steps"
+        },
+        "workflow": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of glassblowing process"
+        },
+        "used_at": {
+          "values": [
+            "tfc:glassworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used at glassworking station"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted by adding glass to blowpipe"
+        }
+      }
+    },
+    "tfc:clay/loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Natural clay deposit block"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay dirt"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common surface block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined when needed for pottery"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of clay for pottery",
+            "Mine with shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay dirt yields clay when dug"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for clay resource"
+        },
+        "required_tool": {
+          "value": "shovel",
+          "signal": "pattern",
+          "rationale": "Tag mineable/shovel"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Found in surface clay patches"
+        }
+      }
+    },
+    "tfc:clay/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Clay dirt variant"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Sandy loam clay"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for clay"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of clay for pottery"
+          ],
+          "signal": "inferred",
+          "rationale": "Same as other clays"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining"
+        },
+        "required_tool": {
+          "value": "shovel",
+          "signal": "pattern",
+          "rationale": "Tag mineable/shovel"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface deposit"
+        }
+      }
+    },
+    "tfc:clay/silt": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Clay dirt variant"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Silt clay"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for clay"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of clay for pottery"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay source"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining"
+        },
+        "required_tool": {
+          "value": "shovel",
+          "signal": "pattern",
+          "rationale": "Tag mineable/shovel"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface deposit"
+        }
+      }
+    },
+    "tfc:clay/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Clay dirt variant"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Silty loam clay"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for clay"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of clay for pottery"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay source"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining"
+        },
+        "required_tool": {
+          "value": "shovel",
+          "signal": "pattern",
+          "rationale": "Tag mineable/shovel"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface deposit"
+        }
+      }
+    },
+    "tfc:clay_grass/loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Clay with grass covering"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Clay soil with grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common surface block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for clay"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of clay",
+            "Grass block for landscaping"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay grass indicates clay beneath"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Dug for clay"
+        },
+        "required_tool": {
+          "value": "shovel",
+          "signal": "pattern",
+          "rationale": "Tag mineable/shovel"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface block with clay"
+        }
+      }
+    },
+    "tfc:clay_grass/sandy_loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Clay grass variant"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Sandy loam clay grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for clay"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of clay"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay indicator"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining"
+        },
+        "required_tool": {
+          "value": "shovel",
+          "signal": "pattern",
+          "rationale": "Tag mineable/shovel"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface block"
+        }
+      }
+    },
+    "tfc:clay_grass/silt": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Clay grass variant"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Silt clay grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for clay"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of clay"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay indicator"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining"
+        },
+        "required_tool": {
+          "value": "shovel",
+          "signal": "pattern",
+          "rationale": "Tag mineable/shovel"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface block"
+        }
+      }
+    },
+    "tfc:clay_grass/silty_loam": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Clay grass variant"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Silty loam clay grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Mined for clay"
+        },
+        "primary_uses": {
+          "values": [
+            "Source of clay"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay indicator"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining"
+        },
+        "required_tool": {
+          "value": "shovel",
+          "signal": "pattern",
+          "rationale": "Tag mineable/shovel"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Surface block"
+        }
+      }
+    },
+    "tfc:compost": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fertilizer applied to crops"
+        },
+        "material_family": {
+          "value": "organic",
+          "signal": "inferred",
+          "rationale": "Decomposed organic matter"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when fertilizing fields"
+        },
+        "primary_uses": {
+          "values": [
+            "Fertilize crops",
+            "Supply NPK nutrients"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide page states nutrient values"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming use"
+        },
+        "workflow": {
+          "values": [
+            "tfc:composter"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced by composter"
+        },
+        "used_at": {
+          "values": [
+            "tfc:composter"
+          ],
+          "signal": "inferred",
+          "rationale": "Output from composter"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Made in composter"
+        }
+      }
+    },
+    "tfc:composter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block that produces compost, opens UI"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Crafted from wood planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed near farm, kept one"
+        },
+        "primary_uses": {
+          "values": [
+            "Produce compost from organic waste"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement and guide page"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Farming station"
+        },
+        "workflow": {
+          "values": [
+            "tfc:composter"
+          ],
+          "signal": "named",
+          "rationale": "The composter itself is the workflow"
+        },
+        "used_at": {
+          "values": [
+            "tfc:composter"
+          ],
+          "signal": "named",
+          "rationale": "Self reference"
+        },
+        "required_tool": {
+          "value": "axe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafting recipe and no loot"
+        }
+      }
+    },
+    "tfc:coral/brain_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Underwater decorative block"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Coral material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate underwater bases",
+            "Source of coral for crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral block used decoratively and in milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration use"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "named",
+          "rationale": "Found in coral reefs"
+        }
+      }
+    },
+    "tfc:coral/brain_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coral fan decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate underwater",
+            "Crafting ingredient (milling)"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling recipe"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/pickaxe"
+        }
+      }
+    },
+    "tfc:coral/brain_dead_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Dead coral decoration block"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Dead coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Build decorative structures",
+            "Crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/pickaxe"
+        }
+      }
+    },
+    "tfc:coral/brain_dead_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Dead coral fan decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Dead coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate",
+            "Milling ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/pickaxe"
+        }
+      }
+    },
+    "tfc:coral/bubble_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coral decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Underwater decoration",
+            "Crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        }
+      }
+    },
+    "tfc:coral/bubble_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coral fan decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate",
+            "Milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/pickaxe"
+        }
+      }
+    },
+    "tfc:coral/bubble_dead_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Dead coral decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Dead coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Build decoration",
+            "Milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/pickaxe"
+        }
+      }
+    },
+    "tfc:coral/bubble_dead_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Dead coral fan decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Dead coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate",
+            "Milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/pickaxe"
+        }
+      }
+    },
+    "tfc:coral/fire_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coral decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Underwater decoration",
+            "Crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        }
+      }
+    },
+    "tfc:coral/fire_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coral fan decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate",
+            "Milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/pickaxe"
+        }
+      }
+    },
+    "tfc:coral/fire_dead_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Dead coral decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "inferred",
+          "rationale": "Dead coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected"
+        },
+        "primary_uses": {
+          "values": [
+            "Build decoration",
+            "Milling"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor and milling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "Coral reef"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "rationale": "Tag mineable/pickaxe"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

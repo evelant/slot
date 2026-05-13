@@ -1,0 +1,873 @@
+{
+  "items": {
+    "create:waxed_weathered_copper_tile_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Copper stairs placed for structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Building copper structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building"
+        }
+      }
+    },
+    "create:waxed_weathered_copper_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with copper tiles"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic building block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material"
+        }
+      }
+    },
+    "create:weathered_copper_shingle_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with copper shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        }
+      }
+    },
+    "create:weathered_copper_shingle_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building copper stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        }
+      }
+    },
+    "create:weathered_copper_shingles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full shingle block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with copper shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block for variants"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material"
+        }
+      }
+    },
+    "create:weathered_copper_tile_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with copper tiles"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        }
+      }
+    },
+    "create:weathered_copper_tile_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building copper stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        }
+      }
+    },
+    "create:weathered_copper_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full tile block"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with copper tiles"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction material"
+        }
+      }
+    },
+    "create:weathered_iron_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Decorative block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with weathered steel"
+          ],
+          "signal": "inferred",
+          "rationale": "Full block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction"
+        }
+      }
+    },
+    "create:weathered_iron_window": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Window block for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative window"
+          ],
+          "signal": "inferred",
+          "rationale": "Transparent block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative use"
+        }
+      }
+    },
+    "create:weathered_iron_window_pane": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Window pane for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative glass pane"
+          ],
+          "signal": "inferred",
+          "rationale": "Thin window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        }
+      }
+    },
+    "create:weighted_ejector": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Create component for item transport"
+        },
+        "primary_uses": {
+          "values": [
+            "Ejecting items",
+            "Launching players"
+          ],
+          "signal": "inferred",
+          "rationale": "From advancement and tooltip"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in contraption building"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of logistics/automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Item transport component"
+        }
+      }
+    },
+    "create:wheat_flour": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for food"
+        },
+        "primary_uses": {
+          "values": [
+            "Baking bread",
+            "Cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stored for cooking"
+        },
+        "food_category": {
+          "values": [
+            "slot:flour"
+          ],
+          "signal": "inferred",
+          "rationale": "Flour type"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking ingredient"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:flour"
+          ],
+          "signal": "inferred",
+          "rationale": "Ground grain"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cooking"
+        }
+      }
+    },
+    "create:whisk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Cooking utensil, not consumed"
+        },
+        "primary_uses": {
+          "values": [
+            "Whisking ingredients"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool for mixing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept in kitchen storage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooking process"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooking_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Kitchen utensil"
+        }
+      }
+    },
+    "create:white_postbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Package interface for logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "Sending items via packages"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of package system"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed at base"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white_",
+          "rationale": "Colored variant"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics block"
+        }
+      }
+    },
+    "create:white_sail": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Windmill component for power"
+        },
+        "primary_uses": {
+          "values": [
+            "Generating rotational power"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of windmill"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in contraption building"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white_",
+          "rationale": "Colored variant"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Windmill component"
+        }
+      }
+    },
+    "create:white_seat": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Sittable decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating and sitting"
+          ],
+          "signal": "inferred",
+          "rationale": "Colored seat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white_",
+          "rationale": "Colored variant"
+        }
+      }
+    },
+    "create:white_table_cloth": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placed decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating tables"
+          ],
+          "signal": "inferred",
+          "rationale": "Cloth block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white_",
+          "rationale": "Colored variant"
+        }
+      }
+    },
+    "create:white_toolbox": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Container for tools"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing tools"
+          ],
+          "signal": "inferred",
+          "rationale": "Opens UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed at base"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white_",
+          "rationale": "Colored variant"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool storage block"
+        }
+      }
+    },
+    "create:white_valve_handle": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fluid control component"
+        },
+        "primary_uses": {
+          "values": [
+            "Controlling fluid flow"
+          ],
+          "signal": "inferred",
+          "rationale": "Valve part"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in contraption building"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "evidence": "id prefix white_",
+          "rationale": "Colored variant"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid pipe accessory"
+        }
+      }
+    },
+    "create:windmill_bearing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Windmill power source"
+        },
+        "primary_uses": {
+          "values": [
+            "Generating rotational power"
+          ],
+          "signal": "inferred",
+          "rationale": "Windmill component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in contraption building"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "Windmill bearing"
+        }
+      }
+    },
+    "create:wooden_bracket": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative support"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating shafts and pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decoration"
+        }
+      }
+    },
+    "create:wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Multi-purpose configuration tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Rotating components",
+            "Dismantling blocks",
+            "Relocating contraptions"
+          ],
+          "signal": "inferred",
+          "rationale": "From tooltip behaviours"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Essential tool for Create"
+        },
+        "activity": {
+          "values": [
+            "slot:automation",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building and configuring"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool behaviour"
+        }
+      }
+    },
+    "create:yellow_postbox": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Package interface"
+        },
+        "primary_uses": {
+          "values": [
+            "Sending items via packages"
+          ],
+          "signal": "inferred",
+          "rationale": "Same as white"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed at base"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow_",
+          "rationale": "Colored variant"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:package"
+          ],
+          "signal": "inferred",
+          "rationale": "Package logistics"
+        }
+      }
+    },
+    "create:yellow_seat": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Sittable decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating and sitting"
+          ],
+          "signal": "inferred",
+          "rationale": "Colored seat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "evidence": "id prefix yellow_",
+          "rationale": "Colored variant"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "create:weathered_iron_block",
+      "facet": "material_family",
+      "value": "steel",
+      "rationale": "Display name says Weathered Steel Block"
+    },
+    {
+      "item": "create:weathered_iron_block",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Full block, no suffix"
+    },
+    {
+      "item": "create:weathered_iron_window",
+      "facet": "material_family",
+      "value": "steel",
+      "rationale": "Display name says Weathered Steel Window"
+    },
+    {
+      "item": "create:weathered_iron_window_pane",
+      "facet": "material_family",
+      "value": "steel",
+      "rationale": "Match window block"
+    },
+    {
+      "item": "create:white_postbox",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Full block"
+    },
+    {
+      "item": "create:white_sail",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Full block"
+    },
+    {
+      "item": "create:white_seat",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Full block"
+    },
+    {
+      "item": "create:white_table_cloth",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Full block"
+    },
+    {
+      "item": "create:white_toolbox",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Full block"
+    },
+    {
+      "item": "create:yellow_postbox",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Full block"
+    },
+    {
+      "item": "create:yellow_seat",
+      "facet": "form",
+      "value": "block",
+      "rationale": "Full block"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "create:weathered_iron_window",
+      "facet": "form",
+      "current": "pane",
+      "suggested": "block",
+      "rationale": "Full block window, not a thin pane",
+      "confidence": 0.9
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": []
+}

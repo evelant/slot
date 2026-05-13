@@ -1,0 +1,726 @@
+{
+  "items": {
+    "ae2:debug_card": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Dev debug item, no survival use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Only in creative tab, no recipes or loot"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging AE2 network mechanics"
+          ],
+          "signal": "inferred",
+          "rationale": "Debug-only tool for testing"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Never used in normal gameplay"
+        }
+      }
+    },
+    "ae2:debug_chunk_loader": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Debug block, no creative tab"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "No survival obtainment"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging chunk loading"
+          ],
+          "signal": "inferred",
+          "rationale": "Developer testing tool"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not carried in normal play"
+        }
+      }
+    },
+    "ae2:debug_cube_gen": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Debug block, no survival use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Only in creative"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging cube generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Developer debug item"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not used in survival"
+        }
+      }
+    },
+    "ae2:debug_energy_gen": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Debug block, no survival purpose"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "No recipes or loot"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging energy generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Developer testing"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Never carried"
+        }
+      }
+    },
+    "ae2:debug_eraser": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Debug item, no creative tab"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "No survival access"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging area erasure"
+          ],
+          "signal": "inferred",
+          "rationale": "Dev tool"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not used in play"
+        }
+      }
+    },
+    "ae2:debug_item_gen": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Debug block, no survival use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Not craftable"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging item generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Developer item"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Never in normal inventory"
+        }
+      }
+    },
+    "ae2:debug_meteorite_placer": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Debug item, no survival"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "No recipes or loot"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging meteorite placement"
+          ],
+          "signal": "inferred",
+          "rationale": "Dev test tool"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not carried"
+        }
+      }
+    },
+    "ae2:debug_phantom_node": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Debug block, no survival use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "No creative tab or recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging phantom nodes"
+          ],
+          "signal": "inferred",
+          "rationale": "Developer debugging"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Never used in play"
+        }
+      }
+    },
+    "ae2:debug_replicator_card": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Debug item, no survival"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Not obtainable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "debugging item replication"
+          ],
+          "signal": "inferred",
+          "rationale": "Dev tool"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not carried"
+        }
+      }
+    },
+    "ae2:dense_energy_cell": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 network energy storage block, no UI"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of AE2 energy subsystem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 items stored together"
+        },
+        "primary_uses": {
+          "values": [
+            "store AE energy in ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "High-capacity energy storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during network building, then stationary"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common component in AE2"
+        }
+      }
+    },
+    "ae2:drive": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Opens UI to manage storage cells"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Central block for ME storage cells"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 machine group"
+        },
+        "primary_uses": {
+          "values": [
+            "holds and interfaces ME storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage hub for AE2 network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely moved"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Standard AE2 component"
+        }
+      }
+    },
+    "ae2:ender_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts, used in many recipes"
+        },
+        "material_family": {
+          "value": "ender_pearl",
+          "signal": "pattern",
+          "rationale": "Produced from ender pearls"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 components and upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "Key dust in AE2 recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common crafting material carried in stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily produced from ender pearls"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Produced via quern/milling/mixer"
+        }
+      }
+    },
+    "ae2:energy_acceptor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 network part for energy input, no UI"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Converts external energy to AE"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 energy component"
+        },
+        "primary_uses": {
+          "values": [
+            "accept external power into ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Energy input block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during setup, then stationary"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Basic AE2 item"
+        }
+      }
+    },
+    "ae2:energy_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Inserted into tools to add energy storage"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade portable cells and terminals with energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Adds AE energy capacity to devices"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when applying upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard craftable upgrade"
+        }
+      }
+    },
+    "ae2:energy_cell": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 network energy storage, no UI"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic AE energy storage"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/applied_energistics_2"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 energy block"
+        },
+        "primary_uses": {
+          "values": [
+            "store AE energy in ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard energy buffer"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely moved"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Basic component"
+        }
+      }
+    },
+    "ae2:energy_level_emitter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 cable part emitting redstone based on energy"
+        },
+        "primary_uses": {
+          "values": [
+            "emit redstone signal based on ME network energy level"
+          ],
+          "signal": "inferred",
+          "rationale": "Automation trigger for energy thresholds"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Niche automation part, carried only when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard AE2 part"
+        }
+      }
+    },
+    "ae2:engineering_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Crafted component used in many AE2 recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced AE2 machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Core processor for AE2 progression"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Stocked in inventory for crafting sessions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard crafted item"
+        }
+      }
+    },
+    "ae2:engineering_processor_press": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool inserted into inscriber to craft processors"
+        },
+        "primary_uses": {
+          "values": [
+            "craft engineering processors in an inscriber"
+          ],
+          "signal": "inferred",
+          "rationale": "Required press for processor production"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept in storage, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard AE2 press"
+        }
+      }
+    },
+    "ae2:entropy_manipulator": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Handheld device with energy, used for block manipulation"
+        },
+        "primary_uses": {
+          "values": [
+            "manipulate blocks (temperature/phase changes)"
+          ],
+          "signal": "inferred",
+          "rationale": "Entropy manipulation tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Niche tool, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable (though hidden from JEI)"
+        }
+      }
+    },
+    "ae2:equal_distribution_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Card inserted into storage cells to enable equal distribution"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade ME storage cells with equal distribution mode"
+          ],
+          "signal": "inferred",
+          "rationale": "Enhances cell behavior"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when applying upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard craftable card"
+        }
+      }
+    },
+    "ae2:export_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 cable part for item output"
+        },
+        "primary_uses": {
+          "values": [
+            "export items from ME network to external inventories"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated item transfer"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when setting up automation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard AE2 part"
+        }
+      }
+    },
+    "ae2:facade": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Used to cover cables for aesthetic purposes"
+        },
+        "primary_uses": {
+          "values": [
+            "cover and hide ME cables for decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic cable management"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when building cable networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard craftable item"
+        }
+      }
+    },
+    "ae2:fe_p2p_tunnel": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Deprecated item, cannot be crafted, kept as memento"
+        },
+        "primary_uses": {
+          "values": [
+            "deprecated, formerly used for energy P2P in AE2"
+          ],
+          "signal": "inferred",
+          "rationale": "Old functionality, now obsolete"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "No longer used, kept in storage"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Deprecated unobtainable item"
+        }
+      }
+    },
+    "ae2:flawed_budding_quartz": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Block that grows certus quartz crystals in world"
+        },
+        "primary_uses": {
+          "values": [
+            "grow certus quartz crystals for AE2"
+          ],
+          "signal": "inferred",
+          "rationale": "Renewable crystal source"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in farm and left, rarely carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Found in meteorites, limited availability"
+        }
+      }
+    },
+    "ae2:flawless_budding_quartz": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Never-degrading budding block for crystal farming"
+        },
+        "primary_uses": {
+          "values": [
+            "grow certus quartz crystals indefinitely"
+          ],
+          "signal": "inferred",
+          "rationale": "Renewable crystal source without degradation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely moved"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Rarer than flawed, more valuable"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,794 @@
+{
+  "items": {
+    "mcw_tfc_aio:furniture/rosewood_furniture/stripped_rosewood_striped_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Furniture placed for decoration, no storage UI"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "evidence": "id contains rosewood",
+          "rationale": "Made from rosewood wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Component shows common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once and forgotten, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decorative seating"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/stripped_rosewood_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Furniture placed for decoration, no storage UI"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "evidence": "id contains rosewood",
+          "rationale": "Made from rosewood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and left, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as a table"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/stripped_rosewood_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer block that stores items when opened"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Rosewood wood furniture"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for storage, rarely moved"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Triple drawer for storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/rosewood_furniture/stripped_rosewood_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Wardrobe with storage UI"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "rationale": "Rosewood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in a wardrobe"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage furniture"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf with storage UI for books/items"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and left"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing books and items"
+          ],
+          "signal": "inferred",
+          "rationale": "Bookshelf storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_bookshelf_cupboard": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Cupboard bookshelf with storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and left"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in cupboards"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage furniture"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf with drawer storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chair for decoration, no storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed and left"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative seating"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_coffee_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coffee table, decorative"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Coffee table decoration"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_counter": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Counter surface, no storage UI"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Counter decoration"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_covered_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Desk decoration, no storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Covered desk decoration"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_cupboard_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Cupboard counter with storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in cupboards"
+          ],
+          "signal": "inferred",
+          "rationale": "Cupboard counter storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Desk decoration, no storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Desk decoration"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_double_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Double drawer storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Double drawer storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_double_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Double drawer counter with storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Double drawer counter storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_double_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Double wardrobe storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in wardrobe"
+          ],
+          "signal": "inferred",
+          "rationale": "Double wardrobe storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Single drawer storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Single drawer storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer counter with storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer counter storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_end_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "End table decoration, no storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "End table decoration"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_glass_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Glass table decoration"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia wood with glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass table decoration"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_large_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Large drawer storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Large drawer storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_lower_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Lower bookshelf drawer storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Lower bookshelf drawer storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_lower_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Lower triple drawer storage"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers"
+          ],
+          "signal": "inferred",
+          "rationale": "Lower triple drawer storage"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_modern_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Modern chair decoration"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Modern chair decoration"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/sequoia_furniture/sequoia_modern_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Modern desk decoration"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Sequoia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "Furnishing your base"
+          ],
+          "signal": "inferred",
+          "rationale": "Modern desk decoration"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "mcw_tfc_aio:furniture/rosewood_furniture/stripped_rosewood_striped_chair",
+      "facet": "organization_group",
+      "label": "Macaw's Furniture",
+      "proposed_id": "pack:tfg/furniture",
+      "rationale": "All these furniture items form a natural storage group for players who build with Macaw's furniture.",
+      "evidence": "Items are from mcw_tfc_aio, creative tab is furnitureitemgroup"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

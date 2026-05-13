@@ -1,0 +1,1298 @@
+{
+  "items": {
+    "tfg:rene_41_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Small hardware component used in advanced crafting"
+        },
+        "material_family": {
+          "value": "rene_41",
+          "signal": "named",
+          "evidence": "display name René-41",
+          "rationale": "Alloy name from display"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "High-alloy component, gated behind progression"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in many recipes but kept in storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting machine components",
+            "Used in advanced assemblies"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingredient for tools and machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated crafting lines"
+        }
+      }
+    },
+    "tfg:repair_kit_boron_carbide": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Consumable repair item used on tools"
+        },
+        "material_family": {
+          "value": "boron_carbide",
+          "signal": "named",
+          "evidence": "display name Boron Carbide",
+          "rationale": "Material from name"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires specific material processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for tool maintenance"
+        },
+        "primary_uses": {
+          "values": [
+            "Repair tools at anvil",
+            "Restore 25% durability"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Repairs 25%...'",
+          "rationale": "Explicit repair function"
+        },
+        "workflow": {
+          "values": [
+            "tfg:item_repair"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in equipment repair"
+        },
+        "workflow_role": {
+          "values": [
+            "tfg:item_repair#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed as input in repair"
+        }
+      }
+    },
+    "tfg:repair_kit_diamond_tipped_mo_50_re": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Consumable repair item"
+        },
+        "material_family": {
+          "value": "diamond_tipped_mo_50_re",
+          "signal": "named",
+          "evidence": "display name",
+          "rationale": "Composite material from name"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Specialized alloy repair kit"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Tool maintenance item"
+        },
+        "primary_uses": {
+          "values": [
+            "Repair tools at anvil",
+            "Restore 25% durability"
+          ],
+          "signal": "named",
+          "evidence": "tooltip",
+          "rationale": "Same function as other repair kits"
+        },
+        "workflow": {
+          "values": [
+            "tfg:item_repair"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in equipment repair"
+        },
+        "workflow_role": {
+          "values": [
+            "tfg:item_repair#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumed as input"
+        }
+      }
+    },
+    "tfg:residual_sludge_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid carrying tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Byproduct fluid, not rare"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Kept for fluid processing tasks"
+        },
+        "primary_uses": {
+          "values": [
+            "Carry residual solvent sludge",
+            "Input for fluid processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket utility"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket of liquid"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine processing"
+        }
+      }
+    },
+    "tfg:resistance_salvo": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible item that gives effect"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Buff item, not mass-produced"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for combat situations"
+        },
+        "primary_uses": {
+          "values": [
+            "Gain resistance effect",
+            "Antidote"
+          ],
+          "signal": "named",
+          "evidence": "tooltip",
+          "rationale": "Explicit effect"
+        },
+        "food_use": {
+          "values": [
+            "slot:buff_food"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides status effect"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used during fighting"
+        }
+      }
+    },
+    "tfg:rhyolite_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Ore to be processed"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "ore id suffix",
+          "rationale": "Contains lorandite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore, not extremely rare"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when mining"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into lorandite ingot",
+            "Source of thallium"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing to metal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore storage"
+        }
+      }
+    },
+    "tfg:rhyolite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural support block"
+        },
+        "material_family": {
+          "value": "rhyolite",
+          "signal": "pattern",
+          "evidence": "id rhyolite",
+          "rationale": "Rock type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for mining/building"
+        },
+        "primary_uses": {
+          "values": [
+            "Support mine walls",
+            "Decorative beam"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural purpose"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes present",
+          "rationale": "Crafted from rhyolite blocks"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction and mines"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "Part of support beam set"
+        }
+      }
+    },
+    "tfg:rich_raw_lorandite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "High-grade raw ore"
+        },
+        "material_family": {
+          "value": "lorandite",
+          "signal": "pattern",
+          "evidence": "id suffix lorandite",
+          "rationale": "Contains lorandite"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Rich variant is less common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mined occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "Crush and smelt into lorandite",
+            "Higher yield than normal ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Processing to metal"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rich_raw_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rich_raw_materials",
+          "rationale": "Group for rich ores"
+        }
+      }
+    },
+    "tfg:rich_stock_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Drinkable liquid that quenches thirst"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Produced in bulk"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for thirst management"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink to quench thirst"
+          ],
+          "signal": "named",
+          "evidence": "tooltip 'Thirst'",
+          "rationale": "Explicit thirst effect"
+        },
+        "food_use": {
+          "values": [
+            "slot:drink"
+          ],
+          "signal": "inferred",
+          "rationale": "Beverage"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket containing liquid"
+        }
+      }
+    },
+    "tfg:rnr_plow": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Specialized tool for road building"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires advanced metals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used only during road projects"
+        },
+        "primary_uses": {
+          "values": [
+            "Lay road surfaces",
+            "Pave paths automatically"
+          ],
+          "signal": "named",
+          "evidence": "guide page",
+          "rationale": "Explicit paving function"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction activity"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Road building equipment"
+        }
+      }
+    },
+    "tfg:roasted_sunflower_seeds": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily produced"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Snack carried sometimes"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat for nutrition",
+            "Feed animals"
+          ],
+          "signal": "inferred",
+          "rationale": "Dual use as food and feed"
+        },
+        "food_category": {
+          "values": [
+            "slot:grain"
+          ],
+          "signal": "inferred",
+          "rationale": "Seeds are grain-like"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now",
+            "slot:animal_feed"
+          ],
+          "signal": "pattern",
+          "evidence": "tags tfc:chicken_food etc.",
+          "rationale": "Both direct consumption and animal feed"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "named",
+          "evidence": "display name 'Roasted'",
+          "rationale": "Cooked state"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "General food group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_deepslate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Block that transports water"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common stone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport block"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for irrigation and construction"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of water irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/metamorphic_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:metamorphic_items",
+          "rationale": "Rock type group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_dripstone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common sedimentary rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation projects"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Same function as other aqueducts"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "Sedimentary rock group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_flavolite": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous extrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct function"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Igneous extrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_glacio_stone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common extrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation projects"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Igneous extrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_mars_stone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Sedimentary rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/sedimentary_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:sedimentary_items",
+          "rationale": "Sedimentary group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_mercury_stone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous intrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "Igneous intrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_moon_deepslate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous intrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "Igneous intrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_moon_stone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous intrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "Igneous intrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_nether": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous extrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Igneous extrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_permafrost": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Permafrost is common in cold biomes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation in cold areas"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_red_granite": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous intrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_intrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_intrusive_items",
+          "rationale": "Igneous intrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_sandy_jadestone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous extrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Igneous extrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_scorchia": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous extrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Igneous extrusive group"
+        }
+      }
+    },
+    "tfg:rock/aqueduct_scoria": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Water transport block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Igneous extrusive rock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "For irrigation"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport water",
+            "Irrigation channel"
+          ],
+          "signal": "inferred",
+          "rationale": "Aqueduct"
+        },
+        "activity": {
+          "values": [
+            "slot:farming",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation and building"
+        },
+        "workflow": {
+          "values": [
+            "tfc:irrigation"
+          ],
+          "signal": "inferred",
+          "rationale": "Irrigation system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/igneous_extrusive_items"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:igneous_extrusive_items",
+          "rationale": "Igneous extrusive group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "tfg:rock/aqueduct_deepslate",
+      "facet": "material_family",
+      "value": "migmatite",
+      "rationale": "Display name is Migmatite; deepslate is the rock type"
+    },
+    {
+      "item": "tfg:rock/aqueduct_dripstone",
+      "facet": "material_family",
+      "value": "travertine",
+      "rationale": "Display name Travertine"
+    },
+    {
+      "item": "tfg:rock/aqueduct_flavolite",
+      "facet": "material_family",
+      "value": "ignimbrite",
+      "rationale": "Display name Ignimbrite"
+    },
+    {
+      "item": "tfg:rock/aqueduct_glacio_stone",
+      "facet": "material_family",
+      "value": "phonolite",
+      "rationale": "Display name Phonolite"
+    },
+    {
+      "item": "tfg:rock/aqueduct_mars_stone",
+      "facet": "material_family",
+      "value": "argillite",
+      "rationale": "Display name Argillite"
+    },
+    {
+      "item": "tfg:rock/aqueduct_mercury_stone",
+      "facet": "material_family",
+      "value": "komatiite",
+      "rationale": "Display name Komatiite"
+    },
+    {
+      "item": "tfg:rock/aqueduct_moon_deepslate",
+      "facet": "material_family",
+      "value": "norite",
+      "rationale": "Display name Norite"
+    },
+    {
+      "item": "tfg:rock/aqueduct_moon_stone",
+      "facet": "material_family",
+      "value": "anorthosite",
+      "rationale": "Display name Anorthosite"
+    },
+    {
+      "item": "tfg:rock/aqueduct_nether",
+      "facet": "material_family",
+      "value": "keratophyre",
+      "rationale": "Display name Keratophyre"
+    },
+    {
+      "item": "tfg:rock/aqueduct_permafrost",
+      "facet": "material_family",
+      "value": "permafrost",
+      "rationale": "Display name Permafrost"
+    },
+    {
+      "item": "tfg:rock/aqueduct_red_granite",
+      "facet": "material_family",
+      "value": "red_granite",
+      "rationale": "Display name Red Granite"
+    },
+    {
+      "item": "tfg:rock/aqueduct_sandy_jadestone",
+      "facet": "material_family",
+      "value": "lamproite",
+      "rationale": "Display name Lamproite"
+    },
+    {
+      "item": "tfg:rock/aqueduct_scorchia",
+      "facet": "material_family",
+      "value": "scorchia",
+      "rationale": "Display name Scorchia"
+    },
+    {
+      "item": "tfg:rock/aqueduct_scoria",
+      "facet": "material_family",
+      "value": "scoria",
+      "rationale": "Display name Scoria"
+    }
+  ]
+}

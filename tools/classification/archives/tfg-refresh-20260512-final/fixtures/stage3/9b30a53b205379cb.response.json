@@ -1,0 +1,937 @@
+{
+  "items": {
+    "tfg:iodomethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport; player wields it to pour/transfer."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket, not carried everyday."
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying and transferring iodomethane fluid",
+            "Industrial chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says liquid, used in GT processes."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated chemical processing lines."
+        }
+      }
+    },
+    "tfg:isobutane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for gaseous isobutane; transport tool."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely carried; used in specific setups."
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying and transferring isobutane gas",
+            "Fuel or chemical feedstock"
+          ],
+          "signal": "inferred",
+          "rationale": "Gaseous state, temperature 293K."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for automated processing."
+        }
+      }
+    },
+    "tfg:isosorbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Dust form, tag forge:dusts, used in crafting."
+        },
+        "material_family": {
+          "value": "isosorbide",
+          "signal": "inferred",
+          "rationale": "Chemical compound dust."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Crafting intermediate, not always on hotbar."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting intermediate chemical",
+            "Ingredient in GT recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in 4 recipes as ingredient."
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "Pure chemical dust, fits this storage bucket."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust, stackable 64."
+        }
+      }
+    },
+    "tfg:isosorbide_ln_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized liquid bucket."
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying and transferring isosorbide linolenate"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows liquid state."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated chemical lines."
+        }
+      }
+    },
+    "tfg:isotopic_solvent_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket for fluid transport."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized solvent bucket."
+        },
+        "primary_uses": {
+          "values": [
+            "Carrying isotopic solvent for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows liquid state."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for high-end chemical processing."
+        }
+      }
+    },
+    "tfg:iv_aqueous_accumulator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT machine with UI, processes fluids."
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name includes 'Elite', voltage IV."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to place in base, not daily."
+        },
+        "primary_uses": {
+          "values": [
+            "Accumulating aqueous fluid",
+            "IV-tier fluid processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip mentions fluid capacity and voltage."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated GT processing line."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 32, common."
+        }
+      }
+    },
+    "tfg:iv_food_oven": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT machine for cooking food."
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name 'Elite', voltage IV."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried."
+        },
+        "primary_uses": {
+          "values": [
+            "Cooking food with electric power"
+          ],
+          "signal": "inferred",
+          "rationale": "Name suggests food cooking function."
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Electric oven for cooking."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 32."
+        }
+      }
+    },
+    "tfg:iv_food_processor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT machine for processing food."
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name 'Elite', voltage IV."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once."
+        },
+        "primary_uses": {
+          "values": [
+            "Processing food ingredients electically"
+          ],
+          "signal": "inferred",
+          "rationale": "Name implies food processing."
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "Food processing activity."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 32."
+        }
+      }
+    },
+    "tfg:iv_food_refrigerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine that consumes energy to keep food fresh, has storage slots."
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name 'Elite', voltage IV."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in base."
+        },
+        "primary_uses": {
+          "values": [
+            "Refrigerating and storing perishable food",
+            "Preserving food with power"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip mentions keeping food fresh."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Item storage with preservation mechanic."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 32."
+        }
+      }
+    },
+    "tfg:iv_gas_pressurizer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT machine for pressurizing gases."
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display name 'Elite', voltage IV."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in base."
+        },
+        "primary_uses": {
+          "values": [
+            "Pressurizing gases for storage or processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Name indicates gas pressurization."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated gas processing."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 32."
+        }
+      }
+    },
+    "tfg:iv_railgun_item_loader_in": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock hatch component, not standalone workstation."
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display includes 'IV'."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to build multiblock."
+        },
+        "primary_uses": {
+          "values": [
+            "Providing item input for Interplanetary Railgun multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Item Input for Multiblocks'."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles item transfer for multiblock."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 32."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "GT multiblock input hatch component."
+        }
+      }
+    },
+    "tfg:iv_railgun_item_loader_out": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock output hatch component."
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "named",
+          "rationale": "Display includes 'IV'."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to build multiblock."
+        },
+        "primary_uses": {
+          "values": [
+            "Providing item output from Interplanetary Railgun multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: 'Item Output for Multiblocks'."
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Handles item output."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 32."
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "GT multiblock output hatch."
+        }
+      }
+    },
+    "tfg:iv_universal_circuit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Circuit component used in many recipes."
+        },
+        "tier": {
+          "value": "iv",
+          "signal": "inferred",
+          "rationale": "Tag gtceu:circuits/iv and name."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Core crafting component, players keep stacks."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting IV-tier machines and components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in 82 recipes as ingredient."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Essential for GT automation crafting."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 64, common."
+        },
+        "organization_group": {
+          "values": [
+            "tfg:iv_components"
+          ],
+          "signal": "inferred",
+          "rationale": "IV-tier component; fits this storage bucket."
+        }
+      }
+    },
+    "tfg:javelin_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable mold used in extrusion process."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when doing extrusion crafting."
+        },
+        "primary_uses": {
+          "values": [
+            "Shaping javelin heads in an extruder"
+          ],
+          "signal": "inferred",
+          "rationale": "Name indicates extruder mold for javelin head."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated extrusion."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 4, but common."
+        }
+      }
+    },
+    "tfg:keratophyre_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural support beam for mining tunnels."
+        },
+        "material_family": {
+          "value": "keratophyre",
+          "signal": "inferred",
+          "rationale": "Stone type from tag."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when exploring and building supports."
+        },
+        "primary_uses": {
+          "values": [
+            "Supporting ceilings in mines and caves"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of TFC support beam system."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mining context for cave safety."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone block."
+        }
+      }
+    },
+    "tfg:knife_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable extruder mold for knife heads."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for extrusion jobs."
+        },
+        "primary_uses": {
+          "values": [
+            "Shaping knife heads in an extruder"
+          ],
+          "signal": "inferred",
+          "rationale": "Name indicates purpose."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated extrusion."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 4."
+        }
+      }
+    },
+    "tfg:komatiite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural support beam for mining."
+        },
+        "material_family": {
+          "value": "komatiite",
+          "signal": "inferred",
+          "rationale": "Igneous intrusive stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for mining support."
+        },
+        "primary_uses": {
+          "values": [
+            "Supporting ceilings in mines and tunnels"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining cave support."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone block."
+        }
+      }
+    },
+    "tfg:lab_equipment": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Crafting component for laboratory machines."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only needed when building lab setups."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting laboratory and chemical processing equipment"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes for lab machines."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated chemical processing."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 16."
+        }
+      }
+    },
+    "tfg:lamp_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable casting mold for lamps."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting lamp parts."
+        },
+        "primary_uses": {
+          "values": [
+            "Casting lamp components from molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Name indicates lamp casting mold."
+        },
+        "activity": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in TFC casting process."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 4."
+        }
+      }
+    },
+    "tfg:lamp_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Ceramic mold for casting lamp parts."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to casting station."
+        },
+        "primary_uses": {
+          "values": [
+            "Casting lamp components from molten metal"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in filling recipes for metal lamps."
+        },
+        "activity": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Fired mold used in casting."
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Item is used on casting table."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 16."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has smelting recipe for firing",
+          "rationale": "Produced from unfired clay via smelting."
+        }
+      }
+    },
+    "tfg:lamproite_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Support beam block."
+        },
+        "material_family": {
+          "value": "lamproite",
+          "signal": "inferred",
+          "rationale": "Igneous extrusive stone."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for mining support."
+        },
+        "primary_uses": {
+          "values": [
+            "Supporting ceilings in mines and caves"
+          ],
+          "signal": "inferred",
+          "rationale": "TFC support beam."
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mining cave support."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common stone block."
+        }
+      }
+    },
+    "tfg:large_bronze_boiler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Steam boiler machine, consumes fuel and water."
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "named",
+          "rationale": "Name includes 'bronze'."
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "named",
+          "rationale": "Bronze tier machine."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in power generation area."
+        },
+        "primary_uses": {
+          "values": [
+            "Generating steam from fuel and water"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip mentions steam production."
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Steam boiler for power."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 32."
+        }
+      }
+    },
+    "tfg:large_bullet_casing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ammunition component, used as ingredient for bullets."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used when crafting bullets."
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting large caliber bullets"
+          ],
+          "signal": "inferred",
+          "rationale": "Name implies bullet component."
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for weapon ammunition."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 64."
+        }
+      }
+    },
+    "tfg:large_casing_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Extruder mold for large bullet casings."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for extrusion."
+        },
+        "primary_uses": {
+          "values": [
+            "Shaping large bullet casings in an extruder"
+          ],
+          "signal": "inferred",
+          "rationale": "Name indicates purpose."
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated extrusion."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Stackable 4."
+        }
+      }
+    },
+    "tfg:large_nest_box": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placeable block that serves as a habitat for creatures."
+        },
+        "material_family": {
+          "value": "wood_crimson",
+          "signal": "inferred",
+          "rationale": "Name 'Crimson Nest' suggests crimson wood."
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for animal housing."
+        },
+        "primary_uses": {
+          "values": [
+            "Providing habitat for crimson creatures"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted nest box for animals."
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Animal husbandry component."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common placeable block."
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "has crafting recipe output",
+          "rationale": "Produced via crafting recipe."
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

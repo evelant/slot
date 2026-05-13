@@ -1,0 +1,943 @@
+{
+  "items": {
+    "gtceu:lv_arc_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for electric smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "Efficient smelting of ores and materials"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it as a powered furnace"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu progression"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "core processing step in automated production lines"
+        }
+      }
+    },
+    "gtceu:lv_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for automated assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated crafting of components and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it to assemble items from ingredients"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu progression"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "core assembly step in automated production"
+        }
+      }
+    },
+    "gtceu:lv_autoclave": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for crystallizing dusts"
+        },
+        "primary_uses": {
+          "values": [
+            "Crystallizing dusts into gems and crystals"
+          ],
+          "signal": "inferred",
+          "rationale": "processes impure dusts into purified crystals"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu progression"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of ore processing chain"
+        }
+      }
+    },
+    "gtceu:lv_battery_buffer_16x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for energy buffering"
+        },
+        "primary_uses": {
+          "values": [
+            "Buffering energy and charging multi-amperage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it to store and distribute energy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV energy infrastructure"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "manages energy storage and distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu energy system"
+        }
+      }
+    },
+    "gtceu:lv_battery_buffer_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for energy buffering"
+        },
+        "primary_uses": {
+          "values": [
+            "Buffering energy and charging multi-amperage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it to store and distribute energy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV energy infrastructure"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "manages energy storage and distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu energy system"
+        }
+      }
+    },
+    "gtceu:lv_battery_buffer_8x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for energy buffering"
+        },
+        "primary_uses": {
+          "values": [
+            "Buffering energy and charging multi-amperage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses it to store and distribute energy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV energy infrastructure"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "manages energy storage and distribution"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu energy system"
+        }
+      }
+    },
+    "gtceu:lv_battery_hull": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "empty hull used to craft batteries"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting LV batteries"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate component for battery production"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafting component"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT energy subsystem"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "component of GTCEu battery system"
+        }
+      }
+    },
+    "gtceu:lv_bender": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for bending metals"
+        },
+        "primary_uses": {
+          "values": [
+            "Bending metal plates into shaped forms"
+          ],
+          "signal": "inferred",
+          "rationale": "produces items like cassings and wire"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu progression"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "metal forming step in automation"
+        }
+      }
+    },
+    "gtceu:lv_block_breaker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for automated mining"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated mining and quarrying"
+          ],
+          "signal": "inferred",
+          "rationale": "mines blocks in front and collects drops"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu progression"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automates the mining process"
+        }
+      }
+    },
+    "gtceu:lv_blue_steel_chainsaw": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "powered tool for tree felling and scraping"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "crafted with blue steel head"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "rationale": "id and tooltip indicate LV electric tier"
+        },
+        "primary_uses": {
+          "values": [
+            "Felling trees and harvesting wood",
+            "Silk harvesting ice blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "lumberjack and sculptor abilities"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players carry for regular woodcutting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tree felling is a farming/wood harvesting activity"
+        },
+        "combat_bonus": {
+          "values": [
+            "disables_blocking"
+          ],
+          "signal": "named",
+          "rationale": "tooltip: 'Brute: Disables Shields'"
+        }
+      }
+    },
+    "gtceu:lv_blue_steel_drill": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "powered tool for mining with area effect"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "crafted with blue steel head"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "rationale": "id and tooltip indicate LV electric tier"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining ores and stone with 3x3 area"
+          ],
+          "signal": "inferred",
+          "rationale": "AoE mining and torch placement"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players carry for regular mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted tool"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining"
+        }
+      }
+    },
+    "gtceu:lv_blue_steel_screwdriver": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "powered tool for configuring covers and machines"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "crafted with blue steel head"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "rationale": "id and tooltip indicate LV electric tier"
+        },
+        "primary_uses": {
+          "values": [
+            "Adjusting covers and machine settings",
+            "Crafting various GT components"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and crafting uses"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during machine setup and crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for configuring automation machines"
+        }
+      }
+    },
+    "gtceu:lv_blue_steel_wire_cutter": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "powered tool for cutting wires and crafting"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "crafted with blue steel head"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "rationale": "id and tooltip indicate LV electric tier"
+        },
+        "primary_uses": {
+          "values": [
+            "Cutting wires and producing fine wires",
+            "Crafting various single wires from large wires"
+          ],
+          "signal": "inferred",
+          "rationale": "wire cutting recipes and tooltip"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during crafting sessions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GT wire/component production"
+        }
+      }
+    },
+    "gtceu:lv_blue_steel_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "powered tool for dismantling and rotating machines"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "inferred",
+          "rationale": "crafted with blue steel head"
+        },
+        "tier": {
+          "value": "lv",
+          "signal": "pattern",
+          "rationale": "id and tooltip indicate LV electric tier"
+        },
+        "primary_uses": {
+          "values": [
+            "Dismantling machines and rotating blocks",
+            "Configuring pipe and machine connections"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: hold left click to dismantle, rotate blocks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during machine setup and maintenance"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted tool"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "machine configuration and dismantling"
+        }
+      }
+    },
+    "gtceu:lv_brewery": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for automatic potion brewing"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated potion brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: compact and efficient potion brewing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu"
+        },
+        "activity": {
+          "values": [
+            "slot:brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "dedicated to potion brewing"
+        }
+      }
+    },
+    "gtceu:lv_buffer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for item/fluid storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Buffering items and fluids in automation lines"
+          ],
+          "signal": "inferred",
+          "rationale": "provides temporary storage with fluid tanks and item slots"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV infrastructure block"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items and fluids for logistics"
+        }
+      }
+    },
+    "gtceu:lv_cadmium_battery": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable energy storage item, not a tool or workstation"
+        },
+        "primary_uses": {
+          "values": [
+            "Powering LV tools and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "charged and inserted into tools or battery buffers"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "players carry spare batteries for power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted battery"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "provides stored energy for operations"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:battery"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu battery system"
+        }
+      }
+    },
+    "gtceu:lv_canner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for filling/emptying containers"
+        },
+        "primary_uses": {
+          "values": [
+            "Filling and emptying cells, cans, and containers"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: puts things into and out of containers"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fluid and item handling automation"
+        }
+      }
+    },
+    "gtceu:lv_centrifuge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for separating materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Separating mixtures into components"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: separating molecules"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "core separation process in automation"
+        }
+      }
+    },
+    "gtceu:lv_charger_4x": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for charging batteries"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging up to 4 batteries simultaneously"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip and item slots"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV energy infrastructure"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "charges batteries for power supply"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:charger"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu charger system"
+        }
+      }
+    },
+    "gtceu:lv_chemical_bath": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for chemical treatment"
+        },
+        "primary_uses": {
+          "values": [
+            "Bathing ores in chemicals to purify them"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: bathing ores in chemicals to separate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing step in automation"
+        }
+      }
+    },
+    "gtceu:lv_chemical_reactor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for chemical reactions"
+        },
+        "primary_uses": {
+          "values": [
+            "Performing chemical reactions to produce materials"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: letting chemicals react"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing in automation"
+        }
+      }
+    },
+    "gtceu:lv_circuit_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for circuit assembly"
+        },
+        "primary_uses": {
+          "values": [
+            "Automated assembly of circuit boards from components"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: pick-n-place all over"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit production step in automation"
+        }
+      }
+    },
+    "gtceu:lv_combustion": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block generator with UI for power output"
+        },
+        "primary_uses": {
+          "values": [
+            "Generating LV power from liquid fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: voltage OUT 32 EU/t"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV generator"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "converts fuel to electric power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "part of GTCEu generator system"
+        }
+      }
+    },
+    "gtceu:lv_compressor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "single-block machine with UI for compressing materials"
+        },
+        "primary_uses": {
+          "values": [
+            "Compressing materials into plates and dense forms"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: compress-o-matic"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried regularly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common LV machine in GTCEu"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "metal forming step in automation"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

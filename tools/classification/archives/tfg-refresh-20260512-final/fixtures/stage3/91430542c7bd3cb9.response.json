@@ -1,0 +1,1423 @@
+{
+  "items": {
+    "vintageimprovements:sulfur": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw mineral from Venus mining, used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "evidence": "id sulfur",
+          "rationale": "named sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting material used in batches"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingredient for chemicals"
+          ],
+          "signal": "inferred",
+          "rationale": "raw sulfur used in recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from Venus ore mining"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "inferred",
+          "rationale": "raw mineral stage from guide"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw sulfur piece belongs with unprocessed ores"
+        }
+      }
+    },
+    "vintageimprovements:sulfur_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage block for sulfur, not a container"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "evidence": "id sulfur_block",
+          "rationale": "made of sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed for storage, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of sulfur",
+            "milled into sulfur dust"
+          ],
+          "signal": "inferred",
+          "rationale": "used in milling and as storage block"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in Create milling"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "inferred",
+          "rationale": "raw material block"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "pattern",
+          "evidence": "max_stack_size 16",
+          "rationale": "stacks to 16"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption greate:milling",
+          "rationale": "milled in mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw sulfur block storage"
+        }
+      }
+    },
+    "vintageimprovements:sulfur_chunk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw mineral piece from Venus"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "evidence": "id sulfur_chunk",
+          "rationale": "sulfur material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting ingredient used when needed"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingredient for sulfur processing"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipe evidence, likely intermediate"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from Venus mining"
+        },
+        "material_process_stage": {
+          "value": "slot:ore",
+          "signal": "inferred",
+          "rationale": "raw chunk form"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw sulfur piece"
+        }
+      }
+    },
+    "vintageimprovements:sulfuric_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of chemical used as tool for fluid transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when needed for chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting and pouring sulfuric acid",
+            "ingredient in chemical reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of fluid used in processing"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport for automation"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket filled with fluid"
+        }
+      }
+    },
+    "vintageimprovements:tin_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed tin rod, crafting component"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "id tin_rod",
+          "rationale": "tin material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting Create parts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for tin parts",
+            "used in Create recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "rod form used in machining"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create contraptions"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id rod",
+          "rationale": "rod form"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed tin rod in refined metals"
+        }
+      }
+    },
+    "vintageimprovements:tin_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed tin plate, crafting component"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "id tin_sheet",
+          "rationale": "tin material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting Create parts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tin components",
+            "used in Create recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "sheet form used in pressing"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create contraptions"
+        },
+        "material_process_stage": {
+          "value": "slot:plate",
+          "signal": "pattern",
+          "evidence": "id sheet, tag forge:plates? not present but name implies",
+          "rationale": "sheet/plate form"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed tin sheet in refined metals"
+        }
+      }
+    },
+    "vintageimprovements:tin_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "spring component used in Create machines"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "id tin_spring",
+          "rationale": "tin material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting mechanical parts"
+        },
+        "primary_uses": {
+          "values": [
+            "component for Create contraptions",
+            "used in mechanical assemblies"
+          ],
+          "signal": "inferred",
+          "rationale": "spring part in machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific spring component"
+        }
+      }
+    },
+    "vintageimprovements:tin_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tin wire, crafting component"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "id tin_wire",
+          "rationale": "tin material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for wiring Create machines"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wiring in Create machines",
+            "coiling into springs"
+          ],
+          "signal": "inferred",
+          "rationale": "wire used in automation"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create contraptions"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific wire component"
+        }
+      }
+    },
+    "vintageimprovements:uranium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "uranium rod, advanced material for high-tier machines"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "id uranium_rod",
+          "rationale": "uranium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "advanced material, used sparingly"
+        },
+        "primary_uses": {
+          "values": [
+            "component for high-end Create machines",
+            "used in advanced recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "uranium rod in late-game"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id rod",
+          "rationale": "rod form"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific uranium rod"
+        }
+      }
+    },
+    "vintageimprovements:uranium_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "uranium plate, advanced material"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "id uranium_sheet",
+          "rationale": "uranium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "advanced material, used rarely"
+        },
+        "primary_uses": {
+          "values": [
+            "component for high-end Create machines",
+            "used in advanced recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "uranium sheet in late-game"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "material_process_stage": {
+          "value": "slot:plate",
+          "signal": "pattern",
+          "evidence": "id sheet",
+          "rationale": "sheet/plate form"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific uranium sheet"
+        }
+      }
+    },
+    "vintageimprovements:uranium_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "uranium spring, late-game mechanical component"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "id uranium_spring",
+          "rationale": "uranium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "advanced component, carried infrequently"
+        },
+        "primary_uses": {
+          "values": [
+            "component for high-end Create contraptions",
+            "used in mechanical assemblies"
+          ],
+          "signal": "inferred",
+          "rationale": "spring part in late-game machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific spring"
+        }
+      }
+    },
+    "vintageimprovements:uranium_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "uranium wire, advanced wiring component"
+        },
+        "material_family": {
+          "value": "uranium",
+          "signal": "pattern",
+          "evidence": "id uranium_wire",
+          "rationale": "uranium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "advanced material, used rarely"
+        },
+        "primary_uses": {
+          "values": [
+            "wiring in advanced Create machines",
+            "coiling into high-strength springs"
+          ],
+          "signal": "inferred",
+          "rationale": "wire used in late-game automation"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific wire"
+        }
+      }
+    },
+    "vintageimprovements:v_shaped_curving_head": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "machine attachment installed on curving press"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "installed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "configure curving press for L-shaped recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says produces L-like recipes"
+        },
+        "used_at": {
+          "values": [
+            "vintageimprovements:curving"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip 'installed to Curving Press'",
+          "rationale": "used at curving press"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific machine part"
+        }
+      }
+    },
+    "vintageimprovements:vacuum_chamber": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic processing block in Create contraption"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and used as machine"
+        },
+        "primary_uses": {
+          "values": [
+            "processing items under vacuum",
+            "creating advanced materials"
+          ],
+          "signal": "inferred",
+          "rationale": "machine for vacuumizing recipes"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated processing machine"
+        },
+        "workflow": {
+          "values": [
+            "vintageimprovements:vacuumizing"
+          ],
+          "signal": "inferred",
+          "rationale": "process items under vacuum"
+        },
+        "used_at": {
+          "values": [
+            "vintageimprovements:vacuumizing"
+          ],
+          "signal": "inferred",
+          "rationale": "the chamber itself is the station"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create contraption system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI machine block"
+        }
+      }
+    },
+    "vintageimprovements:vanadium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage block for vanadium, not a container"
+        },
+        "material_family": {
+          "value": "vanadium",
+          "signal": "pattern",
+          "evidence": "id vanadium_block",
+          "rationale": "vanadium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed for storage, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of vanadium",
+            "source of vanadium via milling or compacting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in processing and storage"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processed in Create machines"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "pattern",
+          "evidence": "max_stack_size 16",
+          "rationale": "stacks to 16"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption greate:milling",
+          "rationale": "milled in mill"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "vanadium block is refined metal block"
+        }
+      }
+    },
+    "vintageimprovements:vanadium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "vanadium ingot, standard metal form"
+        },
+        "material_family": {
+          "value": "vanadium",
+          "signal": "pattern",
+          "evidence": "id vanadium_ingot",
+          "rationale": "vanadium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "common metal used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting vanadium components",
+            "used in Create recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "ingot for machining"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create processing"
+        },
+        "material_process_stage": {
+          "value": "slot:ingot",
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "pattern",
+          "evidence": "max_stack_size 16",
+          "rationale": "stacks to 16, TFC pileable"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe consumption greate:milling",
+          "rationale": "milled into dust"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "vanadium ingot in refined metals"
+        }
+      }
+    },
+    "vintageimprovements:vanadium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "vanadium nugget, small metal piece"
+        },
+        "material_family": {
+          "value": "vanadium",
+          "signal": "pattern",
+          "evidence": "id vanadium_nugget",
+          "rationale": "vanadium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in small quantities"
+        },
+        "primary_uses": {
+          "values": [
+            "small amount of vanadium",
+            "crafting vanadium parts"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget form for precision"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create processing"
+        },
+        "material_process_stage": {
+          "value": "slot:nugget",
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "vanadium nugget in refined metals"
+        }
+      }
+    },
+    "vintageimprovements:vanadium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "vanadium rod, processed metal form"
+        },
+        "material_family": {
+          "value": "vanadium",
+          "signal": "pattern",
+          "evidence": "id vanadium_rod",
+          "rationale": "vanadium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in crafting advanced components"
+        },
+        "primary_uses": {
+          "values": [
+            "component for advanced Create machines",
+            "used in high-tier recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "rod form for machining"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id rod",
+          "rationale": "rod form"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific vanadium rod"
+        }
+      }
+    },
+    "vintageimprovements:vanadium_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "vanadium plate, advanced sheet metal"
+        },
+        "material_family": {
+          "value": "vanadium",
+          "signal": "pattern",
+          "evidence": "id vanadium_sheet",
+          "rationale": "vanadium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in crafting advanced components"
+        },
+        "primary_uses": {
+          "values": [
+            "component for advanced Create machines",
+            "used in high-tier recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "sheet form for pressing"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "material_process_stage": {
+          "value": "slot:plate",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "pattern",
+          "evidence": "max_stack_size 16",
+          "rationale": "stacks to 16, TFC pileable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific vanadium sheet"
+        }
+      }
+    },
+    "vintageimprovements:vanadium_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "vanadium spring, high-end mechanical component"
+        },
+        "material_family": {
+          "value": "vanadium",
+          "signal": "pattern",
+          "evidence": "id vanadium_spring",
+          "rationale": "vanadium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "advanced component used sparingly"
+        },
+        "primary_uses": {
+          "values": [
+            "component for advanced Create contraptions",
+            "used in mechanical assemblies"
+          ],
+          "signal": "inferred",
+          "rationale": "spring part in late-game machines"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific spring"
+        }
+      }
+    },
+    "vintageimprovements:vanadium_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "vanadium wire, advanced wiring component"
+        },
+        "material_family": {
+          "value": "vanadium",
+          "signal": "pattern",
+          "evidence": "id vanadium_wire",
+          "rationale": "vanadium material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "advanced material, used rarely"
+        },
+        "primary_uses": {
+          "values": [
+            "wiring in advanced Create machines",
+            "coiling into high-strength springs"
+          ],
+          "signal": "inferred",
+          "rationale": "wire for late-game automation"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific wire"
+        }
+      }
+    },
+    "vintageimprovements:vibrating_table": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "kinetic processing block in Create contraption"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and used as machine"
+        },
+        "primary_uses": {
+          "values": [
+            "processing items via vibration",
+            "used in advanced recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "machine for vibrating materials"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated processing machine"
+        },
+        "workflow": {
+          "values": [
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "process items by vibrating"
+        },
+        "used_at": {
+          "values": [
+            "vintageimprovements:vibrating"
+          ],
+          "signal": "inferred",
+          "rationale": "the table itself is the station"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:contraption"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create contraption system"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI machine block"
+        }
+      }
+    },
+    "vintageimprovements:w_shaped_curving_head": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "machine attachment installed on curving press"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "installed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "configure curving press for W-shaped recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip says produces r-like recipes"
+        },
+        "used_at": {
+          "values": [
+            "vintageimprovements:curving"
+          ],
+          "signal": "pattern",
+          "evidence": "tooltip 'installed to Curving Press'",
+          "rationale": "used at curving press"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "VI-specific machine part"
+        }
+      }
+    },
+    "vintageimprovements:zinc_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "zinc rod, processed metal form"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id zinc_rod",
+          "rationale": "zinc material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "common crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting zinc components",
+            "used in Create recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "rod form for machining"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create automation"
+        },
+        "material_process_stage": {
+          "value": "slot:rod",
+          "signal": "pattern",
+          "evidence": "id rod",
+          "rationale": "rod form"
+        },
+        "stock_profile": {
+          "value": "slot:bulk",
+          "signal": "pattern",
+          "evidence": "max_stack_size 64",
+          "rationale": "stacks to 64"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "zinc rod in refined metals"
+        }
+      }
+    },
+    "vintageimprovements:zinc_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "zinc plate, processed sheet metal"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id zinc_sheet",
+          "rationale": "zinc material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "common crafting component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting zinc components",
+            "creating zinc blocks and structures"
+          ],
+          "signal": "inferred",
+          "rationale": "plate used in crafting and building"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in Create processing"
+        },
+        "material_process_stage": {
+          "value": "slot:plate",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "stock_profile": {
+          "value": "slot:small_batch",
+          "signal": "pattern",
+          "evidence": "max_stack_size 16",
+          "rationale": "stacks to 16, TFC pileable"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe production tfc:anvil",
+          "rationale": "hammered on anvil"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "zinc sheet in refined metals"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

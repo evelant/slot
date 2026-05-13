@@ -1,0 +1,1189 @@
+{
+  "items": {
+    "gtceu:cassiterite_sand_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust is crafting material"
+        },
+        "material_family": {
+          "value": "cassiterite_sand",
+          "signal": "pattern",
+          "rationale": "from dust id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for smelting and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into tin ingots",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by processing, not looted"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "dust is input to smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "dust as smelting input"
+        }
+      }
+    },
+    "gtceu:cassiterite_sand_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "naturally occurring surface rock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, mostly left in world"
+        },
+        "primary_uses": {
+          "values": [
+            "indicates cassiterite ore deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "visual indicator for mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:dust_ore_indicators",
+          "rationale": "spawns on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rock fits dirt/rock storage"
+        }
+      }
+    },
+    "gtceu:cassiterite_sand_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore is raw material"
+        },
+        "material_family": {
+          "value": "cassiterite_sand",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into tin ingots",
+            "source of tin"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/stone",
+          "rationale": "underground ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:causality_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed as warning sign decoration"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "used for aesthetics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting recipe",
+          "rationale": "only obtained via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/decorative"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative block storage"
+        }
+      }
+    },
+    "gtceu:cell_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "mold used in extruder machine"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "carried only when setting up extruder"
+        },
+        "primary_uses": {
+          "values": [
+            "shapes cells in extruder"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Extruder Shape for making Cells",
+          "rationale": "direct from tooltip"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "artisan table recipe",
+          "rationale": "only obtained via crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "inferred",
+          "rationale": "mold storage group"
+        }
+      }
+    },
+    "gtceu:central_monitor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed machine with GUI for monitoring"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "monitors GTCE machines"
+          ],
+          "signal": "inferred",
+          "rationale": "its function as monitor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting recipe",
+          "rationale": "only obtained via crafting"
+        }
+      }
+    },
+    "gtceu:cerium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when moving fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "transport liquid cerium"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for fluid handling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled bucket is fluid container"
+        }
+      }
+    },
+    "gtceu:cerium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust is crafting material"
+        },
+        "material_family": {
+          "value": "cerium",
+          "signal": "pattern",
+          "rationale": "from dust id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "used in alloying",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced by processing"
+        }
+      }
+    },
+    "gtceu:certus_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block, not container"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "from block id"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored in base, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of certus quartz",
+            "crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "used as storage and crafting input"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "compacting recipe",
+          "rationale": "crafted from certus quartz items"
+        }
+      }
+    },
+    "gtceu:certus_quartz_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "naturally occurring surface bud"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, mostly left in world"
+        },
+        "primary_uses": {
+          "values": [
+            "indicates certus quartz deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "visual indicator for mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:bud_indicators",
+          "rationale": "spawns on surface as bud"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rock fits dirt/rock storage"
+        }
+      }
+    },
+    "gtceu:certus_quartz_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "naturally occurring surface rock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, mostly left in world"
+        },
+        "primary_uses": {
+          "values": [
+            "indicates certus quartz ore"
+          ],
+          "signal": "inferred",
+          "rationale": "visual indicator for mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "spawns on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rock fits dirt/rock storage"
+        }
+      }
+    },
+    "gtceu:certus_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore is raw material"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into certus quartz",
+            "source of certus quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/stone",
+          "rationale": "underground ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:certus_quartz_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate is crafted material"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "from plate id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "used in various recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "cutting recipe",
+          "rationale": "produced from block"
+        }
+      }
+    },
+    "gtceu:certus_quartz_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod is crafted material"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "from rod id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for tool and component crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component for tools and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "polishing/lathe recipe",
+          "rationale": "produced from processing"
+        }
+      }
+    },
+    "gtceu:cetane_boosted_diesel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fueling engines"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for combustion engines"
+          ],
+          "signal": "inferred",
+          "rationale": "used as high-grade fuel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "filled bucket is fluid container"
+        }
+      }
+    },
+    "gtceu:chalcocite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust is crafting material"
+        },
+        "material_family": {
+          "value": "chalcocite",
+          "signal": "pattern",
+          "rationale": "from dust id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for smelting and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into copper",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by processing, not looted"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "dust is input to smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "dust as smelting input"
+        }
+      }
+    },
+    "gtceu:chalcocite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "naturally occurring surface rock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, mostly left in world"
+        },
+        "primary_uses": {
+          "values": [
+            "indicates chalcocite ore deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "visual indicator for mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "spawns on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rock fits dirt/rock storage"
+        }
+      }
+    },
+    "gtceu:chalcocite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore is raw material"
+        },
+        "material_family": {
+          "value": "chalcocite",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into copper",
+            "source of copper"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/stone",
+          "rationale": "underground ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:chalcopyrite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust is crafting material"
+        },
+        "material_family": {
+          "value": "chalcopyrite",
+          "signal": "pattern",
+          "rationale": "from dust id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for smelting and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into copper",
+            "crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by processing, not looted"
+        },
+        "workflow": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "dust is input to smelting"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input"
+          ],
+          "signal": "pattern",
+          "evidence": "smelting recipe",
+          "rationale": "dust as smelting input"
+        }
+      }
+    },
+    "gtceu:chalcopyrite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "naturally occurring surface rock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried, mostly left in world"
+        },
+        "primary_uses": {
+          "values": [
+            "indicates chalcopyrite ore deposit"
+          ],
+          "signal": "inferred",
+          "rationale": "visual indicator for mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "spawns on surface"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt_and_rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rock fits dirt/rock storage"
+        }
+      }
+    },
+    "gtceu:chalcopyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore is raw material"
+        },
+        "material_family": {
+          "value": "chalcopyrite",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into copper",
+            "source of copper"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/stone",
+          "rationale": "underground ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:chalk_almandine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore is raw material"
+        },
+        "material_family": {
+          "value": "almandine",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into almandine",
+            "source of almandine garnet"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chalk",
+          "rationale": "underground ore in chalk stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:chalk_aluminium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore is raw material"
+        },
+        "material_family": {
+          "value": "aluminium",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into aluminium",
+            "source of aluminium"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chalk",
+          "rationale": "underground ore in chalk stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:chalk_alunite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore is raw material"
+        },
+        "material_family": {
+          "value": "alunite",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into alunite",
+            "source of alunite"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chalk",
+          "rationale": "underground ore in chalk stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:chalk_amethyst_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore is raw material"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "from ore id"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined and carried for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into amethyst",
+            "source of amethyst"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use from recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component value"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores_in_ground/chalk",
+          "rationale": "underground ore in chalk stone"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "players mine this ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

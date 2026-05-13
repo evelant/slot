@@ -1,0 +1,928 @@
+{
+  "items": {
+    "railways:tuff_locometal_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative block for train building"
+        },
+        "primary_uses": {
+          "values": [
+            "building train structures"
+          ],
+          "signal": "inferred",
+          "rationale": "part of locometal palette"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once while building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common from component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing structures"
+        }
+      }
+    },
+    "railways:tuff_locometal_rung_ladder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "ladder placed as part of building"
+        },
+        "primary_uses": {
+          "values": [
+            "climbing on trains"
+          ],
+          "signal": "inferred",
+          "rationale": "rung ladder for train access"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for access"
+        }
+      }
+    },
+    "railways:tuff_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokebox block"
+        },
+        "primary_uses": {
+          "values": [
+            "building train fronts"
+          ],
+          "signal": "inferred",
+          "rationale": "smokebox part of locomotive"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "railways:tuff_locometal_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor is structural opening"
+        },
+        "primary_uses": {
+          "values": [
+            "creating floor openings"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor for train builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "railways:tuff_locometal_vent": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative vent block"
+        },
+        "primary_uses": {
+          "values": [
+            "adding vent texture to builds"
+          ],
+          "signal": "inferred",
+          "rationale": "vent style block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "railways:tuff_paint_pitcher": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for painting locometal blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "painting locometal blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "paint pitcher tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only during painting projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for coloring blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple paint tool"
+        }
+      }
+    },
+    "railways:tuff_plated_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative plated block"
+        },
+        "primary_uses": {
+          "values": [
+            "building industrial-style structures"
+          ],
+          "signal": "inferred",
+          "rationale": "plated locometal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:tuff_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative riveted block"
+        },
+        "primary_uses": {
+          "values": [
+            "building riveted train surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "riveted texture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:tuff_round_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window pane block"
+        },
+        "primary_uses": {
+          "values": [
+            "adding windows to trains"
+          ],
+          "signal": "inferred",
+          "rationale": "round pane window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "railways:tuff_single_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window pane block"
+        },
+        "primary_uses": {
+          "values": [
+            "adding windows to trains"
+          ],
+          "signal": "inferred",
+          "rationale": "single pane window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "railways:tuff_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative slashed block"
+        },
+        "primary_uses": {
+          "values": [
+            "building slashed texture walls"
+          ],
+          "signal": "inferred",
+          "rationale": "slashed locometal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:tuff_sliding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door is structural opening"
+        },
+        "primary_uses": {
+          "values": [
+            "creating sliding doors on trains"
+          ],
+          "signal": "inferred",
+          "rationale": "sliding door for train builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building component"
+        }
+      }
+    },
+    "railways:tuff_two_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window pane block"
+        },
+        "primary_uses": {
+          "values": [
+            "adding windows to trains"
+          ],
+          "signal": "inferred",
+          "rationale": "two pane window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "railways:tuff_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative wrapped smokebox"
+        },
+        "primary_uses": {
+          "values": [
+            "building wrapped smokebox style"
+          ],
+          "signal": "inferred",
+          "rationale": "brass wrapped variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:turquoise_brass_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brass wrapped block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building turquoise brass train parts"
+          ],
+          "signal": "inferred",
+          "rationale": "colored wrapped block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:turquoise_brass_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative boiler block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building boiler sections"
+          ],
+          "signal": "inferred",
+          "rationale": "boiler block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "railways:turquoise_copper_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative copper wrapped block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building turquoise copper train parts"
+          ],
+          "signal": "inferred",
+          "rationale": "colored wrapped block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:turquoise_copper_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative boiler block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building boiler sections"
+          ],
+          "signal": "inferred",
+          "rationale": "boiler block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "railways:turquoise_copper_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative smokebox block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building smokebox with copper wrap"
+          ],
+          "signal": "inferred",
+          "rationale": "colored smokebox"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:turquoise_flat_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative flat riveted block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building flat riveted surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "pattern block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:turquoise_flat_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative flat slashed block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "building flat slashed surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "pattern block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:turquoise_folding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door is structural opening"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "creating folding doors on trains"
+          ],
+          "signal": "inferred",
+          "rationale": "folding door for train builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building component"
+        }
+      }
+    },
+    "railways:turquoise_four_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "window pane block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "adding turquoise windows"
+          ],
+          "signal": "inferred",
+          "rationale": "colored window"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "railways:turquoise_hazard_stripes_chevron_on_black": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard stripe block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "adding hazard stripes to trains"
+          ],
+          "signal": "inferred",
+          "rationale": "hazard pattern block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    },
+    "railways:turquoise_hazard_stripes_chevron_on_white": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard stripe block"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "signal": "inferred",
+          "rationale": "color from id"
+        },
+        "primary_uses": {
+          "values": [
+            "adding hazard stripes to trains"
+          ],
+          "signal": "inferred",
+          "rationale": "hazard pattern block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "railways:tuff_locometal_pillar",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "All locometal blocks share a tag tfg:locometal_blocks, forming a natural storage group.",
+      "evidence": "tag tfg:locometal_blocks"
+    }
+  ],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1024 @@
+{
+  "items": {
+    "gtceu:hazmat_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable boots with armor and hazard protection"
+        },
+        "primary_uses": {
+          "values": [
+            "protection from heat and cold",
+            "prevents buoyancy in gas"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip explicitly mentions hot/cold protection and gas lift prevention"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized armor worn during hazardous tasks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "uncommon rarity from component"
+        },
+        "protection_context": {
+          "values": [
+            "slot:heat",
+            "slot:cold"
+          ],
+          "signal": "named",
+          "evidence": "semantic_text hot and cold protection",
+          "rationale": "tooltip states protection from hot and cold items/fluids"
+        }
+      }
+    },
+    "gtceu:hazmat_chestpiece": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "chestplate of hazmat suit"
+        },
+        "primary_uses": {
+          "values": [
+            "protection from heat and cold",
+            "chest armor"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip mentions hot/cold protection for chest"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized armor worn during hazardous tasks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "uncommon rarity from component"
+        },
+        "protection_context": {
+          "values": [
+            "slot:heat",
+            "slot:cold"
+          ],
+          "signal": "named",
+          "evidence": "semantic_text hot and cold protection",
+          "rationale": "tooltip mentions protection from hot and cold"
+        }
+      }
+    },
+    "gtceu:hazmat_headpiece": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "helmet of hazmat suit"
+        },
+        "primary_uses": {
+          "values": [
+            "part of hazmat suit",
+            "basic helmet armor"
+          ],
+          "signal": "inferred",
+          "rationale": "no special protection beyond standard armor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized armor worn during hazardous tasks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "uncommon rarity from component"
+        }
+      }
+    },
+    "gtceu:hazmat_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "leggings of hazmat suit"
+        },
+        "primary_uses": {
+          "values": [
+            "part of hazmat suit",
+            "basic leg armor"
+          ],
+          "signal": "inferred",
+          "rationale": "standard leggings without special protection"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized armor worn during hazardous tasks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "uncommon rarity from component"
+        }
+      }
+    },
+    "gtceu:heat_vent": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as part of reactor structures, no UI"
+        },
+        "primary_uses": {
+          "values": [
+            "building reactor heat exchange structures"
+          ],
+          "signal": "inferred",
+          "rationale": "name implies heat venting in industrial builds"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building reactors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, used in structural quantities"
+        }
+      }
+    },
+    "gtceu:heatproof_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "casing used in multiblock machines (EBF, multi furnace)"
+        },
+        "primary_uses": {
+          "values": [
+            "building Electric Blast Furnace and Multi Furnace"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in those multiblock recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried when constructing machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing is a multiblock component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, used in large quantities"
+        }
+      }
+    },
+    "gtceu:heavy_fuel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket used to transport and pour heavy fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for combustion generators",
+            "industrial fluid transport"
+          ],
+          "signal": "inferred",
+          "rationale": "heavy fuel is a liquid fuel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when setting up power generation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds liquid fuel"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid in bucket form"
+        }
+      }
+    },
+    "gtceu:helium_3_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of helium-3 gas"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for fusion reactors",
+            "industrial gas transport"
+          ],
+          "signal": "inferred",
+          "rationale": "helium-3 is commonly used in fusion"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized fuel, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:gas_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds gas in bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "gas"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket, gas state"
+        }
+      }
+    },
+    "gtceu:helium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of helium gas"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting helium-filled upgrades",
+            "industrial gas supply"
+          ],
+          "signal": "inferred",
+          "rationale": "used in grapplemod upgrade recipe"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized gas, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:gas_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds gas in bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "gas"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket, gas state"
+        }
+      }
+    },
+    "gtceu:helium_plasma_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of helium plasma"
+        },
+        "primary_uses": {
+          "values": [
+            "high-temperature fuel for plasma generators"
+          ],
+          "signal": "inferred",
+          "rationale": "plasma state suggests use in advanced power gen"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized plasma fuel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds plasma in bucket"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket"
+        }
+      }
+    },
+    "gtceu:hematite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form of hematite, smelting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron ingots",
+            "iron processing chain"
+          ],
+          "signal": "inferred",
+          "rationale": "melts to cast iron, used in smelting recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediary material in processing lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "named",
+          "evidence": "semantic_text Fe2O3",
+          "rationale": "marked as hematite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 64, used in bulk processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined ore dust, part of processed minerals"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted into ingots via furnace"
+        }
+      }
+    },
+    "gtceu:hematite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "surface rock indicator for hematite ore"
+        },
+        "primary_uses": {
+          "values": [
+            "marker for hematite ore veins",
+            "collectible surface rock"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rocks indicate underground ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "picked up when exploring surface"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "surface rock found on ground"
+        }
+      }
+    },
+    "gtceu:hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw iron ore, smelted into iron"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into iron ingots",
+            "milling into crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting and milling recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ore carried when mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "named",
+          "evidence": "semantic_text Fe2O3",
+          "rationale": "ore of hematite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block awaiting processing"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted into iron ingot"
+        }
+      }
+    },
+    "gtceu:high_octane_gasoline_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of high-octane gasoline fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "high-efficiency fuel for combustion generators"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel with high octane rating"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized fuel, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds liquid fuel"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket"
+        }
+      }
+    },
+    "gtceu:high_performance_computation_array": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "computational block for advanced machines"
+        },
+        "primary_uses": {
+          "values": [
+            "computational processing in multiblock machines"
+          ],
+          "signal": "inferred",
+          "rationale": "HPCA component for computation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building advanced machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "part of a multiblock computation structure"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, used in structural amounts"
+        }
+      }
+    },
+    "gtceu:high_power_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "casing for high-power multiblock machines"
+        },
+        "primary_uses": {
+          "values": [
+            "building high-power machine casings"
+          ],
+          "signal": "inferred",
+          "rationale": "casing used in crafting and as facade"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried when building machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing is a multiblock component"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, used in large quantities"
+        }
+      }
+    },
+    "gtceu:high_pressure_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard sign block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative warning markings"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, used in construction"
+        }
+      }
+    },
+    "gtceu:high_temperature_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard sign block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative high-temperature warning markings"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, used in construction"
+        }
+      }
+    },
+    "gtceu:high_temperature_smelting_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "casing for high-temperature smelting multiblocks"
+        },
+        "primary_uses": {
+          "values": [
+            "building high-temperature smelting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in heat exchanger and smelting multiblocks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried when building smelting setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for smelting multiblocks"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, used in large quantities"
+        }
+      }
+    },
+    "gtceu:high_voltage_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative hazard sign block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative high-voltage warning markings"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not routinely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable to 32, used in construction"
+        }
+      }
+    },
+    "gtceu:highly_advanced_soc": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "advanced circuit component, used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "high-end circuit component for advanced machines"
+          ],
+          "signal": "inferred",
+          "rationale": "HASoC used in high-tier recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting advanced machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "advanced component, not bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "electronic circuit component"
+        }
+      }
+    },
+    "gtceu:highly_advanced_soc_wafer": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw wafer for advanced circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "raw material for HASoC production"
+          ],
+          "signal": "inferred",
+          "rationale": "wafer is intermediate for advanced circuit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing semiconductors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate component, not bulk"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit production material"
+        }
+      }
+    },
+    "gtceu:hot_alkaline_debrominated_brine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of chemical brine"
+        },
+        "primary_uses": {
+          "values": [
+            "industrial chemical processing fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate chemical used in reactions"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds liquid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket"
+        }
+      }
+    },
+    "gtceu:hot_brine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of hot brine"
+        },
+        "primary_uses": {
+          "values": [
+            "industrial fluid for thermal processes"
+          ],
+          "signal": "inferred",
+          "rationale": "hot brine used in heat exchange"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized heated fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds liquid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket"
+        }
+      }
+    },
+    "gtceu:hot_chlorinated_brominated_brine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of chemically processed brine"
+        },
+        "primary_uses": {
+          "values": [
+            "industrial chemical fluid for processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in chemical production"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical fluid"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "common rarity"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds liquid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket"
+        }
+      }
+    }
+  },
+  "fill_ins": [
+    {
+      "item": "gtceu:hazmat_chestpiece",
+      "facet": "form",
+      "value": "armor_piece",
+      "rationale": "missing from stage2, but clearly a chestplate armor piece"
+    },
+    {
+      "item": "gtceu:hazmat_headpiece",
+      "facet": "form",
+      "value": "armor_piece",
+      "rationale": "missing from stage2, but clearly a helmet armor piece"
+    }
+  ],
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": []
+}

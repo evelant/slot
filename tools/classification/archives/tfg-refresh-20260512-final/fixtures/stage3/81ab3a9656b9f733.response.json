@@ -1,0 +1,1417 @@
+{
+  "items": {
+    "tfc:wood/lectern/mangrove": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Player places it to hold books and emit redstone"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "pattern",
+          "rationale": "id suffix mangrove"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common TFC wood item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, not carried regularly"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for redstone signal from book"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred",
+          "rationale": "One lectern per base"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred",
+          "rationale": "Place and open book GUI"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Furniture block from wood"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary interactions"
+        }
+      }
+    },
+    "tfc:wood/lectern/maple": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Player places it to hold books and emit redstone"
+        },
+        "material_family": {
+          "value": "maple",
+          "signal": "pattern",
+          "rationale": "id suffix maple"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/oak": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Player places it to hold books and emit redstone"
+        },
+        "material_family": {
+          "value": "oak",
+          "signal": "pattern",
+          "rationale": "id suffix oak"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/palm": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Player places it to hold books and emit redstone"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "rationale": "id suffix palm"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/pine": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Player places it to hold books and emit redstone"
+        },
+        "material_family": {
+          "value": "pine",
+          "signal": "pattern",
+          "rationale": "id suffix pine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/rosewood": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/sequoia": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/spruce": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/sycamore": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/lectern/willow": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:singleton"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place",
+            "slot:open"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading",
+            "emit redstone comparator signal"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/acacia": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Primary use is building structures"
+        },
+        "material_family": {
+          "value": "acacia",
+          "signal": "pattern",
+          "rationale": "id suffix acacia"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Players carry logs while harvesting or building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building constructions"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk in inventory"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage bucket for all logs"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Harvested from trees in world"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/ash": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "ash",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/aspen": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/birch": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/blackwood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/chestnut": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/hickory": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/kapok": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/mangrove": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/maple": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "maple",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/oak": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "oak",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/palm": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "tfc:wood/log/pine": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "pine",
+          "signal": "pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting lumber",
+            "fuel for firepit"
+          ],
+          "signal": "inferred"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

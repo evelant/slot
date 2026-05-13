@@ -1,0 +1,789 @@
+{
+  "items": {
+    "tfg:catalyser_powder_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "catalyst dust used in chemical crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "catalyst in chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used as catalyst in recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for specific crafting runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        }
+      }
+    },
+    "tfg:catalyser_pt_re_zsm": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "catalyst material"
+        },
+        "primary_uses": {
+          "values": [
+            "catalyst for chemical reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "advanced catalyst"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for specific processes"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "platinum-rhenium content"
+        }
+      }
+    },
+    "tfg:cellulose_matrix": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processing material for composites"
+        },
+        "primary_uses": {
+          "values": [
+            "making paper or composite materials"
+          ],
+          "signal": "inferred",
+          "rationale": "likely used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        }
+      }
+    },
+    "tfg:certus_mechanism": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "named 'Mechanism', likely machine component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "component used in complex recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in inventory for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        }
+      }
+    },
+    "tfg:certus_regolith_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/certus_regolith",
+          "rationale": "dust form, certus regolith mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into certus quartz components"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate for certus production"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        }
+      }
+    },
+    "tfg:chain_casting_mold": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "reusable mold used in casting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:casting_molds",
+          "rationale": "molds stored together"
+        },
+        "primary_uses": {
+          "values": [
+            "casting chain items",
+            "shapes molten metal into chains"
+          ],
+          "signal": "inferred",
+          "rationale": "mold for casting chains"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "tool used only when casting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:casting_molds",
+          "rationale": "used at casting table"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:casting_molds",
+          "rationale": "part of casting process"
+        }
+      }
+    },
+    "tfg:chalk_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block, mined for smelting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting processing"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lorandite"
+          ],
+          "signal": "inferred",
+          "rationale": "source of lorandite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and carried to smelter"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "tfg:chalk_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "structural support block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "support beams stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as building component"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting tunnels and structures"
+          ],
+          "signal": "inferred",
+          "rationale": "used to prevent collapse"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when mining or building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone variant"
+        }
+      }
+    },
+    "tfg:charred_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:logs",
+          "rationale": "log block used in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:logs",
+          "rationale": "logs stored together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decoration",
+            "fuel for firepit and oven"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile log with fuel tags"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building or fuel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common log"
+        }
+      }
+    },
+    "tfg:chert_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into lorandite"
+          ],
+          "signal": "inferred",
+          "rationale": "source of lorandite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        }
+      }
+    },
+    "tfg:chert_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "support beam block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "support beams together"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural building component"
+        },
+        "primary_uses": {
+          "values": [
+            "supporting tunnels and structures"
+          ],
+          "signal": "inferred",
+          "rationale": "prevents cave ins"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for mining projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone variant"
+        }
+      }
+    },
+    "tfg:chipboard_composite": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "making chipboard or composite materials"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from mixing bowl"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for further processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common composite"
+        }
+      }
+    },
+    "tfg:chipped_fluix_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:chipped_gems/fluix",
+          "rationale": "chipped gem, intermediate form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gem item for storage"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into larger fluix gems"
+          ],
+          "signal": "inferred",
+          "rationale": "lower quality gem for refinement"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for gem crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common gem"
+        }
+      }
+    },
+    "tfg:chipped_zircon_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:chipped_gems/zircon",
+          "rationale": "chipped gem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gem group"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into larger zircon gems"
+          ],
+          "signal": "inferred",
+          "rationale": "lower quality gem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common gem"
+        }
+      }
+    },
+    "tfg:chisel_head_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag gtceu:extruder_molds",
+          "rationale": "mold used in extruder"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:molds",
+          "rationale": "molds stored together"
+        },
+        "primary_uses": {
+          "values": [
+            "extruding chisel heads"
+          ],
+          "signal": "inferred",
+          "rationale": "shapes metal into chisel heads"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized tool, rarely carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common mold"
+        }
+      }
+    },
+    "tfg:chlorine_pentafluoride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "fluid transport tool"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting and using chlorine pentafluoride"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for gaseous chemical"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket"
+        }
+      }
+    },
+    "tfg:chlorodifluoromethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "gas bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting refrigerant gas"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for chlorodifluoromethane"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for industrial use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket"
+        }
+      }
+    },
+    "tfg:chloroplasts_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting chloroplast extract"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for biological fluid"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for biotech processes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket"
+        }
+      }
+    },
+    "tfg:chlorosilane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "gas bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting chlorosilane for silicon processing"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical precursor bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for semiconductor crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket"
+        }
+      }
+    },
+    "tfg:chlorosulfuric_acid_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "acid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting chlorosulfuric acid"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical reagent bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for chemical reactions"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket"
+        }
+      }
+    },
+    "tfg:chloryl_fluoride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "suffix _bucket",
+          "rationale": "gas bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting chloryl fluoride"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for gaseous chemical"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for industrial use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common bucket"
+        }
+      }
+    },
+    "tfg:cholesterol_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/cholesterol",
+          "rationale": "biochemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "biochemical processing and synthesis"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in organic chemistry"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        }
+      }
+    },
+    "tfg:chorus_ceramic_insulation": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "specialized insulation material"
+        },
+        "primary_uses": {
+          "values": [
+            "insulating high-temperature components"
+          ],
+          "signal": "inferred",
+          "rationale": "chorus-infused ceramic"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for advanced crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "chorus ingredient suggests rarity"
+        }
+      }
+    },
+    "tfg:chromium_bonded_beo_pcb": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "advanced circuit board material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "electronic circuit component"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced circuit board for high-end electronics"
+          ],
+          "signal": "inferred",
+          "rationale": "high-performance PCB"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rare advanced component"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "complex material with exotic ingredients"
+        }
+      }
+    },
+    "tfg:citric_acid_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/citric_acid",
+          "rationale": "chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "food preservation and chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "citric acid used in food and industry"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,902 @@
+{
+  "items": {
+    "railways:track_mangrove_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Part of rail network; player lays tracks for trains"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed to guide trains"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_monorail": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Monorail track variant for trains"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying monorail tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_oak": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Oak variant of train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying oak train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_oak_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow oak train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying narrow oak tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_oak_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide oak train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying wide oak tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_phantom": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Invisible track for trains"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Special track, carried for specific builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying invisible train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Phantom track for train path"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_spruce": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Spruce/cypress train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying cypress train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_spruce_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow cypress train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying narrow cypress tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_spruce_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide cypress train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying wide cypress tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_stripped_bamboo": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Stripped bamboo train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying bamboo train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_stripped_bamboo_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow stripped bamboo train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying narrow bamboo tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_stripped_bamboo_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide stripped bamboo train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying wide bamboo tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_switch_andesite": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Andesite track switch for train junctions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Switch is part of train infrastructure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railway junctions"
+        },
+        "primary_uses": {
+          "values": [
+            "Building train track switches"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for rail routing"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_switch_brass": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Brass track switch for train junctions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Switch is part of train infrastructure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railway junctions"
+        },
+        "primary_uses": {
+          "values": [
+            "Building brass track switches"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for rail routing"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_acacia": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Acacia train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying acacia train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_acacia_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow acacia train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying narrow acacia tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_acacia_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide acacia train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying wide acacia tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_ash": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Ash train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying ash train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_ash_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow ash train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying narrow ash tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_ash_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide ash train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying wide ash tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_aspen": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Aspen train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying aspen train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_aspen_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow aspen train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying narrow aspen tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_aspen_wide": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Wide aspen train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying wide aspen tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_birch": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Birch train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying birch train tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    },
+    "railways:track_tfc_birch_narrow": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Narrow birch train track"
+        },
+        "mod_subsystem": {
+          "values": [
+            "railways:train"
+          ],
+          "signal": "inferred",
+          "rationale": "Track block is part of train subsystem"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building railways"
+        },
+        "primary_uses": {
+          "values": [
+            "Laying narrow birch tracks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for train transport"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "pattern",
+          "evidence": "create:tracks tag",
+          "rationale": "Used for rail transport"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

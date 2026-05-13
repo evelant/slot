@@ -1,0 +1,846 @@
+{
+  "items": {
+    "tfg:empty_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for fission reactor, crafting stock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in specific reactor crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel rod casings for fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "empty rod used to contain fissile fuel"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "part of the fission reactor system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, no worldgen evidence"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 4, used in small quantities"
+        }
+      }
+    },
+    "tfg:empty_rod_t2": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "beryllium fuel rod component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized fission component"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel rod casings for fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 2 empty rod"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "part of the fission system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 4"
+        }
+      }
+    },
+    "tfg:empty_rod_t3": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "zirconium fuel rod component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "high tier fission component"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel rod casings for fission reactor"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 3 empty rod"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "part of fission system"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size 4"
+        }
+      }
+    },
+    "tfg:enriched_boron_thrichloride_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of chemical fluid, tool-like use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when processing fission reagents"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting boron trichloride gas for reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "used as fluid ingredient in nuclear processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket containing gaseous fluid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds a fluid"
+        },
+        "use_affordance": [
+          "slot:fill",
+          "slot:empty"
+        ],
+        "signal": "inferred",
+        "rationale": "can be filled and emptied"
+      }
+    },
+    "tfg:epox_isosorbide_ln_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of specialized chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized industrial chemical"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting epoxidized isosorbide linolenate"
+          ],
+          "signal": "inferred",
+          "rationale": "used in advanced chemical production"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket containing liquid"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds a fluid"
+        }
+      }
+    },
+    "tfg:etching_diamond_tip": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool-like item used in crafting"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "evidence": "name contains diamond",
+          "rationale": "diamond tip"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "diamond material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific crafting stations"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting etching table",
+            "repairing jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in etching and repair recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, only crafted"
+        }
+      }
+    },
+    "tfg:etrium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "metal dust, crafting stock"
+        },
+        "material_family": {
+          "value": "etrium",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/etrium",
+          "rationale": "etrium metal dust"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in smelting and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into etrium ingots",
+            "crafting components"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into ingots or used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "pure dust, stored with other dusts"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "milled from plates/ingots"
+        }
+      }
+    },
+    "tfg:ev_aircraft_engine": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to aircraft to enhance engine"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "prefix ev_",
+          "rationale": "extreme voltage tier"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "one-time upgrade, carried rarely"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading aircraft engine power"
+          ],
+          "signal": "inferred",
+          "rationale": "adds +50% engine power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "immersive_aircraft:engine"
+          ],
+          "signal": "pattern",
+          "evidence": "tag immersive_aircraft:upgrades",
+          "rationale": "aircraft engine upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, crafted from EV components"
+        }
+      }
+    },
+    "tfg:ev_aqueous_accumulator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT machine with UI for fluid accumulation"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "prefix ev_",
+          "rationale": "extreme voltage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, operated periodically"
+        },
+        "primary_uses": {
+          "values": [
+            "accumulating fluid from water",
+            "providing water for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "generates water given power"
+        },
+        "activity": [
+          "slot:automation"
+        ],
+        "signal": "inferred",
+        "rationale": "automated fluid generation"
+      }
+    },
+    "tfg:ev_food_oven": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "electric oven for food cooking"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "prefix ev_",
+          "rationale": "extreme voltage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, used to cook food"
+        },
+        "primary_uses": {
+          "values": [
+            "cooking food with electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "replaces TFC oven with powered version"
+        },
+        "activity": [
+          "slot:cooking"
+        ],
+        "signal": "inferred",
+        "rationale": "cooking food"
+      }
+    },
+    "tfg:ev_food_processor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT machine for food processing"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "prefix ev_",
+          "rationale": "extreme voltage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base"
+        },
+        "primary_uses": {
+          "values": [
+            "processing food items into ingredients or meals"
+          ],
+          "signal": "inferred",
+          "rationale": "machine for food preparation"
+        },
+        "activity": [
+          "slot:cooking"
+        ],
+        "signal": "inferred",
+        "rationale": "food processing"
+      }
+    },
+    "tfg:ev_food_refrigerator": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "54-slot container that preserves food"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "prefix ev_",
+          "rationale": "extreme voltage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base for food storage"
+        },
+        "primary_uses": {
+          "values": [
+            "storing and preserving food",
+            "keeping food fresh"
+          ],
+          "signal": "inferred",
+          "rationale": "consumes EU to prevent spoilage"
+        },
+        "activity": [
+          "slot:cooking"
+        ],
+        "signal": "inferred",
+        "rationale": "food preservation"
+      }
+    },
+    "tfg:ev_gas_pressurizer": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "GT machine for pressurizing gases"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "prefix ev_",
+          "rationale": "extreme voltage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base, used in gas processing"
+        },
+        "primary_uses": {
+          "values": [
+            "pressurizing gases for chemical reactions"
+          ],
+          "signal": "inferred",
+          "rationale": "turns fluids into pressurized gases"
+        },
+        "activity": [
+          "slot:automation"
+        ],
+        "signal": "inferred",
+        "rationale": "gas processing"
+      }
+    },
+    "tfg:ev_railgun_item_loader_in": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock hatch component, no standalone UI"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "prefix ev_",
+          "rationale": "extreme voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in railgun multiblock construction"
+        },
+        "primary_uses": {
+          "values": [
+            "input bus for interplanetary railgun"
+          ],
+          "signal": "inferred",
+          "rationale": "merges items into multiblock"
+        },
+        "multiblock_role": {
+          "value": "port",
+          "signal": "inferred",
+          "rationale": "item input port for multiblock"
+        }
+      }
+    },
+    "tfg:ev_railgun_item_loader_out": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "multiblock output hatch"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "prefix ev_",
+          "rationale": "extreme voltage"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in railgun multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "output bus for interplanetary railgun"
+          ],
+          "signal": "inferred",
+          "rationale": "ejects items from multiblock"
+        },
+        "multiblock_role": {
+          "value": "port",
+          "signal": "inferred",
+          "rationale": "item output port"
+        }
+      }
+    },
+    "tfg:ev_universal_circuit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "electronic circuit, bulk crafting component"
+        },
+        "tier": {
+          "value": "ev",
+          "signal": "pattern",
+          "evidence": "tag gtceu:circuits/ev",
+          "rationale": "EV tier circuit"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many EV recipes, kept in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting EV machines",
+            "crafting EV components"
+          ],
+          "signal": "inferred",
+          "rationale": "key component in EV tier crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits",
+            "tfg:ev_components"
+          ],
+          "signal": "inferred",
+          "rationale": "stored with circuits or EV components"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced by shapeless recipe"
+        }
+      }
+    },
+    "tfg:evaporation_tower": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock controller with UI for evaporation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in base for chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "evaporating solvents to concentrate solutions"
+          ],
+          "signal": "inferred",
+          "rationale": "removes solvent from mixtures"
+        },
+        "activity": [
+          "slot:automation"
+        ],
+        "signal": "inferred",
+        "rationale": "chemical processing"
+      }
+    },
+    "tfg:exquisite_fluix_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gem used for cutting and trims"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems/fluix",
+          "rationale": "fluix gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "valuable, not used up quickly"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting into flawless gems",
+            "armor trim material",
+            "crafting diamond wand"
+          ],
+          "signal": "inferred",
+          "rationale": "multi-purpose gem"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems",
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "high-end gem storage"
+        }
+      }
+    },
+    "tfg:exquisite_zircon_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gem used for cutting"
+        },
+        "material_family": {
+          "value": "zircon",
+          "signal": "pattern",
+          "evidence": "tag forge:exquisite_gems/zircon",
+          "rationale": "zircon gem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "valuable gem"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting into smaller gems",
+            "crafting components"
+          ],
+          "signal": "inferred",
+          "rationale": "gem processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems",
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "gem storage"
+        }
+      }
+    },
+    "tfg:fake_sapling/aeronos": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plantable fungus, living nature"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried when planning to plant"
+        },
+        "primary_uses": {
+          "values": [
+            "planting to grow aeronos trees",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom block placed in world"
+        },
+        "use_affordance": [
+          "slot:place"
+        ],
+        "signal": "inferred",
+        "rationale": "placed as a block"
+      }
+    },
+    "tfg:fake_sapling/alphacene": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plantable fungus"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "planting alphacene mushrooms"
+          ],
+          "signal": "inferred",
+          "rationale": "similar to saplings"
+        }
+      }
+    },
+    "tfg:fake_sapling/crimson": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plantable fungus variant"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "decorative nether fungus"
+        },
+        "primary_uses": {
+          "values": [
+            "planting crimson fungi",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom block"
+        }
+      }
+    },
+    "tfg:fake_sapling/glacian": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plantable fungus"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "planting glacian mushrooms"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom block"
+        }
+      }
+    },
+    "tfg:fake_sapling/strophar": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plantable fungus"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "planting strophar mushrooms"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom block"
+        }
+      }
+    },
+    "tfg:fake_sapling/warped": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plantable fungus"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "decorative nether fungus"
+        },
+        "primary_uses": {
+          "values": [
+            "planting warped fungi",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

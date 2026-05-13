@@ -1,0 +1,1324 @@
+{
+  "items": {
+    "tfc:rock/cracked_bricks/chalk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed stone brick block for construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "evidence": "id contains chalk",
+          "rationale": "Rock type from item id"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural stone building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Brick storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/chalk_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant of stone bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "evidence": "id contains chalk",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-steps and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/chalk_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant of stone bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "evidence": "id contains chalk",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Rock stairs storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/chalk_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant of stone bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "chalk",
+          "signal": "pattern",
+          "evidence": "id contains chalk",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundary walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/chert": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed stone brick block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id contains chert",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural stone building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Brick storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/chert_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id contains chert",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-steps and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/chert_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id contains chert",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Rock stairs storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/chert_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "chert",
+          "signal": "pattern",
+          "evidence": "id contains chert",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundary walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/claystone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed stone brick block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id contains claystone",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural stone building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Brick storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/claystone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id contains claystone",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-steps and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/claystone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id contains claystone",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Rock stairs storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/claystone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "claystone",
+          "signal": "pattern",
+          "evidence": "id contains claystone",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundary walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/conglomerate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed stone brick block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id contains conglomerate",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural stone building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Brick storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/conglomerate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id contains conglomerate",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-steps and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/conglomerate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id contains conglomerate",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Rock stairs storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/conglomerate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "conglomerate",
+          "signal": "pattern",
+          "evidence": "id contains conglomerate",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundary walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/dacite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed stone brick block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id contains dacite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural stone building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Brick storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/dacite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id contains dacite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-steps and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/dacite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id contains dacite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Rock stairs storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/dacite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "dacite",
+          "signal": "pattern",
+          "evidence": "id contains dacite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundary walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/diorite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed stone brick block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural stone building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Brick storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/diorite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-steps and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/diorite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Rock stairs storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/diorite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "evidence": "id contains diorite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundary walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/dolomite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed stone brick block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id contains dolomite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural stone building material"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_index",
+          "rationale": "Brick storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/dolomite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id contains dolomite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-steps and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_slabs",
+          "rationale": "Brick slab storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/dolomite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stairs variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id contains dolomite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/rock_stairs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs",
+          "rationale": "Rock stairs storage group"
+        }
+      }
+    },
+    "tfc:rock/cracked_bricks/dolomite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from abundant stone"
+        },
+        "material_family": {
+          "value": "dolomite",
+          "signal": "pattern",
+          "evidence": "id contains dolomite",
+          "rationale": "Rock type"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundary walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfg:brick_walls",
+          "rationale": "Brick wall storage group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

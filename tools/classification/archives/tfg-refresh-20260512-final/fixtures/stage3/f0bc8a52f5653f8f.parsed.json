@@ -1,0 +1,789 @@
+{
+  "items": {
+    "species:stackatick_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collected and displayed by players"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not normally carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only=true",
+          "rationale": "Spawn egg pattern, creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning mobs for fun or collection"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses to summon the mob"
+        }
+      }
+    },
+    "species:tab": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Advancement tab icon, not survival-obtainable"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Only used in creative menu"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "rationale": "Component rarity=epic mapped to unique"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Creative-only tab item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "No survival source"
+        },
+        "primary_uses": {
+          "values": [
+            "creative tab icon"
+          ],
+          "signal": "inferred",
+          "rationale": "Only visible in creative tabs"
+        }
+      }
+    },
+    "species:treeper_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collected and displayed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not normally carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only=true",
+          "rationale": "Spawn egg pattern, creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning mobs for fun or collection"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses to summon the mob"
+        }
+      }
+    },
+    "species:trooper_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collected and displayed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not normally carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only=true",
+          "rationale": "Spawn egg pattern, creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning mobs for fun or collection"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses to summon the mob"
+        }
+      }
+    },
+    "species:v1": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible advancement token"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Once obtained, kept in storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "primary_uses": {
+          "values": [
+            "collectible advancement token"
+          ],
+          "signal": "inferred",
+          "rationale": "Linked to advancement Wave I"
+        }
+      }
+    },
+    "species:v2": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible advancement token"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Once obtained, kept in storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "primary_uses": {
+          "values": [
+            "collectible advancement token"
+          ],
+          "signal": "inferred",
+          "rationale": "Linked to advancement Wave II"
+        }
+      }
+    },
+    "species:v3": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible advancement token"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Once obtained, kept in storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "primary_uses": {
+          "values": [
+            "collectible advancement token"
+          ],
+          "signal": "inferred",
+          "rationale": "Linked to advancement Wave III"
+        }
+      }
+    },
+    "species:werefang": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mob drop used as ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried after hunting mobs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from bewereager entity",
+          "rationale": "Drops from the mob"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingredient from mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        }
+      }
+    },
+    "species:wicked_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable candle for ambiance"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed as decoration, not carried often"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "rationale": "Component rarity=uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "placeable decorative candle"
+          ],
+          "signal": "inferred",
+          "rationale": "Block placed for lighting/decor"
+        }
+      }
+    },
+    "species:wicked_dope": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Buff food item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for situational buffs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "primary_uses": {
+          "values": [
+            "consumable for buffs"
+          ],
+          "signal": "inferred",
+          "rationale": "Grants +1 level to active effects"
+        }
+      }
+    },
+    "species:wicked_mask": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to disguise as mobs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Brought for exploration/disguise"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe tfc:sewing output",
+          "rationale": "Produced by sewing recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "disguise as mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "Sneak+right click to select disguise"
+        }
+      }
+    },
+    "species:wicked_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collected and displayed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not normally carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only=true",
+          "rationale": "Spawn egg pattern, creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning mobs for fun or collection"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses to summon the mob"
+        }
+      }
+    },
+    "species:wicked_swapper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Ingredient for crafting and milling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ender-related items"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in AE2 and milling recipes"
+        }
+      }
+    },
+    "species:wicked_treat": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Pet food item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried to feed pets"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "recipe firmalife:mixing_bowl and greate:mixing output",
+          "rationale": "Produced by mixing bowl"
+        },
+        "food_use": {
+          "values": [
+            "slot:animal_feed"
+          ],
+          "signal": "inferred",
+          "rationale": "Says 'Can only be fed to Pets'"
+        },
+        "primary_uses": {
+          "values": [
+            "buff pet companions"
+          ],
+          "signal": "inferred",
+          "rationale": "Gives regeneration, strength, etc."
+        }
+      }
+    },
+    "species:wicked_wax": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Mob drop used as ingredient"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried after hunting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "loot from wicked entity",
+          "rationale": "Drops from the wicked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ingredient from wicked"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes"
+        }
+      }
+    },
+    "species:wraptor_egg": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Glowing egg block, natural block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected and placed for light"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "primary_uses": {
+          "values": [
+            "placeable glowing egg block"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in world, emits light"
+        }
+      }
+    },
+    "species:wraptor_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Spawn eggs are collected and displayed"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not normally carried in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 is_creative_only=true",
+          "rationale": "Spawn egg pattern, creative only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning mobs for fun or collection"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses to summon the mob"
+        }
+      }
+    },
+    "species:youth_potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Potion used on mobs"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried for specific use on mobs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "rationale": "Component rarity=uncommon"
+        },
+        "primary_uses": {
+          "values": [
+            "turns mobs into babies"
+          ],
+          "signal": "inferred",
+          "rationale": "Advancement description"
+        }
+      }
+    },
+    "tacz:ammo": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "rationale": "Ammunition for guns"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Carried constantly by gun users"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "Produced by crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "ammunition for guns"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in TACZ guns"
+        }
+      }
+    },
+    "tacz:ammo_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "Portable ammo storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when using guns"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "primary_uses": {
+          "values": [
+            "store and carry ammo"
+          ],
+          "signal": "inferred",
+          "rationale": "Right-click to deposit/remove ammo"
+        }
+      }
+    },
+    "tacz:attachment": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Applied to guns for modification"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for gun customization"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "Produced by crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "attach to guns for modifications"
+          ],
+          "signal": "inferred",
+          "rationale": "Gun attachment parts"
+        }
+      }
+    },
+    "tacz:gun_smith_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Workstation for gun crafting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed in base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "primary_uses": {
+          "values": [
+            "craft and modify guns"
+          ],
+          "signal": "inferred",
+          "rationale": "Opens UI for gun smithing"
+        }
+      }
+    },
+    "tacz:modern_kinetic_gun": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "Functional gun for combat"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Carried for combat situations"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "Produced by crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "shoot enemies"
+          ],
+          "signal": "inferred",
+          "rationale": "Gun used in combat"
+        }
+      }
+    },
+    "tacz:statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable stone statue"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "Produced by crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "placeable statue decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative block"
+        }
+      }
+    },
+    "tacz:target": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Target practice block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in shooting range"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity=common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "crafting shaped output",
+          "rationale": "Produced by crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "target practice block"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as shooting dummy"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1322 @@
+{
+  "items": {
+    "rnr:hoggin_mix": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for road surfaces"
+        },
+        "material_family": {
+          "value": "hoggin",
+          "signal": "inferred",
+          "rationale": "named in id and display"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting road blocks",
+            "base course for roads"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building roads"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "shapeless recipe",
+          "rationale": "crafted from ingredients"
+        },
+        "used_at": {
+          "values": [
+            "rnr:mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "tamped with mattock"
+        }
+      }
+    },
+    "rnr:hoggin_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed road slab"
+        },
+        "material_family": {
+          "value": "hoggin",
+          "signal": "inferred",
+          "rationale": "same material as hoggin mix"
+        },
+        "primary_uses": {
+          "values": [
+            "building road surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of road construction"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "earthy road material"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional road block"
+        }
+      }
+    },
+    "rnr:hoggin_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed road stairs"
+        },
+        "material_family": {
+          "value": "hoggin",
+          "signal": "inferred",
+          "rationale": "same material"
+        },
+        "primary_uses": {
+          "values": [
+            "building road stairways"
+          ],
+          "signal": "inferred",
+          "rationale": "road block variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "part of road construction"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "earthy road material"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional road block"
+        }
+      }
+    },
+    "rnr:metal/mattock/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id contains bismuth_bronze",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id contains black_bronze",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock/black_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "high-tier metal tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id contains blue_steel",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "top-tier metal tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock/bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "evidence": "id contains bronze",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock/copper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "TFC copper tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock/red_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "top-tier metal tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock/steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id contains steel",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "TFC steel tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "steel tier tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld road-building tool"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "id contains wrought_iron",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "TFC iron tier"
+        },
+        "primary_uses": {
+          "values": [
+            "tamping dirt for roads",
+            "terrain shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary tool when road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common tool"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and stick"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id contains bismuth_bronze",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting bismuth bronze mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id contains black_bronze",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black bronze mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/black_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id contains black_steel",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting black steel mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id contains blue_steel",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting blue steel mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "evidence": "id contains bronze",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting bronze mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/copper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id contains copper",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "TFC copper tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting copper mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id contains red_steel",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "TFC metal tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting red steel mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id contains steel",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "TFC steel tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting steel mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:metal/mattock_head/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mattock"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "id contains wrought_iron",
+          "rationale": "metal material"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "TFC iron tier"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wrought iron mattock"
+          ],
+          "signal": "inferred",
+          "rationale": "mattock head is ingredient"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage until used"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made on anvil or curving"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#output",
+            "vintageimprovements:curving#output"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipes",
+          "rationale": "produced by anvil and curving"
+        }
+      }
+    },
+    "rnr:pink_sandstone_flagstones": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed road surface block"
+        },
+        "material_family": {
+          "value": "pink_sandstone",
+          "signal": "pattern",
+          "evidence": "id contains pink_sandstone",
+          "rationale": "stone material"
+        },
+        "primary_uses": {
+          "values": [
+            "building paved roads"
+          ],
+          "signal": "inferred",
+          "rationale": "flagstone road block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "palette": {
+          "values": [
+            "pink"
+          ],
+          "signal": "inferred",
+          "rationale": "pink sandstone color"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional road block"
+        }
+      }
+    },
+    "rnr:pink_sandstone_flagstones_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed road slab"
+        },
+        "material_family": {
+          "value": "pink_sandstone",
+          "signal": "pattern",
+          "evidence": "id contains pink_sandstone",
+          "rationale": "stone material"
+        },
+        "primary_uses": {
+          "values": [
+            "building paved road slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "flagstone slab"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "palette": {
+          "values": [
+            "pink"
+          ],
+          "signal": "inferred",
+          "rationale": "pink sandstone color"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional road block"
+        }
+      }
+    },
+    "rnr:pink_sandstone_flagstones_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed road stairs"
+        },
+        "material_family": {
+          "value": "pink_sandstone",
+          "signal": "pattern",
+          "evidence": "id contains pink_sandstone",
+          "rationale": "stone material"
+        },
+        "primary_uses": {
+          "values": [
+            "building paved road stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "flagstone stairs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common stone block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "palette": {
+          "values": [
+            "pink"
+          ],
+          "signal": "inferred",
+          "rationale": "pink sandstone color"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional road block"
+        }
+      }
+    },
+    "rnr:pouring_concrete_road": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "temporary wet concrete road block"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "concrete material"
+        },
+        "primary_uses": {
+          "values": [
+            "building concrete roads"
+          ],
+          "signal": "inferred",
+          "rationale": "wetset concrete road"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only during road building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in road construction"
+        },
+        "palette": {
+          "values": [
+            "grey"
+          ],
+          "signal": "inferred",
+          "rationale": "grey concrete"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional road block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

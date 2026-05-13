@@ -1,0 +1,1119 @@
+{
+  "items": {
+    "gtceu:tungstate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "refined dust, crafting stash"
+        },
+        "material_family": {
+          "value": "tungstate",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tungstate",
+          "rationale": "compound material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component material, not rare"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "bulk stored, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into tungstate ingot",
+            "crafting tungsten components"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot, crafted from ores"
+        }
+      }
+    },
+    "gtceu:tungstate_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "surface ore indicator"
+        },
+        "material_family": {
+          "value": "tungstate",
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks/tungstate",
+          "rationale": "compound material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "surface rocks are common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "picked up occasionally"
+        },
+        "primary_uses": {
+          "values": [
+            "indicating tungstate ore below",
+            "collecting surface rocks"
+          ],
+          "signal": "inferred",
+          "rationale": "prospecting aid"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:surface_rocks",
+          "rationale": "found on surface"
+        }
+      }
+    },
+    "gtceu:tungstate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore to be processed"
+        },
+        "material_family": {
+          "value": "tungstate",
+          "signal": "pattern",
+          "evidence": "tag forge:ores/tungstate",
+          "rationale": "ore of tungstate"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specific ore not super common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into tungstate",
+            "processing into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing chain"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from underground"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "underground ore"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore block"
+        }
+      }
+    },
+    "gtceu:tungsten_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block, not a container"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/tungsten",
+          "rationale": "tungsten material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted material block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of tungsten",
+            "crafting tungsten plates"
+          ],
+          "signal": "inferred",
+          "rationale": "material block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block for materials"
+        }
+      }
+    },
+    "gtceu:tungsten_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts",
+          "rationale": "small component, crafting stash"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/tungsten",
+          "rationale": "tungsten material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stacked and stored"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting screws",
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        }
+      }
+    },
+    "gtceu:tungsten_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for transporting molten metal"
+        },
+        "material_family": {
+          "value": "tungsten",
+          "signal": "inferred",
+          "rationale": "contains molten tungsten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only when smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten tungsten",
+            "pouring into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:storage_blocks/tungsten_carbide",
+          "rationale": "tungsten carbide material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted material block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of tungsten carbide",
+            "crafting plates"
+          ],
+          "signal": "inferred",
+          "rationale": "material block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/storage_blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts",
+          "rationale": "small component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:bolts/tungsten_carbide",
+          "rationale": "tungsten carbide"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stacked and stored"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting screws",
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool for transporting molten metal"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "contains molten tungsten carbide"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted bucket"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only when smelting"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten tungsten carbide",
+            "pouring into molds"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport tool"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluid"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/butchery_knives",
+          "rationale": "butchery tool"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "made of tungsten carbide"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "inferred",
+          "evidence": "tooltip Harvest Level 4",
+          "rationale": "harvest level 4 = netherite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in animal husbandry"
+        },
+        "primary_uses": {
+          "values": [
+            "butchering animals for more meat",
+            "slashing damage"
+          ],
+          "signal": "inferred",
+          "rationale": "butchery tool"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "animal husbandry"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "butchery tool for animals"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and handle"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:butchery_knife_heads",
+          "rationale": "tool component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:butchery_knife_heads/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored until used"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting butchery knife"
+          ],
+          "signal": "inferred",
+          "rationale": "tool head"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool head used in crafting"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_buzz_saw_blade": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:buzz_saw_heads",
+          "rationale": "machine component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:buzz_saw_heads/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in machine crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting buzzsaws",
+            "cutting machine component"
+          ],
+          "signal": "inferred",
+          "rationale": "machine head"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "component for VI machines"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_chainsaw_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:chainsaw_heads",
+          "rationale": "machine component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:chainsaw_heads/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored until used"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting chainsaw"
+          ],
+          "signal": "inferred",
+          "rationale": "machine head"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "component for VI machines"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/crowbars",
+          "rationale": "maintenance tool"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "made of tungsten carbide"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "inferred",
+          "evidence": "tooltip Harvest Level 4",
+          "rationale": "harvest level 4 = netherite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for machine setup"
+        },
+        "primary_uses": {
+          "values": [
+            "dismounting covers",
+            "rotating rails"
+          ],
+          "signal": "inferred",
+          "rationale": "crowbar functionality"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used in logistics setup"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from parts"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_drill_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:drill_heads",
+          "rationale": "machine component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:drill_heads/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored until used"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting drills"
+          ],
+          "signal": "inferred",
+          "rationale": "drill head"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vintageimprovements_items"
+          ],
+          "signal": "inferred",
+          "rationale": "component for VI machines"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "refined dust"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts/tungsten_carbide",
+          "rationale": "compound material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "bulk stored"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into tungsten carbide ingots",
+            "crafting components"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed mineral output"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from milling/centrifuging"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/files",
+          "rationale": "crafting tool"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "made of tungsten carbide"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "inferred",
+          "evidence": "tooltip Harvest Level 4",
+          "rationale": "harvest level 4 = netherite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting components (stacked uses)",
+            "file heads"
+          ],
+          "signal": "inferred",
+          "rationale": "file tool"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "tool for artisan work"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and handle"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:file_heads",
+          "rationale": "tool component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:file_heads/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored until used"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting file"
+          ],
+          "signal": "inferred",
+          "rationale": "file head"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool head for artisan tools"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:foils",
+          "rationale": "very thin sheet material"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:foils/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stacked and stored"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting components"
+          ],
+          "signal": "inferred",
+          "rationale": "thin material for crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed form of tungsten carbide"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_frame": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag forge:frames",
+          "rationale": "structural block for machines"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:frames/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in bases"
+        },
+        "primary_uses": {
+          "values": [
+            "building machine casings",
+            "structural component for multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "frame block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in base building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/frames"
+          ],
+          "signal": "inferred",
+          "rationale": "frame block group"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:gears",
+          "rationale": "machine component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:gears/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for machine building"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machines",
+            "power transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "gear component"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/hammers",
+          "rationale": "mining/crafting tool"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "made of tungsten carbide"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "inferred",
+          "evidence": "tooltip Harvest Level 4",
+          "rationale": "harvest level 4 = netherite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in mining and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing blocks for extra drops",
+            "crafting components (stacked uses)"
+          ],
+          "signal": "inferred",
+          "rationale": "hammer functions"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mining"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "evidence": "tag tfg:artisan_table_tools",
+          "rationale": "tool for artisan work"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and handle"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hammer_heads",
+          "rationale": "tool component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:hammer_heads/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored until used"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting hammer"
+          ],
+          "signal": "inferred",
+          "rationale": "hammer head"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "inferred",
+          "rationale": "tool head for artisan tools"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:hoes",
+          "rationale": "farming tool"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "inferred",
+          "rationale": "made of tungsten carbide"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "inferred",
+          "rationale": "GT tool, likely tier 4"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted tool"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for farming"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling farmland",
+            "cultivating soil"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe functionality"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "farming tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from head and handle"
+        }
+      }
+    },
+    "gtceu:tungsten_carbide_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:hoe_heads",
+          "rationale": "tool component"
+        },
+        "material_family": {
+          "value": "tungsten_carbide",
+          "signal": "pattern",
+          "evidence": "tag forge:hoe_heads/tungsten_carbide",
+          "rationale": "material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored until used"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting hoe"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe head"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

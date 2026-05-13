@@ -1,0 +1,940 @@
+{
+  "items": {
+    "gtceu:oxygen_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket carried as tool for transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting oxygen gas"
+          ],
+          "signal": "inferred",
+          "rationale": "used in fluid logistics"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized fluid bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used to move fluids"
+        },
+        "material_family": {
+          "value": "oxygen",
+          "signal": "pattern",
+          "rationale": "id suffix _oxygen"
+        }
+      }
+    },
+    "gtceu:oxygen_plasma_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "plasma bucket carried as tool"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting oxygen plasma"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized fluid bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        },
+        "material_family": {
+          "value": "oxygen",
+          "signal": "pattern",
+          "rationale": "same material as oxygen"
+        }
+      }
+    },
+    "gtceu:palladium_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed metal block, not container"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of palladium",
+            "crafting advanced machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used as material block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base, carried when crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common metal block"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal block"
+        }
+      }
+    },
+    "gtceu:palladium_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid bucket carried as tool"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting liquid palladium"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized fluid bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid logistics"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        }
+      }
+    },
+    "gtceu:palladium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processing dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into ingots",
+            "component in alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "common dust use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined dust"
+        }
+      }
+    },
+    "gtceu:palladium_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "thin metal sheet"
+        },
+        "primary_uses": {
+          "values": [
+            "component in electronics",
+            "crafting wires"
+          ],
+          "signal": "inferred",
+          "rationale": "used as material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "storage item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common material"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal product"
+        }
+      }
+    },
+    "gtceu:palladium_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "surface rock indicating ore"
+        },
+        "primary_uses": {
+          "values": [
+            "locating palladium deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "prospecting aid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface find"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        }
+      }
+    },
+    "gtceu:palladium_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "standard metal ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components",
+            "alloy making"
+          ],
+          "signal": "inferred",
+          "rationale": "basic crafting material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ingot"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal"
+        }
+      }
+    },
+    "gtceu:palladium_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small metal piece"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting fine details",
+            "alloy additions"
+          ],
+          "signal": "inferred",
+          "rationale": "small material unit"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common nugget"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:nuggets tag",
+          "rationale": "nugget storage group"
+        }
+      }
+    },
+    "gtceu:palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into metal",
+            "source of palladium"
+          ],
+          "signal": "inferred",
+          "rationale": "mineral resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore storage"
+        }
+      }
+    },
+    "gtceu:palladium_raw_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crude dust before refining"
+        },
+        "primary_uses": {
+          "values": [
+            "processing into pure dust",
+            "intermediate material"
+          ],
+          "signal": "inferred",
+          "rationale": "unrefined dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processing stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common intermediate"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/impure_dusts"
+          ],
+          "signal": "inferred",
+          "rationale": "raw/impure dust form"
+        }
+      }
+    },
+    "gtceu:palladium_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "metal rod used in crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools",
+            "component in mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "common material form"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common rod"
+        },
+        "material_family": {
+          "value": "palladium",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined product"
+        }
+      }
+    },
+    "gtceu:palladium_substation": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "casing part of power multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "building substation multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "machine component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common casing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "part of multiblock system"
+        },
+        "multiblock_component_of": {
+          "value": "gtceu:power_substation",
+          "signal": "inferred",
+          "evidence": "recipe produces 'power_substation'",
+          "rationale": "casing for that multiblock"
+        }
+      }
+    },
+    "gtceu:paper_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "pulverized paper"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting paper products",
+            "filler material"
+          ],
+          "signal": "inferred",
+          "rationale": "dust from paper"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        }
+      }
+    },
+    "gtceu:paracetamol_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "drug ingredient dust"
+        },
+        "primary_uses": {
+          "values": [
+            "pill production",
+            "pharmaceutical ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "medicinal material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common chemical dust"
+        },
+        "material_family": {
+          "value": "paracetamol",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        }
+      }
+    },
+    "gtceu:paracetamol_pill": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "antidote pill, eaten to cure"
+        },
+        "primary_uses": {
+          "values": [
+            "curing poison effects"
+          ],
+          "signal": "inferred",
+          "rationale": "antidote consumable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "emergency consumable"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized antidote"
+        },
+        "food_use": {
+          "values": [
+            "slot:ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used as cure, not food"
+        }
+      }
+    },
+    "gtceu:pcb_coolant_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "coolant fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "cooling PCBs and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "machine coolant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        }
+      }
+    },
+    "gtceu:pentlandite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "nickel ore dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into nickel",
+            "processed intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "metal dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore dust"
+        },
+        "material_family": {
+          "value": "pentlandite",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "processed dust"
+        }
+      }
+    },
+    "gtceu:pentlandite_indicator": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "surface rock indicating nickel ore"
+        },
+        "primary_uses": {
+          "values": [
+            "locating pentlandite deposits"
+          ],
+          "signal": "inferred",
+          "rationale": "prospecting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected during exploration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common surface find"
+        },
+        "material_family": {
+          "value": "pentlandite",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        }
+      }
+    },
+    "gtceu:pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "raw ore for nickel"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into nickel",
+            "processing into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "mineral resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common ore"
+        },
+        "material_family": {
+          "value": "pentlandite",
+          "signal": "pattern",
+          "rationale": "ore id"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:ores tag",
+          "rationale": "raw ore"
+        }
+      }
+    },
+    "gtceu:perlite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mineral dust"
+        },
+        "primary_uses": {
+          "values": [
+            "industrial filler",
+            "component in composites"
+          ],
+          "signal": "inferred",
+          "rationale": "processing material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common dust"
+        },
+        "material_family": {
+          "value": "perlite",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        }
+      }
+    },
+    "gtceu:petri_dish": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "lab glassware for cell culture"
+        },
+        "primary_uses": {
+          "values": [
+            "cultivating cells",
+            "biological experiments"
+          ],
+          "signal": "inferred",
+          "rationale": "laboratory tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialist tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "commonly crafted"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:configure"
+          ],
+          "signal": "inferred",
+          "rationale": "used in lab process"
+        }
+      }
+    },
+    "gtceu:petrified_foam": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid foam block used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "filling gaps",
+            "building structures"
+          ],
+          "signal": "inferred",
+          "rationale": "structural block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common building material"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "signal": "pattern",
+          "evidence": "minecraft:mineable/pickaxe",
+          "rationale": "pickaxe required"
+        },
+        "required_tool_tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "minecraft:needs_stone_tool",
+          "rationale": "stone tier"
+        }
+      }
+    },
+    "gtceu:phenol_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "chemical fluid bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting phenol",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common fluid bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "material_family": {
+          "value": "phenol",
+          "signal": "pattern",
+          "rationale": "id prefix"
+        }
+      }
+    },
+    "gtceu:phenolic_circuit_board": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "basic circuit board component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electronic circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "stored for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common early-mid item"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/circuits"
+          ],
+          "signal": "pattern",
+          "evidence": "name includes circuit",
+          "rationale": "circuit storage group"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1098 @@
+{
+  "items": {
+    "tfg:moderate_core_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Fission reactor component for multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Increases fission reactor max heat"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states function"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used to build reactor then stays"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "component rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fission reactor system"
+        }
+      }
+    },
+    "tfg:molten_aes_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport bucket for handling molten metals"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport and pour molten metal for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for molten alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when processing alloys"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input to casting process"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Molten metal poured into molds"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Poured at casting table"
+        }
+      }
+    },
+    "tfg:molten_mo_50_re_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport bucket for handling molten metals"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport and pour molten metal for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for molten alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when processing alloys"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input to casting process"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Molten metal poured into molds"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Poured at casting table"
+        }
+      }
+    },
+    "tfg:molten_rene_41_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport bucket for handling molten metals"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport and pour molten metal for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for molten alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when processing alloys"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input to casting process"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Molten metal poured into molds"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Poured at casting table"
+        }
+      }
+    },
+    "tfg:molten_tungsten_bismuth_oxide_composite_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport bucket for handling molten metals"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport and pour molten metal for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for molten alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when processing alloys"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input to casting process"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Molten metal poured into molds"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Poured at casting table"
+        }
+      }
+    },
+    "tfg:molten_weak_blue_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport bucket for handling molten metals"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport and pour molten metal for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for molten alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when processing alloys"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input to casting process"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Molten metal poured into molds"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Poured at casting table"
+        }
+      }
+    },
+    "tfg:molten_weak_red_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid transport bucket for handling molten metals"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport and pour molten metal for casting"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket for molten alloys"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when processing alloys"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as input to casting process"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:casting#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Molten metal poured into molds"
+        },
+        "used_at": {
+          "values": [
+            "tfc:casting"
+          ],
+          "signal": "inferred",
+          "rationale": "Poured at casting table"
+        }
+      }
+    },
+    "tfg:moon_deepslate_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into lorandite ingot",
+            "Milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from the ground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore storage"
+        }
+      }
+    },
+    "tfg:moon_stone_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore to be processed"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelted into lorandite ingot",
+            "Milled for crushed ore"
+          ],
+          "signal": "inferred",
+          "rationale": "Ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from the ground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore storage"
+        }
+      }
+    },
+    "tfg:mud/alfisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Soil block used for construction and brick-making"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mud bricks and daub",
+            "Shaping terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipes show brick/daub crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material carried for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Soil block stored with dirt"
+        }
+      }
+    },
+    "tfg:mud/mollisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Soil block used for construction and brick-making"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mud bricks and daub",
+            "Shaping terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipes show brick/daub crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material carried for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Soil block stored with dirt"
+        }
+      }
+    },
+    "tfg:mud/oxisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Soil block used for construction and brick-making"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mud bricks and daub",
+            "Shaping terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipes show brick/daub crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material carried for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Soil block stored with dirt"
+        }
+      }
+    },
+    "tfg:mud/podzol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Soil block used for construction and brick-making"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mud bricks and daub",
+            "Shaping terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipes show brick/daub crafting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material carried for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "Soil block stored with dirt"
+        }
+      }
+    },
+    "tfg:mud_brick/alfisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unfired brick intermediate for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Dried or smelted into fired mud bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe produces dried/smelted bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used during brick production runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed by drying mat"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:drying#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to drying"
+        },
+        "used_at": {
+          "values": [
+            "tfc:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "Dried on mat"
+        }
+      }
+    },
+    "tfg:mud_brick/mollisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unfired brick intermediate for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Dried or smelted into fired mud bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe produces dried/smelted bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used during brick production runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed by drying mat"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:drying#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to drying"
+        },
+        "used_at": {
+          "values": [
+            "tfc:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "Dried on mat"
+        }
+      }
+    },
+    "tfg:mud_brick/oxisol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unfired brick intermediate for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Dried or smelted into fired mud bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe produces dried/smelted bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used during brick production runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed by drying mat"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:drying#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to drying"
+        },
+        "used_at": {
+          "values": [
+            "tfc:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "Dried on mat"
+        }
+      }
+    },
+    "tfg:mud_brick/podzol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unfired brick intermediate for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Dried or smelted into fired mud bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe produces dried/smelted bricks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used during brick production runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common item"
+        },
+        "workflow": {
+          "values": [
+            "tfc:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed by drying mat"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:drying#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Input to drying"
+        },
+        "used_at": {
+          "values": [
+            "tfc:drying"
+          ],
+          "signal": "inferred",
+          "rationale": "Dried on mat"
+        }
+      }
+    },
+    "tfg:mud_bricks/alfisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fired brick block for construction and insulation"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative and structural brickwork",
+            "Insulation for furnaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Block has oven/bloomery insulation tags"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material carried for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block storage"
+        }
+      }
+    },
+    "tfg:mud_bricks/alfisol_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Half-slab variant of mud bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-slab building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab block for construction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slab brick variant"
+        }
+      }
+    },
+    "tfg:mud_bricks/alfisol_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of mud bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Stair building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for construction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        }
+      }
+    },
+    "tfg:mud_bricks/alfisol_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant of mud bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Wall building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for construction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Wall brick variant"
+        }
+      }
+    },
+    "tfg:mud_bricks/mollisol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Fired brick block for construction and insulation"
+        },
+        "primary_uses": {
+          "values": [
+            "Building decorative and structural brickwork",
+            "Insulation for furnaces"
+          ],
+          "signal": "inferred",
+          "rationale": "Block has oven/bloomery insulation tags"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material carried for projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick block storage"
+        }
+      }
+    },
+    "tfg:mud_bricks/mollisol_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Half-slab variant of mud bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-slab building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab block for construction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_slabs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs",
+          "rationale": "Slab brick variant"
+        }
+      }
+    },
+    "tfg:mud_bricks/mollisol_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair variant of mud bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Stair building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block for construction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        }
+      }
+    },
+    "tfg:mud_bricks/mollisol_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall variant of mud bricks"
+        },
+        "primary_uses": {
+          "values": [
+            "Wall building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for construction"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity common",
+          "rationale": "common block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building structures"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/brick_walls"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:walls",
+          "rationale": "Wall brick variant"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

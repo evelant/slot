@@ -1,0 +1,1033 @@
+{
+  "items": {
+    "minecraft:infested_chiseled_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick block variant with silverfish trap"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone brick material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not intentionally carried by players"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick building block with silverfish trap"
+          ],
+          "signal": "inferred",
+          "rationale": "player would place as trap or avoid"
+        }
+      }
+    },
+    "minecraft:infested_cobblestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cobblestone variant with silverfish trap"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not intentionally carried"
+        },
+        "primary_uses": {
+          "values": [
+            "cobblestone building block with silverfish trap"
+          ],
+          "signal": "inferred",
+          "rationale": "player would place as trap or avoid"
+        }
+      }
+    },
+    "minecraft:infested_cracked_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cracked stone brick variant with silverfish trap"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not intentionally carried"
+        },
+        "primary_uses": {
+          "values": [
+            "cracked stone brick building block with silverfish trap"
+          ],
+          "signal": "inferred",
+          "rationale": "player would place as trap or avoid"
+        }
+      }
+    },
+    "minecraft:infested_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "deepslate variant with silverfish trap"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "inferred",
+          "rationale": "deepslate material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not intentionally carried"
+        },
+        "primary_uses": {
+          "values": [
+            "deepslate building block with silverfish trap"
+          ],
+          "signal": "inferred",
+          "rationale": "player would place as trap or avoid"
+        }
+      }
+    },
+    "minecraft:infested_mossy_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "mossy stone brick variant with silverfish trap"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not intentionally carried"
+        },
+        "primary_uses": {
+          "values": [
+            "mossy stone brick building block with silverfish trap"
+          ],
+          "signal": "inferred",
+          "rationale": "player would place as trap or avoid"
+        }
+      }
+    },
+    "minecraft:infested_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone variant with silverfish trap"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not intentionally carried"
+        },
+        "primary_uses": {
+          "values": [
+            "stone building block with silverfish trap"
+          ],
+          "signal": "inferred",
+          "rationale": "player would place as trap or avoid"
+        }
+      }
+    },
+    "minecraft:infested_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick variant with silverfish trap"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not intentionally carried"
+        },
+        "primary_uses": {
+          "values": [
+            "stone brick building block with silverfish trap"
+          ],
+          "signal": "inferred",
+          "rationale": "player would place as trap or avoid"
+        }
+      }
+    },
+    "minecraft:ink_sac": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "named",
+          "evidence": "creative tab 'ingredients'",
+          "rationale": "dye ingredient and crafting material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for dyeing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common squid drop"
+        },
+        "primary_uses": {
+          "values": [
+            "craft black dye",
+            "haunt into glow ink sac"
+          ],
+          "signal": "inferred",
+          "rationale": "used in dye making and haunting"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "dropped by squids"
+        },
+        "workflow": {
+          "values": [
+            "tfc:dye"
+          ],
+          "signal": "inferred",
+          "rationale": "input to dye making process"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:dye#input"
+          ],
+          "signal": "inferred",
+          "rationale": "ink sac is an input for black dye"
+        },
+        "used_at": {
+          "values": [
+            "tfc:barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "dye is made in barrels"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "dye materials stored together"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "carried in modest stacks for dyeing"
+        }
+      }
+    },
+    "minecraft:iron_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "iron_axe is a tool for chopping"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "prefix 'iron'"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier tool"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "always carried for wood harvesting"
+        },
+        "primary_uses": {
+          "values": [
+            "chopping wood and trees",
+            "dealing damage in combat"
+          ],
+          "signal": "inferred",
+          "rationale": "main use is cutting wood, also weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat and building/woodcutting"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "equip and harvest wood"
+        }
+      }
+    },
+    "minecraft:iron_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "named",
+          "evidence": "creative tab 'building_blocks'",
+          "rationale": "decorative structural block"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron bars"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative window bars",
+            "separation barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "used as aesthetic and functional fence"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "minecraft:iron_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "storage block of iron, used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron block"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "iron material tier"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for compact iron storage and beacon"
+        },
+        "primary_uses": {
+          "values": [
+            "compact iron storage",
+            "beacon base block",
+            "crafting iron components"
+          ],
+          "signal": "inferred",
+          "rationale": "used for storage, beacon, and crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe from compacting/smelting",
+          "rationale": "crafted from iron ingots"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in bulk as metal block"
+        }
+      }
+    },
+    "minecraft:iron_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "iron boots are armor piece"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron boots"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier armor"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn on feet constantly"
+        },
+        "primary_uses": {
+          "values": [
+            "protective footwear",
+            "fall damage reduction"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat situations"
+        },
+        "protection_context": {
+          "values": [
+            "slot:fall"
+          ],
+          "signal": "inferred",
+          "rationale": "boots reduce fall damage"
+        }
+      }
+    },
+    "minecraft:iron_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "iron chestplate is armor"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron chestplate"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier armor"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn on body constantly"
+        },
+        "primary_uses": {
+          "values": [
+            "chest armor protection"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        }
+      }
+    },
+    "minecraft:iron_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "door is a structural building component"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron door"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building entrances"
+        },
+        "primary_uses": {
+          "values": [
+            "iron door for buildings",
+            "redstone-controlled entrance"
+          ],
+          "signal": "inferred",
+          "rationale": "used as door with redstone interaction"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "installed in builds"
+        }
+      }
+    },
+    "minecraft:iron_golem_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "collectible spawn egg for creative players"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only carried in creative or map making"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "not survival obtainable but common in creative"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn iron golem in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "used to place mob in world"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "signal": "pattern",
+          "evidence": "is_creative_only from stage2",
+          "rationale": "only obtainable via creative tab"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "evidence": "stage2 marks as creative only",
+          "rationale": "spawn egg is creative only"
+        }
+      }
+    },
+    "minecraft:iron_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "iron helmet is armor"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron helmet"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier armor"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn on head constantly"
+        },
+        "primary_uses": {
+          "values": [
+            "head protection"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for head protection"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        }
+      }
+    },
+    "minecraft:iron_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "iron hoe is a farming tool"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron hoe"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier tool"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried for farming"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling farmland",
+            "planting crops"
+          ],
+          "signal": "inferred",
+          "rationale": "used for agriculture"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "farming activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "used to till soil"
+        }
+      }
+    },
+    "minecraft:iron_horse_armor": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "equipment for horse, used in transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron horse armor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when taming horses"
+        },
+        "primary_uses": {
+          "values": [
+            "equip horse with armor"
+          ],
+          "signal": "inferred",
+          "rationale": "protects horse during travel"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for horse transport"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "equip on horse"
+        }
+      }
+    },
+    "minecraft:iron_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot form of iron material"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron ingot"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "iron tier material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common metal"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting iron tools and armor",
+            "beacon payment item"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting and beacons"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "evidence": "numerous smelting recipes from ore",
+          "rationale": "smelted from iron ore mined underground"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ingot"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ingots",
+          "rationale": "ingot form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:pileable_ingots",
+          "rationale": "stored in ingot piles"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stockpiled in large amounts"
+        }
+      }
+    },
+    "minecraft:iron_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "iron leggings are armor"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron leggings"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier armor"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "worn on legs constantly"
+        },
+        "primary_uses": {
+          "values": [
+            "leg armor protection"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in combat"
+        }
+      }
+    },
+    "minecraft:iron_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "nugget form of iron"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron nugget"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in small amounts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common byproduct"
+        },
+        "primary_uses": {
+          "values": [
+            "anvil repair material",
+            "crafting iron chain"
+          ],
+          "signal": "inferred",
+          "rationale": "used in repairs and chainmail"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/nuggets"
+          ],
+          "signal": "pattern",
+          "evidence": "matches nugget grouping",
+          "rationale": "stored with other nuggets"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks of 64"
+        }
+      }
+    },
+    "minecraft:iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore that yields iron ingot"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron ore"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant underground"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into iron ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "primary source of iron"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for iron"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "named",
+          "evidence": "ore is mined in caves",
+          "rationale": "found underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore awaiting smelting"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacked in large quantities"
+        }
+      }
+    },
+    "minecraft:iron_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "iron pickaxe is a mining tool"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron pickaxe"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier tool"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "essential mining tool"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores",
+            "breaking stone blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "primary tool for mining"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mining activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "equip and harvest blocks"
+        }
+      }
+    },
+    "minecraft:iron_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "iron shovel is a digging tool"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron shovel"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier tool"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "carried for digging"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt, gravel, sand",
+            "flattening terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "used for excavation"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used during mining for clearing"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip",
+            "slot:harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "equip and harvest soil"
+        }
+      }
+    },
+    "minecraft:iron_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "iron sword is a melee weapon"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "iron sword"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier weapon"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "always carried for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat damage"
+          ],
+          "signal": "inferred",
+          "rationale": "standard weapon"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "combat activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "equip for combat"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

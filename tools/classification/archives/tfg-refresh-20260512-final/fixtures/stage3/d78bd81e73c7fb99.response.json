@@ -1,0 +1,1176 @@
+{
+  "items": {
+    "gtceu:small_hssg_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust of alloy material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HSS-G components"
+          ],
+          "signal": "inferred",
+          "rationale": "common GTCEu material dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust from stage2",
+          "rationale": "small dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64, bulk handling"
+        }
+      }
+    },
+    "gtceu:small_hssg_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small gear component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HSS-G machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu small gear"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "component, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common gear"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 16, small batch"
+        }
+      }
+    },
+    "gtceu:small_hsss_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust of alloy material"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HSS-S components"
+          ],
+          "signal": "inferred",
+          "rationale": "common GTCEu material dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common component"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust from stage2",
+          "rationale": "small dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_hsss_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small gear component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting HSS-S machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu small gear"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "component, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common gear"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 16"
+        }
+      }
+    },
+    "gtceu:small_ice_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small dust of ice"
+        },
+        "primary_uses": {
+          "values": [
+            "used in cooling and food processing"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed ice dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust from stage2",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_ilmenite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ore dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ilmenite ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "ilmenite ore dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_ilmenite_slag_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "byproduct dust"
+        },
+        "primary_uses": {
+          "values": [
+            "byproduct from ilmenite processing"
+          ],
+          "signal": "inferred",
+          "rationale": "slag dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_incoloy_ma_956_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "alloy dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting Incoloy MA-956 components"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu alloy dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_indium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "element dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in advanced alloying"
+          ],
+          "signal": "inferred",
+          "rationale": "indium dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_indium_gallium_phosphide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "semiconductor dust"
+        },
+        "primary_uses": {
+          "values": [
+            "semiconductor material"
+          ],
+          "signal": "inferred",
+          "rationale": "InGaP dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_indium_phosphide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "semiconductor dust"
+        },
+        "primary_uses": {
+          "values": [
+            "semiconductor material"
+          ],
+          "signal": "inferred",
+          "rationale": "InP dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_indium_tin_barium_titanium_cuprate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "superconductor dust"
+        },
+        "primary_uses": {
+          "values": [
+            "superconductor material"
+          ],
+          "signal": "inferred",
+          "rationale": "complex superconductor dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_inert_metal_mixture_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "used in precious metal processing"
+          ],
+          "signal": "inferred",
+          "rationale": "inert metal mixture"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_invar_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "alloy dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting invar components"
+          ],
+          "signal": "inferred",
+          "rationale": "invar alloy dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_iodine_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "element dust"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "iodine dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_iridium_chloride_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "chemical dust"
+        },
+        "primary_uses": {
+          "values": [
+            "iridium extraction"
+          ],
+          "signal": "inferred",
+          "rationale": "iridium chloride"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_iridium_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "element dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting iridium components"
+          ],
+          "signal": "inferred",
+          "rationale": "iridium dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_iridium_metal_residue_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "byproduct dust"
+        },
+        "primary_uses": {
+          "values": [
+            "iridium refining byproduct"
+          ],
+          "signal": "inferred",
+          "rationale": "iridium residue"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_iron_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "iron dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cast iron components"
+          ],
+          "signal": "inferred",
+          "rationale": "iron dust melts into cast iron"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_iron_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small cast iron gear"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cast iron machine parts"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu small gear"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "component, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 16"
+        }
+      }
+    },
+    "gtceu:small_iron_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "small cast iron spring"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cast iron springs for mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "GTCEu small spring"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "component, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_kanthal_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "alloy dust"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting heating elements"
+          ],
+          "signal": "inferred",
+          "rationale": "kanthal dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_kyanite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "mineral dust"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into aluminium silicate"
+          ],
+          "signal": "inferred",
+          "rationale": "kyanite dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_lactose_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "organic dust"
+        },
+        "primary_uses": {
+          "values": [
+            "food industry chemical"
+          ],
+          "signal": "inferred",
+          "rationale": "lactose dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    },
+    "gtceu:small_lanthanum_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "rare earth dust"
+        },
+        "primary_uses": {
+          "values": [
+            "rare earth element processing"
+          ],
+          "signal": "inferred",
+          "rationale": "lanthanum dust"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "named",
+          "evidence": "form=dust",
+          "rationale": "dust form"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "stacks to 64"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "gtceu:small_hssg_dust",
+      "facet": "material_family",
+      "value": "hssg",
+      "rationale": "derived from id suffix"
+    },
+    {
+      "item": "gtceu:small_hssg_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "id suffix _gear"
+    },
+    {
+      "item": "gtceu:small_hssg_gear",
+      "facet": "material_family",
+      "value": "hssg",
+      "rationale": "derived from id"
+    },
+    {
+      "item": "gtceu:small_hsss_dust",
+      "facet": "material_family",
+      "value": "hsss",
+      "rationale": "derived from id"
+    },
+    {
+      "item": "gtceu:small_hsss_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "id suffix _gear"
+    },
+    {
+      "item": "gtceu:small_hsss_gear",
+      "facet": "material_family",
+      "value": "hsss",
+      "rationale": "derived from id"
+    },
+    {
+      "item": "gtceu:small_ice_dust",
+      "facet": "material_family",
+      "value": "ice",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_ilmenite_dust",
+      "facet": "material_family",
+      "value": "ilmenite",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_ilmenite_slag_dust",
+      "facet": "material_family",
+      "value": "ilmenite_slag",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_incoloy_ma_956_dust",
+      "facet": "material_family",
+      "value": "incoloy_ma_956",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_indium_dust",
+      "facet": "material_family",
+      "value": "indium",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_indium_gallium_phosphide_dust",
+      "facet": "material_family",
+      "value": "indium_gallium_phosphide",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_indium_phosphide_dust",
+      "facet": "material_family",
+      "value": "indium_phosphide",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_indium_tin_barium_titanium_cuprate_dust",
+      "facet": "material_family",
+      "value": "indium_tin_barium_titanium_cuprate",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_inert_metal_mixture_dust",
+      "facet": "material_family",
+      "value": "inert_metal_mixture",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_invar_dust",
+      "facet": "material_family",
+      "value": "invar",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_iodine_dust",
+      "facet": "material_family",
+      "value": "iodine",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_iridium_chloride_dust",
+      "facet": "material_family",
+      "value": "iridium_chloride",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_iridium_dust",
+      "facet": "material_family",
+      "value": "iridium",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_iridium_metal_residue_dust",
+      "facet": "material_family",
+      "value": "iridium_metal_residue",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_iron_dust",
+      "facet": "material_family",
+      "value": "iron",
+      "rationale": "tag and id"
+    },
+    {
+      "item": "gtceu:small_iron_gear",
+      "facet": "form",
+      "value": "gear",
+      "rationale": "id suffix _gear"
+    },
+    {
+      "item": "gtceu:small_iron_gear",
+      "facet": "material_family",
+      "value": "cast_iron",
+      "rationale": "display name: Small Cast Iron Gear"
+    },
+    {
+      "item": "gtceu:small_iron_spring",
+      "facet": "form",
+      "value": "spring",
+      "rationale": "id suffix _spring"
+    },
+    {
+      "item": "gtceu:small_iron_spring",
+      "facet": "material_family",
+      "value": "cast_iron",
+      "rationale": "display name: Small Cast Iron Spring"
+    },
+    {
+      "item": "gtceu:small_kanthal_dust",
+      "facet": "material_family",
+      "value": "kanthal",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_kyanite_dust",
+      "facet": "material_family",
+      "value": "kyanite",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_lactose_dust",
+      "facet": "material_family",
+      "value": "lactose",
+      "rationale": "id suffix"
+    },
+    {
+      "item": "gtceu:small_lanthanum_dust",
+      "facet": "material_family",
+      "value": "lanthanum",
+      "rationale": "id suffix"
+    }
+  ]
+}

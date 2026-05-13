@@ -1,0 +1,1505 @@
+{
+  "items": {
+    "tfc:wood/water_wheel/spruce": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Water wheel generates mechanical power as part of contraption"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "inferred",
+          "rationale": "Made from spruce wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted mechanism"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Generate mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use as power source"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to generate mechanical power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "named",
+          "evidence": "Part of TFC mechanical power system",
+          "rationale": "Water wheel is a power component"
+        }
+      }
+    },
+    "tfc:wood/water_wheel/sycamore": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Water wheel generates mechanical power"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "inferred",
+          "rationale": "Made from sycamore wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted mechanism"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Generate mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use as power source"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to generate mechanical power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "named",
+          "evidence": "Part of TFC mechanical power system",
+          "rationale": "Water wheel is a power component"
+        }
+      }
+    },
+    "tfc:wood/water_wheel/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Water wheel generates mechanical power"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "inferred",
+          "rationale": "Made from white_cedar wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted mechanism"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Generate mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use as power source"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to generate mechanical power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "named",
+          "evidence": "Part of TFC mechanical power system",
+          "rationale": "Water wheel is a power component"
+        }
+      }
+    },
+    "tfc:wood/water_wheel/willow": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Water wheel generates mechanical power"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "inferred",
+          "rationale": "Made from willow wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common crafted mechanism"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once, rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Generate mechanical power from flowing water"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use as power source"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to generate mechanical power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "tfc:power"
+          ],
+          "signal": "named",
+          "evidence": "Part of TFC mechanical power system",
+          "rationale": "Water wheel is a power component"
+        }
+      }
+    },
+    "tfc:wood/wood/acacia": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "acacia",
+          "signal": "pattern",
+          "evidence": "id suffix acacia",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/ash": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "ash",
+          "signal": "pattern",
+          "evidence": "id suffix ash",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/aspen": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern",
+          "evidence": "id suffix aspen",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/birch": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern",
+          "evidence": "id suffix birch",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/blackwood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern",
+          "evidence": "id suffix blackwood",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/chestnut": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id suffix chestnut",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id suffix douglas_fir",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/hickory": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern",
+          "evidence": "id suffix hickory",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/kapok": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern",
+          "evidence": "id suffix kapok",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/mangrove": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "pattern",
+          "evidence": "id suffix mangrove",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/maple": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "maple",
+          "signal": "pattern",
+          "evidence": "id suffix maple",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/oak": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "oak",
+          "signal": "pattern",
+          "evidence": "id suffix oak",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/palm": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern",
+          "evidence": "id suffix palm",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/pine": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "pine",
+          "signal": "pattern",
+          "evidence": "id suffix pine",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/rosewood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern",
+          "evidence": "id suffix rosewood",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/sequoia": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "evidence": "id suffix sequoia",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/spruce": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "pattern",
+          "evidence": "id suffix spruce",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/sycamore": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "pattern",
+          "evidence": "id suffix sycamore",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:hardwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "evidence": "id suffix white_cedar",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wood/wood/willow": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log is a structural building material"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "pattern",
+          "evidence": "id suffix willow",
+          "rationale": "Wood type from item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried in stacks for building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures",
+            "Crafting lumber and planks",
+            "Fuel for firepit and charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "Core uses of logs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use in building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "named",
+          "evidence": "Tag tfg:softwood and log tags",
+          "rationale": "Logs are stored together"
+        }
+      }
+    },
+    "tfc:wooden_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to scoop and transport fluids"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Made from wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common early game item"
+        },
+        "emits_light": {
+          "value": false,
+          "signal": "inferred",
+          "rationale": "Does not emit light"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried for fluid handling"
+        },
+        "primary_uses": {
+          "values": [
+            "Scoop and transport fluids",
+            "Mixing ingredient in recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for fluid movement and crafting"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport is logistics"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "named",
+          "evidence": "Guide page describes fluid container",
+          "rationale": "Bucket is an empty container for fluids"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "tfc:wood/wood/acacia",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/ash",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/aspen",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/birch",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/blackwood",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/chestnut",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/douglas_fir",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/hickory",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/kapok",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/mangrove",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/maple",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/oak",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/palm",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/pine",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/rosewood",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/sequoia",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/spruce",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/sycamore",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/white_cedar",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    },
+    {
+      "item": "tfc:wood/wood/willow",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": "overworld_surface",
+      "rationale": "Logs are obtained by chopping trees, not crafted",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": []
+}

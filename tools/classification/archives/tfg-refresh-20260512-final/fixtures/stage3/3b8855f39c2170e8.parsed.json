@@ -1,0 +1,1868 @@
+{
+  "items": {
+    "tfc:metal/double_sheet/sterling_silver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id path segment 'double_sheet'",
+          "rationale": "refined metal sheet for smithing"
+        },
+        "material_family": {
+          "value": "sterling_silver",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "smithing component for armor and tools",
+          "signal": "inferred",
+          "rationale": "used in anvil and welding recipes"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by welding two sheets"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil",
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smithing and welding processes"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input",
+            "tfc:welding#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input material for forging and welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil",
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "processed on anvil and weld station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "named",
+          "evidence": "id contains double_sheet",
+          "rationale": "stage of metal processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "not bulk, kept in moderate stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "part of pileable metal sheets storage"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain metal sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/tin": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id path segment 'double_sheet'",
+          "rationale": "refined metal sheet for smithing"
+        },
+        "material_family": {
+          "value": "tin",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "smithing component for bronze alloys and tools",
+          "signal": "inferred",
+          "rationale": "tin used in bronze alloying and anvil work"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by welding two sheets"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil",
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smithing and welding processes"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input",
+            "tfc:welding#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input material for forging and welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil",
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "processed on anvil and weld station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "named",
+          "evidence": "id contains double_sheet",
+          "rationale": "stage of metal processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "not bulk, kept in moderate stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "part of pileable metal sheets storage"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain metal sheet"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id path segment 'double_sheet'",
+          "rationale": "refined metal sheet for smithing"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "smithing component for iron-tier tools and armor",
+          "signal": "inferred",
+          "rationale": "used in anvil and welding recipes"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by welding two sheets"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil",
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smithing and welding processes"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input",
+            "tfc:welding#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input material for forging and welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil",
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "processed on anvil and weld station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "named",
+          "evidence": "id contains double_sheet",
+          "rationale": "stage of metal processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "not bulk, kept in moderate stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "part of pileable metal sheets storage"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain metal sheet"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:wrought_iron"
+          ],
+          "signal": "inferred",
+          "rationale": "wrought iron is a key progression tier"
+        }
+      }
+    },
+    "tfc:metal/double_sheet/zinc": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id path segment 'double_sheet'",
+          "rationale": "refined metal sheet for smithing"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "smithing component for brass alloys and tools",
+          "signal": "inferred",
+          "rationale": "zinc used in brass alloying and anvil work"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by welding two sheets"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil",
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "used in smithing and welding processes"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input",
+            "tfc:welding#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input material for forging and welding"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil",
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "processed on anvil and weld station"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_sheet"
+          ],
+          "signal": "named",
+          "evidence": "id contains double_sheet",
+          "rationale": "stage of metal processing"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "not bulk, kept in moderate stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "inferred",
+          "rationale": "part of pileable metal sheets storage"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain metal sheet"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make fishing rods"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make fishing rods"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/black_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component rarity rare",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft high-tier fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make black steel fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component rarity epic",
+          "rationale": "component rarity mapped to unique"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft top-tier fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make blue steel fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make bronze fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/copper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make copper fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component rarity epic",
+          "rationale": "component rarity mapped to unique"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft top-tier fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make red steel fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component rarity uncommon",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft steel fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make steel fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fish_hook/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for fishing rods"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafting stash, not carried daily"
+        },
+        "primary_uses": {
+          "value": "craft wrought iron fishing rods",
+          "signal": "inferred",
+          "rationale": "used to make wrought iron fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by anvil smithing or curving"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "component for fishing activity"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "small stacks kept for crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal hook"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish in rivers and lakes",
+          "signal": "inferred",
+          "rationale": "main fishing tool"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish in rivers and lakes",
+          "signal": "inferred",
+          "rationale": "main fishing tool"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/black_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component rarity rare",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish and large aquatic mobs",
+          "signal": "inferred",
+          "rationale": "advanced fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component rarity epic",
+          "rationale": "component rarity mapped to unique"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish and large aquatic mobs",
+          "signal": "inferred",
+          "rationale": "top-tier fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish in rivers and lakes",
+          "signal": "inferred",
+          "rationale": "main fishing tool"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/copper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish in rivers and lakes",
+          "signal": "inferred",
+          "rationale": "main fishing tool"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/red_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component rarity epic",
+          "rationale": "component rarity mapped to unique"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish and large aquatic mobs",
+          "signal": "inferred",
+          "rationale": "advanced fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component rarity uncommon",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish and large aquatic mobs",
+          "signal": "inferred",
+          "rationale": "advanced fishing rod"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/fishing_rod/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "display name ends 'Fishing Rod'",
+          "rationale": "fishing rod is a tool"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "material tier for tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when fishing, not always"
+        },
+        "primary_uses": {
+          "value": "catch fish and large aquatic mobs",
+          "signal": "inferred",
+          "rationale": "fishing rod for iron tier"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by shaped crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "goes in chests or tool rack"
+        },
+        "workflow": {
+          "values": [
+            "tfc:fishing"
+          ],
+          "signal": "named",
+          "evidence": "guide page 'Fishing'",
+          "rationale": "used for fishing activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:cast"
+          ],
+          "signal": "inferred",
+          "rationale": "player casts the rod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple metal rod"
+        }
+      }
+    },
+    "tfc:metal/greaves/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "evidence": "display name ends 'Greaves'",
+          "rationale": "leg armor piece"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal tier for armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "armor is worn daily"
+        },
+        "primary_uses": {
+          "value": "leg protection in combat",
+          "signal": "inferred",
+          "rationale": "armor slot for legs"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by welding or compacting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests when not worn"
+        },
+        "workflow": {
+          "values": [
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "made by welding two double sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection in fights"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "equipped on legs"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain metal greaves"
+        }
+      }
+    },
+    "tfc:metal/greaves/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "evidence": "display name ends 'Greaves'",
+          "rationale": "leg armor piece"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal tier for armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "armor is worn daily"
+        },
+        "primary_uses": {
+          "value": "leg protection in combat",
+          "signal": "inferred",
+          "rationale": "armor slot for legs"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by welding or compacting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests when not worn"
+        },
+        "workflow": {
+          "values": [
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "made by welding two double sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection in fights"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "equipped on legs"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain metal greaves"
+        }
+      }
+    },
+    "tfc:metal/greaves/black_steel": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "evidence": "display name ends 'Greaves'",
+          "rationale": "leg armor piece"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal type from id"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "evidence": "id path segment",
+          "rationale": "metal tier for armor"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component rarity rare",
+          "rationale": "component rarity"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "armor is worn daily"
+        },
+        "primary_uses": {
+          "value": "leg protection in combat",
+          "signal": "inferred",
+          "rationale": "armor slot for legs"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "produced by welding or compacting"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stored in chests when not worn"
+        },
+        "workflow": {
+          "values": [
+            "tfc:welding"
+          ],
+          "signal": "inferred",
+          "rationale": "made by welding two double sheets"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection in fights"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:equip"
+          ],
+          "signal": "inferred",
+          "rationale": "equipped on legs"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain metal greaves"
+        },
+        "progression_stage": {
+          "values": [
+            "tfc:black_steel"
+          ],
+          "signal": "inferred",
+          "rationale": "black steel is a major progression tier"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

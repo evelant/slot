@@ -1,0 +1,1238 @@
+{
+  "items": {
+    "tfg:single_itemstack_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Multiblock input bus, placed as part of machine structure"
+        },
+        "primary_uses": {
+          "values": [
+            "Item input for multiblocks",
+            "Feed single stacks into machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip: Item Input for Multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during machine setup, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of item logistics for machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Input bus for GTCEu multiblocks"
+        }
+      }
+    },
+    "tfg:slate_lorandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore + tag forge:ores",
+          "rationale": "Ore block, mined and processed into metal"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into thallium and arsenic",
+            "Source of lorandite"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical ore processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during mining trips, then stored"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "Raw ore block stored with other ores"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "Unprocessed ore stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Stored in bulk before processing"
+        }
+      }
+    },
+    "tfg:slate_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Placed as structural support in mines"
+        },
+        "primary_uses": {
+          "values": [
+            "Support mine ceilings",
+            "Prevent cave-ins"
+          ],
+          "signal": "inferred",
+          "evidence": "TFC support beam mechanic",
+          "rationale": "Mining infrastructure"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during mining, placed and forgotten"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mining operations"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:support_beams",
+          "rationale": "Part of support beam storage group"
+        },
+        "material_family": {
+          "value": "slate",
+          "signal": "pattern",
+          "evidence": "id prefix slate",
+          "rationale": "Made of slate stone"
+        }
+      }
+    },
+    "tfg:slowness_pill": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Used as crafting ingredient for tipped arrows and potions"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft slowness tipped arrows",
+            "Apply slowness effect"
+          ],
+          "signal": "inferred",
+          "evidence": "Recipe examples with arrows",
+          "rationale": "Potion ingredient and consumable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried routinely, used sparingly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft combat arrows"
+        }
+      }
+    },
+    "tfg:slowness_tablet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Used as crafting ingredient for tipped arrows and potions"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft slowness tipped arrows",
+            "Apply slowness effect"
+          ],
+          "signal": "inferred",
+          "evidence": "Recipe examples with arrows",
+          "rationale": "Potion ingredient and consumable"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Not carried routinely, used sparingly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft combat arrows"
+        }
+      }
+    },
+    "tfg:small_14_sorbitan_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_aes_mix_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_alumina_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_aluminium_hydroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_aluminium_sulfate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_ammonia_borane_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_ammonium_tungstate_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_apt_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_bakelite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_bi_pb_sn_cd_in_tl_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_boric_acid_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_boron_10_hydroxide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_boron_carbide_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_bright_regolith_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_bullet_casing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting ammunition"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft ammunition",
+            "Compile with gunpowder"
+          ],
+          "signal": "inferred",
+          "rationale": "Bullet casing is ammo component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized component, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        }
+      }
+    },
+    "tfg:small_calorite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_casing_extruder_mold": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable mold for extruding bullet casings"
+        },
+        "primary_uses": {
+          "values": [
+            "Create bullet casings in extruder",
+            "Reusable tool for ammo production"
+          ],
+          "signal": "inferred",
+          "rationale": "Mold used in extrusion machine"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Kept in storage with other molds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/molds"
+          ],
+          "signal": "pattern",
+          "evidence": "tag gtceu:molds",
+          "rationale": "Stored with other molds"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in automated extrusion process"
+        }
+      }
+    },
+    "tfg:small_cassiterite_regolith_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_catalyser_powder_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    },
+    "tfg:small_certus_regolith_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Chemical dust, used as crafting intermediate"
+        },
+        "primary_uses": {
+          "values": [
+            "Chemical processing",
+            "Crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust used in recipes"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized dust, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component: common",
+          "rationale": "Rarity component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/small_dusts"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:small_dusts",
+          "rationale": "Stored with other small dust piles"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _dust",
+          "rationale": "Pulverized material stage"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Accumulated in bulk for processing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1733 @@
+{
+  "items": {
+    "gtceu:moon_deepslate_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block, mined for material"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain lepidolite",
+            "Smelting into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for lithium etc."
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk and carried back"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common ore on the moon"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block awaiting processing"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon dimension"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined during moon mining trips"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain lignite",
+            "Smelting into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for fuel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain lithium",
+            "Smelting into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain magnesite",
+            "Smelting into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain magnetite",
+            "Smelting into iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for iron"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain malachite",
+            "Processing for copper"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for copper"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain mica",
+            "Processing for materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain molybdenite",
+            "Smelting into molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for molybdenum"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain molybdenum",
+            "Smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain monazite",
+            "Processing for rare earths"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for rare earths"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain naquadah",
+            "Processing for advanced materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for naquadah"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain neodymium",
+            "Processing for magnets"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for neodymium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain nether quartz",
+            "Smelting into materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for quartz"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain nickel",
+            "Smelting into ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for nickel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain oilsands",
+            "Processing for oil"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for oil"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain olivine",
+            "Processing for materials"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_opal_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain opal",
+            "Processing for gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for gems"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_palladium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain palladium",
+            "Processing for metals"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for palladium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_pentlandite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain pentlandite",
+            "Processing for nickel"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for nickel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_pitchblende_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain pitchblende",
+            "Processing for uranium"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for uranium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_platinum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain platinum",
+            "Processing for metals"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for platinum"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_pollucite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain pollucite",
+            "Processing for cesium"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for cesium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_powellite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain powellite",
+            "Processing for molybdenum"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for molybdenum"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_pyrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain pyrite",
+            "Processing for sulfur/iron"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for sulfur"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    },
+    "gtceu:moon_deepslate_pyrochlore_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Unprocessed ore block"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining to obtain pyrochlore",
+            "Processing for niobium"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed for niobium"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Mined in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common moon ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined for ore processing"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined in large stacks"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore block"
+        },
+        "progression_stage": {
+          "values": [
+            "ad_astra:moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Found on the moon"
+        },
+        "loadout_context": {
+          "values": [
+            "slot:mining_run"
+          ],
+          "signal": "inferred",
+          "rationale": "Moon mining context"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

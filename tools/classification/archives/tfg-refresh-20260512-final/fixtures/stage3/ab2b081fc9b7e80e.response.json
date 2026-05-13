@@ -1,0 +1,1425 @@
+{
+  "items": {
+    "railways:cyan_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Palette block for train decoration, placed for looks"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred",
+          "rationale": "Tag tfg:locometal_blocks and display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Decorative block, carried during building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for building and decorating train structures"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative train-themed building",
+            "Industrial aesthetic construction"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as wall or floor block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 rule:origin_from_loot_tables",
+          "rationale": "Only loot is its own block drop"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Mechanical riveted pattern, cyan coloring"
+        }
+      }
+    },
+    "railways:cyan_round_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative window variant, not functional"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred",
+          "rationale": "Same material family from tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Building block carried during projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration and building"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative window in train builds",
+            "Adding detail to structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as window pane variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No production recipe, crafted from other locometal"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiple pane pattern, cyan color"
+        }
+      }
+    },
+    "railways:cyan_single_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative window variant"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred",
+          "rationale": "Tag tfg:locometal_blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative window for trains",
+            "Building detail"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:cyan_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative wall block",
+            "Train aesthetic construction"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "stage2 rule"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:cyan_sliding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door, placed as structural opening"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Doors carried during building"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Train-themed door",
+            "Building entrance"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:cyan_two_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative window",
+            "Train building detail"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:cyan_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative smokebox, not functional"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "material_secondary": {
+          "values": [
+            "brass"
+          ],
+          "signal": "inferred",
+          "rationale": "Brass wrapping in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative train smokebox",
+            "Industrial aesthetic building"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_brass_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred",
+          "rationale": "Actually locometal, stage2 material_family=diorite is wrong"
+        },
+        "material_secondary": {
+          "values": [
+            "brass"
+          ],
+          "signal": "inferred",
+          "rationale": "Brass wrapped"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative wall block",
+            "Train aesthetic construction"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_brass_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative boiler block"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "material_secondary": {
+          "values": [
+            "brass"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative boiler for trains",
+            "Industrial building"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_copper_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative wall block",
+            "Train building"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_copper_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative boiler block",
+            "Train detailing"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_copper_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative smokebox",
+            "Train building"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_flat_riveted_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative wall block",
+            "Train building"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_flat_slashed_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative wall block",
+            "Train building"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_folding_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Door, part of building"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Folding door for train builds",
+            "Building entrance"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_four_pane_locometal_window": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative window",
+            "Train detailing"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_hazard_stripes_chevron_on_black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative hazard stripe block",
+            "Floor markings"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_hazard_stripes_chevron_on_white": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Hazard stripe decoration",
+            "Floor markings"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_hazard_stripes_diagonal_on_black": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Hazard stripe decoration",
+            "Floor markings"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_hazard_stripes_diagonal_on_white": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Hazard stripe decoration",
+            "Floor markings"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_hinged_locometal_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Hinged door, structural opening"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Hinged door for train builds",
+            "Building entrance"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_iron_wrapped_locometal": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative wall block",
+            "Train building"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_iron_wrapped_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative boiler block",
+            "Train detailing"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_iron_wrapped_locometal_smokebox": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative smokebox",
+            "Train building"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "railways:diorite_locometal_boiler": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "locometal",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:decorating"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative boiler block",
+            "Train detailing"
+          ],
+          "signal": "inferred"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [
+    {
+      "item": "railways:cyan_riveted_locometal",
+      "facet": "organization_group",
+      "label": "Locometal Blocks",
+      "proposed_id": "pack:tfg/locometal_blocks",
+      "rationale": "Tag tfg:locometal_blocks groups all these decorative blocks, and players would store them together.",
+      "evidence": "minecraft_tags_resolved includes tfg:locometal_blocks"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "railways:diorite_brass_wrapped_locometal",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "Item is made of locometal, diorite is a color variant.",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_brass_wrapped_locometal_boiler",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "Same as above",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_copper_wrapped_locometal",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_copper_wrapped_locometal_boiler",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_copper_wrapped_locometal_smokebox",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_flat_riveted_locometal",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_flat_slashed_locometal",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_folding_locometal_door",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_four_pane_locometal_window",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_hazard_stripes_chevron_on_black",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_hazard_stripes_chevron_on_white",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_hazard_stripes_diagonal_on_black",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_hazard_stripes_diagonal_on_white",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_hinged_locometal_door",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_iron_wrapped_locometal",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_iron_wrapped_locometal_boiler",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_iron_wrapped_locometal_smokebox",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    },
+    {
+      "item": "railways:diorite_locometal_boiler",
+      "facet": "material_family",
+      "current": "diorite",
+      "suggested": "locometal",
+      "rationale": "",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": []
+}

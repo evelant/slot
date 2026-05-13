@@ -1,0 +1,1017 @@
+{
+  "items": {
+    "tfc_gourmet:raw_placinda": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible raw food with nutrition component"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ingredient for cooking"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food ingredient carried for meals"
+        },
+        "primary_uses": {
+          "values": [
+            "eat raw",
+            "cook into placinda"
+          ],
+          "signal": "inferred",
+          "rationale": "edible raw or cooked"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food storage"
+        }
+      }
+    },
+    "tfc_gourmet:raw_quiche": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "inedible raw food ingredient for cooking"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in cooking workflow"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient carried for cooking"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into quiche"
+          ],
+          "signal": "inferred",
+          "rationale": "must be cooked before eating"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:raw_syrniki": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "inedible raw dough ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for cooking syrniki"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into syrniki"
+          ],
+          "signal": "inferred",
+          "rationale": "heated to become syrniki"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:raw_takoyaki": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "inedible raw ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into takoyaki"
+          ],
+          "signal": "inferred",
+          "rationale": "heated to become takoyaki"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:raw_tandoori_chicken": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "inedible raw meat ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into tandoori chicken"
+          ],
+          "signal": "inferred",
+          "rationale": "must be cooked"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc_gourmet:raw_tonkatsu": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "inedible raw meat ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into tonkatsu"
+          ],
+          "signal": "inferred",
+          "rationale": "must be cooked"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/raw_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat storage"
+        }
+      }
+    },
+    "tfc_gourmet:raw_vareniki": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "inedible raw dumpling ingredient"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into vareniki"
+          ],
+          "signal": "inferred",
+          "rationale": "must be cooked"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:risotto": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked meal with high nutrition"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared meal from pot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "hearty food carried for trips"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared meal"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by pot recipe",
+          "evidence": "firmalife:bowl_pot production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:sauerkraut": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "fermented edible cabbage"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "used in sandwiches and meals"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "preserved food often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "eat directly",
+            "use as sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "edible and used in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "general food"
+        }
+      }
+    },
+    "tfc_gourmet:schi": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "prepared soup meal"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "soup from pot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "hearty food for trips"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared meal"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by pot recipe",
+          "evidence": "firmalife:bowl_pot production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:sheep_brinza_slice": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible cheese slice"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "sandwich ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "eat directly",
+            "use in sandwiches"
+          ],
+          "signal": "inferred",
+          "rationale": "cheese food"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "cheese product from animal"
+        }
+      }
+    },
+    "tfc_gourmet:sheep_brinza_wheel": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placeable block to slice into cheese"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cheese making workflow"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed block, not carried often"
+        },
+        "primary_uses": {
+          "values": [
+            "place and slice into cheese"
+          ],
+          "signal": "inferred",
+          "rationale": "source of cheese slices"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:barrel_sealed#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by barrel sealed recipe",
+          "evidence": "tfc:barrel_sealed production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "cheese making supplies"
+        }
+      }
+    },
+    "tfc_gourmet:sheep_curd": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible dairy curd"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for cheese and sandwiches"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dairy ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "eat directly",
+            "use in cheese making",
+            "sandwich ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "curd is versatile"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:barrel_sealed#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by barrel sealed curdling",
+          "evidence": "tfc:barrel_sealed production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "dairy product"
+        }
+      }
+    },
+    "tfc_gourmet:sheep_milk_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "drinkable milk bucket"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for cheese and recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "bulky bucket, not always carried"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for nutrition",
+            "make cheese",
+            "cooking ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "milk in TFC is drinkable and used in crafting"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of fluid"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/animal_husbandry"
+          ],
+          "signal": "inferred",
+          "rationale": "animal product"
+        }
+      }
+    },
+    "tfc_gourmet:shurpa": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "prepared lamb soup"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "soup from pot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "hearty food"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared meal"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by pot recipe",
+          "evidence": "firmalife:bowl_pot production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:sliced_cabbage": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "edible vegetable"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking ingredient"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common vegetable"
+        },
+        "primary_uses": {
+          "values": [
+            "eat raw",
+            "use in salads and sandwiches",
+            "cook into soups"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile vegetable"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/vegetables"
+          ],
+          "signal": "inferred",
+          "rationale": "vegetable storage"
+        }
+      }
+    },
+    "tfc_gourmet:solyanka": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "prepared meat soup"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "soup from pot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "hearty food"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared meal"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by pot recipe",
+          "evidence": "firmalife:bowl_pot production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:spaghetti_bolognese": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "prepared pasta meal"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "meal from pot"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "hearty food"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared meal"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:pot#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by pot recipe",
+          "evidence": "firmalife:bowl_pot production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:syrniki": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked cheese pancake"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:heating#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by heating recipe",
+          "evidence": "tfc:heating production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:takoyaki": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked octopus ball"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:heating#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by heating",
+          "evidence": "tfc:heating production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:tandoori_chicken": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "cooked chicken dish"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for nutrition"
+          ],
+          "signal": "inferred",
+          "rationale": "prepared food"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:heating#output",
+            "firmalife:oven#output"
+          ],
+          "signal": "named",
+          "rationale": "produced by heating and oven",
+          "evidence": "tfc:heating and firmalife:oven production"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meat dish"
+        }
+      }
+    },
+    "tfc_gourmet:tea_chamomile_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "drinkable tea with buffs"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "beverage preparation"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for regeneration buff"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for regeneration",
+            "warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "consumable buff drink"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of tea"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:tea_mint_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "drinkable mint tea"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "beverage"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for buff"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for regeneration",
+            "warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "consumable buff drink"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of tea"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:tea_nettle_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "drinkable nettle tea"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "beverage"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for buff"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for regeneration",
+            "warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "consumable buff drink"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of tea"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    },
+    "tfc_gourmet:tea_rosehip_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "drinkable rosehip tea"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking"
+          ],
+          "signal": "inferred",
+          "rationale": "beverage"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for buff"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for regeneration",
+            "warmth"
+          ],
+          "signal": "inferred",
+          "rationale": "consumable buff drink"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container",
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket of tea"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/foods"
+          ],
+          "signal": "inferred",
+          "rationale": "food storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

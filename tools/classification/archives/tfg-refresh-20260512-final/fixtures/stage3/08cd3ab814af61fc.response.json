@@ -1,0 +1,1100 @@
+{
+  "items": {
+    "gtceu:large_scale_assembler_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Multiblock casing, placed as structure, not UI workstation"
+        },
+        "primary_uses": {
+          "values": [
+            "Building multiblock machine structures"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as wall for large assembler multiblock"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for construction projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable, moderate cost"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to construct multiblock machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing is a structural component of multiblocks"
+        }
+      }
+    },
+    "gtceu:large_sifting_funnel": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Multiblock controller with UI for sifting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Sifting ores and materials in multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Controller for large sifter, parallelizable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left, not carried often"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from common components"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to process ores"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Controller block for a multiblock sifter"
+        }
+      }
+    },
+    "gtceu:large_solar_panel": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Multiblock controller for solar array, produces EU"
+        },
+        "primary_uses": {
+          "values": [
+            "Generating power from sunlight on moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Massive structure generating EU on moon"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for power gen, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable, though expensive"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Generates EU from solar"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation multiblock"
+        }
+      }
+    },
+    "gtceu:large_solar_panel_tier2": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Upgraded solar array controller"
+        },
+        "primary_uses": {
+          "values": [
+            "Generating more power from sunlight on moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Higher EU output than MK I"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for power gen, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation multiblock"
+        }
+      }
+    },
+    "gtceu:large_solar_panel_tier3": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Highest tier solar array controller"
+        },
+        "primary_uses": {
+          "values": [
+            "Generating maximum power from sunlight on moon"
+          ],
+          "signal": "inferred",
+          "rationale": "Highest EU output"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed for power gen, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires rare materials for upgrade"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:generator"
+          ],
+          "signal": "inferred",
+          "rationale": "Power generation multiblock"
+        }
+      }
+    },
+    "gtceu:large_solidifier": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Multiblock controller for fluid solidification"
+        },
+        "primary_uses": {
+          "values": [
+            "Solidifying fluids into items"
+          ],
+          "signal": "inferred",
+          "rationale": "Controller for large solidification array"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from common components"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of automated processing line"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock controller for solidification"
+        }
+      }
+    },
+    "gtceu:large_wiremill": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Multiblock controller for wire production"
+        },
+        "primary_uses": {
+          "values": [
+            "Producing wires from ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Controller for large wire factory"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automated wire production"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Multiblock controller for wiremill"
+        }
+      }
+    },
+    "gtceu:laser_hazard_sign_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Decorative warning sign block, no UI"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with hazard signs"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetics"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Occasionally used for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from mediocre materials"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for decoration"
+        }
+      }
+    },
+    "gtceu:laser_safe_engraving_casing": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Multiblock casing for engraving laser"
+        },
+        "primary_uses": {
+          "values": [
+            "Building laser engraving multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural casing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to construct machine housing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "Casing for multiblock"
+        }
+      }
+    },
+    "gtceu:lazurite_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed gem block for storage, not container"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "pattern",
+          "rationale": "Id indicates lazurite material"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of lazurite gems",
+            "Decorative building block"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for storage or decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mostly stored in chests"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from gems, which are common"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Derived from mining lazurite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block for a gem material"
+        }
+      }
+    },
+    "gtceu:lazurite_bud_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Worldgen indicator block for lazurite"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicating lazurite ore location"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as marker"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Occasionally kept for decoration"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Not overly common, but craftable"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to find ore"
+        }
+      }
+    },
+    "gtceu:lazurite_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "pattern",
+          "rationale": "Id contains lazurite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Form is dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lazurite",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in alloying and processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant via ore processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate processed material"
+        }
+      }
+    },
+    "gtceu:lazurite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:gems"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "pattern",
+          "rationale": "Id contains lazurite"
+        },
+        "form": {
+          "value": "gem",
+          "signal": "pattern",
+          "rationale": "Tag forge:gems"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting materials and components",
+            "Enchanting fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in various recipes and as enchanting fuel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material carried in inventory"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant via mining"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and processed"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Gem material storage"
+        }
+      }
+    },
+    "gtceu:lazurite_indicator": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Surface rock indicator for lazurite"
+        },
+        "primary_uses": {
+          "values": [
+            "Indicating lazurite ore on surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Worldgen surface rock"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Occasionally collected"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Found in specific biomes"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to locate ore"
+        }
+      }
+    },
+    "gtceu:lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:ores"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "pattern",
+          "rationale": "Id suffix lazurite_ore"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:ore"
+          ],
+          "signal": "pattern",
+          "rationale": "Form is ore"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lazurite gems"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined and smelted"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried during mining runs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Raw ore awaiting processing"
+        }
+      }
+    },
+    "gtceu:lazurite_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:plates"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "pattern",
+          "rationale": "Id contains lazurite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "rationale": "Form is plate"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting advanced components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machinery recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common intermediate material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from gems"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed from lazurite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag tfc:pileable_sheets"
+        }
+      }
+    },
+    "gtceu:lazurite_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:rods"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "pattern",
+          "rationale": "Id contains lazurite"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "rationale": "Form is rod"
+        },
+        "primary_uses": {
+          "values": [
+            "Tool handle component",
+            "Crafting component"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in tool crafting and machinery"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material used in many recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from gems"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed from lazurite"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        }
+      }
+    },
+    "gtceu:lead_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed ingot block, not container"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "rationale": "Id indicates lead"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of lead ingots",
+            "Building material (radiation shielding)"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage block or building"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Mostly stored in chests"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from ingots"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Derived from lead processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed metal block"
+        }
+      }
+    },
+    "gtceu:lead_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:bolts"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "rationale": "Id indicates lead"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for machines",
+            "Used in tool recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "Small fastener in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common component carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easily producible from lead"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine component crafting"
+        }
+      }
+    },
+    "gtceu:lead_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Fluid container used for transport and pouring"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "rationale": "Contains molten lead"
+        },
+        "primary_uses": {
+          "values": [
+            "Transporting molten lead",
+            "Pouring into casts or tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transfer tool"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when casting, not everyday"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from bucket and lead"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of fluid handling in processing"
+        },
+        "container_state": {
+          "values": [
+            "slot:fluid_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket with fluid"
+        }
+      }
+    },
+    "gtceu:lead_double_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Energy transport cable, part of GT power network"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "rationale": "Id indicates lead"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmitting EU power at ULV"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable for energy distribution"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when building power lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from lead ingots"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Cable for energy transmission"
+        }
+      }
+    },
+    "gtceu:lead_double_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Id suffix _double_ingot"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "rationale": "Id indicates lead"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:double_ingot"
+          ],
+          "signal": "pattern",
+          "rationale": "Form is double ingot"
+        },
+        "primary_uses": {
+          "values": [
+            "Welding into plates or other forms",
+            "Compact intermediate material"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in anvil welding and processing"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material during metalworking"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from ingots"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of lead processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_ingots"
+          ],
+          "signal": "inferred",
+          "rationale": "Pileable ingot variant"
+        }
+      }
+    },
+    "gtceu:lead_double_wire": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Wire for energy transmission, part of GT network"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "rationale": "Id indicates lead"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmitting EU power at ULV with higher amperage"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire with 4A capacity"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Carried when wiring"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from wires"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of energy automation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cable"
+          ],
+          "signal": "inferred",
+          "rationale": "Wire variant for energy transmission"
+        }
+      }
+    },
+    "gtceu:lead_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:dusts"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "rationale": "Id contains lead"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "rationale": "Form is dust"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelting into lead ingots",
+            "Alloy mixing"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in furnaces and mixers"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common material during processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Abundant via ore processing"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Product of ore processing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate material"
+        }
+      }
+    },
+    "gtceu:lead_foil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Tag forge:foils"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "pattern",
+          "rationale": "Id contains lead"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting fine wires or components",
+            "Used in capacitor recipes?"
+          ],
+          "signal": "inferred",
+          "rationale": "Thin sheet used in precision crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Less common intermediate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from lead plates"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in machine component crafting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,765 @@
+{
+  "items": {
+    "minecraft:note_block": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone-activated sound block, stored with redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "creating music with redstone",
+            "redstone signal output"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for builds, not carried often"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone music and signaling"
+        }
+      }
+    },
+    "minecraft:oak_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "vehicle for water travel, id suffix _boat"
+        },
+        "primary_uses": {
+          "values": [
+            "water transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses boat to travel on water"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "taken for ocean trips, not everyday"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "transportation activity"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on water to ride"
+        }
+      }
+    },
+    "minecraft:oak_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden button for redstone signals"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal source",
+            "temporary switch"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone use"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in builds, not carried"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone component"
+        }
+      }
+    },
+    "minecraft:oak_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "boat with chest for moving items"
+        },
+        "primary_uses": {
+          "values": [
+            "water item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "transport items on water"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized trip item"
+        },
+        "activity": {
+          "values": [
+            "slot:transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "transportation"
+        }
+      }
+    },
+    "minecraft:oak_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden door, part of building structure"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrance",
+            "opening/closing passage"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building construction"
+        }
+      }
+    },
+    "minecraft:oak_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden fence for boundaries"
+        },
+        "primary_uses": {
+          "values": [
+            "building fences",
+            "animal pens"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        }
+      }
+    },
+    "minecraft:oak_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate for controlled passage"
+        },
+        "primary_uses": {
+          "values": [
+            "fence passage control"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        }
+      }
+    },
+    "minecraft:oak_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hanging sign for displaying text"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying text",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for decoration"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorating"
+        }
+      }
+    },
+    "minecraft:oak_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "tree leaves, natural block"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building and compost"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not commonly carried"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as decoration block"
+        }
+      }
+    },
+    "minecraft:oak_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wood log for building and fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "fuel for charcoal",
+            "crafting planks"
+          ],
+          "signal": "inferred",
+          "rationale": "multiple uses"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for building and fuel"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building with wood"
+        }
+      }
+    },
+    "minecraft:oak_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "key building material"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "core material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "always carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking storage section"
+        }
+      }
+    },
+    "minecraft:oak_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden pressure plate for redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone activation on step",
+            "entity detection"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for mechanisms"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone component"
+        }
+      }
+    },
+    "minecraft:oak_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "tree sapling for growing"
+        },
+        "primary_uses": {
+          "values": [
+            "growing oak trees",
+            "tree farming"
+          ],
+          "signal": "inferred",
+          "rationale": "farming resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for planting"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tree farming"
+        }
+      }
+    },
+    "minecraft:oak_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "standing sign for text display"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying text labels",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for labeling"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorating"
+        }
+      }
+    },
+    "minecraft:oak_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden slab for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "paths",
+            "detail work"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building projects"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        }
+      }
+    },
+    "minecraft:oak_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden stairs for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "vertical access"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        }
+      }
+    },
+    "minecraft:oak_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wooden trapdoor for building access"
+        },
+        "primary_uses": {
+          "values": [
+            "floor/ceiling access",
+            "redstone controlled door"
+          ],
+          "signal": "inferred",
+          "rationale": "building and redstone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building construction"
+        }
+      }
+    },
+    "minecraft:oak_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "oak wood block for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building material",
+            "crafting planks"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building"
+        }
+      }
+    },
+    "minecraft:observer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "observer block for redstone detection"
+        },
+        "primary_uses": {
+          "values": [
+            "block update detection",
+            "redstone pulse"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in redstone builds"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone component"
+        }
+      }
+    },
+    "minecraft:obsidian": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "obsidian used for portals and strong structures"
+        },
+        "primary_uses": {
+          "values": [
+            "nether portal construction",
+            "blast resistant building",
+            "crafting beacon"
+          ],
+          "signal": "inferred",
+          "rationale": "primary and crafting uses"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined and placed, not everyday carry"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "building material"
+        }
+      }
+    },
+    "minecraft:ocelot_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "spawn egg, creative-only collectible"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning ocelots",
+            "creative collection"
+          ],
+          "signal": "inferred",
+          "rationale": "creative use"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only item"
+        }
+      }
+    },
+    "minecraft:ochre_froglight": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "light-emitting decorative block"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "light source"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for lighting"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed and left, rarely carried"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorating with light"
+        }
+      }
+    },
+    "minecraft:orange_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banner for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "displaying patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decorating builds"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorating"
+        }
+      }
+    },
+    "minecraft:orange_bed": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "bed for sleeping and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "sleeping",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "functional decoration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once at base, not carried"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "base decoration"
+        }
+      }
+    },
+    "minecraft:orange_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candle for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "light source when lit"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for decorating"
+        },
+        "activity": {
+          "values": [
+            "slot:decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorating"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": [
+    {
+      "item": "minecraft:oak_planks",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "planks are fuel in vanilla (burn 1.5 items)"
+    },
+    {
+      "item": "minecraft:oak_log",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "logs are fuel (burn 1 item)"
+    },
+    {
+      "item": "minecraft:oak_wood",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "wood blocks are fuel (burn 1 item)"
+    },
+    {
+      "item": "minecraft:orange_candle",
+      "facet": "is_fuel",
+      "value": true,
+      "rationale": "candles are fuel (burn 0.5 items)"
+    }
+  ]
+}

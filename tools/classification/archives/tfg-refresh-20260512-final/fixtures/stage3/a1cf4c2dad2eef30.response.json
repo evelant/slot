@@ -1,0 +1,1126 @@
+{
+  "items": {
+    "beneath:wood/lumber/warped": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting material for planks and wood items"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood type from Beneath"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common wood resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when crafting or building"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting planks and wooden items"
+          ],
+          "signal": "inferred",
+          "rationale": "converted into planks and other wood products"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "woodworking material storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced from warped log via recipes"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "basic building block for structures"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common resource in Beneath"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "building crimson structures"
+          ],
+          "signal": "inferred",
+          "rationale": "used as a base material for building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood storage group"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in building projects"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "used for enchanting"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once and not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting setup"
+          ],
+          "signal": "inferred",
+          "rationale": "increases enchanting level"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "used at enchanting table"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from planks and books"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden furniture group"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden button for redstone"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "wooden redstone trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "short redstone pulse on press"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden items belong with wood"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door as building opening"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building entrances"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrance"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as door"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence as building boundary"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as fence"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "gate as building access"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building gate"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as fence gate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log fence as rustic boundary"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building rustic fences"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as log fence"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "workstation for weaving"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted workstation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "used to weave cloth and paper"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden workstation"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden pressure plate"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried in redstone builds"
+        },
+        "primary_uses": {
+          "values": [
+            "wooden pressure plate"
+          ],
+          "signal": "inferred",
+          "rationale": "entity detection trigger"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden redstone item"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "horizontal building slab"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "vertical building stairs"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as stairs"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "wall-mounted tool storage"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common crafted item"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "storing tools on wall"
+          ],
+          "signal": "inferred",
+          "rationale": "holds up to 4 tools"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden furniture"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "horizontal access door"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building trapdoor access"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as trapdoor"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/crimson_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "crafting table workstation"
+        },
+        "material_family": {
+          "value": "crimson",
+          "signal": "inferred",
+          "rationale": "crimson wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common workstation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting table"
+          ],
+          "signal": "inferred",
+          "rationale": "used for crafting recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden workstation"
+        }
+      }
+    },
+    "beneath:wood/planks/warped": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "basic building block"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common resource"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "primary_uses": {
+          "values": [
+            "building warped structures"
+          ],
+          "signal": "inferred",
+          "rationale": "used as base building material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from wood"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wood storage"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "enchanting bookshelf"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting setup"
+          ],
+          "signal": "inferred",
+          "rationale": "increases enchantment power"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "used near enchanting table"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from planks and books"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden furniture"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden button"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "wooden redstone trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "short pulse on press"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden item"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "building door"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrance"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as door"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "building fence"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as fence"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "building gate"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building gate"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as fence gate"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "rustic log fence"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building rustic fences"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as log fence"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "weaving workstation"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once"
+        },
+        "primary_uses": {
+          "values": [
+            "weaving cloth"
+          ],
+          "signal": "inferred",
+          "rationale": "used to weave cloth and paper"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden workstation"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "wooden pressure plate"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "wooden pressure plate"
+          ],
+          "signal": "inferred",
+          "rationale": "entity detection trigger"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in redstone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden redstone item"
+        }
+      }
+    },
+    "beneath:wood/planks/warped_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "building slab"
+        },
+        "material_family": {
+          "value": "warped",
+          "signal": "inferred",
+          "rationale": "warped wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried for building"
+        },
+        "primary_uses": {
+          "values": [
+            "building half-blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as slab"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden building component"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

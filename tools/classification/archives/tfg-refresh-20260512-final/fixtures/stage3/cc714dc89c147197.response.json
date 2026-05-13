@@ -1,0 +1,1229 @@
+{
+  "items": {
+    "rnr:wet_concrete_road_control_joint": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wet concrete road block placed for path construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "wet concrete road material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block not everyday carry"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for building roads"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and paths"
+          ],
+          "signal": "inferred",
+          "rationale": "road construction block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:concrete_roads",
+          "rationale": "road blocks in road material storage"
+        }
+      }
+    },
+    "rnr:wet_concrete_road_flagstones": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wet concrete flagstone road block"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "concrete material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads with flagstones"
+          ],
+          "signal": "inferred",
+          "rationale": "road block variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:concrete_roads",
+          "rationale": "road materials bucket"
+        }
+      }
+    },
+    "rnr:wet_concrete_road_panel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wet concrete road panel"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building concrete road panels"
+          ],
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:concrete_roads",
+          "rationale": "road materials"
+        }
+      }
+    },
+    "rnr:wet_concrete_road_sett": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wet concrete sett road block"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "inferred",
+          "rationale": "concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building sett roads"
+          ],
+          "signal": "inferred",
+          "rationale": "road block variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:concrete_roads",
+          "rationale": "road materials"
+        }
+      }
+    },
+    "rnr:white_sandstone_flagstones": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "flagstone road block"
+        },
+        "material_family": {
+          "value": "white_sandstone",
+          "signal": "pattern",
+          "evidence": "id contains white_sandstone",
+          "rationale": "sandstone variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building flagstone roads"
+          ],
+          "signal": "inferred",
+          "rationale": "road block"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:flagstone_roads",
+          "rationale": "road materials"
+        }
+      }
+    },
+    "rnr:white_sandstone_flagstones_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "flagstone slab for road building"
+        },
+        "material_family": {
+          "value": "white_sandstone",
+          "signal": "pattern",
+          "evidence": "id contains white_sandstone",
+          "rationale": "sandstone variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building flagstone half-slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:flagstone_roads",
+          "rationale": "road materials"
+        }
+      }
+    },
+    "rnr:white_sandstone_flagstones_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "flagstone stairs for road building"
+        },
+        "material_family": {
+          "value": "white_sandstone",
+          "signal": "pattern",
+          "evidence": "id contains white_sandstone",
+          "rationale": "sandstone variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "road building"
+        },
+        "primary_uses": {
+          "values": [
+            "building flagstone staircases"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/road_materials"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:flagstone_roads",
+          "rationale": "road materials"
+        }
+      }
+    },
+    "rnr:wood/shingle/acacia": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "roofing shingle block"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "signal": "pattern",
+          "evidence": "id contains acacia",
+          "rationale": "acacia wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block for roofs"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with acacia shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roof shingle storage"
+        }
+      }
+    },
+    "rnr:wood/shingle/ash": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "ash shingle roof block"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "evidence": "id contains ash",
+          "rationale": "ash wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with ash shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roof shingles"
+        }
+      }
+    },
+    "rnr:wood/shingle/aspen": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "aspen shingle"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "evidence": "id contains aspen",
+          "rationale": "aspen wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with aspen shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/baobab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "baobab shingle"
+        },
+        "material_family": {
+          "value": "wood_baobab",
+          "signal": "pattern",
+          "evidence": "id contains baobab",
+          "rationale": "baobab wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with baobab shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roof material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/birch": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "birch shingle"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "evidence": "id contains birch",
+          "rationale": "birch wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with birch shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/blackwood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "blackwood shingle"
+        },
+        "material_family": {
+          "value": "wood_blackwood",
+          "signal": "pattern",
+          "evidence": "id contains blackwood",
+          "rationale": "blackwood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with blackwood shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/chestnut": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chestnut shingle"
+        },
+        "material_family": {
+          "value": "wood_chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "chestnut wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with chestnut shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/cypress": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cypress shingle"
+        },
+        "material_family": {
+          "value": "wood_cypress",
+          "signal": "pattern",
+          "evidence": "id contains cypress",
+          "rationale": "cypress wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with cypress shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roof material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "douglas fir shingle"
+        },
+        "material_family": {
+          "value": "wood_douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "douglas fir wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with douglas fir shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/eucalyptus": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "eucalyptus shingle"
+        },
+        "material_family": {
+          "value": "wood_eucalyptus",
+          "signal": "pattern",
+          "evidence": "id contains eucalyptus",
+          "rationale": "eucalyptus wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with eucalyptus shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roof material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/fig": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fig shingle"
+        },
+        "material_family": {
+          "value": "wood_fig",
+          "signal": "pattern",
+          "evidence": "id contains fig",
+          "rationale": "fig wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with fig shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roof material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/hevea": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "hevea shingle"
+        },
+        "material_family": {
+          "value": "wood_hevea",
+          "signal": "pattern",
+          "evidence": "id contains hevea",
+          "rationale": "hevea wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with hevea shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/hickory": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "hickory shingle"
+        },
+        "material_family": {
+          "value": "wood_hickory",
+          "signal": "pattern",
+          "evidence": "id contains hickory",
+          "rationale": "hickory wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with hickory shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/ipe": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "ipe shingle"
+        },
+        "material_family": {
+          "value": "wood_ipe",
+          "signal": "pattern",
+          "evidence": "id contains ipe",
+          "rationale": "ipe wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with ipe shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/ironwood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "ironwood shingle"
+        },
+        "material_family": {
+          "value": "wood_ironwood",
+          "signal": "pattern",
+          "evidence": "id contains ironwood",
+          "rationale": "ironwood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with ironwood shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roofing"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/kapok": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "kapok shingle"
+        },
+        "material_family": {
+          "value": "wood_kapok",
+          "signal": "pattern",
+          "evidence": "id contains kapok",
+          "rationale": "kapok wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with kapok shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roof material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/mahogany": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "mahogany shingle"
+        },
+        "material_family": {
+          "value": "wood_mahogany",
+          "signal": "pattern",
+          "evidence": "id contains mahogany",
+          "rationale": "mahogany wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with mahogany shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roof material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    },
+    "rnr:wood/shingle/mangrove": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "mangrove shingle"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "signal": "pattern",
+          "evidence": "id contains mangrove",
+          "rationale": "mangrove wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity=common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed block"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "roof building"
+        },
+        "primary_uses": {
+          "values": [
+            "roofing with mangrove shingles"
+          ],
+          "signal": "inferred",
+          "rationale": "roof material"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/roofs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag rnr:shingles",
+          "rationale": "roofs"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "rnr:white_sandstone_flagstones",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": null,
+      "rationale": "Block has loot table (self-drop) and landslide recipe, so not crafted_only",
+      "confidence": 0.8
+    },
+    {
+      "item": "rnr:white_sandstone_flagstones_slab",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": null,
+      "rationale": "Has loot table self-drop, can be mined",
+      "confidence": 0.8
+    },
+    {
+      "item": "rnr:white_sandstone_flagstones_stairs",
+      "facet": "origin",
+      "current": "crafted_only",
+      "suggested": null,
+      "rationale": "Has loot table self-drop, can be mined",
+      "confidence": 0.8
+    }
+  ],
+  "fill_ins": []
+}

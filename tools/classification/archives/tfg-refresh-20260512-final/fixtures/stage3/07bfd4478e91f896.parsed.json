@@ -1,0 +1,1138 @@
+{
+  "items": {
+    "afc:wood/wood/ironwood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log block placed as building material or fuel stock"
+        },
+        "material_family": {
+          "value": "ironwood",
+          "signal": "pattern",
+          "evidence": "id suffix ironwood",
+          "rationale": "Species-specific wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Fuel",
+            "Charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as log, burned, or turned to charcoal"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minescraft:logs",
+          "rationale": "Logs stored together"
+        },
+        "workflow": {
+          "values": [
+            "tfc:charcoal/pit"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for charcoal pit"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:charcoal/pit#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs are fuel for charcoal"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "tag tfc:firepit_fuel",
+          "rationale": "Burns as firepit fuel"
+        }
+      }
+    },
+    "afc:wood/wood/mahogany": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log block placed as building material or fuel stock"
+        },
+        "material_family": {
+          "value": "mahogany",
+          "signal": "pattern",
+          "evidence": "id suffix mahogany",
+          "rationale": "Species-specific wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Fuel",
+            "Charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as log, burned, or turned to charcoal"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minescraft:logs",
+          "rationale": "Logs stored together"
+        },
+        "workflow": {
+          "values": [
+            "tfc:charcoal/pit"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for charcoal pit"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:charcoal/pit#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs are fuel for charcoal"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "tag tfc:firepit_fuel",
+          "rationale": "Burns as firepit fuel"
+        }
+      }
+    },
+    "afc:wood/wood/poplar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log block placed as building material or fuel stock"
+        },
+        "material_family": {
+          "value": "poplar",
+          "signal": "pattern",
+          "evidence": "id suffix poplar",
+          "rationale": "Species-specific wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Fuel",
+            "Charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as log, burned, or turned to charcoal"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minescraft:logs",
+          "rationale": "Logs stored together"
+        },
+        "workflow": {
+          "values": [
+            "tfc:charcoal/pit"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for charcoal pit"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:charcoal/pit#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs are fuel for charcoal"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "tag tfc:firepit_fuel",
+          "rationale": "Burns as firepit fuel"
+        }
+      }
+    },
+    "afc:wood/wood/rainbow_eucalyptus": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log block placed as building material or fuel stock"
+        },
+        "material_family": {
+          "value": "rainbow_eucalyptus",
+          "signal": "pattern",
+          "evidence": "id suffix rainbow_eucalyptus",
+          "rationale": "Species-specific wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Fuel",
+            "Charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as log, burned, or turned to charcoal"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minescraft:logs",
+          "rationale": "Logs stored together"
+        },
+        "workflow": {
+          "values": [
+            "tfc:charcoal/pit"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for charcoal pit"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:charcoal/pit#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs are fuel for charcoal"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "tag tfc:firepit_fuel",
+          "rationale": "Burns as firepit fuel"
+        }
+      }
+    },
+    "afc:wood/wood/redcedar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log block placed as building material or fuel stock"
+        },
+        "material_family": {
+          "value": "redcedar",
+          "signal": "pattern",
+          "evidence": "id suffix redcedar",
+          "rationale": "Species-specific wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Fuel",
+            "Charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as log, burned, or turned to charcoal"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minescraft:logs",
+          "rationale": "Logs stored together"
+        },
+        "workflow": {
+          "values": [
+            "tfc:charcoal/pit"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for charcoal pit"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:charcoal/pit#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs are fuel for charcoal"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "tag tfc:firepit_fuel",
+          "rationale": "Burns as firepit fuel"
+        }
+      }
+    },
+    "afc:wood/wood/rubber_fig": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log block placed as building material or fuel stock"
+        },
+        "material_family": {
+          "value": "rubber_fig",
+          "signal": "pattern",
+          "evidence": "id suffix rubber_fig",
+          "rationale": "Species-specific wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Fuel",
+            "Latex extraction"
+          ],
+          "signal": "inferred",
+          "rationale": "Also tapped for latex via vacuumizing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minescraft:logs",
+          "rationale": "Logs stored together"
+        },
+        "workflow": {
+          "values": [
+            "tfc:charcoal/pit",
+            "vintageimprovements:vacuumizing"
+          ],
+          "signal": "inferred",
+          "rationale": "Charcoal input and latex extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:charcoal/pit#input",
+            "vintageimprovements:vacuumizing#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Fuel for charcoal, source for latex"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "tag tfc:firepit_fuel",
+          "rationale": "Burns as firepit fuel"
+        }
+      }
+    },
+    "afc:wood/wood/teak": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log block placed as building material or fuel stock"
+        },
+        "material_family": {
+          "value": "teak",
+          "signal": "pattern",
+          "evidence": "id suffix teak",
+          "rationale": "Species-specific wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Fuel",
+            "Charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as log, burned, or turned to charcoal"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minescraft:logs",
+          "rationale": "Logs stored together"
+        },
+        "workflow": {
+          "values": [
+            "tfc:charcoal/pit"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for charcoal pit"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:charcoal/pit#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs are fuel for charcoal"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "tag tfc:firepit_fuel",
+          "rationale": "Burns as firepit fuel"
+        }
+      }
+    },
+    "afc:wood/wood/tualang": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log block placed as building material or fuel stock"
+        },
+        "material_family": {
+          "value": "tualang",
+          "signal": "pattern",
+          "evidence": "id suffix tualang",
+          "rationale": "Species-specific wood type"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects, not everyday"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "Common renewable resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Building material",
+            "Fuel",
+            "Charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as log, burned, or turned to charcoal"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/logs"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minescraft:logs",
+          "rationale": "Logs stored together"
+        },
+        "workflow": {
+          "values": [
+            "tfc:charcoal/pit"
+          ],
+          "signal": "inferred",
+          "rationale": "Input for charcoal pit"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:charcoal/pit#input"
+          ],
+          "signal": "inferred",
+          "rationale": "Logs are fuel for charcoal"
+        },
+        "is_fuel": {
+          "value": true,
+          "signal": "named",
+          "evidence": "tag tfc:firepit_fuel",
+          "rationale": "Burns as firepit fuel"
+        }
+      }
+    },
+    "ags_modernmarkings:chalk": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "guess",
+          "rationale": "Non-block item, likely used to apply markings"
+        },
+        "primary_uses": {
+          "values": [
+            "Marking floors and walls"
+          ],
+          "signal": "guess",
+          "rationale": "Mod name and item name suggest marking tool"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "guess",
+          "rationale": "Specialized marking tool, not everyday carry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item component"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/ags_modernmarkings_items"
+          ],
+          "signal": "inferred",
+          "rationale": "Mod-specific item group"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_black_corner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_black_singleline": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_blue_corner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_blue_singleline": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_danger_red": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_danger_yellow": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_exit": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_green_corner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_green_singleline": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_noentry": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_nostep": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_orange_corner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_orange_singleline": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_red_corner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_red_hazardline": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    },
+    "ags_modernmarkings:floor_marking_red_singleline": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Placeable floor marking for decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating factory floors with markings"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as aesthetic floor marking"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building/decor projects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Easy to craft from stone"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/markings"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ags_modernmarkings:markings",
+          "rationale": "Grouped with other floor markings"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

@@ -1,0 +1,1317 @@
+{
+  "items": {
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_double_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer block with inventory for item storage"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses for storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_double_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer counter block with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in counter drawers",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in kitchen/base building"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Counter accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_double_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Wardrobe block with inventory for storage"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in wardrobe",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Wardrobe accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer block with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in drawers",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_drawer_counter": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Drawer counter block with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in counter drawers",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in kitchen/base building"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Counter accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_end_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "End table block, no inventory, purely decorative"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_glass_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Glass table block, no inventory, decorative"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood with glass top"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_large_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Large drawer block with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in large drawer",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_lower_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Lower bookshelf drawer with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in bookshelf drawer",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_lower_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Lower triple drawer block with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in triple drawer",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_modern_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Modern chair block, no inventory, decorative"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_modern_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Modern desk block, likely no inventory, decorative"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_modern_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Modern wardrobe block with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in wardrobe",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Wardrobe accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_stool_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Stool block, no inventory, decorative"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_striped_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Striped chair block, no inventory, decorative"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Table block, no inventory, decorative"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_triple_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Triple drawer block with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in triple drawer",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_wardrobe": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Wardrobe block with inventory"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern",
+          "evidence": "id contains chestnut",
+          "rationale": "Chestnut wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in wardrobe",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Wardrobe accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/douglas_fir_furniture/douglas_fir_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf block likely with inventory"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "Douglas fir wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in bookshelf",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Bookshelf accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/douglas_fir_furniture/douglas_fir_bookshelf_cupboard": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Cupboard bookshelf block with inventory"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "Douglas fir wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in bookshelf cupboard",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Cupboard accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/douglas_fir_furniture/douglas_fir_bookshelf_drawer": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf drawer block with inventory"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "Douglas fir wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base furnishing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items in bookshelf drawer",
+            "Base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage and furnishing"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Drawer accepts standard items"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:open",
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Open to access storage, place as block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/douglas_fir_furniture/douglas_fir_chair": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chair block, no inventory, decorative"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "Douglas fir wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/douglas_fir_furniture/douglas_fir_coffee_table": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Coffee table block, no inventory, decorative"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "Douglas fir wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/douglas_fir_furniture/douglas_fir_counter": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Counter block, likely no inventory, decorative"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "Douglas fir wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    },
+    "mcw_tfc_aio:furniture/douglas_fir_furniture/douglas_fir_covered_desk": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Covered desk block, likely no inventory, decorative"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern",
+          "evidence": "id contains douglas_fir",
+          "rationale": "Douglas fir wood furniture"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Placed once for base decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "Component rarity indicates common"
+        },
+        "primary_uses": {
+          "values": [
+            "Base decoration and furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "Player uses as decorative furniture"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in base interior construction"
+        },
+        "use_affordance": {
+          "values": [
+            "slot:place"
+          ],
+          "signal": "inferred",
+          "rationale": "Place as decorative block"
+        }
+      }
+    }
+  },
+  "vocabulary_proposals": [
+    {
+      "item": "mcw_tfc_aio:furniture/chestnut_furniture/stripped_chestnut_double_drawer",
+      "facet": "organization_group",
+      "label": "Furniture",
+      "proposed_id": "pack:tfg/furniture",
+      "rationale": "No accepted furniture group exists; players likely store all Macaw furniture together by wood type."
+    }
+  ],
+  "schema_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

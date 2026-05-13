@@ -1,0 +1,945 @@
+{
+  "items": {
+    "gtceu:stainless_steel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny metal piece used as crafting component"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tag forge:nuggets/stainless_steel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient in many GTCEu recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:nugget"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:nuggets",
+          "rationale": "nugget form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting stainless steel components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:stainless_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate metal sheet for crafting"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags forge:plates/stainless_steel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used in machine crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:plate"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:plates",
+          "rationale": "plate form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting GTCEu machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many shaped recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/pileable_sheets"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:sheets and tfc:pileable_sheets",
+          "rationale": "stored with other sheet items"
+        }
+      }
+    },
+    "gtceu:stainless_steel_quadruple_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed pipe block for fluid transport network"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure, not carried in bulk"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "transports fluids in GTCEu networks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GTCEu pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fluids in GTCEu"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe for fluid logistics"
+        }
+      }
+    },
+    "gtceu:stainless_steel_ring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small component used in many crafts"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags forge:rings/stainless_steel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient in various recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mechanical parts"
+          ],
+          "signal": "inferred",
+          "rationale": "used in rotors, pumps, etc."
+        }
+      }
+    },
+    "gtceu:stainless_steel_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate metal rod for crafting"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags forge:rods/stainless_steel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many tool and machine recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:rod"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:rods",
+          "rationale": "rod form"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many shaped and shapeless recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/refined_ores"
+          ],
+          "signal": "inferred",
+          "rationale": "refined metal product stored with ores"
+        }
+      }
+    },
+    "gtceu:stainless_steel_rotor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for machine crafting"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags forge:rotors/stainless_steel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in pumps, fans, and mixers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pumps and fans"
+          ],
+          "signal": "inferred",
+          "rationale": "key component in recipes"
+        }
+      }
+    },
+    "gtceu:stainless_steel_screw": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tiny fastener used in many recipes"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags forge:screws/stainless_steel"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in many machine recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting machine components"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GTCEu recipes"
+        }
+      }
+    },
+    "gtceu:stainless_steel_small_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed pipe block for fluid transport"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GTCEu pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport in GTCEu"
+          ],
+          "signal": "inferred",
+          "rationale": "pipe for fluids"
+        }
+      }
+    },
+    "gtceu:stainless_steel_tiny_fluid_pipe": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "tiny pipe for fluid logistics"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in infrastructure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid transport"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:pipe"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GTCEu pipe subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "fluid transport in GTCEu"
+          ],
+          "signal": "inferred",
+          "rationale": "tiny pipe for low-volume transport"
+        }
+      }
+    },
+    "gtceu:stainless_steel_turbine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "structural block for multiblock turbine"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "inferred",
+          "rationale": "name implies stainless steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in multiblocks, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in steam turbine multiblocks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing part of multiblock structures"
+        },
+        "primary_uses": {
+          "values": [
+            "building GTCEu large turbines"
+          ],
+          "signal": "inferred",
+          "rationale": "turbine casing for power gen"
+        }
+      }
+    },
+    "gtceu:stainless_steel_whisk": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting mechanical mixers"
+        },
+        "material_family": {
+          "value": "stainless_steel",
+          "signal": "pattern",
+          "rationale": "id and tags forge:whisks/stainless_steel"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized component, few recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mechanical mixers"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixer and food processor recipes"
+        }
+      }
+    },
+    "gtceu:steam_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "carried to transport steam, like water bucket"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only when setting up steam power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "steam is used for power"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting steam for power"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket for steam"
+        }
+      }
+    },
+    "gtceu:steam_cracked_butadiene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of processed gas for chemical industry"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical, not commonly carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in chemical processing automation"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting cracked butadiene for polymerization"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid for rubber production"
+        }
+      }
+    },
+    "gtceu:steam_cracked_butane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of cracked butane"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting cracked butane for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate hydrocarbon"
+        }
+      }
+    },
+    "gtceu:steam_cracked_butene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of cracked butene"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting cracked butene for polymerization"
+          ],
+          "signal": "inferred",
+          "rationale": "hydrocarbon"
+        }
+      }
+    },
+    "gtceu:steam_cracked_ethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of cracked ethane"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting cracked ethane for ethylene production"
+          ],
+          "signal": "inferred",
+          "rationale": "hydrocarbon"
+        }
+      }
+    },
+    "gtceu:steam_cracked_ethylene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of cracked ethylene"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting cracked ethylene for plastic production"
+          ],
+          "signal": "inferred",
+          "rationale": "important petrochemical"
+        }
+      }
+    },
+    "gtceu:steam_cracked_propane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of cracked propane"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting cracked propane for propene production"
+          ],
+          "signal": "inferred",
+          "rationale": "hydrocarbon"
+        }
+      }
+    },
+    "gtceu:steam_cracked_propene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket of cracked propene"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized chemical"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chemical processing"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting cracked propene for polypropylene"
+          ],
+          "signal": "inferred",
+          "rationale": "hydrocarbon"
+        }
+      }
+    },
+    "gtceu:steam_grinder": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock macerator with UI for processing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "once placed in base, not carried"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automated ore processing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "multiblock machine controller"
+        },
+        "primary_uses": {
+          "values": [
+            "crushing ores and materials without byproducts"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip states multiblock macerator"
+        }
+      }
+    },
+    "gtceu:steam_input_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component block for item input to multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in multiblock setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "bus/hatch for multiblock item interface"
+        },
+        "primary_uses": {
+          "values": [
+            "providing item input to steam multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Item Input for Multiblocks"
+        }
+      }
+    },
+    "gtceu:steam_input_hatch": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component for fluid input to multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in multiblock setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "hatch for steam fluid input"
+        },
+        "primary_uses": {
+          "values": [
+            "providing steam input to multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Accepted Fluid: Steam"
+        }
+      }
+    },
+    "gtceu:steam_large_turbine": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "multiblock controller for power generation"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed once in base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "activity": {
+          "values": [
+            "slot:power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "generates EU from steam"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "multiblock turbine controller"
+        },
+        "primary_uses": {
+          "values": [
+            "generating EU from steam"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Base Production 1024 EU/t"
+        }
+      }
+    },
+    "gtceu:steam_machine_casing": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "structural block for steam multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building steam machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "casing for multiblock structures"
+        },
+        "primary_uses": {
+          "values": [
+            "building steam multiblock machines"
+          ],
+          "signal": "inferred",
+          "rationale": "used in crafting steam machine components"
+        }
+      }
+    },
+    "gtceu:steam_output_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "component for item output from multiblocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in multiblock setups"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "component rarity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:hatch"
+          ],
+          "signal": "inferred",
+          "rationale": "bus for multiblock item output"
+        },
+        "primary_uses": {
+          "values": [
+            "providing item output from steam multiblocks"
+          ],
+          "signal": "inferred",
+          "rationale": "tooltip: Item Output for Multiblocks"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

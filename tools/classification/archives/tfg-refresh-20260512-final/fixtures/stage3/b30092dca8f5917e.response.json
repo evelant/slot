@@ -1,0 +1,1833 @@
+{
+  "items": {
+    "gtceu:flavolite_realgar_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_red_garnet_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_rock_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_ruby_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_salt_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_saltpeter_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_sapphire_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_scheelite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_silver_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_soapstone_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_sodalite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_spessartine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_sphalerite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_spodumene_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_stibnite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_sulfur_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_talc_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_tantalite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_tarkianite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_tetrahedrite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_thorium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_tin_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_topaz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    },
+    "gtceu:flavolite_tricalcium_phosphate_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _ore",
+          "rationale": "ore block mined for processing"
+        },
+        "primary_uses": {
+          "values": [
+            "maceration to crushed ore",
+            "smelted into ingots"
+          ],
+          "signal": "pattern",
+          "rationale": "GT ore processing chain"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried during mining trips"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "common ore"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mined from underground"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "rationale": "raw ore block storage group"
+        },
+        "workflow": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "primary processing step"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "input to milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "named",
+          "evidence": "recipe greate:milling",
+          "rationale": "macerated in mill"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "y_level_range underground"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

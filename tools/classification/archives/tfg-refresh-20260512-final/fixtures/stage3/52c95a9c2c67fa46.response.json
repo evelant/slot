@@ -1,0 +1,963 @@
+{
+  "items": {
+    "gtceu:damascus_steel_axe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool component head for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for tool assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in tool making"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when making tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed material block, not a container"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage of swine-steel"
+          ],
+          "signal": "inferred",
+          "rationale": "9 ingots storage block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "moved during material transport"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material block"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_bolt": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "GT material form, creative tab material_item"
+        },
+        "primary_uses": {
+          "values": [
+            "component for advanced crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in machine recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient in GT crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "fluid transport tool like other buckets"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting molten swine-steel"
+          ],
+          "signal": "inferred",
+          "rationale": "holds liquid metal for casting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when processing fluids"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "molten metal bucket not everyday"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_butchery_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting/butchering tool with durability"
+        },
+        "primary_uses": {
+          "values": [
+            "butchering animals for more meat"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Butcher: Butchers animals for more meat",
+          "rationale": "explicit purpose in tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for butchering runs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "butchering is part of animal husbandry"
+        }
+      }
+    },
+    "gtceu:damascus_steel_butchery_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool component head for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for butchery knife assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in tool making"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when making tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_crowbar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "maintenance tool with durability"
+        },
+        "primary_uses": {
+          "values": [
+            "dismounting covers and rotating rails"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Dismounts Covers",
+          "rationale": "explicit purpose in tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when maintaining machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for machine maintenance in automatio"
+        }
+      }
+    },
+    "gtceu:damascus_steel_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "GT dust form, creative tab material_item"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient for smelting and alloys"
+          ],
+          "signal": "inferred",
+          "rationale": "dusts are processed into ingots"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common intermediate in material processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material form"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_file": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting tool with durability"
+        },
+        "primary_uses": {
+          "values": [
+            "shaping components in crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used in many GT crafting recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in 603 recipes, often in inventory"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized crafting tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_file_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool component head for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for file assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in tool making"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when making tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_gear": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "GT gear form, creative tab material_item"
+        },
+        "primary_uses": {
+          "values": [
+            "component for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "gears used in crafting advanced machines"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "mining/crafting tool with durability"
+        },
+        "primary_uses": {
+          "values": [
+            "mining and crushing blocks"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Crushes Blocks when harvesting them",
+          "rationale": "explicit purpose in tooltip"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core mining tool carried constantly"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for mining and ore processing"
+        }
+      }
+    },
+    "gtceu:damascus_steel_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool component head for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for hammer assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in tool making"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when making tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "farming tool with durability"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil for farming"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Farmer: Tills Ground",
+          "rationale": "explicit purpose in tooltip"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during farming runs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for tilling soil"
+        }
+      }
+    },
+    "gtceu:damascus_steel_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool component head for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for hoe assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in tool making"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when making tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "GT ingot form, creative tab material_item"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting and crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "base form for many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly carried for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material form"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting/combat tool with durability"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cutting recipes",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in 237 recipes, also usable as sword"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often used in crafting and combat"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "usable as sword, deals damage"
+        }
+      }
+    },
+    "gtceu:damascus_steel_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool component head for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for knife assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in tool making"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when making tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_mining_hammer": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "mining tool with area effect"
+        },
+        "primary_uses": {
+          "values": [
+            "area mining with torches"
+          ],
+          "signal": "named",
+          "evidence": "tooltip: Mines a large area at once",
+          "rationale": "explicit purpose in tooltip"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary mining tool, carried always"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for mining"
+        }
+      }
+    },
+    "gtceu:damascus_steel_mining_hammer_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool component head for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for mining hammer assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in tool making"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when making tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_mortar": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "crafting tool with durability"
+        },
+        "primary_uses": {
+          "values": [
+            "grinding gems and materials into dust"
+          ],
+          "signal": "inferred",
+          "rationale": "used in 81 grinding recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "often used in crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "GT nugget form, creative tab material_item"
+        },
+        "primary_uses": {
+          "values": [
+            "small crafting material"
+          ],
+          "signal": "inferred",
+          "rationale": "used for precise recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material form"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "mining tool with durability"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pickaxe function"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary mining tool, carried always"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized tool"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "used for mining"
+        }
+      }
+    },
+    "gtceu:damascus_steel_pickaxe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tool component head for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "component for pickaxe assembly"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate in tool making"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used when making tools"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material component"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    },
+    "gtceu:damascus_steel_plate": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "GT plate form, creative tab material_item"
+        },
+        "primary_uses": {
+          "values": [
+            "component for machine crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "plates are used in many recipes"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common GT crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard GT material form"
+        },
+        "material_family": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "name contains damascus_steel"
+        },
+        "tier": {
+          "value": "damascus_steel",
+          "signal": "pattern",
+          "rationale": "material tier from id"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

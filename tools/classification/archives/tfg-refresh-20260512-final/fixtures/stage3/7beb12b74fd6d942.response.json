@@ -1,0 +1,875 @@
+{
+  "items": {
+    "vintageimprovements:zinc_spring": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal spring, a crafting component, not a tool or block"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "inferred",
+          "evidence": "id suffix _spring and tag springs/zinc",
+          "rationale": "Made from zinc"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building machines, not everyday"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mechanical components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in recipes for machinery"
+        }
+      }
+    },
+    "vintageimprovements:zinc_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Metal wire, crafting component"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "pattern",
+          "evidence": "id suffix _wire and tag forge:wires/zinc",
+          "rationale": "Made from zinc"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building electrical systems"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting electrical components"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in wiring recipes"
+        }
+      }
+    },
+    "wan_ancient_beasts:amber_ginkgo_leaves": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Leaves block used for building and decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when building with leaf blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with leaf blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable block for construction"
+        }
+      }
+    },
+    "wan_ancient_beasts:amber_ginkgo_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "evidence": "form=sapling from stage2",
+          "rationale": "Sapling planted to grow trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when planting trees"
+        },
+        "primary_uses": {
+          "values": [
+            "Growing ginkgo trees"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted to produce trees"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/saplings"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _sapling matches saplings group",
+          "rationale": "Stored with other saplings"
+        }
+      }
+    },
+    "wan_ancient_beasts:amber_ginkgo_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "evidence": "form=seed from stage2",
+          "rationale": "Seeds planted to grow crops"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried when farming crops"
+        },
+        "primary_uses": {
+          "values": [
+            "Planting to grow ginkgo crop"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted in farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _seeds matches seeds group",
+          "rationale": "Stored with other seeds"
+        }
+      }
+    },
+    "wan_ancient_beasts:ancient_club": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "Melee weapon with attack damage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for combat, not primary weapon"
+        },
+        "primary_uses": {
+          "values": [
+            "Melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Deals +5 damage"
+        }
+      }
+    },
+    "wan_ancient_beasts:ancient_upgrade_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Smithing template used to upgrade shields"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when planning shield upgrade"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Found in archaeology sites"
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrading shields at smithing table"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip says applies to shield"
+        }
+      }
+    },
+    "wan_ancient_beasts:beak_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Archaeology sherd collected as set"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected occasionally from digs"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Found in archaeology sites"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting decorated pots",
+            "Collecting as sherd set"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafting ingredient for decorated pots"
+        }
+      }
+    },
+    "wan_ancient_beasts:bellflower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Flower block placed as decoration or garden"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Picked when decorating"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating with flowers",
+            "Planting in gardens"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable flower block"
+        }
+      }
+    },
+    "wan_ancient_beasts:bellflower_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "evidence": "form=seed from stage2",
+          "rationale": "Seeds planted to grow bellflower"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried when farming flowers"
+        },
+        "primary_uses": {
+          "values": [
+            "Planting bellflowers"
+          ],
+          "signal": "inferred",
+          "rationale": "Planted in farmland"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/seeds"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix _seeds matches seeds group",
+          "rationale": "Stored with other seeds"
+        }
+      }
+    },
+    "wan_ancient_beasts:black_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to equip charger mobs like horse armor"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display name contains Black",
+          "rationale": "Explicit color in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when taming/using charger"
+        },
+        "primary_uses": {
+          "values": [
+            "Equipping charger mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "Applied to charger entities"
+        }
+      }
+    },
+    "wan_ancient_beasts:black_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Glider for player flight, not armor"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "named",
+          "evidence": "display name contains Black",
+          "rationale": "Explicit color in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when exploring or descending"
+        },
+        "primary_uses": {
+          "values": [
+            "Gliding through the air"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides flight capability"
+        }
+      }
+    },
+    "wan_ancient_beasts:blue_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to equip charger mobs"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "display name contains Blue",
+          "rationale": "Explicit color in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when taming/using charger"
+        },
+        "primary_uses": {
+          "values": [
+            "Equipping charger mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "Applied to charger entities"
+        }
+      }
+    },
+    "wan_ancient_beasts:blue_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Glider for player flight"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "named",
+          "evidence": "display name contains Blue",
+          "rationale": "Explicit color in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when exploring or descending"
+        },
+        "primary_uses": {
+          "values": [
+            "Gliding through the air"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides flight capability"
+        }
+      }
+    },
+    "wan_ancient_beasts:bones_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Banner pattern collected for decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Carried only when decorating banners"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating banners with patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "Applied to loom for banner pattern"
+        }
+      }
+    },
+    "wan_ancient_beasts:brown_charger_armor": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Used to equip charger mobs"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "display name contains Brown",
+          "rationale": "Explicit color in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only carried when taming/using charger"
+        },
+        "primary_uses": {
+          "values": [
+            "Equipping charger mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "Applied to charger entities"
+        }
+      }
+    },
+    "wan_ancient_beasts:brown_hang_glider": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "Glider for player flight"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "named",
+          "evidence": "display name contains Brown",
+          "rationale": "Explicit color in name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when exploring or descending"
+        },
+        "primary_uses": {
+          "values": [
+            "Gliding through the air"
+          ],
+          "signal": "inferred",
+          "rationale": "Provides flight capability"
+        }
+      }
+    },
+    "wan_ancient_beasts:charger_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Archaeology egg block, not food, used for hatching"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected from digs, rarely carried"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Found in archaeology"
+        },
+        "primary_uses": {
+          "values": [
+            "Hatching charger mobs",
+            "Display as decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed to spawn charger"
+        }
+      }
+    },
+    "wan_ancient_beasts:charger_skull": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Skull block collected from archaeology"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected for display, not carried often"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin not present but inferred from loot",
+          "rationale": "Found in archaeology sites"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative display",
+            "Milling into bone meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable skull; also crushed in mill"
+        }
+      }
+    },
+    "wan_ancient_beasts:charger_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "evidence": "form=special from stage2, spawn egg pattern",
+          "rationale": "Spawn egg collected by admins or in creative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Not obtainable in normal survival"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawning charger mobs in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "Spawn egg usage"
+        }
+      }
+    },
+    "wan_ancient_beasts:chisel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "Durable tool for chiseling blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when working on decorative blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Chiseling blocks into shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool for block transformation"
+        }
+      }
+    },
+    "wan_ancient_beasts:cooked_ancient_meat": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked meat food item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Good food source, carried for hunger"
+        },
+        "food_category": {
+          "values": [
+            "slot:meat"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/meats",
+          "rationale": "Categorizes as meat"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked from raw meat"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible food"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for nutrition",
+            "Crafting sandwiches and meals"
+          ],
+          "signal": "inferred",
+          "rationale": "High satiety food, used in many recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats"
+          ],
+          "signal": "pattern",
+          "evidence": "tag tfc:foods/cooked_meats",
+          "rationale": "Stored with other cooked meats"
+        }
+      }
+    },
+    "wan_ancient_beasts:cooked_toxlacanth": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Cooked fish food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Edible but causes nausea, not preferred"
+        },
+        "food_category": {
+          "values": [
+            "slot:fish"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:fishes",
+          "rationale": "Categorizes as fish"
+        },
+        "preparation_state": {
+          "values": [
+            "slot:cooked"
+          ],
+          "signal": "inferred",
+          "rationale": "Cooked from raw fish"
+        },
+        "food_use": {
+          "values": [
+            "slot:eat_now"
+          ],
+          "signal": "inferred",
+          "rationale": "Directly edible"
+        },
+        "primary_uses": {
+          "values": [
+            "Eating for basic nutrition",
+            "Crafting into meals"
+          ],
+          "signal": "inferred",
+          "rationale": "Has nausea effect so less ideal"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/cooked_meats_and_substitutes"
+          ],
+          "signal": "pattern",
+          "evidence": "tag firmalife:foods/cooked_meats_and_substitutes",
+          "rationale": "Stored with cooked meats and substitutes"
+        }
+      }
+    },
+    "wan_ancient_beasts:crusher_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Archaeology egg block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected from digs"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Found in archaeology"
+        },
+        "primary_uses": {
+          "values": [
+            "Hatching crusher mobs",
+            "Display as decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed to spawn crusher"
+        }
+      }
+    },
+    "wan_ancient_beasts:crusher_skull": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Skull block from archaeology"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity: common",
+          "rationale": "Vanilla rarity component"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Collected for display"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "named",
+          "evidence": "stage2 origin from loot tables",
+          "rationale": "Found in archaeology sites"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative display",
+            "Milling into bone meal"
+          ],
+          "signal": "inferred",
+          "rationale": "Placeable skull; also crushed in mill"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

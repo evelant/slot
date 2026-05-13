@@ -1,0 +1,1010 @@
+{
+  "items": {
+    "tfc:wood/planks/ash_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden stairs for building"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "rationale": "id contains ash"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Vertical traversal"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during building projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Storage block with tool display UI"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "rationale": "id contains ash"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing tools visually"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool rack for organization"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden trapdoor for openings"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "rationale": "id contains ash"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building trapdoors",
+            "Ceiling access"
+          ],
+          "signal": "inferred",
+          "rationale": "Trapdoor block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/ash_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station with UI"
+        },
+        "material_family": {
+          "value": "wood_ash",
+          "signal": "pattern",
+          "rationale": "id contains ash"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting station",
+            "Recipe crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Workbench for crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in workshop"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wood planks are basic building material"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with planks",
+            "Crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Plank block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Lumber group"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf used for enchanting"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed near enchanting table"
+        },
+        "primary_uses": {
+          "values": [
+            "Enchanting station",
+            "Books storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Bookshelf for enchanting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wooden button emits redstone signal"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone trigger",
+            "Momentary switch"
+          ],
+          "signal": "inferred",
+          "rationale": "Button"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wood family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden door is a structural opening"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building doors",
+            "Entry/exit"
+          ],
+          "signal": "inferred",
+          "rationale": "Door block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden fence for boundaries"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences",
+            "Animal containment"
+          ],
+          "signal": "inferred",
+          "rationale": "Fence block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden fence gate for access"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building fence gates",
+            "Access control"
+          ],
+          "signal": "inferred",
+          "rationale": "Fence gate block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden log fence for rustic builds"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building log fences",
+            "Decorative boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "Log fence block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Loom for weaving cloth"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "primary_uses": {
+          "values": [
+            "Weaving cloth",
+            "Textile production"
+          ],
+          "signal": "inferred",
+          "rationale": "Loom workstation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in workshop"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wooden pressure plate emits redstone signal"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone pressure trigger",
+            "Entity detection"
+          ],
+          "signal": "inferred",
+          "rationale": "Pressure plate"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wood family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden slab for half-block building"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building slabs",
+            "Half-block steps"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed during building"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden stairs for building"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs",
+            "Vertical traversal"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_tool_rack": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Storage block with tool display UI"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing tools visually"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool rack for organization"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in base"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden trapdoor for openings"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building trapdoors",
+            "Ceiling access"
+          ],
+          "signal": "inferred",
+          "rationale": "Trapdoor block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/aspen_workbench": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Crafting station with UI"
+        },
+        "material_family": {
+          "value": "wood_aspen",
+          "signal": "pattern",
+          "rationale": "id contains aspen"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting station",
+            "Recipe crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Workbench for crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in workshop"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/birch": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wood planks are basic building material"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "rationale": "id contains birch"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with planks",
+            "Crafting wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "Plank block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for building projects"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Lumber group"
+        }
+      }
+    },
+    "tfc:wood/planks/birch_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Bookshelf used for enchanting"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "rationale": "id contains birch"
+        },
+        "activity": {
+          "values": [
+            "slot:enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed near enchanting table"
+        },
+        "primary_uses": {
+          "values": [
+            "Enchanting station",
+            "Books storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Bookshelf for enchanting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Wooden furniture"
+        }
+      }
+    },
+    "tfc:wood/planks/birch_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "Wooden button emits redstone signal"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "rationale": "id contains birch"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in redstone circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone trigger",
+            "Momentary switch"
+          ],
+          "signal": "inferred",
+          "rationale": "Button"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for redstone builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Part of wood family"
+        }
+      }
+    },
+    "tfc:wood/planks/birch_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden door is a structural opening"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "rationale": "id contains birch"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building doors",
+            "Entry/exit"
+          ],
+          "signal": "inferred",
+          "rationale": "Door block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/birch_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden fence for boundaries"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "rationale": "id contains birch"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences",
+            "Animal containment"
+          ],
+          "signal": "inferred",
+          "rationale": "Fence block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/birch_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden fence gate for access"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "rationale": "id contains birch"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in building"
+        },
+        "primary_uses": {
+          "values": [
+            "Building fence gates",
+            "Access control"
+          ],
+          "signal": "inferred",
+          "rationale": "Fence gate block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    },
+    "tfc:wood/planks/birch_log_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wooden log fence for rustic builds"
+        },
+        "material_family": {
+          "value": "wood_birch",
+          "signal": "pattern",
+          "rationale": "id contains birch"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Building log fences",
+            "Decorative boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "Log fence block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed in builds"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/woodworking"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood planks family"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

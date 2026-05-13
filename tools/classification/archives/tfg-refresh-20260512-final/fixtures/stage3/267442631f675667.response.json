@@ -1,0 +1,1299 @@
+{
+  "items": {
+    "firmalife:wood/big_barrel/sequoia": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Keg with 36 item slots and 80k mB fluid capacity; player opens and stores items/fluids."
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern",
+          "rationale": "Wood type from item id.",
+          "evidence": "id suffix sequoia"
+        },
+        "primary_uses": {
+          "values": [
+            "store items and fluids",
+            "large fluid storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Keg functions as a combined item and fluid container."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left; not carried routinely."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity is common.",
+          "evidence": "minecraft:rarity: common"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and fluid capacity.",
+          "evidence": "Item Slots: 36, Fluid Capacity: 80,000 mB"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted empty, can be filled.",
+          "evidence": "Tooltip shows empty slots and capacity."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to store items and fluids."
+        }
+      }
+    },
+    "firmalife:wood/big_barrel/spruce": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same as sequoia keg.",
+          "evidence": "Identical tooltip and capacity."
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "pattern",
+          "rationale": "Wood type from item id.",
+          "evidence": "id suffix spruce"
+        },
+        "primary_uses": {
+          "values": [
+            "store items and fluids",
+            "large fluid storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Keg functions as combined item and fluid container."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity is common."
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Tooltip shows item slots and fluid capacity."
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted empty."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to store items and fluids."
+        }
+      }
+    },
+    "firmalife:wood/big_barrel/sycamore": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same as other kegs."
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "pattern",
+          "rationale": "Wood type from item id."
+        },
+        "primary_uses": {
+          "values": [
+            "store items and fluids",
+            "large fluid storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Keg functionality."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/big_barrel/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same as other kegs."
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern",
+          "rationale": "Wood type from item id."
+        },
+        "primary_uses": {
+          "values": [
+            "store items and fluids",
+            "large fluid storage"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/big_barrel/willow": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same as other kegs."
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "pattern",
+          "rationale": "Wood type from item id."
+        },
+        "primary_uses": {
+          "values": [
+            "store items and fluids",
+            "large fluid storage"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/acacia": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Placeable storage for a single food item stack; used in cellars for preservation."
+        },
+        "material_family": {
+          "value": "acacia",
+          "signal": "pattern",
+          "rationale": "Wood type from item id."
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide says food shelf stores and preserves food in a cellar."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once and left; not carried routinely."
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "Component rarity is common."
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Only holds items (food)."
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted empty, can be filled with one food type."
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to store food."
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide states food shelf can only be used in a valid cellar.",
+          "evidence": "guide-page: 'can only be used in a valid Cellar'"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/ash": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "Same food shelf."
+        },
+        "material_family": {
+          "value": "ash",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred",
+          "rationale": "Guide says food shelf in cellar."
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/aspen": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "aspen",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/birch": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "birch",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/blackwood": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "blackwood",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/chestnut": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "chestnut",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/douglas_fir": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "douglas_fir",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/hickory": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "hickory",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/kapok": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "kapok",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/mangrove": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "mangrove",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/maple": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "maple",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/oak": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "oak",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/palm": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "palm",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/pine": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "pine",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/rosewood": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "rosewood",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/sequoia": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "sequoia",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/spruce": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "spruce",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/sycamore": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "sycamore",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/white_cedar": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "white_cedar",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "firmalife:wood/food_shelf/willow": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred"
+        },
+        "material_family": {
+          "value": "willow",
+          "signal": "pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "store food items",
+            "preserve food in cellar"
+          ],
+          "signal": "inferred"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred"
+        },
+        "activity": {
+          "values": [
+            "slot:storage_management"
+          ],
+          "signal": "inferred"
+        },
+        "used_at": {
+          "values": [
+            "tfc:cellars"
+          ],
+          "signal": "inferred"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

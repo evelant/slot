@@ -1,0 +1,1862 @@
+{
+  "items": {
+    "gtceu:schist_grossular_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral grossular"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into grossular materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_gypsum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "gypsum",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral gypsum"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into gypsum materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_hematite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "hematite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral hematite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into hematite materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_ilmenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "ilmenite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral ilmenite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into ilmenite materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into iron",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_kyanite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "kyanite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral kyanite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into kyanite materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral lapis lazuli"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into lapis dust",
+            "used for enchanting materials"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_lazurite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral lazurite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into lazurite dust",
+            "used for blue dyes"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_lead_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "lead",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral lead"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lead",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_lepidolite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "lepidolite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral lepidolite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lepidolite materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_lignite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "lignite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral lignite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "used as fuel",
+            "processed into coal products"
+          ],
+          "signal": "inferred",
+          "rationale": "burned or refined for carbon materials"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        }
+      }
+    },
+    "gtceu:schist_lithium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "lithium",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral lithium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into lithium",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_magnesite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "magnesite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral magnesite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into magnesite materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_magnetite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "magnetite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral magnetite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into magnetite materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_malachite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "malachite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral malachite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into malachite materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_mica_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "mica",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral mica"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into mica dust",
+            "used in electronic components"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_molybdenite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "molybdenite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral molybdenite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into molybdenite materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_molybdenum_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "molybdenum",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral molybdenum"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into molybdenum",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_monazite_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral monazite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into rare earth materials",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_naquadah_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "naquadah",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral naquadah"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into naquadah dust",
+            "used in advanced energy components"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to milling workflow"
+        }
+      }
+    },
+    "gtceu:schist_neodymium_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "neodymium",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral neodymium"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into neodymium dust",
+            "used in magnetic components"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to milling workflow"
+        }
+      }
+    },
+    "gtceu:schist_nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral nether quartz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into quartz dust",
+            "used in redstone components"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_nickel_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "nickel",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral nickel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelted into nickel",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_oilsands_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "oilsands",
+          "signal": "inferred",
+          "rationale": "player identifies by material oilsands"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into oil products",
+            "crushed for further processing"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    },
+    "gtceu:schist_olivine_ore": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "ore block processed into materials"
+        },
+        "material_family": {
+          "value": "olivine",
+          "signal": "inferred",
+          "rationale": "player identifies by mineral olivine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity component",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried during mining runs, then processed"
+        },
+        "activity": {
+          "values": [
+            "slot:mining"
+          ],
+          "signal": "inferred",
+          "rationale": "primary activity is mining the ore"
+        },
+        "primary_uses": {
+          "values": [
+            "processed into olivine dust",
+            "used in refractory materials"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into refined forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/unprocessed_ores"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:ores",
+          "rationale": "raw ore block stored with unprocessed ores"
+        },
+        "used_at": {
+          "values": [
+            "pack:tfg/smelting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "smelted or milled for material extraction"
+        },
+        "workflow_role": {
+          "values": [
+            "pack:tfg/smelting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in recipes",
+          "rationale": "input to smelting and milling workflows"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [
+    {
+      "item": "gtceu:schist_grossular_ore",
+      "facet": "material_family",
+      "current": "schist_grossular",
+      "suggested": "grossular",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_gypsum_ore",
+      "facet": "material_family",
+      "current": "schist_gypsum",
+      "suggested": "gypsum",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_hematite_ore",
+      "facet": "material_family",
+      "current": "schist_hematite",
+      "suggested": "hematite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_ilmenite_ore",
+      "facet": "material_family",
+      "current": "schist_ilmenite",
+      "suggested": "ilmenite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_iron_ore",
+      "facet": "material_family",
+      "current": "schist_iron",
+      "suggested": "iron",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_kyanite_ore",
+      "facet": "material_family",
+      "current": "schist_kyanite",
+      "suggested": "kyanite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_lapis_ore",
+      "facet": "material_family",
+      "current": "schist_lapis",
+      "suggested": "lapis",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_lazurite_ore",
+      "facet": "material_family",
+      "current": "schist_lazurite",
+      "suggested": "lazurite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_lead_ore",
+      "facet": "material_family",
+      "current": "schist_lead",
+      "suggested": "lead",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_lepidolite_ore",
+      "facet": "material_family",
+      "current": "schist_lepidolite",
+      "suggested": "lepidolite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_lignite_ore",
+      "facet": "material_family",
+      "current": "schist_lignite",
+      "suggested": "lignite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_lithium_ore",
+      "facet": "material_family",
+      "current": "schist_lithium",
+      "suggested": "lithium",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_magnesite_ore",
+      "facet": "material_family",
+      "current": "schist_magnesite",
+      "suggested": "magnesite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_magnetite_ore",
+      "facet": "material_family",
+      "current": "schist_magnetite",
+      "suggested": "magnetite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_malachite_ore",
+      "facet": "material_family",
+      "current": "schist_malachite",
+      "suggested": "malachite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_mica_ore",
+      "facet": "material_family",
+      "current": "schist_mica",
+      "suggested": "mica",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_molybdenite_ore",
+      "facet": "material_family",
+      "current": "schist_molybdenite",
+      "suggested": "molybdenite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_molybdenum_ore",
+      "facet": "material_family",
+      "current": "schist_molybdenum",
+      "suggested": "molybdenum",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_monazite_ore",
+      "facet": "material_family",
+      "current": "schist_monazite",
+      "suggested": "monazite",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_naquadah_ore",
+      "facet": "material_family",
+      "current": "schist_naquadah",
+      "suggested": "naquadah",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_neodymium_ore",
+      "facet": "material_family",
+      "current": "schist_neodymium",
+      "suggested": "neodymium",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_nether_quartz_ore",
+      "facet": "material_family",
+      "current": "schist_nether_quartz",
+      "suggested": "nether_quartz",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_nickel_ore",
+      "facet": "material_family",
+      "current": "schist_nickel",
+      "suggested": "nickel",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_oilsands_ore",
+      "facet": "material_family",
+      "current": "schist_oilsands",
+      "suggested": "oilsands",
+      "rationale": "player thinks of ore material, not stone+material combination",
+      "confidence": 0.9
+    },
+    {
+      "item": "gtceu:schist_olivine_ore",
+      "facet": "material_family",
+      "current": "schist_olivine",
+      "suggested": "olivine",
+      "rationale": "player thinks of ore mineral, not stone+mineral combination",
+      "confidence": 0.9
+    }
+  ],
+  "fill_ins": []
+}

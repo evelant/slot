@@ -1,0 +1,1363 @@
+{
+  "items": {
+    "gtceu:flawless_salt_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used as crafting material"
+        },
+        "material_family": {
+          "value": "salt",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/salt",
+          "rationale": "gem material is salt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity common",
+          "rationale": "item rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gems kept in stash for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "produced via cutting recipes",
+          "rationale": "only obtained by processing exquisite gems"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into smaller gems and dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cut/milled into smaller forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "common gem storage category"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "evidence": "cutting and milling recipes consume this gem",
+          "rationale": "input to cutting and milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "consumed in cutter and millstone",
+          "rationale": "processed at these stations"
+        }
+      }
+    },
+    "gtceu:flawless_sapphire_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used as crafting material"
+        },
+        "material_family": {
+          "value": "sapphire",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/sapphire",
+          "rationale": "gem material is sapphire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gems kept in stash for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced via cutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into smaller gems and dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cut/milled into smaller forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "common gem storage category"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to cutting and milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "processed at these stations"
+        }
+      }
+    },
+    "gtceu:flawless_sodalite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used as crafting material"
+        },
+        "material_family": {
+          "value": "sodalite",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/sodalite",
+          "rationale": "gem material is sodalite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gems kept in stash for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced via cutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into smaller gems and dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cut/milled into smaller forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "common gem storage category"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to cutting and milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "processed at these stations"
+        }
+      }
+    },
+    "gtceu:flawless_spessartine_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used as crafting material"
+        },
+        "material_family": {
+          "value": "spessartine",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/spessartine",
+          "rationale": "gem material is spessartine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gems kept in stash for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced via cutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into smaller gems and dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cut/milled into smaller forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "common gem storage category"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to cutting and milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "processed at these stations"
+        }
+      }
+    },
+    "gtceu:flawless_tetrafluoroberyllate_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used as crafting material"
+        },
+        "material_family": {
+          "value": "tetrafluoroberyllate",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/tetrafluoroberyllate",
+          "rationale": "gem material is tetrafluoroberyllate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gems kept in stash for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "potential crafting ingredient"
+          ],
+          "signal": "guess",
+          "rationale": "no known use in recipes"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "common gem storage category"
+        }
+      }
+    },
+    "gtceu:flawless_topaz_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used as crafting material"
+        },
+        "material_family": {
+          "value": "topaz",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/topaz",
+          "rationale": "gem material is topaz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gems kept in stash for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced via cutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into smaller gems and dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cut/milled into smaller forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "common gem storage category"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to cutting and milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "processed at these stations"
+        }
+      }
+    },
+    "gtceu:flawless_uvarovite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used as crafting material"
+        },
+        "material_family": {
+          "value": "uvarovite",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/uvarovite",
+          "rationale": "gem material is uvarovite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gems kept in stash for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced via cutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into smaller gems and dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cut/milled into smaller forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "common gem storage category"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to cutting and milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "processed at these stations"
+        }
+      }
+    },
+    "gtceu:flawless_yellow_garnet_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Gem used as crafting material"
+        },
+        "material_family": {
+          "value": "yellow_garnet",
+          "signal": "pattern",
+          "evidence": "tag forge:flawless_gems/yellow_garnet",
+          "rationale": "gem material is yellow garnet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gems kept in stash for crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced via cutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting into smaller gems and dust"
+          ],
+          "signal": "inferred",
+          "rationale": "cut/milled into smaller forms"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/gems"
+          ],
+          "signal": "inferred",
+          "rationale": "common gem storage category"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "input to cutting and milling"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "processed at these stations"
+        }
+      }
+    },
+    "gtceu:flint_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:axes",
+          "rationale": "it's an axe tool"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "id prefix flint",
+          "rationale": "head is flint"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "handle is wooden stick"
+        },
+        "tier": {
+          "value": "flint",
+          "signal": "inferred",
+          "rationale": "flint is early tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players carry axes for woodcutting and combat"
+        },
+        "primary_uses": {
+          "values": [
+            "chopping wood",
+            "stripping logs",
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "typical axe uses"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from flint head and stick"
+        },
+        "activity": {
+          "values": [
+            "slot:building",
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for woodcutting and as weapon"
+        }
+      }
+    },
+    "gtceu:flint_axe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting axe"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "tag forge:axe_heads/flint",
+          "rationale": "made of flint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flint axe"
+          ],
+          "signal": "inferred",
+          "rationale": "used to assemble axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "knapped from flint"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "guess",
+          "rationale": "tool head component"
+        }
+      }
+    },
+    "gtceu:flint_block": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compact storage of flint, not a container"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "id flint_block",
+          "rationale": "made of flint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept in chests, not carried"
+        },
+        "primary_uses": {
+          "values": [
+            "compact flint storage",
+            "building material"
+          ],
+          "signal": "inferred",
+          "rationale": "can be used as decorative block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from flint"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used as building block"
+        }
+      }
+    },
+    "gtceu:flint_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "it's a dust material"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "id flint_dust",
+          "rationale": "from flint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in mixing recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient for glass and mixtures"
+          ],
+          "signal": "inferred",
+          "rationale": "used in mixing recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "milled from flint"
+        },
+        "material_process_stage": {
+          "values": [
+            "slot:dust"
+          ],
+          "signal": "pattern",
+          "evidence": "tag forge:dusts",
+          "rationale": "dust form"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in automated mixing"
+        }
+      }
+    },
+    "gtceu:flint_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:hoes",
+          "rationale": "it's a hoe tool"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "id flint_hoe",
+          "rationale": "head is flint"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "handle is wooden stick"
+        },
+        "tier": {
+          "value": "flint",
+          "signal": "inferred",
+          "rationale": "flint is early tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "farmers carry hoe when farming"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil"
+          ],
+          "signal": "inferred",
+          "rationale": "main use is tilling"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from flint head and stick"
+        },
+        "activity": {
+          "values": [
+            "slot:farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for farming"
+        }
+      }
+    },
+    "gtceu:flint_hoe_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting hoe"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "tag forge:hoe_heads/flint",
+          "rationale": "made of flint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flint hoe"
+          ],
+          "signal": "inferred",
+          "rationale": "used to assemble hoe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "knapped from flint"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "guess",
+          "rationale": "tool head component"
+        }
+      }
+    },
+    "gtceu:flint_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag forge:tools/knives",
+          "rationale": "it's a knife tool"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "id flint_knife",
+          "rationale": "head is flint"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "handle is wooden stick"
+        },
+        "tier": {
+          "value": "flint",
+          "signal": "inferred",
+          "rationale": "flint is early tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used in many crafting recipes and combat"
+        },
+        "primary_uses": {
+          "values": [
+            "cutting food and items",
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "dual use tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from flint head and stick"
+        },
+        "activity": {
+          "values": [
+            "slot:cooking",
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used in food prep and as weapon"
+        }
+      }
+    },
+    "gtceu:flint_knife_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting knife"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "tag forge:knife_heads/flint",
+          "rationale": "made of flint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flint knife"
+          ],
+          "signal": "inferred",
+          "rationale": "used to assemble knife"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "knapped from flint"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "guess",
+          "rationale": "tool head component"
+        }
+      }
+    },
+    "gtceu:flint_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "tag minecraft:shovels",
+          "rationale": "it's a shovel tool"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "id flint_shovel",
+          "rationale": "head is flint"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "handle is wooden stick"
+        },
+        "tier": {
+          "value": "flint",
+          "signal": "inferred",
+          "rationale": "flint is early tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players carry shovels for digging"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt and gravel",
+            "creating grass paths"
+          ],
+          "signal": "inferred",
+          "rationale": "typical shovel uses"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from flint head and stick"
+        },
+        "activity": {
+          "values": [
+            "slot:mining",
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for digging and landscaping"
+        }
+      }
+    },
+    "gtceu:flint_shovel_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting shovel"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "tag forge:shovel_heads/flint",
+          "rationale": "made of flint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flint shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "used to assemble shovel"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "knapped from flint"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "guess",
+          "rationale": "tool head component"
+        }
+      }
+    },
+    "gtceu:flint_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "tag minecraft:swords",
+          "rationale": "it's a sword weapon"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "id flint_sword",
+          "rationale": "blade is flint"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "hilt is wooden"
+        },
+        "tier": {
+          "value": "flint",
+          "signal": "inferred",
+          "rationale": "flint is early tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players carry swords for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is fighting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from flint head and stick"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used for combat"
+        }
+      }
+    },
+    "gtceu:flint_sword_head": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "component for crafting sword"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "evidence": "tag forge:sword_heads/flint",
+          "rationale": "made of flint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in storage for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting flint sword"
+          ],
+          "signal": "inferred",
+          "rationale": "used to assemble sword"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "knapped from flint"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/artisan_table_tools"
+          ],
+          "signal": "guess",
+          "rationale": "tool head component"
+        }
+      }
+    },
+    "gtceu:fluid_cell": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "portable fluid container like bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used often for fluid transport"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting and storing fluids",
+            "filling and emptying tanks"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid handling tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from metal sheets"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluids"
+        },
+        "container_state": {
+          "values": [
+            "slot:empty_container"
+          ],
+          "signal": "inferred",
+          "rationale": "empty, ready to fill"
+        },
+        "activity": {
+          "values": [
+            "slot:logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "used for fluid logistics"
+        }
+      }
+    },
+    "gtceu:fluid_detector_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GTCE cover component attached to machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in base for installation"
+        },
+        "primary_uses": {
+          "values": [
+            "detecting fluid amount and emitting redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "cover functionality"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "pattern",
+          "evidence": "it is a GTCE cover",
+          "rationale": "part of GTCE cover system"
+        },
+        "activity": {
+          "values": [
+            "slot:redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "outputs redstone signal"
+        }
+      }
+    },
+    "gtceu:fluid_filter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GTCE cover component attached to machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in base for installation"
+        },
+        "primary_uses": {
+          "values": [
+            "filtering fluid input/output on machines"
+          ],
+          "signal": "inferred",
+          "rationale": "cover functionality"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GTCE cover system"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for automation"
+        }
+      }
+    },
+    "gtceu:fluid_tag_filter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GTCE cover component attached to machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in base for installation"
+        },
+        "primary_uses": {
+          "values": [
+            "filtering fluid input/output by tag"
+          ],
+          "signal": "inferred",
+          "rationale": "cover functionality"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GTCE cover system"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for automation"
+        }
+      }
+    },
+    "gtceu:fluid_voiding_cover": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "GTCE cover component attached to machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "kept in base for installation"
+        },
+        "primary_uses": {
+          "values": [
+            "voiding unwanted fluids from machines"
+          ],
+          "signal": "inferred",
+          "rationale": "cover functionality"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from components"
+        },
+        "mod_subsystem": {
+          "values": [
+            "gtceu:cover"
+          ],
+          "signal": "pattern",
+          "rationale": "part of GTCE cover system"
+        },
+        "activity": {
+          "values": [
+            "slot:automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used for automation"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

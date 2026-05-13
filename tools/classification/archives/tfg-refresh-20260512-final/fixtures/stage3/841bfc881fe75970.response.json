@@ -1,0 +1,1400 @@
+{
+  "items": {
+    "tfc:metal/sword/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id pattern metal/sword/*",
+          "rationale": "melee weapon with attack damage"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "id contains blue_steel"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "tier matches material name"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic component maps to unique"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "weapon carried in hotbar always"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "sword used for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat with high damage"
+          ],
+          "signal": "inferred",
+          "rationale": "player swings sword to fight"
+        }
+      }
+    },
+    "tfc:metal/sword/bronze": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id pattern metal/sword/*",
+          "rationale": "melee weapon"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "id contains bronze"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "tier matches material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "weapon carried in hotbar"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "sword used for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "player swings sword to fight"
+        }
+      }
+    },
+    "tfc:metal/sword/copper": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id pattern metal/sword/*",
+          "rationale": "melee weapon"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "tier matches material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "weapon carried in hotbar"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "sword used for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "player swings sword to fight"
+        }
+      }
+    },
+    "tfc:metal/sword/red_steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id pattern metal/sword/*",
+          "rationale": "melee weapon"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "id contains red_steel"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "tier matches material name"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic component maps to unique"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "weapon carried in hotbar"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "sword used for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat with high damage"
+          ],
+          "signal": "inferred",
+          "rationale": "player swings sword to fight"
+        }
+      }
+    },
+    "tfc:metal/sword/steel": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id pattern metal/sword/*",
+          "rationale": "melee weapon"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id contains steel"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "tier matches material name"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = uncommon",
+          "rationale": "uncommon from component"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "weapon carried in hotbar"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "sword used for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "player swings sword to fight"
+        }
+      }
+    },
+    "tfc:metal/sword/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id pattern metal/sword/*",
+          "rationale": "melee weapon"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "id contains wrought_iron"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "tier matches material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "weapon carried in hotbar"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "sword used for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "player swings sword to fight"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade, stackable",
+          "rationale": "crafting component for sword"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id contains bismuth_bronze"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "tier matches material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away, not carried"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "evidence": "crafted via anvil to make sword",
+          "rationale": "used in anvil smithing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil is where blade is forged"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "blade is input to sword crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, kept for crafting"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade",
+          "rationale": "crafting component for sword"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "id contains black_bronze"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "tier matches material name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away, not carried"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil smithing"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil is where blade is forged"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "blade is input to sword"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64, kept for crafting"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/black_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade",
+          "rationale": "crafting component"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "id contains black_steel"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "named",
+          "evidence": "component rarity = rare",
+          "rationale": "rare rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil work"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to sword crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade",
+          "rationale": "crafting component"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "id contains blue_steel"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic maps to unique"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil work"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to sword"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/bronze": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade",
+          "rationale": "crafting component"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "id contains bronze"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common rarity"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil work"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to sword"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/copper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade",
+          "rationale": "crafting component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil work"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to sword"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/red_steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade",
+          "rationale": "crafting component"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "id contains red_steel"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = epic",
+          "rationale": "epic maps to unique"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil work"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to sword"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade",
+          "rationale": "crafting component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id contains steel"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "named",
+          "evidence": "component rarity = uncommon",
+          "rationale": "uncommon"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil work"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to sword"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "tfc:metal/sword_blade/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "id suffix _blade",
+          "rationale": "crafting component"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "id contains wrought_iron"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stored away"
+        },
+        "workflow": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "used in anvil"
+        },
+        "used_at": {
+          "values": [
+            "tfc:anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "anvil work"
+        },
+        "workflow_role": {
+          "values": [
+            "tfc:anvil#input"
+          ],
+          "signal": "inferred",
+          "rationale": "input to sword"
+        },
+        "primary_uses": {
+          "values": [
+            "forged into swords on anvil"
+          ],
+          "signal": "inferred",
+          "rationale": "player assembles blade into sword"
+        },
+        "stock_profile": {
+          "values": [
+            "slot:small_batch"
+          ],
+          "signal": "inferred",
+          "rationale": "stackable 64"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id contains bismuth_bronze"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe tfc:anvil/*_trapdoor",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/black_bronze": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "id contains black_bronze"
+        },
+        "tier": {
+          "value": "black_bronze",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/black_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "id contains black_steel"
+        },
+        "tier": {
+          "value": "black_steel",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/blue_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "id contains blue_steel"
+        },
+        "tier": {
+          "value": "blue_steel",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/bronze": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "id contains bronze"
+        },
+        "tier": {
+          "value": "bronze",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/red_steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "id contains red_steel"
+        },
+        "tier": {
+          "value": "red_steel",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/steel": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "id contains steel"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/trapdoor/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "id contains wrought_iron"
+        },
+        "tier": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when building"
+        },
+        "activity": {
+          "values": [
+            "slot:building"
+          ],
+          "signal": "inferred",
+          "rationale": "place as building element"
+        },
+        "primary_uses": {
+          "values": [
+            "building access and passage"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses as door"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil"
+        }
+      }
+    },
+    "tfc:metal/tuyere/bismuth_bronze": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "durable item used in smelting"
+        },
+        "material_family": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "id contains bismuth_bronze"
+        },
+        "tier": {
+          "value": "bismuth_bronze",
+          "signal": "pattern",
+          "rationale": "tier matches material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component rarity = common",
+          "rationale": "common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "carried when smelting"
+        },
+        "workflow": {
+          "values": [
+            "tfc:blast_furnace"
+          ],
+          "signal": "inferred",
+          "rationale": "tuyere used in blast furnace"
+        },
+        "used_at": {
+          "values": [
+            "tfc:blast_furnace"
+          ],
+          "signal": "inferred",
+          "rationale": "blast furnace station"
+        },
+        "primary_uses": {
+          "values": [
+            "providing air blast in blast furnace"
+          ],
+          "signal": "inferred",
+          "rationale": "player uses tuyere to fuel blast furnace"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "production recipe",
+          "rationale": "made on anvil and curving"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

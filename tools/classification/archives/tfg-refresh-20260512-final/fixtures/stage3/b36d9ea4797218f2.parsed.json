@@ -1,0 +1,864 @@
+{
+  "items": {
+    "tfcscraping:metal/scraping_knife_blade/steel": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Steel blade used as tool head component"
+        },
+        "material_family": {
+          "value": "steel",
+          "signal": "pattern",
+          "evidence": "tfc:metal_item/steel tag",
+          "rationale": "Tagged as steel metal item"
+        },
+        "tier": {
+          "value": "steel",
+          "signal": "pattern",
+          "rationale": "Blade is made of steel"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Only anvil production recipe",
+          "rationale": "No loot; only crafted on anvil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when making scraping knives"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting scraping knives",
+            "used as tool head"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for final tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        }
+      }
+    },
+    "tfcscraping:metal/scraping_knife_blade/wrought_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Wrought iron blade tool component"
+        },
+        "material_family": {
+          "value": "wrought_iron",
+          "signal": "pattern",
+          "evidence": "tfc:metal_item/wrought_iron tag",
+          "rationale": "Tagged as wrought iron metal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Only anvil production recipe",
+          "rationale": "Only crafted on anvil"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried when making scraping knives"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting scraping knives",
+            "tool head component"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for scraping knife"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common component"
+        }
+      }
+    },
+    "tfg:14_sorbitan_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Chemical dust used in recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Only crafting recipes",
+          "rationale": "No loot; only crafted"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in chemical crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "chemical ingredient",
+            "producing compounds"
+          ],
+          "signal": "inferred",
+          "rationale": "Dust for chemical processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust material"
+        }
+      }
+    },
+    "tfg:1_1_1_2_tetrafluoroethane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of fluid used as tool"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket holding refrigerant fluid"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting refrigerant gas",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport for chemical use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        }
+      }
+    },
+    "tfg:3_aminopropyltriethoxysilane_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of silane coupling agent"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting silane compound",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport for chemical use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        }
+      }
+    },
+    "tfg:3_chloropropylamine_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of chloropropylamine"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with chemical"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized chemical bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting chloropropylamine",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport for chemical use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        }
+      }
+    },
+    "tfg:absorption_salvo": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible item that gives absorption effect"
+        },
+        "activity": {
+          "values": [
+            "slot:combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for combat readiness"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Has mixing bowl recipes",
+          "rationale": "Crafted from ingredients"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Kept in inventory for emergency use"
+        },
+        "primary_uses": {
+          "values": [
+            "gives absorption effect",
+            "emergency health boost"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumable with absorption buff"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common medicine"
+        }
+      }
+    },
+    "tfg:acrobat_powder": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "Edible item providing speed and jump boost"
+        },
+        "activity": {
+          "values": [
+            "slot:exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Used for parkour and movement"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Has mixing bowl recipes",
+          "rationale": "Crafted from ingredients"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for specific movement needs"
+        },
+        "primary_uses": {
+          "values": [
+            "gives speed and jump boost",
+            "parkour aid"
+          ],
+          "signal": "inferred",
+          "rationale": "Consumable for agility"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common medicine"
+        }
+      }
+    },
+    "tfg:acetylene_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of gas used as fuel/chemical"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with gas"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized gas bucket"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting fuel gas",
+            "chemical processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport for chemical use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        }
+      }
+    },
+    "tfg:aciditic_waste_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Bucket of acidic waste"
+        },
+        "container_state": {
+          "values": [
+            "slot:filled_container"
+          ],
+          "signal": "inferred",
+          "rationale": "Bucket filled with acidic waste"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Waste bucket rarely carried"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting acidic waste",
+            "disposal"
+          ],
+          "signal": "inferred",
+          "rationale": "Fluid transport for waste"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common item"
+        }
+      }
+    },
+    "tfg:activated_mo_si_b_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Alloy ingot for advanced components"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Specialized alloy used sparingly"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced alloy component",
+            "high temperature parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Ingot for high-end crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special activated alloy"
+        }
+      }
+    },
+    "tfg:active_power_transformer": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed energy transformation block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used in base power setups"
+        },
+        "primary_uses": {
+          "values": [
+            "wireless energy transfer",
+            "power combining"
+          ],
+          "signal": "inferred",
+          "rationale": "Combines and transmits energy"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Advanced power device"
+        }
+      }
+    },
+    "tfg:advanced_clockwork_mechanism": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Complex mechanism used in crafting"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in advanced machinery crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting advanced machinery",
+            "clockwork component"
+          ],
+          "signal": "inferred",
+          "rationale": "Component for high-tech items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common intermediate"
+        }
+      }
+    },
+    "tfg:advanced_polymer_binder": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Binder material for advanced recipes"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in specialized crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "binding advanced materials",
+            "polymer component"
+          ],
+          "signal": "inferred",
+          "rationale": "Binder for composites"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:aeronos_cap": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Fungus cap used as decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Collected for building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative fungus block",
+            "Beneath building material"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common block"
+        }
+      }
+    },
+    "tfg:aeronos_support": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Support beam for structural building"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Shapeless recipe from logs",
+          "rationale": "Crafted from logs"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in mining/tunnel support"
+        },
+        "primary_uses": {
+          "values": [
+            "support beams for mining",
+            "structural building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as beam support"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/support_beams"
+          ],
+          "signal": "pattern",
+          "evidence": "tfc:support_beams tag",
+          "rationale": "Tagged as support beam"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common building block"
+        }
+      }
+    },
+    "tfg:aes_compressed_wool": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Compressed insulation material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in insulation crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "compressed insulation material"
+          ],
+          "signal": "inferred",
+          "rationale": "Intermediate for insulation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:aes_insulation_frame": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Placed fission reactor component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "deafission:fission"
+          ],
+          "signal": "pattern",
+          "evidence": "deafission:components_fr tag",
+          "rationale": "Part of fission reactor subsystem"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Used only in reactor builds"
+        },
+        "primary_uses": {
+          "values": [
+            "fission reactor component",
+            "increases reactor heat capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed inside reactor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Specialized reactor part"
+        }
+      }
+    },
+    "tfg:aes_insulation_roll": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Insulation material in roll form"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Has shaped recipe",
+          "rationale": "Crafted from sheets"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in machine insulation"
+        },
+        "primary_uses": {
+          "values": [
+            "insulation material for machines"
+          ],
+          "signal": "inferred",
+          "rationale": "Wraps around machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common insulation"
+        }
+      }
+    },
+    "tfg:aes_insulation_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Insulation sheet material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Has shapeless recipe",
+          "rationale": "Crafted from roll"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in insulation crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "insulation sheet",
+            "crafting insulation"
+          ],
+          "signal": "inferred",
+          "rationale": "Flat insulation material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:aes_mix_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Dust mixture for AES insulation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Recipes produce dust",
+          "rationale": "Crafted via mixing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in insulation production"
+        },
+        "primary_uses": {
+          "values": [
+            "AES mixture component",
+            "insulation dust"
+          ],
+          "signal": "inferred",
+          "rationale": "Base material for AES wool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common dust"
+        }
+      }
+    },
+    "tfg:aes_polyurethane": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Advanced insulation foam material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in advanced insulation"
+        },
+        "primary_uses": {
+          "values": [
+            "advanced insulation foam"
+          ],
+          "signal": "inferred",
+          "rationale": "High performance insulation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:aes_wool": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Basic insulation wool material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used as insulation ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "basic insulation",
+            "fiber material"
+          ],
+          "signal": "inferred",
+          "rationale": "Base form of AES insulation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Common material"
+        }
+      }
+    },
+    "tfg:airship_balloon": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for crafting airships"
+        },
+        "mod_subsystem": {
+          "values": [
+            "immersive_aircraft:transport"
+          ],
+          "signal": "pattern",
+          "evidence": "Part of airship craft line",
+          "rationale": "Component of airship subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Has shaped and mechanical crafting",
+          "rationale": "Crafted from materials"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only needed when building airship"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting airships"
+          ],
+          "signal": "inferred",
+          "rationale": "Required for airship assembly"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special aircraft component"
+        }
+      }
+    },
+    "tfg:airship_hull": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Component for airship hull"
+        },
+        "mod_subsystem": {
+          "values": [
+            "immersive_aircraft:transport"
+          ],
+          "signal": "pattern",
+          "evidence": "Part of airship craft line",
+          "rationale": "Component of airship subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "Has shaped recipe",
+          "rationale": "Crafted from materials"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only needed when building airship"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting airship hull"
+          ],
+          "signal": "inferred",
+          "rationale": "Required for airship assembly"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Special aircraft component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}

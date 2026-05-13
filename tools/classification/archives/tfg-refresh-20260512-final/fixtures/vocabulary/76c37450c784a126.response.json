@@ -1,0 +1,676 @@
+{
+  "values": [
+    {
+      "id": "pack:tfg/unprocessed_ores",
+      "label": "Unprocessed Ores",
+      "state": "accepted",
+      "description": "Raw ore blocks and small ore pieces awaiting processing.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "forge:ores",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/dirt_and_rocks",
+      "label": "Dirt and Rocks",
+      "state": "accepted",
+      "description": "Terrain rubble such as dirt, stone, gravel, sand, clay, and loose rocks.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "forge:stone",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/refined_ores",
+      "label": "Refined Ores",
+      "state": "accepted",
+      "description": "Processed mineral outputs such as crushed ores, dusts, ingots, plates, rods, and wires.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "forge:double_wires",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/decorative",
+      "label": "Decorative",
+      "state": "accepted",
+      "description": "Blocks and items primarily kept for decoration or building detail.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "beneath:blackstone_decor",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/woodworking",
+      "label": "Woodworking",
+      "state": "accepted",
+      "description": "Wood, lumber, planks, carpentry supplies, and wood-working outputs.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "minecraft:logs",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/ores",
+      "label": "Ores",
+      "state": "review",
+      "description": "Ore items, possibly redundant with Unprocessed Ores.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ores",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/tfc_items",
+      "label": "TerraFirmaCraft Items",
+      "state": "rejected",
+      "description": "Too broad; players split TFC items into finer groups.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "tfc",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/railways_items",
+      "label": "Create: Steam 'n' Rails Items",
+      "state": "rejected",
+      "description": "Too narrow; items belong in transportation or decorative sections.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "railways",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/animal_husbandry",
+      "label": "Animal Husbandry",
+      "state": "accepted",
+      "description": "Animal products, livestock supplies, feed, hides, wool, milk, and eggs.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "minecraft:animals_spawnable_on",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/gtceu_items",
+      "label": "GregTech Items",
+      "state": "rejected",
+      "description": "Too broad; players split GT items by material or function.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "gtceu",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/inedible_plants",
+      "label": "Inedible Plants",
+      "state": "accepted",
+      "description": "Plants, flowers, leaves, and other non-food botanical items.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "minecraft:leaves",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/mcw_tfc_aio_items",
+      "label": "Macaw's All-In-One for TFC Items",
+      "state": "rejected",
+      "description": "Mod-based; items fit into existing decorative/woodworking sections.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "mcw_tfc_aio",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/seeds",
+      "label": "Seeds",
+      "state": "accepted",
+      "description": "Seeds and seed-like planting starts.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:seeds",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/create_items",
+      "label": "Create Items",
+      "state": "rejected",
+      "description": "Too broad; players split Create items by machine or material.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "create",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/firmalife_items",
+      "label": "Firmalife Items",
+      "state": "rejected",
+      "description": "Mod-based; items fit into existing food, plants, or decoration sections.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "firmalife",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/afc_items",
+      "label": "ArborFirmaCraft Items",
+      "state": "rejected",
+      "description": "Mod-based; items are logs/saplings, fit into woodworking or plants.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "afc",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/rnr_items",
+      "label": "Roads and Roofs TFC Items",
+      "state": "rejected",
+      "description": "Mod-based; items fit into decorative or building sections.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "rnr",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/locometal_blocks",
+      "label": "Locometal Blocks",
+      "state": "accepted",
+      "description": "Blocks made of locometal, a specific material for storage.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:locometal_blocks",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/crops",
+      "label": "Crops",
+      "state": "accepted",
+      "description": "Harvested crops and field produce.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "minecraft:crops",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/createdeco_items",
+      "label": "Create Deco Items",
+      "state": "rejected",
+      "description": "Mod-based; items fit into decorative section.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "createdeco",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/ad_astra_items",
+      "label": "Ad Astra Items",
+      "state": "rejected",
+      "description": "Mod-based; items fit into space/planetary sections.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "ad_astra",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/weaving_cloth",
+      "label": "Weaving and Cloth",
+      "state": "accepted",
+      "description": "Cloth, fabric, thread, string, weaving, and sewing supplies.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "tfc:looms",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/pig_food",
+      "label": "Pig Food",
+      "state": "rejected",
+      "description": "Too specific; pig food is a subset of animal feed, not a general storage section.",
+      "confidence": 0.3,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:pig_food",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/foods",
+      "label": "Foods",
+      "state": "accepted",
+      "description": "Edible items, raw and prepared foods.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/roofs",
+      "label": "Roofs",
+      "state": "accepted",
+      "description": "Roof blocks and roofing materials.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "mcw_tfc_aio:roofs",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/furniture",
+      "label": "Furniture",
+      "state": "accepted",
+      "description": "Furniture blocks from various mods.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "mcw_tfc_aio:furniture",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/stripped_furniture",
+      "label": "Stripped Furniture",
+      "state": "accepted",
+      "description": "Stripped wood furniture variants.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "mcw_tfc_aio:stripped_furniture",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/stairs",
+      "label": "Stairs",
+      "state": "accepted",
+      "description": "Stair blocks collected together.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:stairs",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/dusts",
+      "label": "Dusts",
+      "state": "accepted",
+      "description": "Ground mineral dusts used in GregTech processing.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/small_dusts",
+      "label": "Small Dusts",
+      "state": "accepted",
+      "description": "Small piles of dust, partial amounts.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:small_dusts",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/tiny_dusts",
+      "label": "Tiny Dusts",
+      "state": "accepted",
+      "description": "Tiny piles of dust, smallest unit.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:tiny_dusts",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/slabs",
+      "label": "Slabs",
+      "state": "accepted",
+      "description": "Slab blocks collected together.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:slabs",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/walls",
+      "label": "Walls",
+      "state": "accepted",
+      "description": "Wall blocks collected together.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "minecraft:walls",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/framedblocks_items",
+      "label": "FramedBlocks Items",
+      "state": "review",
+      "description": "Camouflage blocks that may be grouped with decorative, but mod-based section could be useful.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "mod_metadata",
+          "id": "framedblocks",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/base",
+      "label": "Base",
+      "state": "rejected",
+      "description": "Too vague; refers to railway palette base colors, not a general storage section.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "railways:palettes/cycle_groups/black/base",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/compost_greens_low",
+      "label": "Compost Greens Low",
+      "state": "rejected",
+      "description": "Too specific; composting input category, not a storage section.",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:compost_greens_low",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/tools",
+      "label": "Tools",
+      "state": "accepted",
+      "description": "Hand tools, weapons, and equipment.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:tools",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/ingots",
+      "label": "Ingots",
+      "state": "accepted",
+      "description": "Metal ingots and similar cast forms.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/steel",
+      "label": "Steel",
+      "state": "accepted",
+      "description": "Steel materials: ingots, plates, rods, etc.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/steel",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/igneous_extrusive_items",
+      "label": "Igneous Extrusive Items",
+      "state": "accepted",
+      "description": "Stone and decorative blocks from igneous extrusive rock types.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:igneous_extrusive_items",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/storage_blocks",
+      "label": "Storage Blocks",
+      "state": "accepted",
+      "description": "Block forms of materials for compact storage.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:storage_blocks",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/nuggets",
+      "label": "Nuggets",
+      "state": "accepted",
+      "description": "Small metal pieces (1/9 of an ingot).",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:nuggets",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/black_steel",
+      "label": "Black Steel",
+      "state": "accepted",
+      "description": "Black steel materials and components.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/black_steel",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/bronze",
+      "label": "Bronze",
+      "state": "accepted",
+      "description": "Bronze materials and components.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/bronze",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/blue_steel",
+      "label": "Blue Steel",
+      "state": "accepted",
+      "description": "Blue steel materials and components.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/blue_steel",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/red_steel",
+      "label": "Red Steel",
+      "state": "accepted",
+      "description": "Red steel materials and components.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/red_steel",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/sedimentary_items",
+      "label": "Sedimentary Items",
+      "state": "accepted",
+      "description": "Stone and decorative blocks from sedimentary rock types.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:sedimentary_items",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/black_bronze",
+      "label": "Black Bronze",
+      "state": "accepted",
+      "description": "Black bronze materials and components.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/black_bronze",
+          "confidence": 0.75
+        }
+      ]
+    }
+  ]
+}

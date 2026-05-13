@@ -1,0 +1,1643 @@
+{
+  "items": {
+    "gtceu:exquisite_amethyst_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "id contains amethyst"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling, polishing recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling",
+            "vintageimprovements:polishing"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling, vintageimprovements:polishing",
+          "rationale": "Processed in cutting, milling, and polishing workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling",
+            "vintageimprovements:polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input",
+            "vintageimprovements:polishing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting, milling, and polishing processes"
+        }
+      }
+    },
+    "gtceu:exquisite_andradite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "andradite",
+          "signal": "pattern",
+          "rationale": "id contains andradite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_apatite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "apatite",
+          "signal": "pattern",
+          "rationale": "id contains apatite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_armalcolite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "armalcolite",
+          "signal": "pattern",
+          "rationale": "id contains armalcolite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling, mixing recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling",
+            "greate:mixing"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling, greate:mixing",
+          "rationale": "Processed in cutting, milling, and mixing workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling",
+            "greate:mixing"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input",
+            "greate:mixing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting, milling, and mixing processes"
+        }
+      }
+    },
+    "gtceu:exquisite_blue_topaz_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "blue_topaz",
+          "signal": "pattern",
+          "rationale": "id contains blue_topaz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_certus_quartz_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id contains certus_quartz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting AE2 components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling, and AE2 fluix crafting"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_cinnabar_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id contains cinnabar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_coal_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite coal gem used as crafting material and fuel"
+        },
+        "material_family": {
+          "value": "coal",
+          "signal": "pattern",
+          "rationale": "id contains coal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried for fuel and processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Fuel source for forge and blaze burner",
+            "Crafting gem-based components",
+            "Trim materials for armor"
+          ],
+          "signal": "inferred",
+          "rationale": "Tags show fuel use; also processed in cutting/milling"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_diamond_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite diamond gem used as crafting material"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting diamond tools and components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_echo_shard_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite echo shard, no recipes, likely a decorative collectible"
+        },
+        "material_family": {
+          "value": "echo_shard",
+          "signal": "pattern",
+          "rationale": "id contains echo_shard"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "No recipes, possibly kept as oddity"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative collectible",
+            "Possible future use"
+          ],
+          "signal": "inferred",
+          "rationale": "No known recipes, hidden from recipe viewers"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "creative_tab material_item",
+          "rationale": "Grouped with other exquisite gems"
+        }
+      }
+    },
+    "gtceu:exquisite_emerald_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite emerald gem used as crafting material"
+        },
+        "material_family": {
+          "value": "emerald",
+          "signal": "pattern",
+          "rationale": "id contains emerald"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting emerald components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_green_sapphire_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite green sapphire gem used as crafting material"
+        },
+        "material_family": {
+          "value": "green_sapphire",
+          "signal": "pattern",
+          "rationale": "id contains green_sapphire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_grossular_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite grossular gem used as crafting material"
+        },
+        "material_family": {
+          "value": "grossular",
+          "signal": "pattern",
+          "rationale": "id contains grossular"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_lapis_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite lapis gem used as crafting material"
+        },
+        "material_family": {
+          "value": "lapis",
+          "signal": "pattern",
+          "rationale": "id contains lapis"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting lapis components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_lazurite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite lazurite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "lazurite",
+          "signal": "pattern",
+          "rationale": "id contains lazurite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting lazurite components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_lithium_fluoride_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite lithium fluoride gem used as crafting material"
+        },
+        "material_family": {
+          "value": "lithium_fluoride",
+          "signal": "pattern",
+          "rationale": "id contains lithium_fluoride"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only used in one crafting recipe, not often carried"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting specific gem-based component",
+            "Trim materials for armor"
+          ],
+          "signal": "inferred",
+          "rationale": "Only appears in one shaped recipe"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        }
+      }
+    },
+    "gtceu:exquisite_malachite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite malachite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "malachite",
+          "signal": "pattern",
+          "rationale": "id contains malachite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting malachite components",
+            "Trim materials for armor",
+            "Melts to copper"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim, smelts to copper"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_monazite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite monazite gem used as crafting material"
+        },
+        "material_family": {
+          "value": "monazite",
+          "signal": "pattern",
+          "rationale": "id contains monazite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_nether_quartz_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite nether quartz gem used as crafting material"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id contains nether_quartz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting AE2 fluix crystals",
+            "Trim materials for armor",
+            "Components for advanced machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing for fluix, cutting, milling, and trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling",
+            "greate:mixing"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling, greate:mixing",
+          "rationale": "Processed in cutting, milling, and mixing workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling",
+            "greate:mixing"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input",
+            "greate:mixing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting, milling, and mixing processes"
+        }
+      }
+    },
+    "gtceu:exquisite_olivine_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite olivine gem used as crafting material"
+        },
+        "material_family": {
+          "value": "olivine",
+          "signal": "pattern",
+          "rationale": "id contains olivine"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_opal_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite opal gem used as crafting material"
+        },
+        "material_family": {
+          "value": "opal",
+          "signal": "pattern",
+          "rationale": "id contains opal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_pyrope_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite pyrope gem used as crafting material"
+        },
+        "material_family": {
+          "value": "pyrope",
+          "signal": "pattern",
+          "rationale": "id contains pyrope"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_quartzite_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite quartz gem used as crafting material"
+        },
+        "material_family": {
+          "value": "quartzite",
+          "signal": "pattern",
+          "rationale": "id contains quartzite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting AE2 fluix crystals",
+            "Trim materials for armor",
+            "Components for advanced machinery"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in mixing for fluix, cutting, milling, and trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling",
+            "greate:mixing"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling, greate:mixing",
+          "rationale": "Processed in cutting, milling, and mixing workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling",
+            "greate:mixing"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input",
+            "greate:mixing#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting, milling, and mixing processes"
+        }
+      }
+    },
+    "gtceu:exquisite_realgar_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite realgar gem used as crafting material"
+        },
+        "material_family": {
+          "value": "realgar",
+          "signal": "pattern",
+          "rationale": "id contains realgar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    },
+    "gtceu:exquisite_red_garnet_gem": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Exquisite red garnet gem used as crafting material"
+        },
+        "material_family": {
+          "value": "red_garnet",
+          "signal": "pattern",
+          "rationale": "id contains red_garnet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights.rarity",
+          "rationale": "component rarity is common"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Carried during processing and crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting gem-based components",
+            "Trim materials for armor",
+            "Advanced machinery parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in cutting, milling recipes and as trim"
+        },
+        "organization_group": {
+          "values": [
+            "pack:tfg/exquisite_gems"
+          ],
+          "signal": "pattern",
+          "evidence": "forge:exquisite_gems tag",
+          "rationale": "High-quality gems stored together"
+        },
+        "workflow": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "evidence": "processing_in includes greate:cutting, greate:milling",
+          "rationale": "Processed in cutting and milling workflows"
+        },
+        "used_at": {
+          "values": [
+            "greate:cutting",
+            "greate:milling"
+          ],
+          "signal": "pattern",
+          "rationale": "Stations where the gem is processed"
+        },
+        "workflow_role": {
+          "values": [
+            "greate:cutting#input",
+            "greate:milling#input"
+          ],
+          "signal": "pattern",
+          "rationale": "Input to cutting and milling processes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "vocabulary_proposals": [],
+  "corrections": [],
+  "fill_ins": []
+}
